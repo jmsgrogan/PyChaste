@@ -37,11 +37,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define HELLO_HPP_
 
 #include <string>
+#include <vector>
 
 class Hello
 {
 private:
     std::string mMessage;
+
+    std::vector<double> mVector;
 
 public:
     Hello(const std::string& rMessage);
@@ -49,6 +52,10 @@ public:
     std::string GetMessage();
     
     void Complain(const std::string& rComplaint);
+
+    void SetVector(std::vector<double> vectorInput);
+
+    std::vector<double> GetVector();
 };
 
 #endif /*HELLO_HPP_*/

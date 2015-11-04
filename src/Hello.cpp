@@ -37,7 +37,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Exception.hpp"
 
 Hello::Hello(const std::string& rMessage)
-    : mMessage(rMessage)
+    : mMessage(rMessage),
+      mVector(std::vector<double>(3,1.0))
 {
 }
 
@@ -49,4 +50,14 @@ std::string Hello::GetMessage()
 void Hello::Complain(const std::string& rComplaint)
 {
     EXCEPTION(rComplaint);
+}
+
+void Hello::SetVector(std::vector<double> vectorInput)
+{
+    mVector = vectorInput;
+}
+
+std::vector<double> Hello::GetVector()
+{
+    return mVector;
 }
