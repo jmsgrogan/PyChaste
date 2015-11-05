@@ -35,7 +35,7 @@ import os
 
 library_path = os.getenv('LD_LIBRARY_PATH')
 if library_path is None:
-    raise ValueError('LD_LIBRARY_PATH is not set, cannot find neccessary libraries.')
+    raise ValueError('LD_LIBRARY_PATH is not set, cannot find necessary libraries.')
 
 chaste_lib_path = os.getenv('CHASTE_LIBS')
 if chaste_lib_path is None:
