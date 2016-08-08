@@ -84,17 +84,17 @@ struct PythonIterableToStl
 };
 
 // Make the python module
-BOOST_PYTHON_MODULE(_pychaste)
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_hello_manual)
 {
     class_<std::vector<double> > ("VecDouble")
          .def(vector_indexing_suite<std::vector<double> >())
     ;
 
-    class_<Hello>("Hello", init<const std::string&>())
-        .def("get_message", &Hello::GetMessage)
-        .def("set_vector", &Hello::SetVector)
-        .def("get_vector", &Hello::GetVector)
-        .def("complain", &Hello::Complain)
+    class_<Hello>("HelloManual", init<const std::string&>())
+        .def("GetMessage", &Hello::GetMessage)
+        .def("SetVector", &Hello::SetVector)
+        .def("GetVector", &Hello::GetVector)
+        .def("Complain", &Hello::Complain)
     ;
 
     PythonIterableToStl()

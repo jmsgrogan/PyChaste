@@ -39,22 +39,53 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string>
 #include <vector>
 
+/**
+ * This is a demo class for demonstrating Python wrapping
+ */
 class Hello
 {
 private:
+
+    /**
+     * A message to be returned
+     */
     std::string mMessage;
 
+    /**
+     * A vector of doubles
+     */
     std::vector<double> mVector;
 
 public:
+
+    /**
+     * Constructor
+     * @param rMessage an input message
+     */
     Hello(const std::string& rMessage);
     
+    /**
+     * Return the message
+     * @return return the input message
+     */
     std::string GetMessage();
-    
+
+    /**
+     * Throw and exception with the complaint message
+     * @param rComplaint the input message
+     */
     void Complain(const std::string& rComplaint);
 
+    /**
+     * Set a vector of doubles
+     * @param vectorInput the input vector
+     */
     void SetVector(std::vector<double> vectorInput);
 
+    /**
+     * Return the vector of doubles
+     * @return the vector of doubles
+     */
     std::vector<double> GetVector();
 };
 
