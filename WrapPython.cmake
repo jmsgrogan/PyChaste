@@ -53,27 +53,38 @@ set (PYCHASTE_PYTHON_MODULE_LOCATIONS "")
 
 # Add each module to be built to this list. 
 list (APPEND PYCHASTE_PYTHON_MODULES preload)
-list (APPEND PYCHASTE_PYTHON_MODULES hello_manual)
-list (APPEND PYCHASTE_PYTHON_MODULES hello_auto)
+list (APPEND PYCHASTE_PYTHON_MODULES core)
+#list (APPEND PYCHASTE_PYTHON_MODULES hello_manual)
+#list (APPEND PYCHASTE_PYTHON_MODULES hello_auto)
 
 # The shared library corresponding to this module needs to be put in the correct place in the package tree after it is built, put the location here.
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/core)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
 
 # Copy the Python package (i.e. all source files etc) to the build folder, ignore any shared libraries that might be in there.
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/ PATTERN "*.so" EXCLUDE)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/test/)
 
 # If needed regenerate the bindings
-SET(arguments hello)
+#SET(arguments hello)
+#LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR} )
+#LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/src/tutorial/Hello.hpp)
+#LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/src/tutorial/)
+#LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
+#LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
+
+#add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/generate_tutorial_bindings.py ${arguments})
+
+SET(arguments core)
 LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR} )
-LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/src/tutorial/Hello.hpp)
-LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/src/tutorial/)
+LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/CoreWrapperHeaderCollection.hpp)
+LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
 LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
 add_custom_target(project_PyChaste_Python_Bindings)
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/generate_bindings.py ${arguments})
+add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/generate_core_bindings.py ${arguments})
 
 # Loop through each module and create the shared library targets
 list(LENGTH PYCHASTE_PYTHON_MODULES len1)
@@ -89,8 +100,10 @@ foreach(val RANGE ${len2})
     
     # order is important, boost python and python come first
     target_link_libraries(_chaste_project_PyChaste_${python_module} boost_python ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
+    add_dependencies(_chaste_project_PyChaste_${python_module} project_PyChaste_Python_Bindings)
 endforeach()
 
 # Add a target so all the libraries are built with a single command
 add_custom_target(project_PyChaste_Python)
-add_dependencies(project_PyChaste_Python _chaste_project_PyChaste_preload _chaste_project_PyChaste_hello_manual _chaste_project_PyChaste_hello_auto)
+#add_dependencies(project_PyChaste_Python _chaste_project_PyChaste_preload _chaste_project_PyChaste_hello_manual _chaste_project_PyChaste_hello_auto)
+add_dependencies(project_PyChaste_Python _chaste_project_PyChaste_preload _chaste_project_PyChaste_core)
