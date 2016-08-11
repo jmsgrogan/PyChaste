@@ -1,5 +1,6 @@
 import unittest
 import chaste.core
+chaste.init()
 
 class TestFileHandler(unittest.TestCase):
     
