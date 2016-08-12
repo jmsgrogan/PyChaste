@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 
-#include "/home/grogan/Chaste/projects/PyChaste/dynamic/CoreWrapperHeaderCollection.hpp"
+#include "/home/grogan/Chaste/projects/PyChaste/dynamic/wrapper_headers/core_headers.hpp"
 
 namespace bp = boost::python;
 
