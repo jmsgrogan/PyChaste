@@ -9,6 +9,7 @@ from pyplusplus.module_builder import call_policies
 from pygccxml import parser
 import generate_core
 import generate_ode
+import generate_mesh
 
 def generate_wrappers(args):
     module_name = args[1]
@@ -27,14 +28,17 @@ def generate_wrappers(args):
                                                 xml_generator_path = castxml_binary,
                                                 xml_generator_config = xml_generator_config,
                                                 include_paths = includes)
-    
+    builder.global_ns.namespace('std').exclude() 
     if("core" in module_name):
         builder = generate_core.update_builder(builder)
         
     if("ode" in module_name):
         builder = generate_ode.update_builder(builder)
+        
+    if("mesh" in module_name):
+        builder = generate_mesh.update_builder(builder)
 
-    builder.global_ns.namespace('std').exclude()
+
     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
     builder.write_module(work_dir + "/dynamic/" + module_name + ".cpp")
 

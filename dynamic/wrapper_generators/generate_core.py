@@ -10,13 +10,13 @@ from pygccxml import parser
 
 def update_builder(builder):
 
-    include_classes = ["OutputFileHandler", 
-                       "FileFinder", 
-                       "RelativeTo"]
-    for eachClass in include_classes:
-        builder.class_(eachClass).include()
-        
-    builder.member_functions('OpenOutputFile').exclude()
-    builder.member_functions('FindMatches').exclude()
+    builder.class_("OutputFileHandler").include()
+    builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
+    
+    builder.class_("RelativeTo").include()
+    builder.class_("FileFinder").include()
+    builder.class_("FileFinder").member_functions('FindMatches').exclude()
+    
+    #todo exlude boost::filesystem::path constructor
 
     return builder

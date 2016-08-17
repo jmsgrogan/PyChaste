@@ -149,7 +149,7 @@ void* ExtractVtkWrappedPointer(PyObject* pPythonObject)
 
     // Catch all in case something goes wrong
     return NULL;
-}
+};
 
 /**
  *  Convert a c_vector to a numpy array. Templated over c_vector type
