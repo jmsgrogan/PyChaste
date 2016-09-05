@@ -11,21 +11,12 @@ import generate_bindings
 
 def update_builder(builder):
 
-    include_classes = ["ChastePoint<3>", "PottsMesh<3>"]
-    
+    include_classes = [ "AbstractLinearEllipticPde<3,3>"]
+
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
         new_name = generate_bindings.template_replace(eachClass)
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
 
-    # Do not return the non-const reference to the location
-    returns_non_const_ref = chaste_point.member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
-    returns_non_const_ref.exclude()
-    
-    builder.class_('PottsMesh<3>').member_functions("GetElement").exclude()
-    
-    # Debug output
-    # builder.print_declarations(chaste_point)
-        
     return builder

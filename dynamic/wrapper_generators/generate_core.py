@@ -7,16 +7,23 @@ import sys
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies
 from pygccxml import parser
+import generate_bindings
 
 def update_builder(builder):
-
-    builder.class_("OutputFileHandler").include()
+    
+    include_classes = ["OutputFileHandler",
+               "RelativeTo",
+               "FileFinder", 
+               "SimulationTime"]
+    
+    for eachClass in include_classes:
+        builder.class_(eachClass).include()  
+        new_name = generate_bindings.template_replace(eachClass)
+        if(new_name != eachClass):
+            builder.class_(eachClass).rename(new_name) 
+    
     builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
-    
-    builder.class_("RelativeTo").include()
-    builder.class_("FileFinder").include()
     builder.class_("FileFinder").member_functions('FindMatches').exclude()
-    
-    #todo exlude boost::filesystem::path constructor
+    builder.class_("SimulationTime").member_function("Instance").exclude()
 
     return builder
