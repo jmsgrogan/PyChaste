@@ -11,7 +11,7 @@ import generate_bindings
 
 def update_builder(builder):
 
-    include_classes = [ "AbstractLinearEllipticPde<3,3>"]
+    include_classes = ["AbstractLinearEllipticPde<3,3>"]
 
     for eachClass in include_classes:
         builder.class_(eachClass).include()  

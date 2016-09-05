@@ -54,6 +54,8 @@ set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.s
 # Collect the header directories for this project
 include(${CMAKE_CURRENT_SOURCE_DIR}/ProjectIncludes.cmake)
 include_directories(${PYCHASTE_INCLUDE_DIRS})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_headers)
 
 ######### Build the Python modules ###################### 
 set (PYCHASTE_PYTHON_AUTO_MODULES "")
@@ -74,7 +76,7 @@ list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python
 list (APPEND PYCHASTE_PYTHON_AUTO_MODULES pde)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/pde)
 list (APPEND PYCHASTE_PYTHON_AUTO_MODULES tutorial)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial)
 list (APPEND PYCHASTE_PYTHON_MODULES ${PYCHASTE_PYTHON_AUTO_MODULES})
 
 # Modules with manual wrapping

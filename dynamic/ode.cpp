@@ -2,9 +2,11 @@
 
 #include "boost/python.hpp"
 
-#include "boost/python/suite/indexing/vector_indexing_suite.hpp"
+#include "indexing_suite/container_suite.hpp"
 
-#include "/home/grogan/Chaste/projects/PyChaste/dynamic/wrapper_headers/ode_headers.hpp"
+#include "indexing_suite/vector.hpp"
+
+#include "ode_headers.hpp"
 
 namespace bp = boost::python;
 
@@ -80,19 +82,19 @@ struct AbstractPythonOdeSystemInformation_wrapper : AbstractPythonOdeSystemInfor
 
 };
 
-BOOST_PYTHON_MODULE(_chaste_project_PyChaste_ode){
+BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_ode){
     { //::std::vector< std::string >
         typedef bp::class_< std::vector< std::string > > vector_less__std_scope_string__greater__exposer_t;
         vector_less__std_scope_string__greater__exposer_t vector_less__std_scope_string__greater__exposer = vector_less__std_scope_string__greater__exposer_t( "vector_less__std_scope_string__greater_" );
         bp::scope vector_less__std_scope_string__greater__scope( vector_less__std_scope_string__greater__exposer );
-        vector_less__std_scope_string__greater__exposer.def( bp::vector_indexing_suite< ::std::vector< std::string >, true >() );
+        vector_less__std_scope_string__greater__exposer.def( bp::indexing::vector_suite< std::vector< std::string > >() );
     }
 
     { //::std::vector< double >
         typedef bp::class_< std::vector< double > > vector_less__double__greater__exposer_t;
         vector_less__double__greater__exposer_t vector_less__double__greater__exposer = vector_less__double__greater__exposer_t( "vector_less__double__greater_" );
         bp::scope vector_less__double__greater__scope( vector_less__double__greater__exposer );
-        vector_less__double__greater__exposer.def( bp::vector_indexing_suite< ::std::vector< double >, true >() );
+        vector_less__double__greater__exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
     }
 
     bp::class_< AbstractOdeSystem_wrapper, boost::noncopyable >( "AbstractOdeSystem", bp::init< unsigned int >(( bp::arg("numberOfStateVariables") )) )    
