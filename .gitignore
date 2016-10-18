@@ -1,0 +1,10 @@
+*.so
+*.pyc
+*.project
+*.cproject
+*~
+*.autotools
+*.pydevproject
+dynamic/exposed_decl*
+
+

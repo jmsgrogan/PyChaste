@@ -33,27 +33,38 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import unittest
 import chaste.cell_based
+import chaste.mesh
 chaste.init()
 
 class TestCell(unittest.TestCase):
     
     def test_construct(self):
+        
+        # Do Setup
         simulation_time = chaste.cell_based.SimulationTime.Instance()
         simulation_time.SetStartTime(0.0)
 
+        mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 10, 0, 0)
+        mesh = mesh_generator.GetMesh()
+         
+        # Make the cells
+        cells = chaste.cell_based.VecCellPtr()
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
-        cell_cycle_model = chaste.cell_based.UniformCellCycleModel()
-        cell_generator = chaste.cell_based.GenericCellsGenerator2()
-        cell_generator.SetCellProliferativeType(proliferative_type)
-        cell_generator.SetCellCycleModel(cell_cycle_model)
-        cell_generator.SetNumCells(10)
-        cells = cell_generator.GenerateBasic()
-        print cells
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
+        cell_generator.GenerateBasic(cells, 2)
+         
+        # Make the cell population
+        lattice_indices = range(2)
+        cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, lattice_indices)
+         
+        # Set up the simulation
+        simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
+        simulator.SetOutputDirectory("PythonTestCell");
+        simulator.SetEndTime(100.0);
+        simulator.SetDt(1.0);
+        simulator.SetSamplingTimestepMultiple(1);
+        simulator.Solve();
 
-
-        #generator = chaste.cell_based.Cell()
-        #mesh = generator.GetMesh()
-        #self.assertEqual(mesh.GetNumNodes(), 1000)
 
 if __name__ == '__main__':
     unittest.main()
