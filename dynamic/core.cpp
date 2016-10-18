@@ -69,18 +69,7 @@ struct FileFinder_wrapper : FileFinder, bp::wrapper< FileFinder > {
 
 };
 
-struct SimulationTime_wrapper : SimulationTime, bp::wrapper< SimulationTime > {
-
-    SimulationTime_wrapper( )
-    : SimulationTime( )
-      , bp::wrapper< SimulationTime >(){
-        // null constructor
-    
-    }
-
-};
-
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_core){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
     { //::RelativeTo
         typedef bp::class_< RelativeTo > RelativeTo_exposer_t;
         RelativeTo_exposer_t RelativeTo_exposer = RelativeTo_exposer_t( "RelativeTo" );
@@ -388,44 +377,4 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_core){
         OutputFileHandler_exposer.def_readonly( "SIG_FILE_NAME", &OutputFileHandler::SIG_FILE_NAME );
         OutputFileHandler_exposer.staticmethod( "GetChasteTestOutputDirectory" );
     }
-
-    bp::class_< SimulationTime_wrapper, boost::noncopyable >( "SimulationTime", bp::no_init )    
-        .def( bp::init< >() )    
-        .def( 
-            "Destroy"
-            , (void (*)(  ))( &::SimulationTime::Destroy ) )    
-        .def( 
-            "GetTime"
-            , (double ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTime ) )    
-        .def( 
-            "GetTimeStep"
-            , (double ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTimeStep ) )    
-        .def( 
-            "GetTimeStepsElapsed"
-            , (unsigned int ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTimeStepsElapsed ) )    
-        .def( 
-            "IncrementTimeOneStep"
-            , (void ( ::SimulationTime::* )(  ))( &::SimulationTime::IncrementTimeOneStep ) )    
-        .def( 
-            "IsEndTimeAndNumberOfTimeStepsSetUp"
-            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsEndTimeAndNumberOfTimeStepsSetUp ) )    
-        .def( 
-            "IsFinished"
-            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsFinished ) )    
-        .def( 
-            "IsStartTimeSetUp"
-            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsStartTimeSetUp ) )    
-        .def( 
-            "ResetEndTimeAndNumberOfTimeSteps"
-            , (void ( ::SimulationTime::* )( double const &,unsigned int const & ))( &::SimulationTime::ResetEndTimeAndNumberOfTimeSteps )
-            , ( bp::arg("rEndTime"), bp::arg("rNumberOfTimeStepsInThisRun") ) )    
-        .def( 
-            "SetEndTimeAndNumberOfTimeSteps"
-            , (void ( ::SimulationTime::* )( double,unsigned int ))( &::SimulationTime::SetEndTimeAndNumberOfTimeSteps )
-            , ( bp::arg("endTime"), bp::arg("totalTimeStepsInSimulation") ) )    
-        .def( 
-            "SetStartTime"
-            , (void ( ::SimulationTime::* )( double ))( &::SimulationTime::SetStartTime )
-            , ( bp::arg("startTime") ) )    
-        .staticmethod( "Destroy" );
 }

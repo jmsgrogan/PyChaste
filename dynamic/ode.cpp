@@ -82,7 +82,7 @@ struct AbstractPythonOdeSystemInformation_wrapper : AbstractPythonOdeSystemInfor
 
 };
 
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_ode){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_ode){
     { //::std::vector< std::string >
         typedef bp::class_< std::vector< std::string > > vector_less__std_scope_string__greater__exposer_t;
         vector_less__std_scope_string__greater__exposer_t vector_less__std_scope_string__greater__exposer = vector_less__std_scope_string__greater__exposer_t( "vector_less__std_scope_string__greater_" );
@@ -91,10 +91,10 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_ode){
     }
 
     { //::std::vector< double >
-        typedef bp::class_< std::vector< double > > vector_less__double__greater__exposer_t;
-        vector_less__double__greater__exposer_t vector_less__double__greater__exposer = vector_less__double__greater__exposer_t( "vector_less__double__greater_" );
-        bp::scope vector_less__double__greater__scope( vector_less__double__greater__exposer );
-        vector_less__double__greater__exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
+        typedef bp::class_< std::vector< double > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
     }
 
     bp::class_< AbstractOdeSystem_wrapper, boost::noncopyable >( "AbstractOdeSystem", bp::init< unsigned int >(( bp::arg("numberOfStateVariables") )) )    

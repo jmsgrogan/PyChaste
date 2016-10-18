@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+/*
 
-"""Copyright (c) 2005-2016, University of Oxford.
+Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -30,35 +30,59 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-"""
 
-"""
-This scipt automatically generates Python bindings using a rule based approach
-"""
-import sys
-from pyplusplus import module_builder
-from pyplusplus.module_builder import call_policies
-from pygccxml import parser
-import generate_bindings
+*/
 
-def update_builder(builder):
+#ifndef GENERICCELLSGENERATOR_HPP_
+#define GENERICCELLSGENERATOR_HPP_
 
-    include_classes = ["ChastePoint<3>", 
-                       "PottsMesh<3>"]
+#include <vector>
+#include "Cell.hpp"
+#include "WildTypeCellMutationState.hpp"
+#include "StemCellProliferativeType.hpp"
+#include "TransitCellProliferativeType.hpp"
+#include "RandomNumberGenerator.hpp"
+#include "UniformCellCycleModel.hpp"
+#include "SmartPointers.hpp"
 
-    for eachClass in include_classes:
-        builder.class_(eachClass).include()  
-        new_name = generate_bindings.template_replace(eachClass)
-        if(new_name != eachClass):
-            builder.class_(eachClass).rename(new_name) 
-    
-    builder.class_('SharedPottsMeshGenerator<3>').include()  
-    builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
+/**
+ * This class makes it easier to generate cells with the Python interface.
+ */
+template<unsigned DIM>
+class GenericCellsGenerator
+{
 
-    # Do not return the non-const reference to the location
-    returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
-    returns_non_const_ref.exclude()
-    
-    builder.class_('PottsMesh<3>').member_functions("GetElement").exclude()
-        
-    return builder
+    unsigned mNumCells;
+
+    boost::shared_ptr<AbstractCellProperty> mpMutationState;
+
+    boost::shared_ptr<AbstractCellProperty> mpProliferativeType;
+
+    boost::shared_ptr<AbstractCellCycleModel> mpCellCycleModel;
+
+public:
+
+    GenericCellsGenerator();
+
+    ~GenericCellsGenerator();
+
+    void SetCellMutationState(boost::shared_ptr<AbstractCellProperty> pMutationState);
+
+    void SetCellProliferativeType(boost::shared_ptr<AbstractCellProperty> pProliferativeType);
+
+    void SetCellCycleModel(boost::shared_ptr<AbstractCellCycleModel> pCellCycleModel);
+
+    void SetNumCells(unsigned numCells);
+
+    /**
+     * Fills a vector of cells with a specified cell-cycle model, to match
+     * a given number of cells. Gives them birth times of 0 for node 0,
+     * -1 for node 1, -2 for node 2 etc...
+     *
+     * @param numCells  The number of cells to generate.
+     */
+    std::vector<CellPtr> GenerateBasic();
+
+};
+
+#endif /* GENERICCELLSGENERATOR_HPP_ */

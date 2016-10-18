@@ -1,6 +1,5 @@
-/*
 
-Copyright (c) 2005-2014, University of Oxford.
+"""Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -30,50 +29,31 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+"""
 
-*/
+import unittest
+import chaste.cell_based
+chaste.init()
 
-#ifndef TESTHELLO_HPP_
-#define TESTHELLO_HPP_
+class TestCell(unittest.TestCase):
+    
+    def test_construct(self):
+        simulation_time = chaste.cell_based.SimulationTime.Instance()
+        simulation_time.SetStartTime(0.0)
 
-#include <cxxtest/TestSuite.h>
-/* Most Chaste code uses PETSc to solve linear algebra problems.  This involves starting PETSc at the beginning of a test-suite
- * and closing it at the end.  (If you never run code in parallel then it is safe to replace PetscSetupAndFinalize.hpp with FakePetscSetup.hpp)
- */
-#include "PetscSetupAndFinalize.hpp"
-#include "Hello.hpp"
+        proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
+        cell_cycle_model = chaste.cell_based.UniformCellCycleModel()
+        cell_generator = chaste.cell_based.GenericCellsGenerator2()
+        cell_generator.SetCellProliferativeType(proliferative_type)
+        cell_generator.SetCellCycleModel(cell_cycle_model)
+        cell_generator.SetNumCells(10)
+        cells = cell_generator.GenerateBasic()
+        print cells
 
-/**
- * @file
- *
- * This is an example of a CxxTest test suite, used to test the source
- * code, and also used to run simulations (as it provides a handy
- * shortcut to compile and link against the correct libraries using scons).
- *
- * You can #include any of the files in the project 'src' folder.
- * For example here we #include "Hello.hpp"
- *
- * You can utilise any of the code in the main the Chaste trunk
- * in exactly the same way.
- * NOTE: you will have to alter the project SConscript file lines 41-44
- * to enable #including of code from the 'heart', 'cell_based' or 'crypt'
- * components of Chaste.
- */
 
-class TestHello : public CxxTest::TestSuite
-{
-public:
-    void TestHelloClass()
-    {
-        // Create an object called 'world' of class 'Hello',
-        // (Hello.hpp is #included from the 'src' folder.)
-        Hello world("Hello world!");
+        #generator = chaste.cell_based.Cell()
+        #mesh = generator.GetMesh()
+        #self.assertEqual(mesh.GetNumNodes(), 1000)
 
-        // The TS_ASSERT macros are used to test that the object performs as expected
-        TS_ASSERT_EQUALS(world.GetMessage(), "Hello world!");
-        TS_ASSERT_THROWS_THIS(world.Complain("I don't like you"),
-                              "I don't like you");
-    }
-};
-
-#endif /*TESTHELLO_HPP_*/
+if __name__ == '__main__':
+    unittest.main()

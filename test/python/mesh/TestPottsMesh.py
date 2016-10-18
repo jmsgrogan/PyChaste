@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 """Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
@@ -32,33 +31,16 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-"""
-This scipt automatically generates Python bindings using a rule based approach
-"""
-import sys
-from pyplusplus import module_builder
-from pyplusplus.module_builder import call_policies
-from pygccxml import parser
-import generate_bindings
+import unittest
+import chaste.mesh
+chaste.init()
 
-def update_builder(builder):
-
-    include_classes = ["ChastePoint<3>", 
-                       "PottsMesh<3>"]
-
-    for eachClass in include_classes:
-        builder.class_(eachClass).include()  
-        new_name = generate_bindings.template_replace(eachClass)
-        if(new_name != eachClass):
-            builder.class_(eachClass).rename(new_name) 
+class TestPottsMesh(unittest.TestCase):
     
-    builder.class_('SharedPottsMeshGenerator<3>').include()  
-    builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
+    def test_construct(self):
+        generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 10, 0, 0)
+        mesh = generator.GetMesh()
+        self.assertEqual(mesh.GetNumNodes(), 1000)
 
-    # Do not return the non-const reference to the location
-    returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
-    returns_non_const_ref.exclude()
-    
-    builder.class_('PottsMesh<3>').member_functions("GetElement").exclude()
-        
-    return builder
+if __name__ == '__main__':
+    unittest.main()

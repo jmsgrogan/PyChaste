@@ -56,7 +56,7 @@ struct AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper : AbstractLi
 
 };
 
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_pde){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
     bp::class_< AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper, boost::noncopyable >( "AbstractLinearEllipticPde3_3", bp::init< >() )    
         .def( 
             "ComputeConstantInUSourceTerm"

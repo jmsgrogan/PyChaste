@@ -10,7 +10,7 @@
 
 namespace bp = boost::python;
 
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_tutorial){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_tutorial){
     { //::std::vector< double >
         typedef bp::class_< std::vector< double > > __type_exposer_t;
         __type_exposer_t __type_exposer = __type_exposer_t( "__type" );

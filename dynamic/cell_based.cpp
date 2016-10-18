@@ -210,16 +210,16 @@ struct CaBasedCellPopulation_less__2__greater__wrapper : CaBasedCellPopulation< 
         return CaBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation( pCell );
     }
 
-    virtual bool IsPdeNodeAssociatedWithApoptoticCell( unsigned int pdeNodeIndex ) {
-        if( bp::override func_IsPdeNodeAssociatedWithApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithApoptoticCell" ) )
-            return func_IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
         else{
-            return this->CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+            return this->CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
         }
     }
     
-    bool default_IsPdeNodeAssociatedWithApoptoticCell( unsigned int pdeNodeIndex ) {
-        return CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
     }
 
     virtual bool IsRoomToDivide( ::CellPtr pCell ) {
@@ -528,16 +528,16 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
         return CaBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation( pCell );
     }
 
-    virtual bool IsPdeNodeAssociatedWithApoptoticCell( unsigned int pdeNodeIndex ) {
-        if( bp::override func_IsPdeNodeAssociatedWithApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithApoptoticCell" ) )
-            return func_IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
         else{
-            return this->CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+            return this->CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
         }
     }
     
-    bool default_IsPdeNodeAssociatedWithApoptoticCell( unsigned int pdeNodeIndex ) {
-        return CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithApoptoticCell( pdeNodeIndex );
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
     }
 
     virtual bool IsRoomToDivide( ::CellPtr pCell ) {
@@ -650,6 +650,95 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
 
 };
 
+struct SimulationTime_wrapper : SimulationTime, bp::wrapper< SimulationTime > {
+
+    SimulationTime_wrapper( )
+    : SimulationTime( )
+      , bp::wrapper< SimulationTime >(){
+        // null constructor
+    
+    }
+
+};
+
+struct UniformCellCycleModel_wrapper : UniformCellCycleModel, bp::wrapper< UniformCellCycleModel > {
+
+    UniformCellCycleModel_wrapper(::UniformCellCycleModel const & rModel )
+    : UniformCellCycleModel( boost::ref(rModel) )
+      , bp::wrapper< UniformCellCycleModel >(){
+        // copy constructor
+    
+    }
+
+    UniformCellCycleModel_wrapper( )
+    : UniformCellCycleModel( )
+      , bp::wrapper< UniformCellCycleModel >(){
+        // null constructor
+    
+    }
+
+    virtual ::AbstractCellCycleModel * CreateCellCycleModel(  ) {
+        if( bp::override func_CreateCellCycleModel = this->get_override( "CreateCellCycleModel" ) )
+            return func_CreateCellCycleModel(  );
+        else{
+            return this->UniformCellCycleModel::CreateCellCycleModel(  );
+        }
+    }
+    
+    ::AbstractCellCycleModel * default_CreateCellCycleModel(  ) {
+        return UniformCellCycleModel::CreateCellCycleModel( );
+    }
+
+    virtual double GetAverageStemCellCycleTime(  ) {
+        if( bp::override func_GetAverageStemCellCycleTime = this->get_override( "GetAverageStemCellCycleTime" ) )
+            return func_GetAverageStemCellCycleTime(  );
+        else{
+            return this->UniformCellCycleModel::GetAverageStemCellCycleTime(  );
+        }
+    }
+    
+    double default_GetAverageStemCellCycleTime(  ) {
+        return UniformCellCycleModel::GetAverageStemCellCycleTime( );
+    }
+
+    virtual double GetAverageTransitCellCycleTime(  ) {
+        if( bp::override func_GetAverageTransitCellCycleTime = this->get_override( "GetAverageTransitCellCycleTime" ) )
+            return func_GetAverageTransitCellCycleTime(  );
+        else{
+            return this->UniformCellCycleModel::GetAverageTransitCellCycleTime(  );
+        }
+    }
+    
+    double default_GetAverageTransitCellCycleTime(  ) {
+        return UniformCellCycleModel::GetAverageTransitCellCycleTime( );
+    }
+
+    virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
+            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        else{
+            this->UniformCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
+        UniformCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetCellCycleDuration(  ) {
+        if( bp::override func_SetCellCycleDuration = this->get_override( "SetCellCycleDuration" ) )
+            func_SetCellCycleDuration(  );
+        else{
+            this->UniformCellCycleModel::SetCellCycleDuration(  );
+        }
+    }
+    
+    void default_SetCellCycleDuration(  ) {
+        UniformCellCycleModel::SetCellCycleDuration( );
+    }
+
+};
+
 namespace boost { namespace python { namespace indexing {
 
 template<>
@@ -710,7 +799,7 @@ struct value_traits< boost::shared_ptr< Cell > >{
 
 }/*indexing*/ } /*python*/ } /*boost*/
 
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     { //::std::vector< unsigned int >
         typedef bp::class_< std::vector< unsigned int > > vector_less__unsigned_int__greater__exposer_t;
         vector_less__unsigned_int__greater__exposer_t vector_less__unsigned_int__greater__exposer = vector_less__unsigned_int__greater__exposer_t( "vector_less__unsigned_int__greater_" );
@@ -718,8 +807,12 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
         vector_less__unsigned_int__greater__exposer.def( bp::indexing::vector_suite< std::vector< unsigned int > >() );
     }
 
-    bp::class_< std::vector< boost::shared_ptr<Cell> > >("vector_less__boost_scope_shared_ptr_less_Cell_greater___greater_")    
-        .def( bp::indexing::vector_suite< std::vector< boost::shared_ptr<Cell> > >() );
+    { //::std::vector< boost::shared_ptr<Cell> >
+        typedef bp::class_< std::vector< boost::shared_ptr<Cell> > > VecCellPtr_exposer_t;
+        VecCellPtr_exposer_t VecCellPtr_exposer = VecCellPtr_exposer_t( "VecCellPtr" );
+        bp::scope VecCellPtr_scope( VecCellPtr_exposer );
+        VecCellPtr_exposer.def( bp::indexing::vector_suite< std::vector< boost::shared_ptr<Cell> > >() );
+    }
 
     { //::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > >
         typedef bp::class_< std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > > __type_exposer_t;
@@ -951,16 +1044,16 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
                 , ( bp::arg("pCell") ) );
         
         }
-        { //::CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithApoptoticCell
+        { //::CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell
         
             typedef CaBasedCellPopulation< 2 > exported_class_t;
-            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithApoptoticCell_function_type)( unsigned int ) ;
-            typedef bool ( CaBasedCellPopulation_less__2__greater__wrapper::*default_IsPdeNodeAssociatedWithApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( CaBasedCellPopulation_less__2__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
             
             CaBasedCellPopulation2_exposer.def( 
-                "IsPdeNodeAssociatedWithApoptoticCell"
-                , IsPdeNodeAssociatedWithApoptoticCell_function_type(&::CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithApoptoticCell)
-                , default_IsPdeNodeAssociatedWithApoptoticCell_function_type(&CaBasedCellPopulation_less__2__greater__wrapper::default_IsPdeNodeAssociatedWithApoptoticCell)
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::CaBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&CaBasedCellPopulation_less__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
                 , ( bp::arg("pdeNodeIndex") ) );
         
         }
@@ -1301,16 +1394,16 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
                 , ( bp::arg("pCell") ) );
         
         }
-        { //::CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithApoptoticCell
+        { //::CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell
         
             typedef CaBasedCellPopulation< 3 > exported_class_t;
-            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithApoptoticCell_function_type)( unsigned int ) ;
-            typedef bool ( CaBasedCellPopulation_less__3__greater__wrapper::*default_IsPdeNodeAssociatedWithApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( CaBasedCellPopulation_less__3__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
             
             CaBasedCellPopulation3_exposer.def( 
-                "IsPdeNodeAssociatedWithApoptoticCell"
-                , IsPdeNodeAssociatedWithApoptoticCell_function_type(&::CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithApoptoticCell)
-                , default_IsPdeNodeAssociatedWithApoptoticCell_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_IsPdeNodeAssociatedWithApoptoticCell)
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::CaBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
                 , ( bp::arg("pdeNodeIndex") ) );
         
         }
@@ -1441,6 +1534,36 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
         
         }
     }
+
+    bp::class_< CellPropertyCollection >( "CellPropertyCollection", bp::init< >() )    
+        .def( 
+            "AddProperty"
+            , (void ( ::CellPropertyCollection::* )( ::boost::shared_ptr< AbstractCellProperty > const & ))( &::CellPropertyCollection::AddProperty )
+            , ( bp::arg("rProp") ) )    
+        .def( 
+            "Begin"
+            , (::CellPropertyCollection::Iterator ( ::CellPropertyCollection::* )(  ))( &::CellPropertyCollection::Begin ) )    
+        .def( 
+            "End"
+            , (::CellPropertyCollection::Iterator ( ::CellPropertyCollection::* )(  ))( &::CellPropertyCollection::End ) )    
+        .def( 
+            "GetProperty"
+            , (::boost::shared_ptr< AbstractCellProperty > ( ::CellPropertyCollection::* )(  )const)( &::CellPropertyCollection::GetProperty ) )    
+        .def( 
+            "GetSize"
+            , (unsigned int ( ::CellPropertyCollection::* )(  )const)( &::CellPropertyCollection::GetSize ) )    
+        .def( 
+            "HasProperty"
+            , (bool ( ::CellPropertyCollection::* )( ::boost::shared_ptr< AbstractCellProperty > const & )const)( &::CellPropertyCollection::HasProperty )
+            , ( bp::arg("rProp") ) )    
+        .def( 
+            "RemoveProperty"
+            , (void ( ::CellPropertyCollection::* )( ::boost::shared_ptr< AbstractCellProperty > const & ))( &::CellPropertyCollection::RemoveProperty )
+            , ( bp::arg("rProp") ) )    
+        .def( 
+            "SetCellPropertyRegistry"
+            , (void ( ::CellPropertyCollection::* )( ::CellPropertyRegistry * ))( &::CellPropertyCollection::SetCellPropertyRegistry )
+            , ( bp::arg("pRegistry") ) );
 
     { //::Cell
         typedef bp::class_< Cell, boost::noncopyable > Cell_exposer_t;
@@ -1729,5 +1852,157 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< Cell >, boost::shared_ptr< boost::enable_shared_from_this< Cell > > >();
     }
 
+    bp::class_< CellsGenerator< UniformCellCycleModel, 2 > >( "CellsGeneratorUniformCellCycleModel_2" )    
+        .def( 
+            "GenerateBasic"
+            , (void ( ::CellsGenerator<UniformCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,unsigned int,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< UniformCellCycleModel, 2 >::GenerateBasic )
+            , ( bp::arg("rCells"), bp::arg("numCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) )    
+        .def( 
+            "GenerateBasicRandom"
+            , (void ( ::CellsGenerator<UniformCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,unsigned int,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< UniformCellCycleModel, 2 >::GenerateBasicRandom )
+            , ( bp::arg("rCells"), bp::arg("numCells"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) )    
+        .def( 
+            "GenerateGivenLocationIndices"
+            , (void ( ::CellsGenerator<UniformCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< UniformCellCycleModel, 2 >::GenerateGivenLocationIndices )
+            , ( bp::arg("rCells"), bp::arg("locationIndices"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) );
+
+    bp::class_< DefaultCellProliferativeType >( "DefaultCellProliferativeType", bp::init< >() );
+
+    bp::class_< GenericCellsGenerator< 2 > >( "GenericCellsGenerator2", bp::init< >() )    
+        .def( 
+            "GenerateBasic"
+            , (::std::vector< boost::shared_ptr<Cell> > ( ::GenericCellsGenerator<2>::* )(  ))( &::GenericCellsGenerator< 2 >::GenerateBasic ) )    
+        .def( 
+            "SetCellCycleModel"
+            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellCycleModel > ))( &::GenericCellsGenerator< 2 >::SetCellCycleModel )
+            , ( bp::arg("pCellCycleModel") ) )    
+        .def( 
+            "SetCellMutationState"
+            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 2 >::SetCellMutationState )
+            , ( bp::arg("pMutationState") ) )    
+        .def( 
+            "SetCellProliferativeType"
+            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 2 >::SetCellProliferativeType )
+            , ( bp::arg("pProliferativeType") ) )    
+        .def( 
+            "SetNumCells"
+            , (void ( ::GenericCellsGenerator<2>::* )( unsigned int ))( &::GenericCellsGenerator< 2 >::SetNumCells )
+            , ( bp::arg("numCells") ) );
+
+    bp::class_< GenericCellsGenerator< 3 > >( "GenericCellsGenerator3", bp::init< >() )    
+        .def( 
+            "GenerateBasic"
+            , (::std::vector< boost::shared_ptr<Cell> > ( ::GenericCellsGenerator<3>::* )(  ))( &::GenericCellsGenerator< 3 >::GenerateBasic ) )    
+        .def( 
+            "SetCellCycleModel"
+            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellCycleModel > ))( &::GenericCellsGenerator< 3 >::SetCellCycleModel )
+            , ( bp::arg("pCellCycleModel") ) )    
+        .def( 
+            "SetCellMutationState"
+            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 3 >::SetCellMutationState )
+            , ( bp::arg("pMutationState") ) )    
+        .def( 
+            "SetCellProliferativeType"
+            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 3 >::SetCellProliferativeType )
+            , ( bp::arg("pProliferativeType") ) )    
+        .def( 
+            "SetNumCells"
+            , (void ( ::GenericCellsGenerator<3>::* )( unsigned int ))( &::GenericCellsGenerator< 3 >::SetNumCells )
+            , ( bp::arg("numCells") ) );
+
+    bp::class_< SimulationTime_wrapper, boost::noncopyable >( "SimulationTime", bp::no_init )    
+        .def( bp::init< >() )    
+        .def( 
+            "Destroy"
+            , (void (*)(  ))( &::SimulationTime::Destroy ) )    
+        .def( 
+            "GetTime"
+            , (double ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTime ) )    
+        .def( 
+            "GetTimeStep"
+            , (double ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTimeStep ) )    
+        .def( 
+            "GetTimeStepsElapsed"
+            , (unsigned int ( ::SimulationTime::* )(  )const)( &::SimulationTime::GetTimeStepsElapsed ) )    
+        .def( 
+            "IncrementTimeOneStep"
+            , (void ( ::SimulationTime::* )(  ))( &::SimulationTime::IncrementTimeOneStep ) )    
+        .def( 
+            "Instance"
+            , (::SimulationTime * (*)(  ))( &::SimulationTime::Instance )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
+            "IsEndTimeAndNumberOfTimeStepsSetUp"
+            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsEndTimeAndNumberOfTimeStepsSetUp ) )    
+        .def( 
+            "IsFinished"
+            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsFinished ) )    
+        .def( 
+            "IsStartTimeSetUp"
+            , (bool ( ::SimulationTime::* )(  )const)( &::SimulationTime::IsStartTimeSetUp ) )    
+        .def( 
+            "ResetEndTimeAndNumberOfTimeSteps"
+            , (void ( ::SimulationTime::* )( double const &,unsigned int const & ))( &::SimulationTime::ResetEndTimeAndNumberOfTimeSteps )
+            , ( bp::arg("rEndTime"), bp::arg("rNumberOfTimeStepsInThisRun") ) )    
+        .def( 
+            "SetEndTimeAndNumberOfTimeSteps"
+            , (void ( ::SimulationTime::* )( double,unsigned int ))( &::SimulationTime::SetEndTimeAndNumberOfTimeSteps )
+            , ( bp::arg("endTime"), bp::arg("totalTimeStepsInSimulation") ) )    
+        .def( 
+            "SetStartTime"
+            , (void ( ::SimulationTime::* )( double ))( &::SimulationTime::SetStartTime )
+            , ( bp::arg("startTime") ) )    
+        .staticmethod( "Destroy" )    
+        .staticmethod( "Instance" );
+
     bp::class_< StemCellProliferativeType >( "StemCellProliferativeType", bp::init< >() );
+
+    bp::class_< UniformCellCycleModel_wrapper, boost::noncopyable >( "UniformCellCycleModel", bp::init< UniformCellCycleModel const & >(( bp::arg("rModel") )) )    
+        .def( bp::init< >() )    
+        .def( 
+            "CreateCellCycleModel"
+            , (::AbstractCellCycleModel * ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::CreateCellCycleModel)
+            , (::AbstractCellCycleModel * ( UniformCellCycleModel_wrapper::* )(  ))(&UniformCellCycleModel_wrapper::default_CreateCellCycleModel)
+            , bp::return_value_policy< bp::manage_new_object >() )    
+        .def( 
+            "GetAverageStemCellCycleTime"
+            , (double ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::GetAverageStemCellCycleTime)
+            , (double ( UniformCellCycleModel_wrapper::* )(  ))(&UniformCellCycleModel_wrapper::default_GetAverageStemCellCycleTime) )    
+        .def( 
+            "GetAverageTransitCellCycleTime"
+            , (double ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::GetAverageTransitCellCycleTime)
+            , (double ( UniformCellCycleModel_wrapper::* )(  ))(&UniformCellCycleModel_wrapper::default_GetAverageTransitCellCycleTime) )    
+        .def( 
+            "GetMaxCellCycleDuration"
+            , (double ( ::UniformCellCycleModel::* )(  ))( &::UniformCellCycleModel::GetMaxCellCycleDuration ) )    
+        .def( 
+            "GetMinCellCycleDuration"
+            , (double ( ::UniformCellCycleModel::* )(  ))( &::UniformCellCycleModel::GetMinCellCycleDuration ) )    
+        .def( 
+            "OutputCellCycleModelParameters"
+            , (void ( ::UniformCellCycleModel::* )( ::out_stream & ))(&::UniformCellCycleModel::OutputCellCycleModelParameters)
+            , (void ( UniformCellCycleModel_wrapper::* )( ::out_stream & ))(&UniformCellCycleModel_wrapper::default_OutputCellCycleModelParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCellCycleDuration"
+            , (void ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::SetCellCycleDuration)
+            , (void ( UniformCellCycleModel_wrapper::* )(  ))(&UniformCellCycleModel_wrapper::default_SetCellCycleDuration) )    
+        .def( 
+            "SetMaxCellCycleDuration"
+            , (void ( ::UniformCellCycleModel::* )( double ))( &::UniformCellCycleModel::SetMaxCellCycleDuration )
+            , ( bp::arg("maxCellCycleDuration") ) )    
+        .def( 
+            "SetMinCellCycleDuration"
+            , (void ( ::UniformCellCycleModel::* )( double ))( &::UniformCellCycleModel::SetMinCellCycleDuration )
+            , ( bp::arg("minCellCycleDuration") ) );
+
+    { //::Instantiation
+    
+        typedef int ( *Instantiation_function_type )(  );
+        
+        bp::def( 
+            "Instantiation"
+            , Instantiation_function_type( &::Instantiation ) );
+    
+    }
 }

@@ -124,6 +124,43 @@ struct PottsMesh_less__3__greater__wrapper : PottsMesh< 3 >, bp::wrapper< PottsM
 
 };
 
+struct SharedPottsMeshGenerator_less__3__greater__wrapper : SharedPottsMeshGenerator< 3 >, bp::wrapper< SharedPottsMeshGenerator< 3 > > {
+
+    SharedPottsMeshGenerator_less__3__greater__wrapper(SharedPottsMeshGenerator<3> const & arg )
+    : SharedPottsMeshGenerator<3>( arg )
+      , bp::wrapper< SharedPottsMeshGenerator< 3 > >(){
+        // copy constructor
+        
+    }
+
+    SharedPottsMeshGenerator_less__3__greater__wrapper(unsigned int numNodesAcross, unsigned int numElementsAcross, unsigned int elementWidth, unsigned int numNodesUp=1U, unsigned int numElementsUp=1U, unsigned int elementHeight=1U, unsigned int numNodesDeep=1U, unsigned int numElementsDeep=1U, unsigned int elementDepth=1U, bool startAtBottomLeft=false, bool isPeriodicInX=false, bool isPeriodicInY=false, bool isPeriodicInZ=false )
+    : SharedPottsMeshGenerator<3>( numNodesAcross, numElementsAcross, elementWidth, numNodesUp, numElementsUp, elementHeight, numNodesDeep, numElementsDeep, elementDepth, startAtBottomLeft, isPeriodicInX, isPeriodicInY, isPeriodicInZ )
+      , bp::wrapper< SharedPottsMeshGenerator< 3 > >(){
+        // constructor
+    
+    }
+
+    SharedPottsMeshGenerator_less__3__greater__wrapper( )
+    : SharedPottsMeshGenerator<3>( )
+      , bp::wrapper< SharedPottsMeshGenerator< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual ::boost::shared_ptr< PottsMesh< 3 > > GetMesh(  ) {
+        if( bp::override func_GetMesh = this->get_override( "GetMesh" ) )
+            return func_GetMesh(  );
+        else{
+            return this->SharedPottsMeshGenerator< 3 >::GetMesh(  );
+        }
+    }
+    
+    ::boost::shared_ptr< PottsMesh< 3 > > default_GetMesh(  ) {
+        return SharedPottsMeshGenerator< 3 >::GetMesh( );
+    }
+
+};
+
 namespace boost { namespace python { namespace indexing {
 
 template<>
@@ -144,7 +181,7 @@ struct value_traits< std::set< unsigned int > >{
 
 }/*indexing*/ } /*python*/ } /*boost*/
 
-BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_mesh){
+BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
     { //::std::vector< std::set< unsigned int > >
         typedef bp::class_< std::vector< std::set< unsigned int > > > __type_exposer_t;
         __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
@@ -153,24 +190,24 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_mesh){
     }
 
     { //::std::vector< double >
-        typedef bp::class_< std::vector< double > > vector_less__double__greater__exposer_t;
-        vector_less__double__greater__exposer_t vector_less__double__greater__exposer = vector_less__double__greater__exposer_t( "vector_less__double__greater_" );
-        bp::scope vector_less__double__greater__scope( vector_less__double__greater__exposer );
-        vector_less__double__greater__exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
+        typedef bp::class_< std::vector< double > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
     }
 
     { //::std::vector< PottsElement<3> * >
-        typedef bp::class_< std::vector< PottsElement<3> * > > __type_exposer_t;
-        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
-        bp::scope __type_scope( __type_exposer );
-        __type_exposer.def( bp::indexing::vector_suite< std::vector< PottsElement<3> * > >::with_policies(bp::return_internal_reference< >()) );
+        typedef bp::class_< std::vector< PottsElement<3> * > > vector_less__PottsElement_less_3_greater___ptr___greater__exposer_t;
+        vector_less__PottsElement_less_3_greater___ptr___greater__exposer_t vector_less__PottsElement_less_3_greater___ptr___greater__exposer = vector_less__PottsElement_less_3_greater___ptr___greater__exposer_t( "vector_less__PottsElement_less_3_greater___ptr___greater_" );
+        bp::scope vector_less__PottsElement_less_3_greater___ptr___greater__scope( vector_less__PottsElement_less_3_greater___ptr___greater__exposer );
+        vector_less__PottsElement_less_3_greater___ptr___greater__exposer.def( bp::indexing::vector_suite< std::vector< PottsElement<3> * > >::with_policies(bp::return_internal_reference< >()) );
     }
 
     { //::std::vector< Node<3> * >
-        typedef bp::class_< std::vector< Node<3> * > > __type_exposer_t;
-        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
-        bp::scope __type_scope( __type_exposer );
-        __type_exposer.def( bp::indexing::vector_suite< std::vector< Node<3> * > >::with_policies(bp::return_internal_reference< >()) );
+        typedef bp::class_< std::vector< Node<3> * > > vector_less__Node_less_3_greater___ptr___greater__exposer_t;
+        vector_less__Node_less_3_greater___ptr___greater__exposer_t vector_less__Node_less_3_greater___ptr___greater__exposer = vector_less__Node_less_3_greater___ptr___greater__exposer_t( "vector_less__Node_less_3_greater___ptr___greater_" );
+        bp::scope vector_less__Node_less_3_greater___ptr___greater__scope( vector_less__Node_less_3_greater___ptr___greater__exposer );
+        vector_less__Node_less_3_greater___ptr___greater__exposer.def( bp::indexing::vector_suite< std::vector< Node<3> * > >::with_policies(bp::return_internal_reference< >()) );
     }
 
     { //::std::set< unsigned int >
@@ -246,92 +283,258 @@ BOOST_PYTHON_MODULE(_chaste_project_Angiogenesis_mesh){
         }
     }
 
-    bp::class_< PottsMesh_less__3__greater__wrapper, boost::noncopyable >( "PottsMesh3", bp::init< std::vector< Node<3> * >, std::vector< PottsElement<3> * >, std::vector< std::set< unsigned int > >, std::vector< std::set< unsigned int > > >(( bp::arg("nodes"), bp::arg("pottsElements"), bp::arg("vonNeumannNeighbouringNodeIndices"), bp::arg("mooreNeighbouringNodeIndices") )) )    
+    { //::PottsMesh< 3 >
+        typedef bp::class_< PottsMesh_less__3__greater__wrapper, boost::noncopyable > PottsMesh3_exposer_t;
+        PottsMesh3_exposer_t PottsMesh3_exposer = PottsMesh3_exposer_t( "PottsMesh3", bp::init< std::vector< Node<3> * >, std::vector< PottsElement<3> * >, std::vector< std::set< unsigned int > >, std::vector< std::set< unsigned int > > >(( bp::arg("nodes"), bp::arg("pottsElements"), bp::arg("vonNeumannNeighbouringNodeIndices"), bp::arg("mooreNeighbouringNodeIndices") )) );
+        bp::scope PottsMesh3_scope( PottsMesh3_exposer );
+        PottsMesh3_exposer.def( bp::init< >() );
+        { //::PottsMesh< 3 >::AddElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddElement_function_type)( ::PottsElement< 3 > * ) ;
+            
+            PottsMesh3_exposer.def( 
+                "AddElement"
+                , AddElement_function_type( &::PottsMesh< 3 >::AddElement )
+                , ( bp::arg("pNewElement") ) );
+        
+        }
+        { //::PottsMesh< 3 >::Clear
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            typedef void ( PottsMesh_less__3__greater__wrapper::*default_Clear_function_type)(  ) ;
+            
+            PottsMesh3_exposer.def( 
+                "Clear"
+                , Clear_function_type(&::PottsMesh< 3 >::Clear)
+                , default_Clear_function_type(&PottsMesh_less__3__greater__wrapper::default_Clear) );
+        
+        }
+        { //::PottsMesh< 3 >::ConstructFromMeshReader
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 3, 3 > & ) ;
+            
+            PottsMesh3_exposer.def( 
+                "ConstructFromMeshReader"
+                , ConstructFromMeshReader_function_type( &::PottsMesh< 3 >::ConstructFromMeshReader )
+                , ( bp::arg("rMeshReader") ) );
+        
+        }
+        { //::PottsMesh< 3 >::DeleteElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteElement_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "DeleteElement"
+                , DeleteElement_function_type( &::PottsMesh< 3 >::DeleteElement )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::DeleteNode
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteNode_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "DeleteNode"
+                , DeleteNode_function_type( &::PottsMesh< 3 >::DeleteNode )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::DivideElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*DivideElement_function_type)( ::PottsElement< 3 > *,bool ) ;
+            
+            PottsMesh3_exposer.def( 
+                "DivideElement"
+                , DivideElement_function_type( &::PottsMesh< 3 >::DivideElement )
+                , ( bp::arg("pElement"), bp::arg("placeOriginalElementBelow")=(bool)(false) ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetCentroidOfElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetCentroidOfElement_function_type)( unsigned int ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( PottsMesh_less__3__greater__wrapper::*default_GetCentroidOfElement_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetCentroidOfElement"
+                , GetCentroidOfElement_function_type(&::PottsMesh< 3 >::GetCentroidOfElement)
+                , default_GetCentroidOfElement_function_type(&PottsMesh_less__3__greater__wrapper::default_GetCentroidOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetElementIteratorBegin
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::PottsMesh< 3 >::PottsElementIterator ( exported_class_t::*GetElementIteratorBegin_function_type)( bool ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetElementIteratorBegin"
+                , GetElementIteratorBegin_function_type( &::PottsMesh< 3 >::GetElementIteratorBegin )
+                , ( bp::arg("skipDeletedElements")=(bool)(true) ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetElementIteratorEnd
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::PottsMesh< 3 >::PottsElementIterator ( exported_class_t::*GetElementIteratorEnd_function_type)(  ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetElementIteratorEnd"
+                , GetElementIteratorEnd_function_type( &::PottsMesh< 3 >::GetElementIteratorEnd ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetMooreNeighbouringNodeIndices
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetMooreNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetMooreNeighbouringNodeIndices"
+                , GetMooreNeighbouringNodeIndices_function_type( &::PottsMesh< 3 >::GetMooreNeighbouringNodeIndices )
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetNeighbouringElementIndices
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringElementIndices_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetNeighbouringElementIndices"
+                , GetNeighbouringElementIndices_function_type( &::PottsMesh< 3 >::GetNeighbouringElementIndices )
+                , ( bp::arg("elementIndex") ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetNumAllElements
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumAllElements_function_type)(  ) const;
+            
+            PottsMesh3_exposer.def( 
+                "GetNumAllElements"
+                , GetNumAllElements_function_type( &::PottsMesh< 3 >::GetNumAllElements ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetNumElements
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
+            typedef unsigned int ( PottsMesh_less__3__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
+            
+            PottsMesh3_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type(&::PottsMesh< 3 >::GetNumElements)
+                , default_GetNumElements_function_type(&PottsMesh_less__3__greater__wrapper::default_GetNumElements) );
+        
+        }
+        { //::PottsMesh< 3 >::GetNumNodes
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
+            typedef unsigned int ( PottsMesh_less__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
+            
+            PottsMesh3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::PottsMesh< 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&PottsMesh_less__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::PottsMesh< 3 >::GetSurfaceAreaOfElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetSurfaceAreaOfElement_function_type)( unsigned int ) ;
+            typedef double ( PottsMesh_less__3__greater__wrapper::*default_GetSurfaceAreaOfElement_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetSurfaceAreaOfElement"
+                , GetSurfaceAreaOfElement_function_type(&::PottsMesh< 3 >::GetSurfaceAreaOfElement)
+                , default_GetSurfaceAreaOfElement_function_type(&PottsMesh_less__3__greater__wrapper::default_GetSurfaceAreaOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetVolumeOfElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfElement_function_type)( unsigned int ) ;
+            typedef double ( PottsMesh_less__3__greater__wrapper::*default_GetVolumeOfElement_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetVolumeOfElement"
+                , GetVolumeOfElement_function_type(&::PottsMesh< 3 >::GetVolumeOfElement)
+                , default_GetVolumeOfElement_function_type(&PottsMesh_less__3__greater__wrapper::default_GetVolumeOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::GetVonNeumannNeighbouringNodeIndices
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetVonNeumannNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            PottsMesh3_exposer.def( 
+                "GetVonNeumannNeighbouringNodeIndices"
+                , GetVonNeumannNeighbouringNodeIndices_function_type( &::PottsMesh< 3 >::GetVonNeumannNeighbouringNodeIndices )
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::PottsMesh< 3 >::RemoveDeletedElements
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveDeletedElements_function_type)(  ) ;
+            
+            PottsMesh3_exposer.def( 
+                "RemoveDeletedElements"
+                , RemoveDeletedElements_function_type( &::PottsMesh< 3 >::RemoveDeletedElements ) );
+        
+        }
+        { //::PottsMesh< 3 >::SolveBoundaryElementMapping
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( PottsMesh_less__3__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
+            
+            PottsMesh3_exposer.def( 
+                "SolveBoundaryElementMapping"
+                , SolveBoundaryElementMapping_function_type( &PottsMesh_less__3__greater__wrapper::SolveBoundaryElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::SolveElementMapping
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( PottsMesh_less__3__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
+            
+            PottsMesh3_exposer.def( 
+                "SolveElementMapping"
+                , SolveElementMapping_function_type( &PottsMesh_less__3__greater__wrapper::SolveElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::PottsMesh< 3 >::SolveNodeMapping
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef unsigned int ( PottsMesh_less__3__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
+            
+            PottsMesh3_exposer.def( 
+                "SolveNodeMapping"
+                , SolveNodeMapping_function_type( &PottsMesh_less__3__greater__wrapper::default_SolveNodeMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< PottsMesh<3> > >();
+        bp::implicitly_convertible< boost::shared_ptr< PottsMesh< 3 > >, boost::shared_ptr< AbstractMesh< 3, 3 > > >();
+    }
+
+    bp::class_< SharedPottsMeshGenerator_less__3__greater__wrapper >( "PottsMeshGenerator3", bp::init< unsigned int, unsigned int, unsigned int, bp::optional< unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, bool, bool, bool, bool > >(( bp::arg("numNodesAcross"), bp::arg("numElementsAcross"), bp::arg("elementWidth"), bp::arg("numNodesUp")=(unsigned int)(1U), bp::arg("numElementsUp")=(unsigned int)(1U), bp::arg("elementHeight")=(unsigned int)(1U), bp::arg("numNodesDeep")=(unsigned int)(1U), bp::arg("numElementsDeep")=(unsigned int)(1U), bp::arg("elementDepth")=(unsigned int)(1U), bp::arg("startAtBottomLeft")=(bool)(false), bp::arg("isPeriodicInX")=(bool)(false), bp::arg("isPeriodicInY")=(bool)(false), bp::arg("isPeriodicInZ")=(bool)(false) )) )    
         .def( bp::init< >() )    
         .def( 
-            "AddElement"
-            , (unsigned int ( ::PottsMesh<3>::* )( ::PottsElement< 3 > * ))( &::PottsMesh< 3 >::AddElement )
-            , ( bp::arg("pNewElement") ) )    
-        .def( 
-            "Clear"
-            , (void ( ::PottsMesh<3>::* )(  ))(&::PottsMesh< 3 >::Clear)
-            , (void ( PottsMesh_less__3__greater__wrapper::* )(  ))(&PottsMesh_less__3__greater__wrapper::default_Clear) )    
-        .def( 
-            "ConstructFromMeshReader"
-            , (void ( ::PottsMesh<3>::* )( ::AbstractMeshReader< 3, 3 > & ))( &::PottsMesh< 3 >::ConstructFromMeshReader )
-            , ( bp::arg("rMeshReader") ) )    
-        .def( 
-            "DeleteElement"
-            , (void ( ::PottsMesh<3>::* )( unsigned int ))( &::PottsMesh< 3 >::DeleteElement )
-            , ( bp::arg("index") ) )    
-        .def( 
-            "DeleteNode"
-            , (void ( ::PottsMesh<3>::* )( unsigned int ))( &::PottsMesh< 3 >::DeleteNode )
-            , ( bp::arg("index") ) )    
-        .def( 
-            "DivideElement"
-            , (unsigned int ( ::PottsMesh<3>::* )( ::PottsElement< 3 > *,bool ))( &::PottsMesh< 3 >::DivideElement )
-            , ( bp::arg("pElement"), bp::arg("placeOriginalElementBelow")=(bool)(false) ) )    
-        .def( 
-            "GetCentroidOfElement"
-            , (::boost::numeric::ublas::c_vector< double, 3 > ( ::PottsMesh<3>::* )( unsigned int ))(&::PottsMesh< 3 >::GetCentroidOfElement)
-            , (::boost::numeric::ublas::c_vector< double, 3 > ( PottsMesh_less__3__greater__wrapper::* )( unsigned int ))(&PottsMesh_less__3__greater__wrapper::default_GetCentroidOfElement)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "GetElementIteratorBegin"
-            , (::PottsMesh< 3 >::PottsElementIterator ( ::PottsMesh<3>::* )( bool ))( &::PottsMesh< 3 >::GetElementIteratorBegin )
-            , ( bp::arg("skipDeletedElements")=(bool)(true) ) )    
-        .def( 
-            "GetElementIteratorEnd"
-            , (::PottsMesh< 3 >::PottsElementIterator ( ::PottsMesh<3>::* )(  ))( &::PottsMesh< 3 >::GetElementIteratorEnd ) )    
-        .def( 
-            "GetMooreNeighbouringNodeIndices"
-            , (::std::set< unsigned int > ( ::PottsMesh<3>::* )( unsigned int ))( &::PottsMesh< 3 >::GetMooreNeighbouringNodeIndices )
-            , ( bp::arg("nodeIndex") ) )    
-        .def( 
-            "GetNeighbouringElementIndices"
-            , (::std::set< unsigned int > ( ::PottsMesh<3>::* )( unsigned int ))( &::PottsMesh< 3 >::GetNeighbouringElementIndices )
-            , ( bp::arg("elementIndex") ) )    
-        .def( 
-            "GetNumAllElements"
-            , (unsigned int ( ::PottsMesh<3>::* )(  )const)( &::PottsMesh< 3 >::GetNumAllElements ) )    
-        .def( 
-            "GetNumElements"
-            , (unsigned int ( ::PottsMesh<3>::* )(  )const)(&::PottsMesh< 3 >::GetNumElements)
-            , (unsigned int ( PottsMesh_less__3__greater__wrapper::* )(  )const)(&PottsMesh_less__3__greater__wrapper::default_GetNumElements) )    
-        .def( 
-            "GetNumNodes"
-            , (unsigned int ( ::PottsMesh<3>::* )(  )const)(&::PottsMesh< 3 >::GetNumNodes)
-            , (unsigned int ( PottsMesh_less__3__greater__wrapper::* )(  )const)(&PottsMesh_less__3__greater__wrapper::default_GetNumNodes) )    
-        .def( 
-            "GetSurfaceAreaOfElement"
-            , (double ( ::PottsMesh<3>::* )( unsigned int ))(&::PottsMesh< 3 >::GetSurfaceAreaOfElement)
-            , (double ( PottsMesh_less__3__greater__wrapper::* )( unsigned int ))(&PottsMesh_less__3__greater__wrapper::default_GetSurfaceAreaOfElement)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "GetVolumeOfElement"
-            , (double ( ::PottsMesh<3>::* )( unsigned int ))(&::PottsMesh< 3 >::GetVolumeOfElement)
-            , (double ( PottsMesh_less__3__greater__wrapper::* )( unsigned int ))(&PottsMesh_less__3__greater__wrapper::default_GetVolumeOfElement)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "GetVonNeumannNeighbouringNodeIndices"
-            , (::std::set< unsigned int > ( ::PottsMesh<3>::* )( unsigned int ))( &::PottsMesh< 3 >::GetVonNeumannNeighbouringNodeIndices )
-            , ( bp::arg("nodeIndex") ) )    
-        .def( 
-            "RemoveDeletedElements"
-            , (void ( ::PottsMesh<3>::* )(  ))( &::PottsMesh< 3 >::RemoveDeletedElements ) )    
-        .def( 
-            "SolveBoundaryElementMapping"
-            , (unsigned int ( PottsMesh_less__3__greater__wrapper::* )( unsigned int )const)(&PottsMesh_less__3__greater__wrapper::SolveBoundaryElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveElementMapping"
-            , (unsigned int ( PottsMesh_less__3__greater__wrapper::* )( unsigned int )const)(&PottsMesh_less__3__greater__wrapper::SolveElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveNodeMapping"
-            , (unsigned int ( PottsMesh_less__3__greater__wrapper::* )( unsigned int )const)(&PottsMesh_less__3__greater__wrapper::default_SolveNodeMapping)
-            , ( bp::arg("index") ) );
+            "GetMesh"
+            , (::boost::shared_ptr< PottsMesh< 3 > > ( ::SharedPottsMeshGenerator<3>::* )(  ))(&::SharedPottsMeshGenerator< 3 >::GetMesh)
+            , (::boost::shared_ptr< PottsMesh< 3 > > ( SharedPottsMeshGenerator_less__3__greater__wrapper::* )(  ))(&SharedPottsMeshGenerator_less__3__greater__wrapper::default_GetMesh) );
 
     { //::Instantiation
     

@@ -1,4 +1,3 @@
-TestHello.hpp
 python/core/TestOutputFileHandler.py
 python/core/TestFileFinder.py
 python/ode/TestOdeSystem.py
