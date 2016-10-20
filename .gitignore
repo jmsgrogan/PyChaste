@@ -6,5 +6,4 @@
 *.autotools
 *.pydevproject
 dynamic/exposed_decl*
-
-
+src/python/chaste/projects/*
