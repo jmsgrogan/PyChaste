@@ -32,7 +32,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
-#include "CheckpointArchiveTypes.hpp"
+
 #include <vector>
 #include <boost/python.hpp>
 #include <boost/python/module.hpp>
@@ -97,21 +97,21 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
         .def_readwrite("second", &std::pair<double, double>::second)
     ;
 
-    bp::class_<std::vector<unsigned> > ("VecUnsigned")
-         .def(vector_ptr_indexing_suite<std::vector<unsigned> >())
-    ;
+//    bp::class_<std::vector<unsigned> > ("VecUnsigned")
+//         .def(vector_ptr_indexing_suite<std::vector<unsigned> >())
+//    ;
 
-    bp::class_<std::vector<std::pair<double, double> > > ("VecPairDoubleDouble")
-         .def(vector_ptr_indexing_suite<std::vector<std::pair<double, double> > >())
-    ;
+//    bp::class_<std::vector<std::pair<double, double> > > ("VecPairDoubleDouble")
+//         .def(vector_ptr_indexing_suite<std::vector<std::pair<double, double> > >())
+//    ;
+//
+//    bp::class_<std::vector<std::vector<unsigned> > > ("VecVecUnsigned")
+//         .def(vector_ptr_indexing_suite<std::vector<std::vector<unsigned> > >())
+//    ;
 
-    bp::class_<std::vector<std::vector<unsigned> > > ("VecVecUnsigned")
-         .def(vector_ptr_indexing_suite<std::vector<std::vector<unsigned> > >())
-    ;
-
-    bp::class_<std::vector<std::vector<double> > > ("VecVecDouble")
-         .def(vector_ptr_indexing_suite<std::vector<std::vector<double> > >())
-    ;
+//    bp::class_<std::vector<std::vector<double> > > ("VecVecDouble")
+//         .def(vector_ptr_indexing_suite<std::vector<std::vector<double> > >())
+//    ;
 
     bp::class_<std::map<unsigned, double> >("UnsignedDoubleMap")
         .def(map_indexing_suite<std::map<unsigned, double> >())
@@ -131,7 +131,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     // Iterators
     PythonIterableToStl()
       .from_python<std::vector<double> >()
-      .from_python<std::vector<std::vector<double> > >()
       .from_python<std::vector<std::vector<double> > >()
       .from_python<std::vector<unsigned> >()
       .from_python<std::vector<c_vector<double, 3> > >()

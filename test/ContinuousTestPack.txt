@@ -1,4 +1,7 @@
-python/core/TestOutputFileHandler.py
-python/core/TestFileFinder.py
-python/ode/TestOdeSystem.py
-python/mesh/TestChastePoint.py
+python/core/TestOutputFileHandlerPython.py
+python/core/TestFileFinderPython.py
+python/mesh/TestChastePointPython.py
+python/mesh/TestPottsMeshPython.py
+python/ode/TestOdeSystemPython.py
+python/cell_based/TestCaBasedCellPopulationPython.py
+python/cell_based/TestCellPython.py

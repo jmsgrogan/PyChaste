@@ -63,7 +63,10 @@ def update_builder(builder):
                        "AbstractCellPopulation<3,3>",
                        "AbstractCellBasedSimulation<2,2>",
                        "AbstractCellBasedSimulation<3,3>",
-                       "Identifiable"]
+                       "Identifiable",
+                       "DiffusionCaUpdateRule<2>",
+                       "AbstractCaUpdateRule<2>",
+                       "AbstractUpdateRule<2>"]
 
     for eachClass in include_classes:
         builder.class_(eachClass).include()  

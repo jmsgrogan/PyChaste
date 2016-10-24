@@ -14,7 +14,13 @@
 #include "OnLatticeSimulation.hpp"
 #include "AbstractCellBasedSimulation.hpp"
 #include "Identifiable.hpp"
+#include "DiffusionCaUpdateRule.hpp"
+#include "AbstractCaUpdateRule.hpp"
+#include "AbstractUpdateRule.hpp"
 
+template class AbstractUpdateRule<2>;
+template class AbstractCaUpdateRule<2>;
+template class DiffusionCaUpdateRule<2>;
 template class CaBasedCellPopulation<2>;
 template class CaBasedCellPopulation<3>;
 template class AbstractOnLatticeCellPopulation<2>;
