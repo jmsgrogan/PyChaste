@@ -29,6 +29,7 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 # OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # 
+add_compile_options(-Wno-unused-local-typedefs)
 
 ######### Find the dependencies for wrapper building ###################### 
 # The Boost Python headers and shared library are needed, use CMake to find them.
