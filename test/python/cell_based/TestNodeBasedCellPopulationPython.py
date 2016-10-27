@@ -41,13 +41,16 @@ chaste.init()
 class TestCell(unittest.TestCase):
     
     def test_construct(self):
-        file_handler = chaste.core.OutputFileHandler("PythonTestVtkScene/TestSimpleRendering/");
+        file_handler = chaste.core.OutputFileHandler("PythonTestNodeBasedCellPopulation");
         
         simulation_time = chaste.cell_based.SimulationTime.Instance()
         simulation_time.SetStartTime(0.0)
  
-        mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 3, 0, 0)
+        mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 1, 0, 0)
         mesh = mesh_generator.GetMesh()
+        
+        nodes_only_mesh = chaste.mesh.NodesOnlyMesh3()
+        nodes_only_mesh.ConstructNodesWithoutMesh(mesh, 1.5)
           
         # Make the cells
         cells = chaste.cell_based.VecCellPtr()
@@ -56,25 +59,24 @@ class TestCell(unittest.TestCase):
         cell_generator.GenerateBasic(cells, 100)
           
         # Make the cell population
-        lattice_indices = range(100)
-        cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, lattice_indices)
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(nodes_only_mesh, cells)
 
-        # Set up the visualizer
+#         # Set up the visualizer
         scene = chaste.visualization.VtkScene3()
         scene.SetCellPopulation(cell_population);
         scene.SetIsInteractive(False);
         scene.SetSaveAsAnimation(True);
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        
+         
         modifier = chaste.cell_based.VtkSceneModifier3()
         modifier.SetVtkScene(scene);
-
+ 
         # Set up the simulation
-        simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
-        simulator.SetOutputDirectory("PythonTestCell");
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("PythonTestNodeBasedCellPopulation");
         simulator.SetEndTime(4.0);
         simulator.SetDt(1.0);
-        simulator.SetSamplingTimestepMultiple(1);
+#         simulator.SetSamplingTimestepMultiple(1);
         simulator.AddSimulationModifier(modifier)
         
         simulator.Solve();

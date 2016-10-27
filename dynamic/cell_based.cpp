@@ -10,6 +10,8 @@
 
 #include "indexing_suite/set.hpp"
 
+#include "indexing_suite/map.hpp"
+
 #include "cell_based_headers.hpp"
 
 namespace bp = boost::python;
@@ -959,6 +961,1378 @@ struct AbstractCellPopulation_less__3_comma__3__greater__wrapper : AbstractCellP
     virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
         bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
         func_WriteVtkResultsToFile( rDirectory );
+    }
+
+};
+
+struct AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper : AbstractOffLatticeCellPopulation< 2, 2 >, bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > > {
+
+    AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh )
+    : AbstractOffLatticeCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractOffLatticeCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    virtual unsigned int AddNode( ::Node< 2 > * pNewNode ){
+        bp::override func_AddNode = this->get_override( "AddNode" );
+        return func_AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ){
+        bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" );
+        func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ){
+        bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" );
+        return func_GetDampingConstant( nodeIndex );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ){
+        bp::override func_SetNode = this->get_override( "SetNode" );
+        func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ){
+        bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" );
+        func_AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ){
+        bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" );
+        func_AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ){
+        bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" );
+        func_AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ){
+        bp::override func_AddCell = this->get_override( "AddCell" );
+        return func_AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ){
+        bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" );
+        return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual double GetDefaultTimeStep(  ){
+        bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" );
+        return func_GetDefaultTimeStep(  );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ){
+        bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" );
+        return func_GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ){
+        bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" );
+        return func_GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ){
+        bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" );
+        return func_GetNeighbouringNodeIndices( index );
+    }
+
+    virtual ::Node< 2 > * GetNode( unsigned int index ){
+        bp::override func_GetNode = this->get_override( "GetNode" );
+        return func_GetNode( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ){
+        bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
+        return func_GetNumNodes(  );
+    }
+
+    virtual ::TetrahedralMesh< 2, 2 > * GetTetrahedralMeshForPdeModifier(  ){
+        bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" );
+        return func_GetTetrahedralMeshForPdeModifier(  );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ){
+        bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" );
+        return func_GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ){
+        bp::override func_GetWidth = this->get_override( "GetWidth" );
+        return func_GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ){
+        bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" );
+        return func_IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ){
+        bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" );
+        return func_RemoveDeadCells(  );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ){
+        bp::override func_Update = this->get_override( "Update" );
+        func_Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void Validate(  ){
+        bp::override func_Validate = this->get_override( "Validate" );
+        func_Validate(  );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
+        bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
+        func_WriteVtkResultsToFile( rDirectory );
+    }
+
+};
+
+struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : AbstractCentreBasedCellPopulation< 2, 2 >, bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > > {
+
+    AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh )
+    : AbstractCentreBasedCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractCentreBasedCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
+        bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
+        func_WriteVtkResultsToFile( rDirectory );
+    }
+
+    virtual ::std::vector< std::pair<Node<2> *, Node<2> *> > & rGetNodePairs(  ){
+        throw std::logic_error("warning W1049: This method could not be overriden in Python - method returns reference to local variable!");
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ){
+        bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" );
+        func_AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ){
+        bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" );
+        func_AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ){
+        bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" );
+        func_AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 2 > * pNewNode ){
+        bp::override func_AddNode = this->get_override( "AddNode" );
+        return func_AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ){
+        bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" );
+        return func_GetNeighbouringNodeIndices( index );
+    }
+
+    virtual ::Node< 2 > * GetNode( unsigned int index ){
+        bp::override func_GetNode = this->get_override( "GetNode" );
+        return func_GetNode( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ){
+        bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
+        return func_GetNumNodes(  );
+    }
+
+    virtual ::TetrahedralMesh< 2, 2 > * GetTetrahedralMeshForPdeModifier(  ){
+        bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" );
+        return func_GetTetrahedralMeshForPdeModifier(  );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ){
+        bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" );
+        return func_GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ){
+        bp::override func_GetWidth = this->get_override( "GetWidth" );
+        return func_GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ){
+        bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" );
+        return func_RemoveDeadCells(  );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ){
+        bp::override func_SetNode = this->get_override( "SetNode" );
+        func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ){
+        bp::override func_Update = this->get_override( "Update" );
+        func_Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void Validate(  ){
+        bp::override func_Validate = this->get_override( "Validate" );
+        func_Validate(  );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+};
+
+struct AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper : AbstractOffLatticeCellPopulation< 3, 3 >, bp::wrapper< AbstractOffLatticeCellPopulation< 3, 3 > > {
+
+    AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper(::AbstractMesh< 3, 3 > & rMesh )
+    : AbstractOffLatticeCellPopulation<3, 3>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper(::AbstractMesh< 3, 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractOffLatticeCellPopulation<3, 3>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    virtual unsigned int AddNode( ::Node< 3 > * pNewNode ){
+        bp::override func_AddNode = this->get_override( "AddNode" );
+        return func_AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ){
+        bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" );
+        func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ){
+        bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" );
+        return func_GetDampingConstant( nodeIndex );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ){
+        bp::override func_SetNode = this->get_override( "SetNode" );
+        func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ){
+        bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" );
+        func_AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ){
+        bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" );
+        func_AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ){
+        bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" );
+        func_AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ){
+        bp::override func_AddCell = this->get_override( "AddCell" );
+        return func_AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ){
+        bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" );
+        return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual double GetDefaultTimeStep(  ){
+        bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" );
+        return func_GetDefaultTimeStep(  );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ){
+        bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" );
+        return func_GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ){
+        bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" );
+        return func_GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ){
+        bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" );
+        return func_GetNeighbouringNodeIndices( index );
+    }
+
+    virtual ::Node< 3 > * GetNode( unsigned int index ){
+        bp::override func_GetNode = this->get_override( "GetNode" );
+        return func_GetNode( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ){
+        bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
+        return func_GetNumNodes(  );
+    }
+
+    virtual ::TetrahedralMesh< 3, 3 > * GetTetrahedralMeshForPdeModifier(  ){
+        bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" );
+        return func_GetTetrahedralMeshForPdeModifier(  );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ){
+        bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" );
+        return func_GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ){
+        bp::override func_GetWidth = this->get_override( "GetWidth" );
+        return func_GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ){
+        bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" );
+        return func_IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ){
+        bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" );
+        return func_RemoveDeadCells(  );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ){
+        bp::override func_Update = this->get_override( "Update" );
+        func_Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void Validate(  ){
+        bp::override func_Validate = this->get_override( "Validate" );
+        func_Validate(  );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
+        bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
+        func_WriteVtkResultsToFile( rDirectory );
+    }
+
+};
+
+struct AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper : AbstractCentreBasedCellPopulation< 3, 3 >, bp::wrapper< AbstractCentreBasedCellPopulation< 3, 3 > > {
+
+    AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper(::AbstractMesh< 3, 3 > & rMesh )
+    : AbstractCentreBasedCellPopulation<3, 3>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper(::AbstractMesh< 3, 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractCentreBasedCellPopulation<3, 3>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        AbstractCentreBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
+        bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
+        func_WriteVtkResultsToFile( rDirectory );
+    }
+
+    virtual ::std::vector< std::pair<Node<3> *, Node<3> *> > & rGetNodePairs(  ){
+        throw std::logic_error("warning W1049: This method could not be overriden in Python - method returns reference to local variable!");
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ){
+        bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" );
+        func_AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ){
+        bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" );
+        func_AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ){
+        bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" );
+        func_AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 3 > * pNewNode ){
+        bp::override func_AddNode = this->get_override( "AddNode" );
+        return func_AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ){
+        bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" );
+        return func_GetNeighbouringNodeIndices( index );
+    }
+
+    virtual ::Node< 3 > * GetNode( unsigned int index ){
+        bp::override func_GetNode = this->get_override( "GetNode" );
+        return func_GetNode( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ){
+        bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
+        return func_GetNumNodes(  );
+    }
+
+    virtual ::TetrahedralMesh< 3, 3 > * GetTetrahedralMeshForPdeModifier(  ){
+        bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" );
+        return func_GetTetrahedralMeshForPdeModifier(  );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ){
+        bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" );
+        return func_GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ){
+        bp::override func_GetWidth = this->get_override( "GetWidth" );
+        return func_GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ){
+        bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" );
+        return func_RemoveDeadCells(  );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ){
+        bp::override func_SetNode = this->get_override( "SetNode" );
+        func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ){
+        bp::override func_Update = this->get_override( "Update" );
+        func_Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void Validate(  ){
+        bp::override func_Validate = this->get_override( "Validate" );
+        func_Validate(  );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
     }
 
 };
@@ -2403,6 +3777,2100 @@ struct DiffusionCaUpdateRule_less__2__greater__wrapper : DiffusionCaUpdateRule< 
 
 };
 
+struct MeshBasedCellPopulation_less__2_comma__2__greater__wrapper : MeshBasedCellPopulation< 2, 2 >, bp::wrapper< MeshBasedCellPopulation< 2, 2 > > {
+
+    MeshBasedCellPopulation_less__2_comma__2__greater__wrapper(::MutableMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>(), bool deleteMesh=false, bool validate=true )
+    : MeshBasedCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices, deleteMesh, validate )
+      , bp::wrapper< MeshBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    MeshBasedCellPopulation_less__2_comma__2__greater__wrapper(::MutableMesh< 2, 2 > & rMesh )
+    : MeshBasedCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< MeshBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        MeshBasedCellPopulation< 2, 2 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        MeshBasedCellPopulation< 2, 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        MeshBasedCellPopulation< 2, 2 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        return MeshBasedCellPopulation< 2, 2 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 2 > * pNewNode ) {
+        if( bp::override func_AddNode = this->get_override( "AddNode" ) )
+            return func_AddNode( boost::python::ptr(pNewNode) );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::AddNode( boost::python::ptr(pNewNode) );
+        }
+    }
+    
+    unsigned int default_AddNode( ::Node< 2 > * pNewNode ) {
+        return MeshBasedCellPopulation< 2, 2 >::AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetWidth( rDimension );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        MeshBasedCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        MeshBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return MeshBasedCellPopulation< 2, 2 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ) {
+        MeshBasedCellPopulation< 2, 2 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        MeshBasedCellPopulation< 2, 2 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateGhostNodesAfterReMesh( ::NodeMap & rMap ){
+        if( bp::override func_UpdateGhostNodesAfterReMesh = this->get_override( "UpdateGhostNodesAfterReMesh" ) )
+            func_UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+        }
+    }
+    
+    virtual void default_UpdateGhostNodesAfterReMesh( ::NodeMap & rMap ){
+        MeshBasedCellPopulation< 2, 2 >::UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+    }
+
+    virtual void Validate(  ){
+        if( bp::override func_Validate = this->get_override( "Validate" ) )
+            func_Validate(  );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::Validate(  );
+        }
+    }
+    
+    virtual void default_Validate(  ){
+        MeshBasedCellPopulation< 2, 2 >::Validate( );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        MeshBasedCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        MeshBasedCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" ) )
+            func_WriteVtkResultsToFile( rDirectory );
+        else{
+            this->MeshBasedCellPopulation< 2, 2 >::WriteVtkResultsToFile( rDirectory );
+        }
+    }
+    
+    void default_WriteVtkResultsToFile( ::std::string const & rDirectory ) {
+        MeshBasedCellPopulation< 2, 2 >::WriteVtkResultsToFile( rDirectory );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+    }
+
+};
+
+struct MeshBasedCellPopulation_less__3_comma__3__greater__wrapper : MeshBasedCellPopulation< 3, 3 >, bp::wrapper< MeshBasedCellPopulation< 3, 3 > > {
+
+    MeshBasedCellPopulation_less__3_comma__3__greater__wrapper(::MutableMesh< 3, 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>(), bool deleteMesh=false, bool validate=true )
+    : MeshBasedCellPopulation<3, 3>( boost::ref(rMesh), boost::ref(rCells), locationIndices, deleteMesh, validate )
+      , bp::wrapper< MeshBasedCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    MeshBasedCellPopulation_less__3_comma__3__greater__wrapper(::MutableMesh< 3, 3 > & rMesh )
+    : MeshBasedCellPopulation<3, 3>( boost::ref(rMesh) )
+      , bp::wrapper< MeshBasedCellPopulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        MeshBasedCellPopulation< 3, 3 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        MeshBasedCellPopulation< 3, 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        MeshBasedCellPopulation< 3, 3 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        return MeshBasedCellPopulation< 3, 3 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 3 > * pNewNode ) {
+        if( bp::override func_AddNode = this->get_override( "AddNode" ) )
+            return func_AddNode( boost::python::ptr(pNewNode) );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::AddNode( boost::python::ptr(pNewNode) );
+        }
+    }
+    
+    unsigned int default_AddNode( ::Node< 3 > * pNewNode ) {
+        return MeshBasedCellPopulation< 3, 3 >::AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetWidth( rDimension );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        MeshBasedCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        MeshBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return MeshBasedCellPopulation< 3, 3 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ) {
+        MeshBasedCellPopulation< 3, 3 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        MeshBasedCellPopulation< 3, 3 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateGhostNodesAfterReMesh( ::NodeMap & rMap ){
+        if( bp::override func_UpdateGhostNodesAfterReMesh = this->get_override( "UpdateGhostNodesAfterReMesh" ) )
+            func_UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+        }
+    }
+    
+    virtual void default_UpdateGhostNodesAfterReMesh( ::NodeMap & rMap ){
+        MeshBasedCellPopulation< 3, 3 >::UpdateGhostNodesAfterReMesh( boost::ref(rMap) );
+    }
+
+    virtual void Validate(  ){
+        if( bp::override func_Validate = this->get_override( "Validate" ) )
+            func_Validate(  );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::Validate(  );
+        }
+    }
+    
+    virtual void default_Validate(  ){
+        MeshBasedCellPopulation< 3, 3 >::Validate( );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        MeshBasedCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        MeshBasedCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" ) )
+            func_WriteVtkResultsToFile( rDirectory );
+        else{
+            this->MeshBasedCellPopulation< 3, 3 >::WriteVtkResultsToFile( rDirectory );
+        }
+    }
+    
+    void default_WriteVtkResultsToFile( ::std::string const & rDirectory ) {
+        MeshBasedCellPopulation< 3, 3 >::WriteVtkResultsToFile( rDirectory );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+};
+
+struct NodeBasedCellPopulation_less__2__greater__wrapper : NodeBasedCellPopulation< 2 >, bp::wrapper< NodeBasedCellPopulation< 2 > > {
+
+    NodeBasedCellPopulation_less__2__greater__wrapper(::NodesOnlyMesh< 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>(), bool deleteMesh=false, bool validate=true )
+    : NodeBasedCellPopulation<2>( boost::ref(rMesh), boost::ref(rCells), locationIndices, deleteMesh, validate )
+      , bp::wrapper< NodeBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    NodeBasedCellPopulation_less__2__greater__wrapper(::NodesOnlyMesh< 2 > & rMesh )
+    : NodeBasedCellPopulation<2>( boost::ref(rMesh) )
+      , bp::wrapper< NodeBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->NodeBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        NodeBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->NodeBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        NodeBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->NodeBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        NodeBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        return NodeBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return NodeBasedCellPopulation< 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return NodeBasedCellPopulation< 2 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return NodeBasedCellPopulation< 2 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return NodeBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return NodeBasedCellPopulation< 2 >::GetWidth( rDimension );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->NodeBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        NodeBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->NodeBasedCellPopulation< 2 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return NodeBasedCellPopulation< 2 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+        else{
+            this->NodeBasedCellPopulation< 2 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > & rNewLocation ) {
+        NodeBasedCellPopulation< 2 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->NodeBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        NodeBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->NodeBasedCellPopulation< 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        NodeBasedCellPopulation< 2 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateParticlesAfterReMesh( ::NodeMap & rMap ){
+        if( bp::override func_UpdateParticlesAfterReMesh = this->get_override( "UpdateParticlesAfterReMesh" ) )
+            func_UpdateParticlesAfterReMesh( boost::ref(rMap) );
+        else{
+            this->NodeBasedCellPopulation< 2 >::UpdateParticlesAfterReMesh( boost::ref(rMap) );
+        }
+    }
+    
+    virtual void default_UpdateParticlesAfterReMesh( ::NodeMap & rMap ){
+        NodeBasedCellPopulation< 2 >::UpdateParticlesAfterReMesh( boost::ref(rMap) );
+    }
+
+    virtual void Validate(  ){
+        if( bp::override func_Validate = this->get_override( "Validate" ) )
+            func_Validate(  );
+        else{
+            this->NodeBasedCellPopulation< 2 >::Validate(  );
+        }
+    }
+    
+    virtual void default_Validate(  ){
+        NodeBasedCellPopulation< 2 >::Validate( );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 2, 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+};
+
+struct NodeBasedCellPopulation_less__3__greater__wrapper : NodeBasedCellPopulation< 3 >, bp::wrapper< NodeBasedCellPopulation< 3 > > {
+
+    NodeBasedCellPopulation_less__3__greater__wrapper(::NodesOnlyMesh< 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>(), bool deleteMesh=false, bool validate=true )
+    : NodeBasedCellPopulation<3>( boost::ref(rMesh), boost::ref(rCells), locationIndices, deleteMesh, validate )
+      , bp::wrapper< NodeBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    NodeBasedCellPopulation_less__3__greater__wrapper(::NodesOnlyMesh< 3 > & rMesh )
+    : NodeBasedCellPopulation<3>( boost::ref(rMesh) )
+      , bp::wrapper< NodeBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->NodeBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        NodeBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->NodeBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        NodeBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->NodeBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        NodeBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell ) {
+        return NodeBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return NodeBasedCellPopulation< 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return NodeBasedCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return NodeBasedCellPopulation< 3 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return NodeBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return NodeBasedCellPopulation< 3 >::GetWidth( rDimension );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->NodeBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        NodeBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->NodeBasedCellPopulation< 3 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return NodeBasedCellPopulation< 3 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, boost::ref(rNewLocation) );
+        else{
+            this->NodeBasedCellPopulation< 3 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 3 > & rNewLocation ) {
+        NodeBasedCellPopulation< 3 >::SetNode( nodeIndex, boost::ref(rNewLocation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->NodeBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        NodeBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->NodeBasedCellPopulation< 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        NodeBasedCellPopulation< 3 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateParticlesAfterReMesh( ::NodeMap & rMap ){
+        if( bp::override func_UpdateParticlesAfterReMesh = this->get_override( "UpdateParticlesAfterReMesh" ) )
+            func_UpdateParticlesAfterReMesh( boost::ref(rMap) );
+        else{
+            this->NodeBasedCellPopulation< 3 >::UpdateParticlesAfterReMesh( boost::ref(rMap) );
+        }
+    }
+    
+    virtual void default_UpdateParticlesAfterReMesh( ::NodeMap & rMap ){
+        NodeBasedCellPopulation< 3 >::UpdateParticlesAfterReMesh( boost::ref(rMap) );
+    }
+
+    virtual void Validate(  ){
+        if( bp::override func_Validate = this->get_override( "Validate" ) )
+            func_Validate(  );
+        else{
+            this->NodeBasedCellPopulation< 3 >::Validate(  );
+        }
+    }
+    
+    virtual void default_Validate(  ){
+        NodeBasedCellPopulation< 3 >::Validate( );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsGhostNode( unsigned int index ) {
+        if( bp::override func_IsGhostNode = this->get_override( "IsGhostNode" ) )
+            return func_IsGhostNode( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+        }
+    }
+    
+    bool default_IsGhostNode( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode( index );
+    }
+
+    virtual bool IsParticle( unsigned int index ) {
+        if( bp::override func_IsParticle = this->get_override( "IsParticle" ) )
+            return func_IsParticle( index );
+        else{
+            return this->AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+        }
+    }
+    
+    bool default_IsParticle( unsigned int index ) {
+        return AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        AbstractCellPopulation< 3, 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+    }
+
+};
+
+struct OffLatticeSimulation_less__2_comma__2__greater__wrapper : OffLatticeSimulation< 2, 2 >, bp::wrapper< OffLatticeSimulation< 2, 2 > > {
+
+    OffLatticeSimulation_less__2_comma__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > & rCellPopulation, bool deleteCellPopulationInDestructor=false, bool initialiseCells=true )
+    : OffLatticeSimulation<2, 2>( boost::ref(rCellPopulation), deleteCellPopulationInDestructor, initialiseCells )
+      , bp::wrapper< OffLatticeSimulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    void ApplyBoundaries( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > oldNodeLoctions ){
+        OffLatticeSimulation< 2, 2 >::ApplyBoundaries( oldNodeLoctions );
+    }
+
+    virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
+            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        else{
+            this->OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
+        OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+    }
+
+    virtual void OutputSimulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationParameters = this->get_override( "OutputSimulationParameters" ) )
+            func_OutputSimulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationParameters( ::out_stream & rParamsFile ) {
+        OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+    }
+
+    void RevertToOldLocations( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > oldNodeLoctions ){
+        OffLatticeSimulation< 2, 2 >::RevertToOldLocations( oldNodeLoctions );
+    }
+
+    virtual void SetupSolve(  ){
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve(  );
+        else{
+            this->OffLatticeSimulation< 2, 2 >::SetupSolve(  );
+        }
+    }
+    
+    virtual void default_SetupSolve(  ){
+        OffLatticeSimulation< 2, 2 >::SetupSolve( );
+    }
+
+    virtual void UpdateCellLocationsAndTopology(  ){
+        if( bp::override func_UpdateCellLocationsAndTopology = this->get_override( "UpdateCellLocationsAndTopology" ) )
+            func_UpdateCellLocationsAndTopology(  );
+        else{
+            this->OffLatticeSimulation< 2, 2 >::UpdateCellLocationsAndTopology(  );
+        }
+    }
+    
+    virtual void default_UpdateCellLocationsAndTopology(  ){
+        OffLatticeSimulation< 2, 2 >::UpdateCellLocationsAndTopology( );
+    }
+
+    virtual void WriteVisualizerSetupFile(  ){
+        if( bp::override func_WriteVisualizerSetupFile = this->get_override( "WriteVisualizerSetupFile" ) )
+            func_WriteVisualizerSetupFile(  );
+        else{
+            this->OffLatticeSimulation< 2, 2 >::WriteVisualizerSetupFile(  );
+        }
+    }
+    
+    virtual void default_WriteVisualizerSetupFile(  ){
+        OffLatticeSimulation< 2, 2 >::WriteVisualizerSetupFile( );
+    }
+
+    virtual unsigned int DoCellBirth(  ){
+        if( bp::override func_DoCellBirth = this->get_override( "DoCellBirth" ) )
+            return func_DoCellBirth(  );
+        else{
+            return this->AbstractCellBasedSimulation< 2, 2 >::DoCellBirth(  );
+        }
+    }
+    
+    virtual unsigned int default_DoCellBirth(  ){
+        return AbstractCellBasedSimulation< 2, 2 >::DoCellBirth( );
+    }
+
+    unsigned int DoCellRemoval(  ){
+        return AbstractCellBasedSimulation< 2, 2 >::DoCellRemoval(  );
+    }
+
+    void OutputSimulationSetup(  ){
+        AbstractCellBasedSimulation< 2, 2 >::OutputSimulationSetup(  );
+    }
+
+    virtual bool StoppingEventHasOccurred(  ){
+        if( bp::override func_StoppingEventHasOccurred = this->get_override( "StoppingEventHasOccurred" ) )
+            return func_StoppingEventHasOccurred(  );
+        else{
+            return this->AbstractCellBasedSimulation< 2, 2 >::StoppingEventHasOccurred(  );
+        }
+    }
+    
+    virtual bool default_StoppingEventHasOccurred(  ){
+        return AbstractCellBasedSimulation< 2, 2 >::StoppingEventHasOccurred( );
+    }
+
+    virtual void UpdateCellPopulation(  ){
+        if( bp::override func_UpdateCellPopulation = this->get_override( "UpdateCellPopulation" ) )
+            func_UpdateCellPopulation(  );
+        else{
+            this->AbstractCellBasedSimulation< 2, 2 >::UpdateCellPopulation(  );
+        }
+    }
+    
+    virtual void default_UpdateCellPopulation(  ){
+        AbstractCellBasedSimulation< 2, 2 >::UpdateCellPopulation( );
+    }
+
+};
+
+struct OffLatticeSimulation_less__3_comma__3__greater__wrapper : OffLatticeSimulation< 3, 3 >, bp::wrapper< OffLatticeSimulation< 3, 3 > > {
+
+    OffLatticeSimulation_less__3_comma__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > & rCellPopulation, bool deleteCellPopulationInDestructor=false, bool initialiseCells=true )
+    : OffLatticeSimulation<3, 3>( boost::ref(rCellPopulation), deleteCellPopulationInDestructor, initialiseCells )
+      , bp::wrapper< OffLatticeSimulation< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    void ApplyBoundaries( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > oldNodeLoctions ){
+        OffLatticeSimulation< 3, 3 >::ApplyBoundaries( oldNodeLoctions );
+    }
+
+    virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
+            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        else{
+            this->OffLatticeSimulation< 3, 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
+        OffLatticeSimulation< 3, 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+    }
+
+    virtual void OutputSimulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationParameters = this->get_override( "OutputSimulationParameters" ) )
+            func_OutputSimulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->OffLatticeSimulation< 3, 3 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationParameters( ::out_stream & rParamsFile ) {
+        OffLatticeSimulation< 3, 3 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+    }
+
+    void RevertToOldLocations( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > oldNodeLoctions ){
+        OffLatticeSimulation< 3, 3 >::RevertToOldLocations( oldNodeLoctions );
+    }
+
+    virtual void SetupSolve(  ){
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve(  );
+        else{
+            this->OffLatticeSimulation< 3, 3 >::SetupSolve(  );
+        }
+    }
+    
+    virtual void default_SetupSolve(  ){
+        OffLatticeSimulation< 3, 3 >::SetupSolve( );
+    }
+
+    virtual void UpdateCellLocationsAndTopology(  ){
+        if( bp::override func_UpdateCellLocationsAndTopology = this->get_override( "UpdateCellLocationsAndTopology" ) )
+            func_UpdateCellLocationsAndTopology(  );
+        else{
+            this->OffLatticeSimulation< 3, 3 >::UpdateCellLocationsAndTopology(  );
+        }
+    }
+    
+    virtual void default_UpdateCellLocationsAndTopology(  ){
+        OffLatticeSimulation< 3, 3 >::UpdateCellLocationsAndTopology( );
+    }
+
+    virtual void WriteVisualizerSetupFile(  ){
+        if( bp::override func_WriteVisualizerSetupFile = this->get_override( "WriteVisualizerSetupFile" ) )
+            func_WriteVisualizerSetupFile(  );
+        else{
+            this->OffLatticeSimulation< 3, 3 >::WriteVisualizerSetupFile(  );
+        }
+    }
+    
+    virtual void default_WriteVisualizerSetupFile(  ){
+        OffLatticeSimulation< 3, 3 >::WriteVisualizerSetupFile( );
+    }
+
+    virtual unsigned int DoCellBirth(  ){
+        if( bp::override func_DoCellBirth = this->get_override( "DoCellBirth" ) )
+            return func_DoCellBirth(  );
+        else{
+            return this->AbstractCellBasedSimulation< 3, 3 >::DoCellBirth(  );
+        }
+    }
+    
+    virtual unsigned int default_DoCellBirth(  ){
+        return AbstractCellBasedSimulation< 3, 3 >::DoCellBirth( );
+    }
+
+    unsigned int DoCellRemoval(  ){
+        return AbstractCellBasedSimulation< 3, 3 >::DoCellRemoval(  );
+    }
+
+    void OutputSimulationSetup(  ){
+        AbstractCellBasedSimulation< 3, 3 >::OutputSimulationSetup(  );
+    }
+
+    virtual bool StoppingEventHasOccurred(  ){
+        if( bp::override func_StoppingEventHasOccurred = this->get_override( "StoppingEventHasOccurred" ) )
+            return func_StoppingEventHasOccurred(  );
+        else{
+            return this->AbstractCellBasedSimulation< 3, 3 >::StoppingEventHasOccurred(  );
+        }
+    }
+    
+    virtual bool default_StoppingEventHasOccurred(  ){
+        return AbstractCellBasedSimulation< 3, 3 >::StoppingEventHasOccurred( );
+    }
+
+    virtual void UpdateCellPopulation(  ){
+        if( bp::override func_UpdateCellPopulation = this->get_override( "UpdateCellPopulation" ) )
+            func_UpdateCellPopulation(  );
+        else{
+            this->AbstractCellBasedSimulation< 3, 3 >::UpdateCellPopulation(  );
+        }
+    }
+    
+    virtual void default_UpdateCellPopulation(  ){
+        AbstractCellBasedSimulation< 3, 3 >::UpdateCellPopulation( );
+    }
+
+};
+
 struct OnLatticeSimulation_less__2__greater__wrapper : OnLatticeSimulation< 2 >, bp::wrapper< OnLatticeSimulation< 2 > > {
 
     OnLatticeSimulation_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > & rCellPopulation, bool deleteCellPopulationInDestructor=false, bool initialiseCells=true )
@@ -2633,6 +6101,774 @@ struct OnLatticeSimulation_less__3__greater__wrapper : OnLatticeSimulation< 3 >,
 
 };
 
+struct PottsBasedCellPopulation_less__2__greater__wrapper : PottsBasedCellPopulation< 2 >, bp::wrapper< PottsBasedCellPopulation< 2 > > {
+
+    PottsBasedCellPopulation_less__2__greater__wrapper(::PottsMesh< 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, bool deleteMesh=false, bool validate=true, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : PottsBasedCellPopulation<2>( boost::ref(rMesh), boost::ref(rCells), deleteMesh, validate, locationIndices )
+      , bp::wrapper< PottsBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    PottsBasedCellPopulation_less__2__greater__wrapper(::PottsMesh< 2 > & rMesh )
+    : PottsBasedCellPopulation<2>( boost::ref(rMesh) )
+      , bp::wrapper< PottsBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->PottsBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        PottsBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->PottsBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        PottsBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->PottsBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        PottsBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return PottsBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void AddUpdateRule( ::boost::shared_ptr< AbstractUpdateRule< 2 > > pUpdateRule ) {
+        if( bp::override func_AddUpdateRule = this->get_override( "AddUpdateRule" ) )
+            func_AddUpdateRule( pUpdateRule );
+        else{
+            this->PottsBasedCellPopulation< 2 >::AddUpdateRule( pUpdateRule );
+        }
+    }
+    
+    void default_AddUpdateRule( ::boost::shared_ptr< AbstractUpdateRule< 2 > > pUpdateRule ) {
+        PottsBasedCellPopulation< 2 >::AddUpdateRule( pUpdateRule );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return PottsBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 2 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 2 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return PottsBasedCellPopulation< 2 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return PottsBasedCellPopulation< 2 >::GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->PottsBasedCellPopulation< 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        PottsBasedCellPopulation< 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->PottsBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        PottsBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->PottsBasedCellPopulation< 2 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return PottsBasedCellPopulation< 2 >::RemoveDeadCells( );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->PottsBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        PottsBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellLocations( double dt ) {
+        if( bp::override func_UpdateCellLocations = this->get_override( "UpdateCellLocations" ) )
+            func_UpdateCellLocations( dt );
+        else{
+            this->PottsBasedCellPopulation< 2 >::UpdateCellLocations( dt );
+        }
+    }
+    
+    void default_UpdateCellLocations( double dt ) {
+        PottsBasedCellPopulation< 2 >::UpdateCellLocations( dt );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->PottsBasedCellPopulation< 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        PottsBasedCellPopulation< 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        AbstractCellPopulation< 2, 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
+    }
+
+};
+
+struct PottsBasedCellPopulation_less__3__greater__wrapper : PottsBasedCellPopulation< 3 >, bp::wrapper< PottsBasedCellPopulation< 3 > > {
+
+    PottsBasedCellPopulation_less__3__greater__wrapper(::PottsMesh< 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, bool deleteMesh=false, bool validate=true, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : PottsBasedCellPopulation<3>( boost::ref(rMesh), boost::ref(rCells), deleteMesh, validate, locationIndices )
+      , bp::wrapper< PottsBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    PottsBasedCellPopulation_less__3__greater__wrapper(::PottsMesh< 3 > & rMesh )
+    : PottsBasedCellPopulation<3>( boost::ref(rMesh) )
+      , bp::wrapper< PottsBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->PottsBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        PottsBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->PottsBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        PottsBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->PottsBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        PottsBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return PottsBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual void AddUpdateRule( ::boost::shared_ptr< AbstractUpdateRule< 3 > > pUpdateRule ) {
+        if( bp::override func_AddUpdateRule = this->get_override( "AddUpdateRule" ) )
+            func_AddUpdateRule( pUpdateRule );
+        else{
+            this->PottsBasedCellPopulation< 3 >::AddUpdateRule( pUpdateRule );
+        }
+    }
+    
+    void default_AddUpdateRule( ::boost::shared_ptr< AbstractUpdateRule< 3 > > pUpdateRule ) {
+        PottsBasedCellPopulation< 3 >::AddUpdateRule( pUpdateRule );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return PottsBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 3 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 3 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return PottsBasedCellPopulation< 3 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return PottsBasedCellPopulation< 3 >::GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return PottsBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->PottsBasedCellPopulation< 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        PottsBasedCellPopulation< 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->PottsBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        PottsBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->PottsBasedCellPopulation< 3 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return PottsBasedCellPopulation< 3 >::RemoveDeadCells( );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->PottsBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        PottsBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void UpdateCellLocations( double dt ) {
+        if( bp::override func_UpdateCellLocations = this->get_override( "UpdateCellLocations" ) )
+            func_UpdateCellLocations( dt );
+        else{
+            this->PottsBasedCellPopulation< 3 >::UpdateCellLocations( dt );
+        }
+    }
+    
+    void default_UpdateCellLocations( double dt ) {
+        PottsBasedCellPopulation< 3 >::UpdateCellLocations( dt );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->PottsBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        PottsBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->PottsBasedCellPopulation< 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        PottsBasedCellPopulation< 3 >::WriteResultsToFiles( rDirectory );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->AbstractOnLatticeCellPopulation< 3 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return AbstractOnLatticeCellPopulation< 3 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->AbstractOnLatticeCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return AbstractOnLatticeCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual ::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > const GetUpdateRuleCollection(  ) const  {
+        if( bp::override func_GetUpdateRuleCollection = this->get_override( "GetUpdateRuleCollection" ) )
+            return func_GetUpdateRuleCollection(  );
+        else{
+            return this->AbstractOnLatticeCellPopulation< 3 >::GetUpdateRuleCollection(  );
+        }
+    }
+    
+    ::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > const default_GetUpdateRuleCollection(  ) const  {
+        return AbstractOnLatticeCellPopulation< 3 >::GetUpdateRuleCollection( );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveAllUpdateRules(  ) {
+        if( bp::override func_RemoveAllUpdateRules = this->get_override( "RemoveAllUpdateRules" ) )
+            func_RemoveAllUpdateRules(  );
+        else{
+            this->AbstractOnLatticeCellPopulation< 3 >::RemoveAllUpdateRules(  );
+        }
+    }
+    
+    void default_RemoveAllUpdateRules(  ) {
+        AbstractOnLatticeCellPopulation< 3 >::RemoveAllUpdateRules( );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void SetNode( unsigned int index, ::ChastePoint< 3 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( index, boost::ref(rNewLocation) );
+        else{
+            this->AbstractOnLatticeCellPopulation< 3 >::SetNode( index, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int index, ::ChastePoint< 3 > & rNewLocation ) {
+        AbstractOnLatticeCellPopulation< 3 >::SetNode( index, boost::ref(rNewLocation) );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        AbstractCellPopulation< 3, 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation( );
+    }
+
+};
+
 struct SimulationTime_wrapper : SimulationTime, bp::wrapper< SimulationTime > {
 
     SimulationTime_wrapper( )
@@ -2742,6 +6978,834 @@ struct UniformCellCycleModel_wrapper : UniformCellCycleModel, bp::wrapper< Unifo
     
     void default_SetBirthTime( double birthTime ) {
         AbstractCellCycleModel::SetBirthTime( birthTime );
+    }
+
+};
+
+struct VertexBasedCellPopulation_less__2__greater__wrapper : VertexBasedCellPopulation< 2 >, bp::wrapper< VertexBasedCellPopulation< 2 > > {
+
+    VertexBasedCellPopulation_less__2__greater__wrapper(::MutableVertexMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, bool deleteMesh=false, bool validate=true, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : VertexBasedCellPopulation<2>( boost::ref(rMesh), boost::ref(rCells), deleteMesh, validate, locationIndices )
+      , bp::wrapper< VertexBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    VertexBasedCellPopulation_less__2__greater__wrapper(::MutableVertexMesh< 2, 2 > & rMesh )
+    : VertexBasedCellPopulation<2>( boost::ref(rMesh) )
+      , bp::wrapper< VertexBasedCellPopulation< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->VertexBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ) {
+        VertexBasedCellPopulation< 2 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->VertexBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > pPopulationCountWriter ) {
+        VertexBasedCellPopulation< 2 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->VertexBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > pPopulationWriter ) {
+        VertexBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return VertexBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 2 > * pNewNode ) {
+        if( bp::override func_AddNode = this->get_override( "AddNode" ) )
+            return func_AddNode( boost::python::ptr(pNewNode) );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::AddNode( boost::python::ptr(pNewNode) );
+        }
+    }
+    
+    unsigned int default_AddNode( ::Node< 2 > * pNewNode ) {
+        return VertexBasedCellPopulation< 2 >::AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->VertexBasedCellPopulation< 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rDisplacement, double dt ) {
+        VertexBasedCellPopulation< 2 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return VertexBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return VertexBasedCellPopulation< 2 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return VertexBasedCellPopulation< 2 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 2 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 2 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return VertexBasedCellPopulation< 2 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return VertexBasedCellPopulation< 2 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 2 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return VertexBasedCellPopulation< 2 >::GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return VertexBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->VertexBasedCellPopulation< 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        VertexBasedCellPopulation< 2 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->VertexBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        VertexBasedCellPopulation< 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->VertexBasedCellPopulation< 2 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return VertexBasedCellPopulation< 2 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int index, ::ChastePoint< 2 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( index, boost::ref(rNewLocation) );
+        else{
+            this->VertexBasedCellPopulation< 2 >::SetNode( index, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int index, ::ChastePoint< 2 > & rNewLocation ) {
+        VertexBasedCellPopulation< 2 >::SetNode( index, boost::ref(rNewLocation) );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->VertexBasedCellPopulation< 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 2, 2 > * pSimulation ) {
+        VertexBasedCellPopulation< 2 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->VertexBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        VertexBasedCellPopulation< 2 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->VertexBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        VertexBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 2, 2 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 2, 2 >::WriteResultsToFiles( rDirectory );
+    }
+
+};
+
+struct VertexBasedCellPopulation_less__3__greater__wrapper : VertexBasedCellPopulation< 3 >, bp::wrapper< VertexBasedCellPopulation< 3 > > {
+
+    VertexBasedCellPopulation_less__3__greater__wrapper(::MutableVertexMesh< 3, 3 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, bool deleteMesh=false, bool validate=true, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : VertexBasedCellPopulation<3>( boost::ref(rMesh), boost::ref(rCells), deleteMesh, validate, locationIndices )
+      , bp::wrapper< VertexBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    VertexBasedCellPopulation_less__3__greater__wrapper(::MutableVertexMesh< 3, 3 > & rMesh )
+    : VertexBasedCellPopulation<3>( boost::ref(rMesh) )
+      , bp::wrapper< VertexBasedCellPopulation< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        if( bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" ) )
+            func_AcceptCellWriter( pCellWriter, pCell );
+        else{
+            this->VertexBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+        }
+    }
+    
+    void default_AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > > pCellWriter, ::CellPtr pCell ) {
+        VertexBasedCellPopulation< 3 >::AcceptCellWriter( pCellWriter, pCell );
+    }
+
+    virtual void AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        if( bp::override func_AcceptPopulationCountWriter = this->get_override( "AcceptPopulationCountWriter" ) )
+            func_AcceptPopulationCountWriter( pPopulationCountWriter );
+        else{
+            this->VertexBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+        }
+    }
+    
+    void default_AcceptPopulationCountWriter( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > pPopulationCountWriter ) {
+        VertexBasedCellPopulation< 3 >::AcceptPopulationCountWriter( pPopulationCountWriter );
+    }
+
+    virtual void AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        if( bp::override func_AcceptPopulationWriter = this->get_override( "AcceptPopulationWriter" ) )
+            func_AcceptPopulationWriter( pPopulationWriter );
+        else{
+            this->VertexBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+        }
+    }
+    
+    void default_AcceptPopulationWriter( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > pPopulationWriter ) {
+        VertexBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
+    }
+
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        if( bp::override func_AddCell = this->get_override( "AddCell" ) )
+            return func_AddCell( pNewCell, pParentCell );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+        }
+    }
+    
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
+        return VertexBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
+    }
+
+    virtual unsigned int AddNode( ::Node< 3 > * pNewNode ) {
+        if( bp::override func_AddNode = this->get_override( "AddNode" ) )
+            return func_AddNode( boost::python::ptr(pNewNode) );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::AddNode( boost::python::ptr(pNewNode) );
+        }
+    }
+    
+    unsigned int default_AddNode( ::Node< 3 > * pNewNode ) {
+        return VertexBasedCellPopulation< 3 >::AddNode( boost::python::ptr(pNewNode) );
+    }
+
+    virtual void CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        if( bp::override func_CheckForStepSizeException = this->get_override( "CheckForStepSizeException" ) )
+            func_CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        else{
+            this->VertexBasedCellPopulation< 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+        }
+    }
+    
+    void default_CheckForStepSizeException( unsigned int nodeIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rDisplacement, double dt ) {
+        VertexBasedCellPopulation< 3 >::CheckForStepSizeException( nodeIndex, boost::ref(rDisplacement), dt );
+    }
+
+    virtual double GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        if( bp::override func_GetCellDataItemAtPdeNode = this->get_override( "GetCellDataItemAtPdeNode" ) )
+            return func_GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+        }
+    }
+    
+    double default_GetCellDataItemAtPdeNode( unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies=false, double dirichletBoundaryValue=0. ) {
+        return VertexBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode( pdeNodeIndex, rVariableName, dirichletBoundaryConditionApplies, dirichletBoundaryValue );
+    }
+
+    virtual double GetDampingConstant( unsigned int nodeIndex ) {
+        if( bp::override func_GetDampingConstant = this->get_override( "GetDampingConstant" ) )
+            return func_GetDampingConstant( nodeIndex );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetDampingConstant( nodeIndex );
+        }
+    }
+    
+    double default_GetDampingConstant( unsigned int nodeIndex ) {
+        return VertexBasedCellPopulation< 3 >::GetDampingConstant( nodeIndex );
+    }
+
+    virtual double GetDefaultTimeStep(  ) {
+        if( bp::override func_GetDefaultTimeStep = this->get_override( "GetDefaultTimeStep" ) )
+            return func_GetDefaultTimeStep(  );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetDefaultTimeStep(  );
+        }
+    }
+    
+    double default_GetDefaultTimeStep(  ) {
+        return VertexBasedCellPopulation< 3 >::GetDefaultTimeStep( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > GetLocationOfCellCentre( ::CellPtr pCell ) {
+        if( bp::override func_GetLocationOfCellCentre = this->get_override( "GetLocationOfCellCentre" ) )
+            return func_GetLocationOfCellCentre( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetLocationOfCellCentre( pCell );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_GetLocationOfCellCentre( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 3 >::GetLocationOfCellCentre( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        if( bp::override func_GetNeighbouringLocationIndices = this->get_override( "GetNeighbouringLocationIndices" ) )
+            return func_GetNeighbouringLocationIndices( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetNeighbouringLocationIndices( pCell );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringLocationIndices( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 3 >::GetNeighbouringLocationIndices( pCell );
+    }
+
+    virtual ::std::set< unsigned int > GetNeighbouringNodeIndices( unsigned int index ) {
+        if( bp::override func_GetNeighbouringNodeIndices = this->get_override( "GetNeighbouringNodeIndices" ) )
+            return func_GetNeighbouringNodeIndices( index );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+        }
+    }
+    
+    ::std::set< unsigned int > default_GetNeighbouringNodeIndices( unsigned int index ) {
+        return VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
+    }
+
+    virtual unsigned int GetNumNodes(  ) {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) {
+        return VertexBasedCellPopulation< 3 >::GetNumNodes( );
+    }
+
+    virtual double GetVolumeOfCell( ::CellPtr pCell ) {
+        if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
+            return func_GetVolumeOfCell( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+        }
+    }
+    
+    double default_GetVolumeOfCell( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 3 >::GetVolumeOfCell( pCell );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) {
+        return VertexBasedCellPopulation< 3 >::GetWidth( rDimension );
+    }
+
+    virtual bool IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        if( bp::override func_IsCellAssociatedWithADeletedLocation = this->get_override( "IsCellAssociatedWithADeletedLocation" ) )
+            return func_IsCellAssociatedWithADeletedLocation( pCell );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+        }
+    }
+    
+    bool default_IsCellAssociatedWithADeletedLocation( ::CellPtr pCell ) {
+        return VertexBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation( pCell );
+    }
+
+    virtual bool IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        if( bp::override func_IsPdeNodeAssociatedWithNonApoptoticCell = this->get_override( "IsPdeNodeAssociatedWithNonApoptoticCell" ) )
+            return func_IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+        }
+    }
+    
+    bool default_IsPdeNodeAssociatedWithNonApoptoticCell( unsigned int pdeNodeIndex ) {
+        return VertexBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell( pdeNodeIndex );
+    }
+
+    virtual void OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        if( bp::override func_OpenWritersFiles = this->get_override( "OpenWritersFiles" ) )
+            func_OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        else{
+            this->VertexBasedCellPopulation< 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+        }
+    }
+    
+    void default_OpenWritersFiles( ::OutputFileHandler & rOutputFileHandler ) {
+        VertexBasedCellPopulation< 3 >::OpenWritersFiles( boost::ref(rOutputFileHandler) );
+    }
+
+    virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
+            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        else{
+            this->VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
+        VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual unsigned int RemoveDeadCells(  ) {
+        if( bp::override func_RemoveDeadCells = this->get_override( "RemoveDeadCells" ) )
+            return func_RemoveDeadCells(  );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::RemoveDeadCells(  );
+        }
+    }
+    
+    unsigned int default_RemoveDeadCells(  ) {
+        return VertexBasedCellPopulation< 3 >::RemoveDeadCells( );
+    }
+
+    virtual void SetNode( unsigned int index, ::ChastePoint< 3 > & rNewLocation ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( index, boost::ref(rNewLocation) );
+        else{
+            this->VertexBasedCellPopulation< 3 >::SetNode( index, boost::ref(rNewLocation) );
+        }
+    }
+    
+    void default_SetNode( unsigned int index, ::ChastePoint< 3 > & rNewLocation ) {
+        VertexBasedCellPopulation< 3 >::SetNode( index, boost::ref(rNewLocation) );
+    }
+
+    virtual void SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        if( bp::override func_SimulationSetupHook = this->get_override( "SimulationSetupHook" ) )
+            func_SimulationSetupHook( boost::python::ptr(pSimulation) );
+        else{
+            this->VertexBasedCellPopulation< 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+        }
+    }
+    
+    void default_SimulationSetupHook( ::AbstractCellBasedSimulation< 3, 3 > * pSimulation ) {
+        VertexBasedCellPopulation< 3 >::SimulationSetupHook( boost::python::ptr(pSimulation) );
+    }
+
+    virtual void Update( bool hasHadBirthsOrDeaths=true ) {
+        if( bp::override func_Update = this->get_override( "Update" ) )
+            func_Update( hasHadBirthsOrDeaths );
+        else{
+            this->VertexBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+        }
+    }
+    
+    void default_Update( bool hasHadBirthsOrDeaths=true ) {
+        VertexBasedCellPopulation< 3 >::Update( hasHadBirthsOrDeaths );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+    virtual void AcceptCellWritersAcrossPopulation(  ){
+        if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
+            func_AcceptCellWritersAcrossPopulation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation(  );
+        }
+    }
+    
+    virtual void default_AcceptCellWritersAcrossPopulation(  ){
+        AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation( );
+    }
+
+    virtual void AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_AddCellUsingLocationIndex = this->get_override( "AddCellUsingLocationIndex" ) )
+            func_AddCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_AddCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual ::CellPtr GetCellUsingLocationIndex( unsigned int index ) {
+        if( bp::override func_GetCellUsingLocationIndex = this->get_override( "GetCellUsingLocationIndex" ) )
+            return func_GetCellUsingLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+        }
+    }
+    
+    ::CellPtr default_GetCellUsingLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex( index );
+    }
+
+    virtual bool IsCellAttachedToLocationIndex( unsigned int index ) {
+        if( bp::override func_IsCellAttachedToLocationIndex = this->get_override( "IsCellAttachedToLocationIndex" ) )
+            return func_IsCellAttachedToLocationIndex( index );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+        }
+    }
+    
+    bool default_IsCellAttachedToLocationIndex( unsigned int index ) {
+        return AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex( index );
+    }
+
+    virtual bool IsRoomToDivide( ::CellPtr pCell ) {
+        if( bp::override func_IsRoomToDivide = this->get_override( "IsRoomToDivide" ) )
+            return func_IsRoomToDivide( pCell );
+        else{
+            return this->AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+        }
+    }
+    
+    bool default_IsRoomToDivide( ::CellPtr pCell ) {
+        return AbstractCellPopulation< 3, 3 >::IsRoomToDivide( pCell );
+    }
+
+    virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        if( bp::override func_RemoveCellUsingLocationIndex = this->get_override( "RemoveCellUsingLocationIndex" ) )
+            func_RemoveCellUsingLocationIndex( index, pCell );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+        }
+    }
+    
+    void default_RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
+        AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex( index, pCell );
+    }
+
+    virtual void UpdateCellProcessLocation(  ) {
+        if( bp::override func_UpdateCellProcessLocation = this->get_override( "UpdateCellProcessLocation" ) )
+            func_UpdateCellProcessLocation(  );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation(  );
+        }
+    }
+    
+    void default_UpdateCellProcessLocation(  ) {
+        AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation( );
+    }
+
+    virtual void UpdateNodeLocations( double dt ) {
+        if( bp::override func_UpdateNodeLocations = this->get_override( "UpdateNodeLocations" ) )
+            func_UpdateNodeLocations( dt );
+        else{
+            this->AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+        }
+    }
+    
+    void default_UpdateNodeLocations( double dt ) {
+        AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+    virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
+        if( bp::override func_WriteResultsToFiles = this->get_override( "WriteResultsToFiles" ) )
+            func_WriteResultsToFiles( rDirectory );
+        else{
+            this->AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
+        }
+    }
+    
+    void default_WriteResultsToFiles( ::std::string const & rDirectory ) {
+        AbstractCellPopulation< 3, 3 >::WriteResultsToFiles( rDirectory );
     }
 
 };
@@ -2905,6 +7969,46 @@ struct VtkSceneModifier_less__3__greater__wrapper : VtkSceneModifier< 3 >, bp::w
 namespace boost { namespace python { namespace indexing {
 
 template<>
+struct value_traits< boost::numeric::ublas::c_vector< double, 2 > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< boost::numeric::ublas::c_vector< double, 3 > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
 struct value_traits< boost::shared_ptr< Cell > >{
 
     static bool const equality_comparable = false;
@@ -2962,12 +8066,66 @@ struct value_traits< boost::shared_ptr< AbstractUpdateRule< 3 > > >{
 
 }/*indexing*/ } /*python*/ } /*boost*/
 
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< std::pair< Node< 2 >, Node< 2 > > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< std::pair< Node< 3 >, Node< 3 > > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     { //::std::vector< unsigned int >
         typedef bp::class_< std::vector< unsigned int > > vector_less__unsigned_int__greater__exposer_t;
         vector_less__unsigned_int__greater__exposer_t vector_less__unsigned_int__greater__exposer = vector_less__unsigned_int__greater__exposer_t( "vector_less__unsigned_int__greater_" );
         bp::scope vector_less__unsigned_int__greater__scope( vector_less__unsigned_int__greater__exposer );
         vector_less__unsigned_int__greater__exposer.def( bp::indexing::vector_suite< std::vector< unsigned int > >() );
+    }
+
+    { //::std::vector< std::pair<Node<3> *, Node<3> *> >
+        typedef bp::class_< std::vector< std::pair<Node<3> *, Node<3> *> > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< std::pair<Node<3> *, Node<3> *> > >() );
+    }
+
+    { //::std::vector< std::pair<Node<2> *, Node<2> *> >
+        typedef bp::class_< std::vector< std::pair<Node<2> *, Node<2> *> > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< std::pair<Node<2> *, Node<2> *> > >() );
     }
 
     { //::std::vector< double >
@@ -2998,6 +8156,20 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         __type_exposer.def( bp::indexing::vector_suite< std::vector< boost::shared_ptr<AbstractUpdateRule<2> > > >() );
     }
 
+    { //::std::vector< boost::numeric::ublas::c_vector<double, 3> >
+        typedef bp::class_< std::vector< boost::numeric::ublas::c_vector<double, 3> > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< boost::numeric::ublas::c_vector<double, 3> > >() );
+    }
+
+    { //::std::vector< boost::numeric::ublas::c_vector<double, 2> >
+        typedef bp::class_< std::vector< boost::numeric::ublas::c_vector<double, 2> > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< boost::numeric::ublas::c_vector<double, 2> > >() );
+    }
+
     { //::std::set< unsigned int >
         typedef bp::class_< std::set< unsigned int > > set_less__unsigned_int__greater__exposer_t;
         set_less__unsigned_int__greater__exposer_t set_less__unsigned_int__greater__exposer = set_less__unsigned_int__greater__exposer_t( "set_less__unsigned_int__greater_" );
@@ -3011,6 +8183,12 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::scope set_less__boost_scope_shared_ptr_less_Cell_greater___greater__scope( set_less__boost_scope_shared_ptr_less_Cell_greater___greater__exposer );
         set_less__boost_scope_shared_ptr_less_Cell_greater___greater__exposer.def( bp::indexing::set_suite< std::set< boost::shared_ptr<Cell> > >() );
     }
+
+    bp::class_< std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > >("map_less__Node_less_3_greater___ptr__comma__boost_scope_numeric_scope_ublas_scope_c_vector_less_double_comma__3_greater___greater_")    
+        .def( bp::indexing::map_suite< std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > >() );
+
+    bp::class_< std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > >("map_less__Node_less_2_greater___ptr__comma__boost_scope_numeric_scope_ublas_scope_c_vector_less_double_comma__2_greater___greater_")    
+        .def( bp::indexing::map_suite< std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > >() );
 
     bp::class_< Identifiable >( "Identifiable" )    
         .def( 
@@ -4123,7 +9301,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
@@ -4131,7 +9308,746 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
     }
+
+    bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
+        .def( 
+            "AddNode"
+            , bp::pure_virtual( (unsigned int ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( ::Node< 2 > * ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::AddNode) )
+            , ( bp::arg("pNewNode") ) )    
+        .def( 
+            "CheckForStepSizeException"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::CheckForStepSizeException) )
+            , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) )    
+        .def( 
+            "GetAbsoluteMovementThreshold"
+            , (double ( ::AbstractOffLatticeCellPopulation<2, 2>::* )(  ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::GetAbsoluteMovementThreshold ) )    
+        .def( 
+            "GetDampingConstant"
+            , bp::pure_virtual( (double ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::GetDampingConstant) )
+            , ( bp::arg("nodeIndex") ) )    
+        .def( 
+            "GetDampingConstantMutant"
+            , (double ( ::AbstractOffLatticeCellPopulation<2, 2>::* )(  ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::GetDampingConstantMutant ) )    
+        .def( 
+            "GetDampingConstantNormal"
+            , (double ( ::AbstractOffLatticeCellPopulation<2, 2>::* )(  ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::GetDampingConstantNormal ) )    
+        .def( 
+            "OutputCellPopulationParameters"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( ::out_stream & ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::OutputCellPopulationParameters)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_OutputCellPopulationParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetAbsoluteMovementThreshold"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( double ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::SetAbsoluteMovementThreshold )
+            , ( bp::arg("absoluteMovementThreshold") ) )    
+        .def( 
+            "SetDampingConstantMutant"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( double ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::SetDampingConstantMutant )
+            , ( bp::arg("dampingConstantMutant") ) )    
+        .def( 
+            "SetDampingConstantNormal"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( double ))( &::AbstractOffLatticeCellPopulation< 2, 2 >::SetDampingConstantNormal )
+            , ( bp::arg("dampingConstantNormal") ) )    
+        .def( 
+            "SetNode"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( unsigned int,::ChastePoint< 2 > & ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::SetNode) )
+            , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) )    
+        .def( 
+            "UpdateNodeLocations"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( double ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( double ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateNodeLocations)
+            , ( bp::arg("dt") ) )    
+        .def( 
+            "AcceptCellWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AcceptCellWriter) )
+            , ( bp::arg("pCellWriter"), bp::arg("pCell") ) )    
+        .def( 
+            "AcceptCellWritersAcrossPopulation"
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation) )    
+        .def( 
+            "AcceptPopulationCountWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ))(&::AbstractCellPopulation< 2, 2 >::AcceptPopulationCountWriter) )
+            , ( bp::arg("pPopulationCountWriter") ) )    
+        .def( 
+            "AcceptPopulationWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ))(&::AbstractCellPopulation< 2, 2 >::AcceptPopulationWriter) )
+            , ( bp::arg("pPopulationWriter") ) )    
+        .def( 
+            "AddCell"
+            , bp::pure_virtual( (::CellPtr ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AddCell) )
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
+        .def( 
+            "AddCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_AddCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "GetCellDataItemAtPdeNode"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::std::string &,bool,double ))(&::AbstractCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode) )
+            , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) )    
+        .def( 
+            "GetCellUsingLocationIndex"
+            , (::CellPtr ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex)
+            , (::CellPtr ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_GetCellUsingLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "GetDefaultTimeStep"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetDefaultTimeStep) ) )    
+        .def( 
+            "GetLocationOfCellCentre"
+            , bp::pure_virtual( (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetLocationOfCellCentre) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetNeighbouringLocationIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringLocationIndices) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetNeighbouringNodeIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
+            , ( bp::arg("index") ) )
+        .def( 
+            "GetNumNodes"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )
+        .def( 
+            "GetVolumeOfCell"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetWidth"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( unsigned int const & ))(&::AbstractCellPopulation< 2, 2 >::GetWidth) )
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "IsCellAssociatedWithADeletedLocation"
+            , bp::pure_virtual( (bool ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsCellAttachedToLocationIndex"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+            , (bool ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsPdeNodeAssociatedWithNonApoptoticCell"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+            , (bool ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+            , ( bp::arg("pdeNodeIndex") ) )    
+        .def( 
+            "IsRoomToDivide"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+            , (bool ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_IsRoomToDivide)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "OpenWritersFiles"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::OutputFileHandler & ))(&::AbstractCellPopulation< 2, 2 >::OpenWritersFiles)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::OutputFileHandler & ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_OpenWritersFiles)
+            , ( bp::arg("rOutputFileHandler") ) )    
+        .def( 
+            "RemoveCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "RemoveDeadCells"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::RemoveDeadCells) ) )    
+        .def( 
+            "SimulationSetupHook"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::AbstractCellBasedSimulation< 2, 2 > * ))(&::AbstractCellPopulation< 2, 2 >::SimulationSetupHook)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::AbstractCellBasedSimulation< 2, 2 > * ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_SimulationSetupHook)
+            , ( bp::arg("pSimulation") ) )    
+        .def( 
+            "Update"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( bool ))(&::AbstractCellPopulation< 2, 2 >::Update) )
+            , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) )    
+        .def( 
+            "UpdateCellProcessLocation"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateCellProcessLocation) )    
+        .def( 
+            "Validate"
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::Validate) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::out_stream & ))(&::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) )    
+        .def( 
+            "WriteResultsToFiles"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::std::string const & ))(&::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles)
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::default_WriteResultsToFiles)
+            , ( bp::arg("rDirectory") ) )    
+        .def( 
+            "WriteVtkResultsToFile"
+            , (void ( AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper::WriteVtkResultsToFile)
+            , ( bp::arg("rDirectory") ) );
+
+    bp::class_< AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractCentreBasedCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
+        .def( 
+            "AcceptCellWritersAcrossPopulation"
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation) )    
+        .def( 
+            "AddCell"
+            , (::CellPtr ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr,::CellPtr ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::AddCell)
+            , (::CellPtr ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddCell)
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
+        .def( 
+            "CheckForStepSizeException"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_CheckForStepSizeException)
+            , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) )    
+        .def( 
+            "CreateCellPair"
+            , (::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr,::CellPtr ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::CreateCellPair )
+            , ( bp::arg("pCell1"), bp::arg("pCell2") ) )    
+        .def( 
+            "GetCellDataItemAtPdeNode"
+            , (double ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int,::std::string &,bool,double ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode)
+            , (double ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::std::string &,bool,double ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetCellDataItemAtPdeNode)
+            , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) )    
+        .def( 
+            "GetCentreBasedDivisionRule"
+            , (::boost::shared_ptr< AbstractCentreBasedDivisionRule< 2, 2 > > ( ::AbstractCentreBasedCellPopulation<2, 2>::* )(  ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::GetCentreBasedDivisionRule ) )    
+        .def( 
+            "GetDampingConstant"
+            , (double ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant)
+            , (double ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetDampingConstant)
+            , ( bp::arg("nodeIndex") ) )    
+        .def( 
+            "GetDefaultTimeStep"
+            , (double ( ::AbstractCentreBasedCellPopulation<2, 2>::* )(  ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep)
+            , (double ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetDefaultTimeStep) )    
+        .def( 
+            "GetLocationOfCellCentre"
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre)
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetLocationOfCellCentre)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetMeinekeDivisionSeparation"
+            , (double ( ::AbstractCentreBasedCellPopulation<2, 2>::* )(  ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::GetMeinekeDivisionSeparation ) )    
+        .def( 
+            "GetNeighbouringLocationIndices"
+            , (::std::set< unsigned int > ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices)
+            , (::std::set< unsigned int > ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetNeighbouringLocationIndices)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsCellAssociatedWithADeletedLocation"
+            , (bool ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsGhostNode"
+            , (bool ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsGhostNode)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsMarkedSpring"
+            , (bool ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > const & ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::IsMarkedSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "IsParticle"
+            , (bool ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsParticle)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "MarkSpring"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > & ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::MarkSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "OutputCellPopulationParameters"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::out_stream & ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_OutputCellPopulationParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCentreBasedDivisionRule"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCentreBasedDivisionRule< 2, 2 > > ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::SetCentreBasedDivisionRule )
+            , ( bp::arg("pCentreBasedDivisionRule") ) )    
+        .def( 
+            "SetMeinekeDivisionSeparation"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( double ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::SetMeinekeDivisionSeparation )
+            , ( bp::arg("divisionSeparation") ) )    
+        .def( 
+            "UnmarkSpring"
+            , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > & ))( &::AbstractCentreBasedCellPopulation< 2, 2 >::UnmarkSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "WriteVtkResultsToFile"
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::WriteVtkResultsToFile)
+            , ( bp::arg("rDirectory") ) )
+        .def( 
+            "AcceptCellWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AcceptCellWriter) )
+            , ( bp::arg("pCellWriter"), bp::arg("pCell") ) )    
+        .def( 
+            "AcceptPopulationCountWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ))(&::AbstractCellPopulation< 2, 2 >::AcceptPopulationCountWriter) )
+            , ( bp::arg("pPopulationCountWriter") ) )    
+        .def( 
+            "AcceptPopulationWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ))(&::AbstractCellPopulation< 2, 2 >::AcceptPopulationWriter) )
+            , ( bp::arg("pPopulationWriter") ) )    
+        .def( 
+            "AddCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "AddNode"
+            , bp::pure_virtual( (unsigned int ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( ::Node< 2 > * ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::AddNode) )
+            , ( bp::arg("pNewNode") ) )    
+        .def( 
+            "GetCellUsingLocationIndex"
+            , (::CellPtr ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex)
+            , (::CellPtr ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetCellUsingLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "GetNeighbouringNodeIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
+            , ( bp::arg("index") ) )
+        .def( 
+            "GetNumNodes"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
+        .def( 
+            "GetVolumeOfCell"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetWidth"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( unsigned int const & ))(&::AbstractCellPopulation< 2, 2 >::GetWidth) )
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "IsCellAttachedToLocationIndex"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsPdeNodeAssociatedWithNonApoptoticCell"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+            , ( bp::arg("pdeNodeIndex") ) )    
+        .def( 
+            "IsRoomToDivide"
+            , (bool ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+            , (bool ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsRoomToDivide)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "OpenWritersFiles"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::OutputFileHandler & ))(&::AbstractCellPopulation< 2, 2 >::OpenWritersFiles)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::OutputFileHandler & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_OpenWritersFiles)
+            , ( bp::arg("rOutputFileHandler") ) )    
+        .def( 
+            "RemoveCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "RemoveDeadCells"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::RemoveDeadCells) ) )    
+        .def( 
+            "SetNode"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( unsigned int,::ChastePoint< 2 > & ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::SetNode) )
+            , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) )    
+        .def( 
+            "SimulationSetupHook"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::AbstractCellBasedSimulation< 2, 2 > * ))(&::AbstractCellPopulation< 2, 2 >::SimulationSetupHook)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::AbstractCellBasedSimulation< 2, 2 > * ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_SimulationSetupHook)
+            , ( bp::arg("pSimulation") ) )    
+        .def( 
+            "Update"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( bool ))(&::AbstractCellPopulation< 2, 2 >::Update) )
+            , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) )    
+        .def( 
+            "UpdateCellProcessLocation"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateCellProcessLocation) )    
+        .def( 
+            "UpdateNodeLocations"
+            , (void ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( double ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( double ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateNodeLocations)
+            , ( bp::arg("dt") ) )    
+        .def( 
+            "Validate"
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::Validate) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::out_stream & ))(&::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) )    
+        .def( 
+            "WriteResultsToFiles"
+            , (void ( ::AbstractCellPopulation<2, 2>::* )( ::std::string const & ))(&::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles)
+            , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteResultsToFiles)
+            , ( bp::arg("rDirectory") ) );
+
+    bp::class_< AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper, bp::bases< AbstractCellPopulation< 3, 3 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation3_3", bp::init< AbstractMesh< 3, 3 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 3, 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
+        .def( 
+            "AddNode"
+            , bp::pure_virtual( (unsigned int ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( ::Node< 3 > * ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::AddNode) )
+            , ( bp::arg("pNewNode") ) )    
+        .def( 
+            "CheckForStepSizeException"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::CheckForStepSizeException) )
+            , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) )    
+        .def( 
+            "GetAbsoluteMovementThreshold"
+            , (double ( ::AbstractOffLatticeCellPopulation<3, 3>::* )(  ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::GetAbsoluteMovementThreshold ) )    
+        .def( 
+            "GetDampingConstant"
+            , bp::pure_virtual( (double ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::GetDampingConstant) )
+            , ( bp::arg("nodeIndex") ) )    
+        .def( 
+            "GetDampingConstantMutant"
+            , (double ( ::AbstractOffLatticeCellPopulation<3, 3>::* )(  ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::GetDampingConstantMutant ) )    
+        .def( 
+            "GetDampingConstantNormal"
+            , (double ( ::AbstractOffLatticeCellPopulation<3, 3>::* )(  ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::GetDampingConstantNormal ) )    
+        .def( 
+            "OutputCellPopulationParameters"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( ::out_stream & ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::OutputCellPopulationParameters)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_OutputCellPopulationParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetAbsoluteMovementThreshold"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( double ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::SetAbsoluteMovementThreshold )
+            , ( bp::arg("absoluteMovementThreshold") ) )    
+        .def( 
+            "SetDampingConstantMutant"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( double ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::SetDampingConstantMutant )
+            , ( bp::arg("dampingConstantMutant") ) )    
+        .def( 
+            "SetDampingConstantNormal"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( double ))( &::AbstractOffLatticeCellPopulation< 3, 3 >::SetDampingConstantNormal )
+            , ( bp::arg("dampingConstantNormal") ) )    
+        .def( 
+            "SetNode"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( unsigned int,::ChastePoint< 3 > & ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::SetNode) )
+            , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) )    
+        .def( 
+            "UpdateNodeLocations"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( double ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( double ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateNodeLocations)
+            , ( bp::arg("dt") ) )    
+        .def( 
+            "AcceptCellWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AcceptCellWriter) )
+            , ( bp::arg("pCellWriter"), bp::arg("pCell") ) )    
+        .def( 
+            "AcceptCellWritersAcrossPopulation"
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation) )    
+        .def( 
+            "AcceptPopulationCountWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ))(&::AbstractCellPopulation< 3, 3 >::AcceptPopulationCountWriter) )
+            , ( bp::arg("pPopulationCountWriter") ) )    
+        .def( 
+            "AcceptPopulationWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ))(&::AbstractCellPopulation< 3, 3 >::AcceptPopulationWriter) )
+            , ( bp::arg("pPopulationWriter") ) )    
+        .def( 
+            "AddCell"
+            , bp::pure_virtual( (::CellPtr ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AddCell) )
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
+        .def( 
+            "AddCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_AddCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "GetCellDataItemAtPdeNode"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( unsigned int,::std::string &,bool,double ))(&::AbstractCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode) )
+            , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) )    
+        .def( 
+            "GetCellUsingLocationIndex"
+            , (::CellPtr ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex)
+            , (::CellPtr ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_GetCellUsingLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "GetDefaultTimeStep"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetDefaultTimeStep) ) )    
+        .def( 
+            "GetLocationOfCellCentre"
+            , bp::pure_virtual( (::boost::numeric::ublas::c_vector< double, 3 > ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetLocationOfCellCentre) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetNeighbouringLocationIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringLocationIndices) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetNeighbouringNodeIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringNodeIndices) )
+            , ( bp::arg("index") ) )
+        .def( 
+            "GetNumNodes"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+        .def( 
+            "GetVolumeOfCell"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetWidth"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( unsigned int const & ))(&::AbstractCellPopulation< 3, 3 >::GetWidth) )
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "IsCellAssociatedWithADeletedLocation"
+            , bp::pure_virtual( (bool ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsCellAttachedToLocationIndex"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+            , (bool ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsPdeNodeAssociatedWithNonApoptoticCell"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+            , (bool ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+            , ( bp::arg("pdeNodeIndex") ) )    
+        .def( 
+            "IsRoomToDivide"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+            , (bool ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_IsRoomToDivide)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "OpenWritersFiles"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::OutputFileHandler & ))(&::AbstractCellPopulation< 3, 3 >::OpenWritersFiles)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::OutputFileHandler & ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_OpenWritersFiles)
+            , ( bp::arg("rOutputFileHandler") ) )    
+        .def( 
+            "RemoveCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "RemoveDeadCells"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::RemoveDeadCells) ) )    
+        .def( 
+            "SimulationSetupHook"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::AbstractCellBasedSimulation< 3, 3 > * ))(&::AbstractCellPopulation< 3, 3 >::SimulationSetupHook)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::AbstractCellBasedSimulation< 3, 3 > * ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_SimulationSetupHook)
+            , ( bp::arg("pSimulation") ) )    
+        .def( 
+            "Update"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( bool ))(&::AbstractCellPopulation< 3, 3 >::Update) )
+            , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) )    
+        .def( 
+            "UpdateCellProcessLocation"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateCellProcessLocation) )    
+        .def( 
+            "Validate"
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::Validate) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::out_stream & ))(&::AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) )    
+        .def( 
+            "WriteResultsToFiles"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::std::string const & ))(&::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles)
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::default_WriteResultsToFiles)
+            , ( bp::arg("rDirectory") ) )    
+        .def( 
+            "WriteVtkResultsToFile"
+            , (void ( AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractOffLatticeCellPopulation_less__3_comma__3__greater__wrapper::WriteVtkResultsToFile)
+            , ( bp::arg("rDirectory") ) );
+
+    bp::class_< AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 3, 3 > >, boost::noncopyable >( "AbstractCentreBasedCellPopulation3_3", bp::init< AbstractMesh< 3, 3 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 3, 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
+        .def( 
+            "AcceptCellWritersAcrossPopulation"
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation) )    
+        .def( 
+            "AddCell"
+            , (::CellPtr ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::CellPtr,::CellPtr ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::AddCell)
+            , (::CellPtr ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AddCell)
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
+        .def( 
+            "CheckForStepSizeException"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_CheckForStepSizeException)
+            , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) )    
+        .def( 
+            "CreateCellPair"
+            , (::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::CellPtr,::CellPtr ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::CreateCellPair )
+            , ( bp::arg("pCell1"), bp::arg("pCell2") ) )    
+        .def( 
+            "GetCellDataItemAtPdeNode"
+            , (double ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( unsigned int,::std::string &,bool,double ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode)
+            , (double ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::std::string &,bool,double ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetCellDataItemAtPdeNode)
+            , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) )    
+        .def( 
+            "GetCentreBasedDivisionRule"
+            , (::boost::shared_ptr< AbstractCentreBasedDivisionRule< 3, 3 > > ( ::AbstractCentreBasedCellPopulation<3, 3>::* )(  ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::GetCentreBasedDivisionRule ) )    
+        .def( 
+            "GetDampingConstant"
+            , (double ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant)
+            , (double ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetDampingConstant)
+            , ( bp::arg("nodeIndex") ) )    
+        .def( 
+            "GetDefaultTimeStep"
+            , (double ( ::AbstractCentreBasedCellPopulation<3, 3>::* )(  ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep)
+            , (double ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetDefaultTimeStep) )    
+        .def( 
+            "GetLocationOfCellCentre"
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre)
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetLocationOfCellCentre)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetMeinekeDivisionSeparation"
+            , (double ( ::AbstractCentreBasedCellPopulation<3, 3>::* )(  ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::GetMeinekeDivisionSeparation ) )    
+        .def( 
+            "GetNeighbouringLocationIndices"
+            , (::std::set< unsigned int > ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices)
+            , (::std::set< unsigned int > ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNeighbouringLocationIndices)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsCellAssociatedWithADeletedLocation"
+            , (bool ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "IsGhostNode"
+            , (bool ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsGhostNode)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsMarkedSpring"
+            , (bool ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > const & ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::IsMarkedSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "IsParticle"
+            , (bool ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsParticle)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "MarkSpring"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > & ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::MarkSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "OutputCellPopulationParameters"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::out_stream & ))(&::AbstractCentreBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_OutputCellPopulationParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCentreBasedDivisionRule"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCentreBasedDivisionRule< 3, 3 > > ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::SetCentreBasedDivisionRule )
+            , ( bp::arg("pCentreBasedDivisionRule") ) )    
+        .def( 
+            "SetMeinekeDivisionSeparation"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( double ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::SetMeinekeDivisionSeparation )
+            , ( bp::arg("divisionSeparation") ) )    
+        .def( 
+            "UnmarkSpring"
+            , (void ( ::AbstractCentreBasedCellPopulation<3, 3>::* )( ::std::pair< boost::shared_ptr< Cell >, boost::shared_ptr< Cell > > & ))( &::AbstractCentreBasedCellPopulation< 3, 3 >::UnmarkSpring )
+            , ( bp::arg("rCellPair") ) )    
+        .def( 
+            "WriteVtkResultsToFile"
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::WriteVtkResultsToFile)
+            , ( bp::arg("rDirectory") ) )
+        .def( 
+            "AcceptCellWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AcceptCellWriter) )
+            , ( bp::arg("pCellWriter"), bp::arg("pCell") ) )    
+        .def( 
+            "AcceptPopulationCountWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ))(&::AbstractCellPopulation< 3, 3 >::AcceptPopulationCountWriter) )
+            , ( bp::arg("pPopulationCountWriter") ) )    
+        .def( 
+            "AcceptPopulationWriter"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ))(&::AbstractCellPopulation< 3, 3 >::AcceptPopulationWriter) )
+            , ( bp::arg("pPopulationWriter") ) )    
+        .def( 
+            "AddCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AddCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "AddNode"
+            , bp::pure_virtual( (unsigned int ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( ::Node< 3 > * ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::AddNode) )
+            , ( bp::arg("pNewNode") ) )    
+        .def( 
+            "GetCellUsingLocationIndex"
+            , (::CellPtr ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex)
+            , (::CellPtr ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetCellUsingLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "GetNeighbouringNodeIndices"
+            , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringNodeIndices) )
+            , ( bp::arg("index") ) )
+        .def( 
+            "GetNumNodes"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+        .def( 
+            "GetVolumeOfCell"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetWidth"
+            , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( unsigned int const & ))(&::AbstractCellPopulation< 3, 3 >::GetWidth) )
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "IsCellAttachedToLocationIndex"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "IsPdeNodeAssociatedWithNonApoptoticCell"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+            , ( bp::arg("pdeNodeIndex") ) )    
+        .def( 
+            "IsRoomToDivide"
+            , (bool ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+            , (bool ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsRoomToDivide)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "OpenWritersFiles"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::OutputFileHandler & ))(&::AbstractCellPopulation< 3, 3 >::OpenWritersFiles)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::OutputFileHandler & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_OpenWritersFiles)
+            , ( bp::arg("rOutputFileHandler") ) )    
+        .def( 
+            "RemoveCellUsingLocationIndex"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( unsigned int,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+            , ( bp::arg("index"), bp::arg("pCell") ) )    
+        .def( 
+            "RemoveDeadCells"
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::RemoveDeadCells) ) )    
+        .def( 
+            "SetNode"
+            , bp::pure_virtual( (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( unsigned int,::ChastePoint< 3 > & ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::SetNode) )
+            , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) )    
+        .def( 
+            "SimulationSetupHook"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::AbstractCellBasedSimulation< 3, 3 > * ))(&::AbstractCellPopulation< 3, 3 >::SimulationSetupHook)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::AbstractCellBasedSimulation< 3, 3 > * ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_SimulationSetupHook)
+            , ( bp::arg("pSimulation") ) )    
+        .def( 
+            "Update"
+            , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( bool ))(&::AbstractCellPopulation< 3, 3 >::Update) )
+            , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) )    
+        .def( 
+            "UpdateCellProcessLocation"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateCellProcessLocation) )    
+        .def( 
+            "UpdateNodeLocations"
+            , (void ( ::AbstractOffLatticeCellPopulation<3, 3>::* )( double ))(&::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( double ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateNodeLocations)
+            , ( bp::arg("dt") ) )    
+        .def( 
+            "Validate"
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::Validate) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::out_stream & ))(&::AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) )    
+        .def( 
+            "WriteResultsToFiles"
+            , (void ( ::AbstractCellPopulation<3, 3>::* )( ::std::string const & ))(&::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles)
+            , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteResultsToFiles)
+            , ( bp::arg("rDirectory") ) );
 
     bp::class_< AbstractOnLatticeCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOnLatticeCellPopulation2", bp::no_init )    
         .def( 
@@ -5379,7 +11295,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , ( bp::arg("pRegistry") ) );
 
     { //::Cell
-        typedef bp::class_< Cell, boost::noncopyable > Cell_exposer_t;
+        typedef bp::class_< Cell, boost::shared_ptr< Cell >, boost::noncopyable > Cell_exposer_t;
         Cell_exposer_t Cell_exposer = Cell_exposer_t( "Cell", bp::init< boost::shared_ptr< AbstractCellProperty >, AbstractCellCycleModel *, bp::optional< AbstractSrnModel *, bool, CellPropertyCollection > >(( bp::arg("pMutationState"), bp::arg("pCellCycleModel"), bp::arg("pSrnModel")=__null, bp::arg("archiving")=(bool)(false), bp::arg("cellPropertyCollection")=::CellPropertyCollection( ) )) );
         bp::scope Cell_scope( Cell_exposer );
         { //::Cell::AddCellProperty
@@ -5661,7 +11577,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , ( bp::arg("setDeathTime")=(bool)(true) ) );
         
         }
-        bp::register_ptr_to_python< boost::shared_ptr< Cell > >();
         bp::implicitly_convertible< boost::shared_ptr< Cell >, boost::shared_ptr< boost::enable_shared_from_this< Cell > > >();
     }
 
@@ -5741,6 +11656,3016 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "SetNumCells"
             , (void ( ::GenericCellsGenerator<3>::* )( unsigned int ))( &::GenericCellsGenerator< 3 >::SetNumCells )
             , ( bp::arg("numCells") ) );
+
+    { //::MeshBasedCellPopulation< 2, 2 >
+        typedef bp::class_< MeshBasedCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 2, 2 > >, boost::noncopyable > MeshBasedCellPopulation2_2_exposer_t;
+        MeshBasedCellPopulation2_2_exposer_t MeshBasedCellPopulation2_2_exposer = MeshBasedCellPopulation2_2_exposer_t( "MeshBasedCellPopulation2_2", bp::init< MutableMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int >, bool, bool > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true) )) );
+        bp::scope MeshBasedCellPopulation2_2_scope( MeshBasedCellPopulation2_2_exposer );
+        bp::class_< MeshBasedCellPopulation< 2, 2 >::SpringIterator, boost::noncopyable >( "SpringIterator", bp::init< MeshBasedCellPopulation< 2, 2 > &, TetrahedralMesh< 2, 2 >::EdgeIterator >(( bp::arg("rCellPopulation"), bp::arg("edgeIter") )) )    
+            .def( 
+                "GetCellA"
+                , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellA ) )    
+            .def( 
+                "GetCellB"
+                , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellB ) )
+            .def( bp::self != bp::self );
+        MeshBasedCellPopulation2_2_exposer.def( bp::init< MutableMesh< 2, 2 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< MutableMesh< 2, 2 > &, MeshBasedCellPopulation< 2, 2 > >();
+        { //::MeshBasedCellPopulation< 2, 2 >::AcceptCellWriter
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::MeshBasedCellPopulation< 2, 2 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::AcceptPopulationCountWriter
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::MeshBasedCellPopulation< 2, 2 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::AcceptPopulationWriter
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::MeshBasedCellPopulation< 2, 2 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::AddCell
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::MeshBasedCellPopulation< 2, 2 >::AddCell)
+                , default_AddCell_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::AddNode
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 2 > * ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AddNode_function_type)( ::Node< 2 > * ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::MeshBasedCellPopulation< 2, 2 >::AddNode)
+                , default_AddNode_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::CalculateRestLengths
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*CalculateRestLengths_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "CalculateRestLengths"
+                , CalculateRestLengths_function_type( &::MeshBasedCellPopulation< 2, 2 >::CalculateRestLengths ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::CheckCellPointers
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckCellPointers_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "CheckCellPointers"
+                , CheckCellPointers_function_type( &::MeshBasedCellPopulation< 2, 2 >::CheckCellPointers ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::CreateVoronoiTessellation
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*CreateVoronoiTessellation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "CreateVoronoiTessellation"
+                , CreateVoronoiTessellation_function_type( &::MeshBasedCellPopulation< 2, 2 >::CreateVoronoiTessellation ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::DivideLongSprings
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*DivideLongSprings_function_type)( double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "DivideLongSprings"
+                , DivideLongSprings_function_type( &::MeshBasedCellPopulation< 2, 2 >::DivideLongSprings )
+                , ( bp::arg("springDivisionThreshold") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetAreaBasedDampingConstantParameter
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetAreaBasedDampingConstantParameter_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetAreaBasedDampingConstantParameter"
+                , GetAreaBasedDampingConstantParameter_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetAreaBasedDampingConstantParameter ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetDampingConstant
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetNumNodes
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetOutputMeshInVtk
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*GetOutputMeshInVtk_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetOutputMeshInVtk"
+                , GetOutputMeshInVtk_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetOutputMeshInVtk ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetRestLength
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetRestLength_function_type)( unsigned int,unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetRestLength"
+                , GetRestLength_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetRestLength )
+                , ( bp::arg("indexA"), bp::arg("indexB") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetSurfaceAreaOfVoronoiElement
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetSurfaceAreaOfVoronoiElement_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetSurfaceAreaOfVoronoiElement"
+                , GetSurfaceAreaOfVoronoiElement_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetSurfaceAreaOfVoronoiElement )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetVolumeOfCell
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetVolumeOfVoronoiElement
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfVoronoiElement_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetVolumeOfVoronoiElement"
+                , GetVolumeOfVoronoiElement_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetVolumeOfVoronoiElement )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetVoronoiEdgeLength
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVoronoiEdgeLength_function_type)( unsigned int,unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetVoronoiEdgeLength"
+                , GetVoronoiEdgeLength_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetVoronoiEdgeLength )
+                , ( bp::arg("index1"), bp::arg("index2") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetWidth
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetWidth)
+                , default_GetWidth_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetWriteVtkAsPoints
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*GetWriteVtkAsPoints_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetWriteVtkAsPoints"
+                , GetWriteVtkAsPoints_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetWriteVtkAsPoints ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::OpenWritersFiles
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::MeshBasedCellPopulation< 2, 2 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::MeshBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::RemoveDeadCells
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::MeshBasedCellPopulation< 2, 2 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetAreaBasedDampingConstant
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetAreaBasedDampingConstant_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetAreaBasedDampingConstant"
+                , SetAreaBasedDampingConstant_function_type( &::MeshBasedCellPopulation< 2, 2 >::SetAreaBasedDampingConstant )
+                , ( bp::arg("useAreaBasedDampingConstant") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetAreaBasedDampingConstantParameter
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetAreaBasedDampingConstantParameter_function_type)( double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetAreaBasedDampingConstantParameter"
+                , SetAreaBasedDampingConstantParameter_function_type( &::MeshBasedCellPopulation< 2, 2 >::SetAreaBasedDampingConstantParameter )
+                , ( bp::arg("areaBasedDampingConstantParameter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetNode
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::MeshBasedCellPopulation< 2, 2 >::SetNode)
+                , default_SetNode_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_SetNode)
+                , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetOutputMeshInVtk
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetOutputMeshInVtk_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetOutputMeshInVtk"
+                , SetOutputMeshInVtk_function_type( &::MeshBasedCellPopulation< 2, 2 >::SetOutputMeshInVtk )
+                , ( bp::arg("outputMeshInVtk") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetRestLength
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetRestLength_function_type)( unsigned int,unsigned int,double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetRestLength"
+                , SetRestLength_function_type( &::MeshBasedCellPopulation< 2, 2 >::SetRestLength )
+                , ( bp::arg("indexA"), bp::arg("indexB"), bp::arg("restLength") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SetWriteVtkAsPoints
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetWriteVtkAsPoints_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SetWriteVtkAsPoints"
+                , SetWriteVtkAsPoints_function_type( &::MeshBasedCellPopulation< 2, 2 >::SetWriteVtkAsPoints )
+                , ( bp::arg("writeVtkAsPoints") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SpringsBegin
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::MeshBasedCellPopulation< 2, 2 >::SpringIterator ( exported_class_t::*SpringsBegin_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SpringsBegin"
+                , SpringsBegin_function_type( &::MeshBasedCellPopulation< 2, 2 >::SpringsBegin ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::SpringsEnd
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::MeshBasedCellPopulation< 2, 2 >::SpringIterator ( exported_class_t::*SpringsEnd_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SpringsEnd"
+                , SpringsEnd_function_type( &::MeshBasedCellPopulation< 2, 2 >::SpringsEnd ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::TessellateIfNeeded
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*TessellateIfNeeded_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "TessellateIfNeeded"
+                , TessellateIfNeeded_function_type( &::MeshBasedCellPopulation< 2, 2 >::TessellateIfNeeded ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::Update
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "Update"
+                , Update_function_type(&::MeshBasedCellPopulation< 2, 2 >::Update)
+                , default_Update_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::UpdateGhostNodesAfterReMesh
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*UpdateGhostNodesAfterReMesh_function_type)( ::NodeMap & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "UpdateGhostNodesAfterReMesh"
+                , UpdateGhostNodesAfterReMesh_function_type( &MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateGhostNodesAfterReMesh )
+                , ( bp::arg("rMap") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::UseAreaBasedDampingConstant
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*UseAreaBasedDampingConstant_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "UseAreaBasedDampingConstant"
+                , UseAreaBasedDampingConstant_function_type( &::MeshBasedCellPopulation< 2, 2 >::UseAreaBasedDampingConstant ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::Validate
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*Validate_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "Validate"
+                , Validate_function_type( &MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_Validate ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::MeshBasedCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::WriteResultsToFiles
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::MeshBasedCellPopulation< 2, 2 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::WriteVtkResultsToFile
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteVtkResultsToFile_function_type)( ::std::string const & ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_WriteVtkResultsToFile_function_type)( ::std::string const & ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "WriteVtkResultsToFile"
+                , WriteVtkResultsToFile_function_type(&::MeshBasedCellPopulation< 2, 2 >::WriteVtkResultsToFile)
+                , default_WriteVtkResultsToFile_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteVtkResultsToFile)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsGhostNode_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsGhostNode_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsGhostNode"
+                , IsGhostNode_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode)
+                , default_IsGhostNode_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsGhostNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsParticle_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsParticle_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsParticle"
+                , IsParticle_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle)
+                , default_IsParticle_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsParticle)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsRoomToDivide
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::SimulationSetupHook
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 2, 2 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+    }
+
+    { //::MeshBasedCellPopulation< 3, 3 >
+        typedef bp::class_< MeshBasedCellPopulation_less__3_comma__3__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 3, 3 > >, boost::noncopyable > MeshBasedCellPopulation3_3_exposer_t;
+        MeshBasedCellPopulation3_3_exposer_t MeshBasedCellPopulation3_3_exposer = MeshBasedCellPopulation3_3_exposer_t( "MeshBasedCellPopulation3_3", bp::init< MutableMesh< 3, 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int >, bool, bool > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true) )) );
+        bp::scope MeshBasedCellPopulation3_3_scope( MeshBasedCellPopulation3_3_exposer );
+        bp::class_< MeshBasedCellPopulation< 3, 3 >::SpringIterator, boost::noncopyable >( "SpringIterator", bp::init< MeshBasedCellPopulation< 3, 3 > &, TetrahedralMesh< 3, 3 >::EdgeIterator >(( bp::arg("rCellPopulation"), bp::arg("edgeIter") )) )    
+            .def( 
+                "GetCellA"
+                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellA ) )    
+            .def( 
+                "GetCellB"
+                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellB ) )
+            .def( bp::self != bp::self );
+        MeshBasedCellPopulation3_3_exposer.def( bp::init< MutableMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< MutableMesh< 3, 3 > &, MeshBasedCellPopulation< 3, 3 > >();
+        { //::MeshBasedCellPopulation< 3, 3 >::AcceptCellWriter
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::MeshBasedCellPopulation< 3, 3 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::AcceptPopulationCountWriter
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::MeshBasedCellPopulation< 3, 3 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::AcceptPopulationWriter
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::MeshBasedCellPopulation< 3, 3 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::AddCell
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::MeshBasedCellPopulation< 3, 3 >::AddCell)
+                , default_AddCell_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::AddNode
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 3 > * ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AddNode_function_type)( ::Node< 3 > * ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::MeshBasedCellPopulation< 3, 3 >::AddNode)
+                , default_AddNode_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::CalculateRestLengths
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*CalculateRestLengths_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "CalculateRestLengths"
+                , CalculateRestLengths_function_type( &::MeshBasedCellPopulation< 3, 3 >::CalculateRestLengths ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::CheckCellPointers
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckCellPointers_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "CheckCellPointers"
+                , CheckCellPointers_function_type( &::MeshBasedCellPopulation< 3, 3 >::CheckCellPointers ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::CreateVoronoiTessellation
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*CreateVoronoiTessellation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "CreateVoronoiTessellation"
+                , CreateVoronoiTessellation_function_type( &::MeshBasedCellPopulation< 3, 3 >::CreateVoronoiTessellation ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::DivideLongSprings
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*DivideLongSprings_function_type)( double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "DivideLongSprings"
+                , DivideLongSprings_function_type( &::MeshBasedCellPopulation< 3, 3 >::DivideLongSprings )
+                , ( bp::arg("springDivisionThreshold") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetAreaBasedDampingConstantParameter
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetAreaBasedDampingConstantParameter_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetAreaBasedDampingConstantParameter"
+                , GetAreaBasedDampingConstantParameter_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetAreaBasedDampingConstantParameter ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetDampingConstant
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetNumNodes
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetOutputMeshInVtk
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*GetOutputMeshInVtk_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetOutputMeshInVtk"
+                , GetOutputMeshInVtk_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetOutputMeshInVtk ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetRestLength
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetRestLength_function_type)( unsigned int,unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetRestLength"
+                , GetRestLength_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetRestLength )
+                , ( bp::arg("indexA"), bp::arg("indexB") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetSurfaceAreaOfVoronoiElement
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetSurfaceAreaOfVoronoiElement_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetSurfaceAreaOfVoronoiElement"
+                , GetSurfaceAreaOfVoronoiElement_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetSurfaceAreaOfVoronoiElement )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetVolumeOfCell
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetVolumeOfVoronoiElement
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfVoronoiElement_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetVolumeOfVoronoiElement"
+                , GetVolumeOfVoronoiElement_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetVolumeOfVoronoiElement )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetVoronoiEdgeLength
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVoronoiEdgeLength_function_type)( unsigned int,unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetVoronoiEdgeLength"
+                , GetVoronoiEdgeLength_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetVoronoiEdgeLength )
+                , ( bp::arg("index1"), bp::arg("index2") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetWidth
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetWidth)
+                , default_GetWidth_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetWriteVtkAsPoints
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*GetWriteVtkAsPoints_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetWriteVtkAsPoints"
+                , GetWriteVtkAsPoints_function_type( &::MeshBasedCellPopulation< 3, 3 >::GetWriteVtkAsPoints ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::OpenWritersFiles
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::MeshBasedCellPopulation< 3, 3 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::MeshBasedCellPopulation< 3, 3 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::RemoveDeadCells
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::MeshBasedCellPopulation< 3, 3 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetAreaBasedDampingConstant
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetAreaBasedDampingConstant_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetAreaBasedDampingConstant"
+                , SetAreaBasedDampingConstant_function_type( &::MeshBasedCellPopulation< 3, 3 >::SetAreaBasedDampingConstant )
+                , ( bp::arg("useAreaBasedDampingConstant") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetAreaBasedDampingConstantParameter
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetAreaBasedDampingConstantParameter_function_type)( double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetAreaBasedDampingConstantParameter"
+                , SetAreaBasedDampingConstantParameter_function_type( &::MeshBasedCellPopulation< 3, 3 >::SetAreaBasedDampingConstantParameter )
+                , ( bp::arg("areaBasedDampingConstantParameter") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetNode
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::MeshBasedCellPopulation< 3, 3 >::SetNode)
+                , default_SetNode_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_SetNode)
+                , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetOutputMeshInVtk
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetOutputMeshInVtk_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetOutputMeshInVtk"
+                , SetOutputMeshInVtk_function_type( &::MeshBasedCellPopulation< 3, 3 >::SetOutputMeshInVtk )
+                , ( bp::arg("outputMeshInVtk") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetRestLength
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetRestLength_function_type)( unsigned int,unsigned int,double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetRestLength"
+                , SetRestLength_function_type( &::MeshBasedCellPopulation< 3, 3 >::SetRestLength )
+                , ( bp::arg("indexA"), bp::arg("indexB"), bp::arg("restLength") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SetWriteVtkAsPoints
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetWriteVtkAsPoints_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SetWriteVtkAsPoints"
+                , SetWriteVtkAsPoints_function_type( &::MeshBasedCellPopulation< 3, 3 >::SetWriteVtkAsPoints )
+                , ( bp::arg("writeVtkAsPoints") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SpringsBegin
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::MeshBasedCellPopulation< 3, 3 >::SpringIterator ( exported_class_t::*SpringsBegin_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SpringsBegin"
+                , SpringsBegin_function_type( &::MeshBasedCellPopulation< 3, 3 >::SpringsBegin ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::SpringsEnd
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::MeshBasedCellPopulation< 3, 3 >::SpringIterator ( exported_class_t::*SpringsEnd_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SpringsEnd"
+                , SpringsEnd_function_type( &::MeshBasedCellPopulation< 3, 3 >::SpringsEnd ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::TessellateIfNeeded
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*TessellateIfNeeded_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "TessellateIfNeeded"
+                , TessellateIfNeeded_function_type( &::MeshBasedCellPopulation< 3, 3 >::TessellateIfNeeded ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::Update
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "Update"
+                , Update_function_type(&::MeshBasedCellPopulation< 3, 3 >::Update)
+                , default_Update_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::UpdateGhostNodesAfterReMesh
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*UpdateGhostNodesAfterReMesh_function_type)( ::NodeMap & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "UpdateGhostNodesAfterReMesh"
+                , UpdateGhostNodesAfterReMesh_function_type( &MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateGhostNodesAfterReMesh )
+                , ( bp::arg("rMap") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::UseAreaBasedDampingConstant
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*UseAreaBasedDampingConstant_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "UseAreaBasedDampingConstant"
+                , UseAreaBasedDampingConstant_function_type( &::MeshBasedCellPopulation< 3, 3 >::UseAreaBasedDampingConstant ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::Validate
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*Validate_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "Validate"
+                , Validate_function_type( &MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_Validate ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::MeshBasedCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::WriteResultsToFiles
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::MeshBasedCellPopulation< 3, 3 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::WriteVtkResultsToFile
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteVtkResultsToFile_function_type)( ::std::string const & ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_WriteVtkResultsToFile_function_type)( ::std::string const & ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "WriteVtkResultsToFile"
+                , WriteVtkResultsToFile_function_type(&::MeshBasedCellPopulation< 3, 3 >::WriteVtkResultsToFile)
+                , default_WriteVtkResultsToFile_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteVtkResultsToFile)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsGhostNode_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsGhostNode_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsGhostNode"
+                , IsGhostNode_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode)
+                , default_IsGhostNode_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsGhostNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsParticle_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsParticle_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsParticle"
+                , IsParticle_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle)
+                , default_IsParticle_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsParticle)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsRoomToDivide
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::SimulationSetupHook
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 3, 3 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+    }
+
+    { //::NodeBasedCellPopulation< 2 >
+        typedef bp::class_< NodeBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 2, 2 > >, boost::noncopyable > NodeBasedCellPopulation2_exposer_t;
+        NodeBasedCellPopulation2_exposer_t NodeBasedCellPopulation2_exposer = NodeBasedCellPopulation2_exposer_t( "NodeBasedCellPopulation2", bp::init< NodesOnlyMesh< 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int >, bool, bool > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true) )) );
+        bp::scope NodeBasedCellPopulation2_scope( NodeBasedCellPopulation2_exposer );
+        NodeBasedCellPopulation2_exposer.def( bp::init< NodesOnlyMesh< 2 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< NodesOnlyMesh< 2 > &, NodeBasedCellPopulation< 2 > >();
+        { //::NodeBasedCellPopulation< 2 >::AcceptCellWriter
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::NodeBasedCellPopulation< 2 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::AcceptPopulationCountWriter
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::NodeBasedCellPopulation< 2 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::AcceptPopulationWriter
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::NodeBasedCellPopulation< 2 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::AddCell
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::NodeBasedCellPopulation< 2 >::AddCell)
+                , default_AddCell_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::AddReceivedCells
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddReceivedCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AddReceivedCells"
+                , AddReceivedCells_function_type( &::NodeBasedCellPopulation< 2 >::AddReceivedCells ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::Clear
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "Clear"
+                , Clear_function_type( &::NodeBasedCellPopulation< 2 >::Clear ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetCellNodePair
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::pair< boost::shared_ptr< Cell >, Node< 2 > > ( exported_class_t::*GetCellNodePair_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetCellNodePair"
+                , GetCellNodePair_function_type( &::NodeBasedCellPopulation< 2 >::GetCellNodePair )
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::NodeBasedCellPopulation< 2 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetMechanicsCutOffLength
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetMechanicsCutOffLength_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetMechanicsCutOffLength"
+                , GetMechanicsCutOffLength_function_type( &::NodeBasedCellPopulation< 2 >::GetMechanicsCutOffLength ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetNeighbouringNodeIndices
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::NodeBasedCellPopulation< 2 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetNodesWithinNeighbourhoodRadius
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNodesWithinNeighbourhoodRadius_function_type)( unsigned int,double ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetNodesWithinNeighbourhoodRadius"
+                , GetNodesWithinNeighbourhoodRadius_function_type( &::NodeBasedCellPopulation< 2 >::GetNodesWithinNeighbourhoodRadius )
+                , ( bp::arg("index"), bp::arg("neighbourhoodRadius") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetNumNodes
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::NodeBasedCellPopulation< 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetReceivedCells
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetReceivedCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetReceivedCells"
+                , GetReceivedCells_function_type( &::NodeBasedCellPopulation< 2 >::GetReceivedCells ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetSizeOfCellPopulation
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetSizeOfCellPopulation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetSizeOfCellPopulation"
+                , GetSizeOfCellPopulation_function_type( &::NodeBasedCellPopulation< 2 >::GetSizeOfCellPopulation ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetUseVariableRadii
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*GetUseVariableRadii_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetUseVariableRadii"
+                , GetUseVariableRadii_function_type( &::NodeBasedCellPopulation< 2 >::GetUseVariableRadii ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetVolumeOfCell
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::NodeBasedCellPopulation< 2 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::GetWidth
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::NodeBasedCellPopulation< 2 >::GetWidth)
+                , default_GetWidth_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::NonBlockingSendCellsToNeighbourProcesses
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*NonBlockingSendCellsToNeighbourProcesses_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "NonBlockingSendCellsToNeighbourProcesses"
+                , NonBlockingSendCellsToNeighbourProcesses_function_type( &::NodeBasedCellPopulation< 2 >::NonBlockingSendCellsToNeighbourProcesses ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::OutputCellPopulationParameters
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::NodeBasedCellPopulation< 2 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::RemoveDeadCells
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::NodeBasedCellPopulation< 2 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::SendCellsToNeighbourProcesses
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SendCellsToNeighbourProcesses_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SendCellsToNeighbourProcesses"
+                , SendCellsToNeighbourProcesses_function_type( &::NodeBasedCellPopulation< 2 >::SendCellsToNeighbourProcesses ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::SetLoadBalanceFrequency
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetLoadBalanceFrequency_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SetLoadBalanceFrequency"
+                , SetLoadBalanceFrequency_function_type( &::NodeBasedCellPopulation< 2 >::SetLoadBalanceFrequency )
+                , ( bp::arg("loadBalanceFrequency") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::SetLoadBalanceMesh
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetLoadBalanceMesh_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SetLoadBalanceMesh"
+                , SetLoadBalanceMesh_function_type( &::NodeBasedCellPopulation< 2 >::SetLoadBalanceMesh )
+                , ( bp::arg("loadBalanceMesh") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::SetNode
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::NodeBasedCellPopulation< 2 >::SetNode)
+                , default_SetNode_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_SetNode)
+                , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::SetUseVariableRadii
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetUseVariableRadii_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SetUseVariableRadii"
+                , SetUseVariableRadii_function_type( &::NodeBasedCellPopulation< 2 >::SetUseVariableRadii )
+                , ( bp::arg("useVariableRadii")=(bool)(true) ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::Update
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "Update"
+                , Update_function_type(&::NodeBasedCellPopulation< 2 >::Update)
+                , default_Update_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::UpdateCellProcessLocation
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::NodeBasedCellPopulation< 2 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::UpdateParticlesAfterReMesh
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*UpdateParticlesAfterReMesh_function_type)( ::NodeMap & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "UpdateParticlesAfterReMesh"
+                , UpdateParticlesAfterReMesh_function_type( &NodeBasedCellPopulation_less__2__greater__wrapper::default_UpdateParticlesAfterReMesh )
+                , ( bp::arg("rMap") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 2 >::Validate
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*Validate_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "Validate"
+                , Validate_function_type( &NodeBasedCellPopulation_less__2__greater__wrapper::default_Validate ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &NodeBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsGhostNode_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsGhostNode_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsGhostNode"
+                , IsGhostNode_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsGhostNode)
+                , default_IsGhostNode_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsGhostNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsParticle_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsParticle_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsParticle"
+                , IsParticle_function_type(&::AbstractCentreBasedCellPopulation< 2, 2 >::IsParticle)
+                , default_IsParticle_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsParticle)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsRoomToDivide
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::OpenWritersFiles
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::AbstractCellPopulation< 2, 2 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::SimulationSetupHook
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 2, 2 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles
+        
+            typedef NodeBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( NodeBasedCellPopulation_less__2__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            NodeBasedCellPopulation2_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&NodeBasedCellPopulation_less__2__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+    }
+
+    { //::NodeBasedCellPopulation< 3 >
+        typedef bp::class_< NodeBasedCellPopulation_less__3__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 3, 3 > >, boost::noncopyable > NodeBasedCellPopulation3_exposer_t;
+        NodeBasedCellPopulation3_exposer_t NodeBasedCellPopulation3_exposer = NodeBasedCellPopulation3_exposer_t( "NodeBasedCellPopulation3", bp::init< NodesOnlyMesh< 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int >, bool, bool > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true) )) );
+        bp::scope NodeBasedCellPopulation3_scope( NodeBasedCellPopulation3_exposer );
+        NodeBasedCellPopulation3_exposer.def( bp::init< NodesOnlyMesh< 3 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< NodesOnlyMesh< 3 > &, NodeBasedCellPopulation< 3 > >();
+        { //::NodeBasedCellPopulation< 3 >::AcceptCellWriter
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::NodeBasedCellPopulation< 3 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::AcceptPopulationCountWriter
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::NodeBasedCellPopulation< 3 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::AcceptPopulationWriter
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::NodeBasedCellPopulation< 3 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::AddCell
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::NodeBasedCellPopulation< 3 >::AddCell)
+                , default_AddCell_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::AddReceivedCells
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddReceivedCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AddReceivedCells"
+                , AddReceivedCells_function_type( &::NodeBasedCellPopulation< 3 >::AddReceivedCells ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::Clear
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "Clear"
+                , Clear_function_type( &::NodeBasedCellPopulation< 3 >::Clear ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetCellNodePair
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::pair< boost::shared_ptr< Cell >, Node< 3 > > ( exported_class_t::*GetCellNodePair_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetCellNodePair"
+                , GetCellNodePair_function_type( &::NodeBasedCellPopulation< 3 >::GetCellNodePair )
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::NodeBasedCellPopulation< 3 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetMechanicsCutOffLength
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetMechanicsCutOffLength_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetMechanicsCutOffLength"
+                , GetMechanicsCutOffLength_function_type( &::NodeBasedCellPopulation< 3 >::GetMechanicsCutOffLength ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetNeighbouringNodeIndices
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::NodeBasedCellPopulation< 3 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetNodesWithinNeighbourhoodRadius
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNodesWithinNeighbourhoodRadius_function_type)( unsigned int,double ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetNodesWithinNeighbourhoodRadius"
+                , GetNodesWithinNeighbourhoodRadius_function_type( &::NodeBasedCellPopulation< 3 >::GetNodesWithinNeighbourhoodRadius )
+                , ( bp::arg("index"), bp::arg("neighbourhoodRadius") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetNumNodes
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::NodeBasedCellPopulation< 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetReceivedCells
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetReceivedCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetReceivedCells"
+                , GetReceivedCells_function_type( &::NodeBasedCellPopulation< 3 >::GetReceivedCells ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetSizeOfCellPopulation
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetSizeOfCellPopulation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetSizeOfCellPopulation"
+                , GetSizeOfCellPopulation_function_type( &::NodeBasedCellPopulation< 3 >::GetSizeOfCellPopulation ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetUseVariableRadii
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*GetUseVariableRadii_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetUseVariableRadii"
+                , GetUseVariableRadii_function_type( &::NodeBasedCellPopulation< 3 >::GetUseVariableRadii ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetVolumeOfCell
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::NodeBasedCellPopulation< 3 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::GetWidth
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::NodeBasedCellPopulation< 3 >::GetWidth)
+                , default_GetWidth_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::NonBlockingSendCellsToNeighbourProcesses
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*NonBlockingSendCellsToNeighbourProcesses_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "NonBlockingSendCellsToNeighbourProcesses"
+                , NonBlockingSendCellsToNeighbourProcesses_function_type( &::NodeBasedCellPopulation< 3 >::NonBlockingSendCellsToNeighbourProcesses ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::OutputCellPopulationParameters
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::NodeBasedCellPopulation< 3 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::RemoveDeadCells
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::NodeBasedCellPopulation< 3 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::SendCellsToNeighbourProcesses
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SendCellsToNeighbourProcesses_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SendCellsToNeighbourProcesses"
+                , SendCellsToNeighbourProcesses_function_type( &::NodeBasedCellPopulation< 3 >::SendCellsToNeighbourProcesses ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::SetLoadBalanceFrequency
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetLoadBalanceFrequency_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SetLoadBalanceFrequency"
+                , SetLoadBalanceFrequency_function_type( &::NodeBasedCellPopulation< 3 >::SetLoadBalanceFrequency )
+                , ( bp::arg("loadBalanceFrequency") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::SetLoadBalanceMesh
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetLoadBalanceMesh_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SetLoadBalanceMesh"
+                , SetLoadBalanceMesh_function_type( &::NodeBasedCellPopulation< 3 >::SetLoadBalanceMesh )
+                , ( bp::arg("loadBalanceMesh") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::SetNode
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::NodeBasedCellPopulation< 3 >::SetNode)
+                , default_SetNode_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_SetNode)
+                , ( bp::arg("nodeIndex"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::SetUseVariableRadii
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetUseVariableRadii_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SetUseVariableRadii"
+                , SetUseVariableRadii_function_type( &::NodeBasedCellPopulation< 3 >::SetUseVariableRadii )
+                , ( bp::arg("useVariableRadii")=(bool)(true) ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::Update
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "Update"
+                , Update_function_type(&::NodeBasedCellPopulation< 3 >::Update)
+                , default_Update_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::UpdateCellProcessLocation
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::NodeBasedCellPopulation< 3 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::UpdateParticlesAfterReMesh
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*UpdateParticlesAfterReMesh_function_type)( ::NodeMap & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "UpdateParticlesAfterReMesh"
+                , UpdateParticlesAfterReMesh_function_type( &NodeBasedCellPopulation_less__3__greater__wrapper::default_UpdateParticlesAfterReMesh )
+                , ( bp::arg("rMap") ) );
+        
+        }
+        { //::NodeBasedCellPopulation< 3 >::Validate
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*Validate_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "Validate"
+                , Validate_function_type( &NodeBasedCellPopulation_less__3__greater__wrapper::default_Validate ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &NodeBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsGhostNode_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsGhostNode_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsGhostNode"
+                , IsGhostNode_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsGhostNode)
+                , default_IsGhostNode_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsGhostNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsParticle_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsParticle_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsParticle"
+                , IsParticle_function_type(&::AbstractCentreBasedCellPopulation< 3, 3 >::IsParticle)
+                , default_IsParticle_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsParticle)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsRoomToDivide
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::OpenWritersFiles
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::AbstractCellPopulation< 3, 3 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::SimulationSetupHook
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 3, 3 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles
+        
+            typedef NodeBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( NodeBasedCellPopulation_less__3__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            NodeBasedCellPopulation3_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&NodeBasedCellPopulation_less__3__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+    }
+
+    { //::OffLatticeSimulation< 2, 2 >
+        typedef bp::class_< OffLatticeSimulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellBasedSimulation< 2, 2 > >, boost::noncopyable > OffLatticeSimulation2_2_exposer_t;
+        OffLatticeSimulation2_2_exposer_t OffLatticeSimulation2_2_exposer = OffLatticeSimulation2_2_exposer_t( "OffLatticeSimulation2_2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< bool, bool > >(( bp::arg("rCellPopulation"), bp::arg("deleteCellPopulationInDestructor")=(bool)(false), bp::arg("initialiseCells")=(bool)(true) )) );
+        bp::scope OffLatticeSimulation2_2_scope( OffLatticeSimulation2_2_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, OffLatticeSimulation< 2, 2 > >();
+        { //::OffLatticeSimulation< 2, 2 >::AddCellPopulationBoundaryCondition
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellPopulationBoundaryCondition_function_type)( ::boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "AddCellPopulationBoundaryCondition"
+                , AddCellPopulationBoundaryCondition_function_type( &::OffLatticeSimulation< 2, 2 >::AddCellPopulationBoundaryCondition )
+                , ( bp::arg("pBoundaryCondition") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::AddForce
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddForce_function_type)( ::boost::shared_ptr< AbstractForce< 2, 2 > > ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "AddForce"
+                , AddForce_function_type( &::OffLatticeSimulation< 2, 2 >::AddForce )
+                , ( bp::arg("pForce") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::ApplyBoundaries
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*ApplyBoundaries_function_type)( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "ApplyBoundaries"
+                , ApplyBoundaries_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::ApplyBoundaries )
+                , ( bp::arg("oldNodeLoctions") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::GetNumericalMethod
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef ::boost::shared_ptr< AbstractNumericalMethod< 2, 2 > > const ( exported_class_t::*GetNumericalMethod_function_type)(  ) const;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "GetNumericalMethod"
+                , GetNumericalMethod_function_type( &::OffLatticeSimulation< 2, 2 >::GetNumericalMethod ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputAdditionalSimulationSetup_function_type)( ::out_stream & ) ;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*default_OutputAdditionalSimulationSetup_function_type)( ::out_stream & ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "OutputAdditionalSimulationSetup"
+                , OutputAdditionalSimulationSetup_function_type(&::OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup)
+                , default_OutputAdditionalSimulationSetup_function_type(&OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_OutputAdditionalSimulationSetup)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::OutputSimulationParameters
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*default_OutputSimulationParameters_function_type)( ::out_stream & ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "OutputSimulationParameters"
+                , OutputSimulationParameters_function_type(&::OffLatticeSimulation< 2, 2 >::OutputSimulationParameters)
+                , default_OutputSimulationParameters_function_type(&OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_OutputSimulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::RemoveAllCellPopulationBoundaryConditions
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveAllCellPopulationBoundaryConditions_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "RemoveAllCellPopulationBoundaryConditions"
+                , RemoveAllCellPopulationBoundaryConditions_function_type( &::OffLatticeSimulation< 2, 2 >::RemoveAllCellPopulationBoundaryConditions ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::RemoveAllForces
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveAllForces_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "RemoveAllForces"
+                , RemoveAllForces_function_type( &::OffLatticeSimulation< 2, 2 >::RemoveAllForces ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::RevertToOldLocations
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*RevertToOldLocations_function_type)( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "RevertToOldLocations"
+                , RevertToOldLocations_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::RevertToOldLocations )
+                , ( bp::arg("oldNodeLoctions") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::SetNumericalMethod
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNumericalMethod_function_type)( ::boost::shared_ptr< AbstractNumericalMethod< 2, 2 > > ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "SetNumericalMethod"
+                , SetNumericalMethod_function_type( &::OffLatticeSimulation< 2, 2 >::SetNumericalMethod )
+                , ( bp::arg("pNumericalMethod") ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::SetupSolve
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*SetupSolve_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_SetupSolve ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::UpdateCellLocationsAndTopology
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*UpdateCellLocationsAndTopology_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "UpdateCellLocationsAndTopology"
+                , UpdateCellLocationsAndTopology_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_UpdateCellLocationsAndTopology ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::WriteVisualizerSetupFile
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*WriteVisualizerSetupFile_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "WriteVisualizerSetupFile"
+                , WriteVisualizerSetupFile_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 2, 2 >::DoCellBirth
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef unsigned int ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*DoCellBirth_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "DoCellBirth"
+                , DoCellBirth_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_DoCellBirth ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 2, 2 >::DoCellRemoval
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef unsigned int ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*DoCellRemoval_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "DoCellRemoval"
+                , DoCellRemoval_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::DoCellRemoval ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 2, 2 >::OutputSimulationSetup
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*OutputSimulationSetup_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "OutputSimulationSetup"
+                , OutputSimulationSetup_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::OutputSimulationSetup ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 2, 2 >::StoppingEventHasOccurred
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef bool ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*StoppingEventHasOccurred_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "StoppingEventHasOccurred"
+                , StoppingEventHasOccurred_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_StoppingEventHasOccurred ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 2, 2 >::UpdateCellPopulation
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__2_comma__2__greater__wrapper::*UpdateCellPopulation_function_type)(  ) ;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "UpdateCellPopulation"
+                , UpdateCellPopulation_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_UpdateCellPopulation ) );
+        
+        }
+    }
+
+    { //::OffLatticeSimulation< 3, 3 >
+        typedef bp::class_< OffLatticeSimulation_less__3_comma__3__greater__wrapper, bp::bases< AbstractCellBasedSimulation< 3, 3 > >, boost::noncopyable > OffLatticeSimulation3_3_exposer_t;
+        OffLatticeSimulation3_3_exposer_t OffLatticeSimulation3_3_exposer = OffLatticeSimulation3_3_exposer_t( "OffLatticeSimulation3_3", bp::init< AbstractCellPopulation< 3, 3 > &, bp::optional< bool, bool > >(( bp::arg("rCellPopulation"), bp::arg("deleteCellPopulationInDestructor")=(bool)(false), bp::arg("initialiseCells")=(bool)(true) )) );
+        bp::scope OffLatticeSimulation3_3_scope( OffLatticeSimulation3_3_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 3, 3 > &, OffLatticeSimulation< 3, 3 > >();
+        { //::OffLatticeSimulation< 3, 3 >::AddCellPopulationBoundaryCondition
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellPopulationBoundaryCondition_function_type)( ::boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "AddCellPopulationBoundaryCondition"
+                , AddCellPopulationBoundaryCondition_function_type( &::OffLatticeSimulation< 3, 3 >::AddCellPopulationBoundaryCondition )
+                , ( bp::arg("pBoundaryCondition") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::AddForce
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddForce_function_type)( ::boost::shared_ptr< AbstractForce< 3, 3 > > ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "AddForce"
+                , AddForce_function_type( &::OffLatticeSimulation< 3, 3 >::AddForce )
+                , ( bp::arg("pForce") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::ApplyBoundaries
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*ApplyBoundaries_function_type)( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "ApplyBoundaries"
+                , ApplyBoundaries_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::ApplyBoundaries )
+                , ( bp::arg("oldNodeLoctions") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::GetNumericalMethod
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef ::boost::shared_ptr< AbstractNumericalMethod< 3, 3 > > const ( exported_class_t::*GetNumericalMethod_function_type)(  ) const;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "GetNumericalMethod"
+                , GetNumericalMethod_function_type( &::OffLatticeSimulation< 3, 3 >::GetNumericalMethod ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::OutputAdditionalSimulationSetup
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputAdditionalSimulationSetup_function_type)( ::out_stream & ) ;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*default_OutputAdditionalSimulationSetup_function_type)( ::out_stream & ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "OutputAdditionalSimulationSetup"
+                , OutputAdditionalSimulationSetup_function_type(&::OffLatticeSimulation< 3, 3 >::OutputAdditionalSimulationSetup)
+                , default_OutputAdditionalSimulationSetup_function_type(&OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_OutputAdditionalSimulationSetup)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::OutputSimulationParameters
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*default_OutputSimulationParameters_function_type)( ::out_stream & ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "OutputSimulationParameters"
+                , OutputSimulationParameters_function_type(&::OffLatticeSimulation< 3, 3 >::OutputSimulationParameters)
+                , default_OutputSimulationParameters_function_type(&OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_OutputSimulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::RemoveAllCellPopulationBoundaryConditions
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveAllCellPopulationBoundaryConditions_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "RemoveAllCellPopulationBoundaryConditions"
+                , RemoveAllCellPopulationBoundaryConditions_function_type( &::OffLatticeSimulation< 3, 3 >::RemoveAllCellPopulationBoundaryConditions ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::RemoveAllForces
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveAllForces_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "RemoveAllForces"
+                , RemoveAllForces_function_type( &::OffLatticeSimulation< 3, 3 >::RemoveAllForces ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::RevertToOldLocations
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*RevertToOldLocations_function_type)( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "RevertToOldLocations"
+                , RevertToOldLocations_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::RevertToOldLocations )
+                , ( bp::arg("oldNodeLoctions") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::SetNumericalMethod
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNumericalMethod_function_type)( ::boost::shared_ptr< AbstractNumericalMethod< 3, 3 > > ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "SetNumericalMethod"
+                , SetNumericalMethod_function_type( &::OffLatticeSimulation< 3, 3 >::SetNumericalMethod )
+                , ( bp::arg("pNumericalMethod") ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::SetupSolve
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*SetupSolve_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_SetupSolve ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::UpdateCellLocationsAndTopology
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*UpdateCellLocationsAndTopology_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "UpdateCellLocationsAndTopology"
+                , UpdateCellLocationsAndTopology_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_UpdateCellLocationsAndTopology ) );
+        
+        }
+        { //::OffLatticeSimulation< 3, 3 >::WriteVisualizerSetupFile
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*WriteVisualizerSetupFile_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "WriteVisualizerSetupFile"
+                , WriteVisualizerSetupFile_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_WriteVisualizerSetupFile ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 3, 3 >::DoCellBirth
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef unsigned int ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*DoCellBirth_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "DoCellBirth"
+                , DoCellBirth_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_DoCellBirth ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 3, 3 >::DoCellRemoval
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef unsigned int ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*DoCellRemoval_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "DoCellRemoval"
+                , DoCellRemoval_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::DoCellRemoval ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 3, 3 >::OutputSimulationSetup
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*OutputSimulationSetup_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "OutputSimulationSetup"
+                , OutputSimulationSetup_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::OutputSimulationSetup ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 3, 3 >::StoppingEventHasOccurred
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef bool ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*StoppingEventHasOccurred_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "StoppingEventHasOccurred"
+                , StoppingEventHasOccurred_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_StoppingEventHasOccurred ) );
+        
+        }
+        { //::AbstractCellBasedSimulation< 3, 3 >::UpdateCellPopulation
+        
+            typedef OffLatticeSimulation< 3, 3 > exported_class_t;
+            typedef void ( OffLatticeSimulation_less__3_comma__3__greater__wrapper::*UpdateCellPopulation_function_type)(  ) ;
+            
+            OffLatticeSimulation3_3_exposer.def( 
+                "UpdateCellPopulation"
+                , UpdateCellPopulation_function_type( &OffLatticeSimulation_less__3_comma__3__greater__wrapper::default_UpdateCellPopulation ) );
+        
+        }
+    }
 
     { //::OnLatticeSimulation< 2 >
         typedef bp::class_< OnLatticeSimulation_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulation< 2, 2 > >, boost::noncopyable > OnLatticeSimulation2_exposer_t;
@@ -6010,6 +14935,944 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
     }
 
+    { //::PottsBasedCellPopulation< 2 >
+        typedef bp::class_< PottsBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractOnLatticeCellPopulation< 2 > >, boost::noncopyable > PottsBasedCellPopulation2_exposer_t;
+        PottsBasedCellPopulation2_exposer_t PottsBasedCellPopulation2_exposer = PottsBasedCellPopulation2_exposer_t( "PottsBasedCellPopulation2", bp::init< PottsMesh< 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< bool, bool, std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
+        bp::scope PottsBasedCellPopulation2_scope( PottsBasedCellPopulation2_exposer );
+        PottsBasedCellPopulation2_exposer.def( bp::init< PottsMesh< 2 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< PottsMesh< 2 > &, PottsBasedCellPopulation< 2 > >();
+        { //::PottsBasedCellPopulation< 2 >::AcceptCellWriter
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::PottsBasedCellPopulation< 2 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::AcceptPopulationCountWriter
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::PottsBasedCellPopulation< 2 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::AcceptPopulationWriter
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::PottsBasedCellPopulation< 2 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::AddCell
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::PottsBasedCellPopulation< 2 >::AddCell)
+                , default_AddCell_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::AddUpdateRule
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddUpdateRule_function_type)( ::boost::shared_ptr< AbstractUpdateRule< 2 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AddUpdateRule_function_type)( ::boost::shared_ptr< AbstractUpdateRule< 2 > > ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AddUpdateRule"
+                , AddUpdateRule_function_type(&::PottsBasedCellPopulation< 2 >::AddUpdateRule)
+                , default_AddUpdateRule_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AddUpdateRule)
+                , ( bp::arg("pUpdateRule") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::CreateElementTessellation
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CreateElementTessellation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "CreateElementTessellation"
+                , CreateElementTessellation_function_type( &::PottsBasedCellPopulation< 2 >::CreateElementTessellation ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::CreateMutableMesh
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CreateMutableMesh_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "CreateMutableMesh"
+                , CreateMutableMesh_function_type( &::PottsBasedCellPopulation< 2 >::CreateMutableMesh ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::PottsBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetLocationOfCellCentre
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::PottsBasedCellPopulation< 2 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetNeighbouringLocationIndices
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::PottsBasedCellPopulation< 2 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetNumElements
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type( &::PottsBasedCellPopulation< 2 >::GetNumElements ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetNumNodes
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::PottsBasedCellPopulation< 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetNumSweepsPerTimestep
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumSweepsPerTimestep_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetNumSweepsPerTimestep"
+                , GetNumSweepsPerTimestep_function_type( &::PottsBasedCellPopulation< 2 >::GetNumSweepsPerTimestep ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetTemperature
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetTemperature_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetTemperature"
+                , GetTemperature_function_type( &::PottsBasedCellPopulation< 2 >::GetTemperature ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetVolumeOfCell
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::PottsBasedCellPopulation< 2 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetWidth
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::PottsBasedCellPopulation< 2 >::GetWidth)
+                , default_GetWidth_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::PottsBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::OpenWritersFiles
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::PottsBasedCellPopulation< 2 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::OutputCellPopulationParameters
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::PottsBasedCellPopulation< 2 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::RemoveDeadCells
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::PottsBasedCellPopulation< 2 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::SetNumSweepsPerTimestep
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNumSweepsPerTimestep_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "SetNumSweepsPerTimestep"
+                , SetNumSweepsPerTimestep_function_type( &::PottsBasedCellPopulation< 2 >::SetNumSweepsPerTimestep )
+                , ( bp::arg("numSweepsPerTimestep") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::SetTemperature
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetTemperature_function_type)( double ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "SetTemperature"
+                , SetTemperature_function_type( &::PottsBasedCellPopulation< 2 >::SetTemperature )
+                , ( bp::arg("temperature") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::Update
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "Update"
+                , Update_function_type(&::PottsBasedCellPopulation< 2 >::Update)
+                , default_Update_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::UpdateCellLocations
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellLocations_function_type)( double ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_UpdateCellLocations_function_type)( double ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "UpdateCellLocations"
+                , UpdateCellLocations_function_type(&::PottsBasedCellPopulation< 2 >::UpdateCellLocations)
+                , default_UpdateCellLocations_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 2 >::WriteResultsToFiles
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::PottsBasedCellPopulation< 2 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &PottsBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 2, 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsRoomToDivide
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::SimulationSetupHook
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 2, 2 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+    }
+
+    { //::PottsBasedCellPopulation< 3 >
+        typedef bp::class_< PottsBasedCellPopulation_less__3__greater__wrapper, bp::bases< AbstractOnLatticeCellPopulation< 3 > >, boost::noncopyable > PottsBasedCellPopulation3_exposer_t;
+        PottsBasedCellPopulation3_exposer_t PottsBasedCellPopulation3_exposer = PottsBasedCellPopulation3_exposer_t( "PottsBasedCellPopulation3", bp::init< PottsMesh< 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< bool, bool, std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
+        bp::scope PottsBasedCellPopulation3_scope( PottsBasedCellPopulation3_exposer );
+        PottsBasedCellPopulation3_exposer.def( bp::init< PottsMesh< 3 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< PottsMesh< 3 > &, PottsBasedCellPopulation< 3 > >();
+        { //::PottsBasedCellPopulation< 3 >::AcceptCellWriter
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::PottsBasedCellPopulation< 3 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::AcceptPopulationCountWriter
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::PottsBasedCellPopulation< 3 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::AcceptPopulationWriter
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::PottsBasedCellPopulation< 3 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::AddCell
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::PottsBasedCellPopulation< 3 >::AddCell)
+                , default_AddCell_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::AddUpdateRule
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddUpdateRule_function_type)( ::boost::shared_ptr< AbstractUpdateRule< 3 > > ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AddUpdateRule_function_type)( ::boost::shared_ptr< AbstractUpdateRule< 3 > > ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AddUpdateRule"
+                , AddUpdateRule_function_type(&::PottsBasedCellPopulation< 3 >::AddUpdateRule)
+                , default_AddUpdateRule_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AddUpdateRule)
+                , ( bp::arg("pUpdateRule") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::CreateElementTessellation
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CreateElementTessellation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "CreateElementTessellation"
+                , CreateElementTessellation_function_type( &::PottsBasedCellPopulation< 3 >::CreateElementTessellation ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::CreateMutableMesh
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CreateMutableMesh_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "CreateMutableMesh"
+                , CreateMutableMesh_function_type( &::PottsBasedCellPopulation< 3 >::CreateMutableMesh ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::PottsBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetLocationOfCellCentre
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::PottsBasedCellPopulation< 3 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetNeighbouringLocationIndices
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::PottsBasedCellPopulation< 3 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetNumElements
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type( &::PottsBasedCellPopulation< 3 >::GetNumElements ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetNumNodes
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::PottsBasedCellPopulation< 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetNumSweepsPerTimestep
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumSweepsPerTimestep_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetNumSweepsPerTimestep"
+                , GetNumSweepsPerTimestep_function_type( &::PottsBasedCellPopulation< 3 >::GetNumSweepsPerTimestep ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetTemperature
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetTemperature_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetTemperature"
+                , GetTemperature_function_type( &::PottsBasedCellPopulation< 3 >::GetTemperature ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetVolumeOfCell
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::PottsBasedCellPopulation< 3 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::GetWidth
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::PottsBasedCellPopulation< 3 >::GetWidth)
+                , default_GetWidth_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::PottsBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::OpenWritersFiles
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::PottsBasedCellPopulation< 3 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::OutputCellPopulationParameters
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::PottsBasedCellPopulation< 3 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::RemoveDeadCells
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::PottsBasedCellPopulation< 3 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::SetNumSweepsPerTimestep
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNumSweepsPerTimestep_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "SetNumSweepsPerTimestep"
+                , SetNumSweepsPerTimestep_function_type( &::PottsBasedCellPopulation< 3 >::SetNumSweepsPerTimestep )
+                , ( bp::arg("numSweepsPerTimestep") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::SetTemperature
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetTemperature_function_type)( double ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "SetTemperature"
+                , SetTemperature_function_type( &::PottsBasedCellPopulation< 3 >::SetTemperature )
+                , ( bp::arg("temperature") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::Update
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "Update"
+                , Update_function_type(&::PottsBasedCellPopulation< 3 >::Update)
+                , default_Update_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::UpdateCellLocations
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellLocations_function_type)( double ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_UpdateCellLocations_function_type)( double ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "UpdateCellLocations"
+                , UpdateCellLocations_function_type(&::PottsBasedCellPopulation< 3 >::UpdateCellLocations)
+                , default_UpdateCellLocations_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_UpdateCellLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::PottsBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::PottsBasedCellPopulation< 3 >::WriteResultsToFiles
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::PottsBasedCellPopulation< 3 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &PottsBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractOnLatticeCellPopulation< 3 >::GetDefaultTimeStep
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::AbstractOnLatticeCellPopulation< 3 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::AbstractOnLatticeCellPopulation< 3 >::GetNeighbouringNodeIndices
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::AbstractOnLatticeCellPopulation< 3 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractOnLatticeCellPopulation< 3 >::GetUpdateRuleCollection
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > const ( exported_class_t::*GetUpdateRuleCollection_function_type)(  ) const;
+            typedef ::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > const ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_GetUpdateRuleCollection_function_type)(  ) const;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "GetUpdateRuleCollection"
+                , GetUpdateRuleCollection_function_type(&::AbstractOnLatticeCellPopulation< 3 >::GetUpdateRuleCollection)
+                , default_GetUpdateRuleCollection_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_GetUpdateRuleCollection) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::AbstractCellPopulation< 3, 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsRoomToDivide
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractOnLatticeCellPopulation< 3 >::RemoveAllUpdateRules
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveAllUpdateRules_function_type)(  ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_RemoveAllUpdateRules_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "RemoveAllUpdateRules"
+                , RemoveAllUpdateRules_function_type(&::AbstractOnLatticeCellPopulation< 3 >::RemoveAllUpdateRules)
+                , default_RemoveAllUpdateRules_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_RemoveAllUpdateRules) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractOnLatticeCellPopulation< 3 >::SetNode
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::AbstractOnLatticeCellPopulation< 3 >::SetNode)
+                , default_SetNode_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_SetNode)
+                , ( bp::arg("index"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::SimulationSetupHook
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::AbstractCellPopulation< 3, 3 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation
+        
+            typedef PottsBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( PottsBasedCellPopulation_less__3__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            PottsBasedCellPopulation3_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+    }
+
     bp::class_< SimulationTime_wrapper, boost::noncopyable >( "SimulationTime", bp::no_init )    
         .def( bp::init< >() )    
         .def( 
@@ -6104,6 +15967,1096 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::AbstractCellCycleModel::* )( double ))(&::AbstractCellCycleModel::SetBirthTime)
             , (void ( UniformCellCycleModel_wrapper::* )( double ))(&UniformCellCycleModel_wrapper::default_SetBirthTime)
             , ( bp::arg("birthTime") ) );
+
+    { //::VertexBasedCellPopulation< 2 >
+        typedef bp::class_< VertexBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 2, 2 > >, boost::noncopyable > VertexBasedCellPopulation2_exposer_t;
+        VertexBasedCellPopulation2_exposer_t VertexBasedCellPopulation2_exposer = VertexBasedCellPopulation2_exposer_t( "VertexBasedCellPopulation2", bp::init< MutableVertexMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< bool, bool, std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
+        bp::scope VertexBasedCellPopulation2_scope( VertexBasedCellPopulation2_exposer );
+        VertexBasedCellPopulation2_exposer.def( bp::init< MutableVertexMesh< 2, 2 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< MutableVertexMesh< 2, 2 > &, VertexBasedCellPopulation< 2 > >();
+        { //::VertexBasedCellPopulation< 2 >::AcceptCellWriter
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::VertexBasedCellPopulation< 2 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AcceptPopulationCountWriter
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 2, 2 > > ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::VertexBasedCellPopulation< 2 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AcceptPopulationWriter
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 2, 2 > > ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::VertexBasedCellPopulation< 2 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AddCell
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::VertexBasedCellPopulation< 2 >::AddCell)
+                , default_AddCell_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AddCellIdOfT2Swap
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellIdOfT2Swap_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AddCellIdOfT2Swap"
+                , AddCellIdOfT2Swap_function_type( &::VertexBasedCellPopulation< 2 >::AddCellIdOfT2Swap )
+                , ( bp::arg("idOfT2Swap") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AddLocationOfT2Swap
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddLocationOfT2Swap_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AddLocationOfT2Swap"
+                , AddLocationOfT2Swap_function_type( &::VertexBasedCellPopulation< 2 >::AddLocationOfT2Swap )
+                , ( bp::arg("locationOfT2Swap") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::AddNode
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 2 > * ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AddNode_function_type)( ::Node< 2 > * ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::VertexBasedCellPopulation< 2 >::AddNode)
+                , default_AddNode_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::CheckForStepSizeException
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::VertexBasedCellPopulation< 2 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::ClearLocationsAndCellIdsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*ClearLocationsAndCellIdsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "ClearLocationsAndCellIdsOfT2Swaps"
+                , ClearLocationsAndCellIdsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 2 >::ClearLocationsAndCellIdsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::VertexBasedCellPopulation< 2 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetCellIdsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::vector< unsigned int > ( exported_class_t::*GetCellIdsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetCellIdsOfT2Swaps"
+                , GetCellIdsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 2 >::GetCellIdsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetDampingConstant
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::VertexBasedCellPopulation< 2 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetDefaultTimeStep
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::VertexBasedCellPopulation< 2 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetLocationOfCellCentre
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::VertexBasedCellPopulation< 2 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetLocationsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::vector< boost::numeric::ublas::c_vector<double, 2> > ( exported_class_t::*GetLocationsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetLocationsOfT2Swaps"
+                , GetLocationsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 2 >::GetLocationsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetNeighbouringLocationIndices
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::VertexBasedCellPopulation< 2 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetNeighbouringNodeIndices
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::VertexBasedCellPopulation< 2 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetNumElements
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type( &::VertexBasedCellPopulation< 2 >::GetNumElements ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetNumNodes
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::VertexBasedCellPopulation< 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetOutputCellRearrangementLocations
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*GetOutputCellRearrangementLocations_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetOutputCellRearrangementLocations"
+                , GetOutputCellRearrangementLocations_function_type( &::VertexBasedCellPopulation< 2 >::GetOutputCellRearrangementLocations ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetRosetteRankOfCell
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetRosetteRankOfCell_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetRosetteRankOfCell"
+                , GetRosetteRankOfCell_function_type( &::VertexBasedCellPopulation< 2 >::GetRosetteRankOfCell )
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetVertexBasedDivisionRule
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::boost::shared_ptr< AbstractVertexBasedDivisionRule< 2 > > ( exported_class_t::*GetVertexBasedDivisionRule_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetVertexBasedDivisionRule"
+                , GetVertexBasedDivisionRule_function_type( &::VertexBasedCellPopulation< 2 >::GetVertexBasedDivisionRule ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetVolumeOfCell
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::VertexBasedCellPopulation< 2 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::GetWidth
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::VertexBasedCellPopulation< 2 >::GetWidth)
+                , default_GetWidth_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::VertexBasedCellPopulation< 2 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::VertexBasedCellPopulation< 2 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::OpenWritersFiles
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::VertexBasedCellPopulation< 2 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::OutputCellPopulationParameters
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::VertexBasedCellPopulation< 2 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::RemoveDeadCells
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::VertexBasedCellPopulation< 2 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::SetNode
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 > & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::VertexBasedCellPopulation< 2 >::SetNode)
+                , default_SetNode_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_SetNode)
+                , ( bp::arg("index"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::SetOutputCellRearrangementLocations
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetOutputCellRearrangementLocations_function_type)( bool ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "SetOutputCellRearrangementLocations"
+                , SetOutputCellRearrangementLocations_function_type( &::VertexBasedCellPopulation< 2 >::SetOutputCellRearrangementLocations )
+                , ( bp::arg("outputCellRearrangementLocations") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::SetVertexBasedDivisionRule
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetVertexBasedDivisionRule_function_type)( ::boost::shared_ptr< AbstractVertexBasedDivisionRule< 2 > > ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "SetVertexBasedDivisionRule"
+                , SetVertexBasedDivisionRule_function_type( &::VertexBasedCellPopulation< 2 >::SetVertexBasedDivisionRule )
+                , ( bp::arg("pVertexBasedDivisionRule") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::SimulationSetupHook
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 2, 2 > * ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::VertexBasedCellPopulation< 2 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::Update
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "Update"
+                , Update_function_type(&::VertexBasedCellPopulation< 2 >::Update)
+                , default_Update_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::VertexBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &VertexBasedCellPopulation_less__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::IsRoomToDivide
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 2, 2 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 2, 2 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 2, 2 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles
+        
+            typedef VertexBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( VertexBasedCellPopulation_less__2__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            VertexBasedCellPopulation2_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::AbstractCellPopulation< 2, 2 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+    }
+
+    { //::VertexBasedCellPopulation< 3 >
+        typedef bp::class_< VertexBasedCellPopulation_less__3__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 3, 3 > >, boost::noncopyable > VertexBasedCellPopulation3_exposer_t;
+        VertexBasedCellPopulation3_exposer_t VertexBasedCellPopulation3_exposer = VertexBasedCellPopulation3_exposer_t( "VertexBasedCellPopulation3", bp::init< MutableVertexMesh< 3, 3 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< bool, bool, std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
+        bp::scope VertexBasedCellPopulation3_scope( VertexBasedCellPopulation3_exposer );
+        VertexBasedCellPopulation3_exposer.def( bp::init< MutableVertexMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< MutableVertexMesh< 3, 3 > &, VertexBasedCellPopulation< 3 > >();
+        { //::VertexBasedCellPopulation< 3 >::AcceptCellWriter
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AcceptCellWriter_function_type)( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AcceptCellWriter"
+                , AcceptCellWriter_function_type(&::VertexBasedCellPopulation< 3 >::AcceptCellWriter)
+                , default_AcceptCellWriter_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWriter)
+                , ( bp::arg("pCellWriter"), bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AcceptPopulationCountWriter
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationCountWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationCountWriter< 3, 3 > > ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationCountWriter"
+                , AcceptPopulationCountWriter_function_type(&::VertexBasedCellPopulation< 3 >::AcceptPopulationCountWriter)
+                , default_AcceptPopulationCountWriter_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationCountWriter)
+                , ( bp::arg("pPopulationCountWriter") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AcceptPopulationWriter
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AcceptPopulationWriter_function_type)( ::boost::shared_ptr< AbstractCellPopulationWriter< 3, 3 > > ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AcceptPopulationWriter"
+                , AcceptPopulationWriter_function_type(&::VertexBasedCellPopulation< 3 >::AcceptPopulationWriter)
+                , default_AcceptPopulationWriter_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AcceptPopulationWriter)
+                , ( bp::arg("pPopulationWriter") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AddCell
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            typedef ::CellPtr ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AddCell_function_type)( ::CellPtr,::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AddCell"
+                , AddCell_function_type(&::VertexBasedCellPopulation< 3 >::AddCell)
+                , default_AddCell_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AddCell)
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AddCellIdOfT2Swap
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellIdOfT2Swap_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AddCellIdOfT2Swap"
+                , AddCellIdOfT2Swap_function_type( &::VertexBasedCellPopulation< 3 >::AddCellIdOfT2Swap )
+                , ( bp::arg("idOfT2Swap") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AddLocationOfT2Swap
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddLocationOfT2Swap_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AddLocationOfT2Swap"
+                , AddLocationOfT2Swap_function_type( &::VertexBasedCellPopulation< 3 >::AddLocationOfT2Swap )
+                , ( bp::arg("locationOfT2Swap") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::AddNode
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 3 > * ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AddNode_function_type)( ::Node< 3 > * ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::VertexBasedCellPopulation< 3 >::AddNode)
+                , default_AddNode_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::CheckForStepSizeException
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_CheckForStepSizeException_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "CheckForStepSizeException"
+                , CheckForStepSizeException_function_type(&::VertexBasedCellPopulation< 3 >::CheckForStepSizeException)
+                , default_CheckForStepSizeException_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_CheckForStepSizeException)
+                , ( bp::arg("nodeIndex"), bp::arg("rDisplacement"), bp::arg("dt") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::ClearLocationsAndCellIdsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*ClearLocationsAndCellIdsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "ClearLocationsAndCellIdsOfT2Swaps"
+                , ClearLocationsAndCellIdsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 3 >::ClearLocationsAndCellIdsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            typedef double ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetCellDataItemAtPdeNode_function_type)( unsigned int,::std::string &,bool,double ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetCellDataItemAtPdeNode"
+                , GetCellDataItemAtPdeNode_function_type(&::VertexBasedCellPopulation< 3 >::GetCellDataItemAtPdeNode)
+                , default_GetCellDataItemAtPdeNode_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetCellDataItemAtPdeNode)
+                , ( bp::arg("pdeNodeIndex"), bp::arg("rVariableName"), bp::arg("dirichletBoundaryConditionApplies")=(bool)(false), bp::arg("dirichletBoundaryValue")=0. ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetCellIdsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::vector< unsigned int > ( exported_class_t::*GetCellIdsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetCellIdsOfT2Swaps"
+                , GetCellIdsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 3 >::GetCellIdsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetDampingConstant
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDampingConstant_function_type)( unsigned int ) ;
+            typedef double ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetDampingConstant_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetDampingConstant"
+                , GetDampingConstant_function_type(&::VertexBasedCellPopulation< 3 >::GetDampingConstant)
+                , default_GetDampingConstant_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetDampingConstant)
+                , ( bp::arg("nodeIndex") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetDefaultTimeStep
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetDefaultTimeStep_function_type)(  ) ;
+            typedef double ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetDefaultTimeStep_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetDefaultTimeStep"
+                , GetDefaultTimeStep_function_type(&::VertexBasedCellPopulation< 3 >::GetDefaultTimeStep)
+                , default_GetDefaultTimeStep_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetDefaultTimeStep) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetLocationOfCellCentre
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetLocationOfCellCentre_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetLocationOfCellCentre"
+                , GetLocationOfCellCentre_function_type(&::VertexBasedCellPopulation< 3 >::GetLocationOfCellCentre)
+                , default_GetLocationOfCellCentre_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetLocationOfCellCentre)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetLocationsOfT2Swaps
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::vector< boost::numeric::ublas::c_vector<double, 3> > ( exported_class_t::*GetLocationsOfT2Swaps_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetLocationsOfT2Swaps"
+                , GetLocationsOfT2Swaps_function_type( &::VertexBasedCellPopulation< 3 >::GetLocationsOfT2Swaps ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetNeighbouringLocationIndices
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            typedef ::std::set< unsigned int > ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringLocationIndices_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringLocationIndices"
+                , GetNeighbouringLocationIndices_function_type(&::VertexBasedCellPopulation< 3 >::GetNeighbouringLocationIndices)
+                , default_GetNeighbouringLocationIndices_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringLocationIndices)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > ( exported_class_t::*GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            typedef ::std::set< unsigned int > ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetNeighbouringNodeIndices_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetNeighbouringNodeIndices"
+                , GetNeighbouringNodeIndices_function_type(&::VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices)
+                , default_GetNeighbouringNodeIndices_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringNodeIndices)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetNumElements
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type( &::VertexBasedCellPopulation< 3 >::GetNumElements ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetNumNodes
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::VertexBasedCellPopulation< 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetOutputCellRearrangementLocations
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*GetOutputCellRearrangementLocations_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetOutputCellRearrangementLocations"
+                , GetOutputCellRearrangementLocations_function_type( &::VertexBasedCellPopulation< 3 >::GetOutputCellRearrangementLocations ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetRosetteRankOfCell
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetRosetteRankOfCell_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetRosetteRankOfCell"
+                , GetRosetteRankOfCell_function_type( &::VertexBasedCellPopulation< 3 >::GetRosetteRankOfCell )
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetVertexBasedDivisionRule
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::boost::shared_ptr< AbstractVertexBasedDivisionRule< 3 > > ( exported_class_t::*GetVertexBasedDivisionRule_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetVertexBasedDivisionRule"
+                , GetVertexBasedDivisionRule_function_type( &::VertexBasedCellPopulation< 3 >::GetVertexBasedDivisionRule ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetVolumeOfCell
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            typedef double ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetVolumeOfCell_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetVolumeOfCell"
+                , GetVolumeOfCell_function_type(&::VertexBasedCellPopulation< 3 >::GetVolumeOfCell)
+                , default_GetVolumeOfCell_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetVolumeOfCell)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetWidth
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) ;
+            typedef double ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::VertexBasedCellPopulation< 3 >::GetWidth)
+                , default_GetWidth_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            typedef bool ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAssociatedWithADeletedLocation_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "IsCellAssociatedWithADeletedLocation"
+                , IsCellAssociatedWithADeletedLocation_function_type(&::VertexBasedCellPopulation< 3 >::IsCellAssociatedWithADeletedLocation)
+                , default_IsCellAssociatedWithADeletedLocation_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_IsCellAssociatedWithADeletedLocation)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            typedef bool ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "IsPdeNodeAssociatedWithNonApoptoticCell"
+                , IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&::VertexBasedCellPopulation< 3 >::IsPdeNodeAssociatedWithNonApoptoticCell)
+                , default_IsPdeNodeAssociatedWithNonApoptoticCell_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_IsPdeNodeAssociatedWithNonApoptoticCell)
+                , ( bp::arg("pdeNodeIndex") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::OpenWritersFiles
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_OpenWritersFiles_function_type)( ::OutputFileHandler & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "OpenWritersFiles"
+                , OpenWritersFiles_function_type(&::VertexBasedCellPopulation< 3 >::OpenWritersFiles)
+                , default_OpenWritersFiles_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_OpenWritersFiles)
+                , ( bp::arg("rOutputFileHandler") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_OutputCellPopulationParameters_function_type)( ::out_stream & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "OutputCellPopulationParameters"
+                , OutputCellPopulationParameters_function_type(&::VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters)
+                , default_OutputCellPopulationParameters_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_OutputCellPopulationParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::RemoveDeadCells
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RemoveDeadCells_function_type)(  ) ;
+            typedef unsigned int ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_RemoveDeadCells_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "RemoveDeadCells"
+                , RemoveDeadCells_function_type(&::VertexBasedCellPopulation< 3 >::RemoveDeadCells)
+                , default_RemoveDeadCells_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_RemoveDeadCells) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::SetNode
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 > & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::VertexBasedCellPopulation< 3 >::SetNode)
+                , default_SetNode_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_SetNode)
+                , ( bp::arg("index"), bp::arg("rNewLocation") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::SetOutputCellRearrangementLocations
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetOutputCellRearrangementLocations_function_type)( bool ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "SetOutputCellRearrangementLocations"
+                , SetOutputCellRearrangementLocations_function_type( &::VertexBasedCellPopulation< 3 >::SetOutputCellRearrangementLocations )
+                , ( bp::arg("outputCellRearrangementLocations") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::SetVertexBasedDivisionRule
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetVertexBasedDivisionRule_function_type)( ::boost::shared_ptr< AbstractVertexBasedDivisionRule< 3 > > ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "SetVertexBasedDivisionRule"
+                , SetVertexBasedDivisionRule_function_type( &::VertexBasedCellPopulation< 3 >::SetVertexBasedDivisionRule )
+                , ( bp::arg("pVertexBasedDivisionRule") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::SimulationSetupHook
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_SimulationSetupHook_function_type)( ::AbstractCellBasedSimulation< 3, 3 > * ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "SimulationSetupHook"
+                , SimulationSetupHook_function_type(&::VertexBasedCellPopulation< 3 >::SimulationSetupHook)
+                , default_SimulationSetupHook_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_SimulationSetupHook)
+                , ( bp::arg("pSimulation") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::Update
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*Update_function_type)( bool ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_Update_function_type)( bool ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "Update"
+                , Update_function_type(&::VertexBasedCellPopulation< 3 >::Update)
+                , default_Update_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_Update)
+                , ( bp::arg("hasHadBirthsOrDeaths")=(bool)(true) ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AcceptCellWritersAcrossPopulation
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*AcceptCellWritersAcrossPopulation_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AcceptCellWritersAcrossPopulation"
+                , AcceptCellWritersAcrossPopulation_function_type( &VertexBasedCellPopulation_less__3__greater__wrapper::default_AcceptCellWritersAcrossPopulation ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_AddCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "AddCellUsingLocationIndex"
+                , AddCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::AddCellUsingLocationIndex)
+                , default_AddCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_AddCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::CellPtr ( exported_class_t::*GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            typedef ::CellPtr ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetCellUsingLocationIndex_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetCellUsingLocationIndex"
+                , GetCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::GetCellUsingLocationIndex)
+                , default_GetCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetCellUsingLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            typedef bool ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_IsCellAttachedToLocationIndex_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "IsCellAttachedToLocationIndex"
+                , IsCellAttachedToLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::IsCellAttachedToLocationIndex)
+                , default_IsCellAttachedToLocationIndex_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_IsCellAttachedToLocationIndex)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::IsRoomToDivide
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef bool ( exported_class_t::*IsRoomToDivide_function_type)( ::CellPtr ) ;
+            typedef bool ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_IsRoomToDivide_function_type)( ::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "IsRoomToDivide"
+                , IsRoomToDivide_function_type(&::AbstractCellPopulation< 3, 3 >::IsRoomToDivide)
+                , default_IsRoomToDivide_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_IsRoomToDivide)
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_RemoveCellUsingLocationIndex_function_type)( unsigned int,::CellPtr ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "RemoveCellUsingLocationIndex"
+                , RemoveCellUsingLocationIndex_function_type(&::AbstractCellPopulation< 3, 3 >::RemoveCellUsingLocationIndex)
+                , default_RemoveCellUsingLocationIndex_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_RemoveCellUsingLocationIndex)
+                , ( bp::arg("index"), bp::arg("pCell") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateCellProcessLocation_function_type)(  ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_UpdateCellProcessLocation_function_type)(  ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "UpdateCellProcessLocation"
+                , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 3, 3 >::UpdateCellProcessLocation)
+                , default_UpdateCellProcessLocation_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateNodeLocations_function_type)( double ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_UpdateNodeLocations_function_type)( double ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "UpdateNodeLocations"
+                , UpdateNodeLocations_function_type(&::AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations)
+                , default_UpdateNodeLocations_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_UpdateNodeLocations)
+                , ( bp::arg("dt") ) );
+        
+        }
+        { //::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef void ( exported_class_t::*WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            typedef void ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_WriteResultsToFiles_function_type)( ::std::string const & ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "WriteResultsToFiles"
+                , WriteResultsToFiles_function_type(&::AbstractCellPopulation< 3, 3 >::WriteResultsToFiles)
+                , default_WriteResultsToFiles_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_WriteResultsToFiles)
+                , ( bp::arg("rDirectory") ) );
+        
+        }
+    }
 
     bp::class_< VtkSceneModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > > >( "VtkSceneModifier2", bp::init< >() )    
         .def( 

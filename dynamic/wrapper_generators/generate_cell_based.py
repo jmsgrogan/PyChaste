@@ -70,8 +70,22 @@ def update_builder(builder):
                        "VtkSceneModifier<2>",
                        "VtkSceneModifier<3>",
                        "AbstractCellBasedSimulationModifier<2,2>",
-                       "AbstractCellBasedSimulationModifier<3,3>"]
-
+                       "AbstractCellBasedSimulationModifier<3,3>",
+                       "NodeBasedCellPopulation<2>",
+                       "NodeBasedCellPopulation<3>",
+                       "AbstractCentreBasedCellPopulation<2,2>",
+                       "AbstractCentreBasedCellPopulation<3,3>",
+                       "AbstractOffLatticeCellPopulation<2,2>",
+                       "AbstractOffLatticeCellPopulation<3,3>",
+                       "OffLatticeSimulation<2,2>",
+                       "OffLatticeSimulation<3,3>",
+                       "MeshBasedCellPopulation<2,2>",
+                       "MeshBasedCellPopulation<3,3>",
+                       "VertexBasedCellPopulation<2>",
+                       "VertexBasedCellPopulation<3>",
+                       "PottsBasedCellPopulation<2>",
+                       "PottsBasedCellPopulation<3>"]
+    
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
         new_name = generate_bindings.template_replace(eachClass)
@@ -100,6 +114,10 @@ def update_builder(builder):
     builder.class_("AbstractOnLatticeCellPopulation<2>").constructors().exclude()
     builder.class_("AbstractOnLatticeCellPopulation<2>").member_functions(function=lambda decl:decl.virtuality == "virtual").exclude()
     builder.class_("AbstractOnLatticeCellPopulation<3>").constructors().exclude()
+    
+    builder.class_("AbstractCentreBasedCellPopulation<2,2>").member_functions("GetNodeCorrespondingToCell").exclude()
+    builder.class_("AbstractCentreBasedCellPopulation<3,3>").member_functions("GetNodeCorrespondingToCell").exclude()
+    
     builder.class_("CaBasedCellPopulation<2>").member_functions("GetNode").exclude()
     builder.class_("CaBasedCellPopulation<2>").member_functions("GetNodeCorrespondingToCell").exclude()
     builder.class_("CaBasedCellPopulation<2>").member_functions("rGetAvailableSpaces").exclude()
@@ -110,6 +128,52 @@ def update_builder(builder):
     builder.class_("CaBasedCellPopulation<3>").member_functions("rGetAvailableSpaces").exclude()
     builder.class_("CaBasedCellPopulation<3>").member_functions("GetTetrahedralMeshForPdeModifier").exclude()
     builder.class_("CaBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    
+    builder.class_("NodeBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("NodeBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("NodeBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("NodeBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("NodeBasedCellPopulation<2>").member_functions("GetNode").exclude()
+    builder.class_("NodeBasedCellPopulation<3>").member_functions("GetNode").exclude()
+    builder.class_("NodeBasedCellPopulation<2>").member_functions("rGetNodePairs").exclude()
+    builder.class_("NodeBasedCellPopulation<3>").member_functions("rGetNodePairs").exclude()
+    
+    builder.class_("MeshBasedCellPopulation<2,2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("MeshBasedCellPopulation<3,3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("MeshBasedCellPopulation<2,2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("MeshBasedCellPopulation<3,3>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("MeshBasedCellPopulation<2,2>").member_functions("GetNode").exclude()
+    builder.class_("MeshBasedCellPopulation<3,3>").member_functions("GetNode").exclude()
+    builder.class_("MeshBasedCellPopulation<2,2>").member_functions("GetVoronoiTessellation").exclude()
+    builder.class_("MeshBasedCellPopulation<3,3>").member_functions("GetVoronoiTessellation").exclude()
+    builder.class_("MeshBasedCellPopulation<2,2>").member_functions("rGetNodePairs").exclude()
+    builder.class_("MeshBasedCellPopulation<3,3>").member_functions("rGetNodePairs").exclude()
+    
+    builder.class_("VertexBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("VertexBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("VertexBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("VertexBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("VertexBasedCellPopulation<2>").member_functions("GetNode").exclude()
+    builder.class_("VertexBasedCellPopulation<3>").member_functions("GetNode").exclude()
+    builder.class_("VertexBasedCellPopulation<2>").member_functions("GetElement").exclude()
+    builder.class_("VertexBasedCellPopulation<3>").member_functions("GetElement").exclude() 
+    builder.class_("VertexBasedCellPopulation<2>").member_functions("GetElementCorrespondingToCell").exclude()
+    builder.class_("VertexBasedCellPopulation<3>").member_functions("GetElementCorrespondingToCell").exclude()         
+
+    builder.class_("PottsBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith("rGetMesh")).exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith("rGetMesh")).exclude()
+    builder.class_("PottsBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith("GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith("GetTetrahedralMeshForPdeModifier")).exclude()
+    builder.class_("PottsBasedCellPopulation<2>").member_functions("GetNode").exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions("GetNode").exclude()
+    builder.class_("PottsBasedCellPopulation<2>").member_functions("GetElement").exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions("GetElement").exclude() 
+    builder.class_("PottsBasedCellPopulation<2>").member_functions("GetElementTessellation").exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions("GetElementTessellation").exclude() 
+    builder.class_("PottsBasedCellPopulation<2>").member_functions("GetMutableMesh").exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions("GetMutableMesh").exclude()     
+    builder.class_("PottsBasedCellPopulation<2>").member_functions("GetElementCorrespondingToCell").exclude()
+    builder.class_("PottsBasedCellPopulation<3>").member_functions("GetElementCorrespondingToCell").exclude()     
 
     builder.class_("Cell").member_functions("rGetCellPropertyCollection").exclude()
     builder.class_("Cell").member_functions("GetCellCycleModel").exclude()

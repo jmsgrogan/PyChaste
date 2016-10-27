@@ -44,7 +44,30 @@ import generate_bindings
 def update_builder(builder):
 
     include_classes = ["ChastePoint<3>", 
-                       "PottsMesh<3>"]
+                       "Node<3>",
+                       "NodeAttributes<3>",
+                       "PottsMesh<3>",
+                       "SharedPottsMeshGenerator<3>",
+                       "ChastePoint<2>",
+                       "Node<2>",
+                       "NodeAttributes<2>",
+                       "PottsMesh<2>",
+                       "SharedPottsMeshGenerator<2>",
+                       "NodesOnlyMesh<2>",
+                       "NodesOnlyMesh<3>",
+                       "MutableMesh<2,2>",
+                       "MutableMesh<3,3>",
+                       "TetrahedralMesh<2,2>",
+                       "TetrahedralMesh<3,3>",
+                       "AbstractTetrahedralMesh<2,2>",
+                       "AbstractTetrahedralMesh<3,3>",
+                       "AbstractMesh<2,2>",
+                       "AbstractMesh<3,3>",
+                       "VertexMesh<2,2>",
+                       "VertexMesh<3,3>",
+                       "MutableVertexMesh<2,2>",
+                       "MutableVertexMesh<3,3>"
+                       ]
 
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
@@ -54,11 +77,70 @@ def update_builder(builder):
     
     builder.class_('SharedPottsMeshGenerator<3>').include()  
     builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
+    builder.class_('SharedHoneycombMeshGenerator').include()  
+    builder.class_('SharedHoneycombMeshGenerator').rename("HoneycombMeshGenerator")
+    builder.class_('SharedHoneycombVertexMeshGenerator').include()  
+    builder.class_('SharedHoneycombVertexMeshGenerator').rename("HoneycombVertexMeshGenerator")
 
     # Do not return the non-const reference to the location
     returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
     returns_non_const_ref.exclude()
+    returns_non_const_ref = builder.class_('ChastePoint<2>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 2> &")
+    returns_non_const_ref.exclude()
     
+    builder.class_('AbstractMesh<3,3>').member_functions("GetNode").exclude()
+    builder.class_('AbstractMesh<2,2>').member_functions("GetNode").exclude()
+    builder.class_('AbstractMesh<3,3>').member_functions("GetNodeOrHaloNode").exclude()
+    builder.class_('AbstractMesh<2,2>').member_functions("GetNodeOrHaloNode").exclude()
+    builder.class_('AbstractMesh<3,3>').member_functions("GetNodeFromPrePermutationIndex").exclude()
+    builder.class_('AbstractMesh<2,2>').member_functions("GetNodeFromPrePermutationIndex").exclude()
+    builder.class_('AbstractMesh<3,3>').member_functions("GetDistributedVectorFactory").exclude()
+    builder.class_('AbstractMesh<2,2>').member_functions("GetDistributedVectorFactory").exclude()
+    builder.class_('AbstractMesh<3,3>').member_functions("rGetNodePermutation").exclude()
+    builder.class_('AbstractMesh<2,2>').member_functions("rGetNodePermutation").exclude()
+    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetElement").exclude()
+    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetElement").exclude()
+    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetBoundaryElement").exclude()
+    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetBoundaryElement").exclude()
     builder.class_('PottsMesh<3>').member_functions("GetElement").exclude()
+    builder.class_('PottsMesh<2>').member_functions("GetElement").exclude()
+    builder.class_('VertexMesh<3,3>').member_functions("GetElement").exclude()
+    builder.class_('VertexMesh<2,2>').member_functions("GetElement").exclude()
+    builder.class_('VertexMesh<3,3>').member_functions("GetFace").exclude()
+    builder.class_('VertexMesh<2,2>').member_functions("GetFace").exclude()
+    builder.class_('NodesOnlyMesh<3>').member_functions("GetBoxCollection").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("GetBoxCollection").exclude()
+    builder.class_('NodesOnlyMesh<3>').member_functions("GetNodeOrHaloNode").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("GetNodeOrHaloNode").exclude()
+    builder.class_('NodesOnlyMesh<3>').member_functions("rGetHaloNodesToSendLeft").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("rGetHaloNodesToSendLeft").exclude()
+    builder.class_('NodesOnlyMesh<3>').member_functions("rGetHaloNodesToSendRight").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("rGetHaloNodesToSendRight").exclude() 
+    builder.class_('NodesOnlyMesh<3>').member_functions("rGetInitiallyOwnedNodes").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("rGetInitiallyOwnedNodes").exclude()  
+    builder.class_('NodesOnlyMesh<3>').member_functions("rGetNodesToSendLeft").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("rGetNodesToSendLeft").exclude()  
+    builder.class_('NodesOnlyMesh<3>').member_functions("rGetNodesToSendRight").exclude()
+    builder.class_('NodesOnlyMesh<2>').member_functions("rGetNodesToSendRight").exclude()         
+    
+    builder.class_('Node<3>').member_functions("rGetModifiableLocation").exclude()
+    builder.class_('Node<2>').member_functions("rGetModifiableLocation").exclude()
+    builder.class_('Node<3>').member_functions("rGetNeighbours").exclude()
+    builder.class_('Node<2>').member_functions("rGetNeighbours").exclude()
+    builder.class_('Node<3>').member_functions("rGetContainingElementIndices").exclude()
+    builder.class_('Node<2>').member_functions("rGetContainingElementIndices").exclude()
+    builder.class_('Node<3>').member_functions("rGetNodeAttributes").exclude()
+    builder.class_('Node<2>').member_functions("rGetNodeAttributes").exclude()
+    builder.class_('Node<3>').member_functions("rGetAppliedForce").exclude()
+    builder.class_('Node<2>').member_functions("rGetAppliedForce").exclude()
+    builder.class_('Node<3>').member_functions("rGetContainingBoundaryElementIndices").exclude()
+    builder.class_('Node<2>').member_functions("rGetContainingBoundaryElementIndices").exclude()
+    
+    builder.class_('NodeAttributes<3>').member_functions("rGetAttributes").exclude()
+    builder.class_('NodeAttributes<2>').member_functions("rGetAttributes").exclude()
+    builder.class_('NodeAttributes<3>').member_functions("rGetNeighbours").exclude()
+    builder.class_('NodeAttributes<2>').member_functions("rGetNeighbours").exclude()
+    builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").exclude()
+    builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").exclude()
         
     return builder
