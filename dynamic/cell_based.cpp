@@ -246,6 +246,134 @@ struct AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper : Abstract
 
 };
 
+struct AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper : AbstractCellBasedSimulationModifier< 2, 2 >, bp::wrapper< AbstractCellBasedSimulationModifier< 2, 2 > > {
+
+    AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper( )
+    : AbstractCellBasedSimulationModifier<2, 2>( )
+      , bp::wrapper< AbstractCellBasedSimulationModifier< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" );
+        func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper : AbstractCellBasedSimulationModifier< 3, 3 >, bp::wrapper< AbstractCellBasedSimulationModifier< 3, 3 > > {
+
+    AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper( )
+    : AbstractCellBasedSimulationModifier<3, 3>( )
+      , bp::wrapper< AbstractCellBasedSimulationModifier< 3, 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" );
+        func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
 struct AbstractCellCycleModel_wrapper : AbstractCellCycleModel, bp::wrapper< AbstractCellCycleModel > {
 
     AbstractCellCycleModel_wrapper(::AbstractCellCycleModel const & rModel )
@@ -2618,6 +2746,162 @@ struct UniformCellCycleModel_wrapper : UniformCellCycleModel, bp::wrapper< Unifo
 
 };
 
+struct VtkSceneModifier_less__2__greater__wrapper : VtkSceneModifier< 2 >, bp::wrapper< VtkSceneModifier< 2 > > {
+
+    VtkSceneModifier_less__2__greater__wrapper(VtkSceneModifier<2> const & arg )
+    : VtkSceneModifier<2>( arg )
+      , bp::wrapper< VtkSceneModifier< 2 > >(){
+        // copy constructor
+        
+    }
+
+    VtkSceneModifier_less__2__greater__wrapper( )
+    : VtkSceneModifier<2>( )
+      , bp::wrapper< VtkSceneModifier< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->VtkSceneModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        VtkSceneModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->VtkSceneModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        VtkSceneModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->VtkSceneModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        VtkSceneModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct VtkSceneModifier_less__3__greater__wrapper : VtkSceneModifier< 3 >, bp::wrapper< VtkSceneModifier< 3 > > {
+
+    VtkSceneModifier_less__3__greater__wrapper(VtkSceneModifier<3> const & arg )
+    : VtkSceneModifier<3>( arg )
+      , bp::wrapper< VtkSceneModifier< 3 > >(){
+        // copy constructor
+        
+    }
+
+    VtkSceneModifier_less__3__greater__wrapper( )
+    : VtkSceneModifier<3>( )
+      , bp::wrapper< VtkSceneModifier< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->VtkSceneModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        VtkSceneModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->VtkSceneModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        VtkSceneModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->VtkSceneModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        VtkSceneModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+};
+
 namespace boost { namespace python { namespace indexing {
 
 template<>
@@ -2993,6 +3277,172 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "rGetCellPopulation"
             , (::AbstractCellPopulation< 3, 3 > const & ( ::AbstractCellBasedSimulation<3, 3>::* )(  )const)( &::AbstractCellBasedSimulation< 3, 3 >::rGetCellPopulation )
             , bp::return_value_policy< bp::copy_const_reference >() );
+
+    { //::AbstractCellBasedSimulationModifier< 2, 2 >
+        typedef bp::class_< AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellBasedSimulationModifier2_2_exposer_t;
+        AbstractCellBasedSimulationModifier2_2_exposer_t AbstractCellBasedSimulationModifier2_2_exposer = AbstractCellBasedSimulationModifier2_2_exposer_t( "AbstractCellBasedSimulationModifier2_2", bp::init< >() );
+        bp::scope AbstractCellBasedSimulationModifier2_2_scope( AbstractCellBasedSimulationModifier2_2_exposer );
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::OutputSimulationModifierInfo
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "OutputSimulationModifierInfo"
+                , OutputSimulationModifierInfo_function_type( &::AbstractCellBasedSimulationModifier< 2, 2 >::OutputSimulationModifierInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::OutputSimulationModifierParameters
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "OutputSimulationModifierParameters"
+                , bp::pure_virtual( OutputSimulationModifierParameters_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::OutputSimulationModifierParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve)
+                , default_SetupSolve_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_SetupSolve)
+                , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "UpdateAtEndOfOutputTimeStep"
+                , UpdateAtEndOfOutputTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep)
+                , default_UpdateAtEndOfOutputTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "UpdateAtEndOfSolve"
+                , UpdateAtEndOfSolve_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve)
+                , default_UpdateAtEndOfSolve_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_UpdateAtEndOfSolve)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep
+        
+            typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            AbstractCellBasedSimulationModifier2_2_exposer.def( 
+                "UpdateAtEndOfTimeStep"
+                , UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep)
+                , default_UpdateAtEndOfTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<2, 2> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+    }
+
+    { //::AbstractCellBasedSimulationModifier< 3, 3 >
+        typedef bp::class_< AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellBasedSimulationModifier3_3_exposer_t;
+        AbstractCellBasedSimulationModifier3_3_exposer_t AbstractCellBasedSimulationModifier3_3_exposer = AbstractCellBasedSimulationModifier3_3_exposer_t( "AbstractCellBasedSimulationModifier3_3", bp::init< >() );
+        bp::scope AbstractCellBasedSimulationModifier3_3_scope( AbstractCellBasedSimulationModifier3_3_exposer );
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::OutputSimulationModifierInfo
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "OutputSimulationModifierInfo"
+                , OutputSimulationModifierInfo_function_type( &::AbstractCellBasedSimulationModifier< 3, 3 >::OutputSimulationModifierInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::OutputSimulationModifierParameters
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "OutputSimulationModifierParameters"
+                , bp::pure_virtual( OutputSimulationModifierParameters_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::OutputSimulationModifierParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve)
+                , default_SetupSolve_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_SetupSolve)
+                , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "UpdateAtEndOfOutputTimeStep"
+                , UpdateAtEndOfOutputTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep)
+                , default_UpdateAtEndOfOutputTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "UpdateAtEndOfSolve"
+                , UpdateAtEndOfSolve_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve)
+                , default_UpdateAtEndOfSolve_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_UpdateAtEndOfSolve)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep
+        
+            typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            AbstractCellBasedSimulationModifier3_3_exposer.def( 
+                "UpdateAtEndOfTimeStep"
+                , UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep)
+                , default_UpdateAtEndOfTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<3, 3> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+    }
 
     { //::AbstractCellCycleModel
         typedef bp::class_< AbstractCellCycleModel_wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellCycleModel_exposer_t;
@@ -3675,9 +4125,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
         bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
@@ -5654,6 +6104,76 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::AbstractCellCycleModel::* )( double ))(&::AbstractCellCycleModel::SetBirthTime)
             , (void ( UniformCellCycleModel_wrapper::* )( double ))(&UniformCellCycleModel_wrapper::default_SetBirthTime)
             , ( bp::arg("birthTime") ) );
+
+    bp::class_< VtkSceneModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > > >( "VtkSceneModifier2", bp::init< >() )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::VtkSceneModifier<2>::* )( ::out_stream & ))(&::VtkSceneModifier< 2 >::OutputSimulationModifierParameters)
+            , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&VtkSceneModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetVtkScene"
+            , (void ( ::VtkSceneModifier<2>::* )( ::boost::shared_ptr< VtkScene< 2 > > ))( &::VtkSceneModifier< 2 >::SetVtkScene )
+            , ( bp::arg("pScene") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::VtkSceneModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&::VtkSceneModifier< 2 >::SetupSolve)
+            , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&VtkSceneModifier_less__2__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::VtkSceneModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::VtkSceneModifier< 2 >::UpdateAtEndOfTimeStep)
+            , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&VtkSceneModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateCellData"
+            , (void ( ::VtkSceneModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))( &::VtkSceneModifier< 2 >::UpdateCellData )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&VtkSceneModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve)
+            , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&VtkSceneModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< VtkSceneModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > > >( "VtkSceneModifier3", bp::init< >() )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::VtkSceneModifier<3>::* )( ::out_stream & ))(&::VtkSceneModifier< 3 >::OutputSimulationModifierParameters)
+            , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&VtkSceneModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetVtkScene"
+            , (void ( ::VtkSceneModifier<3>::* )( ::boost::shared_ptr< VtkScene< 3 > > ))( &::VtkSceneModifier< 3 >::SetVtkScene )
+            , ( bp::arg("pScene") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::VtkSceneModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&::VtkSceneModifier< 3 >::SetupSolve)
+            , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&VtkSceneModifier_less__3__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::VtkSceneModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::VtkSceneModifier< 3 >::UpdateAtEndOfTimeStep)
+            , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&VtkSceneModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateCellData"
+            , (void ( ::VtkSceneModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))( &::VtkSceneModifier< 3 >::UpdateCellData )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&VtkSceneModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve)
+            , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&VtkSceneModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
 
     { //::Instantiation
     

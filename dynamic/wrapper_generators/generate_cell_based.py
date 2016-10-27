@@ -66,7 +66,11 @@ def update_builder(builder):
                        "Identifiable",
                        "DiffusionCaUpdateRule<2>",
                        "AbstractCaUpdateRule<2>",
-                       "AbstractUpdateRule<2>"]
+                       "AbstractUpdateRule<2>",
+                       "VtkSceneModifier<2>",
+                       "VtkSceneModifier<3>",
+                       "AbstractCellBasedSimulationModifier<2,2>",
+                       "AbstractCellBasedSimulationModifier<3,3>"]
 
     for eachClass in include_classes:
         builder.class_(eachClass).include()  

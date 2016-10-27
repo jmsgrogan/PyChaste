@@ -1,3 +1,4 @@
+visualization/TestVtkScene.hpp
 python/core/TestOutputFileHandlerPython.py
 python/core/TestFileFinderPython.py
 python/mesh/TestChastePointPython.py

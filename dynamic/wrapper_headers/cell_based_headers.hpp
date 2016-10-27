@@ -17,7 +17,11 @@
 #include "DiffusionCaUpdateRule.hpp"
 #include "AbstractCaUpdateRule.hpp"
 #include "AbstractUpdateRule.hpp"
+#include "VtkSceneModifier.hpp"
+#include "AbstractCellBasedSimulationModifier.hpp"
 
+template class AbstractCellBasedSimulationModifier<2,2>;
+template class AbstractCellBasedSimulationModifier<3,3>;
 template class AbstractUpdateRule<2>;
 template class AbstractCaUpdateRule<2>;
 template class DiffusionCaUpdateRule<2>;
@@ -31,6 +35,8 @@ template class GenericCellsGenerator<2>;
 template class GenericCellsGenerator<3>;
 template class OnLatticeSimulation<2>;
 template class OnLatticeSimulation<3>;
+template class VtkSceneModifier<2>;
+template class VtkSceneModifier<3>;
 template class AbstractCellBasedSimulation<2, 2>;
 template class AbstractCellBasedSimulation<3, 3>;
 
