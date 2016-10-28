@@ -15,7 +15,7 @@ git clone https://chaste.cs.ox.ac.uk/git/chaste.git $CHASTE_SOURCE_DIR
 The project code itself can be obtained by doing: 
 
 ```bash
-git clone https://github.com/jmsgrogan/MicrovesselChaste.git $MICROVESSEL_PROJECT_SOURCE_DIR
+git clone https://github.com/jmsgrogan/PyChaste.git $PYCHASTE_PROJECT_SOURCE_DIR
 ```
 
 The PyChaste project code needs to be included in the `projects` folder of the main Chaste source. This can be done with a symbolic link:
