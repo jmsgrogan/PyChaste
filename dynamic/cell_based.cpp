@@ -2895,6 +2895,262 @@ struct AbstractOnLatticeCellPopulation_less__3__greater__wrapper : AbstractOnLat
 
 };
 
+struct AbstractTargetAreaModifier_less__2__greater__wrapper : AbstractTargetAreaModifier< 2 >, bp::wrapper< AbstractTargetAreaModifier< 2 > > {
+
+    AbstractTargetAreaModifier_less__2__greater__wrapper( )
+    : AbstractTargetAreaModifier<2>( )
+      , bp::wrapper< AbstractTargetAreaModifier< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractTargetAreaModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractTargetAreaModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractTargetAreaModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractTargetAreaModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateTargetAreaOfCell( ::CellPtr const pCell ){
+        bp::override func_UpdateTargetAreaOfCell = this->get_override( "UpdateTargetAreaOfCell" );
+        func_UpdateTargetAreaOfCell( pCell );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractTargetAreaModifier_less__3__greater__wrapper : AbstractTargetAreaModifier< 3 >, bp::wrapper< AbstractTargetAreaModifier< 3 > > {
+
+    AbstractTargetAreaModifier_less__3__greater__wrapper( )
+    : AbstractTargetAreaModifier<3>( )
+      , bp::wrapper< AbstractTargetAreaModifier< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractTargetAreaModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractTargetAreaModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateTargetAreaOfCell( ::CellPtr const pCell ){
+        bp::override func_UpdateTargetAreaOfCell = this->get_override( "UpdateTargetAreaOfCell" );
+        func_UpdateTargetAreaOfCell( pCell );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper : AbstractTwoBodyInteractionForce< 2, 2 >, bp::wrapper< AbstractTwoBodyInteractionForce< 2, 2 > > {
+
+    AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper( )
+    : AbstractTwoBodyInteractionForce<2, 2>( )
+      , bp::wrapper< AbstractTwoBodyInteractionForce< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 2, 2 > & rCellPopulation ){
+        bp::override func_CalculateForceBetweenNodes = this->get_override( "CalculateForceBetweenNodes" );
+        return func_CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 2, 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        AbstractTwoBodyInteractionForce< 2, 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+};
+
+struct AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper : AbstractTwoBodyInteractionForce< 3, 3 >, bp::wrapper< AbstractTwoBodyInteractionForce< 3, 3 > > {
+
+    AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper( )
+    : AbstractTwoBodyInteractionForce<3, 3>( )
+      , bp::wrapper< AbstractTwoBodyInteractionForce< 3, 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation ){
+        bp::override func_CalculateForceBetweenNodes = this->get_override( "CalculateForceBetweenNodes" );
+        return func_CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+};
+
 struct CaBasedCellPopulation_less__2__greater__wrapper : CaBasedCellPopulation< 2 >, bp::wrapper< CaBasedCellPopulation< 2 > > {
 
     CaBasedCellPopulation_less__2__greater__wrapper(::PottsMesh< 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices, unsigned int latticeCarryingCapacity=1U, bool deleteMesh=false, bool validate=false )
@@ -3773,6 +4029,162 @@ struct DiffusionCaUpdateRule_less__2__greater__wrapper : DiffusionCaUpdateRule< 
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         DiffusionCaUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper : GeneralisedLinearSpringForce< 2, 2 >, bp::wrapper< GeneralisedLinearSpringForce< 2, 2 > > {
+
+    GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper(GeneralisedLinearSpringForce<2, 2> const & arg )
+    : GeneralisedLinearSpringForce<2, 2>( arg )
+      , bp::wrapper< GeneralisedLinearSpringForce< 2, 2 > >(){
+        // copy constructor
+        
+    }
+
+    GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper( )
+    : GeneralisedLinearSpringForce<2, 2>( )
+      , bp::wrapper< GeneralisedLinearSpringForce< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_CalculateForceBetweenNodes = this->get_override( "CalculateForceBetweenNodes" ) )
+            return func_CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->GeneralisedLinearSpringForce< 2, 2 >::CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        return GeneralisedLinearSpringForce< 2, 2 >::CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->GeneralisedLinearSpringForce< 2, 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        GeneralisedLinearSpringForce< 2, 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual double VariableSpringConstantMultiplicationFactor( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 2, 2 > & rCellPopulation, bool isCloserThanRestLength ) {
+        if( bp::override func_VariableSpringConstantMultiplicationFactor = this->get_override( "VariableSpringConstantMultiplicationFactor" ) )
+            return func_VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+        else{
+            return this->GeneralisedLinearSpringForce< 2, 2 >::VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+        }
+    }
+    
+    double default_VariableSpringConstantMultiplicationFactor( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 2, 2 > & rCellPopulation, bool isCloserThanRestLength ) {
+        return GeneralisedLinearSpringForce< 2, 2 >::VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+};
+
+struct GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper : GeneralisedLinearSpringForce< 3, 3 >, bp::wrapper< GeneralisedLinearSpringForce< 3, 3 > > {
+
+    GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper(GeneralisedLinearSpringForce<3, 3> const & arg )
+    : GeneralisedLinearSpringForce<3, 3>( arg )
+      , bp::wrapper< GeneralisedLinearSpringForce< 3, 3 > >(){
+        // copy constructor
+        
+    }
+
+    GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper( )
+    : GeneralisedLinearSpringForce<3, 3>( )
+      , bp::wrapper< GeneralisedLinearSpringForce< 3, 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_CalculateForceBetweenNodes = this->get_override( "CalculateForceBetweenNodes" ) )
+            return func_CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->GeneralisedLinearSpringForce< 3, 3 >::CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateForceBetweenNodes( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        return GeneralisedLinearSpringForce< 3, 3 >::CalculateForceBetweenNodes( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual double VariableSpringConstantMultiplicationFactor( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation, bool isCloserThanRestLength ) {
+        if( bp::override func_VariableSpringConstantMultiplicationFactor = this->get_override( "VariableSpringConstantMultiplicationFactor" ) )
+            return func_VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+        else{
+            return this->GeneralisedLinearSpringForce< 3, 3 >::VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+        }
+    }
+    
+    double default_VariableSpringConstantMultiplicationFactor( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation, bool isCloserThanRestLength ) {
+        return GeneralisedLinearSpringForce< 3, 3 >::VariableSpringConstantMultiplicationFactor( nodeAGlobalIndex, nodeBGlobalIndex, boost::ref(rCellPopulation), isCloserThanRestLength );
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
     }
 
 };
@@ -4721,6 +5133,114 @@ struct MeshBasedCellPopulation_less__3_comma__3__greater__wrapper : MeshBasedCel
     
     void default_UpdateNodeLocations( double dt ) {
         AbstractOffLatticeCellPopulation< 3, 3 >::UpdateNodeLocations( dt );
+    }
+
+};
+
+struct NagaiHondaForce_less__2__greater__wrapper : NagaiHondaForce< 2 >, bp::wrapper< NagaiHondaForce< 2 > > {
+
+    NagaiHondaForce_less__2__greater__wrapper(NagaiHondaForce<2> const & arg )
+    : NagaiHondaForce<2>( arg )
+      , bp::wrapper< NagaiHondaForce< 2 > >(){
+        // copy constructor
+        
+    }
+
+    NagaiHondaForce_less__2__greater__wrapper( )
+    : NagaiHondaForce<2>( )
+      , bp::wrapper< NagaiHondaForce< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->NagaiHondaForce< 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        NagaiHondaForce< 2 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual double GetAdhesionParameter( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::VertexBasedCellPopulation< 2 > & rVertexCellPopulation ) {
+        if( bp::override func_GetAdhesionParameter = this->get_override( "GetAdhesionParameter" ) )
+            return func_GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+        else{
+            return this->NagaiHondaForce< 2 >::GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+        }
+    }
+    
+    double default_GetAdhesionParameter( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::VertexBasedCellPopulation< 2 > & rVertexCellPopulation ) {
+        return NagaiHondaForce< 2 >::GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->NagaiHondaForce< 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        NagaiHondaForce< 2 >::OutputForceParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct NagaiHondaForce_less__3__greater__wrapper : NagaiHondaForce< 3 >, bp::wrapper< NagaiHondaForce< 3 > > {
+
+    NagaiHondaForce_less__3__greater__wrapper(NagaiHondaForce<3> const & arg )
+    : NagaiHondaForce<3>( arg )
+      , bp::wrapper< NagaiHondaForce< 3 > >(){
+        // copy constructor
+        
+    }
+
+    NagaiHondaForce_less__3__greater__wrapper( )
+    : NagaiHondaForce<3>( )
+      , bp::wrapper< NagaiHondaForce< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_AddForceContribution = this->get_override( "AddForceContribution" ) )
+            func_AddForceContribution( boost::ref(rCellPopulation) );
+        else{
+            this->NagaiHondaForce< 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_AddForceContribution( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        NagaiHondaForce< 3 >::AddForceContribution( boost::ref(rCellPopulation) );
+    }
+
+    virtual double GetAdhesionParameter( ::Node< 3 > * pNodeA, ::Node< 3 > * pNodeB, ::VertexBasedCellPopulation< 3 > & rVertexCellPopulation ) {
+        if( bp::override func_GetAdhesionParameter = this->get_override( "GetAdhesionParameter" ) )
+            return func_GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+        else{
+            return this->NagaiHondaForce< 3 >::GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+        }
+    }
+    
+    double default_GetAdhesionParameter( ::Node< 3 > * pNodeA, ::Node< 3 > * pNodeB, ::VertexBasedCellPopulation< 3 > & rVertexCellPopulation ) {
+        return NagaiHondaForce< 3 >::GetAdhesionParameter( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rVertexCellPopulation) );
+    }
+
+    virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
+            func_OutputForceParameters( boost::ref(rParamsFile) );
+        else{
+            this->NagaiHondaForce< 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputForceParameters( ::out_stream & rParamsFile ) {
+        NagaiHondaForce< 3 >::OutputForceParameters( boost::ref(rParamsFile) );
     }
 
 };
@@ -6869,6 +7389,186 @@ struct PottsBasedCellPopulation_less__3__greater__wrapper : PottsBasedCellPopula
 
 };
 
+struct SimpleTargetAreaModifier_less__2__greater__wrapper : SimpleTargetAreaModifier< 2 >, bp::wrapper< SimpleTargetAreaModifier< 2 > > {
+
+    SimpleTargetAreaModifier_less__2__greater__wrapper(SimpleTargetAreaModifier<2> const & arg )
+    : SimpleTargetAreaModifier<2>( arg )
+      , bp::wrapper< SimpleTargetAreaModifier< 2 > >(){
+        // copy constructor
+        
+    }
+
+    SimpleTargetAreaModifier_less__2__greater__wrapper( )
+    : SimpleTargetAreaModifier<2>( )
+      , bp::wrapper< SimpleTargetAreaModifier< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->SimpleTargetAreaModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        SimpleTargetAreaModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void UpdateTargetAreaOfCell( ::CellPtr const pCell ) {
+        if( bp::override func_UpdateTargetAreaOfCell = this->get_override( "UpdateTargetAreaOfCell" ) )
+            func_UpdateTargetAreaOfCell( pCell );
+        else{
+            this->SimpleTargetAreaModifier< 2 >::UpdateTargetAreaOfCell( pCell );
+        }
+    }
+    
+    void default_UpdateTargetAreaOfCell( ::CellPtr const pCell ) {
+        SimpleTargetAreaModifier< 2 >::UpdateTargetAreaOfCell( pCell );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractTargetAreaModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractTargetAreaModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct SimpleTargetAreaModifier_less__3__greater__wrapper : SimpleTargetAreaModifier< 3 >, bp::wrapper< SimpleTargetAreaModifier< 3 > > {
+
+    SimpleTargetAreaModifier_less__3__greater__wrapper(SimpleTargetAreaModifier<3> const & arg )
+    : SimpleTargetAreaModifier<3>( arg )
+      , bp::wrapper< SimpleTargetAreaModifier< 3 > >(){
+        // copy constructor
+        
+    }
+
+    SimpleTargetAreaModifier_less__3__greater__wrapper( )
+    : SimpleTargetAreaModifier<3>( )
+      , bp::wrapper< SimpleTargetAreaModifier< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->SimpleTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        SimpleTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void UpdateTargetAreaOfCell( ::CellPtr const pCell ) {
+        if( bp::override func_UpdateTargetAreaOfCell = this->get_override( "UpdateTargetAreaOfCell" ) )
+            func_UpdateTargetAreaOfCell( pCell );
+        else{
+            this->SimpleTargetAreaModifier< 3 >::UpdateTargetAreaOfCell( pCell );
+        }
+    }
+    
+    void default_UpdateTargetAreaOfCell( ::CellPtr const pCell ) {
+        SimpleTargetAreaModifier< 3 >::UpdateTargetAreaOfCell( pCell );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractTargetAreaModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractTargetAreaModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
 struct SimulationTime_wrapper : SimulationTime, bp::wrapper< SimulationTime > {
 
     SimulationTime_wrapper( )
@@ -8537,6 +9237,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::shared_ptr< Identifiable > >();
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
     }
 
     { //::AbstractCellBasedSimulationModifier< 3, 3 >
@@ -8619,6 +9321,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
     }
 
@@ -9301,14 +10005,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
     }
 
     bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
@@ -9607,7 +10311,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , ( bp::arg("index") ) )
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
@@ -10049,6 +10753,28 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::default_WriteResultsToFiles)
             , ( bp::arg("rDirectory") ) );
 
+    { //::AbstractForce< 2, 2 >
+        typedef bp::class_< AbstractForce< 2, 2 >, bp::bases< Identifiable >, boost::noncopyable > AbstractForce_less__2_comma__2__greater__exposer_t;
+        AbstractForce_less__2_comma__2__greater__exposer_t AbstractForce_less__2_comma__2__greater__exposer = AbstractForce_less__2_comma__2__greater__exposer_t( "AbstractForce_less__2_comma__2__greater_", bp::no_init );
+        bp::scope AbstractForce_less__2_comma__2__greater__scope( AbstractForce_less__2_comma__2__greater__exposer );
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractForce<2, 2> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractForce< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractTwoBodyInteractionForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
+    }
+
+    { //::AbstractForce< 3, 3 >
+        typedef bp::class_< AbstractForce< 3, 3 >, bp::bases< Identifiable >, boost::noncopyable > AbstractForce_less__3_comma__3__greater__exposer_t;
+        AbstractForce_less__3_comma__3__greater__exposer_t AbstractForce_less__3_comma__3__greater__exposer = AbstractForce_less__3_comma__3__greater__exposer_t( "AbstractForce_less__3_comma__3__greater_", bp::no_init );
+        bp::scope AbstractForce_less__3_comma__3__greater__scope( AbstractForce_less__3_comma__3__greater__exposer );
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractForce<3, 3> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractForce< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractTwoBodyInteractionForce< 3, 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 3, 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
+    }
+
     bp::class_< AbstractOnLatticeCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOnLatticeCellPopulation2", bp::no_init )    
         .def( 
             "AddUpdateRule"
@@ -10351,6 +11077,152 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "WriteVtkResultsToFile"
             , (void ( AbstractOnLatticeCellPopulation_less__3__greater__wrapper::* )( ::std::string const & ))(&AbstractOnLatticeCellPopulation_less__3__greater__wrapper::WriteVtkResultsToFile)
             , ( bp::arg("rDirectory") ) );
+
+    bp::class_< AbstractTargetAreaModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::noncopyable >( "AbstractTargetAreaModifier2", bp::init< >() )    
+        .def( 
+            "GetReferenceTargetArea"
+            , (double ( ::AbstractTargetAreaModifier<2>::* )(  ))( &::AbstractTargetAreaModifier< 2 >::GetReferenceTargetArea ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::out_stream & ))(&::AbstractTargetAreaModifier< 2 >::OutputSimulationModifierParameters)
+            , (void ( AbstractTargetAreaModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&AbstractTargetAreaModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetReferenceTargetArea"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( double ))( &::AbstractTargetAreaModifier< 2 >::SetReferenceTargetArea )
+            , ( bp::arg("referenceTargetArea") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&::AbstractTargetAreaModifier< 2 >::SetupSolve)
+            , (void ( AbstractTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&AbstractTargetAreaModifier_less__2__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep)
+            , (void ( AbstractTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateTargetAreaOfCell"
+            , bp::pure_virtual( (void ( ::AbstractTargetAreaModifier<2>::* )( ::CellPtr const ))(&::AbstractTargetAreaModifier< 2 >::UpdateTargetAreaOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "UpdateTargetAreas"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))( &::AbstractTargetAreaModifier< 2 >::UpdateTargetAreas )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve)
+            , (void ( AbstractTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< AbstractTargetAreaModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::noncopyable >( "AbstractTargetAreaModifier3", bp::init< >() )    
+        .def( 
+            "GetReferenceTargetArea"
+            , (double ( ::AbstractTargetAreaModifier<3>::* )(  ))( &::AbstractTargetAreaModifier< 3 >::GetReferenceTargetArea ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::out_stream & ))(&::AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters)
+            , (void ( AbstractTargetAreaModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&AbstractTargetAreaModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetReferenceTargetArea"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( double ))( &::AbstractTargetAreaModifier< 3 >::SetReferenceTargetArea )
+            , ( bp::arg("referenceTargetArea") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&::AbstractTargetAreaModifier< 3 >::SetupSolve)
+            , (void ( AbstractTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&AbstractTargetAreaModifier_less__3__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep)
+            , (void ( AbstractTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateTargetAreaOfCell"
+            , bp::pure_virtual( (void ( ::AbstractTargetAreaModifier<3>::* )( ::CellPtr const ))(&::AbstractTargetAreaModifier< 3 >::UpdateTargetAreaOfCell) )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "UpdateTargetAreas"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))( &::AbstractTargetAreaModifier< 3 >::UpdateTargetAreas )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve)
+            , (void ( AbstractTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper, bp::bases< AbstractForce< 2, 2 > >, boost::noncopyable >( "AbstractTwoBodyInteractionForce2_2", bp::init< >() )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution)
+            , (void ( AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "CalculateForceBetweenNodes"
+            , bp::pure_virtual( (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 2, 2 > & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::CalculateForceBetweenNodes) )
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetCutOffLength"
+            , (double ( ::AbstractTwoBodyInteractionForce<2, 2>::* )(  ))( &::AbstractTwoBodyInteractionForce< 2, 2 >::GetCutOffLength ) )    
+        .def( 
+            "GetUseCutOffLength"
+            , (bool ( ::AbstractTwoBodyInteractionForce<2, 2>::* )(  ))( &::AbstractTwoBodyInteractionForce< 2, 2 >::GetUseCutOffLength ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::OutputForceParameters)
+            , (void ( AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCutOffLength"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( double ))( &::AbstractTwoBodyInteractionForce< 2, 2 >::SetCutOffLength )
+            , ( bp::arg("cutOffLength") ) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractTwoBodyInteractionForce_less__2_comma__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) );
+
+    bp::class_< AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper, bp::bases< AbstractForce< 3, 3 > >, boost::noncopyable >( "AbstractTwoBodyInteractionForce3_3", bp::init< >() )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution)
+            , (void ( AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "CalculateForceBetweenNodes"
+            , bp::pure_virtual( (::boost::numeric::ublas::c_vector< double, 3 > ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 3, 3 > & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::CalculateForceBetweenNodes) )
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetCutOffLength"
+            , (double ( ::AbstractTwoBodyInteractionForce<3, 3>::* )(  ))( &::AbstractTwoBodyInteractionForce< 3, 3 >::GetCutOffLength ) )    
+        .def( 
+            "GetUseCutOffLength"
+            , (bool ( ::AbstractTwoBodyInteractionForce<3, 3>::* )(  ))( &::AbstractTwoBodyInteractionForce< 3, 3 >::GetUseCutOffLength ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters)
+            , (void ( AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCutOffLength"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( double ))( &::AbstractTwoBodyInteractionForce< 3, 3 >::SetCutOffLength )
+            , ( bp::arg("cutOffLength") ) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile)
+            , (void ( AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) );
 
     { //::CaBasedCellPopulation< 2 >
         typedef bp::class_< CaBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractOnLatticeCellPopulation< 2 > >, boost::noncopyable > CaBasedCellPopulation2_exposer_t;
@@ -11614,6 +12486,102 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "SetDiffusionParameter"
             , (void ( ::DiffusionCaUpdateRule<2>::* )( double ))( &::DiffusionCaUpdateRule< 2 >::SetDiffusionParameter )
             , ( bp::arg("diffusionParameter") ) );
+
+    bp::class_< GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper, bp::bases< AbstractTwoBodyInteractionForce< 2, 2 > > >( "GeneralisedLinearSpringForce2_2", bp::init< >() )    
+        .def( 
+            "CalculateForceBetweenNodes"
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::GeneralisedLinearSpringForce<2, 2>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 2, 2 > & ))(&::GeneralisedLinearSpringForce< 2, 2 >::CalculateForceBetweenNodes)
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,::AbstractCellPopulation< 2, 2 > & ))(&GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::default_CalculateForceBetweenNodes)
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetMeinekeDivisionRestingSpringLength"
+            , (double ( ::GeneralisedLinearSpringForce<2, 2>::* )(  ))( &::GeneralisedLinearSpringForce< 2, 2 >::GetMeinekeDivisionRestingSpringLength ) )    
+        .def( 
+            "GetMeinekeSpringGrowthDuration"
+            , (double ( ::GeneralisedLinearSpringForce<2, 2>::* )(  ))( &::GeneralisedLinearSpringForce< 2, 2 >::GetMeinekeSpringGrowthDuration ) )    
+        .def( 
+            "GetMeinekeSpringStiffness"
+            , (double ( ::GeneralisedLinearSpringForce<2, 2>::* )(  ))( &::GeneralisedLinearSpringForce< 2, 2 >::GetMeinekeSpringStiffness ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::GeneralisedLinearSpringForce<2, 2>::* )( ::out_stream & ))(&::GeneralisedLinearSpringForce< 2, 2 >::OutputForceParameters)
+            , (void ( GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetMeinekeDivisionRestingSpringLength"
+            , (void ( ::GeneralisedLinearSpringForce<2, 2>::* )( double ))( &::GeneralisedLinearSpringForce< 2, 2 >::SetMeinekeDivisionRestingSpringLength )
+            , ( bp::arg("divisionRestingSpringLength") ) )    
+        .def( 
+            "SetMeinekeSpringGrowthDuration"
+            , (void ( ::GeneralisedLinearSpringForce<2, 2>::* )( double ))( &::GeneralisedLinearSpringForce< 2, 2 >::SetMeinekeSpringGrowthDuration )
+            , ( bp::arg("springGrowthDuration") ) )    
+        .def( 
+            "SetMeinekeSpringStiffness"
+            , (void ( ::GeneralisedLinearSpringForce<2, 2>::* )( double ))( &::GeneralisedLinearSpringForce< 2, 2 >::SetMeinekeSpringStiffness )
+            , ( bp::arg("springStiffness") ) )    
+        .def( 
+            "VariableSpringConstantMultiplicationFactor"
+            , (double ( ::GeneralisedLinearSpringForce<2, 2>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 2, 2 > &,bool ))(&::GeneralisedLinearSpringForce< 2, 2 >::VariableSpringConstantMultiplicationFactor)
+            , (double ( GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,::AbstractCellPopulation< 2, 2 > &,bool ))(&GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::default_VariableSpringConstantMultiplicationFactor)
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation"), bp::arg("isCloserThanRestLength") ) )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::AddForceContribution)
+            , (void ( GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractTwoBodyInteractionForce<2, 2>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 2, 2 >::WriteDataToVisualizerSetupFile)
+            , (void ( GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) );
+
+    bp::class_< GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper, bp::bases< AbstractTwoBodyInteractionForce< 3, 3 > > >( "GeneralisedLinearSpringForce3_3", bp::init< >() )    
+        .def( 
+            "CalculateForceBetweenNodes"
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( ::GeneralisedLinearSpringForce<3, 3>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 3, 3 > & ))(&::GeneralisedLinearSpringForce< 3, 3 >::CalculateForceBetweenNodes)
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,::AbstractCellPopulation< 3, 3 > & ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_CalculateForceBetweenNodes)
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetMeinekeDivisionRestingSpringLength"
+            , (double ( ::GeneralisedLinearSpringForce<3, 3>::* )(  ))( &::GeneralisedLinearSpringForce< 3, 3 >::GetMeinekeDivisionRestingSpringLength ) )    
+        .def( 
+            "GetMeinekeSpringGrowthDuration"
+            , (double ( ::GeneralisedLinearSpringForce<3, 3>::* )(  ))( &::GeneralisedLinearSpringForce< 3, 3 >::GetMeinekeSpringGrowthDuration ) )    
+        .def( 
+            "GetMeinekeSpringStiffness"
+            , (double ( ::GeneralisedLinearSpringForce<3, 3>::* )(  ))( &::GeneralisedLinearSpringForce< 3, 3 >::GetMeinekeSpringStiffness ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::GeneralisedLinearSpringForce<3, 3>::* )( ::out_stream & ))(&::GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters)
+            , (void ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetMeinekeDivisionRestingSpringLength"
+            , (void ( ::GeneralisedLinearSpringForce<3, 3>::* )( double ))( &::GeneralisedLinearSpringForce< 3, 3 >::SetMeinekeDivisionRestingSpringLength )
+            , ( bp::arg("divisionRestingSpringLength") ) )    
+        .def( 
+            "SetMeinekeSpringGrowthDuration"
+            , (void ( ::GeneralisedLinearSpringForce<3, 3>::* )( double ))( &::GeneralisedLinearSpringForce< 3, 3 >::SetMeinekeSpringGrowthDuration )
+            , ( bp::arg("springGrowthDuration") ) )    
+        .def( 
+            "SetMeinekeSpringStiffness"
+            , (void ( ::GeneralisedLinearSpringForce<3, 3>::* )( double ))( &::GeneralisedLinearSpringForce< 3, 3 >::SetMeinekeSpringStiffness )
+            , ( bp::arg("springStiffness") ) )    
+        .def( 
+            "VariableSpringConstantMultiplicationFactor"
+            , (double ( ::GeneralisedLinearSpringForce<3, 3>::* )( unsigned int,unsigned int,::AbstractCellPopulation< 3, 3 > &,bool ))(&::GeneralisedLinearSpringForce< 3, 3 >::VariableSpringConstantMultiplicationFactor)
+            , (double ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,::AbstractCellPopulation< 3, 3 > &,bool ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_VariableSpringConstantMultiplicationFactor)
+            , ( bp::arg("nodeAGlobalIndex"), bp::arg("nodeBGlobalIndex"), bp::arg("rCellPopulation"), bp::arg("isCloserThanRestLength") ) )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::AddForceContribution)
+            , (void ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "WriteDataToVisualizerSetupFile"
+            , (void ( ::AbstractTwoBodyInteractionForce<3, 3>::* )( ::out_stream & ))(&::AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile)
+            , (void ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+            , ( bp::arg("pVizSetupFile") ) );
 
     bp::class_< GenericCellsGenerator< 2 > >( "GenericCellsGenerator2", bp::init< >() )    
         .def( 
@@ -13072,6 +14040,96 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         
         }
     }
+
+    bp::class_< NagaiHondaForce_less__2__greater__wrapper, bp::bases< AbstractForce< 2, 2 > > >( "NagaiHondaForce2", bp::init< >() )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::NagaiHondaForce<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::NagaiHondaForce< 2 >::AddForceContribution)
+            , (void ( NagaiHondaForce_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&NagaiHondaForce_less__2__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetAdhesionParameter"
+            , (double ( ::NagaiHondaForce<2>::* )( ::Node< 2 > *,::Node< 2 > *,::VertexBasedCellPopulation< 2 > & ))(&::NagaiHondaForce< 2 >::GetAdhesionParameter)
+            , (double ( NagaiHondaForce_less__2__greater__wrapper::* )( ::Node< 2 > *,::Node< 2 > *,::VertexBasedCellPopulation< 2 > & ))(&NagaiHondaForce_less__2__greater__wrapper::default_GetAdhesionParameter)
+            , ( bp::arg("pNodeA"), bp::arg("pNodeB"), bp::arg("rVertexCellPopulation") ) )    
+        .def( 
+            "GetNagaiHondaCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::NagaiHondaForce<2>::* )(  ))( &::NagaiHondaForce< 2 >::GetNagaiHondaCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaCellCellAdhesionEnergyParameter"
+            , (double ( ::NagaiHondaForce<2>::* )(  ))( &::NagaiHondaForce< 2 >::GetNagaiHondaCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaDeformationEnergyParameter"
+            , (double ( ::NagaiHondaForce<2>::* )(  ))( &::NagaiHondaForce< 2 >::GetNagaiHondaDeformationEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaMembraneSurfaceEnergyParameter"
+            , (double ( ::NagaiHondaForce<2>::* )(  ))( &::NagaiHondaForce< 2 >::GetNagaiHondaMembraneSurfaceEnergyParameter ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::NagaiHondaForce<2>::* )( ::out_stream & ))(&::NagaiHondaForce< 2 >::OutputForceParameters)
+            , (void ( NagaiHondaForce_less__2__greater__wrapper::* )( ::out_stream & ))(&NagaiHondaForce_less__2__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetNagaiHondaCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::NagaiHondaForce<2>::* )( double ))( &::NagaiHondaForce< 2 >::SetNagaiHondaCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("nagaiHondaCellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaCellCellAdhesionEnergyParameter"
+            , (void ( ::NagaiHondaForce<2>::* )( double ))( &::NagaiHondaForce< 2 >::SetNagaiHondaCellCellAdhesionEnergyParameter )
+            , ( bp::arg("nagaiHondaCellCellAdhesionEnergyEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaDeformationEnergyParameter"
+            , (void ( ::NagaiHondaForce<2>::* )( double ))( &::NagaiHondaForce< 2 >::SetNagaiHondaDeformationEnergyParameter )
+            , ( bp::arg("nagaiHondaDeformationEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaMembraneSurfaceEnergyParameter"
+            , (void ( ::NagaiHondaForce<2>::* )( double ))( &::NagaiHondaForce< 2 >::SetNagaiHondaMembraneSurfaceEnergyParameter )
+            , ( bp::arg("nagaiHondaMembraneSurfaceEnergyParameter") ) );
+
+    bp::class_< NagaiHondaForce_less__3__greater__wrapper, bp::bases< AbstractForce< 3, 3 > > >( "NagaiHondaForce3", bp::init< >() )    
+        .def( 
+            "AddForceContribution"
+            , (void ( ::NagaiHondaForce<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::NagaiHondaForce< 3 >::AddForceContribution)
+            , (void ( NagaiHondaForce_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&NagaiHondaForce_less__3__greater__wrapper::default_AddForceContribution)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetAdhesionParameter"
+            , (double ( ::NagaiHondaForce<3>::* )( ::Node< 3 > *,::Node< 3 > *,::VertexBasedCellPopulation< 3 > & ))(&::NagaiHondaForce< 3 >::GetAdhesionParameter)
+            , (double ( NagaiHondaForce_less__3__greater__wrapper::* )( ::Node< 3 > *,::Node< 3 > *,::VertexBasedCellPopulation< 3 > & ))(&NagaiHondaForce_less__3__greater__wrapper::default_GetAdhesionParameter)
+            , ( bp::arg("pNodeA"), bp::arg("pNodeB"), bp::arg("rVertexCellPopulation") ) )    
+        .def( 
+            "GetNagaiHondaCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::NagaiHondaForce<3>::* )(  ))( &::NagaiHondaForce< 3 >::GetNagaiHondaCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaCellCellAdhesionEnergyParameter"
+            , (double ( ::NagaiHondaForce<3>::* )(  ))( &::NagaiHondaForce< 3 >::GetNagaiHondaCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaDeformationEnergyParameter"
+            , (double ( ::NagaiHondaForce<3>::* )(  ))( &::NagaiHondaForce< 3 >::GetNagaiHondaDeformationEnergyParameter ) )    
+        .def( 
+            "GetNagaiHondaMembraneSurfaceEnergyParameter"
+            , (double ( ::NagaiHondaForce<3>::* )(  ))( &::NagaiHondaForce< 3 >::GetNagaiHondaMembraneSurfaceEnergyParameter ) )    
+        .def( 
+            "OutputForceParameters"
+            , (void ( ::NagaiHondaForce<3>::* )( ::out_stream & ))(&::NagaiHondaForce< 3 >::OutputForceParameters)
+            , (void ( NagaiHondaForce_less__3__greater__wrapper::* )( ::out_stream & ))(&NagaiHondaForce_less__3__greater__wrapper::default_OutputForceParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetNagaiHondaCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::NagaiHondaForce<3>::* )( double ))( &::NagaiHondaForce< 3 >::SetNagaiHondaCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("nagaiHondaCellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaCellCellAdhesionEnergyParameter"
+            , (void ( ::NagaiHondaForce<3>::* )( double ))( &::NagaiHondaForce< 3 >::SetNagaiHondaCellCellAdhesionEnergyParameter )
+            , ( bp::arg("nagaiHondaCellCellAdhesionEnergyEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaDeformationEnergyParameter"
+            , (void ( ::NagaiHondaForce<3>::* )( double ))( &::NagaiHondaForce< 3 >::SetNagaiHondaDeformationEnergyParameter )
+            , ( bp::arg("nagaiHondaDeformationEnergyParameter") ) )    
+        .def( 
+            "SetNagaiHondaMembraneSurfaceEnergyParameter"
+            , (void ( ::NagaiHondaForce<3>::* )( double ))( &::NagaiHondaForce< 3 >::SetNagaiHondaMembraneSurfaceEnergyParameter )
+            , ( bp::arg("nagaiHondaMembraneSurfaceEnergyParameter") ) );
 
     { //::NodeBasedCellPopulation< 2 >
         typedef bp::class_< NodeBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 2, 2 > >, boost::noncopyable > NodeBasedCellPopulation2_exposer_t;
@@ -15872,6 +16930,84 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         
         }
     }
+
+    bp::class_< SimpleTargetAreaModifier_less__2__greater__wrapper, bp::bases< AbstractTargetAreaModifier< 2 > > >( "SimpleTargetAreaModifier2", bp::init< >() )    
+        .def( 
+            "GetGrowthDuration"
+            , (double ( ::SimpleTargetAreaModifier<2>::* )(  ))( &::SimpleTargetAreaModifier< 2 >::GetGrowthDuration ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::SimpleTargetAreaModifier<2>::* )( ::out_stream & ))(&::SimpleTargetAreaModifier< 2 >::OutputSimulationModifierParameters)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetGrowthDuration"
+            , (void ( ::SimpleTargetAreaModifier<2>::* )( double ))( &::SimpleTargetAreaModifier< 2 >::SetGrowthDuration )
+            , ( bp::arg("growthDuration") ) )    
+        .def( 
+            "UpdateTargetAreaOfCell"
+            , (void ( ::SimpleTargetAreaModifier<2>::* )( ::CellPtr const ))(&::SimpleTargetAreaModifier< 2 >::UpdateTargetAreaOfCell)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::CellPtr const ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_UpdateTargetAreaOfCell)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&::AbstractTargetAreaModifier< 2 >::SetupSolve)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractTargetAreaModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractTargetAreaModifier< 2 >::UpdateAtEndOfTimeStep)
+            , (void ( SimpleTargetAreaModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&SimpleTargetAreaModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< SimpleTargetAreaModifier_less__3__greater__wrapper, bp::bases< AbstractTargetAreaModifier< 3 > > >( "SimpleTargetAreaModifier3", bp::init< >() )    
+        .def( 
+            "GetGrowthDuration"
+            , (double ( ::SimpleTargetAreaModifier<3>::* )(  ))( &::SimpleTargetAreaModifier< 3 >::GetGrowthDuration ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::SimpleTargetAreaModifier<3>::* )( ::out_stream & ))(&::SimpleTargetAreaModifier< 3 >::OutputSimulationModifierParameters)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetGrowthDuration"
+            , (void ( ::SimpleTargetAreaModifier<3>::* )( double ))( &::SimpleTargetAreaModifier< 3 >::SetGrowthDuration )
+            , ( bp::arg("growthDuration") ) )    
+        .def( 
+            "UpdateTargetAreaOfCell"
+            , (void ( ::SimpleTargetAreaModifier<3>::* )( ::CellPtr const ))(&::SimpleTargetAreaModifier< 3 >::UpdateTargetAreaOfCell)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::CellPtr const ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_UpdateTargetAreaOfCell)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&::AbstractTargetAreaModifier< 3 >::SetupSolve)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractTargetAreaModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractTargetAreaModifier< 3 >::UpdateAtEndOfTimeStep)
+            , (void ( SimpleTargetAreaModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&SimpleTargetAreaModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< SimulationTime_wrapper, boost::noncopyable >( "SimulationTime", bp::no_init )    
         .def( bp::init< >() )    

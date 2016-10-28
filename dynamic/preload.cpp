@@ -34,6 +34,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include <vector>
+#include <memory>
+#include <fstream>
 #include <boost/python.hpp>
 #include <boost/python/module.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
@@ -91,6 +93,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
 
     bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkImageData>());
     bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkImageData> >());
+    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPolyData> >());
+
+    bp::class_<std::basic_ofstream<char, std::char_traits<char> >, std::auto_ptr<std::basic_ofstream<char, std::char_traits<char> > >, boost::noncopyable > ("StdOutputFileStream", bp::no_init);
 
     bp::class_<std::pair<double, double> > ("DblPair")
         .def_readwrite("first", &std::pair<double, double>::first)

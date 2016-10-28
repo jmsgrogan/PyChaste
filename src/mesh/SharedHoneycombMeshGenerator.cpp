@@ -214,7 +214,7 @@ SharedHoneycombMeshGenerator::SharedHoneycombMeshGenerator(unsigned numNodesAlon
     // Nested scope so the reader closes files before we try deleting them below the scope.
     {
         TrianglesMeshReader<2,2> mesh_reader(output_dir + mMeshFilename);
-        mpMesh = boost::shared_ptr<MutableMesh<2,2> (new MutableMesh<2,2>);
+        mpMesh = boost::shared_ptr<MutableMesh<2,2> >(new MutableMesh<2,2>);
         mpMesh->ConstructFromMeshReader(mesh_reader);
     }
 
@@ -230,7 +230,7 @@ SharedHoneycombMeshGenerator::~SharedHoneycombMeshGenerator()
     //delete mpMesh;
 }
 
-boost::shared_ptr<MutableMesh<2,2> SharedHoneycombMeshGenerator::GetMesh()
+boost::shared_ptr<MutableMesh<2,2> > SharedHoneycombMeshGenerator::GetMesh()
 {
     return mpMesh;
 }
@@ -249,7 +249,7 @@ std::vector<unsigned> SharedHoneycombMeshGenerator::GetCellLocationIndices()
     return location_indices;
 }
 
-boost::shared_ptr<MutableMesh<2,2> SharedHoneycombMeshGenerator::GetCircularMesh(double radius)
+boost::shared_ptr<MutableMesh<2,2> > SharedHoneycombMeshGenerator::GetCircularMesh(double radius)
 {
     if (!mGhostNodeIndices.empty())
     {

@@ -84,7 +84,18 @@ def update_builder(builder):
                        "VertexBasedCellPopulation<2>",
                        "VertexBasedCellPopulation<3>",
                        "PottsBasedCellPopulation<2>",
-                       "PottsBasedCellPopulation<3>"]
+                       "PottsBasedCellPopulation<3>",
+                       "AbstractTwoBodyInteractionForce<2,2>",
+                       "AbstractTwoBodyInteractionForce<3,3>",
+                       "GeneralisedLinearSpringForce<2,2>",
+                       "GeneralisedLinearSpringForce<3,3>",
+                       "NagaiHondaForce<2>",
+                       "NagaiHondaForce<3>",
+                       "AbstractTargetAreaModifier<2>",
+                       "AbstractTargetAreaModifier<3>",
+                       "SimpleTargetAreaModifier<2>",
+                       "SimpleTargetAreaModifier<3>",
+                       ]
     
     for eachClass in include_classes:
         builder.class_(eachClass).include()  

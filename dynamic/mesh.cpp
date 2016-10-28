@@ -1213,10 +1213,6 @@ struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 
         TetrahedralMesh< 2, 2 >::ConstructFromMeshReader( boost::ref(rMeshReader) );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetInverseJacobianForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_matrix< double, 2, 2 > & rJacobian, double & rJacobianDeterminant, ::boost::numeric::ublas::c_matrix< double, 2, 2 > & rInverseJacobian ) const  {
         if( bp::override func_GetInverseJacobianForElement = this->get_override( "GetInverseJacobianForElement" ) )
             func_GetInverseJacobianForElement( elementIndex, boost::ref(rJacobian), rJacobianDeterminant, boost::ref(rInverseJacobian) );
@@ -1263,10 +1259,6 @@ struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 
     
     void default_GetWeightedDirectionForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rWeightedDirection, double & rJacobianDeterminant ) const  {
         TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement( elementIndex, boost::ref(rWeightedDirection), rJacobianDeterminant );
-    }
-
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
     }
 
     virtual void PermuteNodes(  ) {
@@ -1883,10 +1875,6 @@ struct MutableMesh_less__2_comma__2__greater__wrapper : MutableMesh< 2, 2 >, bp:
         AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh( width, height, stagger );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -2053,10 +2041,6 @@ struct MutableMesh_less__2_comma__2__greater__wrapper : MutableMesh< 2, 2 >, bp:
     
     double default_GetWidth( unsigned int const & rDimension ) const  {
         return AbstractMesh< 2, 2 >::GetWidth( rDimension );
-    }
-
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
     }
 
     virtual void PermuteNodes(  ) {
@@ -2238,10 +2222,6 @@ struct TetrahedralMesh_less__3_comma__3__greater__wrapper : TetrahedralMesh< 3, 
         TetrahedralMesh< 3, 3 >::ConstructFromMeshReader( boost::ref(rMeshReader) );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetInverseJacobianForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_matrix< double, 3, 3 > & rJacobian, double & rJacobianDeterminant, ::boost::numeric::ublas::c_matrix< double, 3, 3 > & rInverseJacobian ) const  {
         if( bp::override func_GetInverseJacobianForElement = this->get_override( "GetInverseJacobianForElement" ) )
             func_GetInverseJacobianForElement( elementIndex, boost::ref(rJacobian), rJacobianDeterminant, boost::ref(rInverseJacobian) );
@@ -2288,10 +2268,6 @@ struct TetrahedralMesh_less__3_comma__3__greater__wrapper : TetrahedralMesh< 3, 
     
     void default_GetWeightedDirectionForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rWeightedDirection, double & rJacobianDeterminant ) const  {
         TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement( elementIndex, boost::ref(rWeightedDirection), rJacobianDeterminant );
-    }
-
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
     }
 
     virtual void PermuteNodes(  ) {
@@ -2908,10 +2884,6 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
         AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh( width, height, stagger );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -3080,10 +3052,6 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
         return AbstractMesh< 3, 3 >::GetWidth( rDimension );
     }
 
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void PermuteNodes(  ) {
         if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
             func_PermuteNodes(  );
@@ -3248,13 +3216,6 @@ struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::w
 
     VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
     : VertexMesh<2, 2>( boost::ref(rMesh), isPeriodic )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 3, 3 > & rMesh )
-    : VertexMesh<2, 2>( boost::ref(rMesh) )
       , bp::wrapper< VertexMesh< 2, 2 > >(){
         // constructor
     
@@ -4002,13 +3963,6 @@ struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::w
 
     VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<2, 3> * > faces, ::std::vector< VertexElement<3, 3> * > vertexElements )
     : VertexMesh<3, 3>( nodes, faces, vertexElements )
-      , bp::wrapper< VertexMesh< 3, 3 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__3_comma__3__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
-    : VertexMesh<3, 3>( boost::ref(rMesh), isPeriodic )
       , bp::wrapper< VertexMesh< 3, 3 > >(){
         // constructor
     
@@ -4997,10 +4951,6 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
         MutableMesh< 2, 2 >::DeleteElement( index );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -5167,10 +5117,6 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
     
     void default_GetWeightedDirectionForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_vector< double, 2 > & rWeightedDirection, double & rJacobianDeterminant ) const  {
         TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement( elementIndex, boost::ref(rWeightedDirection), rJacobianDeterminant );
-    }
-
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 2, 2 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
     }
 
     virtual void PermuteNodes(  ) {
@@ -5552,10 +5498,6 @@ struct NodesOnlyMesh_less__3__greater__wrapper : NodesOnlyMesh< 3 >, bp::wrapper
         MutableMesh< 3, 3 >::DeleteElement( index );
     }
 
-    void FreeTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::FreeTriangulateIo( boost::ref(mesherIo) );
-    }
-
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -5722,10 +5664,6 @@ struct NodesOnlyMesh_less__3__greater__wrapper : NodesOnlyMesh< 3 >, bp::wrapper
     
     void default_GetWeightedDirectionForElement( unsigned int elementIndex, ::boost::numeric::ublas::c_vector< double, 3 > & rWeightedDirection, double & rJacobianDeterminant ) const  {
         TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement( elementIndex, boost::ref(rWeightedDirection), rJacobianDeterminant );
-    }
-
-    void InitialiseTriangulateIo( ::triangulateio & mesherIo ){
-        TetrahedralMesh< 3, 3 >::InitialiseTriangulateIo( boost::ref(mesherIo) );
     }
 
     virtual void PermuteNodes(  ) {
@@ -6665,9 +6603,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         vector_less__double__greater__exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
     }
 
-    bp::class_< std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > >("vector_less__boost_scope_numeric_scope_ublas_scope_c_vector_less_unsigned_int_comma__5_greater___greater_")    
-        .def( bp::indexing::vector_suite< std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > >() );
-
     { //::std::vector< boost::numeric::ublas::c_vector<double, 3> >
         typedef bp::class_< std::vector< boost::numeric::ublas::c_vector<double, 3> > > __type_exposer_t;
         __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
@@ -7571,10 +7506,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             "EdgesEnd"
             , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesEnd ) )    
         .def( 
-            "FreeTriangulateIo"
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::triangulateio & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::FreeTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
-        .def( 
             "GetAngleBetweenNodes"
             , (double ( ::TetrahedralMesh<2, 2>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes )
             , ( bp::arg("indexA"), bp::arg("indexB") ) )    
@@ -7616,10 +7547,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
             , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
             , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "InitialiseTriangulateIo"
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::triangulateio & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::InitialiseTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
         .def( 
             "PermuteNodes"
             , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
@@ -7975,17 +7902,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , ( bp::arg("pElement"), bp::arg("point") ) );
         
         }
-        { //::MutableMesh< 2, 2 >::RescaleMeshFromBoundaryNode
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*RescaleMeshFromBoundaryNode_function_type)( ::ChastePoint< 1 >,unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "RescaleMeshFromBoundaryNode"
-                , RescaleMeshFromBoundaryNode_function_type( &::MutableMesh< 2, 2 >::RescaleMeshFromBoundaryNode )
-                , ( bp::arg("updatedPoint"), bp::arg("boundaryNodeIndex") ) );
-        
-        }
         { //::MutableMesh< 2, 2 >::SetNode
         
             typedef MutableMesh< 2, 2 > exported_class_t;
@@ -8132,17 +8048,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
                 , default_ConstructRectangularMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::FreeTriangulateIo
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*FreeTriangulateIo_function_type)( ::triangulateio & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "FreeTriangulateIo"
-                , FreeTriangulateIo_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::FreeTriangulateIo )
-                , ( bp::arg("mesherIo") ) );
         
         }
         { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
@@ -8319,17 +8224,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , GetWidth_function_type(&::AbstractMesh< 2, 2 >::GetWidth)
                 , default_GetWidth_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
                 , ( bp::arg("rDimension") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::InitialiseTriangulateIo
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*InitialiseTriangulateIo_function_type)( ::triangulateio & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "InitialiseTriangulateIo"
-                , InitialiseTriangulateIo_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::InitialiseTriangulateIo )
-                , ( bp::arg("mesherIo") ) );
         
         }
         { //::TetrahedralMesh< 2, 2 >::PermuteNodes
@@ -8547,10 +8441,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             "EdgesEnd"
             , (::TetrahedralMesh< 3, 3 >::EdgeIterator ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::EdgesEnd ) )    
         .def( 
-            "FreeTriangulateIo"
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::triangulateio & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::FreeTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
-        .def( 
             "GetAngleBetweenNodes"
             , (double ( ::TetrahedralMesh<3, 3>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 3, 3 >::GetAngleBetweenNodes )
             , ( bp::arg("indexA"), bp::arg("indexB") ) )    
@@ -8592,10 +8482,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
             , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForElement)
             , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "InitialiseTriangulateIo"
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::triangulateio & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::InitialiseTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
         .def( 
             "PermuteNodes"
             , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::PermuteNodes)
@@ -8951,17 +8837,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , ( bp::arg("pElement"), bp::arg("point") ) );
         
         }
-        { //::MutableMesh< 3, 3 >::RescaleMeshFromBoundaryNode
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*RescaleMeshFromBoundaryNode_function_type)( ::ChastePoint< 1 >,unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "RescaleMeshFromBoundaryNode"
-                , RescaleMeshFromBoundaryNode_function_type( &::MutableMesh< 3, 3 >::RescaleMeshFromBoundaryNode )
-                , ( bp::arg("updatedPoint"), bp::arg("boundaryNodeIndex") ) );
-        
-        }
         { //::MutableMesh< 3, 3 >::SetNode
         
             typedef MutableMesh< 3, 3 > exported_class_t;
@@ -9108,17 +8983,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh)
                 , default_ConstructRectangularMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructRectangularMesh)
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::FreeTriangulateIo
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*FreeTriangulateIo_function_type)( ::triangulateio & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "FreeTriangulateIo"
-                , FreeTriangulateIo_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::FreeTriangulateIo )
-                , ( bp::arg("mesherIo") ) );
         
         }
         { //::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices
@@ -9295,17 +9159,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 , GetWidth_function_type(&::AbstractMesh< 3, 3 >::GetWidth)
                 , default_GetWidth_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWidth)
                 , ( bp::arg("rDimension") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::InitialiseTriangulateIo
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*InitialiseTriangulateIo_function_type)( ::triangulateio & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "InitialiseTriangulateIo"
-                , InitialiseTriangulateIo_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::InitialiseTriangulateIo )
-                , ( bp::arg("mesherIo") ) );
         
         }
         { //::TetrahedralMesh< 3, 3 >::PermuteNodes
@@ -9505,8 +9358,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         VertexMesh2_2_exposer.def( bp::init< std::vector< Node<2> * >, std::vector< VertexElement<1, 2> * >, std::vector< VertexElement<2, 2> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
         VertexMesh2_2_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
         bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 2, 2 > >();
-        VertexMesh2_2_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
-        bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 2, 2 > >();
         VertexMesh2_2_exposer.def( bp::init< >() );
         { //::VertexMesh< 2, 2 >::CalculateAreaOfFace
         
@@ -11006,8 +10857,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         VertexMesh3_3_exposer_t VertexMesh3_3_exposer = VertexMesh3_3_exposer_t( "VertexMesh3_3", bp::init< std::vector< Node<3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("vertexElements") )) );
         bp::scope VertexMesh3_3_scope( VertexMesh3_3_exposer );
         VertexMesh3_3_exposer.def( bp::init< std::vector< Node<3> * >, std::vector< VertexElement<2, 3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
-        VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
-        bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< >() );
@@ -12962,7 +12811,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , ( bp::arg("index") ) )    
         .def( 
             "UpdateBoxCollection"
-            , (void ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::UpdateBoxCollection ) )
+            , (void ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::UpdateBoxCollection ) )    
         .def( 
             "CalculateBoundingBox"
             , (::ChasteCuboid<2> ( NodesOnlyMesh_less__2__greater__wrapper::* )( ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & )const)(&NodesOnlyMesh_less__2__greater__wrapper::CalculateBoundingBox)
@@ -13005,10 +12854,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( ::MutableMesh<2, 2>::* )( unsigned int ))(&::MutableMesh< 2, 2 >::DeleteElement)
             , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( unsigned int ))(&NodesOnlyMesh_less__2__greater__wrapper::default_DeleteElement)
             , ( bp::arg("index") ) )    
-        .def( 
-            "FreeTriangulateIo"
-            , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( ::triangulateio & ))(&NodesOnlyMesh_less__2__greater__wrapper::FreeTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
         .def( 
             "GetHaloNodeIndices"
             , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
@@ -13072,10 +12917,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
             , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&NodesOnlyMesh_less__2__greater__wrapper::default_GetWeightedDirectionForElement)
             , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "InitialiseTriangulateIo"
-            , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( ::triangulateio & ))(&NodesOnlyMesh_less__2__greater__wrapper::InitialiseTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
         .def( 
             "PermuteNodes"
             , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
@@ -13311,10 +13152,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( NodesOnlyMesh_less__3__greater__wrapper::* )( unsigned int ))(&NodesOnlyMesh_less__3__greater__wrapper::default_DeleteElement)
             , ( bp::arg("index") ) )    
         .def( 
-            "FreeTriangulateIo"
-            , (void ( NodesOnlyMesh_less__3__greater__wrapper::* )( ::triangulateio & ))(&NodesOnlyMesh_less__3__greater__wrapper::FreeTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
-        .def( 
             "GetHaloNodeIndices"
             , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices)
             , (void ( NodesOnlyMesh_less__3__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&NodesOnlyMesh_less__3__greater__wrapper::default_GetHaloNodeIndices)
@@ -13377,10 +13214,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
             , (void ( NodesOnlyMesh_less__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&NodesOnlyMesh_less__3__greater__wrapper::default_GetWeightedDirectionForElement)
             , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "InitialiseTriangulateIo"
-            , (void ( NodesOnlyMesh_less__3__greater__wrapper::* )( ::triangulateio & ))(&NodesOnlyMesh_less__3__greater__wrapper::InitialiseTriangulateIo)
-            , ( bp::arg("mesherIo") ) )    
         .def( 
             "PermuteNodes"
             , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::PermuteNodes)

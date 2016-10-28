@@ -33,8 +33,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef SharedHoneycombMeshGenerator_HPP_
-#define SharedHoneycombMeshGenerator_HPP_
+#ifndef SHAREDHONEYCOMBMESHGENERATOR_HPP_
+#define SHAREDHONEYCOMBMESHGENERATOR_HPP_
 
 #include <cmath>
 #include <vector>
@@ -133,4 +133,4 @@ public:
     double GetDomainWidth();
 };
 
-#endif /*SharedHoneycombMeshGenerator_HPP_*/
+#endif /*SHAREDHONEYCOMBMESHGENERATOR_HPP_*/

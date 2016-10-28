@@ -53,10 +53,10 @@ class TestCell(unittest.TestCase):
         cells = chaste.cell_based.VecCellPtr()
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasic(cells, mesh.GetNumberOfElements())
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), proliferative_type)
           
         # Make the cell population
-        cell_population = chaste.cell_based.VertexBasedCellPopulation2(nodes_only_mesh, cells)
+        cell_population = chaste.cell_based.VertexBasedCellPopulation2(mesh, cells)
 
 #         # Set up the visualizer
         scene = chaste.visualization.VtkScene2()
@@ -67,17 +67,24 @@ class TestCell(unittest.TestCase):
          
         modifier = chaste.cell_based.VtkSceneModifier2()
         modifier.SetVtkScene(scene);
+        
+        force = chaste.cell_based.NagaiHondaForce2()
+        target_area_modifier = chaste.cell_based.SimpleTargetAreaModifier2()
+        target_area_modifier.SetGrowthDuration(1.0)
  
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("PythonTestVertexBasedCellPopulation");
-        simulator.SetEndTime(4.0);
-        simulator.SetDt(1.0);
-#         simulator.SetSamplingTimestepMultiple(1);
+        simulator.SetEndTime(20.0)
+        simulator.AddForce(force)
+        simulator.SetSamplingTimestepMultiple(200);
         simulator.AddSimulationModifier(modifier)
+        simulator.AddSimulationModifier(target_area_modifier)
         
-        simulator.Solve();
-
+        try:
+            simulator.Solve();
+        except chaste.ChasteException as e: 
+            print e.GetMessage
 
 if __name__ == '__main__':
     unittest.main()
