@@ -98,13 +98,35 @@ class VtkScene
      */
     vtkSmartPointer<vtkWindowToImageFilter> mWindowToImageFilter;
 
+    /**
+     * Is the rendering interactive
+     */
     bool mIsInteractive;
 
+    /**
+     * Save as an animation
+     */
     bool mSaveAsAnimation;
 
+    /**
+     * Save as an image
+     */
     bool mSaveAsImages;
 
+    /**
+     * Has the renderer started
+     */
     bool mHasStarted;
+
+    /**
+     * Add annotation
+     */
+    bool mAddAnnotations;
+
+    /**
+     * How often to update the renderer during a simulation
+     */
+    unsigned mOutputFrequency;
 
 public:
 
@@ -118,23 +140,32 @@ public:
      */
     ~VtkScene();
 
-    void ResetRenderer(unsigned time_step=0);
-
-
-    void UpdateCellPopulationActor();
-
-
-    void SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<DIM> > pCellPopulation);
+    /**
+     * Shut down the scene and close the animation
+     */
+    void End();
 
     /**
-     * Render the scene
+     * Update the actors for the cell population
      */
+    void UpdateCellPopulationActor();
+
+    /**
+     * Update the renderer, this will update the population actor and write output images
+     * @param timeStep the curren time step, for annotating output files
+     */
+    void ResetRenderer(unsigned timeStep=0);
+
+    /**
+    * Render the scene
+    */
     void Start();
 
     /**
-     * Shut down the scene
-     */
-    void End();
+    * Set the cell population
+    * @param pCellPopulation the cell population for rendering
+    */
+    void SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<DIM> > pCellPopulation);
 
     /**
      * Set the path for output

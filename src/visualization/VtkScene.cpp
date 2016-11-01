@@ -108,7 +108,9 @@ VtkScene<DIM>::VtkScene()
       mIsInteractive(true),
       mSaveAsAnimation(false),
       mSaveAsImages(false),
-      mHasStarted(false)
+      mHasStarted(false),
+      mAddAnnotations(false),
+      mOutputFrequency(1)
 {
     mpRenderer->SetBackground(1.0, 1.0, 1.0);
 
