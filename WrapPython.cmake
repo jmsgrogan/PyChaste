@@ -87,6 +87,8 @@ list (APPEND PYCHASTE_PYTHON_MODULES preload)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/)
 list (APPEND PYCHASTE_PYTHON_MODULES hello_manual)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
+list (APPEND PYCHASTE_PYTHON_MODULES my_module)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
 
 # Copy the Python package (i.e. all source files etc) to the build folder, ignore any shared libraries that might be in there.
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/ PATTERN "*.so" EXCLUDE)
@@ -114,6 +116,11 @@ math(EXPR len2 "${len1} - 1")
 foreach(val RANGE ${len2})
     list(GET PYCHASTE_PYTHON_MODULES ${val} python_module)
     list(GET PYCHASTE_PYTHON_MODULE_LOCATIONS ${val} python_module_location)
+    
+    # make sure the wrapper file exists, if not make one
+    if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/dynamic/${python_module}.cpp")
+        file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/dynamic/${python_module}.cpp" "")        
+    endif()
     
     # each module is in the 'dynamic' directory. The library name must be the same as that defined in the cpp file. It is customary
     # to start the name with an underscore. The usual 'lib' prefix is disabled.
