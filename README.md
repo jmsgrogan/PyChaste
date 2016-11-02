@@ -10,17 +10,21 @@ features are supported, mostly related to Cell Based Chaste.
 
 See the [project wiki](https://github.com/jmsgrogan/PyChaste/wiki) for some sample applications. Further examples based on the [Chaste User Tutorials](https://chaste.cs.ox.ac.uk/trac/wiki/UserTutorials) are under development.
 
-## Installation (Linux Only)
+## Getting Started (Linux Only)
 
-### Conda
+### Using Conda
 A [conda](http://conda.pydata.org/docs/intro.html) Python package for Linux is available. Just do:
 
 ```bash
-conda config --add channels conda-forge jmsgrogan
+conda config --add channels conda-forge
+conda config --add channels jmsgrogan
 conda install chaste
 ```
 
-If you do not have conda you can do (accepting defaults):
+This will take 15 to 20 minutes, depending on your internet connection. The `chaste` package is approximately 500 MB in size.
+
+
+If you do not already have `conda` (a cross platform package manager) you can do:
 
 ```bash
 wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
@@ -29,11 +33,20 @@ chmod 777 Miniconda2-latest-Linux-x86_64.sh
 conda update conda
 ```
 
-and then proceed to install PyChaste as above. If you install this version you can proceed straight to the [project wiki](https://github.com/jmsgrogan/PyChaste/wiki) for some sample applications.
+As part of the installation of `conda` you will need to read and accept the license terms, specify where to install `miniconda` and decide if you want to allow the installer to modify your `bashrc`. It is recommended that you agree to the latter, if not the `miniconda` directory needs to be added to your `PATH`. Once `conda` is installed you can install `chaste` as above.
+
+
+If you install this package you can proceed straight to the [project wiki](https://github.com/jmsgrogan/PyChaste/wiki) to run some sample applications, or do:
+
+```bash
+chaste-notebooks
+```
+
+to see a selection of Jupyter notebook demos in your web-browser.
 
 ### Install from Source
 
-Chaste dependencies need to be built from source following the [Chaste Install Guide](https://chaste.cs.ox.ac.uk/trac/wiki/InstallGuides/InstallGuide). In addition to the normal Chaste dependencies, this project also requires Boost Python and a Python shared library. These may already be on your system, in which case an attempt will be made to find them automatically. If not, Boost Python can be built by adding `python` to the list of libraries when following the Boost build instructions [here](https://chaste.cs.ox.ac.uk/trac/wiki/InstallGuides/InstallGuide).
+Chaste dependencies need to be built following the [Chaste Install Guide](https://chaste.cs.ox.ac.uk/trac/wiki/InstallGuides/InstallGuide). In addition to the normal Chaste dependencies, this project also requires Boost Python and a Python shared library. These may already be on your system, in which case an attempt will be made to find them automatically. If not, Boost Python can be built by adding `python` to the list of libraries when following the Boost build instructions [here](https://chaste.cs.ox.ac.uk/trac/wiki/InstallGuides/InstallGuide).
 
 The project only supports the development version of Chaste. This can be obtained by doing:
 

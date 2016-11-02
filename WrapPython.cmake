@@ -87,8 +87,6 @@ list (APPEND PYCHASTE_PYTHON_MODULES preload)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/)
 list (APPEND PYCHASTE_PYTHON_MODULES hello_manual)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
-list (APPEND PYCHASTE_PYTHON_MODULES my_module)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
 
 # Copy the Python package (i.e. all source files etc) to the build folder, ignore any shared libraries that might be in there.
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/ PATTERN "*.so" EXCLUDE)

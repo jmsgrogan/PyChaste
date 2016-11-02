@@ -40,7 +40,7 @@ setup(
     name = "chaste",
     version = "0.1.dev0",
     packages = find_packages(),
-    install_requires = ['petsc4py==3.6', 'matplotlib', 'numpy'],
+    install_requires = ['petsc4py==3.7', 'matplotlib', 'numpy'],
     package_data={
         'chaste': ['_chaste_project_PyChaste_preload.so', 
                    'cell_based/_chaste_project_PyChaste_cell_based.so',
