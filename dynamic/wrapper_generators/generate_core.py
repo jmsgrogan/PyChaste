@@ -32,9 +32,6 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-"""
-This scipt automatically generates Python bindings using a rule based approach
-"""
 import sys
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies
@@ -43,9 +40,14 @@ import generate_bindings
 
 def update_builder(builder):
     
-    include_classes = ["OutputFileHandler",
-               "RelativeTo",
-               "FileFinder"]
+    include_classes = ["OutputFileHandler", 
+                       "RelativeTo",
+                       "FileFinder",
+                       "RandomNumberGenerator",
+                       "Timer",
+                       "ChasteBuildInfo"]
+                       #"PetscTools",
+                       #"ReplicatableVector"]
     
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
@@ -53,7 +55,11 @@ def update_builder(builder):
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
     
+    builder.class_("PetscTools").member_functions('GetWorld').exclude()
+    builder.class_("PetscTools").member_functions('CreateVec').exclude()
+    builder.class_("PetscTools").member_functions('CreateAndSetVec').exclude()
     builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
     builder.class_("FileFinder").member_functions('FindMatches').exclude()
+    builder.class_("RandomNumberGenerator").member_function("Instance").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)
 
     return builder

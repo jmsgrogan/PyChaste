@@ -69,6 +69,31 @@ def boost_units_namespace_fix(module_file):
         for line in lines:
             outfile.write(line)    
             
+def strip_undefined_call_policies(module_file):
+    
+    # Can't access methods in abstract classes by return type to apply call policies with py++. 
+    # Need to remove these methods manually.
+    # There is a bug (maybe in boost units) where sometimes static_rational does not have
+    # the full boost::units namespace. Manually put it in.
+    lines = []
+    with open(module_file) as infile:
+        for line in infile:
+            lines.append(line)
+            
+    strip_indices = []
+    def_index = 0
+    for idx, eachLine in enumerate(lines):
+        if ".def(" in eachLine:
+            def_index = idx
+        if "/* undefined call policies */" in eachLine:
+            strip_indices.extend(range(idx, def_index-1, -1))
+            
+    return_lines = [i for j, i in enumerate(lines) if j not in strip_indices]
+    
+    with open(module_file, 'w') as outfile:
+        for line in return_lines:
+            outfile.write(line) 
+            
 def do_module(module_name, builder):
     
     # Set up the builder with module specifc classes
@@ -108,6 +133,7 @@ def generate_wrappers(args):
     
     # Fix a bug with boost units
     boost_units_namespace_fix(work_dir + "/dynamic/" + module_name + ".cpp")
+    strip_undefined_call_policies(work_dir + "/dynamic/" + module_name + ".cpp")
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

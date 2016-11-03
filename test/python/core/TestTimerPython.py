@@ -1,6 +1,5 @@
-/*
 
-Copyright (c) 2005-2016, University of Oxford.
+"""Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -30,59 +29,19 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+"""
 
-*/
+import unittest
+import chaste.core
+chaste.init()
 
-#ifndef GENERICCELLSGENERATOR_HPP_
-#define GENERICCELLSGENERATOR_HPP_
+class TestTimer(unittest.TestCase):
+    
+    def test_start_stop(self):
+        
+        timer = chaste.core.Timer()
+        timer.Reset()
+        timer.Print("This Happened At: ")
 
-#include <vector>
-#include "Cell.hpp"
-#include "WildTypeCellMutationState.hpp"
-#include "StemCellProliferativeType.hpp"
-#include "TransitCellProliferativeType.hpp"
-#include "RandomNumberGenerator.hpp"
-#include "UniformCellCycleModel.hpp"
-#include "SmartPointers.hpp"
-
-/**
- * This class makes it easier to generate cells with the Python interface.
- */
-template<unsigned DIM>
-class GenericCellsGenerator
-{
-
-    unsigned mNumCells;
-
-    boost::shared_ptr<AbstractCellProperty> mpMutationState;
-
-    boost::shared_ptr<AbstractCellProperty> mpProliferativeType;
-
-    boost::shared_ptr<AbstractCellCycleModel> mpCellCycleModel;
-
-public:
-
-    GenericCellsGenerator();
-
-    ~GenericCellsGenerator();
-
-    void SetCellMutationState(boost::shared_ptr<AbstractCellProperty> pMutationState);
-
-    void SetCellProliferativeType(boost::shared_ptr<AbstractCellProperty> pProliferativeType);
-
-    void SetCellCycleModel(boost::shared_ptr<AbstractCellCycleModel> pCellCycleModel);
-
-    void SetNumCells(unsigned numCells);
-
-    /**
-     * Fills a vector of cells with a specified cell-cycle model, to match
-     * a given number of cells. Gives them birth times of 0 for node 0,
-     * -1 for node 1, -2 for node 2 etc...
-     *
-     * @param numCells  The number of cells to generate.
-     */
-    std::vector<CellPtr> GenerateBasic();
-
-};
-
-#endif /* GENERICCELLSGENERATOR_HPP_ */
+if __name__ == '__main__':
+    unittest.main()

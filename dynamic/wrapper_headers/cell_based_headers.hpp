@@ -37,7 +37,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Identifiable.hpp"
 #include "Cell.hpp"
 #include "CellsGenerator.hpp"
-#include "GenericCellsGenerator.hpp"
+#include "CellId.hpp"
+#include "CellPropertyRegistry.hpp"
 
 // Populations
 #include "AbstractCellPopulation.hpp"
@@ -46,15 +47,21 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "AbstractCentreBasedCellPopulation.hpp"
 #include "AbstractOffLatticeCellPopulation.hpp"
 #include "MeshBasedCellPopulation.hpp"
+#include "MeshBasedCellPopulationWithGhostNodes.hpp"
 #include "VertexBasedCellPopulation.hpp"
 #include "PottsBasedCellPopulation.hpp"
 #include "NodeBasedCellPopulation.hpp"
 
+// Writers
+#include "VoronoiDataWriter.hpp"
+
 // Cell properties
 #include "AbstractCellProperty.hpp"
 #include "CellPropertyCollection.hpp"
+#include "AbstractCellProliferativeType.hpp"
 #include "StemCellProliferativeType.hpp"
 #include "DefaultCellProliferativeType.hpp"
+#include "TransitCellProliferativeType.hpp"
 
 // Cycle models
 #include "AbstractCellCycleModel.hpp"
@@ -99,8 +106,6 @@ template class AbstractOnLatticeCellPopulation<2>;
 template class AbstractOnLatticeCellPopulation<3>;
 template class AbstractCellPopulation<2, 2>;
 template class AbstractCellPopulation<3, 3>;
-template class GenericCellsGenerator<2>;
-template class GenericCellsGenerator<3>;
 template class OnLatticeSimulation<2>;
 template class OnLatticeSimulation<3>;
 template class OffLatticeSimulation<2,2>;
@@ -145,8 +150,13 @@ typedef std::vector<CellPtr> VecCellPtr;
 
 inline int Instantiation()
 {
-    return sizeof(CellsGenerator<UniformCellCycleModel, 2>) + sizeof(AbstractCellPopulation<2, 2>) + sizeof(AbstractCellPopulation<3, 3>) +
-            sizeof(AbstractCellBasedSimulation<2, 2>) + sizeof(AbstractCellBasedSimulation<3, 3>) +
+    return sizeof(CellsGenerator<UniformCellCycleModel, 2>) +
+            sizeof(AbstractCellPopulation<2, 2>) +
+            sizeof(AbstractCellPopulation<3, 3>) +
+            sizeof(AbstractCellBasedSimulation<2, 2>) +
+            sizeof(AbstractCellBasedSimulation<3, 3>) +
+            sizeof(DiffusionCaUpdateRule<2>) +
+            sizeof(DiffusionCaUpdateRule<3>) +
             sizeof(CellsGenerator<UniformCellCycleModel, 3>);
 }
 

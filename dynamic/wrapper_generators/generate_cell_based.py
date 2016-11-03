@@ -53,8 +53,6 @@ def update_builder(builder):
                        "UniformCellCycleModel",
                        "CellPropertyCollection",
                        "SimulationTime",
-                       "GenericCellsGenerator<2>",
-                       "GenericCellsGenerator<3>",
                        "AbstractCellProperty",
                        "AbstractCellCycleModel",
                        "OnLatticeSimulation<2>",
@@ -95,6 +93,7 @@ def update_builder(builder):
                        "AbstractTargetAreaModifier<3>",
                        "SimpleTargetAreaModifier<2>",
                        "SimpleTargetAreaModifier<3>",
+                       "AbstractCellProliferativeType",
                        ]
     
     for eachClass in include_classes:
@@ -103,15 +102,22 @@ def update_builder(builder):
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
 
+    # Exclude all iterators
     builder.classes( lambda x: x.name in ("Iterator",)).exclude()
+    
+    # Cells and cell properties
+    builder.class_("Cell").member_functions("rGetCellPropertyCollection").exclude()
+    builder.class_("Cell").member_functions("GetCellCycleModel").exclude()
+    builder.class_("Cell").member_functions("GetSrnModel").exclude()
+    
+    builder.class_("AbstractCellCycleModel").member_function("CreateCellCycleModel").call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
+    builder.class_("UniformCellCycleModel").member_function("CreateCellCycleModel").call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
     builder.class_("CellsGenerator<UniformCellCycleModel, 2>").include()  
+    
+    builder.class_("AbstractCellProperty").member_functions("IsType").exclude()
     builder.class_("CellPropertyCollection").member_functions("GetCellPropertyRegistry").exclude()
     
-    builder.class_("AbstractCellBasedSimulation<2,2>").constructors().exclude()
-    builder.class_("AbstractCellBasedSimulation<2,2>").member_functions('GetSimulationModifiers').exclude()
-    builder.class_("AbstractCellBasedSimulation<3,3>").constructors().exclude()
-    builder.class_("AbstractCellBasedSimulation<3,3>").member_functions('GetSimulationModifiers').exclude()
-    
+    # Abstract Populations
     builder.class_("AbstractCellPopulation<2,2>").member_functions("GetNode").exclude()
     builder.class_("AbstractCellPopulation<2,2>").member_functions("GetTetrahedralMeshForPdeModifier").exclude()
     builder.class_("AbstractCellPopulation<2,2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
@@ -125,10 +131,10 @@ def update_builder(builder):
     builder.class_("AbstractOnLatticeCellPopulation<2>").constructors().exclude()
     builder.class_("AbstractOnLatticeCellPopulation<2>").member_functions(function=lambda decl:decl.virtuality == "virtual").exclude()
     builder.class_("AbstractOnLatticeCellPopulation<3>").constructors().exclude()
-    
     builder.class_("AbstractCentreBasedCellPopulation<2,2>").member_functions("GetNodeCorrespondingToCell").exclude()
     builder.class_("AbstractCentreBasedCellPopulation<3,3>").member_functions("GetNodeCorrespondingToCell").exclude()
     
+    # Populations
     builder.class_("CaBasedCellPopulation<2>").member_functions("GetNode").exclude()
     builder.class_("CaBasedCellPopulation<2>").member_functions("GetNodeCorrespondingToCell").exclude()
     builder.class_("CaBasedCellPopulation<2>").member_functions("rGetAvailableSpaces").exclude()
@@ -139,7 +145,6 @@ def update_builder(builder):
     builder.class_("CaBasedCellPopulation<3>").member_functions("rGetAvailableSpaces").exclude()
     builder.class_("CaBasedCellPopulation<3>").member_functions("GetTetrahedralMeshForPdeModifier").exclude()
     builder.class_("CaBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
-    
     builder.class_("NodeBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
     builder.class_("NodeBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
     builder.class_("NodeBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
@@ -148,8 +153,9 @@ def update_builder(builder):
     builder.class_("NodeBasedCellPopulation<3>").member_functions("GetNode").exclude()
     builder.class_("NodeBasedCellPopulation<2>").member_functions("rGetNodePairs").exclude()
     builder.class_("NodeBasedCellPopulation<3>").member_functions("rGetNodePairs").exclude()
-    
     builder.class_("MeshBasedCellPopulation<2,2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
+    builder.class_("MeshBasedCellPopulation<2,2>").add_registration_code('def("AddPopulationWriter_VoronoiDataWriter", &MeshBasedCellPopulation< 2, 2 >::AddPopulationWriter<VoronoiDataWriter>)')
+    
     builder.class_("MeshBasedCellPopulation<3,3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
     builder.class_("MeshBasedCellPopulation<2,2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
     builder.class_("MeshBasedCellPopulation<3,3>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
@@ -159,7 +165,6 @@ def update_builder(builder):
     builder.class_("MeshBasedCellPopulation<3,3>").member_functions("GetVoronoiTessellation").exclude()
     builder.class_("MeshBasedCellPopulation<2,2>").member_functions("rGetNodePairs").exclude()
     builder.class_("MeshBasedCellPopulation<3,3>").member_functions("rGetNodePairs").exclude()
-    
     builder.class_("VertexBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
     builder.class_("VertexBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith( "rGetMesh")).exclude()
     builder.class_("VertexBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith( "GetTetrahedralMeshForPdeModifier")).exclude()
@@ -170,7 +175,6 @@ def update_builder(builder):
     builder.class_("VertexBasedCellPopulation<3>").member_functions("GetElement").exclude() 
     builder.class_("VertexBasedCellPopulation<2>").member_functions("GetElementCorrespondingToCell").exclude()
     builder.class_("VertexBasedCellPopulation<3>").member_functions("GetElementCorrespondingToCell").exclude()         
-
     builder.class_("PottsBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith("rGetMesh")).exclude()
     builder.class_("PottsBasedCellPopulation<3>").member_functions(lambda decl: decl.name.startswith("rGetMesh")).exclude()
     builder.class_("PottsBasedCellPopulation<2>").member_functions(lambda decl: decl.name.startswith("GetTetrahedralMeshForPdeModifier")).exclude()
@@ -186,14 +190,11 @@ def update_builder(builder):
     builder.class_("PottsBasedCellPopulation<2>").member_functions("GetElementCorrespondingToCell").exclude()
     builder.class_("PottsBasedCellPopulation<3>").member_functions("GetElementCorrespondingToCell").exclude()     
 
-    builder.class_("Cell").member_functions("rGetCellPropertyCollection").exclude()
-    builder.class_("Cell").member_functions("GetCellCycleModel").exclude()
-    builder.class_("Cell").member_functions("GetSrnModel").exclude()
-    
-    builder.class_("AbstractCellCycleModel").member_function("CreateCellCycleModel").call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
-    builder.class_("UniformCellCycleModel").member_function("CreateCellCycleModel").call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
+    # Simulations
     builder.class_("SimulationTime").member_function("Instance").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)
-    
-    builder.class_("AbstractCellProperty").member_functions("IsType").exclude()
+    builder.class_("AbstractCellBasedSimulation<2,2>").constructors().exclude()
+    builder.class_("AbstractCellBasedSimulation<2,2>").member_functions('GetSimulationModifiers').exclude()
+    builder.class_("AbstractCellBasedSimulation<3,3>").constructors().exclude()
+    builder.class_("AbstractCellBasedSimulation<3,3>").member_functions('GetSimulationModifiers').exclude()
 
     return builder

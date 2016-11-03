@@ -9041,7 +9041,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_UpdateCellPopulation) )    
         .def( 
             "WriteVisualizerSetupFile"
-            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile) )
+            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile) )    
         .def( 
             "rGetCellPopulation"
             , (::AbstractCellPopulation< 2, 2 > const & ( ::AbstractCellBasedSimulation<2, 2>::* )(  )const)( &::AbstractCellBasedSimulation< 2, 2 >::rGetCellPopulation )
@@ -9150,7 +9150,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::default_UpdateCellPopulation) )    
         .def( 
             "WriteVisualizerSetupFile"
-            , (void ( AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::default_WriteVisualizerSetupFile) )
+            , (void ( AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::default_WriteVisualizerSetupFile) )    
         .def( 
             "rGetCellPopulation"
             , (::AbstractCellPopulation< 3, 3 > const & ( ::AbstractCellBasedSimulation<3, 3>::* )(  )const)( &::AbstractCellBasedSimulation< 3, 3 >::rGetCellPopulation )
@@ -9236,9 +9236,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
     }
 
     { //::AbstractCellBasedSimulationModifier< 3, 3 >
@@ -9326,185 +9326,70 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
     }
 
-    { //::AbstractCellCycleModel
-        typedef bp::class_< AbstractCellCycleModel_wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellCycleModel_exposer_t;
-        AbstractCellCycleModel_exposer_t AbstractCellCycleModel_exposer = AbstractCellCycleModel_exposer_t( "AbstractCellCycleModel", bp::init< AbstractCellCycleModel const & >(( bp::arg("rModel") )) );
-        bp::scope AbstractCellCycleModel_scope( AbstractCellCycleModel_exposer );
-        AbstractCellCycleModel_exposer.def( bp::init< >() );
-        { //::AbstractCellCycleModel::CanCellTerminallyDifferentiate
-        
-            typedef bool ( ::AbstractCellCycleModel::*CanCellTerminallyDifferentiate_function_type)(  ) ;
-            typedef bool ( AbstractCellCycleModel_wrapper::*default_CanCellTerminallyDifferentiate_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "CanCellTerminallyDifferentiate"
-                , CanCellTerminallyDifferentiate_function_type(&::AbstractCellCycleModel::CanCellTerminallyDifferentiate)
-                , default_CanCellTerminallyDifferentiate_function_type(&AbstractCellCycleModel_wrapper::default_CanCellTerminallyDifferentiate) );
-        
-        }
-        { //::AbstractCellCycleModel::CreateCellCycleModel
-        
-            typedef ::AbstractCellCycleModel * ( ::AbstractCellCycleModel::*CreateCellCycleModel_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "CreateCellCycleModel"
-                , bp::pure_virtual( CreateCellCycleModel_function_type(&::AbstractCellCycleModel::CreateCellCycleModel) )
-                , bp::return_value_policy< bp::manage_new_object >() );
-        
-        }
-        { //::AbstractCellCycleModel::GetAge
-        
-            typedef double ( ::AbstractCellCycleModel::*GetAge_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetAge"
-                , GetAge_function_type( &::AbstractCellCycleModel::GetAge ) );
-        
-        }
-        { //::AbstractCellCycleModel::GetAverageStemCellCycleTime
-        
-            typedef double ( ::AbstractCellCycleModel::*GetAverageStemCellCycleTime_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetAverageStemCellCycleTime"
-                , bp::pure_virtual( GetAverageStemCellCycleTime_function_type(&::AbstractCellCycleModel::GetAverageStemCellCycleTime) ) );
-        
-        }
-        { //::AbstractCellCycleModel::GetAverageTransitCellCycleTime
-        
-            typedef double ( ::AbstractCellCycleModel::*GetAverageTransitCellCycleTime_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetAverageTransitCellCycleTime"
-                , bp::pure_virtual( GetAverageTransitCellCycleTime_function_type(&::AbstractCellCycleModel::GetAverageTransitCellCycleTime) ) );
-        
-        }
-        { //::AbstractCellCycleModel::GetBirthTime
-        
-            typedef double ( ::AbstractCellCycleModel::*GetBirthTime_function_type)(  ) const;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetBirthTime"
-                , GetBirthTime_function_type( &::AbstractCellCycleModel::GetBirthTime ) );
-        
-        }
-        { //::AbstractCellCycleModel::GetCell
-        
-            typedef ::CellPtr ( ::AbstractCellCycleModel::*GetCell_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetCell"
-                , GetCell_function_type( &::AbstractCellCycleModel::GetCell ) );
-        
-        }
-        { //::AbstractCellCycleModel::GetDimension
-        
-            typedef unsigned int ( ::AbstractCellCycleModel::*GetDimension_function_type)(  ) const;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "GetDimension"
-                , GetDimension_function_type( &::AbstractCellCycleModel::GetDimension ) );
-        
-        }
-        { //::AbstractCellCycleModel::Initialise
-        
-            typedef void ( ::AbstractCellCycleModel::*Initialise_function_type)(  ) ;
-            typedef void ( AbstractCellCycleModel_wrapper::*default_Initialise_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "Initialise"
-                , Initialise_function_type(&::AbstractCellCycleModel::Initialise)
-                , default_Initialise_function_type(&AbstractCellCycleModel_wrapper::default_Initialise) );
-        
-        }
-        { //::AbstractCellCycleModel::InitialiseDaughterCell
-        
-            typedef void ( ::AbstractCellCycleModel::*InitialiseDaughterCell_function_type)(  ) ;
-            typedef void ( AbstractCellCycleModel_wrapper::*default_InitialiseDaughterCell_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "InitialiseDaughterCell"
-                , InitialiseDaughterCell_function_type(&::AbstractCellCycleModel::InitialiseDaughterCell)
-                , default_InitialiseDaughterCell_function_type(&AbstractCellCycleModel_wrapper::default_InitialiseDaughterCell) );
-        
-        }
-        { //::AbstractCellCycleModel::OutputCellCycleModelInfo
-        
-            typedef void ( ::AbstractCellCycleModel::*OutputCellCycleModelInfo_function_type)( ::out_stream & ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "OutputCellCycleModelInfo"
-                , OutputCellCycleModelInfo_function_type( &::AbstractCellCycleModel::OutputCellCycleModelInfo )
-                , ( bp::arg("rParamsFile") ) );
-        
-        }
-        { //::AbstractCellCycleModel::OutputCellCycleModelParameters
-        
-            typedef void ( ::AbstractCellCycleModel::*OutputCellCycleModelParameters_function_type)( ::out_stream & ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "OutputCellCycleModelParameters"
-                , bp::pure_virtual( OutputCellCycleModelParameters_function_type(&::AbstractCellCycleModel::OutputCellCycleModelParameters) )
-                , ( bp::arg("rParamsFile") ) );
-        
-        }
-        { //::AbstractCellCycleModel::ReadyToDivide
-        
-            typedef bool ( ::AbstractCellCycleModel::*ReadyToDivide_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "ReadyToDivide"
-                , bp::pure_virtual( ReadyToDivide_function_type(&::AbstractCellCycleModel::ReadyToDivide) ) );
-        
-        }
-        { //::AbstractCellCycleModel::ResetForDivision
-        
-            typedef void ( ::AbstractCellCycleModel::*ResetForDivision_function_type)(  ) ;
-            typedef void ( AbstractCellCycleModel_wrapper::*default_ResetForDivision_function_type)(  ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "ResetForDivision"
-                , ResetForDivision_function_type(&::AbstractCellCycleModel::ResetForDivision)
-                , default_ResetForDivision_function_type(&AbstractCellCycleModel_wrapper::default_ResetForDivision) );
-        
-        }
-        { //::AbstractCellCycleModel::SetBirthTime
-        
-            typedef void ( ::AbstractCellCycleModel::*SetBirthTime_function_type)( double ) ;
-            typedef void ( AbstractCellCycleModel_wrapper::*default_SetBirthTime_function_type)( double ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "SetBirthTime"
-                , SetBirthTime_function_type(&::AbstractCellCycleModel::SetBirthTime)
-                , default_SetBirthTime_function_type(&AbstractCellCycleModel_wrapper::default_SetBirthTime)
-                , ( bp::arg("birthTime") ) );
-        
-        }
-        { //::AbstractCellCycleModel::SetCell
-        
-            typedef void ( ::AbstractCellCycleModel::*SetCell_function_type)( ::CellPtr ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "SetCell"
-                , SetCell_function_type( &::AbstractCellCycleModel::SetCell )
-                , ( bp::arg("pCell") ) );
-        
-        }
-        { //::AbstractCellCycleModel::SetDimension
-        
-            typedef void ( ::AbstractCellCycleModel::*SetDimension_function_type)( unsigned int ) ;
-            
-            AbstractCellCycleModel_exposer.def( 
-                "SetDimension"
-                , SetDimension_function_type( &::AbstractCellCycleModel::SetDimension )
-                , ( bp::arg("dimension") ) );
-        
-        }
-        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellCycleModel > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractCellCycleModel >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractSimpleCellCycleModel >, boost::shared_ptr< AbstractCellCycleModel > >();
-        bp::implicitly_convertible< boost::shared_ptr< UniformCellCycleModel >, boost::shared_ptr< AbstractCellCycleModel > >();
-    }
+    bp::class_< AbstractCellCycleModel_wrapper, bp::bases< Identifiable >, boost::noncopyable >( "AbstractCellCycleModel", bp::init< AbstractCellCycleModel const & >(( bp::arg("rModel") )) )    
+        .def( bp::init< >() )    
+        .def( 
+            "CanCellTerminallyDifferentiate"
+            , (bool ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::CanCellTerminallyDifferentiate)
+            , (bool ( AbstractCellCycleModel_wrapper::* )(  ))(&AbstractCellCycleModel_wrapper::default_CanCellTerminallyDifferentiate) )    
+        .def( 
+            "CreateCellCycleModel"
+            , bp::pure_virtual( (::AbstractCellCycleModel * ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::CreateCellCycleModel) )
+            , bp::return_value_policy< bp::manage_new_object >() )    
+        .def( 
+            "GetAge"
+            , (double ( ::AbstractCellCycleModel::* )(  ))( &::AbstractCellCycleModel::GetAge ) )    
+        .def( 
+            "GetAverageStemCellCycleTime"
+            , bp::pure_virtual( (double ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::GetAverageStemCellCycleTime) ) )    
+        .def( 
+            "GetAverageTransitCellCycleTime"
+            , bp::pure_virtual( (double ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::GetAverageTransitCellCycleTime) ) )    
+        .def( 
+            "GetBirthTime"
+            , (double ( ::AbstractCellCycleModel::* )(  )const)( &::AbstractCellCycleModel::GetBirthTime ) )    
+        .def( 
+            "GetCell"
+            , (::CellPtr ( ::AbstractCellCycleModel::* )(  ))( &::AbstractCellCycleModel::GetCell ) )    
+        .def( 
+            "GetDimension"
+            , (unsigned int ( ::AbstractCellCycleModel::* )(  )const)( &::AbstractCellCycleModel::GetDimension ) )    
+        .def( 
+            "Initialise"
+            , (void ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::Initialise)
+            , (void ( AbstractCellCycleModel_wrapper::* )(  ))(&AbstractCellCycleModel_wrapper::default_Initialise) )    
+        .def( 
+            "InitialiseDaughterCell"
+            , (void ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::InitialiseDaughterCell)
+            , (void ( AbstractCellCycleModel_wrapper::* )(  ))(&AbstractCellCycleModel_wrapper::default_InitialiseDaughterCell) )    
+        .def( 
+            "OutputCellCycleModelInfo"
+            , (void ( ::AbstractCellCycleModel::* )( ::out_stream & ))( &::AbstractCellCycleModel::OutputCellCycleModelInfo )
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "OutputCellCycleModelParameters"
+            , bp::pure_virtual( (void ( ::AbstractCellCycleModel::* )( ::out_stream & ))(&::AbstractCellCycleModel::OutputCellCycleModelParameters) )
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "ReadyToDivide"
+            , bp::pure_virtual( (bool ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::ReadyToDivide) ) )    
+        .def( 
+            "ResetForDivision"
+            , (void ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::ResetForDivision)
+            , (void ( AbstractCellCycleModel_wrapper::* )(  ))(&AbstractCellCycleModel_wrapper::default_ResetForDivision) )    
+        .def( 
+            "SetBirthTime"
+            , (void ( ::AbstractCellCycleModel::* )( double ))(&::AbstractCellCycleModel::SetBirthTime)
+            , (void ( AbstractCellCycleModel_wrapper::* )( double ))(&AbstractCellCycleModel_wrapper::default_SetBirthTime)
+            , ( bp::arg("birthTime") ) )    
+        .def( 
+            "SetCell"
+            , (void ( ::AbstractCellCycleModel::* )( ::CellPtr ))( &::AbstractCellCycleModel::SetCell )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "SetDimension"
+            , (void ( ::AbstractCellCycleModel::* )( unsigned int ))( &::AbstractCellCycleModel::SetDimension )
+            , ( bp::arg("dimension") ) );
 
     bp::class_< AbstractCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable >( "AbstractCellPopulation2_2", bp::no_init )    
         .def( 
@@ -10005,14 +9890,36 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellId >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
+    }
+
+    { //::AbstractCellProliferativeType
+        typedef bp::class_< AbstractCellProliferativeType, bp::bases< AbstractCellProperty > > AbstractCellProliferativeType_exposer_t;
+        AbstractCellProliferativeType_exposer_t AbstractCellProliferativeType_exposer = AbstractCellProliferativeType_exposer_t( "AbstractCellProliferativeType", bp::init< unsigned int >(( bp::arg("colour") )) );
+        bp::scope AbstractCellProliferativeType_scope( AbstractCellProliferativeType_exposer );
+        bp::implicitly_convertible< unsigned int, AbstractCellProliferativeType >();
+        { //::AbstractCellProliferativeType::GetColour
+        
+            typedef unsigned int ( ::AbstractCellProliferativeType::*GetColour_function_type)(  ) const;
+            
+            AbstractCellProliferativeType_exposer.def( 
+                "GetColour"
+                , GetColour_function_type( &::AbstractCellProliferativeType::GetColour ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
     }
 
     bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
@@ -10111,10 +10018,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringNodeIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
-            , ( bp::arg("index") ) )
+            , ( bp::arg("index") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
@@ -10278,7 +10185,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "WriteVtkResultsToFile"
             , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::WriteVtkResultsToFile)
-            , ( bp::arg("rDirectory") ) )
+            , ( bp::arg("rDirectory") ) )    
         .def( 
             "AcceptCellWriter"
             , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AcceptCellWriter) )
@@ -10308,10 +10215,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringNodeIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
-            , ( bp::arg("index") ) )
+            , ( bp::arg("index") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
@@ -10480,10 +10387,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringNodeIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringNodeIndices) )
-            , ( bp::arg("index") ) )
+            , ( bp::arg("index") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )
@@ -10647,7 +10554,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "WriteVtkResultsToFile"
             , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::WriteVtkResultsToFile)
-            , ( bp::arg("rDirectory") ) )
+            , ( bp::arg("rDirectory") ) )    
         .def( 
             "AcceptCellWriter"
             , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AcceptCellWriter) )
@@ -10677,10 +10584,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringNodeIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( unsigned int ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringNodeIndices) )
-            , ( bp::arg("index") ) )
+            , ( bp::arg("index") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )
@@ -10838,10 +10745,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringLocationIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringLocationIndices) )
-            , ( bp::arg("pCell") ) )
+            , ( bp::arg("pCell") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )
@@ -11003,10 +10910,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "GetNeighbouringLocationIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringLocationIndices) )
-            , ( bp::arg("pCell") ) )
+            , ( bp::arg("pCell") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )
@@ -12466,7 +12373,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::CellsGenerator<UniformCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< UniformCellCycleModel, 2 >::GenerateGivenLocationIndices )
             , ( bp::arg("rCells"), bp::arg("locationIndices"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) );
 
-    bp::class_< DefaultCellProliferativeType >( "DefaultCellProliferativeType", bp::init< >() );
+    bp::class_< DefaultCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "DefaultCellProliferativeType", bp::init< >() );
 
     bp::class_< DiffusionCaUpdateRule_less__2__greater__wrapper, bp::bases< AbstractCaUpdateRule< 2 > > >( "DiffusionCaUpdateRule2", bp::init< >() )    
         .def( 
@@ -12583,48 +12490,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
             , ( bp::arg("pVizSetupFile") ) );
 
-    bp::class_< GenericCellsGenerator< 2 > >( "GenericCellsGenerator2", bp::init< >() )    
-        .def( 
-            "GenerateBasic"
-            , (::std::vector< boost::shared_ptr<Cell> > ( ::GenericCellsGenerator<2>::* )(  ))( &::GenericCellsGenerator< 2 >::GenerateBasic ) )    
-        .def( 
-            "SetCellCycleModel"
-            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellCycleModel > ))( &::GenericCellsGenerator< 2 >::SetCellCycleModel )
-            , ( bp::arg("pCellCycleModel") ) )    
-        .def( 
-            "SetCellMutationState"
-            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 2 >::SetCellMutationState )
-            , ( bp::arg("pMutationState") ) )    
-        .def( 
-            "SetCellProliferativeType"
-            , (void ( ::GenericCellsGenerator<2>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 2 >::SetCellProliferativeType )
-            , ( bp::arg("pProliferativeType") ) )    
-        .def( 
-            "SetNumCells"
-            , (void ( ::GenericCellsGenerator<2>::* )( unsigned int ))( &::GenericCellsGenerator< 2 >::SetNumCells )
-            , ( bp::arg("numCells") ) );
-
-    bp::class_< GenericCellsGenerator< 3 > >( "GenericCellsGenerator3", bp::init< >() )    
-        .def( 
-            "GenerateBasic"
-            , (::std::vector< boost::shared_ptr<Cell> > ( ::GenericCellsGenerator<3>::* )(  ))( &::GenericCellsGenerator< 3 >::GenerateBasic ) )    
-        .def( 
-            "SetCellCycleModel"
-            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellCycleModel > ))( &::GenericCellsGenerator< 3 >::SetCellCycleModel )
-            , ( bp::arg("pCellCycleModel") ) )    
-        .def( 
-            "SetCellMutationState"
-            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 3 >::SetCellMutationState )
-            , ( bp::arg("pMutationState") ) )    
-        .def( 
-            "SetCellProliferativeType"
-            , (void ( ::GenericCellsGenerator<3>::* )( ::boost::shared_ptr< AbstractCellProperty > ))( &::GenericCellsGenerator< 3 >::SetCellProliferativeType )
-            , ( bp::arg("pProliferativeType") ) )    
-        .def( 
-            "SetNumCells"
-            , (void ( ::GenericCellsGenerator<3>::* )( unsigned int ))( &::GenericCellsGenerator< 3 >::SetNumCells )
-            , ( bp::arg("numCells") ) );
-
     { //::MeshBasedCellPopulation< 2, 2 >
         typedef bp::class_< MeshBasedCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCentreBasedCellPopulation< 2, 2 > >, boost::noncopyable > MeshBasedCellPopulation2_2_exposer_t;
         MeshBasedCellPopulation2_2_exposer_t MeshBasedCellPopulation2_2_exposer = MeshBasedCellPopulation2_2_exposer_t( "MeshBasedCellPopulation2_2", bp::init< MutableMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int >, bool, bool > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true) )) );
@@ -12635,7 +12500,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellA ) )    
             .def( 
                 "GetCellB"
-                , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellB ) )
+                , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellB ) )    
             .def( bp::self != bp::self );
         MeshBasedCellPopulation2_2_exposer.def( bp::init< MutableMesh< 2, 2 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< MutableMesh< 2, 2 > &, MeshBasedCellPopulation< 2, 2 > >();
@@ -13331,6 +13196,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , ( bp::arg("dt") ) );
         
         }
+        MeshBasedCellPopulation2_2_exposer.def("AddPopulationWriter_VoronoiDataWriter", &MeshBasedCellPopulation< 2, 2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
     { //::MeshBasedCellPopulation< 3, 3 >
@@ -13343,7 +13209,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellA ) )    
             .def( 
                 "GetCellB"
-                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellB ) )
+                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellB ) )    
             .def( bp::self != bp::self );
         MeshBasedCellPopulation3_3_exposer.def( bp::init< MutableMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< MutableMesh< 3, 3 > &, MeshBasedCellPopulation< 3, 3 > >();
@@ -17054,7 +16920,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .staticmethod( "Destroy" )    
         .staticmethod( "Instance" );
 
-    bp::class_< StemCellProliferativeType >( "StemCellProliferativeType", bp::init< >() );
+    bp::class_< StemCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "StemCellProliferativeType", bp::init< >() );
 
     bp::class_< UniformCellCycleModel_wrapper, boost::noncopyable >( "UniformCellCycleModel", bp::init< UniformCellCycleModel const & >(( bp::arg("rModel") )) )    
         .def( bp::init< >() )    

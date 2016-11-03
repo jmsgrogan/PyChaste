@@ -2,6 +2,12 @@
 
 #include "boost/python.hpp"
 
+#include "indexing_suite/container_suite.hpp"
+
+#include "indexing_suite/vector.hpp"
+
+#include "indexing_suite/map.hpp"
+
 #include "core_headers.hpp"
 
 namespace bp = boost::python;
@@ -69,7 +75,99 @@ struct FileFinder_wrapper : FileFinder, bp::wrapper< FileFinder > {
 
 };
 
+struct RandomNumberGenerator_wrapper : RandomNumberGenerator, bp::wrapper< RandomNumberGenerator > {
+
+    RandomNumberGenerator_wrapper( )
+    : RandomNumberGenerator( )
+      , bp::wrapper< RandomNumberGenerator >(){
+        // null constructor
+    
+    }
+
+};
+
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
+    { //::std::vector< unsigned int >
+        typedef bp::class_< std::vector< unsigned int > > __type_exposer_t;
+        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
+        bp::scope __type_scope( __type_exposer );
+        __type_exposer.def( bp::indexing::vector_suite< std::vector< unsigned int > >() );
+    }
+
+    bp::class_< std::map< std::string, std::string > >("map_less__std_scope_string_comma__std_scope_string__greater_")    
+        .def( bp::indexing::map_suite< std::map< std::string, std::string > >() );
+
+    bp::class_< ChasteBuildInfo >( "ChasteBuildInfo" )    
+        .def( 
+            "GetBuildInformation"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildInformation ) )    
+        .def( 
+            "GetBuildTime"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildTime ) )    
+        .def( 
+            "GetBuilderUnameInfo"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuilderUnameInfo ) )    
+        .def( 
+            "GetCompilerFlags"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerFlags ) )    
+        .def( 
+            "GetCompilerType"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerType ) )    
+        .def( 
+            "GetCompilerVersion"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerVersion ) )    
+        .def( 
+            "GetCurrentTime"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCurrentTime ) )    
+        .def( 
+            "GetLicenceText"
+            , (::std::string (*)(  ))( &::ChasteBuildInfo::GetLicenceText ) )    
+        .def( 
+            "GetMajorReleaseNumber"
+            , (unsigned int (*)(  ))( &::ChasteBuildInfo::GetMajorReleaseNumber ) )    
+        .def( 
+            "GetMinorReleaseNumber"
+            , (unsigned int (*)(  ))( &::ChasteBuildInfo::GetMinorReleaseNumber ) )    
+        .def( 
+            "GetProvenanceString"
+            , (::std::string (*)(  ))( &::ChasteBuildInfo::GetProvenanceString ) )    
+        .def( 
+            "GetRevisionNumber"
+            , (unsigned int (*)(  ))( &::ChasteBuildInfo::GetRevisionNumber ) )    
+        .def( 
+            "GetRootDir"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetRootDir ) )    
+        .def( 
+            "GetVersionString"
+            , (::std::string (*)(  ))( &::ChasteBuildInfo::GetVersionString ) )    
+        .def( 
+            "GetXsdVersion"
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetXsdVersion ) )    
+        .def( 
+            "IsWorkingCopyModified"
+            , (bool (*)(  ))( &::ChasteBuildInfo::IsWorkingCopyModified ) )    
+        .def( 
+            "rGetProjectVersions"
+            , (::std::map< std::string, std::string > const & (*)(  ))( &::ChasteBuildInfo::rGetProjectVersions )
+            , bp::return_value_policy< bp::copy_const_reference >() )    
+        .staticmethod( "GetBuildInformation" )    
+        .staticmethod( "GetBuildTime" )    
+        .staticmethod( "GetBuilderUnameInfo" )    
+        .staticmethod( "GetCompilerFlags" )    
+        .staticmethod( "GetCompilerType" )    
+        .staticmethod( "GetCompilerVersion" )    
+        .staticmethod( "GetCurrentTime" )    
+        .staticmethod( "GetLicenceText" )    
+        .staticmethod( "GetMajorReleaseNumber" )    
+        .staticmethod( "GetMinorReleaseNumber" )    
+        .staticmethod( "GetProvenanceString" )    
+        .staticmethod( "GetRevisionNumber" )    
+        .staticmethod( "GetRootDir" )    
+        .staticmethod( "GetVersionString" )    
+        .staticmethod( "GetXsdVersion" )    
+        .staticmethod( "IsWorkingCopyModified" )    
+        .staticmethod( "rGetProjectVersions" );
+
     { //::RelativeTo
         typedef bp::class_< RelativeTo > RelativeTo_exposer_t;
         RelativeTo_exposer_t RelativeTo_exposer = RelativeTo_exposer_t( "RelativeTo" );
@@ -377,4 +475,70 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         OutputFileHandler_exposer.def_readonly( "SIG_FILE_NAME", &OutputFileHandler::SIG_FILE_NAME );
         OutputFileHandler_exposer.staticmethod( "GetChasteTestOutputDirectory" );
     }
+
+    bp::class_< RandomNumberGenerator_wrapper, boost::noncopyable >( "RandomNumberGenerator", bp::no_init )    
+        .def( bp::init< >() )    
+        .def( 
+            "Destroy"
+            , (void (*)(  ))( &::RandomNumberGenerator::Destroy ) )    
+        .def( 
+            "ExponentialRandomDeviate"
+            , (double ( ::RandomNumberGenerator::* )( double ))( &::RandomNumberGenerator::ExponentialRandomDeviate )
+            , ( bp::arg("scale") ) )    
+        .def( 
+            "GammaRandomDeviate"
+            , (double ( ::RandomNumberGenerator::* )( double,double ))( &::RandomNumberGenerator::GammaRandomDeviate )
+            , ( bp::arg("shape"), bp::arg("scale") ) )    
+        .def( 
+            "Instance"
+            , (::RandomNumberGenerator * (*)(  ))( &::RandomNumberGenerator::Instance )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
+            "NormalRandomDeviate"
+            , (double ( ::RandomNumberGenerator::* )( double,double ))( &::RandomNumberGenerator::NormalRandomDeviate )
+            , ( bp::arg("mean"), bp::arg("stdDev") ) )    
+        .def( 
+            "Reseed"
+            , (void ( ::RandomNumberGenerator::* )( unsigned int ))( &::RandomNumberGenerator::Reseed )
+            , ( bp::arg("seed") ) )    
+        .def( 
+            "Shuffle"
+            , (void ( ::RandomNumberGenerator::* )( unsigned int,::std::vector< unsigned int > & ))( &::RandomNumberGenerator::Shuffle )
+            , ( bp::arg("num"), bp::arg("rValues") ) )    
+        .def( 
+            "StandardNormalRandomDeviate"
+            , (double ( ::RandomNumberGenerator::* )(  ))( &::RandomNumberGenerator::StandardNormalRandomDeviate ) )    
+        .def( 
+            "randMod"
+            , (unsigned int ( ::RandomNumberGenerator::* )( unsigned int ))( &::RandomNumberGenerator::randMod )
+            , ( bp::arg("base") ) )    
+        .def( 
+            "ranf"
+            , (double ( ::RandomNumberGenerator::* )(  ))( &::RandomNumberGenerator::ranf ) )    
+        .staticmethod( "Destroy" )    
+        .staticmethod( "Instance" );
+
+    bp::class_< Timer >( "Timer" )    
+        .def( 
+            "GetElapsedTime"
+            , (double (*)(  ))( &::Timer::GetElapsedTime ) )    
+        .def( 
+            "GetWallTime"
+            , (double (*)(  ))( &::Timer::GetWallTime ) )    
+        .def( 
+            "Print"
+            , (void (*)( ::std::string ))( &::Timer::Print )
+            , ( bp::arg("message") ) )    
+        .def( 
+            "PrintAndReset"
+            , (void (*)( ::std::string ))( &::Timer::PrintAndReset )
+            , ( bp::arg("message") ) )    
+        .def( 
+            "Reset"
+            , (void (*)(  ))( &::Timer::Reset ) )    
+        .staticmethod( "GetElapsedTime" )    
+        .staticmethod( "GetWallTime" )    
+        .staticmethod( "Print" )    
+        .staticmethod( "PrintAndReset" )    
+        .staticmethod( "Reset" );
 }

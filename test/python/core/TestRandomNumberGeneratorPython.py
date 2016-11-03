@@ -31,10 +31,22 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import warnings
+import unittest
+import chaste.core
+chaste.init()
 
-# At the moment there are many harmless duplicate registration warnings from boost python. Ignore them until a suitable
-# way to avoid duplicate registration during wrapper building is found.
-warnings.filterwarnings("ignore")
+class TestRandomNumberGenerator(unittest.TestCase):
+    
+    def test_make_some_numbers(self):
+        
+        rng = chaste.core.RandomNumberGenerator().Instance()
+        rng.Reseed(1234)
+        self.assertAlmostEqual(rng.ranf(), 0.191519450163, 5)
+        
+        rng.Destroy()
+        rng2 = chaste.core.RandomNumberGenerator().Instance()
+        rng2.Reseed(1234)
+        self.assertAlmostEqual(rng2.ranf(), 0.191519450163, 5)
 
-from _chaste_project_PyChaste_mesh import *
+if __name__ == '__main__':
+    unittest.main()
