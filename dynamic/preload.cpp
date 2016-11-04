@@ -52,6 +52,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Exception.hpp"
 #include "ChastePoint.hpp"
 #include "PythonObjectConverters.hpp"
+#include "Node.hpp"
 
 namespace bp = boost::python;
 
@@ -140,6 +141,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     PythonIterableToStl()
       .from_python<std::vector<double> >()
       .from_python<std::vector<std::vector<double> > >()
+      .from_python<std::vector<unsigned> >()
+      .from_python<std::vector<boost::shared_ptr<Node<3> > > >()
+      .from_python<std::vector<boost::shared_ptr<Node<2> > > >()
       .from_python<std::vector<unsigned> >()
       .from_python<std::vector<c_vector<double, 3> > >()
       ;

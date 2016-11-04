@@ -1,3 +1,4 @@
+#include "SmartPointers.hpp"
 #include "ChastePoint.hpp"
 #include "NodeAttributes.hpp"
 #include "Node.hpp"
@@ -40,10 +41,12 @@ inline int Instantiation()
             sizeof(VertexMesh<2, 2>) +
             sizeof(VertexMesh<3, 3>) +
             sizeof(MutableVertexMesh<2, 2>) +
-            sizeof(MutableVertexMesh<3, 3>)
-            ;
+            sizeof(MutableVertexMesh<3, 3>);
 }
 
 typedef std::vector<PottsElement<3>*, std::allocator<PottsElement<3>* > >  VecPottsElementPtr3;
 typedef std::vector<Element<3, 3>*, std::allocator<Element<3, 3>* > >  VecElementPtr3;
 typedef std::vector<Node<3>*, std::allocator<Node<3>* > >  VecNodePtr3;
+typedef std::vector<Node<3>*, std::allocator<Node<3>* > >  VecNodePtr2;
+typedef std::vector<boost::shared_ptr<Node<3> > >  VecNodeSharedPtr3;
+typedef std::vector<boost::shared_ptr<Node<2> > >  VecNodeSharedPtr2;

@@ -149,5 +149,7 @@ def update_builder(builder):
     builder.class_('NodeAttributes<2>').member_functions("rGetNeighbours").exclude()
     builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").exclude()
     builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").exclude()
+    
+    # Need to exclude c_vec5 and vertex constructors with different dimension tetrahedral meshes.
         
     return builder

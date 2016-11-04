@@ -55,7 +55,7 @@ class TestMeshBasedPopulation(chaste.cell_based.AbstractCellBasedTestSuite):
             
         # Make the cell population
         cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh, cells)
-        cell_population.AddPopulationWriter_VoronoiDataWriter()
+        cell_population.AddPopulationWriterVoronoiDataWriter()
          
         # Set up the visualizer
         scene = chaste.visualization.VtkScene2()

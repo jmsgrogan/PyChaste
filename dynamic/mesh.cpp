@@ -3221,13 +3221,6 @@ struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::w
     
     }
 
-    VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 3, 3 > & rMesh )
-    : VertexMesh<2, 2>( boost::ref(rMesh) )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
     VertexMesh_less__2_comma__2__greater__wrapper( )
     : VertexMesh<2, 2>( )
       , bp::wrapper< VertexMesh< 2, 2 > >(){
@@ -3963,20 +3956,6 @@ struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::w
 
     VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<3, 3> * > vertexElements )
     : VertexMesh<3, 3>( nodes, vertexElements )
-      , bp::wrapper< VertexMesh< 3, 3 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<2, 3> * > faces, ::std::vector< VertexElement<3, 3> * > vertexElements )
-    : VertexMesh<3, 3>( nodes, faces, vertexElements )
-      , bp::wrapper< VertexMesh< 3, 3 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__3_comma__3__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
-    : VertexMesh<3, 3>( boost::ref(rMesh), isPeriodic )
       , bp::wrapper< VertexMesh< 3, 3 > >(){
         // constructor
     
@@ -6545,6 +6524,46 @@ struct value_traits< boost::numeric::ublas::c_vector< double, 3 > >{
 namespace boost { namespace python { namespace indexing {
 
 template<>
+struct value_traits< boost::shared_ptr< Node< 2 > > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< boost::shared_ptr< Node< 3 > > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
 struct value_traits< std::set< unsigned int > >{
 
     static bool const equality_comparable = false;
@@ -6617,8 +6636,19 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         vector_less__double__greater__exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
     }
 
-    bp::class_< std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > >("vector_less__boost_scope_numeric_scope_ublas_scope_c_vector_less_unsigned_int_comma__5_greater___greater_")    
-        .def( bp::indexing::vector_suite< std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > >() );
+    { //::std::vector< boost::shared_ptr<Node<3> > >
+        typedef bp::class_< std::vector< boost::shared_ptr<Node<3> > > > vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer_t;
+        vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer_t vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer = vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer_t( "vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater_" );
+        bp::scope vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__scope( vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer );
+        vector_less__boost_scope_shared_ptr_less_Node_less_3_greater___greater___greater__exposer.def( bp::indexing::vector_suite< std::vector< boost::shared_ptr<Node<3> > > >() );
+    }
+
+    { //::std::vector< boost::shared_ptr<Node<2> > >
+        typedef bp::class_< std::vector< boost::shared_ptr<Node<2> > > > vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer_t;
+        vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer_t vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer = vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer_t( "vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater_" );
+        bp::scope vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__scope( vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer );
+        vector_less__boost_scope_shared_ptr_less_Node_less_2_greater___greater___greater__exposer.def( bp::indexing::vector_suite< std::vector< boost::shared_ptr<Node<2> > > >() );
+    }
 
     { //::std::vector< boost::numeric::ublas::c_vector<double, 3> >
         typedef bp::class_< std::vector< boost::numeric::ublas::c_vector<double, 3> > > __type_exposer_t;
@@ -9375,8 +9405,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         VertexMesh2_2_exposer.def( bp::init< std::vector< Node<2> * >, std::vector< VertexElement<1, 2> * >, std::vector< VertexElement<2, 2> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
         VertexMesh2_2_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
         bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 2, 2 > >();
-        VertexMesh2_2_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
-        bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 2, 2 > >();
         VertexMesh2_2_exposer.def( bp::init< >() );
         { //::VertexMesh< 2, 2 >::CalculateAreaOfFace
         
@@ -10875,9 +10903,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         typedef bp::class_< VertexMesh_less__3_comma__3__greater__wrapper, bp::bases< AbstractMesh< 3, 3 > >, boost::noncopyable > VertexMesh3_3_exposer_t;
         VertexMesh3_3_exposer_t VertexMesh3_3_exposer = VertexMesh3_3_exposer_t( "VertexMesh3_3", bp::init< std::vector< Node<3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("vertexElements") )) );
         bp::scope VertexMesh3_3_scope( VertexMesh3_3_exposer );
-        VertexMesh3_3_exposer.def( bp::init< std::vector< Node<3> * >, std::vector< VertexElement<2, 3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
-        VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
-        bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< >() );
@@ -12758,6 +12783,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , ( bp::arg("rNodes"), bp::arg("maxInteractionDistance") ) )    
         .def( 
             "ConstructNodesWithoutMesh"
+            , (void ( ::NodesOnlyMesh<2>::* )( ::std::vector< boost::shared_ptr<Node<2> > > const &,double ))( &::NodesOnlyMesh< 2 >::ConstructNodesWithoutMesh )
+            , ( bp::arg("rNodes"), bp::arg("maxInteractionDistance") ) )    
+        .def( 
+            "ConstructNodesWithoutMesh"
             , (void ( ::NodesOnlyMesh<2>::* )( ::AbstractMesh< 2, 2 > const &,double ))( &::NodesOnlyMesh< 2 >::ConstructNodesWithoutMesh )
             , ( bp::arg("rGeneratingMesh"), bp::arg("maxInteractionDistance") ) )    
         .def( 
@@ -13052,6 +13081,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         .def( 
             "ConstructNodesWithoutMesh"
             , (void ( ::NodesOnlyMesh<3>::* )( ::std::vector< Node<3> * > const &,double ))( &::NodesOnlyMesh< 3 >::ConstructNodesWithoutMesh )
+            , ( bp::arg("rNodes"), bp::arg("maxInteractionDistance") ) )    
+        .def( 
+            "ConstructNodesWithoutMesh"
+            , (void ( ::NodesOnlyMesh<3>::* )( ::std::vector< boost::shared_ptr<Node<3> > > const &,double ))( &::NodesOnlyMesh< 3 >::ConstructNodesWithoutMesh )
             , ( bp::arg("rNodes"), bp::arg("maxInteractionDistance") ) )    
         .def( 
             "ConstructNodesWithoutMesh"

@@ -39,6 +39,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "CellsGenerator.hpp"
 #include "CellId.hpp"
 #include "CellPropertyRegistry.hpp"
+#include "CellData.hpp"
 
 // Populations
 #include "AbstractCellPopulation.hpp"
@@ -62,12 +63,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "StemCellProliferativeType.hpp"
 #include "DefaultCellProliferativeType.hpp"
 #include "TransitCellProliferativeType.hpp"
+#include "DifferentiatedCellProliferativeType.hpp"
+#include "AbstractCellMutationState.hpp"
+#include "ApcOneHitCellMutationState.hpp"
+#include "ApcTwoHitCellMutationState.hpp"
+#include "BetaCateninOneHitCellMutationState.hpp"
+#include "WildTypeCellMutationState.hpp"
 
 // Cycle models
 #include "AbstractCellCycleModel.hpp"
 #include "AbstractPhaseBasedCellCycleModel.hpp"
 #include "AbstractSimpleCellCycleModel.hpp"
 #include "AbstractSimplePhaseBasedCellCycleModel.hpp"
+#include "AbstractSimpleGenerationalCellCycleModel.hpp"
 #include "UniformCellCycleModel.hpp"
 #include "SimpleOxygenBasedCellCycleModel.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
@@ -95,55 +103,75 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SimpleTargetAreaModifier.hpp"
 #include "VtkSceneModifier.hpp"
 
-template class AbstractCellBasedSimulationModifier<2,2>;
-template class AbstractCellBasedSimulationModifier<3,3>;
+
+// Populations
+template class AbstractCellPopulation<2, 2>;
+template class AbstractCentreBasedCellPopulation<2, 2>;
+template class AbstractOffLatticeCellPopulation<2, 2>;
+template class AbstractOnLatticeCellPopulation<2>;
+template class CaBasedCellPopulation<2>;
+template class NodeBasedCellPopulation<2>;
+template class MeshBasedCellPopulation<2, 2>;
+template class MeshBasedCellPopulationWithGhostNodes<2>;
+template class VertexBasedCellPopulation<2>;
+template class PottsBasedCellPopulation<2>;
+template class AbstractCellPopulation<3, 3>;
+template class AbstractCentreBasedCellPopulation<3, 3>;
+template class AbstractOffLatticeCellPopulation<3, 3>;
+template class AbstractOnLatticeCellPopulation<3>;
+template class CaBasedCellPopulation<3>;
+template class NodeBasedCellPopulation<3>;
+template class MeshBasedCellPopulation<3, 3>;
+template class MeshBasedCellPopulationWithGhostNodes<3>;
+template class VertexBasedCellPopulation<3>;
+template class PottsBasedCellPopulation<3>;
+
+// Simulations
+template class AbstractCellBasedSimulation<2, 2>;
+template class OnLatticeSimulation<2>;
+template class OffLatticeSimulation<2,2>;
+template class AbstractCellBasedSimulation<3, 3>;
+template class OnLatticeSimulation<3>;
+template class OffLatticeSimulation<3,3>;
+
+// Update rules
 template class AbstractUpdateRule<2>;
 template class AbstractCaUpdateRule<2>;
 template class DiffusionCaUpdateRule<2>;
-template class CaBasedCellPopulation<2>;
-template class CaBasedCellPopulation<3>;
-template class AbstractOnLatticeCellPopulation<2>;
-template class AbstractOnLatticeCellPopulation<3>;
-template class AbstractCellPopulation<2, 2>;
-template class AbstractCellPopulation<3, 3>;
-template class OnLatticeSimulation<2>;
-template class OnLatticeSimulation<3>;
-template class OffLatticeSimulation<2,2>;
-template class OffLatticeSimulation<3,3>;
+template class AbstractUpdateRule<3>;
+template class AbstractCaUpdateRule<3>;
+template class DiffusionCaUpdateRule<3>;
+
+// Simulation modifiers
+template class AbstractCellBasedSimulationModifier<2,2>;
 template class VtkSceneModifier<2>;
-template class VtkSceneModifier<3>;
-template class AbstractCellBasedSimulation<2, 2>;
-template class AbstractCellBasedSimulation<3, 3>;
-template class NodeBasedCellPopulation<2>;
-template class NodeBasedCellPopulation<3>;
-template class AbstractCentreBasedCellPopulation<2, 2>;
-template class AbstractCentreBasedCellPopulation<3, 3>;
-template class AbstractOffLatticeCellPopulation<2, 2>;
-template class AbstractOffLatticeCellPopulation<3, 3>;
-template class MeshBasedCellPopulation<2, 2>;
-template class MeshBasedCellPopulation<3, 3>;
-template class VertexBasedCellPopulation<2>;
-template class VertexBasedCellPopulation<3>;
-template class PottsBasedCellPopulation<2>;
-template class PottsBasedCellPopulation<3>;
-template class AbstractForce<2, 2>;
-template class AbstractForce<3, 3>;
-template class AbstractTwoBodyInteractionForce<2, 2>;
-template class AbstractTwoBodyInteractionForce<3, 3>;
-template class GeneralisedLinearSpringForce<2, 2>;
-template class GeneralisedLinearSpringForce<3, 3>;
-template class NagaiHondaForce<2>;
-template class NagaiHondaForce<3>;
 template class AbstractTargetAreaModifier<2>;
-template class AbstractTargetAreaModifier<3>;
 template class SimpleTargetAreaModifier<2>;
+template class AbstractCellBasedSimulationModifier<3,3>;
+template class VtkSceneModifier<3>;
+template class AbstractTargetAreaModifier<3>;
 template class SimpleTargetAreaModifier<3>;
+
+// Forces
+template class AbstractForce<2, 2>;
+template class AbstractTwoBodyInteractionForce<2, 2>;
+template class GeneralisedLinearSpringForce<2, 2>;
+template class NagaiHondaForce<2>;
+template class AbstractForce<3, 3>;
+template class AbstractTwoBodyInteractionForce<3, 3>;
+template class GeneralisedLinearSpringForce<3, 3>;
+template class NagaiHondaForce<3>;
+
 
 //// Typdef in this namespace so that pyplusplus uses the nicer typedef'd name for the class
 namespace pyplusplus{
 namespace aliases{
 typedef CellsGenerator<UniformCellCycleModel, 2> CellsGeneratorUniformCellCycleModel_2;
 typedef CellsGenerator<UniformCellCycleModel, 3> CellsGeneratorUniformCellCycleModel_3;
+typedef CellsGenerator<SimpleOxygenBasedCellCycleModel, 2> CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
+typedef CellsGenerator<SimpleOxygenBasedCellCycleModel, 3> CellsGeneratorSimpleOxygenBasedCellCycleModel_3;
+typedef CellsGenerator<UniformG1GenerationalCellCycleModel, 2> CellsGeneratorUniformG1GenerationalCellCycleModel_2;
+typedef CellsGenerator<UniformG1GenerationalCellCycleModel, 3> CellsGeneratorUniformG1GenerationalCellCycleModel_3;
 typedef std::vector<CellPtr> VecCellPtr;
 }
 }
@@ -151,13 +179,11 @@ typedef std::vector<CellPtr> VecCellPtr;
 inline int Instantiation()
 {
     return sizeof(CellsGenerator<UniformCellCycleModel, 2>) +
-            sizeof(AbstractCellPopulation<2, 2>) +
-            sizeof(AbstractCellPopulation<3, 3>) +
-            sizeof(AbstractCellBasedSimulation<2, 2>) +
-            sizeof(AbstractCellBasedSimulation<3, 3>) +
-            sizeof(DiffusionCaUpdateRule<2>) +
-            sizeof(DiffusionCaUpdateRule<3>) +
-            sizeof(CellsGenerator<UniformCellCycleModel, 3>);
+            sizeof(CellsGenerator<UniformCellCycleModel, 3>) +
+            sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 2>) +
+            sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 3>) +
+            sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 2>) +
+            sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 3>);
 }
 
 //pyplusplus::aliases

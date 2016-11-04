@@ -38,6 +38,7 @@ This scipt automatically generates Python bindings using a rule based approach
 import sys
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies
+from pyplusplus import messages
 from pygccxml import parser
 
 def template_replace(class_name):
@@ -53,6 +54,13 @@ def template_replace(class_name):
     if "<2,2>" in class_name[-5:]:
         new_name = class_name[:-5] + "2_2"  
     return new_name
+
+def template_replace_list(builder, classes):
+    
+    for eachClass in classes:
+        new_name = template_replace(eachClass)
+        if(new_name != eachClass):
+            builder.class_(eachClass).rename(new_name)   
 
 def boost_units_namespace_fix(module_file):
     
@@ -119,6 +127,8 @@ def generate_wrappers(args):
                                                 start_with_declarations = ['chaste'],
                                                 include_paths = includes,
                                                 indexing_suite_version=2)
+    messages.disable(messages.W1040) # unexposed declaration
+    messages.disable(messages.W1031) # user to expose non public member function
     
     # Don't wrap std library
     builder.global_ns.namespace('std').exclude()

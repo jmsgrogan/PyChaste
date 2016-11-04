@@ -42,5 +42,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Version.hpp"
 #include "PetscTools.hpp"
 #include "ReplicatableVector.hpp"
+#include "Identifiable.hpp"
 
 typedef boost::filesystem::path boost_filesystem_path;
