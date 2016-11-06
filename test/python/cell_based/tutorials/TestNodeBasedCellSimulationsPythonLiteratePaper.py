@@ -51,7 +51,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     ## In the first test, we run a simple node-based simulation, in which we create a monolayer of cells, 
     ## using a nodes only mesh. Each cell is assigned a uniform cell-cycle model.
     
-    def xtest_monolayer(self):
+    def test_monolayer(self):
         
         ## The first thing we do is generate a nodes only mesh. To do this we first create a `MutableMesh` to use as a generating mesh. 
         ## To do this we can use the `HoneycombMeshGenerator`. This generates a honeycomb-shaped mesh, in which all nodes are equidistant.
@@ -165,6 +165,68 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
         simulator.AddForce(force)
 
+        ## To run the simulation, we call `Solve()`.
+    
+        simulator.Solve();
+        
+        ## The next two lines are for test purposes only and are not part of this tutorial. 
+        ## If different simulation input parameters are being explored the lines should be removed.
+        
+        self.assertEqual(cell_population.GetNumRealCells(), 8)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+        
+        ## Note that you cannot view the results of a 3D simulation using the Java visualiser but to visualize the results, 
+        ## use Paraview. See the UserTutorials/VisualizingWithParaview tutorial for more information.
+        
+    ## ## Test 3 - a node-based simulation on a restricted geometry
+    ## In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and 
+    ## instead of using a mesh generator we generate the nodes directly.
+    
+    def test_spheroid_on_sphere(self):
+        
+        ## In the third test we run a node-based simulation restricted to the surface of a sphere.
+        
+        nodes = []
+        nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(1, False, -0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(2, False, 0.0, 0.5, 0.0))
+        nodes.append(chaste.mesh.Node3(3, False, 0.0, -0.5, 0.0))
+        mesh = chaste.mesh.NodesOnlyMesh3()
+        
+        ## To run node-based simulations you need to define a cut off length (second argument in ConstructNodesWithoutMesh), 
+        ## which defines the connectivity of the nodes by defining a radius of interaction.
+        
+        mesh.ConstructNodesWithoutMesh(nodes, 1.5)
+        
+        cells = chaste.cell_based.VecCellPtr()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+          
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
+
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("Python/TestNodeBasedOnSphereCellPopulation")
+        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetEndTime(10.0)
+
+        ## We now pass a force law to the simulation.
+        
+        force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
+        simulator.AddForce(force)
+        
+        ## This time we create a CellPopulationBoundaryCondition and pass this to the OffLatticeSimulation. 
+        ## Here we use a SphereGeometryBoundaryCondition which restricts cells to lie on a sphere (in 3D) or circle (in 2D).
+        ## For a list of possible boundary conditions see subclasses of AbstractCellPopulationBoundaryCondition. 
+        ## Note that some of these boundary conditions are not compatible with node-based simulations see the specific class documentation 
+        ## for details, if you try to use an incompatible class then you will receive a warning.
+        ## First we set the centre (0,0,1) and radius of the sphere (1).
+        
+        centre = (0.0, 0.0, 1.0)
+        radius = 1.0
+        boundary_condition = chaste.cell_based.SphereGeometryBoundaryCondition3(cell_population, centre, radius)
+        simulator.AddCellPopulationBoundaryCondition(boundary_condition)
+        
         ## To run the simulation, we call `Solve()`.
     
         simulator.Solve();

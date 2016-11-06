@@ -13,8 +13,10 @@
 #include "AbstractMesh.hpp"
 #include "VertexMesh.hpp"
 #include "MutableVertexMesh.hpp"
+#include "Cylindrical2dVertexMesh.hpp"
 #include "SharedHoneycombMeshGenerator.hpp"
 #include "SharedHoneycombVertexMeshGenerator.hpp"
+#include "SharedCylindricalHoneycombVertexMeshGenerator.hpp"
 
 inline int Instantiation()
 {
@@ -50,3 +52,11 @@ typedef std::vector<Node<3>*, std::allocator<Node<3>* > >  VecNodePtr3;
 typedef std::vector<Node<3>*, std::allocator<Node<3>* > >  VecNodePtr2;
 typedef std::vector<boost::shared_ptr<Node<3> > >  VecNodeSharedPtr3;
 typedef std::vector<boost::shared_ptr<Node<2> > >  VecNodeSharedPtr2;
+
+//// Typdef in this namespace so that pyplusplus uses the nicer typedef'd name for the class
+namespace pyplusplus{
+namespace aliases{
+typedef std::vector<c_vector<unsigned, 5> > VecCVector_Unsigned_5;
+typedef c_vector<unsigned, 5> CVector_Unsigned_5;
+}
+}

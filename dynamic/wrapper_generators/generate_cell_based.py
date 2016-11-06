@@ -117,6 +117,9 @@ def do_cell_populations(builder, default_pointer_policy = call_policies.return_v
         
     voronoi_writer_prefix = 'def("AddPopulationWriterVoronoiDataWriter", &'
     voronoi_writer_suffix = '::AddPopulationWriter<VoronoiDataWriter>)'
+    label_writer_prefix = 'def("AddCellWriterCellLabelWriter", &'
+    label_writer_suffix = '::AddCellWriter<CellLabelWriter>)'
+    
     for eachTemplate in ["<2,2>", "<3,3>"]:
         builder.class_("AbstractCellPopulation"+eachTemplate).member_functions("GetNode").exclude()
         builder.class_("AbstractCellPopulation"+eachTemplate).member_functions("GetTetrahedralMeshForPdeModifier").exclude()
@@ -144,7 +147,8 @@ def do_cell_populations(builder, default_pointer_policy = call_policies.return_v
         builder.class_("PottsBasedCellPopulation"+eachTemplate).member_functions("GetElement").exclude()
         builder.class_("PottsBasedCellPopulation"+eachTemplate).member_functions("GetElementCorrespondingToCell").exclude()    
         builder.class_("PottsBasedCellPopulation"+eachTemplate).member_functions("GetElementTessellation").exclude()
-        builder.class_("PottsBasedCellPopulation"+eachTemplate).member_functions("GetMutableMesh").exclude()     
+        builder.class_("PottsBasedCellPopulation"+eachTemplate).member_functions("GetMutableMesh").exclude()    
+        builder.class_("PottsBasedCellPopulation"+eachTemplate).add_registration_code(label_writer_prefix + 'PottsBasedCellPopulation' + eachTemplate + label_writer_suffix) 
         builder.class_("MeshBasedCellPopulationWithGhostNodes"+eachTemplate).add_registration_code(voronoi_writer_prefix + 'MeshBasedCellPopulationWithGhostNodes' + eachTemplate + voronoi_writer_suffix) 
 
 def do_cell_properties(builder):
@@ -172,6 +176,8 @@ def update_builder(builder):
                            "Cell",
                            "CellPropertyCollection",
                            "CellId",
+                           "CellLabel",
+                           "CellAncestor",
                            "CellPropertyRegistry",
                            "SimulationTime", ]
     
@@ -182,14 +188,30 @@ def update_builder(builder):
                                "VtkSceneModifier",
                                "AbstractTargetAreaModifier",
                                "SimpleTargetAreaModifier",
-                               "NagaiHondaForce"]
-    
+                               "NagaiHondaForce",
+                               "AbstractPottsUpdateRule",
+                               "VolumeConstraintPottsUpdateRule",
+                               "SurfaceAreaConstraintPottsUpdateRule",
+                               "DifferentialAdhesionPottsUpdateRule",
+                               "AdhesionPottsUpdateRule",
+                               "SphereGeometryBoundaryCondition",
+                               "AbstractCellKiller",
+                               "PlaneBasedCellKiller",
+                               "ApoptoticCellKiller",
+                               "RandomCellKiller",]
+                               ##"CellwiseSourceEllipticPde",]
+                               ##"AbstractPdeModifier",
+                               ##"AbstractGrowingDomainPdeModifier",]
+                               ##"EllipticGrowingDomainPdeModifier"]
+
     two_template_classes = ["AbstractCellBasedSimulation",
                            "OffLatticeSimulation",
                            "AbstractCellBasedSimulationModifier",
                            "AbstractTwoBodyInteractionForce",
-                           "GeneralisedLinearSpringForce",]
-    
+                           "GeneralisedLinearSpringForce",
+                           "AbstractCellPopulationBoundaryCondition",
+                           "PlaneBoundaryCondition",]
+
     for eachClass in non_template_classes:
         builder.class_(eachClass).include()  
 
@@ -208,7 +230,6 @@ def update_builder(builder):
     
     generate_bindings.template_replace_list(builder, expanded_template_classes)  
 
-    
     # Set pointer policy
     default_pointer_policy = call_policies.return_value_policy(call_policies.manage_new_object)
                                                                
@@ -217,7 +238,7 @@ def update_builder(builder):
     
     # Cells and cell properties
     builder.class_("Cell").member_functions("rGetCellPropertyCollection").exclude()
-    builder.class_("Cell").member_functions("GetCellCycleModel").exclude()
+    builder.class_("Cell").member_functions("GetCellCycleModel").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
     builder.class_("Cell").member_functions("GetSrnModel").exclude()
     builder.class_("CellPropertyRegistry").member_function("Instance").call_policies = default_pointer_policy
     builder.class_("CellPropertyRegistry").member_functions("rGetAllCellProperties").exclude()
@@ -236,5 +257,19 @@ def update_builder(builder):
     for eachTemplate in ["<2,2>", "<3,3>"]:
         builder.class_("AbstractCellBasedSimulation"+eachTemplate).constructors().exclude()
         builder.class_("AbstractCellBasedSimulation"+eachTemplate).member_functions('GetSimulationModifiers').exclude()
+        builder.class_("AbstractCellPopulationBoundaryCondition"+eachTemplate).member_functions('GetCellPopulation').call_policies = default_pointer_policy   
+
+    for eachTemplate in ["<2>", "<3>"]: 
+        builder.class_("AbstractCellKiller"+eachTemplate).member_functions('GetCellPopulation').call_policies = default_pointer_policy  
+        #builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetSolution').exclude()  
+        #builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetFeMesh').exclude()   
+       # builder.class_('CellwiseSourceEllipticPde'+eachTemplate).calldefs().use_default_arguments=False   
+        #builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False   
+        #builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()
+        #builder.class_('AbstractGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
+        #builder.class_("AbstractGrowingDomainPdeModifier"+eachTemplate).constructors().exclude()          
+#         builder.class_('EllipticGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False    
+#         builder.class_("EllipticGrowingDomainPdeModifier"+eachTemplate).member_functions('ConstructBoundaryConditionsContainer').exclude()  
+#         builder.class_("EllipticGrowingDomainPdeModifier"+eachTemplate).constructors().use_default_arguments=False    
 
     return builder

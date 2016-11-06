@@ -6,6 +6,88 @@
 
 namespace bp = boost::python;
 
+struct AbstractBoundaryCondition_less__2__greater__wrapper : AbstractBoundaryCondition< 2 >, bp::wrapper< AbstractBoundaryCondition< 2 > > {
+
+    AbstractBoundaryCondition_less__2__greater__wrapper( )
+    : AbstractBoundaryCondition<2>( )
+      , bp::wrapper< AbstractBoundaryCondition< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double GetValue( ::ChastePoint< 2 > const & rX ) const {
+        bp::override func_GetValue = this->get_override( "GetValue" );
+        return func_GetValue( boost::ref(rX) );
+    }
+
+};
+
+struct AbstractBoundaryCondition_less__3__greater__wrapper : AbstractBoundaryCondition< 3 >, bp::wrapper< AbstractBoundaryCondition< 3 > > {
+
+    AbstractBoundaryCondition_less__3__greater__wrapper( )
+    : AbstractBoundaryCondition<3>( )
+      , bp::wrapper< AbstractBoundaryCondition< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double GetValue( ::ChastePoint< 3 > const & rX ) const {
+        bp::override func_GetValue = this->get_override( "GetValue" );
+        return func_GetValue( boost::ref(rX) );
+    }
+
+};
+
+struct AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper : AbstractLinearEllipticPde< 2, 2 >, bp::wrapper< AbstractLinearEllipticPde< 2, 2 > > {
+
+    AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper( )
+    : AbstractLinearEllipticPde<2, 2>( )
+      , bp::wrapper< AbstractLinearEllipticPde< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double ComputeConstantInUSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ){
+        bp::override func_ComputeConstantInUSourceTerm = this->get_override( "ComputeConstantInUSourceTerm" );
+        return func_ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual double ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeConstantInUSourceTermAtNode = this->get_override( "ComputeConstantInUSourceTermAtNode" ) )
+            return func_ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+    }
+
+    virtual ::boost::numeric::ublas::c_matrix< double, 2, 2 > ComputeDiffusionTerm( ::ChastePoint< 2 > const & rX ){
+        bp::override func_ComputeDiffusionTerm = this->get_override( "ComputeDiffusionTerm" );
+        return func_ComputeDiffusionTerm( boost::ref(rX) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ){
+        bp::override func_ComputeLinearInUCoeffInSourceTerm = this->get_override( "ComputeLinearInUCoeffInSourceTerm" );
+        return func_ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTermAtNode = this->get_override( "ComputeLinearInUCoeffInSourceTermAtNode" ) )
+            return func_ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+    }
+
+};
+
 struct AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper : AbstractLinearEllipticPde< 3, 3 >, bp::wrapper< AbstractLinearEllipticPde< 3, 3 > > {
 
     AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper( )
@@ -56,7 +138,103 @@ struct AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper : AbstractLi
 
 };
 
+struct ConstBoundaryCondition_less__2__greater__wrapper : ConstBoundaryCondition< 2 >, bp::wrapper< ConstBoundaryCondition< 2 > > {
+
+    ConstBoundaryCondition_less__2__greater__wrapper(ConstBoundaryCondition<2> const & arg )
+    : ConstBoundaryCondition<2>( arg )
+      , bp::wrapper< ConstBoundaryCondition< 2 > >(){
+        // copy constructor
+        
+    }
+
+    ConstBoundaryCondition_less__2__greater__wrapper(double const value )
+    : ConstBoundaryCondition<2>( value )
+      , bp::wrapper< ConstBoundaryCondition< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual double GetValue( ::ChastePoint< 2 > const & rX ) const  {
+        if( bp::override func_GetValue = this->get_override( "GetValue" ) )
+            return func_GetValue( boost::ref(rX) );
+        else{
+            return this->ConstBoundaryCondition< 2 >::GetValue( boost::ref(rX) );
+        }
+    }
+    
+    double default_GetValue( ::ChastePoint< 2 > const & rX ) const  {
+        return ConstBoundaryCondition< 2 >::GetValue( boost::ref(rX) );
+    }
+
+};
+
+struct ConstBoundaryCondition_less__3__greater__wrapper : ConstBoundaryCondition< 3 >, bp::wrapper< ConstBoundaryCondition< 3 > > {
+
+    ConstBoundaryCondition_less__3__greater__wrapper(ConstBoundaryCondition<3> const & arg )
+    : ConstBoundaryCondition<3>( arg )
+      , bp::wrapper< ConstBoundaryCondition< 3 > >(){
+        // copy constructor
+        
+    }
+
+    ConstBoundaryCondition_less__3__greater__wrapper(double const value )
+    : ConstBoundaryCondition<3>( value )
+      , bp::wrapper< ConstBoundaryCondition< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual double GetValue( ::ChastePoint< 3 > const & rX ) const  {
+        if( bp::override func_GetValue = this->get_override( "GetValue" ) )
+            return func_GetValue( boost::ref(rX) );
+        else{
+            return this->ConstBoundaryCondition< 3 >::GetValue( boost::ref(rX) );
+        }
+    }
+    
+    double default_GetValue( ::ChastePoint< 3 > const & rX ) const  {
+        return ConstBoundaryCondition< 3 >::GetValue( boost::ref(rX) );
+    }
+
+};
+
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
+    bp::class_< AbstractBoundaryCondition_less__2__greater__wrapper, boost::noncopyable >( "AbstractBoundaryCondition2", bp::init< >() )    
+        .def( 
+            "GetValue"
+            , bp::pure_virtual( (double ( ::AbstractBoundaryCondition<2>::* )( ::ChastePoint< 2 > const & )const)(&::AbstractBoundaryCondition< 2 >::GetValue) )
+            , ( bp::arg("rX") ) );
+
+    bp::class_< AbstractBoundaryCondition_less__3__greater__wrapper, boost::noncopyable >( "AbstractBoundaryCondition3", bp::init< >() )    
+        .def( 
+            "GetValue"
+            , bp::pure_virtual( (double ( ::AbstractBoundaryCondition<3>::* )( ::ChastePoint< 3 > const & )const)(&::AbstractBoundaryCondition< 3 >::GetValue) )
+            , ( bp::arg("rX") ) );
+
+    bp::class_< AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper, boost::noncopyable >( "AbstractLinearEllipticPde2_2", bp::init< >() )    
+        .def( 
+            "ComputeConstantInUSourceTerm"
+            , bp::pure_virtual( (double ( ::AbstractLinearEllipticPde<2, 2>::* )( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTerm) )
+            , ( bp::arg("rX"), bp::arg("pElement") ) )    
+        .def( 
+            "ComputeConstantInUSourceTermAtNode"
+            , (double ( ::AbstractLinearEllipticPde<2, 2>::* )( ::Node< 2 > const & ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode)
+            , (double ( AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper::* )( ::Node< 2 > const & ))(&AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper::default_ComputeConstantInUSourceTermAtNode)
+            , ( bp::arg("rNode") ) )    
+        .def( 
+            "ComputeDiffusionTerm"
+            , bp::pure_virtual( (::boost::numeric::ublas::c_matrix< double, 2, 2 > ( ::AbstractLinearEllipticPde<2, 2>::* )( ::ChastePoint< 2 > const & ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeDiffusionTerm) )
+            , ( bp::arg("rX") ) )    
+        .def( 
+            "ComputeLinearInUCoeffInSourceTerm"
+            , bp::pure_virtual( (double ( ::AbstractLinearEllipticPde<2, 2>::* )( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTerm) )
+            , ( bp::arg("rX"), bp::arg("pElement") ) )    
+        .def( 
+            "ComputeLinearInUCoeffInSourceTermAtNode"
+            , (double ( ::AbstractLinearEllipticPde<2, 2>::* )( ::Node< 2 > const & ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode)
+            , (double ( AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper::* )( ::Node< 2 > const & ))(&AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper::default_ComputeLinearInUCoeffInSourceTermAtNode)
+            , ( bp::arg("rNode") ) );
+
     bp::class_< AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper, boost::noncopyable >( "AbstractLinearEllipticPde3_3", bp::init< >() )    
         .def( 
             "ComputeConstantInUSourceTerm"
@@ -81,13 +259,43 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
             , (double ( AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper::* )( ::Node< 3 > const & ))(&AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper::default_ComputeLinearInUCoeffInSourceTermAtNode)
             , ( bp::arg("rNode") ) );
 
-    { //::chaste::pde::Instantiation
-    
-        typedef int ( *Instantiation_function_type )(  );
+    { //::ConstBoundaryCondition< 2 >
+        typedef bp::class_< ConstBoundaryCondition_less__2__greater__wrapper, bp::bases< AbstractBoundaryCondition< 2 > > > ConstBoundaryCondition2_exposer_t;
+        ConstBoundaryCondition2_exposer_t ConstBoundaryCondition2_exposer = ConstBoundaryCondition2_exposer_t( "ConstBoundaryCondition2", bp::init< double >(( bp::arg("value") )) );
+        bp::scope ConstBoundaryCondition2_scope( ConstBoundaryCondition2_exposer );
+        bp::implicitly_convertible< double const, ConstBoundaryCondition< 2 > >();
+        { //::ConstBoundaryCondition< 2 >::GetValue
         
-        bp::def( 
-            "Instantiation"
-            , Instantiation_function_type( &::chaste::pde::Instantiation ) );
-    
+            typedef ConstBoundaryCondition< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetValue_function_type)( ::ChastePoint< 2 > const & ) const;
+            typedef double ( ConstBoundaryCondition_less__2__greater__wrapper::*default_GetValue_function_type)( ::ChastePoint< 2 > const & ) const;
+            
+            ConstBoundaryCondition2_exposer.def( 
+                "GetValue"
+                , GetValue_function_type(&::ConstBoundaryCondition< 2 >::GetValue)
+                , default_GetValue_function_type(&ConstBoundaryCondition_less__2__greater__wrapper::default_GetValue)
+                , ( bp::arg("rX") ) );
+        
+        }
+    }
+
+    { //::ConstBoundaryCondition< 3 >
+        typedef bp::class_< ConstBoundaryCondition_less__3__greater__wrapper, bp::bases< AbstractBoundaryCondition< 3 > > > ConstBoundaryCondition3_exposer_t;
+        ConstBoundaryCondition3_exposer_t ConstBoundaryCondition3_exposer = ConstBoundaryCondition3_exposer_t( "ConstBoundaryCondition3", bp::init< double >(( bp::arg("value") )) );
+        bp::scope ConstBoundaryCondition3_scope( ConstBoundaryCondition3_exposer );
+        bp::implicitly_convertible< double const, ConstBoundaryCondition< 3 > >();
+        { //::ConstBoundaryCondition< 3 >::GetValue
+        
+            typedef ConstBoundaryCondition< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetValue_function_type)( ::ChastePoint< 3 > const & ) const;
+            typedef double ( ConstBoundaryCondition_less__3__greater__wrapper::*default_GetValue_function_type)( ::ChastePoint< 3 > const & ) const;
+            
+            ConstBoundaryCondition3_exposer.def( 
+                "GetValue"
+                , GetValue_function_type(&::ConstBoundaryCondition< 3 >::GetValue)
+                , default_GetValue_function_type(&ConstBoundaryCondition_less__3__greater__wrapper::default_GetValue)
+                , ( bp::arg("rX") ) );
+        
+        }
     }
 }

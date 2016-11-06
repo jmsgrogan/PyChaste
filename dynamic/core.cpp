@@ -94,6 +94,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         __type_exposer.def( bp::indexing::vector_suite< std::vector< unsigned int > >() );
     }
 
+    bp::class_< std::vector< double > >("vector_less__double__greater_")    
+        .def( bp::indexing::vector_suite< std::vector< double > >() );
+
     bp::class_< std::map< std::string, std::string > >("map_less__std_scope_string_comma__std_scope_string__greater_")    
         .def( bp::indexing::map_suite< std::map< std::string, std::string > >() );
 
@@ -476,6 +479,81 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         OutputFileHandler_exposer.staticmethod( "GetChasteTestOutputDirectory" );
     }
 
+    bp::class_< PetscTools, boost::noncopyable >( "PetscTools", bp::no_init )    
+        .def( 
+            "AmMaster"
+            , (bool (*)(  ))( &::PetscTools::AmMaster ) )    
+        .def( 
+            "AmTopMost"
+            , (bool (*)(  ))( &::PetscTools::AmTopMost ) )    
+        .def( 
+            "Barrier"
+            , (void (*)( ::std::string const ))( &::PetscTools::Barrier )
+            , ( bp::arg("callerId")="" ) )    
+        .def( 
+            "BeginRoundRobin"
+            , (void (*)(  ))( &::PetscTools::BeginRoundRobin ) )    
+        .def( 
+            "EndRoundRobin"
+            , (void (*)(  ))( &::PetscTools::EndRoundRobin ) )    
+        .def( 
+            "GetMyRank"
+            , (unsigned int (*)(  ))( &::PetscTools::GetMyRank ) )    
+        .def( 
+            "GetNumProcs"
+            , (unsigned int (*)(  ))( &::PetscTools::GetNumProcs ) )    
+        .def( 
+            "HasParMetis"
+            , (bool (*)(  ))( &::PetscTools::HasParMetis ) )    
+        .def( 
+            "IsInitialised"
+            , (bool (*)(  ))( &::PetscTools::IsInitialised ) )    
+        .def( 
+            "IsIsolated"
+            , (bool (*)(  ))( &::PetscTools::IsIsolated ) )    
+        .def( 
+            "IsParallel"
+            , (bool (*)(  ))( &::PetscTools::IsParallel ) )    
+        .def( 
+            "IsSequential"
+            , (bool (*)(  ))( &::PetscTools::IsSequential ) )    
+        .def( 
+            "IsolateProcesses"
+            , (void (*)( bool ))( &::PetscTools::IsolateProcesses )
+            , ( bp::arg("isolate")=(bool)(true) ) )    
+        .def( 
+            "ReplicateBool"
+            , (bool (*)( bool ))( &::PetscTools::ReplicateBool )
+            , ( bp::arg("flag") ) )    
+        .def( 
+            "ReplicateException"
+            , (void (*)( bool ))( &::PetscTools::ReplicateException )
+            , ( bp::arg("flag") ) )    
+        .def( 
+            "ResetCache"
+            , (void (*)(  ))( &::PetscTools::ResetCache ) )    
+        .def( 
+            "SetOption"
+            , (void (*)( char const *,char const * ))( &::PetscTools::SetOption )
+            , ( bp::arg("pOptionName"), bp::arg("pOptionValue") ) )
+        .staticmethod( "AmMaster" )    
+        .staticmethod( "AmTopMost" )    
+        .staticmethod( "Barrier" )    
+        .staticmethod( "BeginRoundRobin" )
+        .staticmethod( "EndRoundRobin" )    
+        .staticmethod( "GetMyRank" )    
+        .staticmethod( "GetNumProcs" )    
+        .staticmethod( "HasParMetis" )    
+        .staticmethod( "IsInitialised" )    
+        .staticmethod( "IsIsolated" )    
+        .staticmethod( "IsParallel" )    
+        .staticmethod( "IsSequential" )    
+        .staticmethod( "IsolateProcesses" )    
+        .staticmethod( "ReplicateBool" )    
+        .staticmethod( "ReplicateException" )    
+        .staticmethod( "ResetCache" )    
+        .staticmethod( "SetOption" );
+
     bp::class_< RandomNumberGenerator_wrapper, boost::noncopyable >( "RandomNumberGenerator", bp::no_init )    
         .def( bp::init< >() )    
         .def( 
@@ -541,4 +619,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         .staticmethod( "Print" )    
         .staticmethod( "PrintAndReset" )    
         .staticmethod( "Reset" );
+
+    { //::Instantiation
+    
+        typedef int ( *Instantiation_function_type )(  );
+        
+        bp::def( 
+            "Instantiation"
+            , Instantiation_function_type( &::Instantiation ) );
+    
+    }
 }

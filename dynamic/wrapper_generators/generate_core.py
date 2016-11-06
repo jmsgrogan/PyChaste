@@ -45,8 +45,8 @@ def update_builder(builder):
                        "FileFinder",
                        "RandomNumberGenerator",
                        "Timer",
-                       "ChasteBuildInfo"]
-                       #"PetscTools",
+                       "ChasteBuildInfo",
+                       "PetscTools",]
                        #"ReplicatableVector"]
     
     for eachClass in include_classes:
@@ -56,8 +56,12 @@ def update_builder(builder):
             builder.class_(eachClass).rename(new_name) 
     
     builder.class_("PetscTools").member_functions('GetWorld').exclude()
-    builder.class_("PetscTools").member_functions('CreateVec').exclude()
     builder.class_("PetscTools").member_functions('CreateAndSetVec').exclude()
+    builder.class_("PetscTools").member_functions('DumpPetscObject').exclude()
+    builder.class_("PetscTools").member_functions('Destroy').exclude()
+    builder.class_("PetscTools").member_functions('ReadPetscObject').exclude()
+    builder.class_("PetscTools").member_functions('SetupMat').exclude()
+
     builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
     builder.class_("FileFinder").member_functions('FindMatches').exclude()
     builder.class_("RandomNumberGenerator").member_function("Instance").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)

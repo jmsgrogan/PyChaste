@@ -66,7 +66,9 @@ def update_builder(builder):
                        "VertexMesh<2,2>",
                        "VertexMesh<3,3>",
                        "MutableVertexMesh<2,2>",
-                       "MutableVertexMesh<3,3>"
+                       "MutableVertexMesh<3,3>",
+                       "Cylindrical2dVertexMesh",
+                       "SharedCylindricalHoneycombVertexMeshGenerator"
                        ]
 
     for eachClass in include_classes:
@@ -77,10 +79,14 @@ def update_builder(builder):
     
     builder.class_('SharedPottsMeshGenerator<3>').include()  
     builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
+    builder.class_('SharedPottsMeshGenerator<2>').include()  
+    builder.class_('SharedPottsMeshGenerator<2>').rename("PottsMeshGenerator2")
     builder.class_('SharedHoneycombMeshGenerator').include()  
     builder.class_('SharedHoneycombMeshGenerator').rename("HoneycombMeshGenerator")
     builder.class_('SharedHoneycombVertexMeshGenerator').include()  
     builder.class_('SharedHoneycombVertexMeshGenerator').rename("HoneycombVertexMeshGenerator")
+    builder.class_('SharedCylindricalHoneycombVertexMeshGenerator').include()  
+    builder.class_('SharedCylindricalHoneycombVertexMeshGenerator').rename("CylindricalHoneycombVertexMeshGenerator")
 
     # Do not return the non-const reference to the location
     returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
@@ -113,6 +119,8 @@ def update_builder(builder):
     builder.class_('VertexMesh<2,2>').member_functions("GetElement").exclude()
     builder.class_('VertexMesh<3,3>').member_functions("GetFace").exclude()
     builder.class_('VertexMesh<2,2>').member_functions("GetFace").exclude()
+#    builder.class_('VertexMesh<2,2>').constructors(arg_types=['TetrahedralMesh<3,3>']).exclude()
+    
     builder.class_('MutableMesh<3,3>').member_functions("RescaleMeshFromBoundaryNode").exclude()
     builder.class_('MutableMesh<2,2>').member_functions("RescaleMeshFromBoundaryNode").exclude()
     builder.class_('NodesOnlyMesh<3>').member_functions("GetBoxCollection").exclude()
@@ -150,6 +158,6 @@ def update_builder(builder):
     builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").exclude()
     builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").exclude()
     
-    # Need to exclude c_vec5 and vertex constructors with different dimension tetrahedral meshes.
+    builder.class_('Cylindrical2dVertexMesh').member_functions("GetMeshForVtk").exclude()    
         
     return builder

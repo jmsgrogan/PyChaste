@@ -230,6 +230,77 @@ void VtkScene<DIM>::SetSaveAsAnimation(bool saveAsAnimation)
 template<unsigned DIM>
 void VtkScene<DIM>::UpdateCellPopulationActor()
 {
+    // Check the cell population type
+    if(boost::dynamic_pointer_cast<MeshBasedCellPopulation<DIM> >(mpCellPopulation))
+    {
+        UpdateMeshBaedCellPopulationActor();
+    }
+    else
+    {
+        // fall back to a centre based default
+        vtkSmartPointer<vtkPoints> p_points = vtkSmartPointer<vtkPoints>::New();
+        vtkSmartPointer<vtkPolyData> p_polydata = vtkSmartPointer<vtkPolyData>::New();
+
+        for (typename AbstractCellPopulation<DIM>::Iterator cell_iter = mpCellPopulation->Begin();
+             cell_iter != mpCellPopulation->End(); ++cell_iter)
+        {
+            c_vector<double, DIM> centre = mpCellPopulation->GetLocationOfCellCentre(*cell_iter);
+            if(DIM==3)
+            {
+                p_points->InsertNextPoint(centre[0], centre[1], centre[2]);
+            }
+            else
+            {
+                p_points->InsertNextPoint(centre[0], centre[1], 0.0);
+            }
+        }
+        p_polydata->SetPoints(p_points);
+
+        vtkSmartPointer<vtkSphereSource> p_spheres = vtkSmartPointer<vtkSphereSource>::New();
+        p_spheres->SetRadius(0.5);
+        p_spheres->SetPhiResolution(16);
+        p_spheres->SetThetaResolution(16);
+
+        vtkSmartPointer<vtkGlyph3D> p_glyph = vtkSmartPointer<vtkGlyph3D>::New();
+        #if VTK_MAJOR_VERSION <= 5
+            p_glyph->SetInput(p_polydata);
+            p_glyph->SetSource(p_spheres->GetOutput());
+        #else
+            p_glyph->SetInputData(p_polydata);
+            p_glyph->SetSourceConnection(p_spheres->GetOutputPort());
+        #endif
+        p_glyph->ClampingOff();
+        p_glyph->SetScaleModeToScaleByScalar();
+        p_glyph->SetScaleFactor(1.0);
+        p_glyph->Update();
+
+        vtkSmartPointer<vtkPolyDataMapper> p_mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+        #if VTK_MAJOR_VERSION <= 5
+            p_mapper->SetInput(p_glyph->GetOutput());
+        #else
+            p_mapper->SetInputData(p_glyph->GetOutput());
+        #endif
+        p_mapper->ScalarVisibilityOn();
+
+        vtkSmartPointer<vtkActor> p_actor = vtkSmartPointer<vtkActor>::New();
+        p_actor->SetMapper(p_mapper);
+        p_actor->GetProperty()->SetColor(0,1,0);
+        mpRenderer->AddActor(p_actor);
+    }
+
+}
+
+template<unsigned DIM>
+void VtkScene<DIM>::UpdateMeshBasedCellPopulationActor()
+{
+    boost::shared_ptr<MeshBasedCellPopulation<DIM> > p_mesh = boost::dynamic_pointer_cast<MeshBasedCellPopulation<DIM> >(mpCellPopulation);
+
+    if(!p_mesh)
+    {
+        EXCEPTION("Could not cast mesh to MeshBased type.");
+    }
+
+
     vtkSmartPointer<vtkPoints> p_points = vtkSmartPointer<vtkPoints>::New();
     vtkSmartPointer<vtkPolyData> p_polydata = vtkSmartPointer<vtkPolyData>::New();
 

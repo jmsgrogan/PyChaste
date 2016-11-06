@@ -39,12 +39,12 @@ class TestRandomNumberGenerator(unittest.TestCase):
     
     def test_make_some_numbers(self):
         
-        rng = chaste.core.RandomNumberGenerator().Instance()
+        rng = chaste.core.RandomNumberGenerator.Instance()
         rng.Reseed(1234)
         self.assertAlmostEqual(rng.ranf(), 0.191519450163, 5)
         
         rng.Destroy()
-        rng2 = chaste.core.RandomNumberGenerator().Instance()
+        rng2 = chaste.core.RandomNumberGenerator.Instance()
         rng2.Reseed(1234)
         self.assertAlmostEqual(rng2.ranf(), 0.191519450163, 5)
 

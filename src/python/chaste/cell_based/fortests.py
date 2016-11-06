@@ -41,12 +41,14 @@ class AbstractCellBasedTestSuite(unittest.TestCase):
         simulation_time = chaste.cell_based.SimulationTime.Instance()
         simulation_time.SetStartTime(0.0)
         chaste.core.RandomNumberGenerator.Instance().Reseed(0)
+        chaste.cell_based.CellId.ResetMaxCellId()
         
     def tearDown(self):
         simulation_time = chaste.cell_based.SimulationTime.Instance()
         simulation_time.Destroy()
         
         chaste.core.RandomNumberGenerator.Instance().Destroy()
+        chaste.cell_based.CellPropertyRegistry.Instance().Clear()
         
 class AbstractCellBasedWithTimingsTestSuite(AbstractCellBasedTestSuite):
     

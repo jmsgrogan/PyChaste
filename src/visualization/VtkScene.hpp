@@ -51,6 +51,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include <vtkOggTheoraWriter.h>
 #include <vtkWindowToImageFilter.h>
 #include "AbstractCellPopulation.hpp"
+#include "MeshBasedCellPopulation.hpp"
 
 /**
  * A simple vtk renderer for cell populations
@@ -149,6 +150,11 @@ public:
      * Update the actors for the cell population
      */
     void UpdateCellPopulationActor();
+
+    /**
+     * Update the actors for mesh based cell populations
+     */
+    void UpdateMeshBasedCellPopulationActor();
 
     /**
      * Update the renderer, this will update the population actor and write output images

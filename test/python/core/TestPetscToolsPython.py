@@ -1,6 +1,5 @@
-/*
 
-Copyright (c) 2005-2016, University of Oxford.
+"""Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -30,22 +29,19 @@ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+"""
 
-*/
+import unittest
+import chaste
+chaste.init()
 
-// Global
-#include "PetscTools.hpp"
-#include "OutputFileHandler.hpp"
-#include "BoostFilesystem.hpp"
-#include "FileFinder.hpp"
-#include "RandomNumberGenerator.hpp"
-#include "Timer.hpp"
-#include "Version.hpp"
-#include "Identifiable.hpp"
+class TestPetscTools(unittest.TestCase):
+    
+    def test_some_vecs(self):
+        
+        local = [1.0, 2.0, 3.0]
+#         vec = chaste.core.PetscTools.CreateVec(local)
+#         print vec
 
-typedef boost::filesystem::path boost_filesystem_path;
-
-inline int Instantiation()
-{
-    return sizeof(Mat) + sizeof(Vec);
-}
+if __name__ == '__main__':
+    unittest.main()

@@ -40,6 +40,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "CellId.hpp"
 #include "CellPropertyRegistry.hpp"
 #include "CellData.hpp"
+#include "CellLabel.hpp"
+#include "CellAncestor.hpp"
 
 // Populations
 #include "AbstractCellPopulation.hpp"
@@ -55,6 +57,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Writers
 #include "VoronoiDataWriter.hpp"
+#include "CellLabelWriter.hpp"
 
 // Cell properties
 #include "AbstractCellProperty.hpp"
@@ -84,6 +87,11 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "AbstractCaUpdateRule.hpp"
 #include "AbstractUpdateRule.hpp"
 #include "DiffusionCaUpdateRule.hpp"
+#include "AbstractPottsUpdateRule.hpp"
+#include "VolumeConstraintPottsUpdateRule.hpp"
+#include "SurfaceAreaConstraintPottsUpdateRule.hpp"
+#include "DifferentialAdhesionPottsUpdateRule.hpp"
+#include "AdhesionPottsUpdateRule.hpp"
 
 // Forces
 #include "AbstractForce.hpp"
@@ -103,6 +111,22 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SimpleTargetAreaModifier.hpp"
 #include "VtkSceneModifier.hpp"
 
+// Boundary conditions
+#include "AbstractCellPopulationBoundaryCondition.hpp"
+#include "PlaneBoundaryCondition.hpp"
+#include "SphereGeometryBoundaryCondition.hpp"
+
+// Killers
+#include "AbstractCellKiller.hpp"
+#include "PlaneBasedCellKiller.hpp"
+#include "ApoptoticCellKiller.hpp"
+#include "RandomCellKiller.hpp"
+
+// Pdes
+#include "CellwiseSourceEllipticPde.hpp"
+#include "AbstractPdeModifier.hpp"
+#include "AbstractGrowingDomainPdeModifier.hpp"
+#include "EllipticGrowingDomainPdeModifier.hpp"
 
 // Populations
 template class AbstractCellPopulation<2, 2>;
@@ -138,9 +162,19 @@ template class OffLatticeSimulation<3,3>;
 template class AbstractUpdateRule<2>;
 template class AbstractCaUpdateRule<2>;
 template class DiffusionCaUpdateRule<2>;
+template class AbstractPottsUpdateRule<2>;
+template class VolumeConstraintPottsUpdateRule<2>;
+template class SurfaceAreaConstraintPottsUpdateRule<2>;
+template class DifferentialAdhesionPottsUpdateRule<2>;
+template class AdhesionPottsUpdateRule<2>;
 template class AbstractUpdateRule<3>;
 template class AbstractCaUpdateRule<3>;
 template class DiffusionCaUpdateRule<3>;
+template class AbstractPottsUpdateRule<3>;
+template class VolumeConstraintPottsUpdateRule<3>;
+template class SurfaceAreaConstraintPottsUpdateRule<3>;
+template class DifferentialAdhesionPottsUpdateRule<3>;
+template class AdhesionPottsUpdateRule<3>;
 
 // Simulation modifiers
 template class AbstractCellBasedSimulationModifier<2,2>;
@@ -162,6 +196,33 @@ template class AbstractTwoBodyInteractionForce<3, 3>;
 template class GeneralisedLinearSpringForce<3, 3>;
 template class NagaiHondaForce<3>;
 
+// Boundary Conditions
+template class AbstractCellPopulationBoundaryCondition<2, 2>;
+template class PlaneBoundaryCondition<2, 2>;
+template class SphereGeometryBoundaryCondition<2>;
+template class AbstractCellPopulationBoundaryCondition<3, 3>;
+template class PlaneBoundaryCondition<3, 3>;
+template class SphereGeometryBoundaryCondition<3>;
+
+// Killers
+template class AbstractCellKiller<2>;
+template class PlaneBasedCellKiller<2>;
+template class ApoptoticCellKiller<2>;
+template class RandomCellKiller<2>;
+template class AbstractCellKiller<3>;
+template class PlaneBasedCellKiller<3>;
+template class ApoptoticCellKiller<3>;
+template class RandomCellKiller<3>;
+
+// PDE
+template class CellwiseSourceEllipticPde<2>;
+template class AbstractPdeModifier<2>;
+template class AbstractGrowingDomainPdeModifier<2>;
+template class EllipticGrowingDomainPdeModifier<2>;
+template class CellwiseSourceEllipticPde<3>;
+template class AbstractPdeModifier<3>;
+template class AbstractGrowingDomainPdeModifier<3>;
+template class EllipticGrowingDomainPdeModifier<3>;
 
 //// Typdef in this namespace so that pyplusplus uses the nicer typedef'd name for the class
 namespace pyplusplus{

@@ -1180,6 +1180,1189 @@ struct AbstractTetrahedralMesh_less__3_comma__3__greater__wrapper : AbstractTetr
 
 };
 
+struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::wrapper< VertexMesh< 2, 2 > > {
+
+    VertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<2, 2> * > vertexElements )
+    : VertexMesh<2, 2>( nodes, vertexElements )
+      , bp::wrapper< VertexMesh< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<1, 2> * > faces, ::std::vector< VertexElement<2, 2> * > vertexElements )
+    : VertexMesh<2, 2>( nodes, faces, vertexElements )
+      , bp::wrapper< VertexMesh< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
+    : VertexMesh<2, 2>( boost::ref(rMesh), isPeriodic )
+      , bp::wrapper< VertexMesh< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 3, 3 > & rMesh )
+    : VertexMesh<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< VertexMesh< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__2_comma__2__greater__wrapper( )
+    : VertexMesh<2, 2>( )
+      , bp::wrapper< VertexMesh< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        if( bp::override func_CalculateAreaOfFace = this->get_override( "CalculateAreaOfFace" ) )
+            return func_CalculateAreaOfFace( boost::python::ptr(pFace) );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+        }
+    }
+    
+    double default_CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        return VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateMomentsOfElement( unsigned int index ) {
+        if( bp::override func_CalculateMomentsOfElement = this->get_override( "CalculateMomentsOfElement" ) )
+            return func_CalculateMomentsOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateMomentsOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+    }
+
+    virtual void Clear(  ) {
+        if( bp::override func_Clear = this->get_override( "Clear" ) )
+            func_Clear(  );
+        else{
+            this->VertexMesh< 2, 2 >::Clear(  );
+        }
+    }
+    
+    void default_Clear(  ) {
+        VertexMesh< 2, 2 >::Clear( );
+    }
+
+    bool ElementIncludesPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::ElementIncludesPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    void GenerateVerticesFromElementCircumcentres( ::TetrahedralMesh< 2, 2 > & rMesh ){
+        VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres( boost::ref(rMesh) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetCentroidOfElement( unsigned int index ) {
+        if( bp::override func_GetCentroidOfElement = this->get_override( "GetCentroidOfElement" ) )
+            return func_GetCentroidOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetCentroidOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+    }
+
+    unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    virtual unsigned int GetNumElements(  ) const  {
+        if( bp::override func_GetNumElements = this->get_override( "GetNumElements" ) )
+            return func_GetNumElements(  );
+        else{
+            return this->VertexMesh< 2, 2 >::GetNumElements(  );
+        }
+    }
+    
+    unsigned int default_GetNumElements(  ) const  {
+        return VertexMesh< 2, 2 >::GetNumElements( );
+    }
+
+    virtual unsigned int GetNumFaces(  ) const  {
+        if( bp::override func_GetNumFaces = this->get_override( "GetNumFaces" ) )
+            return func_GetNumFaces(  );
+        else{
+            return this->VertexMesh< 2, 2 >::GetNumFaces(  );
+        }
+    }
+    
+    unsigned int default_GetNumFaces(  ) const  {
+        return VertexMesh< 2, 2 >::GetNumFaces( );
+    }
+
+    virtual unsigned int GetNumNodes(  ) const  {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->VertexMesh< 2, 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) const  {
+        return VertexMesh< 2, 2 >::GetNumNodes( );
+    }
+
+    virtual double GetSurfaceAreaOfElement( unsigned int index ) {
+        if( bp::override func_GetSurfaceAreaOfElement = this->get_override( "GetSurfaceAreaOfElement" ) )
+            return func_GetSurfaceAreaOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+        }
+    }
+    
+    double default_GetSurfaceAreaOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
+        if( bp::override func_GetVectorFromAtoB = this->get_override( "GetVectorFromAtoB" ) )
+            return func_GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+        else{
+            return this->VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
+        return VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+    }
+
+    virtual double GetVolumeOfElement( unsigned int index ) {
+        if( bp::override func_GetVolumeOfElement = this->get_override( "GetVolumeOfElement" ) )
+            return func_GetVolumeOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+        }
+    }
+    
+    double default_GetVolumeOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+    }
+
+    unsigned int SolveBoundaryElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveBoundaryElementMapping( index );
+    }
+
+    unsigned int SolveElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveElementMapping( index );
+    }
+
+    virtual unsigned int SolveNodeMapping( unsigned int index ) const {
+        if( bp::override func_SolveNodeMapping = this->get_override( "SolveNodeMapping" ) )
+            return func_SolveNodeMapping( index );
+        else{
+            return this->VertexMesh< 2, 2 >::SolveNodeMapping( index );
+        }
+    }
+    
+    virtual unsigned int default_SolveNodeMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveNodeMapping( index );
+    }
+
+    ::ChasteCuboid< 2 > CalculateBoundingBox( ::std::vector< Node<2> * > const & rNodes ) const {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( boost::ref(rNodes) );
+    }
+
+    virtual ::ChasteCuboid< 2 > CalculateBoundingBox(  ) const  {
+        if( bp::override func_CalculateBoundingBox = this->get_override( "CalculateBoundingBox" ) )
+            return func_CalculateBoundingBox(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::CalculateBoundingBox(  );
+        }
+    }
+    
+    ::ChasteCuboid< 2 > default_CalculateBoundingBox(  ) const  {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
+    }
+
+    virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
+            return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+        }
+    }
+    
+    unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual unsigned int GetNumAllNodes(  ) const  {
+        if( bp::override func_GetNumAllNodes = this->get_override( "GetNumAllNodes" ) )
+            return func_GetNumAllNodes(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNumAllNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumAllNodes(  ) const  {
+        return AbstractMesh< 2, 2 >::GetNumAllNodes( );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) const  {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) const  {
+        return AbstractMesh< 2, 2 >::GetWidth( rDimension );
+    }
+
+    virtual void PermuteNodes(  ) {
+        if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
+            func_PermuteNodes(  );
+        else{
+            this->AbstractMesh< 2, 2 >::PermuteNodes(  );
+        }
+    }
+    
+    void default_PermuteNodes(  ) {
+        AbstractMesh< 2, 2 >::PermuteNodes( );
+    }
+
+    virtual void ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        if( bp::override func_ReadNodesPerProcessorFile = this->get_override( "ReadNodesPerProcessorFile" ) )
+            func_ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        else{
+            this->AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        }
+    }
+    
+    void default_ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+    }
+
+    virtual void RefreshMesh(  ) {
+        if( bp::override func_RefreshMesh = this->get_override( "RefreshMesh" ) )
+            func_RefreshMesh(  );
+        else{
+            this->AbstractMesh< 2, 2 >::RefreshMesh(  );
+        }
+    }
+    
+    void default_RefreshMesh(  ) {
+        AbstractMesh< 2, 2 >::RefreshMesh( );
+    }
+
+    virtual void Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        if( bp::override func_Rotate = this->get_override( "Rotate" ) )
+            func_Rotate( rotationMatrix );
+        else{
+            this->AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+        }
+    }
+    
+    void default_Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+    }
+
+    virtual void Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
+        if( bp::override func_Scale = this->get_override( "Scale" ) )
+            func_Scale( xFactor, yFactor, zFactor );
+        else{
+            this->AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
+        }
+    }
+    
+    void default_Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
+        AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
+    }
+
+    virtual void SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        if( bp::override func_SetDistributedVectorFactory = this->get_override( "SetDistributedVectorFactory" ) )
+            func_SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        else{
+            this->AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        }
+    }
+    
+    void default_SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+    }
+
+    virtual void SetElementOwnerships(  ){
+        if( bp::override func_SetElementOwnerships = this->get_override( "SetElementOwnerships" ) )
+            func_SetElementOwnerships(  );
+        else{
+            this->AbstractMesh< 2, 2 >::SetElementOwnerships(  );
+        }
+    }
+    
+    virtual void default_SetElementOwnerships(  ){
+        AbstractMesh< 2, 2 >::SetElementOwnerships( );
+    }
+
+    virtual void Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        if( bp::override func_Translate = this->get_override( "Translate" ) )
+            func_Translate( boost::ref(rDisplacement) );
+        else{
+            this->AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+        }
+    }
+    
+    void default_Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+    }
+
+};
+
+struct MutableVertexMesh_less__2_comma__2__greater__wrapper : MutableVertexMesh< 2, 2 >, bp::wrapper< MutableVertexMesh< 2, 2 > > {
+
+    MutableVertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<2, 2> * > vertexElements, double cellRearrangementThreshold=0.01, double t2Threshold=0.001, double cellRearrangementRatio=1.5, double protorosetteFormationProbability=0., double protorosetteResolutionProbabilityPerTimestep=0., double rosetteResolutionProbabilityPerTimestep=0. )
+    : MutableVertexMesh<2, 2>( nodes, vertexElements, cellRearrangementThreshold, t2Threshold, cellRearrangementRatio, protorosetteFormationProbability, protorosetteResolutionProbabilityPerTimestep, rosetteResolutionProbabilityPerTimestep )
+      , bp::wrapper< MutableVertexMesh< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    MutableVertexMesh_less__2_comma__2__greater__wrapper( )
+    : MutableVertexMesh<2, 2>( )
+      , bp::wrapper< MutableVertexMesh< 2, 2 > >(){
+        // null constructor
+    
+    }
+
+    bool CheckForIntersections(  ){
+        return MutableVertexMesh< 2, 2 >::CheckForIntersections(  );
+    }
+
+    void CheckForRosettes(  ){
+        MutableVertexMesh< 2, 2 >::CheckForRosettes(  );
+    }
+
+    bool CheckForSwapsFromShortEdges(  ){
+        return MutableVertexMesh< 2, 2 >::CheckForSwapsFromShortEdges(  );
+    }
+
+    virtual void Clear(  ) {
+        if( bp::override func_Clear = this->get_override( "Clear" ) )
+            func_Clear(  );
+        else{
+            this->MutableVertexMesh< 2, 2 >::Clear(  );
+        }
+    }
+    
+    void default_Clear(  ) {
+        MutableVertexMesh< 2, 2 >::Clear( );
+    }
+
+    unsigned int DivideElement( ::VertexElement< 2, 2 > * pElement, unsigned int nodeAIndex, unsigned int nodeBIndex, bool placeOriginalElementBelow=false ){
+        return MutableVertexMesh< 2, 2 >::DivideElement( boost::python::ptr(pElement), nodeAIndex, nodeBIndex, placeOriginalElementBelow );
+    }
+
+    virtual unsigned int GetNumElements(  ) const  {
+        if( bp::override func_GetNumElements = this->get_override( "GetNumElements" ) )
+            return func_GetNumElements(  );
+        else{
+            return this->MutableVertexMesh< 2, 2 >::GetNumElements(  );
+        }
+    }
+    
+    unsigned int default_GetNumElements(  ) const  {
+        return MutableVertexMesh< 2, 2 >::GetNumElements( );
+    }
+
+    virtual unsigned int GetNumNodes(  ) const  {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->MutableVertexMesh< 2, 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) const  {
+        return MutableVertexMesh< 2, 2 >::GetNumNodes( );
+    }
+
+    virtual void HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        if( bp::override func_HandleHighOrderJunctions = this->get_override( "HandleHighOrderJunctions" ) )
+            func_HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        }
+    }
+    
+    virtual void default_HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    virtual void IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        if( bp::override func_IdentifySwapType = this->get_override( "IdentifySwapType" ) )
+            func_IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        }
+    }
+    
+    virtual void default_IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformIntersectionSwap( ::Node< 2 > * pNode, unsigned int elementIndex ){
+        MutableVertexMesh< 2, 2 >::PerformIntersectionSwap( boost::python::ptr(pNode), elementIndex );
+    }
+
+    void PerformNodeMerge( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::PerformNodeMerge( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformProtorosetteResolution( ::Node< 2 > * pProtorosetteNode ){
+        MutableVertexMesh< 2, 2 >::PerformProtorosetteResolution( boost::python::ptr(pProtorosetteNode) );
+    }
+
+    void PerformRosetteRankDecrease( ::Node< 2 > * pRosetteNode ){
+        MutableVertexMesh< 2, 2 >::PerformRosetteRankDecrease( boost::python::ptr(pRosetteNode) );
+    }
+
+    void PerformRosetteRankIncrease( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::PerformRosetteRankIncrease( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformT1Swap( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::std::set< unsigned int > & rElementsContainingNodes ){
+        MutableVertexMesh< 2, 2 >::PerformT1Swap( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rElementsContainingNodes) );
+    }
+
+    void PerformT2Swap( ::VertexElement< 2, 2 > & rElement ){
+        MutableVertexMesh< 2, 2 >::PerformT2Swap( boost::ref(rElement) );
+    }
+
+    void PerformT3Swap( ::Node< 2 > * pNode, unsigned int elementIndex ){
+        MutableVertexMesh< 2, 2 >::PerformT3Swap( boost::python::ptr(pNode), elementIndex );
+    }
+
+    void PerformVoidRemoval( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::Node< 2 > * pNodeC ){
+        MutableVertexMesh< 2, 2 >::PerformVoidRemoval( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::python::ptr(pNodeC) );
+    }
+
+    virtual void ReMesh( ::VertexElementMap & rElementMap ) {
+        if( bp::override func_ReMesh = this->get_override( "ReMesh" ) )
+            func_ReMesh( boost::ref(rElementMap) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
+        }
+    }
+    
+    void default_ReMesh( ::VertexElementMap & rElementMap ) {
+        MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, point );
+        else{
+            this->MutableVertexMesh< 2, 2 >::SetNode( nodeIndex, point );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
+        MutableVertexMesh< 2, 2 >::SetNode( nodeIndex, point );
+    }
+
+    ::boost::numeric::ublas::c_vector< double, 2 > WidenEdgeOrCorrectIntersectionLocationIfNecessary( unsigned int indexA, unsigned int indexB, ::boost::numeric::ublas::c_vector< double, 2 > intersection ){
+        return MutableVertexMesh< 2, 2 >::WidenEdgeOrCorrectIntersectionLocationIfNecessary( indexA, indexB, intersection );
+    }
+
+    virtual double CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        if( bp::override func_CalculateAreaOfFace = this->get_override( "CalculateAreaOfFace" ) )
+            return func_CalculateAreaOfFace( boost::python::ptr(pFace) );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+        }
+    }
+    
+    double default_CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        return VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+    }
+
+    ::ChasteCuboid< 2 > CalculateBoundingBox( ::std::vector< Node<2> * > const & rNodes ) const {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( boost::ref(rNodes) );
+    }
+
+    virtual ::ChasteCuboid< 2 > CalculateBoundingBox(  ) const  {
+        if( bp::override func_CalculateBoundingBox = this->get_override( "CalculateBoundingBox" ) )
+            return func_CalculateBoundingBox(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::CalculateBoundingBox(  );
+        }
+    }
+    
+    ::ChasteCuboid< 2 > default_CalculateBoundingBox(  ) const  {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateMomentsOfElement( unsigned int index ) {
+        if( bp::override func_CalculateMomentsOfElement = this->get_override( "CalculateMomentsOfElement" ) )
+            return func_CalculateMomentsOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateMomentsOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+    }
+
+    bool ElementIncludesPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::ElementIncludesPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    void GenerateVerticesFromElementCircumcentres( ::TetrahedralMesh< 2, 2 > & rMesh ){
+        VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres( boost::ref(rMesh) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetCentroidOfElement( unsigned int index ) {
+        if( bp::override func_GetCentroidOfElement = this->get_override( "GetCentroidOfElement" ) )
+            return func_GetCentroidOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetCentroidOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+    }
+
+    unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
+            return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+        }
+    }
+    
+    unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual unsigned int GetNumAllNodes(  ) const  {
+        if( bp::override func_GetNumAllNodes = this->get_override( "GetNumAllNodes" ) )
+            return func_GetNumAllNodes(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNumAllNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumAllNodes(  ) const  {
+        return AbstractMesh< 2, 2 >::GetNumAllNodes( );
+    }
+
+    virtual unsigned int GetNumFaces(  ) const  {
+        if( bp::override func_GetNumFaces = this->get_override( "GetNumFaces" ) )
+            return func_GetNumFaces(  );
+        else{
+            return this->VertexMesh< 2, 2 >::GetNumFaces(  );
+        }
+    }
+    
+    unsigned int default_GetNumFaces(  ) const  {
+        return VertexMesh< 2, 2 >::GetNumFaces( );
+    }
+
+    virtual double GetSurfaceAreaOfElement( unsigned int index ) {
+        if( bp::override func_GetSurfaceAreaOfElement = this->get_override( "GetSurfaceAreaOfElement" ) )
+            return func_GetSurfaceAreaOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+        }
+    }
+    
+    double default_GetSurfaceAreaOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
+        if( bp::override func_GetVectorFromAtoB = this->get_override( "GetVectorFromAtoB" ) )
+            return func_GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+        else{
+            return this->VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
+        return VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
+    }
+
+    virtual double GetVolumeOfElement( unsigned int index ) {
+        if( bp::override func_GetVolumeOfElement = this->get_override( "GetVolumeOfElement" ) )
+            return func_GetVolumeOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+        }
+    }
+    
+    double default_GetVolumeOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) const  {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) const  {
+        return AbstractMesh< 2, 2 >::GetWidth( rDimension );
+    }
+
+    virtual void PermuteNodes(  ) {
+        if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
+            func_PermuteNodes(  );
+        else{
+            this->AbstractMesh< 2, 2 >::PermuteNodes(  );
+        }
+    }
+    
+    void default_PermuteNodes(  ) {
+        AbstractMesh< 2, 2 >::PermuteNodes( );
+    }
+
+    virtual void ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        if( bp::override func_ReadNodesPerProcessorFile = this->get_override( "ReadNodesPerProcessorFile" ) )
+            func_ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        else{
+            this->AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        }
+    }
+    
+    void default_ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+    }
+
+    virtual void RefreshMesh(  ) {
+        if( bp::override func_RefreshMesh = this->get_override( "RefreshMesh" ) )
+            func_RefreshMesh(  );
+        else{
+            this->AbstractMesh< 2, 2 >::RefreshMesh(  );
+        }
+    }
+    
+    void default_RefreshMesh(  ) {
+        AbstractMesh< 2, 2 >::RefreshMesh( );
+    }
+
+    virtual void Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        if( bp::override func_Rotate = this->get_override( "Rotate" ) )
+            func_Rotate( rotationMatrix );
+        else{
+            this->AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+        }
+    }
+    
+    void default_Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+    }
+
+    virtual void Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
+        if( bp::override func_Scale = this->get_override( "Scale" ) )
+            func_Scale( xFactor, yFactor, zFactor );
+        else{
+            this->AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
+        }
+    }
+    
+    void default_Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
+        AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
+    }
+
+    virtual void SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        if( bp::override func_SetDistributedVectorFactory = this->get_override( "SetDistributedVectorFactory" ) )
+            func_SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        else{
+            this->AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        }
+    }
+    
+    void default_SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+    }
+
+    virtual void SetElementOwnerships(  ){
+        if( bp::override func_SetElementOwnerships = this->get_override( "SetElementOwnerships" ) )
+            func_SetElementOwnerships(  );
+        else{
+            this->AbstractMesh< 2, 2 >::SetElementOwnerships(  );
+        }
+    }
+    
+    virtual void default_SetElementOwnerships(  ){
+        AbstractMesh< 2, 2 >::SetElementOwnerships( );
+    }
+
+    unsigned int SolveBoundaryElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveBoundaryElementMapping( index );
+    }
+
+    unsigned int SolveElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveElementMapping( index );
+    }
+
+    virtual unsigned int SolveNodeMapping( unsigned int index ) const {
+        if( bp::override func_SolveNodeMapping = this->get_override( "SolveNodeMapping" ) )
+            return func_SolveNodeMapping( index );
+        else{
+            return this->VertexMesh< 2, 2 >::SolveNodeMapping( index );
+        }
+    }
+    
+    virtual unsigned int default_SolveNodeMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveNodeMapping( index );
+    }
+
+    virtual void Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        if( bp::override func_Translate = this->get_override( "Translate" ) )
+            func_Translate( boost::ref(rDisplacement) );
+        else{
+            this->AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+        }
+    }
+    
+    void default_Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+    }
+
+};
+
+struct Cylindrical2dVertexMesh_wrapper : Cylindrical2dVertexMesh, bp::wrapper< Cylindrical2dVertexMesh > {
+
+    Cylindrical2dVertexMesh_wrapper(double width, ::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<2, 2> * > vertexElements, double cellRearrangementThreshold=0.01, double t2Threshold=0.001 )
+    : Cylindrical2dVertexMesh( width, nodes, vertexElements, cellRearrangementThreshold, t2Threshold )
+      , bp::wrapper< Cylindrical2dVertexMesh >(){
+        // constructor
+    
+    }
+
+    Cylindrical2dVertexMesh_wrapper(::Cylindrical2dMesh & rMesh )
+    : Cylindrical2dVertexMesh( boost::ref(rMesh) )
+      , bp::wrapper< Cylindrical2dVertexMesh >(){
+        // constructor
+    
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocation1, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocation2 ) {
+        if( bp::override func_GetVectorFromAtoB = this->get_override( "GetVectorFromAtoB" ) )
+            return func_GetVectorFromAtoB( boost::ref(rLocation1), boost::ref(rLocation2) );
+        else{
+            return this->Cylindrical2dVertexMesh::GetVectorFromAtoB( boost::ref(rLocation1), boost::ref(rLocation2) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocation1, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocation2 ) {
+        return Cylindrical2dVertexMesh::GetVectorFromAtoB( boost::ref(rLocation1), boost::ref(rLocation2) );
+    }
+
+    virtual double GetWidth( unsigned int const & rDimension ) const  {
+        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
+            return func_GetWidth( rDimension );
+        else{
+            return this->Cylindrical2dVertexMesh::GetWidth( rDimension );
+        }
+    }
+    
+    double default_GetWidth( unsigned int const & rDimension ) const  {
+        return Cylindrical2dVertexMesh::GetWidth( rDimension );
+    }
+
+    virtual void Scale( double const xScale=1., double const yScale=1., double const zScale=1. ) {
+        if( bp::override func_Scale = this->get_override( "Scale" ) )
+            func_Scale( xScale, yScale, zScale );
+        else{
+            this->Cylindrical2dVertexMesh::Scale( xScale, yScale, zScale );
+        }
+    }
+    
+    void default_Scale( double const xScale=1., double const yScale=1., double const zScale=1. ) {
+        Cylindrical2dVertexMesh::Scale( xScale, yScale, zScale );
+    }
+
+    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
+        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
+            func_SetNode( nodeIndex, point );
+        else{
+            this->Cylindrical2dVertexMesh::SetNode( nodeIndex, point );
+        }
+    }
+    
+    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
+        Cylindrical2dVertexMesh::SetNode( nodeIndex, point );
+    }
+
+    virtual double CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        if( bp::override func_CalculateAreaOfFace = this->get_override( "CalculateAreaOfFace" ) )
+            return func_CalculateAreaOfFace( boost::python::ptr(pFace) );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+        }
+    }
+    
+    double default_CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
+        return VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
+    }
+
+    ::ChasteCuboid< 2 > CalculateBoundingBox( ::std::vector< Node<2> * > const & rNodes ) const {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( boost::ref(rNodes) );
+    }
+
+    virtual ::ChasteCuboid< 2 > CalculateBoundingBox(  ) const  {
+        if( bp::override func_CalculateBoundingBox = this->get_override( "CalculateBoundingBox" ) )
+            return func_CalculateBoundingBox(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::CalculateBoundingBox(  );
+        }
+    }
+    
+    ::ChasteCuboid< 2 > default_CalculateBoundingBox(  ) const  {
+        return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateMomentsOfElement( unsigned int index ) {
+        if( bp::override func_CalculateMomentsOfElement = this->get_override( "CalculateMomentsOfElement" ) )
+            return func_CalculateMomentsOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateMomentsOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
+    }
+
+    bool CheckForIntersections(  ){
+        return MutableVertexMesh< 2, 2 >::CheckForIntersections(  );
+    }
+
+    void CheckForRosettes(  ){
+        MutableVertexMesh< 2, 2 >::CheckForRosettes(  );
+    }
+
+    bool CheckForSwapsFromShortEdges(  ){
+        return MutableVertexMesh< 2, 2 >::CheckForSwapsFromShortEdges(  );
+    }
+
+    virtual void Clear(  ) {
+        if( bp::override func_Clear = this->get_override( "Clear" ) )
+            func_Clear(  );
+        else{
+            this->MutableVertexMesh< 2, 2 >::Clear(  );
+        }
+    }
+    
+    void default_Clear(  ) {
+        MutableVertexMesh< 2, 2 >::Clear( );
+    }
+
+    unsigned int DivideElement( ::VertexElement< 2, 2 > * pElement, unsigned int nodeAIndex, unsigned int nodeBIndex, bool placeOriginalElementBelow=false ){
+        return MutableVertexMesh< 2, 2 >::DivideElement( boost::python::ptr(pElement), nodeAIndex, nodeBIndex, placeOriginalElementBelow );
+    }
+
+    bool ElementIncludesPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::ElementIncludesPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    void GenerateVerticesFromElementCircumcentres( ::TetrahedralMesh< 2, 2 > & rMesh ){
+        VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres( boost::ref(rMesh) );
+    }
+
+    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetCentroidOfElement( unsigned int index ) {
+        if( bp::override func_GetCentroidOfElement = this->get_override( "GetCentroidOfElement" ) )
+            return func_GetCentroidOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_vector< double, 2 > default_GetCentroidOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
+    }
+
+    unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
+        return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
+    }
+
+    virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
+            return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+        }
+    }
+    
+    unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
+        return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual unsigned int GetNumAllNodes(  ) const  {
+        if( bp::override func_GetNumAllNodes = this->get_override( "GetNumAllNodes" ) )
+            return func_GetNumAllNodes(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNumAllNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumAllNodes(  ) const  {
+        return AbstractMesh< 2, 2 >::GetNumAllNodes( );
+    }
+
+    virtual unsigned int GetNumElements(  ) const  {
+        if( bp::override func_GetNumElements = this->get_override( "GetNumElements" ) )
+            return func_GetNumElements(  );
+        else{
+            return this->MutableVertexMesh< 2, 2 >::GetNumElements(  );
+        }
+    }
+    
+    unsigned int default_GetNumElements(  ) const  {
+        return MutableVertexMesh< 2, 2 >::GetNumElements( );
+    }
+
+    virtual unsigned int GetNumFaces(  ) const  {
+        if( bp::override func_GetNumFaces = this->get_override( "GetNumFaces" ) )
+            return func_GetNumFaces(  );
+        else{
+            return this->VertexMesh< 2, 2 >::GetNumFaces(  );
+        }
+    }
+    
+    unsigned int default_GetNumFaces(  ) const  {
+        return VertexMesh< 2, 2 >::GetNumFaces( );
+    }
+
+    virtual unsigned int GetNumNodes(  ) const  {
+        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
+            return func_GetNumNodes(  );
+        else{
+            return this->MutableVertexMesh< 2, 2 >::GetNumNodes(  );
+        }
+    }
+    
+    unsigned int default_GetNumNodes(  ) const  {
+        return MutableVertexMesh< 2, 2 >::GetNumNodes( );
+    }
+
+    virtual double GetSurfaceAreaOfElement( unsigned int index ) {
+        if( bp::override func_GetSurfaceAreaOfElement = this->get_override( "GetSurfaceAreaOfElement" ) )
+            return func_GetSurfaceAreaOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+        }
+    }
+    
+    double default_GetSurfaceAreaOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
+    }
+
+    virtual double GetVolumeOfElement( unsigned int index ) {
+        if( bp::override func_GetVolumeOfElement = this->get_override( "GetVolumeOfElement" ) )
+            return func_GetVolumeOfElement( index );
+        else{
+            return this->VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+        }
+    }
+    
+    double default_GetVolumeOfElement( unsigned int index ) {
+        return VertexMesh< 2, 2 >::GetVolumeOfElement( index );
+    }
+
+    virtual void HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        if( bp::override func_HandleHighOrderJunctions = this->get_override( "HandleHighOrderJunctions" ) )
+            func_HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        }
+    }
+    
+    virtual void default_HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    virtual void IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        if( bp::override func_IdentifySwapType = this->get_override( "IdentifySwapType" ) )
+            func_IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+        }
+    }
+    
+    virtual void default_IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformIntersectionSwap( ::Node< 2 > * pNode, unsigned int elementIndex ){
+        MutableVertexMesh< 2, 2 >::PerformIntersectionSwap( boost::python::ptr(pNode), elementIndex );
+    }
+
+    void PerformNodeMerge( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::PerformNodeMerge( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformProtorosetteResolution( ::Node< 2 > * pProtorosetteNode ){
+        MutableVertexMesh< 2, 2 >::PerformProtorosetteResolution( boost::python::ptr(pProtorosetteNode) );
+    }
+
+    void PerformRosetteRankDecrease( ::Node< 2 > * pRosetteNode ){
+        MutableVertexMesh< 2, 2 >::PerformRosetteRankDecrease( boost::python::ptr(pRosetteNode) );
+    }
+
+    void PerformRosetteRankIncrease( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
+        MutableVertexMesh< 2, 2 >::PerformRosetteRankIncrease( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
+    }
+
+    void PerformT1Swap( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::std::set< unsigned int > & rElementsContainingNodes ){
+        MutableVertexMesh< 2, 2 >::PerformT1Swap( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rElementsContainingNodes) );
+    }
+
+    void PerformT2Swap( ::VertexElement< 2, 2 > & rElement ){
+        MutableVertexMesh< 2, 2 >::PerformT2Swap( boost::ref(rElement) );
+    }
+
+    void PerformT3Swap( ::Node< 2 > * pNode, unsigned int elementIndex ){
+        MutableVertexMesh< 2, 2 >::PerformT3Swap( boost::python::ptr(pNode), elementIndex );
+    }
+
+    void PerformVoidRemoval( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::Node< 2 > * pNodeC ){
+        MutableVertexMesh< 2, 2 >::PerformVoidRemoval( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::python::ptr(pNodeC) );
+    }
+
+    virtual void PermuteNodes(  ) {
+        if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
+            func_PermuteNodes(  );
+        else{
+            this->AbstractMesh< 2, 2 >::PermuteNodes(  );
+        }
+    }
+    
+    void default_PermuteNodes(  ) {
+        AbstractMesh< 2, 2 >::PermuteNodes( );
+    }
+
+    virtual void ReMesh( ::VertexElementMap & rElementMap ) {
+        if( bp::override func_ReMesh = this->get_override( "ReMesh" ) )
+            func_ReMesh( boost::ref(rElementMap) );
+        else{
+            this->MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
+        }
+    }
+    
+    void default_ReMesh( ::VertexElementMap & rElementMap ) {
+        MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
+    }
+
+    virtual void ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        if( bp::override func_ReadNodesPerProcessorFile = this->get_override( "ReadNodesPerProcessorFile" ) )
+            func_ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        else{
+            this->AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+        }
+    }
+    
+    void default_ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
+        AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
+    }
+
+    virtual void RefreshMesh(  ) {
+        if( bp::override func_RefreshMesh = this->get_override( "RefreshMesh" ) )
+            func_RefreshMesh(  );
+        else{
+            this->AbstractMesh< 2, 2 >::RefreshMesh(  );
+        }
+    }
+    
+    void default_RefreshMesh(  ) {
+        AbstractMesh< 2, 2 >::RefreshMesh( );
+    }
+
+    virtual void Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        if( bp::override func_Rotate = this->get_override( "Rotate" ) )
+            func_Rotate( rotationMatrix );
+        else{
+            this->AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+        }
+    }
+    
+    void default_Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
+        AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
+    }
+
+    virtual void SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        if( bp::override func_SetDistributedVectorFactory = this->get_override( "SetDistributedVectorFactory" ) )
+            func_SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        else{
+            this->AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+        }
+    }
+    
+    void default_SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
+        AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
+    }
+
+    virtual void SetElementOwnerships(  ){
+        if( bp::override func_SetElementOwnerships = this->get_override( "SetElementOwnerships" ) )
+            func_SetElementOwnerships(  );
+        else{
+            this->AbstractMesh< 2, 2 >::SetElementOwnerships(  );
+        }
+    }
+    
+    virtual void default_SetElementOwnerships(  ){
+        AbstractMesh< 2, 2 >::SetElementOwnerships( );
+    }
+
+    unsigned int SolveBoundaryElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveBoundaryElementMapping( index );
+    }
+
+    unsigned int SolveElementMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveElementMapping( index );
+    }
+
+    virtual unsigned int SolveNodeMapping( unsigned int index ) const {
+        if( bp::override func_SolveNodeMapping = this->get_override( "SolveNodeMapping" ) )
+            return func_SolveNodeMapping( index );
+        else{
+            return this->VertexMesh< 2, 2 >::SolveNodeMapping( index );
+        }
+    }
+    
+    virtual unsigned int default_SolveNodeMapping( unsigned int index ) const {
+        return VertexMesh< 2, 2 >::SolveNodeMapping( index );
+    }
+
+    virtual void Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        if( bp::override func_Translate = this->get_override( "Translate" ) )
+            func_Translate( boost::ref(rDisplacement) );
+        else{
+            this->AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+        }
+    }
+    
+    void default_Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
+        AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
+    }
+
+    ::boost::numeric::ublas::c_vector< double, 2 > WidenEdgeOrCorrectIntersectionLocationIfNecessary( unsigned int indexA, unsigned int indexB, ::boost::numeric::ublas::c_vector< double, 2 > intersection ){
+        return MutableVertexMesh< 2, 2 >::WidenEdgeOrCorrectIntersectionLocationIfNecessary( indexA, indexB, intersection );
+    }
+
+};
+
 struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 2 >, bp::wrapper< TetrahedralMesh< 2, 2 > > {
 
     TetrahedralMesh_less__2_comma__2__greater__wrapper( )
@@ -3198,764 +4381,24 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
 
 };
 
-struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::wrapper< VertexMesh< 2, 2 > > {
-
-    VertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<2, 2> * > vertexElements )
-    : VertexMesh<2, 2>( nodes, vertexElements )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<1, 2> * > faces, ::std::vector< VertexElement<2, 2> * > vertexElements )
-    : VertexMesh<2, 2>( nodes, faces, vertexElements )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__2_comma__2__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
-    : VertexMesh<2, 2>( boost::ref(rMesh), isPeriodic )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
-    VertexMesh_less__2_comma__2__greater__wrapper( )
-    : VertexMesh<2, 2>( )
-      , bp::wrapper< VertexMesh< 2, 2 > >(){
-        // null constructor
-    
-    }
-
-    virtual double CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
-        if( bp::override func_CalculateAreaOfFace = this->get_override( "CalculateAreaOfFace" ) )
-            return func_CalculateAreaOfFace( boost::python::ptr(pFace) );
-        else{
-            return this->VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
-        }
-    }
-    
-    double default_CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
-        return VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateMomentsOfElement( unsigned int index ) {
-        if( bp::override func_CalculateMomentsOfElement = this->get_override( "CalculateMomentsOfElement" ) )
-            return func_CalculateMomentsOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateMomentsOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
-    }
-
-    virtual void Clear(  ) {
-        if( bp::override func_Clear = this->get_override( "Clear" ) )
-            func_Clear(  );
-        else{
-            this->VertexMesh< 2, 2 >::Clear(  );
-        }
-    }
-    
-    void default_Clear(  ) {
-        VertexMesh< 2, 2 >::Clear( );
-    }
-
-    bool ElementIncludesPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
-        return VertexMesh< 2, 2 >::ElementIncludesPoint( boost::ref(rTestPoint), elementIndex );
-    }
-
-    void GenerateVerticesFromElementCircumcentres( ::TetrahedralMesh< 2, 2 > & rMesh ){
-        VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres( boost::ref(rMesh) );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetCentroidOfElement( unsigned int index ) {
-        if( bp::override func_GetCentroidOfElement = this->get_override( "GetCentroidOfElement" ) )
-            return func_GetCentroidOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetCentroidOfElement( index );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 2 > default_GetCentroidOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
-    }
-
-    unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
-        return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
-    }
-
-    virtual unsigned int GetNumElements(  ) const  {
-        if( bp::override func_GetNumElements = this->get_override( "GetNumElements" ) )
-            return func_GetNumElements(  );
-        else{
-            return this->VertexMesh< 2, 2 >::GetNumElements(  );
-        }
-    }
-    
-    unsigned int default_GetNumElements(  ) const  {
-        return VertexMesh< 2, 2 >::GetNumElements( );
-    }
-
-    virtual unsigned int GetNumFaces(  ) const  {
-        if( bp::override func_GetNumFaces = this->get_override( "GetNumFaces" ) )
-            return func_GetNumFaces(  );
-        else{
-            return this->VertexMesh< 2, 2 >::GetNumFaces(  );
-        }
-    }
-    
-    unsigned int default_GetNumFaces(  ) const  {
-        return VertexMesh< 2, 2 >::GetNumFaces( );
-    }
-
-    virtual unsigned int GetNumNodes(  ) const  {
-        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
-            return func_GetNumNodes(  );
-        else{
-            return this->VertexMesh< 2, 2 >::GetNumNodes(  );
-        }
-    }
-    
-    unsigned int default_GetNumNodes(  ) const  {
-        return VertexMesh< 2, 2 >::GetNumNodes( );
-    }
-
-    virtual double GetSurfaceAreaOfElement( unsigned int index ) {
-        if( bp::override func_GetSurfaceAreaOfElement = this->get_override( "GetSurfaceAreaOfElement" ) )
-            return func_GetSurfaceAreaOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
-        }
-    }
-    
-    double default_GetSurfaceAreaOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
-        if( bp::override func_GetVectorFromAtoB = this->get_override( "GetVectorFromAtoB" ) )
-            return func_GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-        else{
-            return this->VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 2 > default_GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
-        return VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-    }
-
-    virtual double GetVolumeOfElement( unsigned int index ) {
-        if( bp::override func_GetVolumeOfElement = this->get_override( "GetVolumeOfElement" ) )
-            return func_GetVolumeOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetVolumeOfElement( index );
-        }
-    }
-    
-    double default_GetVolumeOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetVolumeOfElement( index );
-    }
-
-    unsigned int SolveBoundaryElementMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveBoundaryElementMapping( index );
-    }
-
-    unsigned int SolveElementMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveElementMapping( index );
-    }
-
-    virtual unsigned int SolveNodeMapping( unsigned int index ) const {
-        if( bp::override func_SolveNodeMapping = this->get_override( "SolveNodeMapping" ) )
-            return func_SolveNodeMapping( index );
-        else{
-            return this->VertexMesh< 2, 2 >::SolveNodeMapping( index );
-        }
-    }
-    
-    virtual unsigned int default_SolveNodeMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveNodeMapping( index );
-    }
-
-    ::ChasteCuboid< 2 > CalculateBoundingBox( ::std::vector< Node<2> * > const & rNodes ) const {
-        return AbstractMesh< 2, 2 >::CalculateBoundingBox( boost::ref(rNodes) );
-    }
-
-    virtual ::ChasteCuboid< 2 > CalculateBoundingBox(  ) const  {
-        if( bp::override func_CalculateBoundingBox = this->get_override( "CalculateBoundingBox" ) )
-            return func_CalculateBoundingBox(  );
-        else{
-            return this->AbstractMesh< 2, 2 >::CalculateBoundingBox(  );
-        }
-    }
-    
-    ::ChasteCuboid< 2 > default_CalculateBoundingBox(  ) const  {
-        return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
-    }
-
-    virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
-        if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
-            return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
-        }
-    }
-    
-    unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
-        return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
-    }
-
-    virtual unsigned int GetNumAllNodes(  ) const  {
-        if( bp::override func_GetNumAllNodes = this->get_override( "GetNumAllNodes" ) )
-            return func_GetNumAllNodes(  );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetNumAllNodes(  );
-        }
-    }
-    
-    unsigned int default_GetNumAllNodes(  ) const  {
-        return AbstractMesh< 2, 2 >::GetNumAllNodes( );
-    }
-
-    virtual double GetWidth( unsigned int const & rDimension ) const  {
-        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
-            return func_GetWidth( rDimension );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetWidth( rDimension );
-        }
-    }
-    
-    double default_GetWidth( unsigned int const & rDimension ) const  {
-        return AbstractMesh< 2, 2 >::GetWidth( rDimension );
-    }
-
-    virtual void PermuteNodes(  ) {
-        if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
-            func_PermuteNodes(  );
-        else{
-            this->AbstractMesh< 2, 2 >::PermuteNodes(  );
-        }
-    }
-    
-    void default_PermuteNodes(  ) {
-        AbstractMesh< 2, 2 >::PermuteNodes( );
-    }
-
-    virtual void ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
-        if( bp::override func_ReadNodesPerProcessorFile = this->get_override( "ReadNodesPerProcessorFile" ) )
-            func_ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-        else{
-            this->AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-        }
-    }
-    
-    void default_ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
-        AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-    }
-
-    virtual void RefreshMesh(  ) {
-        if( bp::override func_RefreshMesh = this->get_override( "RefreshMesh" ) )
-            func_RefreshMesh(  );
-        else{
-            this->AbstractMesh< 2, 2 >::RefreshMesh(  );
-        }
-    }
-    
-    void default_RefreshMesh(  ) {
-        AbstractMesh< 2, 2 >::RefreshMesh( );
-    }
-
-    virtual void Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
-        if( bp::override func_Rotate = this->get_override( "Rotate" ) )
-            func_Rotate( rotationMatrix );
-        else{
-            this->AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
-        }
-    }
-    
-    void default_Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
-        AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
-    }
-
-    virtual void Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
-        if( bp::override func_Scale = this->get_override( "Scale" ) )
-            func_Scale( xFactor, yFactor, zFactor );
-        else{
-            this->AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
-        }
-    }
-    
-    void default_Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
-        AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
-    }
-
-    virtual void SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
-        if( bp::override func_SetDistributedVectorFactory = this->get_override( "SetDistributedVectorFactory" ) )
-            func_SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-        else{
-            this->AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-        }
-    }
-    
-    void default_SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
-        AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-    }
-
-    virtual void SetElementOwnerships(  ){
-        if( bp::override func_SetElementOwnerships = this->get_override( "SetElementOwnerships" ) )
-            func_SetElementOwnerships(  );
-        else{
-            this->AbstractMesh< 2, 2 >::SetElementOwnerships(  );
-        }
-    }
-    
-    virtual void default_SetElementOwnerships(  ){
-        AbstractMesh< 2, 2 >::SetElementOwnerships( );
-    }
-
-    virtual void Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
-        if( bp::override func_Translate = this->get_override( "Translate" ) )
-            func_Translate( boost::ref(rDisplacement) );
-        else{
-            this->AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
-        }
-    }
-    
-    void default_Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
-        AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
-    }
-
-};
-
-struct MutableVertexMesh_less__2_comma__2__greater__wrapper : MutableVertexMesh< 2, 2 >, bp::wrapper< MutableVertexMesh< 2, 2 > > {
-
-    MutableVertexMesh_less__2_comma__2__greater__wrapper(::std::vector< Node<2> * > nodes, ::std::vector< VertexElement<2, 2> * > vertexElements, double cellRearrangementThreshold=0.01, double t2Threshold=0.001, double cellRearrangementRatio=1.5, double protorosetteFormationProbability=0., double protorosetteResolutionProbabilityPerTimestep=0., double rosetteResolutionProbabilityPerTimestep=0. )
-    : MutableVertexMesh<2, 2>( nodes, vertexElements, cellRearrangementThreshold, t2Threshold, cellRearrangementRatio, protorosetteFormationProbability, protorosetteResolutionProbabilityPerTimestep, rosetteResolutionProbabilityPerTimestep )
-      , bp::wrapper< MutableVertexMesh< 2, 2 > >(){
-        // constructor
-    
-    }
-
-    MutableVertexMesh_less__2_comma__2__greater__wrapper( )
-    : MutableVertexMesh<2, 2>( )
-      , bp::wrapper< MutableVertexMesh< 2, 2 > >(){
-        // null constructor
-    
-    }
-
-    bool CheckForIntersections(  ){
-        return MutableVertexMesh< 2, 2 >::CheckForIntersections(  );
-    }
-
-    void CheckForRosettes(  ){
-        MutableVertexMesh< 2, 2 >::CheckForRosettes(  );
-    }
-
-    bool CheckForSwapsFromShortEdges(  ){
-        return MutableVertexMesh< 2, 2 >::CheckForSwapsFromShortEdges(  );
-    }
-
-    virtual void Clear(  ) {
-        if( bp::override func_Clear = this->get_override( "Clear" ) )
-            func_Clear(  );
-        else{
-            this->MutableVertexMesh< 2, 2 >::Clear(  );
-        }
-    }
-    
-    void default_Clear(  ) {
-        MutableVertexMesh< 2, 2 >::Clear( );
-    }
-
-    unsigned int DivideElement( ::VertexElement< 2, 2 > * pElement, unsigned int nodeAIndex, unsigned int nodeBIndex, bool placeOriginalElementBelow=false ){
-        return MutableVertexMesh< 2, 2 >::DivideElement( boost::python::ptr(pElement), nodeAIndex, nodeBIndex, placeOriginalElementBelow );
-    }
-
-    virtual unsigned int GetNumElements(  ) const  {
-        if( bp::override func_GetNumElements = this->get_override( "GetNumElements" ) )
-            return func_GetNumElements(  );
-        else{
-            return this->MutableVertexMesh< 2, 2 >::GetNumElements(  );
-        }
-    }
-    
-    unsigned int default_GetNumElements(  ) const  {
-        return MutableVertexMesh< 2, 2 >::GetNumElements( );
-    }
-
-    virtual unsigned int GetNumNodes(  ) const  {
-        if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
-            return func_GetNumNodes(  );
-        else{
-            return this->MutableVertexMesh< 2, 2 >::GetNumNodes(  );
-        }
-    }
-    
-    unsigned int default_GetNumNodes(  ) const  {
-        return MutableVertexMesh< 2, 2 >::GetNumNodes( );
-    }
-
-    virtual void HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        if( bp::override func_HandleHighOrderJunctions = this->get_override( "HandleHighOrderJunctions" ) )
-            func_HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-        else{
-            this->MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-        }
-    }
-    
-    virtual void default_HandleHighOrderJunctions( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-    }
-
-    virtual void IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        if( bp::override func_IdentifySwapType = this->get_override( "IdentifySwapType" ) )
-            func_IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-        else{
-            this->MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-        }
-    }
-    
-    virtual void default_IdentifySwapType( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        MutableVertexMesh< 2, 2 >::IdentifySwapType( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-    }
-
-    void PerformIntersectionSwap( ::Node< 2 > * pNode, unsigned int elementIndex ){
-        MutableVertexMesh< 2, 2 >::PerformIntersectionSwap( boost::python::ptr(pNode), elementIndex );
-    }
-
-    void PerformNodeMerge( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        MutableVertexMesh< 2, 2 >::PerformNodeMerge( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-    }
-
-    void PerformProtorosetteResolution( ::Node< 2 > * pProtorosetteNode ){
-        MutableVertexMesh< 2, 2 >::PerformProtorosetteResolution( boost::python::ptr(pProtorosetteNode) );
-    }
-
-    void PerformRosetteRankDecrease( ::Node< 2 > * pRosetteNode ){
-        MutableVertexMesh< 2, 2 >::PerformRosetteRankDecrease( boost::python::ptr(pRosetteNode) );
-    }
-
-    void PerformRosetteRankIncrease( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB ){
-        MutableVertexMesh< 2, 2 >::PerformRosetteRankIncrease( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB) );
-    }
-
-    void PerformT1Swap( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::std::set< unsigned int > & rElementsContainingNodes ){
-        MutableVertexMesh< 2, 2 >::PerformT1Swap( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::ref(rElementsContainingNodes) );
-    }
-
-    void PerformT2Swap( ::VertexElement< 2, 2 > & rElement ){
-        MutableVertexMesh< 2, 2 >::PerformT2Swap( boost::ref(rElement) );
-    }
-
-    void PerformT3Swap( ::Node< 2 > * pNode, unsigned int elementIndex ){
-        MutableVertexMesh< 2, 2 >::PerformT3Swap( boost::python::ptr(pNode), elementIndex );
-    }
-
-    void PerformVoidRemoval( ::Node< 2 > * pNodeA, ::Node< 2 > * pNodeB, ::Node< 2 > * pNodeC ){
-        MutableVertexMesh< 2, 2 >::PerformVoidRemoval( boost::python::ptr(pNodeA), boost::python::ptr(pNodeB), boost::python::ptr(pNodeC) );
-    }
-
-    virtual void ReMesh( ::VertexElementMap & rElementMap ) {
-        if( bp::override func_ReMesh = this->get_override( "ReMesh" ) )
-            func_ReMesh( boost::ref(rElementMap) );
-        else{
-            this->MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
-        }
-    }
-    
-    void default_ReMesh( ::VertexElementMap & rElementMap ) {
-        MutableVertexMesh< 2, 2 >::ReMesh( boost::ref(rElementMap) );
-    }
-
-    virtual void SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
-        if( bp::override func_SetNode = this->get_override( "SetNode" ) )
-            func_SetNode( nodeIndex, point );
-        else{
-            this->MutableVertexMesh< 2, 2 >::SetNode( nodeIndex, point );
-        }
-    }
-    
-    void default_SetNode( unsigned int nodeIndex, ::ChastePoint< 2 > point ) {
-        MutableVertexMesh< 2, 2 >::SetNode( nodeIndex, point );
-    }
-
-    ::boost::numeric::ublas::c_vector< double, 2 > WidenEdgeOrCorrectIntersectionLocationIfNecessary( unsigned int indexA, unsigned int indexB, ::boost::numeric::ublas::c_vector< double, 2 > intersection ){
-        return MutableVertexMesh< 2, 2 >::WidenEdgeOrCorrectIntersectionLocationIfNecessary( indexA, indexB, intersection );
-    }
-
-    virtual double CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
-        if( bp::override func_CalculateAreaOfFace = this->get_override( "CalculateAreaOfFace" ) )
-            return func_CalculateAreaOfFace( boost::python::ptr(pFace) );
-        else{
-            return this->VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
-        }
-    }
-    
-    double default_CalculateAreaOfFace( ::VertexElement< 1, 2 > * pFace ) {
-        return VertexMesh< 2, 2 >::CalculateAreaOfFace( boost::python::ptr(pFace) );
-    }
-
-    ::ChasteCuboid< 2 > CalculateBoundingBox( ::std::vector< Node<2> * > const & rNodes ) const {
-        return AbstractMesh< 2, 2 >::CalculateBoundingBox( boost::ref(rNodes) );
-    }
-
-    virtual ::ChasteCuboid< 2 > CalculateBoundingBox(  ) const  {
-        if( bp::override func_CalculateBoundingBox = this->get_override( "CalculateBoundingBox" ) )
-            return func_CalculateBoundingBox(  );
-        else{
-            return this->AbstractMesh< 2, 2 >::CalculateBoundingBox(  );
-        }
-    }
-    
-    ::ChasteCuboid< 2 > default_CalculateBoundingBox(  ) const  {
-        return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 3 > CalculateMomentsOfElement( unsigned int index ) {
-        if( bp::override func_CalculateMomentsOfElement = this->get_override( "CalculateMomentsOfElement" ) )
-            return func_CalculateMomentsOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 3 > default_CalculateMomentsOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::CalculateMomentsOfElement( index );
-    }
-
-    bool ElementIncludesPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
-        return VertexMesh< 2, 2 >::ElementIncludesPoint( boost::ref(rTestPoint), elementIndex );
-    }
-
-    void GenerateVerticesFromElementCircumcentres( ::TetrahedralMesh< 2, 2 > & rMesh ){
-        VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres( boost::ref(rMesh) );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetCentroidOfElement( unsigned int index ) {
-        if( bp::override func_GetCentroidOfElement = this->get_override( "GetCentroidOfElement" ) )
-            return func_GetCentroidOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetCentroidOfElement( index );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 2 > default_GetCentroidOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
-    }
-
-    unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
-        return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
-    }
-
-    virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
-        if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
-            return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
-        }
-    }
-    
-    unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
-        return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
-    }
-
-    virtual unsigned int GetNumAllNodes(  ) const  {
-        if( bp::override func_GetNumAllNodes = this->get_override( "GetNumAllNodes" ) )
-            return func_GetNumAllNodes(  );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetNumAllNodes(  );
-        }
-    }
-    
-    unsigned int default_GetNumAllNodes(  ) const  {
-        return AbstractMesh< 2, 2 >::GetNumAllNodes( );
-    }
-
-    virtual unsigned int GetNumFaces(  ) const  {
-        if( bp::override func_GetNumFaces = this->get_override( "GetNumFaces" ) )
-            return func_GetNumFaces(  );
-        else{
-            return this->VertexMesh< 2, 2 >::GetNumFaces(  );
-        }
-    }
-    
-    unsigned int default_GetNumFaces(  ) const  {
-        return VertexMesh< 2, 2 >::GetNumFaces( );
-    }
-
-    virtual double GetSurfaceAreaOfElement( unsigned int index ) {
-        if( bp::override func_GetSurfaceAreaOfElement = this->get_override( "GetSurfaceAreaOfElement" ) )
-            return func_GetSurfaceAreaOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
-        }
-    }
-    
-    double default_GetSurfaceAreaOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetSurfaceAreaOfElement( index );
-    }
-
-    virtual ::boost::numeric::ublas::c_vector< double, 2 > GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
-        if( bp::override func_GetVectorFromAtoB = this->get_override( "GetVectorFromAtoB" ) )
-            return func_GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-        else{
-            return this->VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-        }
-    }
-    
-    ::boost::numeric::ublas::c_vector< double, 2 > default_GetVectorFromAtoB( ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationA, ::boost::numeric::ublas::c_vector< double, 2 > const & rLocationB ) {
-        return VertexMesh< 2, 2 >::GetVectorFromAtoB( boost::ref(rLocationA), boost::ref(rLocationB) );
-    }
-
-    virtual double GetVolumeOfElement( unsigned int index ) {
-        if( bp::override func_GetVolumeOfElement = this->get_override( "GetVolumeOfElement" ) )
-            return func_GetVolumeOfElement( index );
-        else{
-            return this->VertexMesh< 2, 2 >::GetVolumeOfElement( index );
-        }
-    }
-    
-    double default_GetVolumeOfElement( unsigned int index ) {
-        return VertexMesh< 2, 2 >::GetVolumeOfElement( index );
-    }
-
-    virtual double GetWidth( unsigned int const & rDimension ) const  {
-        if( bp::override func_GetWidth = this->get_override( "GetWidth" ) )
-            return func_GetWidth( rDimension );
-        else{
-            return this->AbstractMesh< 2, 2 >::GetWidth( rDimension );
-        }
-    }
-    
-    double default_GetWidth( unsigned int const & rDimension ) const  {
-        return AbstractMesh< 2, 2 >::GetWidth( rDimension );
-    }
-
-    virtual void PermuteNodes(  ) {
-        if( bp::override func_PermuteNodes = this->get_override( "PermuteNodes" ) )
-            func_PermuteNodes(  );
-        else{
-            this->AbstractMesh< 2, 2 >::PermuteNodes(  );
-        }
-    }
-    
-    void default_PermuteNodes(  ) {
-        AbstractMesh< 2, 2 >::PermuteNodes( );
-    }
-
-    virtual void ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
-        if( bp::override func_ReadNodesPerProcessorFile = this->get_override( "ReadNodesPerProcessorFile" ) )
-            func_ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-        else{
-            this->AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-        }
-    }
-    
-    void default_ReadNodesPerProcessorFile( ::std::string const & rNodesPerProcessorFile ) {
-        AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile( rNodesPerProcessorFile );
-    }
-
-    virtual void RefreshMesh(  ) {
-        if( bp::override func_RefreshMesh = this->get_override( "RefreshMesh" ) )
-            func_RefreshMesh(  );
-        else{
-            this->AbstractMesh< 2, 2 >::RefreshMesh(  );
-        }
-    }
-    
-    void default_RefreshMesh(  ) {
-        AbstractMesh< 2, 2 >::RefreshMesh( );
-    }
-
-    virtual void Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
-        if( bp::override func_Rotate = this->get_override( "Rotate" ) )
-            func_Rotate( rotationMatrix );
-        else{
-            this->AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
-        }
-    }
-    
-    void default_Rotate( ::boost::numeric::ublas::c_matrix< double, 2, 2 > rotationMatrix ) {
-        AbstractMesh< 2, 2 >::Rotate( rotationMatrix );
-    }
-
-    virtual void Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
-        if( bp::override func_Scale = this->get_override( "Scale" ) )
-            func_Scale( xFactor, yFactor, zFactor );
-        else{
-            this->AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
-        }
-    }
-    
-    void default_Scale( double const xFactor=1., double const yFactor=1., double const zFactor=1. ) {
-        AbstractMesh< 2, 2 >::Scale( xFactor, yFactor, zFactor );
-    }
-
-    virtual void SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
-        if( bp::override func_SetDistributedVectorFactory = this->get_override( "SetDistributedVectorFactory" ) )
-            func_SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-        else{
-            this->AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-        }
-    }
-    
-    void default_SetDistributedVectorFactory( ::DistributedVectorFactory * pFactory ) {
-        AbstractMesh< 2, 2 >::SetDistributedVectorFactory( boost::python::ptr(pFactory) );
-    }
-
-    virtual void SetElementOwnerships(  ){
-        if( bp::override func_SetElementOwnerships = this->get_override( "SetElementOwnerships" ) )
-            func_SetElementOwnerships(  );
-        else{
-            this->AbstractMesh< 2, 2 >::SetElementOwnerships(  );
-        }
-    }
-    
-    virtual void default_SetElementOwnerships(  ){
-        AbstractMesh< 2, 2 >::SetElementOwnerships( );
-    }
-
-    unsigned int SolveBoundaryElementMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveBoundaryElementMapping( index );
-    }
-
-    unsigned int SolveElementMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveElementMapping( index );
-    }
-
-    virtual unsigned int SolveNodeMapping( unsigned int index ) const {
-        if( bp::override func_SolveNodeMapping = this->get_override( "SolveNodeMapping" ) )
-            return func_SolveNodeMapping( index );
-        else{
-            return this->VertexMesh< 2, 2 >::SolveNodeMapping( index );
-        }
-    }
-    
-    virtual unsigned int default_SolveNodeMapping( unsigned int index ) const {
-        return VertexMesh< 2, 2 >::SolveNodeMapping( index );
-    }
-
-    virtual void Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
-        if( bp::override func_Translate = this->get_override( "Translate" ) )
-            func_Translate( boost::ref(rDisplacement) );
-        else{
-            this->AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
-        }
-    }
-    
-    void default_Translate( ::boost::numeric::ublas::c_vector< double, 2 > const & rDisplacement ) {
-        AbstractMesh< 2, 2 >::Translate( boost::ref(rDisplacement) );
-    }
-
-};
-
 struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::wrapper< VertexMesh< 3, 3 > > {
 
     VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<3, 3> * > vertexElements )
     : VertexMesh<3, 3>( nodes, vertexElements )
+      , bp::wrapper< VertexMesh< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<2, 3> * > faces, ::std::vector< VertexElement<3, 3> * > vertexElements )
+    : VertexMesh<3, 3>( nodes, faces, vertexElements )
+      , bp::wrapper< VertexMesh< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__3_comma__3__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
+    : VertexMesh<3, 3>( boost::ref(rMesh), isPeriodic )
       , bp::wrapper< VertexMesh< 3, 3 > >(){
         // constructor
     
@@ -6333,43 +6776,6 @@ struct PottsMesh_less__3__greater__wrapper : PottsMesh< 3 >, bp::wrapper< PottsM
 
 };
 
-struct SharedHoneycombMeshGenerator_wrapper : SharedHoneycombMeshGenerator, bp::wrapper< SharedHoneycombMeshGenerator > {
-
-    SharedHoneycombMeshGenerator_wrapper(SharedHoneycombMeshGenerator const & arg )
-    : SharedHoneycombMeshGenerator( arg )
-      , bp::wrapper< SharedHoneycombMeshGenerator >(){
-        // copy constructor
-        
-    }
-
-    SharedHoneycombMeshGenerator_wrapper(unsigned int numNodesAlongWidth, unsigned int numNodesAlongLength, unsigned int ghosts=0, double scaleFactor=1. )
-    : SharedHoneycombMeshGenerator( numNodesAlongWidth, numNodesAlongLength, ghosts, scaleFactor )
-      , bp::wrapper< SharedHoneycombMeshGenerator >(){
-        // constructor
-    
-    }
-
-    SharedHoneycombMeshGenerator_wrapper( )
-    : SharedHoneycombMeshGenerator( )
-      , bp::wrapper< SharedHoneycombMeshGenerator >(){
-        // null constructor
-    
-    }
-
-    virtual ::boost::shared_ptr< MutableMesh< 2, 2 > > GetMesh(  ) {
-        if( bp::override func_GetMesh = this->get_override( "GetMesh" ) )
-            return func_GetMesh(  );
-        else{
-            return this->SharedHoneycombMeshGenerator::GetMesh(  );
-        }
-    }
-    
-    ::boost::shared_ptr< MutableMesh< 2, 2 > > default_GetMesh(  ) {
-        return SharedHoneycombMeshGenerator::GetMesh( );
-    }
-
-};
-
 struct SharedHoneycombVertexMeshGenerator_wrapper : SharedHoneycombVertexMeshGenerator, bp::wrapper< SharedHoneycombVertexMeshGenerator > {
 
     SharedHoneycombVertexMeshGenerator_wrapper(SharedHoneycombVertexMeshGenerator const & arg )
@@ -6403,6 +6809,73 @@ struct SharedHoneycombVertexMeshGenerator_wrapper : SharedHoneycombVertexMeshGen
     
     ::boost::shared_ptr< MutableVertexMesh< 2, 2 > > default_GetMesh(  ) {
         return SharedHoneycombVertexMeshGenerator::GetMesh( );
+    }
+
+};
+
+struct SharedCylindricalHoneycombVertexMeshGenerator_wrapper : SharedCylindricalHoneycombVertexMeshGenerator, bp::wrapper< SharedCylindricalHoneycombVertexMeshGenerator > {
+
+    SharedCylindricalHoneycombVertexMeshGenerator_wrapper(SharedCylindricalHoneycombVertexMeshGenerator const & arg )
+    : SharedCylindricalHoneycombVertexMeshGenerator( arg )
+      , bp::wrapper< SharedCylindricalHoneycombVertexMeshGenerator >(){
+        // copy constructor
+        
+    }
+
+    SharedCylindricalHoneycombVertexMeshGenerator_wrapper(unsigned int numElementsAcross, unsigned int numElementsUp, bool isFlatBottom=false, double cellRearrangementThreshold=0.01, double t2Threshold=0.001 )
+    : SharedCylindricalHoneycombVertexMeshGenerator( numElementsAcross, numElementsUp, isFlatBottom, cellRearrangementThreshold, t2Threshold )
+      , bp::wrapper< SharedCylindricalHoneycombVertexMeshGenerator >(){
+        // constructor
+    
+    }
+
+    virtual ::boost::shared_ptr< MutableVertexMesh< 2, 2 > > GetMesh(  ) {
+        if( bp::override func_GetMesh = this->get_override( "GetMesh" ) )
+            return func_GetMesh(  );
+        else{
+            return this->SharedCylindricalHoneycombVertexMeshGenerator::GetMesh(  );
+        }
+    }
+    
+    ::boost::shared_ptr< MutableVertexMesh< 2, 2 > > default_GetMesh(  ) {
+        return SharedCylindricalHoneycombVertexMeshGenerator::GetMesh( );
+    }
+
+};
+
+struct SharedHoneycombMeshGenerator_wrapper : SharedHoneycombMeshGenerator, bp::wrapper< SharedHoneycombMeshGenerator > {
+
+    SharedHoneycombMeshGenerator_wrapper(SharedHoneycombMeshGenerator const & arg )
+    : SharedHoneycombMeshGenerator( arg )
+      , bp::wrapper< SharedHoneycombMeshGenerator >(){
+        // copy constructor
+        
+    }
+
+    SharedHoneycombMeshGenerator_wrapper(unsigned int numNodesAlongWidth, unsigned int numNodesAlongLength, unsigned int ghosts=0, double scaleFactor=1. )
+    : SharedHoneycombMeshGenerator( numNodesAlongWidth, numNodesAlongLength, ghosts, scaleFactor )
+      , bp::wrapper< SharedHoneycombMeshGenerator >(){
+        // constructor
+    
+    }
+
+    SharedHoneycombMeshGenerator_wrapper( )
+    : SharedHoneycombMeshGenerator( )
+      , bp::wrapper< SharedHoneycombMeshGenerator >(){
+        // null constructor
+    
+    }
+
+    virtual ::boost::shared_ptr< MutableMesh< 2, 2 > > GetMesh(  ) {
+        if( bp::override func_GetMesh = this->get_override( "GetMesh" ) )
+            return func_GetMesh(  );
+        else{
+            return this->SharedHoneycombMeshGenerator::GetMesh(  );
+        }
+    }
+    
+    ::boost::shared_ptr< MutableMesh< 2, 2 > > default_GetMesh(  ) {
+        return SharedHoneycombMeshGenerator::GetMesh( );
     }
 
 };
@@ -7529,1871 +8002,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
                 "rGetLocation"
                 , rGetLocation_function_type( &::ChastePoint< 3 >::rGetLocation )
                 , bp::return_value_policy< bp::copy_const_reference >() );
-        
-        }
-    }
-
-    bp::class_< TetrahedralMesh_less__2_comma__2__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 2, 2 > >, boost::noncopyable >( "TetrahedralMesh2_2", bp::init< >() )    
-        .def( 
-            "CheckIsConforming"
-            , (bool ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::CheckIsConforming ) )    
-        .def( 
-            "Clear"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::Clear)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Clear) )    
-        .def( 
-            "ConstructFromMeshReader"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::AbstractMeshReader< 2, 2 > & ))(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::AbstractMeshReader< 2, 2 > & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
-            , ( bp::arg("rMeshReader") ) )    
-        .def( 
-            "EdgesBegin"
-            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesBegin ) )    
-        .def( 
-            "EdgesEnd"
-            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesEnd ) )    
-        .def( 
-            "GetAngleBetweenNodes"
-            , (double ( ::TetrahedralMesh<2, 2>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes )
-            , ( bp::arg("indexA"), bp::arg("indexB") ) )    
-        .def( 
-            "GetContainingElementIndexWithInitialGuess"
-            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const &,unsigned int,bool ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndexWithInitialGuess )
-            , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) )    
-        .def( 
-            "GetContainingElementIndices"
-            , (::std::vector< unsigned int > ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndices )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetInverseJacobianForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) )    
-        .def( 
-            "GetJacobianForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetNearestElementIndex"
-            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetNearestElementIndex )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetSurfaceArea"
-            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetSurfaceArea ) )    
-        .def( 
-            "GetVolume"
-            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetVolume ) )    
-        .def( 
-            "GetWeightedDirectionForBoundaryElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetWeightedDirectionForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > const & ))( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
-            , ( bp::arg("perm") ) )    
-        .def( 
-            "ReadNodesPerProcessorFile"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::string const & ))(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
-            , ( bp::arg("rNodesPerProcessorFile") ) )    
-        .def( 
-            "RefreshJacobianCachedData"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) )    
-        .def( 
-            "RefreshMesh"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) )    
-        .def( 
-            "SolveBoundaryElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveNodeMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid<2> ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox)
-            , ( bp::arg("rNodes") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid< 2 > ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
-            , (::ChasteCuboid< 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfBoundaryElement"
-            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
-            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
-            , ( bp::arg("faceIndex") ) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfElement"
-            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
-            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
-            , ( bp::arg("elementIndex") ) )    
-        .def( 
-            "CalculateMinMaxEdgeLengths"
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) )    
-        .def( 
-            "ConstructCuboid"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) )    
-        .def( 
-            "ConstructLinearMesh"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
-            , ( bp::arg("width") ) )    
-        .def( 
-            "ConstructRectangularMesh"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,bool ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,bool ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) )    
-        .def( 
-            "GetHaloNodeIndices"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
-            , ( bp::arg("rHaloIndices") ) )    
-        .def( 
-            "GetMaximumNodeIndex"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) )    
-        .def( 
-            "GetNearestNodeIndex"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::ChastePoint< 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetNumAllNodes"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) )    
-        .def( 
-            "GetNumBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) )    
-        .def( 
-            "GetNumCableElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) )    
-        .def( 
-            "GetNumElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) )    
-        .def( 
-            "GetNumLocalBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) )    
-        .def( 
-            "GetNumLocalElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) )    
-        .def( 
-            "GetNumNodes"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumNodes)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) )    
-        .def( 
-            "GetNumVertices"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) )    
-        .def( 
-            "GetVectorFromAtoB"
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
-            , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) )    
-        .def( 
-            "GetWidth"
-            , (double ( ::AbstractMesh<2, 2>::* )( unsigned int const & )const)(&::AbstractMesh< 2, 2 >::GetWidth)
-            , (double ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
-            , ( bp::arg("rDimension") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&::AbstractMesh< 2, 2 >::Rotate)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Rotate)
-            , ( bp::arg("rotationMatrix") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 3 >,double ))( &::AbstractMesh< 2, 2 >::Rotate )
-            , ( bp::arg("axis"), bp::arg("angle") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( double ))( &::AbstractMesh< 2, 2 >::Rotate )
-            , ( bp::arg("theta") ) )    
-        .def( 
-            "Scale"
-            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))(&::AbstractMesh< 2, 2 >::Scale)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( double const,double const,double const ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Scale)
-            , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) )    
-        .def( 
-            "SetDistributedVectorFactory"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::DistributedVectorFactory * ))(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::DistributedVectorFactory * ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
-            , ( bp::arg("pFactory") ) )    
-        .def( 
-            "SetElementOwnerships"
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::Translate)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Translate)
-            , ( bp::arg("rDisplacement") ) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))( &::AbstractMesh< 2, 2 >::Translate )
-            , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
-
-    { //::MutableMesh< 2, 2 >
-        typedef bp::class_< MutableMesh_less__2_comma__2__greater__wrapper, bp::bases< TetrahedralMesh< 2, 2 > >, boost::noncopyable > MutableMesh2_2_exposer_t;
-        MutableMesh2_2_exposer_t MutableMesh2_2_exposer = MutableMesh2_2_exposer_t( "MutableMesh2_2", bp::init< >() );
-        bp::scope MutableMesh2_2_scope( MutableMesh2_2_exposer );
-        MutableMesh2_2_exposer.def( bp::init< std::vector< Node<2> * > >(( bp::arg("nodes") )) );
-        bp::implicitly_convertible< std::vector< Node<2> * >, MutableMesh< 2, 2 > >();
-        { //::MutableMesh< 2, 2 >::AddElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*AddElement_function_type)( ::Element< 2, 2 > * ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "AddElement"
-                , AddElement_function_type( &::MutableMesh< 2, 2 >::AddElement )
-                , ( bp::arg("pNewElement") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::AddNode
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 2 > * ) ;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_AddNode_function_type)( ::Node< 2 > * ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "AddNode"
-                , AddNode_function_type(&::MutableMesh< 2, 2 >::AddNode)
-                , default_AddNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_AddNode)
-                , ( bp::arg("pNewNode") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::CheckIsVoronoi
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef bool ( exported_class_t::*CheckIsVoronoi_function_type)( double ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "CheckIsVoronoi"
-                , CheckIsVoronoi_function_type( &::MutableMesh< 2, 2 >::CheckIsVoronoi )
-                , ( bp::arg("maxPenetration")=0. ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::Clear
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Clear_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Clear"
-                , Clear_function_type(&::MutableMesh< 2, 2 >::Clear)
-                , default_Clear_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Clear) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::DeleteBoundaryNodeAt
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteBoundaryNodeAt_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "DeleteBoundaryNodeAt"
-                , DeleteBoundaryNodeAt_function_type( &::MutableMesh< 2, 2 >::DeleteBoundaryNodeAt )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::DeleteElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteElement_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_DeleteElement_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "DeleteElement"
-                , DeleteElement_function_type(&::MutableMesh< 2, 2 >::DeleteElement)
-                , default_DeleteElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_DeleteElement)
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::DeleteNode
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteNode_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_DeleteNode_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "DeleteNode"
-                , DeleteNode_function_type(&::MutableMesh< 2, 2 >::DeleteNode)
-                , default_DeleteNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_DeleteNode)
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::DeleteNodePriorToReMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteNodePriorToReMesh_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "DeleteNodePriorToReMesh"
-                , DeleteNodePriorToReMesh_function_type( &::MutableMesh< 2, 2 >::DeleteNodePriorToReMesh )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::GetNumBoundaryElements
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumBoundaryElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumBoundaryElements_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumBoundaryElements"
-                , GetNumBoundaryElements_function_type(&::MutableMesh< 2, 2 >::GetNumBoundaryElements)
-                , default_GetNumBoundaryElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::GetNumElements
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumElements"
-                , GetNumElements_function_type(&::MutableMesh< 2, 2 >::GetNumElements)
-                , default_GetNumElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::GetNumNodes
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumNodes"
-                , GetNumNodes_function_type(&::MutableMesh< 2, 2 >::GetNumNodes)
-                , default_GetNumNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::MoveMergeNode
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*MoveMergeNode_function_type)( unsigned int,unsigned int,bool ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "MoveMergeNode"
-                , MoveMergeNode_function_type( &::MutableMesh< 2, 2 >::MoveMergeNode )
-                , ( bp::arg("index"), bp::arg("targetIndex"), bp::arg("concreteMove")=(bool)(true) ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::ReIndex
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ReIndex_function_type)( ::NodeMap & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ReIndex"
-                , ReIndex_function_type( &::MutableMesh< 2, 2 >::ReIndex )
-                , ( bp::arg("map") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::ReMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ReMesh_function_type)( ::NodeMap & ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ReMesh_function_type)( ::NodeMap & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ReMesh"
-                , ReMesh_function_type(&::MutableMesh< 2, 2 >::ReMesh)
-                , default_ReMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ReMesh)
-                , ( bp::arg("map") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::ReMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ReMesh_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ReMesh"
-                , ReMesh_function_type( &::MutableMesh< 2, 2 >::ReMesh ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::RefineElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*RefineElement_function_type)( ::Element< 2, 2 > *,::ChastePoint< 2 > ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "RefineElement"
-                , RefineElement_function_type( &::MutableMesh< 2, 2 >::RefineElement )
-                , ( bp::arg("pElement"), bp::arg("point") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::SetNode
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 2 >,bool ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 >,bool ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "SetNode"
-                , SetNode_function_type(&::MutableMesh< 2, 2 >::SetNode)
-                , default_SetNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_SetNode)
-                , ( bp::arg("index"), bp::arg("point"), bp::arg("concreteMove")=(bool)(true) ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::SplitEdge
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< unsigned int, 3 > ( exported_class_t::*SplitEdge_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "SplitEdge"
-                , SplitEdge_function_type( &::MutableMesh< 2, 2 >::SplitEdge )
-                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
-        
-        }
-        { //::MutableMesh< 2, 2 >::SplitLongEdges
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > ( exported_class_t::*SplitLongEdges_function_type)( double ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "SplitLongEdges"
-                , SplitLongEdges_function_type( &::MutableMesh< 2, 2 >::SplitLongEdges )
-                , ( bp::arg("cutoffLength") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::ChasteCuboid< 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<2> * > const & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "CalculateBoundingBox"
-                , CalculateBoundingBox_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox )
-                , ( bp::arg("rNodes") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::ChasteCuboid< 2 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
-            typedef ::ChasteCuboid< 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "CalculateBoundingBox"
-                , CalculateBoundingBox_function_type(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
-                , default_CalculateBoundingBox_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
-            typedef bool ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "CalculateDesignatedOwnershipOfBoundaryElement"
-                , CalculateDesignatedOwnershipOfBoundaryElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
-                , default_CalculateDesignatedOwnershipOfBoundaryElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
-                , ( bp::arg("faceIndex") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
-            typedef bool ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "CalculateDesignatedOwnershipOfElement"
-                , CalculateDesignatedOwnershipOfElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
-                , default_CalculateDesignatedOwnershipOfElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
-                , ( bp::arg("elementIndex") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*CalculateMinMaxEdgeLengths_function_type)(  ) ;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateMinMaxEdgeLengths_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "CalculateMinMaxEdgeLengths"
-                , CalculateMinMaxEdgeLengths_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
-                , default_CalculateMinMaxEdgeLengths_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ConstructCuboid"
-                , ConstructCuboid_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
-                , default_ConstructCuboid_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
-                , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ConstructFromMeshReader"
-                , ConstructFromMeshReader_function_type(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
-                , default_ConstructFromMeshReader_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
-                , ( bp::arg("rMeshReader") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructLinearMesh_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructLinearMesh_function_type)( unsigned int ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ConstructLinearMesh"
-                , ConstructLinearMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
-                , default_ConstructLinearMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
-                , ( bp::arg("width") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ConstructRectangularMesh"
-                , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
-                , default_ConstructRectangularMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
-                , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetHaloNodeIndices"
-                , GetHaloNodeIndices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
-                , default_GetHaloNodeIndices_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
-                , ( bp::arg("rHaloIndices") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetInverseJacobianForElement"
-                , GetInverseJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
-                , default_GetInverseJacobianForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::GetJacobianForElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetJacobianForElement"
-                , GetJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
-                , default_GetJacobianForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetMaximumNodeIndex_function_type)(  ) ;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetMaximumNodeIndex_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetMaximumNodeIndex"
-                , GetMaximumNodeIndex_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
-                , default_GetMaximumNodeIndex_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNearestNodeIndex"
-                , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
-                , default_GetNearestNodeIndex_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
-                , ( bp::arg("rTestPoint") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::GetNumAllNodes
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumAllNodes_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumAllNodes"
-                , GetNumAllNodes_function_type(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
-                , default_GetNumAllNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumCableElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumCableElements_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumCableElements"
-                , GetNumCableElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
-                , default_GetNumCableElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumLocalBoundaryElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalBoundaryElements_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumLocalBoundaryElements"
-                , GetNumLocalBoundaryElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
-                , default_GetNumLocalBoundaryElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumLocalElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalElements_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumLocalElements"
-                , GetNumLocalElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
-                , default_GetNumLocalElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumVertices_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumVertices_function_type)(  ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetNumVertices"
-                , GetNumVertices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
-                , default_GetNumVertices_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::GetVectorFromAtoB
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetVectorFromAtoB"
-                , GetVectorFromAtoB_function_type(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
-                , default_GetVectorFromAtoB_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
-                , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetWeightedDirectionForBoundaryElement"
-                , GetWeightedDirectionForBoundaryElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
-                , default_GetWeightedDirectionForBoundaryElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
-                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetWeightedDirectionForElement"
-                , GetWeightedDirectionForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
-                , default_GetWeightedDirectionForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::GetWidth
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) const;
-            typedef double ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "GetWidth"
-                , GetWidth_function_type(&::AbstractMesh< 2, 2 >::GetWidth)
-                , default_GetWidth_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
-                , ( bp::arg("rDimension") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_PermuteNodes_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "PermuteNodes"
-                , PermuteNodes_function_type(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
-                , default_PermuteNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*PermuteNodes_function_type)( ::std::vector< unsigned int > const & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "PermuteNodes"
-                , PermuteNodes_function_type( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
-                , ( bp::arg("perm") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "ReadNodesPerProcessorFile"
-                , ReadNodesPerProcessorFile_function_type(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
-                , default_ReadNodesPerProcessorFile_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
-                , ( bp::arg("rNodesPerProcessorFile") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*RefreshJacobianCachedData_function_type)(  ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_RefreshJacobianCachedData_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "RefreshJacobianCachedData"
-                , RefreshJacobianCachedData_function_type(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
-                , default_RefreshJacobianCachedData_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::RefreshMesh
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_RefreshMesh_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "RefreshMesh"
-                , RefreshMesh_function_type(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
-                , default_RefreshMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Rotate
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Rotate"
-                , Rotate_function_type(&::AbstractMesh< 2, 2 >::Rotate)
-                , default_Rotate_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Rotate)
-                , ( bp::arg("rotationMatrix") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Rotate
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Rotate"
-                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
-                , ( bp::arg("axis"), bp::arg("angle") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Rotate
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Rotate"
-                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
-                , ( bp::arg("theta") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Scale
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Scale_function_type)( double const,double const,double const ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Scale"
-                , Scale_function_type(&::AbstractMesh< 2, 2 >::Scale)
-                , default_Scale_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Scale)
-                , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::SetDistributedVectorFactory
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "SetDistributedVectorFactory"
-                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
-                , default_SetDistributedVectorFactory_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
-                , ( bp::arg("pFactory") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 2, 2 >::SetElementOwnerships
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*SetElementOwnerships_function_type)(  ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "SetElementOwnerships"
-                , SetElementOwnerships_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::SolveBoundaryElementMapping
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "SolveBoundaryElementMapping"
-                , SolveBoundaryElementMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::SolveElementMapping
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "SolveElementMapping"
-                , SolveElementMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::TetrahedralMesh< 2, 2 >::SolveNodeMapping
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh2_2_exposer.def( 
-                "SolveNodeMapping"
-                , SolveNodeMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Translate
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
-            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Translate"
-                , Translate_function_type(&::AbstractMesh< 2, 2 >::Translate)
-                , default_Translate_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Translate)
-                , ( bp::arg("rDisplacement") ) );
-        
-        }
-        { //::AbstractMesh< 2, 2 >::Translate
-        
-            typedef MutableMesh< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
-            
-            MutableMesh2_2_exposer.def( 
-                "Translate"
-                , Translate_function_type( &::AbstractMesh< 2, 2 >::Translate )
-                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
-        
-        }
-        bp::register_ptr_to_python< boost::shared_ptr< MutableMesh<2, 2> > >();
-        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< TetrahedralMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractTetrahedralMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
-    }
-
-    bp::class_< TetrahedralMesh_less__3_comma__3__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 3, 3 > >, boost::noncopyable >( "TetrahedralMesh3_3", bp::init< >() )    
-        .def( 
-            "CheckIsConforming"
-            , (bool ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::CheckIsConforming ) )    
-        .def( 
-            "Clear"
-            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::Clear)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Clear) )    
-        .def( 
-            "ConstructFromMeshReader"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( ::AbstractMeshReader< 3, 3 > & ))(&::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::AbstractMeshReader< 3, 3 > & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructFromMeshReader)
-            , ( bp::arg("rMeshReader") ) )    
-        .def( 
-            "EdgesBegin"
-            , (::TetrahedralMesh< 3, 3 >::EdgeIterator ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::EdgesBegin ) )    
-        .def( 
-            "EdgesEnd"
-            , (::TetrahedralMesh< 3, 3 >::EdgeIterator ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::EdgesEnd ) )    
-        .def( 
-            "GetAngleBetweenNodes"
-            , (double ( ::TetrahedralMesh<3, 3>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 3, 3 >::GetAngleBetweenNodes )
-            , ( bp::arg("indexA"), bp::arg("indexB") ) )    
-        .def( 
-            "GetContainingElementIndexWithInitialGuess"
-            , (unsigned int ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const &,unsigned int,bool ))( &::TetrahedralMesh< 3, 3 >::GetContainingElementIndexWithInitialGuess )
-            , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) )    
-        .def( 
-            "GetContainingElementIndices"
-            , (::std::vector< unsigned int > ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))( &::TetrahedralMesh< 3, 3 >::GetContainingElementIndices )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetInverseJacobianForElement"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & )const)(&::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetInverseJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) )    
-        .def( 
-            "GetJacobianForElement"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetJacobianForElement)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetNearestElementIndex"
-            , (unsigned int ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))( &::TetrahedralMesh< 3, 3 >::GetNearestElementIndex )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetSurfaceArea"
-            , (double ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::GetSurfaceArea ) )    
-        .def( 
-            "GetVolume"
-            , (double ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::GetVolume ) )    
-        .def( 
-            "GetWeightedDirectionForBoundaryElement"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetWeightedDirectionForElement"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::PermuteNodes)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_PermuteNodes) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( ::std::vector< unsigned int > const & ))( &::TetrahedralMesh< 3, 3 >::PermuteNodes )
-            , ( bp::arg("perm") ) )    
-        .def( 
-            "ReadNodesPerProcessorFile"
-            , (void ( ::TetrahedralMesh<3, 3>::* )( ::std::string const & ))(&::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ReadNodesPerProcessorFile)
-            , ( bp::arg("rNodesPerProcessorFile") ) )    
-        .def( 
-            "RefreshJacobianCachedData"
-            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_RefreshJacobianCachedData) )    
-        .def( 
-            "RefreshMesh"
-            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::RefreshMesh)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_RefreshMesh) )    
-        .def( 
-            "SolveBoundaryElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveBoundaryElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveNodeMapping"
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveNodeMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid<3> ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::vector<Node<3> *, std::allocator<Node<3> *> > const & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::CalculateBoundingBox)
-            , ( bp::arg("rNodes") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid< 3 > ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::CalculateBoundingBox)
-            , (::ChasteCuboid< 3 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateBoundingBox) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfBoundaryElement"
-            , (bool ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement)
-            , (bool ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
-            , ( bp::arg("faceIndex") ) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfElement"
-            , (bool ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement)
-            , (bool ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
-            , ( bp::arg("elementIndex") ) )    
-        .def( 
-            "CalculateMinMaxEdgeLengths"
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTetrahedralMesh<3, 3>::* )(  ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths)
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateMinMaxEdgeLengths) )    
-        .def( 
-            "ConstructCuboid"
-            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int,unsigned int,unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructCuboid)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) )    
-        .def( 
-            "ConstructLinearMesh"
-            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructLinearMesh)
-            , ( bp::arg("width") ) )    
-        .def( 
-            "ConstructRectangularMesh"
-            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int,unsigned int,bool ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,bool ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructRectangularMesh)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) )    
-        .def( 
-            "GetHaloNodeIndices"
-            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetHaloNodeIndices)
-            , ( bp::arg("rHaloIndices") ) )    
-        .def( 
-            "GetMaximumNodeIndex"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  ))(&::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetMaximumNodeIndex) )    
-        .def( 
-            "GetNearestNodeIndex"
-            , (unsigned int ( ::AbstractMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::ChastePoint< 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetNumAllNodes"
-            , (unsigned int ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::GetNumAllNodes)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumAllNodes) )    
-        .def( 
-            "GetNumBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumBoundaryElements) )    
-        .def( 
-            "GetNumCableElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumCableElements) )    
-        .def( 
-            "GetNumElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumElements)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumElements) )    
-        .def( 
-            "GetNumLocalBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalBoundaryElements) )    
-        .def( 
-            "GetNumLocalElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalElements) )    
-        .def( 
-            "GetNumNodes"
-            , (unsigned int ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::GetNumNodes)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumNodes) )    
-        .def( 
-            "GetNumVertices"
-            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices)
-            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumVertices) )    
-        .def( 
-            "GetVectorFromAtoB"
-            , (::boost::numeric::ublas::c_vector< double, 3 > ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ))(&::AbstractMesh< 3, 3 >::GetVectorFromAtoB)
-            , (::boost::numeric::ublas::c_vector< double, 3 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetVectorFromAtoB)
-            , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) )    
-        .def( 
-            "GetWidth"
-            , (double ( ::AbstractMesh<3, 3>::* )( unsigned int const & )const)(&::AbstractMesh< 3, 3 >::GetWidth)
-            , (double ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int const & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWidth)
-            , ( bp::arg("rDimension") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ))(&::AbstractMesh< 3, 3 >::Rotate)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Rotate)
-            , ( bp::arg("rotationMatrix") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 >,double ))( &::AbstractMesh< 3, 3 >::Rotate )
-            , ( bp::arg("axis"), bp::arg("angle") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<3, 3>::* )( double ))( &::AbstractMesh< 3, 3 >::Rotate )
-            , ( bp::arg("theta") ) )    
-        .def( 
-            "Scale"
-            , (void ( ::AbstractMesh<3, 3>::* )( double const,double const,double const ))(&::AbstractMesh< 3, 3 >::Scale)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( double const,double const,double const ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Scale)
-            , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) )    
-        .def( 
-            "SetDistributedVectorFactory"
-            , (void ( ::AbstractMesh<3, 3>::* )( ::DistributedVectorFactory * ))(&::AbstractMesh< 3, 3 >::SetDistributedVectorFactory)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::DistributedVectorFactory * ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SetDistributedVectorFactory)
-            , ( bp::arg("pFactory") ) )    
-        .def( 
-            "SetElementOwnerships"
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SetElementOwnerships) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 > const & ))(&::AbstractMesh< 3, 3 >::Translate)
-            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Translate)
-            , ( bp::arg("rDisplacement") ) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<3, 3>::* )( double const,double const,double const ))( &::AbstractMesh< 3, 3 >::Translate )
-            , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
-
-    { //::MutableMesh< 3, 3 >
-        typedef bp::class_< MutableMesh_less__3_comma__3__greater__wrapper, bp::bases< TetrahedralMesh< 3, 3 > >, boost::noncopyable > MutableMesh3_3_exposer_t;
-        MutableMesh3_3_exposer_t MutableMesh3_3_exposer = MutableMesh3_3_exposer_t( "MutableMesh3_3", bp::init< >() );
-        bp::scope MutableMesh3_3_scope( MutableMesh3_3_exposer );
-        MutableMesh3_3_exposer.def( bp::init< std::vector< Node<3> * > >(( bp::arg("nodes") )) );
-        bp::implicitly_convertible< std::vector< Node<3> * >, MutableMesh< 3, 3 > >();
-        { //::MutableMesh< 3, 3 >::AddElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*AddElement_function_type)( ::Element< 3, 3 > * ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "AddElement"
-                , AddElement_function_type( &::MutableMesh< 3, 3 >::AddElement )
-                , ( bp::arg("pNewElement") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::AddNode
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 3 > * ) ;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_AddNode_function_type)( ::Node< 3 > * ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "AddNode"
-                , AddNode_function_type(&::MutableMesh< 3, 3 >::AddNode)
-                , default_AddNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_AddNode)
-                , ( bp::arg("pNewNode") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::CheckIsVoronoi
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef bool ( exported_class_t::*CheckIsVoronoi_function_type)( double ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "CheckIsVoronoi"
-                , CheckIsVoronoi_function_type( &::MutableMesh< 3, 3 >::CheckIsVoronoi )
-                , ( bp::arg("maxPenetration")=0. ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::Clear
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Clear_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Clear"
-                , Clear_function_type(&::MutableMesh< 3, 3 >::Clear)
-                , default_Clear_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Clear) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::DeleteBoundaryNodeAt
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteBoundaryNodeAt_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "DeleteBoundaryNodeAt"
-                , DeleteBoundaryNodeAt_function_type( &::MutableMesh< 3, 3 >::DeleteBoundaryNodeAt )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::DeleteElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteElement_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_DeleteElement_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "DeleteElement"
-                , DeleteElement_function_type(&::MutableMesh< 3, 3 >::DeleteElement)
-                , default_DeleteElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_DeleteElement)
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::DeleteNode
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteNode_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_DeleteNode_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "DeleteNode"
-                , DeleteNode_function_type(&::MutableMesh< 3, 3 >::DeleteNode)
-                , default_DeleteNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_DeleteNode)
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::DeleteNodePriorToReMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*DeleteNodePriorToReMesh_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "DeleteNodePriorToReMesh"
-                , DeleteNodePriorToReMesh_function_type( &::MutableMesh< 3, 3 >::DeleteNodePriorToReMesh )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::GetNumBoundaryElements
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumBoundaryElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumBoundaryElements_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumBoundaryElements"
-                , GetNumBoundaryElements_function_type(&::MutableMesh< 3, 3 >::GetNumBoundaryElements)
-                , default_GetNumBoundaryElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumBoundaryElements) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::GetNumElements
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumElements"
-                , GetNumElements_function_type(&::MutableMesh< 3, 3 >::GetNumElements)
-                , default_GetNumElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumElements) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::GetNumNodes
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumNodes"
-                , GetNumNodes_function_type(&::MutableMesh< 3, 3 >::GetNumNodes)
-                , default_GetNumNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumNodes) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::MoveMergeNode
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*MoveMergeNode_function_type)( unsigned int,unsigned int,bool ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "MoveMergeNode"
-                , MoveMergeNode_function_type( &::MutableMesh< 3, 3 >::MoveMergeNode )
-                , ( bp::arg("index"), bp::arg("targetIndex"), bp::arg("concreteMove")=(bool)(true) ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::ReIndex
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ReIndex_function_type)( ::NodeMap & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ReIndex"
-                , ReIndex_function_type( &::MutableMesh< 3, 3 >::ReIndex )
-                , ( bp::arg("map") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::ReMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ReMesh_function_type)( ::NodeMap & ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ReMesh_function_type)( ::NodeMap & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ReMesh"
-                , ReMesh_function_type(&::MutableMesh< 3, 3 >::ReMesh)
-                , default_ReMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ReMesh)
-                , ( bp::arg("map") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::ReMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ReMesh_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ReMesh"
-                , ReMesh_function_type( &::MutableMesh< 3, 3 >::ReMesh ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::RefineElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*RefineElement_function_type)( ::Element< 3, 3 > *,::ChastePoint< 3 > ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "RefineElement"
-                , RefineElement_function_type( &::MutableMesh< 3, 3 >::RefineElement )
-                , ( bp::arg("pElement"), bp::arg("point") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::SetNode
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 >,bool ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 >,bool ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "SetNode"
-                , SetNode_function_type(&::MutableMesh< 3, 3 >::SetNode)
-                , default_SetNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_SetNode)
-                , ( bp::arg("index"), bp::arg("point"), bp::arg("concreteMove")=(bool)(true) ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::SplitEdge
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< unsigned int, 3 > ( exported_class_t::*SplitEdge_function_type)( ::Node< 3 > *,::Node< 3 > * ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "SplitEdge"
-                , SplitEdge_function_type( &::MutableMesh< 3, 3 >::SplitEdge )
-                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
-        
-        }
-        { //::MutableMesh< 3, 3 >::SplitLongEdges
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > ( exported_class_t::*SplitLongEdges_function_type)( double ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "SplitLongEdges"
-                , SplitLongEdges_function_type( &::MutableMesh< 3, 3 >::SplitLongEdges )
-                , ( bp::arg("cutoffLength") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::CalculateBoundingBox
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::ChasteCuboid< 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<3> * > const & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "CalculateBoundingBox"
-                , CalculateBoundingBox_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::CalculateBoundingBox )
-                , ( bp::arg("rNodes") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::CalculateBoundingBox
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::ChasteCuboid< 3 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
-            typedef ::ChasteCuboid< 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "CalculateBoundingBox"
-                , CalculateBoundingBox_function_type(&::AbstractMesh< 3, 3 >::CalculateBoundingBox)
-                , default_CalculateBoundingBox_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateBoundingBox) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
-            typedef bool ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "CalculateDesignatedOwnershipOfBoundaryElement"
-                , CalculateDesignatedOwnershipOfBoundaryElement_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement)
-                , default_CalculateDesignatedOwnershipOfBoundaryElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
-                , ( bp::arg("faceIndex") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
-            typedef bool ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "CalculateDesignatedOwnershipOfElement"
-                , CalculateDesignatedOwnershipOfElement_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement)
-                , default_CalculateDesignatedOwnershipOfElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
-                , ( bp::arg("elementIndex") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*CalculateMinMaxEdgeLengths_function_type)(  ) ;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateMinMaxEdgeLengths_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "CalculateMinMaxEdgeLengths"
-                , CalculateMinMaxEdgeLengths_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths)
-                , default_CalculateMinMaxEdgeLengths_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateMinMaxEdgeLengths) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ConstructCuboid"
-                , ConstructCuboid_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid)
-                , default_ConstructCuboid_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructCuboid)
-                , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 3, 3 > & ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 3, 3 > & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ConstructFromMeshReader"
-                , ConstructFromMeshReader_function_type(&::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader)
-                , default_ConstructFromMeshReader_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructFromMeshReader)
-                , ( bp::arg("rMeshReader") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructLinearMesh_function_type)( unsigned int ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructLinearMesh_function_type)( unsigned int ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ConstructLinearMesh"
-                , ConstructLinearMesh_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh)
-                , default_ConstructLinearMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructLinearMesh)
-                , ( bp::arg("width") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ConstructRectangularMesh"
-                , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh)
-                , default_ConstructRectangularMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructRectangularMesh)
-                , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetHaloNodeIndices"
-                , GetHaloNodeIndices_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices)
-                , default_GetHaloNodeIndices_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetHaloNodeIndices)
-                , ( bp::arg("rHaloIndices") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & ) const;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetInverseJacobianForElement"
-                , GetInverseJacobianForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement)
-                , default_GetInverseJacobianForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetInverseJacobianForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::GetJacobianForElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & ) const;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetJacobianForElement"
-                , GetJacobianForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetJacobianForElement)
-                , default_GetJacobianForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetJacobianForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetMaximumNodeIndex_function_type)(  ) ;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetMaximumNodeIndex_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetMaximumNodeIndex"
-                , GetMaximumNodeIndex_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex)
-                , default_GetMaximumNodeIndex_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetMaximumNodeIndex) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::GetNearestNodeIndex
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 3 > const & ) ;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 3 > const & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNearestNodeIndex"
-                , GetNearestNodeIndex_function_type(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
-                , default_GetNearestNodeIndex_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
-                , ( bp::arg("rTestPoint") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::GetNumAllNodes
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumAllNodes_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumAllNodes"
-                , GetNumAllNodes_function_type(&::AbstractMesh< 3, 3 >::GetNumAllNodes)
-                , default_GetNumAllNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumAllNodes) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumCableElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumCableElements_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumCableElements"
-                , GetNumCableElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements)
-                , default_GetNumCableElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumCableElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumLocalBoundaryElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumLocalBoundaryElements_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumLocalBoundaryElements"
-                , GetNumLocalBoundaryElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements)
-                , default_GetNumLocalBoundaryElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalBoundaryElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumLocalElements_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumLocalElements_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumLocalElements"
-                , GetNumLocalElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements)
-                , default_GetNumLocalElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalElements) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*GetNumVertices_function_type)(  ) const;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumVertices_function_type)(  ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetNumVertices"
-                , GetNumVertices_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices)
-                , default_GetNumVertices_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumVertices) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::GetVectorFromAtoB
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
-            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetVectorFromAtoB"
-                , GetVectorFromAtoB_function_type(&::AbstractMesh< 3, 3 >::GetVectorFromAtoB)
-                , default_GetVectorFromAtoB_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetVectorFromAtoB)
-                , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetWeightedDirectionForBoundaryElement"
-                , GetWeightedDirectionForBoundaryElement_function_type(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement)
-                , default_GetWeightedDirectionForBoundaryElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
-                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetWeightedDirectionForElement"
-                , GetWeightedDirectionForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
-                , default_GetWeightedDirectionForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForElement)
-                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::GetWidth
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) const;
-            typedef double ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "GetWidth"
-                , GetWidth_function_type(&::AbstractMesh< 3, 3 >::GetWidth)
-                , default_GetWidth_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWidth)
-                , ( bp::arg("rDimension") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::PermuteNodes
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_PermuteNodes_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "PermuteNodes"
-                , PermuteNodes_function_type(&::TetrahedralMesh< 3, 3 >::PermuteNodes)
-                , default_PermuteNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_PermuteNodes) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::PermuteNodes
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*PermuteNodes_function_type)( ::std::vector< unsigned int > const & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "PermuteNodes"
-                , PermuteNodes_function_type( &::TetrahedralMesh< 3, 3 >::PermuteNodes )
-                , ( bp::arg("perm") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "ReadNodesPerProcessorFile"
-                , ReadNodesPerProcessorFile_function_type(&::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile)
-                , default_ReadNodesPerProcessorFile_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ReadNodesPerProcessorFile)
-                , ( bp::arg("rNodesPerProcessorFile") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*RefreshJacobianCachedData_function_type)(  ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_RefreshJacobianCachedData_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "RefreshJacobianCachedData"
-                , RefreshJacobianCachedData_function_type(&::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData)
-                , default_RefreshJacobianCachedData_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_RefreshJacobianCachedData) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::RefreshMesh
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_RefreshMesh_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "RefreshMesh"
-                , RefreshMesh_function_type(&::TetrahedralMesh< 3, 3 >::RefreshMesh)
-                , default_RefreshMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_RefreshMesh) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Rotate
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Rotate"
-                , Rotate_function_type(&::AbstractMesh< 3, 3 >::Rotate)
-                , default_Rotate_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Rotate)
-                , ( bp::arg("rotationMatrix") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Rotate
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Rotate"
-                , Rotate_function_type( &::AbstractMesh< 3, 3 >::Rotate )
-                , ( bp::arg("axis"), bp::arg("angle") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Rotate
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Rotate"
-                , Rotate_function_type( &::AbstractMesh< 3, 3 >::Rotate )
-                , ( bp::arg("theta") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Scale
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Scale_function_type)( double const,double const,double const ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Scale"
-                , Scale_function_type(&::AbstractMesh< 3, 3 >::Scale)
-                , default_Scale_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Scale)
-                , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::SetDistributedVectorFactory
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "SetDistributedVectorFactory"
-                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::SetDistributedVectorFactory)
-                , default_SetDistributedVectorFactory_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_SetDistributedVectorFactory)
-                , ( bp::arg("pFactory") ) );
-        
-        }
-        { //::AbstractTetrahedralMesh< 3, 3 >::SetElementOwnerships
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*SetElementOwnerships_function_type)(  ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "SetElementOwnerships"
-                , SetElementOwnerships_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SetElementOwnerships ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::SolveBoundaryElementMapping
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "SolveBoundaryElementMapping"
-                , SolveBoundaryElementMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveBoundaryElementMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::SolveElementMapping
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "SolveElementMapping"
-                , SolveElementMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveElementMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::TetrahedralMesh< 3, 3 >::SolveNodeMapping
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
-            
-            MutableMesh3_3_exposer.def( 
-                "SolveNodeMapping"
-                , SolveNodeMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveNodeMapping )
-                , ( bp::arg("index") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Translate
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
-            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Translate"
-                , Translate_function_type(&::AbstractMesh< 3, 3 >::Translate)
-                , default_Translate_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Translate)
-                , ( bp::arg("rDisplacement") ) );
-        
-        }
-        { //::AbstractMesh< 3, 3 >::Translate
-        
-            typedef MutableMesh< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
-            
-            MutableMesh3_3_exposer.def( 
-                "Translate"
-                , Translate_function_type( &::AbstractMesh< 3, 3 >::Translate )
-                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
         
         }
     }
@@ -10897,12 +9505,2491 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         bp::register_ptr_to_python< boost::shared_ptr< MutableVertexMesh<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableVertexMesh< 2, 2 > >, boost::shared_ptr< VertexMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableVertexMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dVertexMesh >, boost::shared_ptr< MutableVertexMesh< 2, 2 > > >();
+    }
+
+    { //::Cylindrical2dVertexMesh
+        typedef bp::class_< Cylindrical2dVertexMesh_wrapper, bp::bases< MutableVertexMesh< 2, 2 > >, boost::noncopyable > Cylindrical2dVertexMesh_exposer_t;
+        Cylindrical2dVertexMesh_exposer_t Cylindrical2dVertexMesh_exposer = Cylindrical2dVertexMesh_exposer_t( "Cylindrical2dVertexMesh", bp::init< double, std::vector< Node<2> * >, std::vector< VertexElement<2, 2> * >, bp::optional< double, double > >(( bp::arg("width"), bp::arg("nodes"), bp::arg("vertexElements"), bp::arg("cellRearrangementThreshold")=0.01, bp::arg("t2Threshold")=0.001 )) );
+        bp::scope Cylindrical2dVertexMesh_scope( Cylindrical2dVertexMesh_exposer );
+        Cylindrical2dVertexMesh_exposer.def( bp::init< Cylindrical2dMesh & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< Cylindrical2dMesh &, Cylindrical2dVertexMesh >();
+        { //::Cylindrical2dVertexMesh::AddNode
+        
+            typedef unsigned int ( ::Cylindrical2dVertexMesh::*AddNode_function_type)( ::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "AddNode"
+                , AddNode_function_type( &::Cylindrical2dVertexMesh::AddNode )
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::Cylindrical2dVertexMesh::GetVectorFromAtoB
+        
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( ::Cylindrical2dVertexMesh::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( Cylindrical2dVertexMesh_wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetVectorFromAtoB"
+                , GetVectorFromAtoB_function_type(&::Cylindrical2dVertexMesh::GetVectorFromAtoB)
+                , default_GetVectorFromAtoB_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetVectorFromAtoB)
+                , ( bp::arg("rLocation1"), bp::arg("rLocation2") ) );
+        
+        }
+        { //::Cylindrical2dVertexMesh::GetWidth
+        
+            typedef double ( ::Cylindrical2dVertexMesh::*GetWidth_function_type)( unsigned int const & ) const;
+            typedef double ( Cylindrical2dVertexMesh_wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::Cylindrical2dVertexMesh::GetWidth)
+                , default_GetWidth_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::Cylindrical2dVertexMesh::Scale
+        
+            typedef void ( ::Cylindrical2dVertexMesh::*Scale_function_type)( double const,double const,double const ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Scale"
+                , Scale_function_type(&::Cylindrical2dVertexMesh::Scale)
+                , default_Scale_function_type(&Cylindrical2dVertexMesh_wrapper::default_Scale)
+                , ( bp::arg("xScale")=1., bp::arg("yScale")=1., bp::arg("zScale")=1. ) );
+        
+        }
+        { //::Cylindrical2dVertexMesh::SetNode
+        
+            typedef void ( ::Cylindrical2dVertexMesh::*SetNode_function_type)( unsigned int,::ChastePoint< 2 > ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 > ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::Cylindrical2dVertexMesh::SetNode)
+                , default_SetNode_function_type(&Cylindrical2dVertexMesh_wrapper::default_SetNode)
+                , ( bp::arg("nodeIndex"), bp::arg("point") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::CalculateAreaOfFace
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef double ( exported_class_t::*CalculateAreaOfFace_function_type)( ::VertexElement< 1, 2 > * ) ;
+            typedef double ( Cylindrical2dVertexMesh_wrapper::*default_CalculateAreaOfFace_function_type)( ::VertexElement< 1, 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CalculateAreaOfFace"
+                , CalculateAreaOfFace_function_type(&::VertexMesh< 2, 2 >::CalculateAreaOfFace)
+                , default_CalculateAreaOfFace_function_type(&Cylindrical2dVertexMesh_wrapper::default_CalculateAreaOfFace)
+                , ( bp::arg("pFace") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( Cylindrical2dVertexMesh_wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<2> * > const & ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type( &Cylindrical2dVertexMesh_wrapper::CalculateBoundingBox )
+                , ( bp::arg("rNodes") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
+            typedef ::ChasteCuboid< 2 > ( Cylindrical2dVertexMesh_wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
+                , default_CalculateBoundingBox_function_type(&Cylindrical2dVertexMesh_wrapper::default_CalculateBoundingBox) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::CalculateMomentsOfElement
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*CalculateMomentsOfElement_function_type)( unsigned int ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( Cylindrical2dVertexMesh_wrapper::*default_CalculateMomentsOfElement_function_type)( unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CalculateMomentsOfElement"
+                , CalculateMomentsOfElement_function_type(&::VertexMesh< 2, 2 >::CalculateMomentsOfElement)
+                , default_CalculateMomentsOfElement_function_type(&Cylindrical2dVertexMesh_wrapper::default_CalculateMomentsOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::CheckForIntersections
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef bool ( Cylindrical2dVertexMesh_wrapper::*CheckForIntersections_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CheckForIntersections"
+                , CheckForIntersections_function_type( &Cylindrical2dVertexMesh_wrapper::CheckForIntersections ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::CheckForRosettes
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*CheckForRosettes_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CheckForRosettes"
+                , CheckForRosettes_function_type( &Cylindrical2dVertexMesh_wrapper::CheckForRosettes ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::CheckForSwapsFromShortEdges
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef bool ( Cylindrical2dVertexMesh_wrapper::*CheckForSwapsFromShortEdges_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "CheckForSwapsFromShortEdges"
+                , CheckForSwapsFromShortEdges_function_type( &Cylindrical2dVertexMesh_wrapper::CheckForSwapsFromShortEdges ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::Clear
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_Clear_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Clear"
+                , Clear_function_type(&::MutableVertexMesh< 2, 2 >::Clear)
+                , default_Clear_function_type(&Cylindrical2dVertexMesh_wrapper::default_Clear) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::DivideElement
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*DivideElement_function_type)( ::VertexElement< 2, 2 > *,unsigned int,unsigned int,bool ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "DivideElement"
+                , DivideElement_function_type( &Cylindrical2dVertexMesh_wrapper::DivideElement )
+                , ( bp::arg("pElement"), bp::arg("nodeAIndex"), bp::arg("nodeBIndex"), bp::arg("placeOriginalElementBelow")=(bool)(false) ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::ElementIncludesPoint
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef bool ( Cylindrical2dVertexMesh_wrapper::*ElementIncludesPoint_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "ElementIncludesPoint"
+                , ElementIncludesPoint_function_type( &Cylindrical2dVertexMesh_wrapper::ElementIncludesPoint )
+                , ( bp::arg("rTestPoint"), bp::arg("elementIndex") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GenerateVerticesFromElementCircumcentres
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*GenerateVerticesFromElementCircumcentres_function_type)( ::TetrahedralMesh< 2, 2 > & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GenerateVerticesFromElementCircumcentres"
+                , GenerateVerticesFromElementCircumcentres_function_type( &Cylindrical2dVertexMesh_wrapper::GenerateVerticesFromElementCircumcentres )
+                , ( bp::arg("rMesh") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GetCentroidOfElement
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetCentroidOfElement_function_type)( unsigned int ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( Cylindrical2dVertexMesh_wrapper::*default_GetCentroidOfElement_function_type)( unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetCentroidOfElement"
+                , GetCentroidOfElement_function_type(&::VertexMesh< 2, 2 >::GetCentroidOfElement)
+                , default_GetCentroidOfElement_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetCentroidOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*GetLocalIndexForElementEdgeClosestToPoint_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetLocalIndexForElementEdgeClosestToPoint"
+                , GetLocalIndexForElementEdgeClosestToPoint_function_type( &Cylindrical2dVertexMesh_wrapper::GetLocalIndexForElementEdgeClosestToPoint )
+                , ( bp::arg("rTestPoint"), bp::arg("elementIndex") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNearestNodeIndex"
+                , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
+                , default_GetNearestNodeIndex_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNearestNodeIndex)
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNumAllNodes
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*default_GetNumAllNodes_function_type)(  ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNumAllNodes"
+                , GetNumAllNodes_function_type(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
+                , default_GetNumAllNodes_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNumAllNodes) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::GetNumElements
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*default_GetNumElements_function_type)(  ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type(&::MutableVertexMesh< 2, 2 >::GetNumElements)
+                , default_GetNumElements_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNumElements) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GetNumFaces
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumFaces_function_type)(  ) const;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*default_GetNumFaces_function_type)(  ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNumFaces"
+                , GetNumFaces_function_type(&::VertexMesh< 2, 2 >::GetNumFaces)
+                , default_GetNumFaces_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNumFaces) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::GetNumNodes
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*default_GetNumNodes_function_type)(  ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::MutableVertexMesh< 2, 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNumNodes) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GetSurfaceAreaOfElement
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef double ( exported_class_t::*GetSurfaceAreaOfElement_function_type)( unsigned int ) ;
+            typedef double ( Cylindrical2dVertexMesh_wrapper::*default_GetSurfaceAreaOfElement_function_type)( unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetSurfaceAreaOfElement"
+                , GetSurfaceAreaOfElement_function_type(&::VertexMesh< 2, 2 >::GetSurfaceAreaOfElement)
+                , default_GetSurfaceAreaOfElement_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetSurfaceAreaOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::GetVolumeOfElement
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef double ( exported_class_t::*GetVolumeOfElement_function_type)( unsigned int ) ;
+            typedef double ( Cylindrical2dVertexMesh_wrapper::*default_GetVolumeOfElement_function_type)( unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetVolumeOfElement"
+                , GetVolumeOfElement_function_type(&::VertexMesh< 2, 2 >::GetVolumeOfElement)
+                , default_GetVolumeOfElement_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetVolumeOfElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::HandleHighOrderJunctions
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*HandleHighOrderJunctions_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "HandleHighOrderJunctions"
+                , HandleHighOrderJunctions_function_type( &Cylindrical2dVertexMesh_wrapper::default_HandleHighOrderJunctions )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::IdentifySwapType
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*IdentifySwapType_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "IdentifySwapType"
+                , IdentifySwapType_function_type( &Cylindrical2dVertexMesh_wrapper::default_IdentifySwapType )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformIntersectionSwap
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformIntersectionSwap_function_type)( ::Node< 2 > *,unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformIntersectionSwap"
+                , PerformIntersectionSwap_function_type( &Cylindrical2dVertexMesh_wrapper::PerformIntersectionSwap )
+                , ( bp::arg("pNode"), bp::arg("elementIndex") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformNodeMerge
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformNodeMerge_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformNodeMerge"
+                , PerformNodeMerge_function_type( &Cylindrical2dVertexMesh_wrapper::PerformNodeMerge )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformProtorosetteResolution
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformProtorosetteResolution_function_type)( ::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformProtorosetteResolution"
+                , PerformProtorosetteResolution_function_type( &Cylindrical2dVertexMesh_wrapper::PerformProtorosetteResolution )
+                , ( bp::arg("pProtorosetteNode") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformRosetteRankDecrease
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformRosetteRankDecrease_function_type)( ::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformRosetteRankDecrease"
+                , PerformRosetteRankDecrease_function_type( &Cylindrical2dVertexMesh_wrapper::PerformRosetteRankDecrease )
+                , ( bp::arg("pRosetteNode") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformRosetteRankIncrease
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformRosetteRankIncrease_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformRosetteRankIncrease"
+                , PerformRosetteRankIncrease_function_type( &Cylindrical2dVertexMesh_wrapper::PerformRosetteRankIncrease )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformT1Swap
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformT1Swap_function_type)( ::Node< 2 > *,::Node< 2 > *,::std::set< unsigned int > & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformT1Swap"
+                , PerformT1Swap_function_type( &Cylindrical2dVertexMesh_wrapper::PerformT1Swap )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB"), bp::arg("rElementsContainingNodes") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformT2Swap
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformT2Swap_function_type)( ::VertexElement< 2, 2 > & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformT2Swap"
+                , PerformT2Swap_function_type( &Cylindrical2dVertexMesh_wrapper::PerformT2Swap )
+                , ( bp::arg("rElement") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformT3Swap
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformT3Swap_function_type)( ::Node< 2 > *,unsigned int ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformT3Swap"
+                , PerformT3Swap_function_type( &Cylindrical2dVertexMesh_wrapper::PerformT3Swap )
+                , ( bp::arg("pNode"), bp::arg("elementIndex") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::PerformVoidRemoval
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*PerformVoidRemoval_function_type)( ::Node< 2 > *,::Node< 2 > *,::Node< 2 > * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PerformVoidRemoval"
+                , PerformVoidRemoval_function_type( &Cylindrical2dVertexMesh_wrapper::PerformVoidRemoval )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB"), bp::arg("pNodeC") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::PermuteNodes
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_PermuteNodes_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type(&::AbstractMesh< 2, 2 >::PermuteNodes)
+                , default_PermuteNodes_function_type(&Cylindrical2dVertexMesh_wrapper::default_PermuteNodes) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::ReMesh
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)( ::VertexElementMap & ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_ReMesh_function_type)( ::VertexElementMap & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type(&::MutableVertexMesh< 2, 2 >::ReMesh)
+                , default_ReMesh_function_type(&Cylindrical2dVertexMesh_wrapper::default_ReMesh)
+                , ( bp::arg("rElementMap") ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::ReMesh
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type( &::MutableVertexMesh< 2, 2 >::ReMesh ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "ReadNodesPerProcessorFile"
+                , ReadNodesPerProcessorFile_function_type(&::AbstractMesh< 2, 2 >::ReadNodesPerProcessorFile)
+                , default_ReadNodesPerProcessorFile_function_type(&Cylindrical2dVertexMesh_wrapper::default_ReadNodesPerProcessorFile)
+                , ( bp::arg("rNodesPerProcessorFile") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::RefreshMesh
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_RefreshMesh_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "RefreshMesh"
+                , RefreshMesh_function_type(&::AbstractMesh< 2, 2 >::RefreshMesh)
+                , default_RefreshMesh_function_type(&Cylindrical2dVertexMesh_wrapper::default_RefreshMesh) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Rotate"
+                , Rotate_function_type(&::AbstractMesh< 2, 2 >::Rotate)
+                , default_Rotate_function_type(&Cylindrical2dVertexMesh_wrapper::default_Rotate)
+                , ( bp::arg("rotationMatrix") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("axis"), bp::arg("angle") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("theta") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::SetDistributedVectorFactory
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SetDistributedVectorFactory"
+                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
+                , default_SetDistributedVectorFactory_function_type(&Cylindrical2dVertexMesh_wrapper::default_SetDistributedVectorFactory)
+                , ( bp::arg("pFactory") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::SetElementOwnerships
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*SetElementOwnerships_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SetElementOwnerships"
+                , SetElementOwnerships_function_type( &Cylindrical2dVertexMesh_wrapper::default_SetElementOwnerships ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::SolveBoundaryElementMapping
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SolveBoundaryElementMapping"
+                , SolveBoundaryElementMapping_function_type( &Cylindrical2dVertexMesh_wrapper::SolveBoundaryElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::SolveElementMapping
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SolveElementMapping"
+                , SolveElementMapping_function_type( &Cylindrical2dVertexMesh_wrapper::SolveElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexMesh< 2, 2 >::SolveNodeMapping
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef unsigned int ( Cylindrical2dVertexMesh_wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "SolveNodeMapping"
+                , SolveNodeMapping_function_type( &Cylindrical2dVertexMesh_wrapper::default_SolveNodeMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef void ( Cylindrical2dVertexMesh_wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Translate"
+                , Translate_function_type(&::AbstractMesh< 2, 2 >::Translate)
+                , default_Translate_function_type(&Cylindrical2dVertexMesh_wrapper::default_Translate)
+                , ( bp::arg("rDisplacement") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "Translate"
+                , Translate_function_type( &::AbstractMesh< 2, 2 >::Translate )
+                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+        
+        }
+        { //::MutableVertexMesh< 2, 2 >::WidenEdgeOrCorrectIntersectionLocationIfNecessary
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( Cylindrical2dVertexMesh_wrapper::*WidenEdgeOrCorrectIntersectionLocationIfNecessary_function_type)( unsigned int,unsigned int,::boost::numeric::ublas::c_vector< double, 2 > ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "WidenEdgeOrCorrectIntersectionLocationIfNecessary"
+                , WidenEdgeOrCorrectIntersectionLocationIfNecessary_function_type( &Cylindrical2dVertexMesh_wrapper::WidenEdgeOrCorrectIntersectionLocationIfNecessary )
+                , ( bp::arg("indexA"), bp::arg("indexB"), bp::arg("intersection") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< Cylindrical2dVertexMesh > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dVertexMesh >, boost::shared_ptr< VertexMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dVertexMesh >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
+    }
+
+    bp::class_< TetrahedralMesh_less__2_comma__2__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 2, 2 > >, boost::noncopyable >( "TetrahedralMesh2_2", bp::init< >() )    
+        .def( 
+            "CheckIsConforming"
+            , (bool ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::CheckIsConforming ) )    
+        .def( 
+            "Clear"
+            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::Clear)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Clear) )    
+        .def( 
+            "ConstructFromMeshReader"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( ::AbstractMeshReader< 2, 2 > & ))(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::AbstractMeshReader< 2, 2 > & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
+            , ( bp::arg("rMeshReader") ) )    
+        .def( 
+            "EdgesBegin"
+            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesBegin ) )    
+        .def( 
+            "EdgesEnd"
+            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesEnd ) )    
+        .def( 
+            "GetAngleBetweenNodes"
+            , (double ( ::TetrahedralMesh<2, 2>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes )
+            , ( bp::arg("indexA"), bp::arg("indexB") ) )    
+        .def( 
+            "GetContainingElementIndexWithInitialGuess"
+            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const &,unsigned int,bool ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndexWithInitialGuess )
+            , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) )    
+        .def( 
+            "GetContainingElementIndices"
+            , (::std::vector< unsigned int > ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndices )
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetInverseJacobianForElement"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) )    
+        .def( 
+            "GetJacobianForElement"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "GetNearestElementIndex"
+            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetNearestElementIndex )
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetSurfaceArea"
+            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetSurfaceArea ) )    
+        .def( 
+            "GetVolume"
+            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetVolume ) )    
+        .def( 
+            "GetWeightedDirectionForBoundaryElement"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
+            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "GetWeightedDirectionForElement"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "PermuteNodes"
+            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) )    
+        .def( 
+            "PermuteNodes"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > const & ))( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
+            , ( bp::arg("perm") ) )    
+        .def( 
+            "ReadNodesPerProcessorFile"
+            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::string const & ))(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
+            , ( bp::arg("rNodesPerProcessorFile") ) )    
+        .def( 
+            "RefreshJacobianCachedData"
+            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) )    
+        .def( 
+            "RefreshMesh"
+            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) )    
+        .def( 
+            "SolveBoundaryElementMapping"
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "SolveElementMapping"
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "SolveNodeMapping"
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "CalculateBoundingBox"
+            , (::ChasteCuboid<2> ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox)
+            , ( bp::arg("rNodes") ) )    
+        .def( 
+            "CalculateBoundingBox"
+            , (::ChasteCuboid< 2 > ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
+            , (::ChasteCuboid< 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) )    
+        .def( 
+            "CalculateDesignatedOwnershipOfBoundaryElement"
+            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
+            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
+            , ( bp::arg("faceIndex") ) )    
+        .def( 
+            "CalculateDesignatedOwnershipOfElement"
+            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
+            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
+            , ( bp::arg("elementIndex") ) )    
+        .def( 
+            "CalculateMinMaxEdgeLengths"
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) )    
+        .def( 
+            "ConstructCuboid"
+            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
+            , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) )    
+        .def( 
+            "ConstructLinearMesh"
+            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
+            , ( bp::arg("width") ) )    
+        .def( 
+            "ConstructRectangularMesh"
+            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,bool ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,bool ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
+            , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) )    
+        .def( 
+            "GetHaloNodeIndices"
+            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
+            , ( bp::arg("rHaloIndices") ) )    
+        .def( 
+            "GetMaximumNodeIndex"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) )    
+        .def( 
+            "GetNearestNodeIndex"
+            , (unsigned int ( ::AbstractMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::ChastePoint< 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetNumAllNodes"
+            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) )    
+        .def( 
+            "GetNumBoundaryElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumBoundaryElements)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) )    
+        .def( 
+            "GetNumCableElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) )    
+        .def( 
+            "GetNumElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumElements)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) )    
+        .def( 
+            "GetNumLocalBoundaryElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) )    
+        .def( 
+            "GetNumLocalElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) )    
+        .def( 
+            "GetNumNodes"
+            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumNodes)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) )    
+        .def( 
+            "GetNumVertices"
+            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
+            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) )    
+        .def( 
+            "GetVectorFromAtoB"
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
+            , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) )    
+        .def( 
+            "GetWidth"
+            , (double ( ::AbstractMesh<2, 2>::* )( unsigned int const & )const)(&::AbstractMesh< 2, 2 >::GetWidth)
+            , (double ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&::AbstractMesh< 2, 2 >::Rotate)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Rotate)
+            , ( bp::arg("rotationMatrix") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 3 >,double ))( &::AbstractMesh< 2, 2 >::Rotate )
+            , ( bp::arg("axis"), bp::arg("angle") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<2, 2>::* )( double ))( &::AbstractMesh< 2, 2 >::Rotate )
+            , ( bp::arg("theta") ) )    
+        .def( 
+            "Scale"
+            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))(&::AbstractMesh< 2, 2 >::Scale)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( double const,double const,double const ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Scale)
+            , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) )    
+        .def( 
+            "SetDistributedVectorFactory"
+            , (void ( ::AbstractMesh<2, 2>::* )( ::DistributedVectorFactory * ))(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::DistributedVectorFactory * ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
+            , ( bp::arg("pFactory") ) )    
+        .def( 
+            "SetElementOwnerships"
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships) )    
+        .def( 
+            "Translate"
+            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::Translate)
+            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Translate)
+            , ( bp::arg("rDisplacement") ) )    
+        .def( 
+            "Translate"
+            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))( &::AbstractMesh< 2, 2 >::Translate )
+            , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+
+    { //::MutableMesh< 2, 2 >
+        typedef bp::class_< MutableMesh_less__2_comma__2__greater__wrapper, bp::bases< TetrahedralMesh< 2, 2 > >, boost::noncopyable > MutableMesh2_2_exposer_t;
+        MutableMesh2_2_exposer_t MutableMesh2_2_exposer = MutableMesh2_2_exposer_t( "MutableMesh2_2", bp::init< >() );
+        bp::scope MutableMesh2_2_scope( MutableMesh2_2_exposer );
+        MutableMesh2_2_exposer.def( bp::init< std::vector< Node<2> * > >(( bp::arg("nodes") )) );
+        bp::implicitly_convertible< std::vector< Node<2> * >, MutableMesh< 2, 2 > >();
+        { //::MutableMesh< 2, 2 >::AddElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddElement_function_type)( ::Element< 2, 2 > * ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "AddElement"
+                , AddElement_function_type( &::MutableMesh< 2, 2 >::AddElement )
+                , ( bp::arg("pNewElement") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::AddNode
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 2 > * ) ;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_AddNode_function_type)( ::Node< 2 > * ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::MutableMesh< 2, 2 >::AddNode)
+                , default_AddNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::CheckIsVoronoi
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CheckIsVoronoi_function_type)( double ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "CheckIsVoronoi"
+                , CheckIsVoronoi_function_type( &::MutableMesh< 2, 2 >::CheckIsVoronoi )
+                , ( bp::arg("maxPenetration")=0. ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::Clear
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Clear_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Clear"
+                , Clear_function_type(&::MutableMesh< 2, 2 >::Clear)
+                , default_Clear_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Clear) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::DeleteBoundaryNodeAt
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteBoundaryNodeAt_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "DeleteBoundaryNodeAt"
+                , DeleteBoundaryNodeAt_function_type( &::MutableMesh< 2, 2 >::DeleteBoundaryNodeAt )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::DeleteElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteElement_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_DeleteElement_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "DeleteElement"
+                , DeleteElement_function_type(&::MutableMesh< 2, 2 >::DeleteElement)
+                , default_DeleteElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_DeleteElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::DeleteNode
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteNode_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_DeleteNode_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "DeleteNode"
+                , DeleteNode_function_type(&::MutableMesh< 2, 2 >::DeleteNode)
+                , default_DeleteNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_DeleteNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::DeleteNodePriorToReMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteNodePriorToReMesh_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "DeleteNodePriorToReMesh"
+                , DeleteNodePriorToReMesh_function_type( &::MutableMesh< 2, 2 >::DeleteNodePriorToReMesh )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::GetNumBoundaryElements
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumBoundaryElements_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumBoundaryElements"
+                , GetNumBoundaryElements_function_type(&::MutableMesh< 2, 2 >::GetNumBoundaryElements)
+                , default_GetNumBoundaryElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::GetNumElements
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type(&::MutableMesh< 2, 2 >::GetNumElements)
+                , default_GetNumElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::GetNumNodes
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::MutableMesh< 2, 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::MoveMergeNode
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*MoveMergeNode_function_type)( unsigned int,unsigned int,bool ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "MoveMergeNode"
+                , MoveMergeNode_function_type( &::MutableMesh< 2, 2 >::MoveMergeNode )
+                , ( bp::arg("index"), bp::arg("targetIndex"), bp::arg("concreteMove")=(bool)(true) ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::ReIndex
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ReIndex_function_type)( ::NodeMap & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ReIndex"
+                , ReIndex_function_type( &::MutableMesh< 2, 2 >::ReIndex )
+                , ( bp::arg("map") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::ReMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)( ::NodeMap & ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ReMesh_function_type)( ::NodeMap & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type(&::MutableMesh< 2, 2 >::ReMesh)
+                , default_ReMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ReMesh)
+                , ( bp::arg("map") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::ReMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type( &::MutableMesh< 2, 2 >::ReMesh ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::RefineElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RefineElement_function_type)( ::Element< 2, 2 > *,::ChastePoint< 2 > ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "RefineElement"
+                , RefineElement_function_type( &::MutableMesh< 2, 2 >::RefineElement )
+                , ( bp::arg("pElement"), bp::arg("point") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::SetNode
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 2 >,bool ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 2 >,bool ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::MutableMesh< 2, 2 >::SetNode)
+                , default_SetNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_SetNode)
+                , ( bp::arg("index"), bp::arg("point"), bp::arg("concreteMove")=(bool)(true) ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::SplitEdge
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< unsigned int, 3 > ( exported_class_t::*SplitEdge_function_type)( ::Node< 2 > *,::Node< 2 > * ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "SplitEdge"
+                , SplitEdge_function_type( &::MutableMesh< 2, 2 >::SplitEdge )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableMesh< 2, 2 >::SplitLongEdges
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > ( exported_class_t::*SplitLongEdges_function_type)( double ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "SplitLongEdges"
+                , SplitLongEdges_function_type( &::MutableMesh< 2, 2 >::SplitLongEdges )
+                , ( bp::arg("cutoffLength") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<2> * > const & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox )
+                , ( bp::arg("rNodes") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
+            typedef ::ChasteCuboid< 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
+                , default_CalculateBoundingBox_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            typedef bool ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "CalculateDesignatedOwnershipOfBoundaryElement"
+                , CalculateDesignatedOwnershipOfBoundaryElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
+                , default_CalculateDesignatedOwnershipOfBoundaryElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
+                , ( bp::arg("faceIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            typedef bool ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "CalculateDesignatedOwnershipOfElement"
+                , CalculateDesignatedOwnershipOfElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
+                , default_CalculateDesignatedOwnershipOfElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
+                , ( bp::arg("elementIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "CalculateMinMaxEdgeLengths"
+                , CalculateMinMaxEdgeLengths_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
+                , default_CalculateMinMaxEdgeLengths_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ConstructCuboid"
+                , ConstructCuboid_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
+                , default_ConstructCuboid_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ConstructFromMeshReader"
+                , ConstructFromMeshReader_function_type(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
+                , default_ConstructFromMeshReader_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
+                , ( bp::arg("rMeshReader") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructLinearMesh_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructLinearMesh_function_type)( unsigned int ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ConstructLinearMesh"
+                , ConstructLinearMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
+                , default_ConstructLinearMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
+                , ( bp::arg("width") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ConstructRectangularMesh"
+                , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
+                , default_ConstructRectangularMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetHaloNodeIndices"
+                , GetHaloNodeIndices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
+                , default_GetHaloNodeIndices_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
+                , ( bp::arg("rHaloIndices") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetInverseJacobianForElement"
+                , GetInverseJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
+                , default_GetInverseJacobianForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetJacobianForElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetJacobianForElement"
+                , GetJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
+                , default_GetJacobianForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetMaximumNodeIndex_function_type)(  ) ;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetMaximumNodeIndex_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetMaximumNodeIndex"
+                , GetMaximumNodeIndex_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
+                , default_GetMaximumNodeIndex_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNearestNodeIndex"
+                , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
+                , default_GetNearestNodeIndex_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNumAllNodes
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumAllNodes_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumAllNodes"
+                , GetNumAllNodes_function_type(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
+                , default_GetNumAllNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumCableElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumCableElements_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumCableElements"
+                , GetNumCableElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
+                , default_GetNumCableElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalBoundaryElements_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumLocalBoundaryElements"
+                , GetNumLocalBoundaryElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
+                , default_GetNumLocalBoundaryElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalElements_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumLocalElements"
+                , GetNumLocalElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
+                , default_GetNumLocalElements_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumVertices_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNumVertices_function_type)(  ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNumVertices"
+                , GetNumVertices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
+                , default_GetNumVertices_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetVectorFromAtoB
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetVectorFromAtoB"
+                , GetVectorFromAtoB_function_type(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
+                , default_GetVectorFromAtoB_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
+                , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetWeightedDirectionForBoundaryElement"
+                , GetWeightedDirectionForBoundaryElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
+                , default_GetWeightedDirectionForBoundaryElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetWeightedDirectionForElement"
+                , GetWeightedDirectionForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
+                , default_GetWeightedDirectionForElement_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetWidth
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) const;
+            typedef double ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::AbstractMesh< 2, 2 >::GetWidth)
+                , default_GetWidth_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_PermuteNodes_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
+                , default_PermuteNodes_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)( ::std::vector< unsigned int > const & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
+                , ( bp::arg("perm") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "ReadNodesPerProcessorFile"
+                , ReadNodesPerProcessorFile_function_type(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
+                , default_ReadNodesPerProcessorFile_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
+                , ( bp::arg("rNodesPerProcessorFile") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshJacobianCachedData_function_type)(  ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_RefreshJacobianCachedData_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "RefreshJacobianCachedData"
+                , RefreshJacobianCachedData_function_type(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
+                , default_RefreshJacobianCachedData_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::RefreshMesh
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_RefreshMesh_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "RefreshMesh"
+                , RefreshMesh_function_type(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
+                , default_RefreshMesh_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type(&::AbstractMesh< 2, 2 >::Rotate)
+                , default_Rotate_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Rotate)
+                , ( bp::arg("rotationMatrix") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("axis"), bp::arg("angle") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("theta") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Scale
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Scale_function_type)( double const,double const,double const ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Scale"
+                , Scale_function_type(&::AbstractMesh< 2, 2 >::Scale)
+                , default_Scale_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Scale)
+                , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::SetDistributedVectorFactory
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "SetDistributedVectorFactory"
+                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
+                , default_SetDistributedVectorFactory_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
+                , ( bp::arg("pFactory") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::SetElementOwnerships
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*SetElementOwnerships_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "SetElementOwnerships"
+                , SetElementOwnerships_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveBoundaryElementMapping
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "SolveBoundaryElementMapping"
+                , SolveBoundaryElementMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveElementMapping
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "SolveElementMapping"
+                , SolveElementMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveNodeMapping
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__2_comma__2__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "SolveNodeMapping"
+                , SolveNodeMapping_function_type( &MutableMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef void ( MutableMesh_less__2_comma__2__greater__wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Translate"
+                , Translate_function_type(&::AbstractMesh< 2, 2 >::Translate)
+                , default_Translate_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_Translate)
+                , ( bp::arg("rDisplacement") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "Translate"
+                , Translate_function_type( &::AbstractMesh< 2, 2 >::Translate )
+                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< MutableMesh<2, 2> > >();
+        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< TetrahedralMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractTetrahedralMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
+    }
+
+    bp::class_< TetrahedralMesh_less__3_comma__3__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 3, 3 > >, boost::noncopyable >( "TetrahedralMesh3_3", bp::init< >() )    
+        .def( 
+            "CheckIsConforming"
+            , (bool ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::CheckIsConforming ) )    
+        .def( 
+            "Clear"
+            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::Clear)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Clear) )    
+        .def( 
+            "ConstructFromMeshReader"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( ::AbstractMeshReader< 3, 3 > & ))(&::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::AbstractMeshReader< 3, 3 > & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructFromMeshReader)
+            , ( bp::arg("rMeshReader") ) )    
+        .def( 
+            "EdgesBegin"
+            , (::TetrahedralMesh< 3, 3 >::EdgeIterator ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::EdgesBegin ) )    
+        .def( 
+            "EdgesEnd"
+            , (::TetrahedralMesh< 3, 3 >::EdgeIterator ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::EdgesEnd ) )    
+        .def( 
+            "GetAngleBetweenNodes"
+            , (double ( ::TetrahedralMesh<3, 3>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 3, 3 >::GetAngleBetweenNodes )
+            , ( bp::arg("indexA"), bp::arg("indexB") ) )    
+        .def( 
+            "GetContainingElementIndexWithInitialGuess"
+            , (unsigned int ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const &,unsigned int,bool ))( &::TetrahedralMesh< 3, 3 >::GetContainingElementIndexWithInitialGuess )
+            , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) )    
+        .def( 
+            "GetContainingElementIndices"
+            , (::std::vector< unsigned int > ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))( &::TetrahedralMesh< 3, 3 >::GetContainingElementIndices )
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetInverseJacobianForElement"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & )const)(&::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetInverseJacobianForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) )    
+        .def( 
+            "GetJacobianForElement"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetJacobianForElement)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetJacobianForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "GetNearestElementIndex"
+            , (unsigned int ( ::TetrahedralMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))( &::TetrahedralMesh< 3, 3 >::GetNearestElementIndex )
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetSurfaceArea"
+            , (double ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::GetSurfaceArea ) )    
+        .def( 
+            "GetVolume"
+            , (double ( ::TetrahedralMesh<3, 3>::* )(  ))( &::TetrahedralMesh< 3, 3 >::GetVolume ) )    
+        .def( 
+            "GetWeightedDirectionForBoundaryElement"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
+            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "GetWeightedDirectionForElement"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForElement)
+            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
+        .def( 
+            "PermuteNodes"
+            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::PermuteNodes)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_PermuteNodes) )    
+        .def( 
+            "PermuteNodes"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( ::std::vector< unsigned int > const & ))( &::TetrahedralMesh< 3, 3 >::PermuteNodes )
+            , ( bp::arg("perm") ) )    
+        .def( 
+            "ReadNodesPerProcessorFile"
+            , (void ( ::TetrahedralMesh<3, 3>::* )( ::std::string const & ))(&::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ReadNodesPerProcessorFile)
+            , ( bp::arg("rNodesPerProcessorFile") ) )    
+        .def( 
+            "RefreshJacobianCachedData"
+            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_RefreshJacobianCachedData) )    
+        .def( 
+            "RefreshMesh"
+            , (void ( ::TetrahedralMesh<3, 3>::* )(  ))(&::TetrahedralMesh< 3, 3 >::RefreshMesh)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_RefreshMesh) )    
+        .def( 
+            "SolveBoundaryElementMapping"
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveBoundaryElementMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "SolveElementMapping"
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveElementMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "SolveNodeMapping"
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SolveNodeMapping)
+            , ( bp::arg("index") ) )    
+        .def( 
+            "CalculateBoundingBox"
+            , (::ChasteCuboid<3> ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::vector<Node<3> *, std::allocator<Node<3> *> > const & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::CalculateBoundingBox)
+            , ( bp::arg("rNodes") ) )    
+        .def( 
+            "CalculateBoundingBox"
+            , (::ChasteCuboid< 3 > ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::CalculateBoundingBox)
+            , (::ChasteCuboid< 3 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateBoundingBox) )    
+        .def( 
+            "CalculateDesignatedOwnershipOfBoundaryElement"
+            , (bool ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement)
+            , (bool ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
+            , ( bp::arg("faceIndex") ) )    
+        .def( 
+            "CalculateDesignatedOwnershipOfElement"
+            , (bool ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement)
+            , (bool ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
+            , ( bp::arg("elementIndex") ) )    
+        .def( 
+            "CalculateMinMaxEdgeLengths"
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTetrahedralMesh<3, 3>::* )(  ))(&::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths)
+            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_CalculateMinMaxEdgeLengths) )    
+        .def( 
+            "ConstructCuboid"
+            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int,unsigned int,unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructCuboid)
+            , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) )    
+        .def( 
+            "ConstructLinearMesh"
+            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructLinearMesh)
+            , ( bp::arg("width") ) )    
+        .def( 
+            "ConstructRectangularMesh"
+            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( unsigned int,unsigned int,bool ))(&::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int,unsigned int,bool ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_ConstructRectangularMesh)
+            , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) )    
+        .def( 
+            "GetHaloNodeIndices"
+            , (void ( ::AbstractTetrahedralMesh<3, 3>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetHaloNodeIndices)
+            , ( bp::arg("rHaloIndices") ) )    
+        .def( 
+            "GetMaximumNodeIndex"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  ))(&::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetMaximumNodeIndex) )    
+        .def( 
+            "GetNearestNodeIndex"
+            , (unsigned int ( ::AbstractMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::ChastePoint< 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
+            , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetNumAllNodes"
+            , (unsigned int ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::GetNumAllNodes)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumAllNodes) )    
+        .def( 
+            "GetNumBoundaryElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumBoundaryElements)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumBoundaryElements) )    
+        .def( 
+            "GetNumCableElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumCableElements) )    
+        .def( 
+            "GetNumElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumElements)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumElements) )    
+        .def( 
+            "GetNumLocalBoundaryElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalBoundaryElements) )    
+        .def( 
+            "GetNumLocalElements"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalElements) )    
+        .def( 
+            "GetNumNodes"
+            , (unsigned int ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::GetNumNodes)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumNodes) )    
+        .def( 
+            "GetNumVertices"
+            , (unsigned int ( ::AbstractTetrahedralMesh<3, 3>::* )(  )const)(&::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices)
+            , (unsigned int ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetNumVertices) )    
+        .def( 
+            "GetVectorFromAtoB"
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ))(&::AbstractMesh< 3, 3 >::GetVectorFromAtoB)
+            , (::boost::numeric::ublas::c_vector< double, 3 > ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetVectorFromAtoB)
+            , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) )    
+        .def( 
+            "GetWidth"
+            , (double ( ::AbstractMesh<3, 3>::* )( unsigned int const & )const)(&::AbstractMesh< 3, 3 >::GetWidth)
+            , (double ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( unsigned int const & )const)(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_GetWidth)
+            , ( bp::arg("rDimension") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ))(&::AbstractMesh< 3, 3 >::Rotate)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Rotate)
+            , ( bp::arg("rotationMatrix") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 >,double ))( &::AbstractMesh< 3, 3 >::Rotate )
+            , ( bp::arg("axis"), bp::arg("angle") ) )    
+        .def( 
+            "Rotate"
+            , (void ( ::AbstractMesh<3, 3>::* )( double ))( &::AbstractMesh< 3, 3 >::Rotate )
+            , ( bp::arg("theta") ) )    
+        .def( 
+            "Scale"
+            , (void ( ::AbstractMesh<3, 3>::* )( double const,double const,double const ))(&::AbstractMesh< 3, 3 >::Scale)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( double const,double const,double const ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Scale)
+            , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) )    
+        .def( 
+            "SetDistributedVectorFactory"
+            , (void ( ::AbstractMesh<3, 3>::* )( ::DistributedVectorFactory * ))(&::AbstractMesh< 3, 3 >::SetDistributedVectorFactory)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::DistributedVectorFactory * ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SetDistributedVectorFactory)
+            , ( bp::arg("pFactory") ) )    
+        .def( 
+            "SetElementOwnerships"
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )(  ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_SetElementOwnerships) )    
+        .def( 
+            "Translate"
+            , (void ( ::AbstractMesh<3, 3>::* )( ::boost::numeric::ublas::c_vector< double, 3 > const & ))(&::AbstractMesh< 3, 3 >::Translate)
+            , (void ( TetrahedralMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 3 > const & ))(&TetrahedralMesh_less__3_comma__3__greater__wrapper::default_Translate)
+            , ( bp::arg("rDisplacement") ) )    
+        .def( 
+            "Translate"
+            , (void ( ::AbstractMesh<3, 3>::* )( double const,double const,double const ))( &::AbstractMesh< 3, 3 >::Translate )
+            , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+
+    { //::MutableMesh< 3, 3 >
+        typedef bp::class_< MutableMesh_less__3_comma__3__greater__wrapper, bp::bases< TetrahedralMesh< 3, 3 > >, boost::noncopyable > MutableMesh3_3_exposer_t;
+        MutableMesh3_3_exposer_t MutableMesh3_3_exposer = MutableMesh3_3_exposer_t( "MutableMesh3_3", bp::init< >() );
+        bp::scope MutableMesh3_3_scope( MutableMesh3_3_exposer );
+        MutableMesh3_3_exposer.def( bp::init< std::vector< Node<3> * > >(( bp::arg("nodes") )) );
+        bp::implicitly_convertible< std::vector< Node<3> * >, MutableMesh< 3, 3 > >();
+        { //::MutableMesh< 3, 3 >::AddElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddElement_function_type)( ::Element< 3, 3 > * ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "AddElement"
+                , AddElement_function_type( &::MutableMesh< 3, 3 >::AddElement )
+                , ( bp::arg("pNewElement") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::AddNode
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*AddNode_function_type)( ::Node< 3 > * ) ;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_AddNode_function_type)( ::Node< 3 > * ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "AddNode"
+                , AddNode_function_type(&::MutableMesh< 3, 3 >::AddNode)
+                , default_AddNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_AddNode)
+                , ( bp::arg("pNewNode") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::CheckIsVoronoi
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*CheckIsVoronoi_function_type)( double ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "CheckIsVoronoi"
+                , CheckIsVoronoi_function_type( &::MutableMesh< 3, 3 >::CheckIsVoronoi )
+                , ( bp::arg("maxPenetration")=0. ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::Clear
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Clear_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Clear"
+                , Clear_function_type(&::MutableMesh< 3, 3 >::Clear)
+                , default_Clear_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Clear) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::DeleteBoundaryNodeAt
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteBoundaryNodeAt_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "DeleteBoundaryNodeAt"
+                , DeleteBoundaryNodeAt_function_type( &::MutableMesh< 3, 3 >::DeleteBoundaryNodeAt )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::DeleteElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteElement_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_DeleteElement_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "DeleteElement"
+                , DeleteElement_function_type(&::MutableMesh< 3, 3 >::DeleteElement)
+                , default_DeleteElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_DeleteElement)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::DeleteNode
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteNode_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_DeleteNode_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "DeleteNode"
+                , DeleteNode_function_type(&::MutableMesh< 3, 3 >::DeleteNode)
+                , default_DeleteNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_DeleteNode)
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::DeleteNodePriorToReMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*DeleteNodePriorToReMesh_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "DeleteNodePriorToReMesh"
+                , DeleteNodePriorToReMesh_function_type( &::MutableMesh< 3, 3 >::DeleteNodePriorToReMesh )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::GetNumBoundaryElements
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumBoundaryElements_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumBoundaryElements"
+                , GetNumBoundaryElements_function_type(&::MutableMesh< 3, 3 >::GetNumBoundaryElements)
+                , default_GetNumBoundaryElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumBoundaryElements) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::GetNumElements
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type(&::MutableMesh< 3, 3 >::GetNumElements)
+                , default_GetNumElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumElements) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::GetNumNodes
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::MutableMesh< 3, 3 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::MoveMergeNode
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*MoveMergeNode_function_type)( unsigned int,unsigned int,bool ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "MoveMergeNode"
+                , MoveMergeNode_function_type( &::MutableMesh< 3, 3 >::MoveMergeNode )
+                , ( bp::arg("index"), bp::arg("targetIndex"), bp::arg("concreteMove")=(bool)(true) ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::ReIndex
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ReIndex_function_type)( ::NodeMap & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ReIndex"
+                , ReIndex_function_type( &::MutableMesh< 3, 3 >::ReIndex )
+                , ( bp::arg("map") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::ReMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)( ::NodeMap & ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ReMesh_function_type)( ::NodeMap & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type(&::MutableMesh< 3, 3 >::ReMesh)
+                , default_ReMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ReMesh)
+                , ( bp::arg("map") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::ReMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ReMesh_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ReMesh"
+                , ReMesh_function_type( &::MutableMesh< 3, 3 >::ReMesh ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::RefineElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*RefineElement_function_type)( ::Element< 3, 3 > *,::ChastePoint< 3 > ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "RefineElement"
+                , RefineElement_function_type( &::MutableMesh< 3, 3 >::RefineElement )
+                , ( bp::arg("pElement"), bp::arg("point") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::SetNode
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetNode_function_type)( unsigned int,::ChastePoint< 3 >,bool ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_SetNode_function_type)( unsigned int,::ChastePoint< 3 >,bool ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "SetNode"
+                , SetNode_function_type(&::MutableMesh< 3, 3 >::SetNode)
+                , default_SetNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_SetNode)
+                , ( bp::arg("index"), bp::arg("point"), bp::arg("concreteMove")=(bool)(true) ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::SplitEdge
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< unsigned int, 3 > ( exported_class_t::*SplitEdge_function_type)( ::Node< 3 > *,::Node< 3 > * ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "SplitEdge"
+                , SplitEdge_function_type( &::MutableMesh< 3, 3 >::SplitEdge )
+                , ( bp::arg("pNodeA"), bp::arg("pNodeB") ) );
+        
+        }
+        { //::MutableMesh< 3, 3 >::SplitLongEdges
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::std::vector< boost::numeric::ublas::c_vector<unsigned int, 5> > ( exported_class_t::*SplitLongEdges_function_type)( double ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "SplitLongEdges"
+                , SplitLongEdges_function_type( &::MutableMesh< 3, 3 >::SplitLongEdges )
+                , ( bp::arg("cutoffLength") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::CalculateBoundingBox
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::ChasteCuboid< 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<3> * > const & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::CalculateBoundingBox )
+                , ( bp::arg("rNodes") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::CalculateBoundingBox
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::ChasteCuboid< 3 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
+            typedef ::ChasteCuboid< 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type(&::AbstractMesh< 3, 3 >::CalculateBoundingBox)
+                , default_CalculateBoundingBox_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateBoundingBox) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            typedef bool ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "CalculateDesignatedOwnershipOfBoundaryElement"
+                , CalculateDesignatedOwnershipOfBoundaryElement_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfBoundaryElement)
+                , default_CalculateDesignatedOwnershipOfBoundaryElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
+                , ( bp::arg("faceIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            typedef bool ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "CalculateDesignatedOwnershipOfElement"
+                , CalculateDesignatedOwnershipOfElement_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateDesignatedOwnershipOfElement)
+                , default_CalculateDesignatedOwnershipOfElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
+                , ( bp::arg("elementIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "CalculateMinMaxEdgeLengths"
+                , CalculateMinMaxEdgeLengths_function_type(&::AbstractTetrahedralMesh< 3, 3 >::CalculateMinMaxEdgeLengths)
+                , default_CalculateMinMaxEdgeLengths_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_CalculateMinMaxEdgeLengths) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ConstructCuboid"
+                , ConstructCuboid_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructCuboid)
+                , default_ConstructCuboid_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructCuboid)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 3, 3 > & ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 3, 3 > & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ConstructFromMeshReader"
+                , ConstructFromMeshReader_function_type(&::TetrahedralMesh< 3, 3 >::ConstructFromMeshReader)
+                , default_ConstructFromMeshReader_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructFromMeshReader)
+                , ( bp::arg("rMeshReader") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructLinearMesh_function_type)( unsigned int ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructLinearMesh_function_type)( unsigned int ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ConstructLinearMesh"
+                , ConstructLinearMesh_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructLinearMesh)
+                , default_ConstructLinearMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructLinearMesh)
+                , ( bp::arg("width") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ConstructRectangularMesh"
+                , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh)
+                , default_ConstructRectangularMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ConstructRectangularMesh)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetHaloNodeIndices"
+                , GetHaloNodeIndices_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices)
+                , default_GetHaloNodeIndices_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetHaloNodeIndices)
+                , ( bp::arg("rHaloIndices") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & ) const;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double &,::boost::numeric::ublas::c_matrix< double, 3, 3 > & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetInverseJacobianForElement"
+                , GetInverseJacobianForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetInverseJacobianForElement)
+                , default_GetInverseJacobianForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetInverseJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::GetJacobianForElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & ) const;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 3, 3 > &,double & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetJacobianForElement"
+                , GetJacobianForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetJacobianForElement)
+                , default_GetJacobianForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetMaximumNodeIndex_function_type)(  ) ;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetMaximumNodeIndex_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetMaximumNodeIndex"
+                , GetMaximumNodeIndex_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetMaximumNodeIndex)
+                , default_GetMaximumNodeIndex_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetMaximumNodeIndex) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::GetNearestNodeIndex
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 3 > const & ) ;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 3 > const & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNearestNodeIndex"
+                , GetNearestNodeIndex_function_type(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
+                , default_GetNearestNodeIndex_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::GetNumAllNodes
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumAllNodes_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumAllNodes"
+                , GetNumAllNodes_function_type(&::AbstractMesh< 3, 3 >::GetNumAllNodes)
+                , default_GetNumAllNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumAllNodes) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumCableElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumCableElements_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumCableElements"
+                , GetNumCableElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumCableElements)
+                , default_GetNumCableElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumCableElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumLocalBoundaryElements_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumLocalBoundaryElements"
+                , GetNumLocalBoundaryElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalBoundaryElements)
+                , default_GetNumLocalBoundaryElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalBoundaryElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalElements_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumLocalElements_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumLocalElements"
+                , GetNumLocalElements_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumLocalElements)
+                , default_GetNumLocalElements_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumLocalElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumVertices_function_type)(  ) const;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNumVertices_function_type)(  ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNumVertices"
+                , GetNumVertices_function_type(&::AbstractTetrahedralMesh< 3, 3 >::GetNumVertices)
+                , default_GetNumVertices_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNumVertices) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::GetVectorFromAtoB
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( exported_class_t::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const &,::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetVectorFromAtoB"
+                , GetVectorFromAtoB_function_type(&::AbstractMesh< 3, 3 >::GetVectorFromAtoB)
+                , default_GetVectorFromAtoB_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetVectorFromAtoB)
+                , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetWeightedDirectionForBoundaryElement"
+                , GetWeightedDirectionForBoundaryElement_function_type(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForBoundaryElement)
+                , default_GetWeightedDirectionForBoundaryElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 3 > &,double & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetWeightedDirectionForElement"
+                , GetWeightedDirectionForElement_function_type(&::TetrahedralMesh< 3, 3 >::GetWeightedDirectionForElement)
+                , default_GetWeightedDirectionForElement_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWeightedDirectionForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::GetWidth
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) const;
+            typedef double ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::AbstractMesh< 3, 3 >::GetWidth)
+                , default_GetWidth_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::PermuteNodes
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_PermuteNodes_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type(&::TetrahedralMesh< 3, 3 >::PermuteNodes)
+                , default_PermuteNodes_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_PermuteNodes) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::PermuteNodes
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)( ::std::vector< unsigned int > const & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type( &::TetrahedralMesh< 3, 3 >::PermuteNodes )
+                , ( bp::arg("perm") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "ReadNodesPerProcessorFile"
+                , ReadNodesPerProcessorFile_function_type(&::TetrahedralMesh< 3, 3 >::ReadNodesPerProcessorFile)
+                , default_ReadNodesPerProcessorFile_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_ReadNodesPerProcessorFile)
+                , ( bp::arg("rNodesPerProcessorFile") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshJacobianCachedData_function_type)(  ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_RefreshJacobianCachedData_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "RefreshJacobianCachedData"
+                , RefreshJacobianCachedData_function_type(&::TetrahedralMesh< 3, 3 >::RefreshJacobianCachedData)
+                , default_RefreshJacobianCachedData_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_RefreshJacobianCachedData) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::RefreshMesh
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_RefreshMesh_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "RefreshMesh"
+                , RefreshMesh_function_type(&::TetrahedralMesh< 3, 3 >::RefreshMesh)
+                , default_RefreshMesh_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_RefreshMesh) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Rotate
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 3, 3 > ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Rotate"
+                , Rotate_function_type(&::AbstractMesh< 3, 3 >::Rotate)
+                , default_Rotate_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Rotate)
+                , ( bp::arg("rotationMatrix") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Rotate
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 3, 3 >::Rotate )
+                , ( bp::arg("axis"), bp::arg("angle") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Rotate
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 3, 3 >::Rotate )
+                , ( bp::arg("theta") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Scale
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Scale_function_type)( double const,double const,double const ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Scale"
+                , Scale_function_type(&::AbstractMesh< 3, 3 >::Scale)
+                , default_Scale_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Scale)
+                , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::SetDistributedVectorFactory
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "SetDistributedVectorFactory"
+                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::SetDistributedVectorFactory)
+                , default_SetDistributedVectorFactory_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_SetDistributedVectorFactory)
+                , ( bp::arg("pFactory") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 3, 3 >::SetElementOwnerships
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*SetElementOwnerships_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "SetElementOwnerships"
+                , SetElementOwnerships_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SetElementOwnerships ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::SolveBoundaryElementMapping
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "SolveBoundaryElementMapping"
+                , SolveBoundaryElementMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveBoundaryElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::SolveElementMapping
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "SolveElementMapping"
+                , SolveElementMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 3, 3 >::SolveNodeMapping
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef unsigned int ( MutableMesh_less__3_comma__3__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "SolveNodeMapping"
+                , SolveNodeMapping_function_type( &MutableMesh_less__3_comma__3__greater__wrapper::default_SolveNodeMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Translate
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
+            typedef void ( MutableMesh_less__3_comma__3__greater__wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 > const & ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Translate"
+                , Translate_function_type(&::AbstractMesh< 3, 3 >::Translate)
+                , default_Translate_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_Translate)
+                , ( bp::arg("rDisplacement") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::Translate
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "Translate"
+                , Translate_function_type( &::AbstractMesh< 3, 3 >::Translate )
+                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+        
+        }
     }
 
     { //::VertexMesh< 3, 3 >
         typedef bp::class_< VertexMesh_less__3_comma__3__greater__wrapper, bp::bases< AbstractMesh< 3, 3 > >, boost::noncopyable > VertexMesh3_3_exposer_t;
         VertexMesh3_3_exposer_t VertexMesh3_3_exposer = VertexMesh3_3_exposer_t( "VertexMesh3_3", bp::init< std::vector< Node<3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("vertexElements") )) );
         bp::scope VertexMesh3_3_scope( VertexMesh3_3_exposer );
+        VertexMesh3_3_exposer.def( bp::init< std::vector< Node<3> * >, std::vector< VertexElement<2, 3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
         VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< >() );
@@ -14237,6 +15324,22 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
         bp::implicitly_convertible< boost::shared_ptr< PottsMesh< 3 > >, boost::shared_ptr< AbstractMesh< 3, 3 > > >();
     }
 
+    bp::class_< SharedHoneycombVertexMeshGenerator_wrapper >( "HoneycombVertexMeshGenerator", bp::init< unsigned int, unsigned int, bp::optional< bool, double, double, double > >(( bp::arg("numElementsAcross"), bp::arg("numElementsUp"), bp::arg("isFlatBottom")=(bool)(false), bp::arg("cellRearrangementThreshold")=0.01, bp::arg("t2Threshold")=0.001, bp::arg("elementArea")=0.5 * sqrt(3.) )) )    
+        .def( bp::init< >() )    
+        .def( 
+            "GetMesh"
+            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( ::SharedHoneycombVertexMeshGenerator::* )(  ))(&::SharedHoneycombVertexMeshGenerator::GetMesh)
+            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( SharedHoneycombVertexMeshGenerator_wrapper::* )(  ))(&SharedHoneycombVertexMeshGenerator_wrapper::default_GetMesh) );
+
+    bp::class_< SharedCylindricalHoneycombVertexMeshGenerator_wrapper >( "CylindricalHoneycombVertexMeshGenerator", bp::init< unsigned int, unsigned int, bp::optional< bool, double, double > >(( bp::arg("numElementsAcross"), bp::arg("numElementsUp"), bp::arg("isFlatBottom")=(bool)(false), bp::arg("cellRearrangementThreshold")=0.01, bp::arg("t2Threshold")=0.001 )) )    
+        .def( 
+            "GetCylindricalMesh"
+            , (::boost::shared_ptr< Cylindrical2dVertexMesh > ( ::SharedCylindricalHoneycombVertexMeshGenerator::* )(  ))( &::SharedCylindricalHoneycombVertexMeshGenerator::GetCylindricalMesh ) )    
+        .def( 
+            "GetMesh"
+            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( ::SharedCylindricalHoneycombVertexMeshGenerator::* )(  ))(&::SharedCylindricalHoneycombVertexMeshGenerator::GetMesh)
+            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( SharedCylindricalHoneycombVertexMeshGenerator_wrapper::* )(  ))(&SharedCylindricalHoneycombVertexMeshGenerator_wrapper::default_GetMesh) );
+
     bp::class_< SharedHoneycombMeshGenerator_wrapper >( "HoneycombMeshGenerator", bp::init< unsigned int, unsigned int, bp::optional< unsigned int, double > >(( bp::arg("numNodesAlongWidth"), bp::arg("numNodesAlongLength"), bp::arg("ghosts")=(unsigned int)(0), bp::arg("scaleFactor")=1. )) )    
         .def( bp::init< >() )    
         .def( 
@@ -14257,14 +15360,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
             , (::boost::shared_ptr< MutableMesh< 2, 2 > > ( ::SharedHoneycombMeshGenerator::* )(  ))(&::SharedHoneycombMeshGenerator::GetMesh)
             , (::boost::shared_ptr< MutableMesh< 2, 2 > > ( SharedHoneycombMeshGenerator_wrapper::* )(  ))(&SharedHoneycombMeshGenerator_wrapper::default_GetMesh) );
 
-    bp::class_< SharedHoneycombVertexMeshGenerator_wrapper >( "HoneycombVertexMeshGenerator", bp::init< unsigned int, unsigned int, bp::optional< bool, double, double, double > >(( bp::arg("numElementsAcross"), bp::arg("numElementsUp"), bp::arg("isFlatBottom")=(bool)(false), bp::arg("cellRearrangementThreshold")=0.01, bp::arg("t2Threshold")=0.001, bp::arg("elementArea")=0.5 * sqrt(3.) )) )    
-        .def( bp::init< >() )    
-        .def( 
-            "GetMesh"
-            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( ::SharedHoneycombVertexMeshGenerator::* )(  ))(&::SharedHoneycombVertexMeshGenerator::GetMesh)
-            , (::boost::shared_ptr< MutableVertexMesh< 2, 2 > > ( SharedHoneycombVertexMeshGenerator_wrapper::* )(  ))(&SharedHoneycombVertexMeshGenerator_wrapper::default_GetMesh) );
-
-    bp::class_< SharedPottsMeshGenerator_less__2__greater__wrapper >( "SharedPottsMeshGenerator2", bp::init< unsigned int, unsigned int, unsigned int, bp::optional< unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, bool, bool, bool, bool > >(( bp::arg("numNodesAcross"), bp::arg("numElementsAcross"), bp::arg("elementWidth"), bp::arg("numNodesUp")=(unsigned int)(1U), bp::arg("numElementsUp")=(unsigned int)(1U), bp::arg("elementHeight")=(unsigned int)(1U), bp::arg("numNodesDeep")=(unsigned int)(1U), bp::arg("numElementsDeep")=(unsigned int)(1U), bp::arg("elementDepth")=(unsigned int)(1U), bp::arg("startAtBottomLeft")=(bool)(false), bp::arg("isPeriodicInX")=(bool)(false), bp::arg("isPeriodicInY")=(bool)(false), bp::arg("isPeriodicInZ")=(bool)(false) )) )    
+    bp::class_< SharedPottsMeshGenerator_less__2__greater__wrapper >( "PottsMeshGenerator2", bp::init< unsigned int, unsigned int, unsigned int, bp::optional< unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, bool, bool, bool, bool > >(( bp::arg("numNodesAcross"), bp::arg("numElementsAcross"), bp::arg("elementWidth"), bp::arg("numNodesUp")=(unsigned int)(1U), bp::arg("numElementsUp")=(unsigned int)(1U), bp::arg("elementHeight")=(unsigned int)(1U), bp::arg("numNodesDeep")=(unsigned int)(1U), bp::arg("numElementsDeep")=(unsigned int)(1U), bp::arg("elementDepth")=(unsigned int)(1U), bp::arg("startAtBottomLeft")=(bool)(false), bp::arg("isPeriodicInX")=(bool)(false), bp::arg("isPeriodicInY")=(bool)(false), bp::arg("isPeriodicInZ")=(bool)(false) )) )    
         .def( bp::init< >() )    
         .def( 
             "GetMesh"

@@ -523,6 +523,48 @@ struct AbstractCellCycleModel_wrapper : AbstractCellCycleModel, bp::wrapper< Abs
 
 };
 
+struct AbstractCellKiller_less__2__greater__wrapper : AbstractCellKiller< 2 >, bp::wrapper< AbstractCellKiller< 2 > > {
+
+    AbstractCellKiller_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation )
+    : AbstractCellKiller<2>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< AbstractCellKiller< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ){
+        bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" );
+        func_CheckAndLabelCellsForApoptosisOrDeath(  );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" );
+        func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct AbstractCellKiller_less__3__greater__wrapper : AbstractCellKiller< 3 >, bp::wrapper< AbstractCellKiller< 3 > > {
+
+    AbstractCellKiller_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation )
+    : AbstractCellKiller<3>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< AbstractCellKiller< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ){
+        bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" );
+        func_CheckAndLabelCellsForApoptosisOrDeath(  );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" );
+        func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
 struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellPopulation< 2, 2 >, bp::wrapper< AbstractCellPopulation< 2, 2 > > {
 
     virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ){
@@ -1005,6 +1047,58 @@ struct AbstractCellPopulation_less__3_comma__3__greater__wrapper : AbstractCellP
     virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
         bp::override func_WriteVtkResultsToFile = this->get_override( "WriteVtkResultsToFile" );
         func_WriteVtkResultsToFile( rDirectory );
+    }
+
+};
+
+struct AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrapper : AbstractCellPopulationBoundaryCondition< 2, 2 >, bp::wrapper< AbstractCellPopulationBoundaryCondition< 2, 2 > > {
+
+    AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation )
+    : AbstractCellPopulationBoundaryCondition<2, 2>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< AbstractCellPopulationBoundaryCondition< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & rOldLocations ){
+        bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" );
+        func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" );
+        func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ){
+        bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" );
+        return func_VerifyBoundaryCondition(  );
+    }
+
+};
+
+struct AbstractCellPopulationBoundaryCondition_less__3_comma__3__greater__wrapper : AbstractCellPopulationBoundaryCondition< 3, 3 >, bp::wrapper< AbstractCellPopulationBoundaryCondition< 3, 3 > > {
+
+    AbstractCellPopulationBoundaryCondition_less__3_comma__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation )
+    : AbstractCellPopulationBoundaryCondition<3, 3>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< AbstractCellPopulationBoundaryCondition< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & rOldLocations ){
+        bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" );
+        func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ){
+        bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" );
+        func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ){
+        bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" );
+        return func_VerifyBoundaryCondition(  );
     }
 
 };
@@ -2325,6 +2419,248 @@ struct AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper : Ab
 
 };
 
+struct AbstractPdeModifier_less__2__greater__wrapper : AbstractPdeModifier< 2 >, bp::wrapper< AbstractPdeModifier< 2 > > {
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractGrowingDomainPdeModifier_less__2__greater__wrapper : AbstractGrowingDomainPdeModifier< 2 >, bp::wrapper< AbstractGrowingDomainPdeModifier< 2 > > {
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractPdeModifier_less__3__greater__wrapper : AbstractPdeModifier< 3 >, bp::wrapper< AbstractPdeModifier< 3 > > {
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct AbstractGrowingDomainPdeModifier_less__3__greater__wrapper : AbstractGrowingDomainPdeModifier< 3 >, bp::wrapper< AbstractGrowingDomainPdeModifier< 3 > > {
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->AbstractPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        AbstractPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
+};
+
 struct AbstractOnLatticeCellPopulation_less__2__greater__wrapper : AbstractOnLatticeCellPopulation< 2 >, bp::wrapper< AbstractOnLatticeCellPopulation< 2 > > {
 
     virtual void AddUpdateRule( ::boost::shared_ptr< AbstractUpdateRule< 2 > > pUpdateRule ){
@@ -3156,6 +3492,62 @@ struct AbstractPhaseBasedCellCycleModel_wrapper : AbstractPhaseBasedCellCycleMod
 
 };
 
+struct AbstractPottsUpdateRule_less__2__greater__wrapper : AbstractPottsUpdateRule< 2 >, bp::wrapper< AbstractPottsUpdateRule< 2 > > {
+
+    AbstractPottsUpdateRule_less__2__greater__wrapper( )
+    : AbstractPottsUpdateRule<2>( )
+      , bp::wrapper< AbstractPottsUpdateRule< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ){
+        bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" );
+        return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        AbstractPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct AbstractPottsUpdateRule_less__3__greater__wrapper : AbstractPottsUpdateRule< 3 >, bp::wrapper< AbstractPottsUpdateRule< 3 > > {
+
+    AbstractPottsUpdateRule_less__3__greater__wrapper( )
+    : AbstractPottsUpdateRule<3>( )
+      , bp::wrapper< AbstractPottsUpdateRule< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ){
+        bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" );
+        return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->AbstractPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        AbstractPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
 struct AbstractSimpleCellCycleModel_wrapper : AbstractSimpleCellCycleModel, bp::wrapper< AbstractSimpleCellCycleModel > {
 
     AbstractSimpleCellCycleModel_wrapper(::AbstractSimpleCellCycleModel const & rModel )
@@ -3977,6 +4369,222 @@ struct AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper : Abst
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
+};
+
+struct AdhesionPottsUpdateRule_less__2__greater__wrapper : AdhesionPottsUpdateRule< 2 >, bp::wrapper< AdhesionPottsUpdateRule< 2 > > {
+
+    AdhesionPottsUpdateRule_less__2__greater__wrapper(AdhesionPottsUpdateRule<2> const & arg )
+    : AdhesionPottsUpdateRule<2>( arg )
+      , bp::wrapper< AdhesionPottsUpdateRule< 2 > >(){
+        // copy constructor
+        
+    }
+
+    AdhesionPottsUpdateRule_less__2__greater__wrapper( )
+    : AdhesionPottsUpdateRule<2>( )
+      , bp::wrapper< AdhesionPottsUpdateRule< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        return AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual double GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        if( bp::override func_GetCellBoundaryAdhesionEnergy = this->get_override( "GetCellBoundaryAdhesionEnergy" ) )
+            return func_GetCellBoundaryAdhesionEnergy( pCell );
+        else{
+            return this->AdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy( pCell );
+        }
+    }
+    
+    double default_GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        return AdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy( pCell );
+    }
+
+    virtual double GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        if( bp::override func_GetCellCellAdhesionEnergy = this->get_override( "GetCellCellAdhesionEnergy" ) )
+            return func_GetCellCellAdhesionEnergy( pCellA, pCellB );
+        else{
+            return this->AdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+        }
+    }
+    
+    double default_GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        return AdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->AdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        AdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct AdhesionPottsUpdateRule_less__3__greater__wrapper : AdhesionPottsUpdateRule< 3 >, bp::wrapper< AdhesionPottsUpdateRule< 3 > > {
+
+    AdhesionPottsUpdateRule_less__3__greater__wrapper(AdhesionPottsUpdateRule<3> const & arg )
+    : AdhesionPottsUpdateRule<3>( arg )
+      , bp::wrapper< AdhesionPottsUpdateRule< 3 > >(){
+        // copy constructor
+        
+    }
+
+    AdhesionPottsUpdateRule_less__3__greater__wrapper( )
+    : AdhesionPottsUpdateRule<3>( )
+      , bp::wrapper< AdhesionPottsUpdateRule< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        return AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual double GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        if( bp::override func_GetCellBoundaryAdhesionEnergy = this->get_override( "GetCellBoundaryAdhesionEnergy" ) )
+            return func_GetCellBoundaryAdhesionEnergy( pCell );
+        else{
+            return this->AdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy( pCell );
+        }
+    }
+    
+    double default_GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        return AdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy( pCell );
+    }
+
+    virtual double GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        if( bp::override func_GetCellCellAdhesionEnergy = this->get_override( "GetCellCellAdhesionEnergy" ) )
+            return func_GetCellCellAdhesionEnergy( pCellA, pCellB );
+        else{
+            return this->AdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+        }
+    }
+    
+    double default_GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        return AdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct ApoptoticCellKiller_less__2__greater__wrapper : ApoptoticCellKiller< 2 >, bp::wrapper< ApoptoticCellKiller< 2 > > {
+
+    ApoptoticCellKiller_less__2__greater__wrapper(ApoptoticCellKiller<2> const & arg )
+    : ApoptoticCellKiller<2>( arg )
+      , bp::wrapper< ApoptoticCellKiller< 2 > >(){
+        // copy constructor
+        
+    }
+
+    ApoptoticCellKiller_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation )
+    : ApoptoticCellKiller<2>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< ApoptoticCellKiller< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->ApoptoticCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        ApoptoticCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->ApoptoticCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        ApoptoticCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct ApoptoticCellKiller_less__3__greater__wrapper : ApoptoticCellKiller< 3 >, bp::wrapper< ApoptoticCellKiller< 3 > > {
+
+    ApoptoticCellKiller_less__3__greater__wrapper(ApoptoticCellKiller<3> const & arg )
+    : ApoptoticCellKiller<3>( arg )
+      , bp::wrapper< ApoptoticCellKiller< 3 > >(){
+        // copy constructor
+        
+    }
+
+    ApoptoticCellKiller_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation )
+    : ApoptoticCellKiller<3>( boost::python::ptr(pCellPopulation) )
+      , bp::wrapper< ApoptoticCellKiller< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->ApoptoticCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        ApoptoticCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->ApoptoticCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        ApoptoticCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
     }
 
 };
@@ -4857,6 +5465,256 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
 
 };
 
+struct CellwiseSourceEllipticPde_less__2__greater__wrapper : CellwiseSourceEllipticPde< 2 >, bp::wrapper< CellwiseSourceEllipticPde< 2 > > {
+
+    CellwiseSourceEllipticPde_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > & rCellPopulation, double sourceCoefficient=0. )
+    : CellwiseSourceEllipticPde<2>( boost::ref(rCellPopulation), sourceCoefficient )
+      , bp::wrapper< CellwiseSourceEllipticPde< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual double ComputeConstantInUSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ) {
+        if( bp::override func_ComputeConstantInUSourceTerm = this->get_override( "ComputeConstantInUSourceTerm" ) )
+            return func_ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        else{
+            return this->CellwiseSourceEllipticPde< 2 >::ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        }
+    }
+    
+    double default_ComputeConstantInUSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ) {
+        return CellwiseSourceEllipticPde< 2 >::ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual ::boost::numeric::ublas::c_matrix< double, 2, 2 > ComputeDiffusionTerm( ::ChastePoint< 2 > const & rX ) {
+        if( bp::override func_ComputeDiffusionTerm = this->get_override( "ComputeDiffusionTerm" ) )
+            return func_ComputeDiffusionTerm( boost::ref(rX) );
+        else{
+            return this->CellwiseSourceEllipticPde< 2 >::ComputeDiffusionTerm( boost::ref(rX) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_matrix< double, 2, 2 > default_ComputeDiffusionTerm( ::ChastePoint< 2 > const & rX ) {
+        return CellwiseSourceEllipticPde< 2 >::ComputeDiffusionTerm( boost::ref(rX) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTerm = this->get_override( "ComputeLinearInUCoeffInSourceTerm" ) )
+            return func_ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        else{
+            return this->CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTerm( ::ChastePoint< 2 > const & rX, ::Element< 2, 2 > * pElement ) {
+        return CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTermAtNode = this->get_override( "ComputeLinearInUCoeffInSourceTermAtNode" ) )
+            return func_ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+    }
+
+};
+
+struct CellwiseSourceEllipticPde_less__3__greater__wrapper : CellwiseSourceEllipticPde< 3 >, bp::wrapper< CellwiseSourceEllipticPde< 3 > > {
+
+    CellwiseSourceEllipticPde_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > & rCellPopulation, double sourceCoefficient=0. )
+    : CellwiseSourceEllipticPde<3>( boost::ref(rCellPopulation), sourceCoefficient )
+      , bp::wrapper< CellwiseSourceEllipticPde< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual double ComputeConstantInUSourceTerm( ::ChastePoint< 3 > const & rX, ::Element< 3, 3 > * pElement ) {
+        if( bp::override func_ComputeConstantInUSourceTerm = this->get_override( "ComputeConstantInUSourceTerm" ) )
+            return func_ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        else{
+            return this->CellwiseSourceEllipticPde< 3 >::ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        }
+    }
+    
+    double default_ComputeConstantInUSourceTerm( ::ChastePoint< 3 > const & rX, ::Element< 3, 3 > * pElement ) {
+        return CellwiseSourceEllipticPde< 3 >::ComputeConstantInUSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual ::boost::numeric::ublas::c_matrix< double, 3, 3 > ComputeDiffusionTerm( ::ChastePoint< 3 > const & rX ) {
+        if( bp::override func_ComputeDiffusionTerm = this->get_override( "ComputeDiffusionTerm" ) )
+            return func_ComputeDiffusionTerm( boost::ref(rX) );
+        else{
+            return this->CellwiseSourceEllipticPde< 3 >::ComputeDiffusionTerm( boost::ref(rX) );
+        }
+    }
+    
+    ::boost::numeric::ublas::c_matrix< double, 3, 3 > default_ComputeDiffusionTerm( ::ChastePoint< 3 > const & rX ) {
+        return CellwiseSourceEllipticPde< 3 >::ComputeDiffusionTerm( boost::ref(rX) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTerm( ::ChastePoint< 3 > const & rX, ::Element< 3, 3 > * pElement ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTerm = this->get_override( "ComputeLinearInUCoeffInSourceTerm" ) )
+            return func_ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        else{
+            return this->CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTerm( ::ChastePoint< 3 > const & rX, ::Element< 3, 3 > * pElement ) {
+        return CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 3 > const & rNode ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTermAtNode = this->get_override( "ComputeLinearInUCoeffInSourceTermAtNode" ) )
+            return func_ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 3 > const & rNode ) {
+        return CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+    }
+
+};
+
+struct DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper : DifferentialAdhesionPottsUpdateRule< 2 >, bp::wrapper< DifferentialAdhesionPottsUpdateRule< 2 > > {
+
+    DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper(DifferentialAdhesionPottsUpdateRule<2> const & arg )
+    : DifferentialAdhesionPottsUpdateRule<2>( arg )
+      , bp::wrapper< DifferentialAdhesionPottsUpdateRule< 2 > >(){
+        // copy constructor
+        
+    }
+
+    DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper( )
+    : DifferentialAdhesionPottsUpdateRule<2>( )
+      , bp::wrapper< DifferentialAdhesionPottsUpdateRule< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        if( bp::override func_GetCellBoundaryAdhesionEnergy = this->get_override( "GetCellBoundaryAdhesionEnergy" ) )
+            return func_GetCellBoundaryAdhesionEnergy( pCell );
+        else{
+            return this->DifferentialAdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy( pCell );
+        }
+    }
+    
+    double default_GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        return DifferentialAdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy( pCell );
+    }
+
+    virtual double GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        if( bp::override func_GetCellCellAdhesionEnergy = this->get_override( "GetCellCellAdhesionEnergy" ) )
+            return func_GetCellCellAdhesionEnergy( pCellA, pCellB );
+        else{
+            return this->DifferentialAdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+        }
+    }
+    
+    double default_GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        return DifferentialAdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->DifferentialAdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        DifferentialAdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        return AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper : DifferentialAdhesionPottsUpdateRule< 3 >, bp::wrapper< DifferentialAdhesionPottsUpdateRule< 3 > > {
+
+    DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper(DifferentialAdhesionPottsUpdateRule<3> const & arg )
+    : DifferentialAdhesionPottsUpdateRule<3>( arg )
+      , bp::wrapper< DifferentialAdhesionPottsUpdateRule< 3 > >(){
+        // copy constructor
+        
+    }
+
+    DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper( )
+    : DifferentialAdhesionPottsUpdateRule<3>( )
+      , bp::wrapper< DifferentialAdhesionPottsUpdateRule< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        if( bp::override func_GetCellBoundaryAdhesionEnergy = this->get_override( "GetCellBoundaryAdhesionEnergy" ) )
+            return func_GetCellBoundaryAdhesionEnergy( pCell );
+        else{
+            return this->DifferentialAdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy( pCell );
+        }
+    }
+    
+    double default_GetCellBoundaryAdhesionEnergy( ::CellPtr pCell ) {
+        return DifferentialAdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy( pCell );
+    }
+
+    virtual double GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        if( bp::override func_GetCellCellAdhesionEnergy = this->get_override( "GetCellCellAdhesionEnergy" ) )
+            return func_GetCellCellAdhesionEnergy( pCellA, pCellB );
+        else{
+            return this->DifferentialAdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+        }
+    }
+    
+    double default_GetCellCellAdhesionEnergy( ::CellPtr pCellA, ::CellPtr pCellB ) {
+        return DifferentialAdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy( pCellA, pCellB );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        return AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+};
+
 struct DiffusionCaUpdateRule_less__2__greater__wrapper : DiffusionCaUpdateRule< 2 >, bp::wrapper< DiffusionCaUpdateRule< 2 > > {
 
     DiffusionCaUpdateRule_less__2__greater__wrapper(DiffusionCaUpdateRule<2> const & arg )
@@ -4937,6 +5795,62 @@ struct DiffusionCaUpdateRule_less__3__greater__wrapper : DiffusionCaUpdateRule< 
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         DiffusionCaUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct EllipticGrowingDomainPdeModifier_less__2__greater__wrapper : EllipticGrowingDomainPdeModifier< 2 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 2 > > {
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+    }
+
+};
+
+struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrowingDomainPdeModifier< 3 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > > {
+
+    virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
+            func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
+    }
+
+    virtual void UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfSolve = this->get_override( "UpdateAtEndOfSolve" ) )
+            func_UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        else{
+            this->AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
     }
 
 };
@@ -8477,6 +9391,198 @@ struct OnLatticeSimulation_less__3__greater__wrapper : OnLatticeSimulation< 3 >,
 
 };
 
+struct PlaneBasedCellKiller_less__2__greater__wrapper : PlaneBasedCellKiller< 2 >, bp::wrapper< PlaneBasedCellKiller< 2 > > {
+
+    PlaneBasedCellKiller_less__2__greater__wrapper(PlaneBasedCellKiller<2> const & arg )
+    : PlaneBasedCellKiller<2>( arg )
+      , bp::wrapper< PlaneBasedCellKiller< 2 > >(){
+        // copy constructor
+        
+    }
+
+    PlaneBasedCellKiller_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 2 > point, ::boost::numeric::ublas::c_vector< double, 2 > normal )
+    : PlaneBasedCellKiller<2>( boost::python::ptr(pCellPopulation), point, normal )
+      , bp::wrapper< PlaneBasedCellKiller< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->PlaneBasedCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        PlaneBasedCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->PlaneBasedCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        PlaneBasedCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct PlaneBasedCellKiller_less__3__greater__wrapper : PlaneBasedCellKiller< 3 >, bp::wrapper< PlaneBasedCellKiller< 3 > > {
+
+    PlaneBasedCellKiller_less__3__greater__wrapper(PlaneBasedCellKiller<3> const & arg )
+    : PlaneBasedCellKiller<3>( arg )
+      , bp::wrapper< PlaneBasedCellKiller< 3 > >(){
+        // copy constructor
+        
+    }
+
+    PlaneBasedCellKiller_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 3 > point, ::boost::numeric::ublas::c_vector< double, 3 > normal )
+    : PlaneBasedCellKiller<3>( boost::python::ptr(pCellPopulation), point, normal )
+      , bp::wrapper< PlaneBasedCellKiller< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->PlaneBasedCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        PlaneBasedCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->PlaneBasedCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        PlaneBasedCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct PlaneBoundaryCondition_less__2_comma__2__greater__wrapper : PlaneBoundaryCondition< 2, 2 >, bp::wrapper< PlaneBoundaryCondition< 2, 2 > > {
+
+    PlaneBoundaryCondition_less__2_comma__2__greater__wrapper(PlaneBoundaryCondition<2, 2> const & arg )
+    : PlaneBoundaryCondition<2, 2>( arg )
+      , bp::wrapper< PlaneBoundaryCondition< 2, 2 > >(){
+        // copy constructor
+        
+    }
+
+    PlaneBoundaryCondition_less__2_comma__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 2 > point, ::boost::numeric::ublas::c_vector< double, 2 > normal )
+    : PlaneBoundaryCondition<2, 2>( boost::python::ptr(pCellPopulation), point, normal )
+      , bp::wrapper< PlaneBoundaryCondition< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & rOldLocations ) {
+        if( bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" ) )
+            func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        else{
+            this->PlaneBoundaryCondition< 2, 2 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        }
+    }
+    
+    void default_ImposeBoundaryCondition( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & rOldLocations ) {
+        PlaneBoundaryCondition< 2, 2 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
+            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        else{
+            this->PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ) {
+        if( bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" ) )
+            return func_VerifyBoundaryCondition(  );
+        else{
+            return this->PlaneBoundaryCondition< 2, 2 >::VerifyBoundaryCondition(  );
+        }
+    }
+    
+    bool default_VerifyBoundaryCondition(  ) {
+        return PlaneBoundaryCondition< 2, 2 >::VerifyBoundaryCondition( );
+    }
+
+};
+
+struct PlaneBoundaryCondition_less__3_comma__3__greater__wrapper : PlaneBoundaryCondition< 3, 3 >, bp::wrapper< PlaneBoundaryCondition< 3, 3 > > {
+
+    PlaneBoundaryCondition_less__3_comma__3__greater__wrapper(PlaneBoundaryCondition<3, 3> const & arg )
+    : PlaneBoundaryCondition<3, 3>( arg )
+      , bp::wrapper< PlaneBoundaryCondition< 3, 3 > >(){
+        // copy constructor
+        
+    }
+
+    PlaneBoundaryCondition_less__3_comma__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 3 > point, ::boost::numeric::ublas::c_vector< double, 3 > normal )
+    : PlaneBoundaryCondition<3, 3>( boost::python::ptr(pCellPopulation), point, normal )
+      , bp::wrapper< PlaneBoundaryCondition< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & rOldLocations ) {
+        if( bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" ) )
+            func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        else{
+            this->PlaneBoundaryCondition< 3, 3 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        }
+    }
+    
+    void default_ImposeBoundaryCondition( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & rOldLocations ) {
+        PlaneBoundaryCondition< 3, 3 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
+            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        else{
+            this->PlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        PlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ) {
+        if( bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" ) )
+            return func_VerifyBoundaryCondition(  );
+        else{
+            return this->PlaneBoundaryCondition< 3, 3 >::VerifyBoundaryCondition(  );
+        }
+    }
+    
+    bool default_VerifyBoundaryCondition(  ) {
+        return PlaneBoundaryCondition< 3, 3 >::VerifyBoundaryCondition( );
+    }
+
+};
+
 struct PottsBasedCellPopulation_less__2__greater__wrapper : PottsBasedCellPopulation< 2 >, bp::wrapper< PottsBasedCellPopulation< 2 > > {
 
     PottsBasedCellPopulation_less__2__greater__wrapper(::PottsMesh< 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, bool deleteMesh=false, bool validate=true, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
@@ -9353,6 +10459,90 @@ struct PottsBasedCellPopulation_less__3__greater__wrapper : PottsBasedCellPopula
 
 };
 
+struct RandomCellKiller_less__2__greater__wrapper : RandomCellKiller< 2 >, bp::wrapper< RandomCellKiller< 2 > > {
+
+    RandomCellKiller_less__2__greater__wrapper(RandomCellKiller<2> const & arg )
+    : RandomCellKiller<2>( arg )
+      , bp::wrapper< RandomCellKiller< 2 > >(){
+        // copy constructor
+        
+    }
+
+    RandomCellKiller_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation, double probabilityOfDeathInAnHour )
+    : RandomCellKiller<2>( boost::python::ptr(pCellPopulation), probabilityOfDeathInAnHour )
+      , bp::wrapper< RandomCellKiller< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->RandomCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        RandomCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->RandomCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        RandomCellKiller< 2 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct RandomCellKiller_less__3__greater__wrapper : RandomCellKiller< 3 >, bp::wrapper< RandomCellKiller< 3 > > {
+
+    RandomCellKiller_less__3__greater__wrapper(RandomCellKiller<3> const & arg )
+    : RandomCellKiller<3>( arg )
+      , bp::wrapper< RandomCellKiller< 3 > >(){
+        // copy constructor
+        
+    }
+
+    RandomCellKiller_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation, double probabilityOfDeathInAnHour )
+    : RandomCellKiller<3>( boost::python::ptr(pCellPopulation), probabilityOfDeathInAnHour )
+      , bp::wrapper< RandomCellKiller< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        if( bp::override func_CheckAndLabelCellsForApoptosisOrDeath = this->get_override( "CheckAndLabelCellsForApoptosisOrDeath" ) )
+            func_CheckAndLabelCellsForApoptosisOrDeath(  );
+        else{
+            this->RandomCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath(  );
+        }
+    }
+    
+    void default_CheckAndLabelCellsForApoptosisOrDeath(  ) {
+        RandomCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath( );
+    }
+
+    virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
+            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        else{
+            this->RandomCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
+        RandomCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
 struct SimpleOxygenBasedCellCycleModel_wrapper : SimpleOxygenBasedCellCycleModel, bp::wrapper< SimpleOxygenBasedCellCycleModel > {
 
     SimpleOxygenBasedCellCycleModel_wrapper(::SimpleOxygenBasedCellCycleModel const & rModel )
@@ -9774,6 +10964,198 @@ struct SimulationTime_wrapper : SimulationTime, bp::wrapper< SimulationTime > {
       , bp::wrapper< SimulationTime >(){
         // null constructor
     
+    }
+
+};
+
+struct SphereGeometryBoundaryCondition_less__2__greater__wrapper : SphereGeometryBoundaryCondition< 2 >, bp::wrapper< SphereGeometryBoundaryCondition< 2 > > {
+
+    SphereGeometryBoundaryCondition_less__2__greater__wrapper(SphereGeometryBoundaryCondition<2> const & arg )
+    : SphereGeometryBoundaryCondition<2>( arg )
+      , bp::wrapper< SphereGeometryBoundaryCondition< 2 > >(){
+        // copy constructor
+        
+    }
+
+    SphereGeometryBoundaryCondition_less__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 2 > centre, double radius, double distance=1.0000000000000001E-5 )
+    : SphereGeometryBoundaryCondition<2>( boost::python::ptr(pCellPopulation), centre, radius, distance )
+      , bp::wrapper< SphereGeometryBoundaryCondition< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & rOldLocations ) {
+        if( bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" ) )
+            func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        else{
+            this->SphereGeometryBoundaryCondition< 2 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        }
+    }
+    
+    void default_ImposeBoundaryCondition( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & rOldLocations ) {
+        SphereGeometryBoundaryCondition< 2 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
+            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        else{
+            this->SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ) {
+        if( bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" ) )
+            return func_VerifyBoundaryCondition(  );
+        else{
+            return this->SphereGeometryBoundaryCondition< 2 >::VerifyBoundaryCondition(  );
+        }
+    }
+    
+    bool default_VerifyBoundaryCondition(  ) {
+        return SphereGeometryBoundaryCondition< 2 >::VerifyBoundaryCondition( );
+    }
+
+};
+
+struct SphereGeometryBoundaryCondition_less__3__greater__wrapper : SphereGeometryBoundaryCondition< 3 >, bp::wrapper< SphereGeometryBoundaryCondition< 3 > > {
+
+    SphereGeometryBoundaryCondition_less__3__greater__wrapper(SphereGeometryBoundaryCondition<3> const & arg )
+    : SphereGeometryBoundaryCondition<3>( arg )
+      , bp::wrapper< SphereGeometryBoundaryCondition< 3 > >(){
+        // copy constructor
+        
+    }
+
+    SphereGeometryBoundaryCondition_less__3__greater__wrapper(::AbstractCellPopulation< 3, 3 > * pCellPopulation, ::boost::numeric::ublas::c_vector< double, 3 > centre, double radius, double distance=1.0000000000000001E-5 )
+    : SphereGeometryBoundaryCondition<3>( boost::python::ptr(pCellPopulation), centre, radius, distance )
+      , bp::wrapper< SphereGeometryBoundaryCondition< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void ImposeBoundaryCondition( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & rOldLocations ) {
+        if( bp::override func_ImposeBoundaryCondition = this->get_override( "ImposeBoundaryCondition" ) )
+            func_ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        else{
+            this->SphereGeometryBoundaryCondition< 3 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+        }
+    }
+    
+    void default_ImposeBoundaryCondition( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & rOldLocations ) {
+        SphereGeometryBoundaryCondition< 3 >::ImposeBoundaryCondition( boost::ref(rOldLocations) );
+    }
+
+    virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
+            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        else{
+            this->SphereGeometryBoundaryCondition< 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
+        SphereGeometryBoundaryCondition< 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual bool VerifyBoundaryCondition(  ) {
+        if( bp::override func_VerifyBoundaryCondition = this->get_override( "VerifyBoundaryCondition" ) )
+            return func_VerifyBoundaryCondition(  );
+        else{
+            return this->SphereGeometryBoundaryCondition< 3 >::VerifyBoundaryCondition(  );
+        }
+    }
+    
+    bool default_VerifyBoundaryCondition(  ) {
+        return SphereGeometryBoundaryCondition< 3 >::VerifyBoundaryCondition( );
+    }
+
+};
+
+struct SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper : SurfaceAreaConstraintPottsUpdateRule< 2 >, bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 2 > > {
+
+    SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper(SurfaceAreaConstraintPottsUpdateRule<2> const & arg )
+    : SurfaceAreaConstraintPottsUpdateRule<2>( arg )
+      , bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 2 > >(){
+        // copy constructor
+        
+    }
+
+    SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper( )
+    : SurfaceAreaConstraintPottsUpdateRule<2>( )
+      , bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->SurfaceAreaConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        return SurfaceAreaConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper : SurfaceAreaConstraintPottsUpdateRule< 3 >, bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 3 > > {
+
+    SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper(SurfaceAreaConstraintPottsUpdateRule<3> const & arg )
+    : SurfaceAreaConstraintPottsUpdateRule<3>( arg )
+      , bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 3 > >(){
+        // copy constructor
+        
+    }
+
+    SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper( )
+    : SurfaceAreaConstraintPottsUpdateRule<3>( )
+      , bp::wrapper< SurfaceAreaConstraintPottsUpdateRule< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->SurfaceAreaConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        return SurfaceAreaConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->SurfaceAreaConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        SurfaceAreaConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
     }
 
 };
@@ -10990,6 +12372,90 @@ struct VertexBasedCellPopulation_less__3__greater__wrapper : VertexBasedCellPopu
 
 };
 
+struct VolumeConstraintPottsUpdateRule_less__2__greater__wrapper : VolumeConstraintPottsUpdateRule< 2 >, bp::wrapper< VolumeConstraintPottsUpdateRule< 2 > > {
+
+    VolumeConstraintPottsUpdateRule_less__2__greater__wrapper(VolumeConstraintPottsUpdateRule<2> const & arg )
+    : VolumeConstraintPottsUpdateRule<2>( arg )
+      , bp::wrapper< VolumeConstraintPottsUpdateRule< 2 > >(){
+        // copy constructor
+        
+    }
+
+    VolumeConstraintPottsUpdateRule_less__2__greater__wrapper( )
+    : VolumeConstraintPottsUpdateRule<2>( )
+      , bp::wrapper< VolumeConstraintPottsUpdateRule< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->VolumeConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 2 > & rCellPopulation ) {
+        return VolumeConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->VolumeConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        VolumeConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
+struct VolumeConstraintPottsUpdateRule_less__3__greater__wrapper : VolumeConstraintPottsUpdateRule< 3 >, bp::wrapper< VolumeConstraintPottsUpdateRule< 3 > > {
+
+    VolumeConstraintPottsUpdateRule_less__3__greater__wrapper(VolumeConstraintPottsUpdateRule<3> const & arg )
+    : VolumeConstraintPottsUpdateRule<3>( arg )
+      , bp::wrapper< VolumeConstraintPottsUpdateRule< 3 > >(){
+        // copy constructor
+        
+    }
+
+    VolumeConstraintPottsUpdateRule_less__3__greater__wrapper( )
+    : VolumeConstraintPottsUpdateRule<3>( )
+      , bp::wrapper< VolumeConstraintPottsUpdateRule< 3 > >(){
+        // null constructor
+    
+    }
+
+    virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        if( bp::override func_EvaluateHamiltonianContribution = this->get_override( "EvaluateHamiltonianContribution" ) )
+            return func_EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        else{
+            return this->VolumeConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+        }
+    }
+    
+    double default_EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {
+        return VolumeConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution( currentNodeIndex, targetNodeIndex, boost::ref(rCellPopulation) );
+    }
+
+    virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
+            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        else{
+            this->VolumeConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
+        VolumeConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+    }
+
+};
+
 struct VtkSceneModifier_less__2__greater__wrapper : VtkSceneModifier< 2 >, bp::wrapper< VtkSceneModifier< 2 > > {
 
     VtkSceneModifier_less__2__greater__wrapper(VtkSceneModifier<2> const & arg )
@@ -11398,6 +12864,13 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         set_less__boost_scope_shared_ptr_less_Cell_greater___greater__exposer.def( bp::indexing::set_suite< std::set< boost::shared_ptr<Cell> > >() );
     }
 
+    { //::std::map< boost::shared_ptr<Cell>, unsigned int >
+        typedef bp::class_< std::map< boost::shared_ptr<Cell>, unsigned int > > map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer_t;
+        map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer_t map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer = map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer_t( "map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater_" );
+        bp::scope map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__scope( map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer );
+        map_less__boost_scope_shared_ptr_less_Cell_greater__comma__unsigned_int__greater__exposer.def( bp::indexing::map_suite< std::map< boost::shared_ptr<Cell>, unsigned int > >() );
+    }
+
     bp::class_< std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > >("map_less__Node_less_3_greater___ptr__comma__boost_scope_numeric_scope_ublas_scope_c_vector_less_double_comma__3_greater___greater_")    
         .def( bp::indexing::map_suite< std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > >() );
 
@@ -11437,6 +12910,11 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractUpdateRule<2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractUpdateRule< 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
     }
@@ -11480,6 +12958,11 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractUpdateRule<3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractUpdateRule< 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
     }
@@ -11793,6 +13276,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractGrowingDomainPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< EllipticGrowingDomainPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
@@ -11878,6 +13364,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< EllipticGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
@@ -11948,6 +13437,114 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::AbstractCellCycleModel::* )( unsigned int ))( &::AbstractCellCycleModel::SetDimension )
             , ( bp::arg("dimension") ) );
 
+    { //::AbstractCellKiller< 2 >
+        typedef bp::class_< AbstractCellKiller_less__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellKiller2_exposer_t;
+        AbstractCellKiller2_exposer_t AbstractCellKiller2_exposer = AbstractCellKiller2_exposer_t( "AbstractCellKiller2", bp::init< AbstractCellPopulation< 2, 2 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope AbstractCellKiller2_scope( AbstractCellKiller2_exposer );
+        { //::AbstractCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath
+        
+            typedef AbstractCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            
+            AbstractCellKiller2_exposer.def( 
+                "CheckAndLabelCellsForApoptosisOrDeath"
+                , bp::pure_virtual( CheckAndLabelCellsForApoptosisOrDeath_function_type(&::AbstractCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath) ) );
+        
+        }
+        { //::AbstractCellKiller< 2 >::GetCellPopulation
+        
+            typedef AbstractCellKiller< 2 > exported_class_t;
+            typedef ::AbstractCellPopulation< 2, 2 > const * ( exported_class_t::*GetCellPopulation_function_type)(  ) const;
+            
+            AbstractCellKiller2_exposer.def( 
+                "GetCellPopulation"
+                , GetCellPopulation_function_type( &::AbstractCellKiller< 2 >::GetCellPopulation )
+                , bp::return_value_policy< bp::manage_new_object >() );
+        
+        }
+        { //::AbstractCellKiller< 2 >::OutputCellKillerInfo
+        
+            typedef AbstractCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellKiller2_exposer.def( 
+                "OutputCellKillerInfo"
+                , OutputCellKillerInfo_function_type( &::AbstractCellKiller< 2 >::OutputCellKillerInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellKiller< 2 >::OutputCellKillerParameters
+        
+            typedef AbstractCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellKiller2_exposer.def( 
+                "OutputCellKillerParameters"
+                , bp::pure_virtual( OutputCellKillerParameters_function_type(&::AbstractCellKiller< 2 >::OutputCellKillerParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<2> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< RandomCellKiller< 2 > >, boost::shared_ptr< AbstractCellKiller< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 2 > >, boost::shared_ptr< AbstractCellKiller< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 2 > >, boost::shared_ptr< AbstractCellKiller< 2 > > >();
+    }
+
+    { //::AbstractCellKiller< 3 >
+        typedef bp::class_< AbstractCellKiller_less__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellKiller3_exposer_t;
+        AbstractCellKiller3_exposer_t AbstractCellKiller3_exposer = AbstractCellKiller3_exposer_t( "AbstractCellKiller3", bp::init< AbstractCellPopulation< 3, 3 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope AbstractCellKiller3_scope( AbstractCellKiller3_exposer );
+        { //::AbstractCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath
+        
+            typedef AbstractCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            
+            AbstractCellKiller3_exposer.def( 
+                "CheckAndLabelCellsForApoptosisOrDeath"
+                , bp::pure_virtual( CheckAndLabelCellsForApoptosisOrDeath_function_type(&::AbstractCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath) ) );
+        
+        }
+        { //::AbstractCellKiller< 3 >::GetCellPopulation
+        
+            typedef AbstractCellKiller< 3 > exported_class_t;
+            typedef ::AbstractCellPopulation< 3, 3 > const * ( exported_class_t::*GetCellPopulation_function_type)(  ) const;
+            
+            AbstractCellKiller3_exposer.def( 
+                "GetCellPopulation"
+                , GetCellPopulation_function_type( &::AbstractCellKiller< 3 >::GetCellPopulation )
+                , bp::return_value_policy< bp::manage_new_object >() );
+        
+        }
+        { //::AbstractCellKiller< 3 >::OutputCellKillerInfo
+        
+            typedef AbstractCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellKiller3_exposer.def( 
+                "OutputCellKillerInfo"
+                , OutputCellKillerInfo_function_type( &::AbstractCellKiller< 3 >::OutputCellKillerInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellKiller< 3 >::OutputCellKillerParameters
+        
+            typedef AbstractCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellKiller3_exposer.def( 
+                "OutputCellKillerParameters"
+                , bp::pure_virtual( OutputCellKillerParameters_function_type(&::AbstractCellKiller< 3 >::OutputCellKillerParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<3> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< RandomCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+    }
+
     { //::AbstractCellProperty
         typedef bp::class_< AbstractCellProperty, bp::bases< Identifiable > > AbstractCellProperty_exposer_t;
         AbstractCellProperty_exposer_t AbstractCellProperty_exposer = AbstractCellProperty_exposer_t( "AbstractCellProperty", bp::init< >() );
@@ -12004,14 +13601,16 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellLabel >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellAncestor >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellId >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
     }
@@ -12033,9 +13632,9 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellMutationState > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< Identifiable > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
-        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
         bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
+        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
     }
 
     { //::AbstractCellPopulation< 2, 2 >
@@ -13330,6 +14929,134 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
     }
 
+    { //::AbstractCellPopulationBoundaryCondition< 2, 2 >
+        typedef bp::class_< AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellPopulationBoundaryCondition2_2_exposer_t;
+        AbstractCellPopulationBoundaryCondition2_2_exposer_t AbstractCellPopulationBoundaryCondition2_2_exposer = AbstractCellPopulationBoundaryCondition2_2_exposer_t( "AbstractCellPopulationBoundaryCondition2_2", bp::init< AbstractCellPopulation< 2, 2 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope AbstractCellPopulationBoundaryCondition2_2_scope( AbstractCellPopulationBoundaryCondition2_2_exposer );
+        { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::GetCellPopulation
+        
+            typedef AbstractCellPopulationBoundaryCondition< 2, 2 > exported_class_t;
+            typedef ::AbstractCellPopulation< 2, 2 > const * ( exported_class_t::*GetCellPopulation_function_type)(  ) const;
+            
+            AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
+                "GetCellPopulation"
+                , GetCellPopulation_function_type( &::AbstractCellPopulationBoundaryCondition< 2, 2 >::GetCellPopulation )
+                , bp::return_value_policy< bp::manage_new_object >() );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::ImposeBoundaryCondition
+        
+            typedef AbstractCellPopulationBoundaryCondition< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ImposeBoundaryCondition_function_type)( ::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const & ) ;
+            
+            AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
+                "ImposeBoundaryCondition"
+                , bp::pure_virtual( ImposeBoundaryCondition_function_type(&::AbstractCellPopulationBoundaryCondition< 2, 2 >::ImposeBoundaryCondition) )
+                , ( bp::arg("rOldLocations") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionInfo
+        
+            typedef AbstractCellPopulationBoundaryCondition< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationBoundaryConditionInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
+                "OutputCellPopulationBoundaryConditionInfo"
+                , OutputCellPopulationBoundaryConditionInfo_function_type( &::AbstractCellPopulationBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters
+        
+            typedef AbstractCellPopulationBoundaryCondition< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationBoundaryConditionParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
+                "OutputCellPopulationBoundaryConditionParameters"
+                , bp::pure_virtual( OutputCellPopulationBoundaryConditionParameters_function_type(&::AbstractCellPopulationBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::VerifyBoundaryCondition
+        
+            typedef AbstractCellPopulationBoundaryCondition< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*VerifyBoundaryCondition_function_type)(  ) ;
+            
+            AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
+                "VerifyBoundaryCondition"
+                , bp::pure_virtual( VerifyBoundaryCondition_function_type(&::AbstractCellPopulationBoundaryCondition< 2, 2 >::VerifyBoundaryCondition) ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<2, 2> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
+    }
+
+    { //::AbstractCellPopulationBoundaryCondition< 3, 3 >
+        typedef bp::class_< AbstractCellPopulationBoundaryCondition_less__3_comma__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellPopulationBoundaryCondition3_3_exposer_t;
+        AbstractCellPopulationBoundaryCondition3_3_exposer_t AbstractCellPopulationBoundaryCondition3_3_exposer = AbstractCellPopulationBoundaryCondition3_3_exposer_t( "AbstractCellPopulationBoundaryCondition3_3", bp::init< AbstractCellPopulation< 3, 3 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope AbstractCellPopulationBoundaryCondition3_3_scope( AbstractCellPopulationBoundaryCondition3_3_exposer );
+        { //::AbstractCellPopulationBoundaryCondition< 3, 3 >::GetCellPopulation
+        
+            typedef AbstractCellPopulationBoundaryCondition< 3, 3 > exported_class_t;
+            typedef ::AbstractCellPopulation< 3, 3 > const * ( exported_class_t::*GetCellPopulation_function_type)(  ) const;
+            
+            AbstractCellPopulationBoundaryCondition3_3_exposer.def( 
+                "GetCellPopulation"
+                , GetCellPopulation_function_type( &::AbstractCellPopulationBoundaryCondition< 3, 3 >::GetCellPopulation )
+                , bp::return_value_policy< bp::manage_new_object >() );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 3, 3 >::ImposeBoundaryCondition
+        
+            typedef AbstractCellPopulationBoundaryCondition< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*ImposeBoundaryCondition_function_type)( ::std::map<Node<3> *, boost::numeric::ublas::c_vector<double, 3>, std::less<Node<3> *>, std::allocator<std::pair<Node<3> *const, boost::numeric::ublas::c_vector<double, 3> > > > const & ) ;
+            
+            AbstractCellPopulationBoundaryCondition3_3_exposer.def( 
+                "ImposeBoundaryCondition"
+                , bp::pure_virtual( ImposeBoundaryCondition_function_type(&::AbstractCellPopulationBoundaryCondition< 3, 3 >::ImposeBoundaryCondition) )
+                , ( bp::arg("rOldLocations") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionInfo
+        
+            typedef AbstractCellPopulationBoundaryCondition< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationBoundaryConditionInfo_function_type)( ::out_stream & ) ;
+            
+            AbstractCellPopulationBoundaryCondition3_3_exposer.def( 
+                "OutputCellPopulationBoundaryConditionInfo"
+                , OutputCellPopulationBoundaryConditionInfo_function_type( &::AbstractCellPopulationBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionInfo )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters
+        
+            typedef AbstractCellPopulationBoundaryCondition< 3, 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellPopulationBoundaryConditionParameters_function_type)( ::out_stream & ) ;
+            
+            AbstractCellPopulationBoundaryCondition3_3_exposer.def( 
+                "OutputCellPopulationBoundaryConditionParameters"
+                , bp::pure_virtual( OutputCellPopulationBoundaryConditionParameters_function_type(&::AbstractCellPopulationBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters) )
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::AbstractCellPopulationBoundaryCondition< 3, 3 >::VerifyBoundaryCondition
+        
+            typedef AbstractCellPopulationBoundaryCondition< 3, 3 > exported_class_t;
+            typedef bool ( exported_class_t::*VerifyBoundaryCondition_function_type)(  ) ;
+            
+            AbstractCellPopulationBoundaryCondition3_3_exposer.def( 
+                "VerifyBoundaryCondition"
+                , bp::pure_virtual( VerifyBoundaryCondition_function_type(&::AbstractCellPopulationBoundaryCondition< 3, 3 >::VerifyBoundaryCondition) ) );
+        
+        }
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<3, 3> > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 3 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 3, 3 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > >();
+    }
+
     { //::AbstractCellProliferativeType
         typedef bp::class_< AbstractCellProliferativeType, bp::bases< AbstractCellProperty > > AbstractCellProliferativeType_exposer_t;
         AbstractCellProliferativeType_exposer_t AbstractCellProliferativeType_exposer = AbstractCellProliferativeType_exposer_t( "AbstractCellProliferativeType", bp::init< unsigned int >(( bp::arg("colour") )) );
@@ -13348,8 +15075,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< Identifiable > >();
         bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
-        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
     }
 
     bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::no_init )    
@@ -14108,6 +15835,190 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 3, 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
     }
 
+    bp::class_< AbstractPdeModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::noncopyable >( "AbstractPdeModifier2", bp::no_init )    
+        .def( 
+            "GetBoundaryCondition"
+            , (::boost::shared_ptr< AbstractBoundaryCondition< 2 > > ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetBoundaryCondition ) )    
+        .def( 
+            "GetOutputGradient"
+            , (bool ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetOutputGradient ) )    
+        .def( 
+            "GetPde"
+            , (::boost::shared_ptr< AbstractLinearPde< 2, 2 > > ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetPde ) )    
+        .def( 
+            "HasAveragedSourcePde"
+            , (bool ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::HasAveragedSourcePde ) )    
+        .def( 
+            "IsNeumannBoundaryCondition"
+            , (bool ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::IsNeumannBoundaryCondition ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::out_stream & ))(&::AbstractPdeModifier< 2 >::OutputSimulationModifierParameters)
+            , (void ( AbstractPdeModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&AbstractPdeModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDependentVariableName"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::std::string const & ))( &::AbstractPdeModifier< 2 >::SetDependentVariableName )
+            , ( bp::arg("rName") ) )    
+        .def( 
+            "SetOutputGradient"
+            , (void ( ::AbstractPdeModifier<2>::* )( bool ))( &::AbstractPdeModifier< 2 >::SetOutputGradient )
+            , ( bp::arg("outputGradient") ) )    
+        .def( 
+            "SetOutputSolutionAtPdeNodes"
+            , (void ( ::AbstractPdeModifier<2>::* )( bool ))( &::AbstractPdeModifier< 2 >::SetOutputSolutionAtPdeNodes )
+            , ( bp::arg("outputSolutionAtPdeNodes") ) )    
+        .def( 
+            "SetUpSourceTermsForAveragedSourcePde"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::TetrahedralMesh< 2, 2 > *,::std::map< boost::shared_ptr<Cell>, unsigned int > * ))( &::AbstractPdeModifier< 2 >::SetUpSourceTermsForAveragedSourcePde )
+            , ( bp::arg("pMesh"), bp::arg("pCellPdeElementMap") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&::AbstractPdeModifier< 2 >::SetupSolve)
+            , (void ( AbstractPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&AbstractPdeModifier_less__2__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve)
+            , (void ( AbstractPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , bp::pure_virtual( (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfTimeStep) )
+            , ( bp::arg("rCellPopulation") ) )    
+
+    bp::class_< AbstractGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractPdeModifier< 2 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier2", bp::no_init )    
+        .def( 
+            "GenerateFeMesh"
+            , (void ( ::AbstractGrowingDomainPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))( &::AbstractGrowingDomainPdeModifier< 2 >::GenerateFeMesh )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractGrowingDomainPdeModifier<2>::* )( ::out_stream & ))(&::AbstractGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters)
+            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "UpdateCellData"
+            , (void ( ::AbstractGrowingDomainPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))( &::AbstractGrowingDomainPdeModifier< 2 >::UpdateCellData )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&::AbstractPdeModifier< 2 >::SetupSolve)
+            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > &,::std::string ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve)
+            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep)
+            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< AbstractPdeModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::noncopyable >( "AbstractPdeModifier3", bp::no_init )    
+        .def( 
+            "GetBoundaryCondition"
+            , (::boost::shared_ptr< AbstractBoundaryCondition< 3 > > ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetBoundaryCondition ) )    
+        .def( 
+            "GetOutputGradient"
+            , (bool ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetOutputGradient ) )    
+        .def( 
+            "GetPde"
+            , (::boost::shared_ptr< AbstractLinearPde< 3, 3 > > ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetPde ) )    
+        .def( 
+            "HasAveragedSourcePde"
+            , (bool ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::HasAveragedSourcePde ) )    
+        .def( 
+            "IsNeumannBoundaryCondition"
+            , (bool ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::IsNeumannBoundaryCondition ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::out_stream & ))(&::AbstractPdeModifier< 3 >::OutputSimulationModifierParameters)
+            , (void ( AbstractPdeModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&AbstractPdeModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDependentVariableName"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::std::string const & ))( &::AbstractPdeModifier< 3 >::SetDependentVariableName )
+            , ( bp::arg("rName") ) )    
+        .def( 
+            "SetOutputGradient"
+            , (void ( ::AbstractPdeModifier<3>::* )( bool ))( &::AbstractPdeModifier< 3 >::SetOutputGradient )
+            , ( bp::arg("outputGradient") ) )    
+        .def( 
+            "SetOutputSolutionAtPdeNodes"
+            , (void ( ::AbstractPdeModifier<3>::* )( bool ))( &::AbstractPdeModifier< 3 >::SetOutputSolutionAtPdeNodes )
+            , ( bp::arg("outputSolutionAtPdeNodes") ) )    
+        .def( 
+            "SetUpSourceTermsForAveragedSourcePde"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::TetrahedralMesh< 3, 3 > *,::std::map< boost::shared_ptr<Cell>, unsigned int > * ))( &::AbstractPdeModifier< 3 >::SetUpSourceTermsForAveragedSourcePde )
+            , ( bp::arg("pMesh"), bp::arg("pCellPdeElementMap") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&::AbstractPdeModifier< 3 >::SetupSolve)
+            , (void ( AbstractPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&AbstractPdeModifier_less__3__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve)
+            , (void ( AbstractPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , bp::pure_virtual( (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfTimeStep) )
+            , ( bp::arg("rCellPopulation") ) )    
+
+    bp::class_< AbstractGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractPdeModifier< 3 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier3", bp::no_init )    
+        .def( 
+            "GenerateFeMesh"
+            , (void ( ::AbstractGrowingDomainPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))( &::AbstractGrowingDomainPdeModifier< 3 >::GenerateFeMesh )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "OutputSimulationModifierParameters"
+            , (void ( ::AbstractGrowingDomainPdeModifier<3>::* )( ::out_stream & ))(&::AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters)
+            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "UpdateCellData"
+            , (void ( ::AbstractGrowingDomainPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))( &::AbstractGrowingDomainPdeModifier< 3 >::UpdateCellData )
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "SetupSolve"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&::AbstractPdeModifier< 3 >::SetupSolve)
+            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > &,::std::string ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_SetupSolve)
+            , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve)
+            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfTimeStep"
+            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep)
+            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , ( bp::arg("rCellPopulation") ) );
+
     bp::class_< AbstractOnLatticeCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOnLatticeCellPopulation2", bp::no_init )    
         .def( 
             "AddUpdateRule"
@@ -14542,6 +16453,28 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( AbstractPhaseBasedCellCycleModel_wrapper::* )( double ))(&AbstractPhaseBasedCellCycleModel_wrapper::default_SetBirthTime)
             , ( bp::arg("birthTime") ) );
 
+    bp::class_< AbstractPottsUpdateRule_less__2__greater__wrapper, bp::bases< AbstractUpdateRule< 2 > >, boost::noncopyable >( "AbstractPottsUpdateRule2", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , bp::pure_virtual( (double ( ::AbstractPottsUpdateRule<2>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&::AbstractPottsUpdateRule< 2 >::EvaluateHamiltonianContribution) )
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::AbstractPottsUpdateRule<2>::* )( ::out_stream & ))(&::AbstractPottsUpdateRule< 2 >::OutputUpdateRuleParameters)
+            , (void ( AbstractPottsUpdateRule_less__2__greater__wrapper::* )( ::out_stream & ))(&AbstractPottsUpdateRule_less__2__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) );
+
+    bp::class_< AbstractPottsUpdateRule_less__3__greater__wrapper, bp::bases< AbstractUpdateRule< 3 > >, boost::noncopyable >( "AbstractPottsUpdateRule3", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , bp::pure_virtual( (double ( ::AbstractPottsUpdateRule<3>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&::AbstractPottsUpdateRule< 3 >::EvaluateHamiltonianContribution) )
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::AbstractPottsUpdateRule<3>::* )( ::out_stream & ))(&::AbstractPottsUpdateRule< 3 >::OutputUpdateRuleParameters)
+            , (void ( AbstractPottsUpdateRule_less__3__greater__wrapper::* )( ::out_stream & ))(&AbstractPottsUpdateRule_less__3__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) );
+
     bp::class_< AbstractSimpleCellCycleModel_wrapper, bp::bases< AbstractCellCycleModel >, boost::noncopyable >( "AbstractSimpleCellCycleModel", bp::init< AbstractSimpleCellCycleModel const & >(( bp::arg("rModel") )) )    
         .def( bp::init< >() )    
         .def( 
@@ -14906,9 +16839,167 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper::default_WriteDataToVisualizerSetupFile)
             , ( bp::arg("pVizSetupFile") ) );
 
+    bp::class_< AdhesionPottsUpdateRule_less__2__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 2 > > >( "AdhesionPottsUpdateRule2", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&::AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution)
+            , (double ( AdhesionPottsUpdateRule_less__2__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&AdhesionPottsUpdateRule_less__2__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergy"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )( ::CellPtr ))(&::AdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy)
+            , (double ( AdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::CellPtr ))(&AdhesionPottsUpdateRule_less__2__greater__wrapper::default_GetCellBoundaryAdhesionEnergy)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )(  ))( &::AdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetCellCellAdhesionEnergy"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )( ::CellPtr,::CellPtr ))(&::AdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy)
+            , (double ( AdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&AdhesionPottsUpdateRule_less__2__greater__wrapper::default_GetCellCellAdhesionEnergy)
+            , ( bp::arg("pCellA"), bp::arg("pCellB") ) )    
+        .def( 
+            "GetCellCellAdhesionEnergyParameter"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )(  ))( &::AdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::AdhesionPottsUpdateRule<2>::* )( ::out_stream & ))(&::AdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters)
+            , (void ( AdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::out_stream & ))(&AdhesionPottsUpdateRule_less__2__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::AdhesionPottsUpdateRule<2>::* )( double ))( &::AdhesionPottsUpdateRule< 2 >::SetCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("cellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetCellCellAdhesionEnergyParameter"
+            , (void ( ::AdhesionPottsUpdateRule<2>::* )( double ))( &::AdhesionPottsUpdateRule< 2 >::SetCellCellAdhesionEnergyParameter )
+            , ( bp::arg("cellCellAdhesionEnergyEnergyParameter") ) );
+
+    bp::class_< AdhesionPottsUpdateRule_less__3__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 3 > > >( "AdhesionPottsUpdateRule3", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&::AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution)
+            , (double ( AdhesionPottsUpdateRule_less__3__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&AdhesionPottsUpdateRule_less__3__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergy"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )( ::CellPtr ))(&::AdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy)
+            , (double ( AdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::CellPtr ))(&AdhesionPottsUpdateRule_less__3__greater__wrapper::default_GetCellBoundaryAdhesionEnergy)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )(  ))( &::AdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetCellCellAdhesionEnergy"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )( ::CellPtr,::CellPtr ))(&::AdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy)
+            , (double ( AdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&AdhesionPottsUpdateRule_less__3__greater__wrapper::default_GetCellCellAdhesionEnergy)
+            , ( bp::arg("pCellA"), bp::arg("pCellB") ) )    
+        .def( 
+            "GetCellCellAdhesionEnergyParameter"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )(  ))( &::AdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::AdhesionPottsUpdateRule<3>::* )( ::out_stream & ))(&::AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters)
+            , (void ( AdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::out_stream & ))(&AdhesionPottsUpdateRule_less__3__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::AdhesionPottsUpdateRule<3>::* )( double ))( &::AdhesionPottsUpdateRule< 3 >::SetCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("cellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetCellCellAdhesionEnergyParameter"
+            , (void ( ::AdhesionPottsUpdateRule<3>::* )( double ))( &::AdhesionPottsUpdateRule< 3 >::SetCellCellAdhesionEnergyParameter )
+            , ( bp::arg("cellCellAdhesionEnergyEnergyParameter") ) );
+
     bp::class_< ApcOneHitCellMutationState, bp::bases< AbstractCellMutationState > >( "ApcOneHitCellMutationState", bp::init< >() );
 
     bp::class_< ApcTwoHitCellMutationState, bp::bases< AbstractCellMutationState > >( "ApcTwoHitCellMutationState", bp::init< >() );
+
+    { //::ApoptoticCellKiller< 2 >
+        typedef bp::class_< ApoptoticCellKiller_less__2__greater__wrapper, bp::bases< AbstractCellKiller< 2 > > > ApoptoticCellKiller2_exposer_t;
+        ApoptoticCellKiller2_exposer_t ApoptoticCellKiller2_exposer = ApoptoticCellKiller2_exposer_t( "ApoptoticCellKiller2", bp::init< AbstractCellPopulation< 2, 2 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope ApoptoticCellKiller2_scope( ApoptoticCellKiller2_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > *, ApoptoticCellKiller< 2 > >();
+        { //::ApoptoticCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath
+        
+            typedef ApoptoticCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            typedef void ( ApoptoticCellKiller_less__2__greater__wrapper::*default_CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            
+            ApoptoticCellKiller2_exposer.def( 
+                "CheckAndLabelCellsForApoptosisOrDeath"
+                , CheckAndLabelCellsForApoptosisOrDeath_function_type(&::ApoptoticCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath)
+                , default_CheckAndLabelCellsForApoptosisOrDeath_function_type(&ApoptoticCellKiller_less__2__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) );
+        
+        }
+        { //::ApoptoticCellKiller< 2 >::CheckAndLabelSingleCellForApoptosis
+        
+            typedef ApoptoticCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelSingleCellForApoptosis_function_type)( ::CellPtr ) ;
+            
+            ApoptoticCellKiller2_exposer.def( 
+                "CheckAndLabelSingleCellForApoptosis"
+                , CheckAndLabelSingleCellForApoptosis_function_type( &::ApoptoticCellKiller< 2 >::CheckAndLabelSingleCellForApoptosis )
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::ApoptoticCellKiller< 2 >::OutputCellKillerParameters
+        
+            typedef ApoptoticCellKiller< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            typedef void ( ApoptoticCellKiller_less__2__greater__wrapper::*default_OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            
+            ApoptoticCellKiller2_exposer.def( 
+                "OutputCellKillerParameters"
+                , OutputCellKillerParameters_function_type(&::ApoptoticCellKiller< 2 >::OutputCellKillerParameters)
+                , default_OutputCellKillerParameters_function_type(&ApoptoticCellKiller_less__2__greater__wrapper::default_OutputCellKillerParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+    }
+
+    { //::ApoptoticCellKiller< 3 >
+        typedef bp::class_< ApoptoticCellKiller_less__3__greater__wrapper, bp::bases< AbstractCellKiller< 3 > > > ApoptoticCellKiller3_exposer_t;
+        ApoptoticCellKiller3_exposer_t ApoptoticCellKiller3_exposer = ApoptoticCellKiller3_exposer_t( "ApoptoticCellKiller3", bp::init< AbstractCellPopulation< 3, 3 > * >(( bp::arg("pCellPopulation") )) );
+        bp::scope ApoptoticCellKiller3_scope( ApoptoticCellKiller3_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 3, 3 > *, ApoptoticCellKiller< 3 > >();
+        { //::ApoptoticCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath
+        
+            typedef ApoptoticCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            typedef void ( ApoptoticCellKiller_less__3__greater__wrapper::*default_CheckAndLabelCellsForApoptosisOrDeath_function_type)(  ) ;
+            
+            ApoptoticCellKiller3_exposer.def( 
+                "CheckAndLabelCellsForApoptosisOrDeath"
+                , CheckAndLabelCellsForApoptosisOrDeath_function_type(&::ApoptoticCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath)
+                , default_CheckAndLabelCellsForApoptosisOrDeath_function_type(&ApoptoticCellKiller_less__3__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) );
+        
+        }
+        { //::ApoptoticCellKiller< 3 >::CheckAndLabelSingleCellForApoptosis
+        
+            typedef ApoptoticCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*CheckAndLabelSingleCellForApoptosis_function_type)( ::CellPtr ) ;
+            
+            ApoptoticCellKiller3_exposer.def( 
+                "CheckAndLabelSingleCellForApoptosis"
+                , CheckAndLabelSingleCellForApoptosis_function_type( &::ApoptoticCellKiller< 3 >::CheckAndLabelSingleCellForApoptosis )
+                , ( bp::arg("pCell") ) );
+        
+        }
+        { //::ApoptoticCellKiller< 3 >::OutputCellKillerParameters
+        
+            typedef ApoptoticCellKiller< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            typedef void ( ApoptoticCellKiller_less__3__greater__wrapper::*default_OutputCellKillerParameters_function_type)( ::out_stream & ) ;
+            
+            ApoptoticCellKiller3_exposer.def( 
+                "OutputCellKillerParameters"
+                , OutputCellKillerParameters_function_type(&::ApoptoticCellKiller< 3 >::OutputCellKillerParameters)
+                , default_OutputCellKillerParameters_function_type(&ApoptoticCellKiller_less__3__greater__wrapper::default_OutputCellKillerParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+    }
 
     bp::class_< BetaCateninOneHitCellMutationState, bp::bases< AbstractCellMutationState > >( "BetaCateninOneHitCellMutationState", bp::init< >() );
 
@@ -15951,6 +18042,16 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , GetBirthTime_function_type( &::Cell::GetBirthTime ) );
         
         }
+        { //::Cell::GetCellCycleModel
+        
+            typedef ::AbstractCellCycleModel * ( ::Cell::*GetCellCycleModel_function_type)(  ) const;
+            
+            Cell_exposer.def( 
+                "GetCellCycleModel"
+                , GetCellCycleModel_function_type( &::Cell::GetCellCycleModel )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::Cell::GetCellData
         
             typedef ::boost::shared_ptr< CellData > ( ::Cell::*GetCellData_function_type)(  ) const;
@@ -16178,6 +18279,22 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         bp::implicitly_convertible< boost::shared_ptr< Cell >, boost::shared_ptr< boost::enable_shared_from_this< Cell > > >();
     }
 
+    { //::CellAncestor
+        typedef bp::class_< CellAncestor, bp::bases< AbstractCellProperty > > CellAncestor_exposer_t;
+        CellAncestor_exposer_t CellAncestor_exposer = CellAncestor_exposer_t( "CellAncestor", bp::init< bp::optional< unsigned int > >(( bp::arg("ancestor")=(unsigned int)(UNSIGNED_UNSET) )) );
+        bp::scope CellAncestor_scope( CellAncestor_exposer );
+        bp::implicitly_convertible< unsigned int, CellAncestor >();
+        { //::CellAncestor::GetAncestor
+        
+            typedef unsigned int ( ::CellAncestor::*GetAncestor_function_type)(  ) const;
+            
+            CellAncestor_exposer.def( 
+                "GetAncestor"
+                , GetAncestor_function_type( &::CellAncestor::GetAncestor ) );
+        
+        }
+    }
+
     bp::class_< CellId, bp::bases< AbstractCellProperty > >( "CellId", bp::init< >() )    
         .def( 
             "AssignCellId"
@@ -16192,6 +18309,22 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "ResetMaxCellId"
             , (void (*)(  ))( &::CellId::ResetMaxCellId ) )    
         .staticmethod( "ResetMaxCellId" );
+
+    { //::CellLabel
+        typedef bp::class_< CellLabel, bp::bases< AbstractCellProperty > > CellLabel_exposer_t;
+        CellLabel_exposer_t CellLabel_exposer = CellLabel_exposer_t( "CellLabel", bp::init< bp::optional< unsigned int > >(( bp::arg("colour")=(unsigned int)(5) )) );
+        bp::scope CellLabel_scope( CellLabel_exposer );
+        bp::implicitly_convertible< unsigned int, CellLabel >();
+        { //::CellLabel::GetColour
+        
+            typedef unsigned int ( ::CellLabel::*GetColour_function_type)(  ) const;
+            
+            CellLabel_exposer.def( 
+                "GetColour"
+                , GetColour_function_type( &::CellLabel::GetColour ) );
+        
+        }
+    }
 
     { //::CellPropertyRegistry
         typedef bp::class_< CellPropertyRegistry, boost::noncopyable > CellPropertyRegistry_exposer_t;
@@ -16323,7 +18456,253 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::CellsGenerator<UniformG1GenerationalCellCycleModel, 3>::* )( ::std::vector< boost::shared_ptr<Cell> > &,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< UniformG1GenerationalCellCycleModel, 3 >::GenerateGivenLocationIndices )
             , ( bp::arg("rCells"), bp::arg("locationIndices"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) );
 
+    { //::CellwiseSourceEllipticPde< 2 >
+        typedef bp::class_< CellwiseSourceEllipticPde_less__2__greater__wrapper, boost::noncopyable > CellwiseSourceEllipticPde2_exposer_t;
+        CellwiseSourceEllipticPde2_exposer_t CellwiseSourceEllipticPde2_exposer = CellwiseSourceEllipticPde2_exposer_t( "CellwiseSourceEllipticPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient") )) );
+        bp::scope CellwiseSourceEllipticPde2_scope( CellwiseSourceEllipticPde2_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, CellwiseSourceEllipticPde< 2 > >();
+        { //::CellwiseSourceEllipticPde< 2 >::ComputeConstantInUSourceTerm
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeConstantInUSourceTerm_function_type)( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__2__greater__wrapper::*default_ComputeConstantInUSourceTerm_function_type)( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ) ;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "ComputeConstantInUSourceTerm"
+                , ComputeConstantInUSourceTerm_function_type(&::CellwiseSourceEllipticPde< 2 >::ComputeConstantInUSourceTerm)
+                , default_ComputeConstantInUSourceTerm_function_type(&CellwiseSourceEllipticPde_less__2__greater__wrapper::default_ComputeConstantInUSourceTerm)
+                , ( bp::arg("rX"), bp::arg("pElement") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 2 >::ComputeDiffusionTerm
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_matrix< double, 2, 2 > ( exported_class_t::*ComputeDiffusionTerm_function_type)( ::ChastePoint< 2 > const & ) ;
+            typedef ::boost::numeric::ublas::c_matrix< double, 2, 2 > ( CellwiseSourceEllipticPde_less__2__greater__wrapper::*default_ComputeDiffusionTerm_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "ComputeDiffusionTerm"
+                , ComputeDiffusionTerm_function_type(&::CellwiseSourceEllipticPde< 2 >::ComputeDiffusionTerm)
+                , default_ComputeDiffusionTerm_function_type(&CellwiseSourceEllipticPde_less__2__greater__wrapper::default_ComputeDiffusionTerm)
+                , ( bp::arg("rX") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTerm
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeLinearInUCoeffInSourceTerm_function_type)( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__2__greater__wrapper::*default_ComputeLinearInUCoeffInSourceTerm_function_type)( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ) ;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "ComputeLinearInUCoeffInSourceTerm"
+                , ComputeLinearInUCoeffInSourceTerm_function_type(&::CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTerm)
+                , default_ComputeLinearInUCoeffInSourceTerm_function_type(&CellwiseSourceEllipticPde_less__2__greater__wrapper::default_ComputeLinearInUCoeffInSourceTerm)
+                , ( bp::arg("rX"), bp::arg("pElement") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTermAtNode
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__2__greater__wrapper::*default_ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "ComputeLinearInUCoeffInSourceTermAtNode"
+                , ComputeLinearInUCoeffInSourceTermAtNode_function_type(&::CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTermAtNode)
+                , default_ComputeLinearInUCoeffInSourceTermAtNode_function_type(&CellwiseSourceEllipticPde_less__2__greater__wrapper::default_ComputeLinearInUCoeffInSourceTermAtNode)
+                , ( bp::arg("rNode") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 2 >::GetCoefficient
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetCoefficient_function_type)(  ) const;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "GetCoefficient"
+                , GetCoefficient_function_type( &::CellwiseSourceEllipticPde< 2 >::GetCoefficient ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 2 >::rGetCellPopulation
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef ::AbstractCellPopulation< 2, 2 > const & ( exported_class_t::*rGetCellPopulation_function_type)(  ) const;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "rGetCellPopulation"
+                , rGetCellPopulation_function_type( &::CellwiseSourceEllipticPde< 2 >::rGetCellPopulation )
+                , bp::return_value_policy< bp::copy_const_reference >() );
+        
+        }
+    }
+
+    { //::CellwiseSourceEllipticPde< 3 >
+        typedef bp::class_< CellwiseSourceEllipticPde_less__3__greater__wrapper, boost::noncopyable > CellwiseSourceEllipticPde3_exposer_t;
+        CellwiseSourceEllipticPde3_exposer_t CellwiseSourceEllipticPde3_exposer = CellwiseSourceEllipticPde3_exposer_t( "CellwiseSourceEllipticPde3", bp::init< AbstractCellPopulation< 3, 3 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient") )) );
+        bp::scope CellwiseSourceEllipticPde3_scope( CellwiseSourceEllipticPde3_exposer );
+        bp::implicitly_convertible< AbstractCellPopulation< 3, 3 > &, CellwiseSourceEllipticPde< 3 > >();
+        { //::CellwiseSourceEllipticPde< 3 >::ComputeConstantInUSourceTerm
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeConstantInUSourceTerm_function_type)( ::ChastePoint< 3 > const &,::Element< 3, 3 > * ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__3__greater__wrapper::*default_ComputeConstantInUSourceTerm_function_type)( ::ChastePoint< 3 > const &,::Element< 3, 3 > * ) ;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "ComputeConstantInUSourceTerm"
+                , ComputeConstantInUSourceTerm_function_type(&::CellwiseSourceEllipticPde< 3 >::ComputeConstantInUSourceTerm)
+                , default_ComputeConstantInUSourceTerm_function_type(&CellwiseSourceEllipticPde_less__3__greater__wrapper::default_ComputeConstantInUSourceTerm)
+                , ( bp::arg("rX"), bp::arg("pElement") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 3 >::ComputeDiffusionTerm
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_matrix< double, 3, 3 > ( exported_class_t::*ComputeDiffusionTerm_function_type)( ::ChastePoint< 3 > const & ) ;
+            typedef ::boost::numeric::ublas::c_matrix< double, 3, 3 > ( CellwiseSourceEllipticPde_less__3__greater__wrapper::*default_ComputeDiffusionTerm_function_type)( ::ChastePoint< 3 > const & ) ;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "ComputeDiffusionTerm"
+                , ComputeDiffusionTerm_function_type(&::CellwiseSourceEllipticPde< 3 >::ComputeDiffusionTerm)
+                , default_ComputeDiffusionTerm_function_type(&CellwiseSourceEllipticPde_less__3__greater__wrapper::default_ComputeDiffusionTerm)
+                , ( bp::arg("rX") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTerm
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeLinearInUCoeffInSourceTerm_function_type)( ::ChastePoint< 3 > const &,::Element< 3, 3 > * ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__3__greater__wrapper::*default_ComputeLinearInUCoeffInSourceTerm_function_type)( ::ChastePoint< 3 > const &,::Element< 3, 3 > * ) ;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "ComputeLinearInUCoeffInSourceTerm"
+                , ComputeLinearInUCoeffInSourceTerm_function_type(&::CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTerm)
+                , default_ComputeLinearInUCoeffInSourceTerm_function_type(&CellwiseSourceEllipticPde_less__3__greater__wrapper::default_ComputeLinearInUCoeffInSourceTerm)
+                , ( bp::arg("rX"), bp::arg("pElement") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTermAtNode
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 3 > const & ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__3__greater__wrapper::*default_ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 3 > const & ) ;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "ComputeLinearInUCoeffInSourceTermAtNode"
+                , ComputeLinearInUCoeffInSourceTermAtNode_function_type(&::CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTermAtNode)
+                , default_ComputeLinearInUCoeffInSourceTermAtNode_function_type(&CellwiseSourceEllipticPde_less__3__greater__wrapper::default_ComputeLinearInUCoeffInSourceTermAtNode)
+                , ( bp::arg("rNode") ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 3 >::GetCoefficient
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef double ( exported_class_t::*GetCoefficient_function_type)(  ) const;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "GetCoefficient"
+                , GetCoefficient_function_type( &::CellwiseSourceEllipticPde< 3 >::GetCoefficient ) );
+        
+        }
+        { //::CellwiseSourceEllipticPde< 3 >::rGetCellPopulation
+        
+            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
+            typedef ::AbstractCellPopulation< 3, 3 > const & ( exported_class_t::*rGetCellPopulation_function_type)(  ) const;
+            
+            CellwiseSourceEllipticPde3_exposer.def( 
+                "rGetCellPopulation"
+                , rGetCellPopulation_function_type( &::CellwiseSourceEllipticPde< 3 >::rGetCellPopulation )
+                , bp::return_value_policy< bp::copy_const_reference >() );
+        
+        }
+    }
+
     bp::class_< DefaultCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "DefaultCellProliferativeType", bp::init< >() );
+
+    bp::class_< DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper, bp::bases< AdhesionPottsUpdateRule< 2 > > >( "DifferentialAdhesionPottsUpdateRule2", bp::init< >() )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergy"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( ::CellPtr ))(&::DifferentialAdhesionPottsUpdateRule< 2 >::GetCellBoundaryAdhesionEnergy)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::CellPtr ))(&DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::default_GetCellBoundaryAdhesionEnergy)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetCellCellAdhesionEnergy"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( ::CellPtr,::CellPtr ))(&::DifferentialAdhesionPottsUpdateRule< 2 >::GetCellCellAdhesionEnergy)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::default_GetCellCellAdhesionEnergy)
+            , ( bp::arg("pCellA"), bp::arg("pCellB") ) )    
+        .def( 
+            "GetLabelledCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<2>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::GetLabelledCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetLabelledCellCellAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<2>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::GetLabelledCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "GetLabelledCellLabelledCellAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<2>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::GetLabelledCellLabelledCellAdhesionEnergyParameter ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( ::out_stream & ))(&::DifferentialAdhesionPottsUpdateRule< 2 >::OutputUpdateRuleParameters)
+            , (void ( DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::* )( ::out_stream & ))(&DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetLabelledCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::SetLabelledCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetLabelledCellCellAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::SetLabelledCellCellAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellCellAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetLabelledCellLabelledCellAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<2>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 2 >::SetLabelledCellLabelledCellAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellLabelledCellAdhesionEnergyParameter") ) )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::AdhesionPottsUpdateRule<2>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&::AdhesionPottsUpdateRule< 2 >::EvaluateHamiltonianContribution)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&DifferentialAdhesionPottsUpdateRule_less__2__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) );
+
+    bp::class_< DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper, bp::bases< AdhesionPottsUpdateRule< 3 > > >( "DifferentialAdhesionPottsUpdateRule3", bp::init< >() )    
+        .def( 
+            "GetCellBoundaryAdhesionEnergy"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( ::CellPtr ))(&::DifferentialAdhesionPottsUpdateRule< 3 >::GetCellBoundaryAdhesionEnergy)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::CellPtr ))(&DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::default_GetCellBoundaryAdhesionEnergy)
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetCellCellAdhesionEnergy"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( ::CellPtr,::CellPtr ))(&::DifferentialAdhesionPottsUpdateRule< 3 >::GetCellCellAdhesionEnergy)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::default_GetCellCellAdhesionEnergy)
+            , ( bp::arg("pCellA"), bp::arg("pCellB") ) )    
+        .def( 
+            "GetLabelledCellBoundaryAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<3>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::GetLabelledCellBoundaryAdhesionEnergyParameter ) )    
+        .def( 
+            "GetLabelledCellCellAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<3>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::GetLabelledCellCellAdhesionEnergyParameter ) )    
+        .def( 
+            "GetLabelledCellLabelledCellAdhesionEnergyParameter"
+            , (double ( ::DifferentialAdhesionPottsUpdateRule<3>::* )(  ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::GetLabelledCellLabelledCellAdhesionEnergyParameter ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( ::out_stream & ))(&::DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters)
+            , (void ( DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::* )( ::out_stream & ))(&DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetLabelledCellBoundaryAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::SetLabelledCellBoundaryAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellBoundaryAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetLabelledCellCellAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::SetLabelledCellCellAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellCellAdhesionEnergyParameter") ) )    
+        .def( 
+            "SetLabelledCellLabelledCellAdhesionEnergyParameter"
+            , (void ( ::DifferentialAdhesionPottsUpdateRule<3>::* )( double ))( &::DifferentialAdhesionPottsUpdateRule< 3 >::SetLabelledCellLabelledCellAdhesionEnergyParameter )
+            , ( bp::arg("labelledCellLabelledCellAdhesionEnergyParameter") ) )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::AdhesionPottsUpdateRule<3>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&::AdhesionPottsUpdateRule< 3 >::EvaluateHamiltonianContribution)
+            , (double ( DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) );
 
     bp::class_< DifferentiatedCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "DifferentiatedCellProliferativeType", bp::init< >() );
 
@@ -16364,6 +18743,30 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             "SetDiffusionParameter"
             , (void ( ::DiffusionCaUpdateRule<3>::* )( double ))( &::DiffusionCaUpdateRule< 3 >::SetDiffusionParameter )
             , ( bp::arg("diffusionParameter") ) );
+
+    bp::class_< EllipticGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 2 > >, boost::noncopyable >( "type", bp::no_init )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve)
+            , (void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
+
+    bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > >, boost::noncopyable >( "type", bp::no_init )    
+        .def( 
+            "UpdateAtEndOfOutputTimeStep"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep)
+            , (void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+            , ( bp::arg("rCellPopulation") ) )    
+        .def( 
+            "UpdateAtEndOfSolve"
+            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve)
+            , (void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+            , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper, bp::bases< AbstractTwoBodyInteractionForce< 2, 2 > > >( "GeneralisedLinearSpringForce2_2", bp::init< >() )    
         .def( 
@@ -20889,6 +23292,106 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
     }
 
+    bp::class_< PlaneBasedCellKiller_less__2__greater__wrapper, bp::bases< AbstractCellKiller< 2 > > >( "PlaneBasedCellKiller2", bp::init< AbstractCellPopulation< 2, 2 > *, boost::numeric::ublas::c_vector< double, 2 >, boost::numeric::ublas::c_vector< double, 2 > >(( bp::arg("pCellPopulation"), bp::arg("point"), bp::arg("normal") )) )    
+        .def( 
+            "CheckAndLabelCellsForApoptosisOrDeath"
+            , (void ( ::PlaneBasedCellKiller<2>::* )(  ))(&::PlaneBasedCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath)
+            , (void ( PlaneBasedCellKiller_less__2__greater__wrapper::* )(  ))(&PlaneBasedCellKiller_less__2__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) )    
+        .def( 
+            "OutputCellKillerParameters"
+            , (void ( ::PlaneBasedCellKiller<2>::* )( ::out_stream & ))(&::PlaneBasedCellKiller< 2 >::OutputCellKillerParameters)
+            , (void ( PlaneBasedCellKiller_less__2__greater__wrapper::* )( ::out_stream & ))(&PlaneBasedCellKiller_less__2__greater__wrapper::default_OutputCellKillerParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "rGetNormalToPlane"
+            , (::boost::numeric::ublas::c_vector< double, 2 > const & ( ::PlaneBasedCellKiller<2>::* )(  )const)( &::PlaneBasedCellKiller< 2 >::rGetNormalToPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() )    
+        .def( 
+            "rGetPointOnPlane"
+            , (::boost::numeric::ublas::c_vector< double, 2 > const & ( ::PlaneBasedCellKiller<2>::* )(  )const)( &::PlaneBasedCellKiller< 2 >::rGetPointOnPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
+    bp::class_< PlaneBasedCellKiller_less__3__greater__wrapper, bp::bases< AbstractCellKiller< 3 > > >( "PlaneBasedCellKiller3", bp::init< AbstractCellPopulation< 3, 3 > *, boost::numeric::ublas::c_vector< double, 3 >, boost::numeric::ublas::c_vector< double, 3 > >(( bp::arg("pCellPopulation"), bp::arg("point"), bp::arg("normal") )) )    
+        .def( 
+            "CheckAndLabelCellsForApoptosisOrDeath"
+            , (void ( ::PlaneBasedCellKiller<3>::* )(  ))(&::PlaneBasedCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath)
+            , (void ( PlaneBasedCellKiller_less__3__greater__wrapper::* )(  ))(&PlaneBasedCellKiller_less__3__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) )    
+        .def( 
+            "OutputCellKillerParameters"
+            , (void ( ::PlaneBasedCellKiller<3>::* )( ::out_stream & ))(&::PlaneBasedCellKiller< 3 >::OutputCellKillerParameters)
+            , (void ( PlaneBasedCellKiller_less__3__greater__wrapper::* )( ::out_stream & ))(&PlaneBasedCellKiller_less__3__greater__wrapper::default_OutputCellKillerParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "rGetNormalToPlane"
+            , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::PlaneBasedCellKiller<3>::* )(  )const)( &::PlaneBasedCellKiller< 3 >::rGetNormalToPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() )    
+        .def( 
+            "rGetPointOnPlane"
+            , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::PlaneBasedCellKiller<3>::* )(  )const)( &::PlaneBasedCellKiller< 3 >::rGetPointOnPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
+    bp::class_< PlaneBoundaryCondition_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulationBoundaryCondition< 2, 2 > > >( "PlaneBoundaryCondition2_2", bp::init< AbstractCellPopulation< 2, 2 > *, boost::numeric::ublas::c_vector< double, 2 >, boost::numeric::ublas::c_vector< double, 2 > >(( bp::arg("pCellPopulation"), bp::arg("point"), bp::arg("normal") )) )    
+        .def( 
+            "GetUseJiggledNodesOnPlane"
+            , (bool ( ::PlaneBoundaryCondition<2, 2>::* )(  ))( &::PlaneBoundaryCondition< 2, 2 >::GetUseJiggledNodesOnPlane ) )    
+        .def( 
+            "ImposeBoundaryCondition"
+            , (void ( ::PlaneBoundaryCondition<2, 2>::* )( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & ))(&::PlaneBoundaryCondition< 2, 2 >::ImposeBoundaryCondition)
+            , (void ( PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::* )( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & ))(&PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::default_ImposeBoundaryCondition)
+            , ( bp::arg("rOldLocations") ) )    
+        .def( 
+            "OutputCellPopulationBoundaryConditionParameters"
+            , (void ( ::PlaneBoundaryCondition<2, 2>::* )( ::out_stream & ))(&::PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters)
+            , (void ( PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::default_OutputCellPopulationBoundaryConditionParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetUseJiggledNodesOnPlane"
+            , (void ( ::PlaneBoundaryCondition<2, 2>::* )( bool ))( &::PlaneBoundaryCondition< 2, 2 >::SetUseJiggledNodesOnPlane )
+            , ( bp::arg("useJiggledNodesOnPlane") ) )    
+        .def( 
+            "VerifyBoundaryCondition"
+            , (bool ( ::PlaneBoundaryCondition<2, 2>::* )(  ))(&::PlaneBoundaryCondition< 2, 2 >::VerifyBoundaryCondition)
+            , (bool ( PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::* )(  ))(&PlaneBoundaryCondition_less__2_comma__2__greater__wrapper::default_VerifyBoundaryCondition) )    
+        .def( 
+            "rGetNormalToPlane"
+            , (::boost::numeric::ublas::c_vector< double, 2 > const & ( ::PlaneBoundaryCondition<2, 2>::* )(  )const)( &::PlaneBoundaryCondition< 2, 2 >::rGetNormalToPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() )    
+        .def( 
+            "rGetPointOnPlane"
+            , (::boost::numeric::ublas::c_vector< double, 2 > const & ( ::PlaneBoundaryCondition<2, 2>::* )(  )const)( &::PlaneBoundaryCondition< 2, 2 >::rGetPointOnPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
+    bp::class_< PlaneBoundaryCondition_less__3_comma__3__greater__wrapper, bp::bases< AbstractCellPopulationBoundaryCondition< 3, 3 > > >( "PlaneBoundaryCondition3_3", bp::init< AbstractCellPopulation< 3, 3 > *, boost::numeric::ublas::c_vector< double, 3 >, boost::numeric::ublas::c_vector< double, 3 > >(( bp::arg("pCellPopulation"), bp::arg("point"), bp::arg("normal") )) )    
+        .def( 
+            "GetUseJiggledNodesOnPlane"
+            , (bool ( ::PlaneBoundaryCondition<3, 3>::* )(  ))( &::PlaneBoundaryCondition< 3, 3 >::GetUseJiggledNodesOnPlane ) )    
+        .def( 
+            "ImposeBoundaryCondition"
+            , (void ( ::PlaneBoundaryCondition<3, 3>::* )( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & ))(&::PlaneBoundaryCondition< 3, 3 >::ImposeBoundaryCondition)
+            , (void ( PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::* )( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & ))(&PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::default_ImposeBoundaryCondition)
+            , ( bp::arg("rOldLocations") ) )    
+        .def( 
+            "OutputCellPopulationBoundaryConditionParameters"
+            , (void ( ::PlaneBoundaryCondition<3, 3>::* )( ::out_stream & ))(&::PlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters)
+            , (void ( PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::default_OutputCellPopulationBoundaryConditionParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetUseJiggledNodesOnPlane"
+            , (void ( ::PlaneBoundaryCondition<3, 3>::* )( bool ))( &::PlaneBoundaryCondition< 3, 3 >::SetUseJiggledNodesOnPlane )
+            , ( bp::arg("useJiggledNodesOnPlane") ) )    
+        .def( 
+            "VerifyBoundaryCondition"
+            , (bool ( ::PlaneBoundaryCondition<3, 3>::* )(  ))(&::PlaneBoundaryCondition< 3, 3 >::VerifyBoundaryCondition)
+            , (bool ( PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::* )(  ))(&PlaneBoundaryCondition_less__3_comma__3__greater__wrapper::default_VerifyBoundaryCondition) )    
+        .def( 
+            "rGetNormalToPlane"
+            , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::PlaneBoundaryCondition<3, 3>::* )(  )const)( &::PlaneBoundaryCondition< 3, 3 >::rGetNormalToPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() )    
+        .def( 
+            "rGetPointOnPlane"
+            , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::PlaneBoundaryCondition<3, 3>::* )(  )const)( &::PlaneBoundaryCondition< 3, 3 >::rGetPointOnPlane )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
     { //::PottsBasedCellPopulation< 2 >
         typedef bp::class_< PottsBasedCellPopulation_less__2__greater__wrapper, bp::bases< AbstractOnLatticeCellPopulation< 2 > >, boost::noncopyable > PottsBasedCellPopulation2_exposer_t;
         PottsBasedCellPopulation2_exposer_t PottsBasedCellPopulation2_exposer = PottsBasedCellPopulation2_exposer_t( "PottsBasedCellPopulation2", bp::init< PottsMesh< 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< bool, bool, std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("deleteMesh")=(bool)(false), bp::arg("validate")=(bool)(true), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
@@ -21421,6 +23924,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , default_UpdateCellProcessLocation_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellProcessLocation) );
         
         }
+        PottsBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation<2>::AddCellWriter<CellLabelWriter>);
     }
 
     { //::PottsBasedCellPopulation< 3 >
@@ -21955,7 +24459,44 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
                 , default_UpdateCellProcessLocation_function_type(&PottsBasedCellPopulation_less__3__greater__wrapper::default_UpdateCellProcessLocation) );
         
         }
+        PottsBasedCellPopulation3_exposer.def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation<3>::AddCellWriter<CellLabelWriter>);
     }
+
+    bp::class_< RandomCellKiller_less__2__greater__wrapper, bp::bases< AbstractCellKiller< 2 > > >( "RandomCellKiller2", bp::init< AbstractCellPopulation< 2, 2 > *, double >(( bp::arg("pCellPopulation"), bp::arg("probabilityOfDeathInAnHour") )) )    
+        .def( 
+            "CheckAndLabelCellsForApoptosisOrDeath"
+            , (void ( ::RandomCellKiller<2>::* )(  ))(&::RandomCellKiller< 2 >::CheckAndLabelCellsForApoptosisOrDeath)
+            , (void ( RandomCellKiller_less__2__greater__wrapper::* )(  ))(&RandomCellKiller_less__2__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) )    
+        .def( 
+            "CheckAndLabelSingleCellForApoptosis"
+            , (void ( ::RandomCellKiller<2>::* )( ::CellPtr ))( &::RandomCellKiller< 2 >::CheckAndLabelSingleCellForApoptosis )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetDeathProbabilityInAnHour"
+            , (double ( ::RandomCellKiller<2>::* )(  )const)( &::RandomCellKiller< 2 >::GetDeathProbabilityInAnHour ) )    
+        .def( 
+            "OutputCellKillerParameters"
+            , (void ( ::RandomCellKiller<2>::* )( ::out_stream & ))(&::RandomCellKiller< 2 >::OutputCellKillerParameters)
+            , (void ( RandomCellKiller_less__2__greater__wrapper::* )( ::out_stream & ))(&RandomCellKiller_less__2__greater__wrapper::default_OutputCellKillerParameters)
+            , ( bp::arg("rParamsFile") ) );
+
+    bp::class_< RandomCellKiller_less__3__greater__wrapper, bp::bases< AbstractCellKiller< 3 > > >( "RandomCellKiller3", bp::init< AbstractCellPopulation< 3, 3 > *, double >(( bp::arg("pCellPopulation"), bp::arg("probabilityOfDeathInAnHour") )) )    
+        .def( 
+            "CheckAndLabelCellsForApoptosisOrDeath"
+            , (void ( ::RandomCellKiller<3>::* )(  ))(&::RandomCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath)
+            , (void ( RandomCellKiller_less__3__greater__wrapper::* )(  ))(&RandomCellKiller_less__3__greater__wrapper::default_CheckAndLabelCellsForApoptosisOrDeath) )    
+        .def( 
+            "CheckAndLabelSingleCellForApoptosis"
+            , (void ( ::RandomCellKiller<3>::* )( ::CellPtr ))( &::RandomCellKiller< 3 >::CheckAndLabelSingleCellForApoptosis )
+            , ( bp::arg("pCell") ) )    
+        .def( 
+            "GetDeathProbabilityInAnHour"
+            , (double ( ::RandomCellKiller<3>::* )(  )const)( &::RandomCellKiller< 3 >::GetDeathProbabilityInAnHour ) )    
+        .def( 
+            "OutputCellKillerParameters"
+            , (void ( ::RandomCellKiller<3>::* )( ::out_stream & ))(&::RandomCellKiller< 3 >::OutputCellKillerParameters)
+            , (void ( RandomCellKiller_less__3__greater__wrapper::* )( ::out_stream & ))(&RandomCellKiller_less__3__greater__wrapper::default_OutputCellKillerParameters)
+            , ( bp::arg("rParamsFile") ) );
 
     bp::class_< SimpleOxygenBasedCellCycleModel_wrapper, bp::bases< AbstractSimplePhaseBasedCellCycleModel >, boost::noncopyable >( "SimpleOxygenBasedCellCycleModel", bp::init< SimpleOxygenBasedCellCycleModel const & >(( bp::arg("rModel") )) )    
         .def( bp::init< >() )    
@@ -22193,7 +24734,105 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .staticmethod( "Destroy" )    
         .staticmethod( "Instance" );
 
+    bp::class_< SphereGeometryBoundaryCondition_less__2__greater__wrapper, bp::bases< AbstractCellPopulationBoundaryCondition< 2, 2 > > >( "SphereGeometryBoundaryCondition2", bp::init< AbstractCellPopulation< 2, 2 > *, boost::numeric::ublas::c_vector< double, 2 >, double, bp::optional< double > >(( bp::arg("pCellPopulation"), bp::arg("centre"), bp::arg("radius"), bp::arg("distance")=1.0000000000000001E-5 )) )    
+        .def( 
+            "GetRadiusOfSphere"
+            , (double ( ::SphereGeometryBoundaryCondition<2>::* )(  )const)( &::SphereGeometryBoundaryCondition< 2 >::GetRadiusOfSphere ) )    
+        .def( 
+            "ImposeBoundaryCondition"
+            , (void ( ::SphereGeometryBoundaryCondition<2>::* )( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & ))(&::SphereGeometryBoundaryCondition< 2 >::ImposeBoundaryCondition)
+            , (void ( SphereGeometryBoundaryCondition_less__2__greater__wrapper::* )( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > const & ))(&SphereGeometryBoundaryCondition_less__2__greater__wrapper::default_ImposeBoundaryCondition)
+            , ( bp::arg("rOldLocations") ) )    
+        .def( 
+            "OutputCellPopulationBoundaryConditionParameters"
+            , (void ( ::SphereGeometryBoundaryCondition<2>::* )( ::out_stream & ))(&::SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters)
+            , (void ( SphereGeometryBoundaryCondition_less__2__greater__wrapper::* )( ::out_stream & ))(&SphereGeometryBoundaryCondition_less__2__greater__wrapper::default_OutputCellPopulationBoundaryConditionParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "VerifyBoundaryCondition"
+            , (bool ( ::SphereGeometryBoundaryCondition<2>::* )(  ))(&::SphereGeometryBoundaryCondition< 2 >::VerifyBoundaryCondition)
+            , (bool ( SphereGeometryBoundaryCondition_less__2__greater__wrapper::* )(  ))(&SphereGeometryBoundaryCondition_less__2__greater__wrapper::default_VerifyBoundaryCondition) )    
+        .def( 
+            "rGetCentreOfSphere"
+            , (::boost::numeric::ublas::c_vector< double, 2 > const & ( ::SphereGeometryBoundaryCondition<2>::* )(  )const)( &::SphereGeometryBoundaryCondition< 2 >::rGetCentreOfSphere )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
+    bp::class_< SphereGeometryBoundaryCondition_less__3__greater__wrapper, bp::bases< AbstractCellPopulationBoundaryCondition< 3, 3 > > >( "SphereGeometryBoundaryCondition3", bp::init< AbstractCellPopulation< 3, 3 > *, boost::numeric::ublas::c_vector< double, 3 >, double, bp::optional< double > >(( bp::arg("pCellPopulation"), bp::arg("centre"), bp::arg("radius"), bp::arg("distance")=1.0000000000000001E-5 )) )    
+        .def( 
+            "GetRadiusOfSphere"
+            , (double ( ::SphereGeometryBoundaryCondition<3>::* )(  )const)( &::SphereGeometryBoundaryCondition< 3 >::GetRadiusOfSphere ) )    
+        .def( 
+            "ImposeBoundaryCondition"
+            , (void ( ::SphereGeometryBoundaryCondition<3>::* )( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & ))(&::SphereGeometryBoundaryCondition< 3 >::ImposeBoundaryCondition)
+            , (void ( SphereGeometryBoundaryCondition_less__3__greater__wrapper::* )( ::std::map< Node<3> *, boost::numeric::ublas::c_vector<double, 3> > const & ))(&SphereGeometryBoundaryCondition_less__3__greater__wrapper::default_ImposeBoundaryCondition)
+            , ( bp::arg("rOldLocations") ) )    
+        .def( 
+            "OutputCellPopulationBoundaryConditionParameters"
+            , (void ( ::SphereGeometryBoundaryCondition<3>::* )( ::out_stream & ))(&::SphereGeometryBoundaryCondition< 3 >::OutputCellPopulationBoundaryConditionParameters)
+            , (void ( SphereGeometryBoundaryCondition_less__3__greater__wrapper::* )( ::out_stream & ))(&SphereGeometryBoundaryCondition_less__3__greater__wrapper::default_OutputCellPopulationBoundaryConditionParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "VerifyBoundaryCondition"
+            , (bool ( ::SphereGeometryBoundaryCondition<3>::* )(  ))(&::SphereGeometryBoundaryCondition< 3 >::VerifyBoundaryCondition)
+            , (bool ( SphereGeometryBoundaryCondition_less__3__greater__wrapper::* )(  ))(&SphereGeometryBoundaryCondition_less__3__greater__wrapper::default_VerifyBoundaryCondition) )    
+        .def( 
+            "rGetCentreOfSphere"
+            , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::SphereGeometryBoundaryCondition<3>::* )(  )const)( &::SphereGeometryBoundaryCondition< 3 >::rGetCentreOfSphere )
+            , bp::return_value_policy< bp::copy_const_reference >() );
+
     bp::class_< StemCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "StemCellProliferativeType", bp::init< >() );
+
+    bp::class_< SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 2 > > >( "SurfaceAreaConstraintPottsUpdateRule2", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&::SurfaceAreaConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution)
+            , (double ( SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetDeformationEnergyParameter"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )(  ))( &::SurfaceAreaConstraintPottsUpdateRule< 2 >::GetDeformationEnergyParameter ) )    
+        .def( 
+            "GetMatureCellTargetSurfaceArea"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )(  )const)( &::SurfaceAreaConstraintPottsUpdateRule< 2 >::GetMatureCellTargetSurfaceArea ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )( ::out_stream & ))(&::SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters)
+            , (void ( SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper::* )( ::out_stream & ))(&SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDeformationEnergyParameter"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )( double ))( &::SurfaceAreaConstraintPottsUpdateRule< 2 >::SetDeformationEnergyParameter )
+            , ( bp::arg("deformationEnergyParameter") ) )    
+        .def( 
+            "SetMatureCellTargetSurfaceArea"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<2>::* )( double ))( &::SurfaceAreaConstraintPottsUpdateRule< 2 >::SetMatureCellTargetSurfaceArea )
+            , ( bp::arg("matureCellTargetSurfaceArea") ) );
+
+    bp::class_< SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 3 > > >( "SurfaceAreaConstraintPottsUpdateRule3", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&::SurfaceAreaConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution)
+            , (double ( SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetDeformationEnergyParameter"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )(  ))( &::SurfaceAreaConstraintPottsUpdateRule< 3 >::GetDeformationEnergyParameter ) )    
+        .def( 
+            "GetMatureCellTargetSurfaceArea"
+            , (double ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )(  )const)( &::SurfaceAreaConstraintPottsUpdateRule< 3 >::GetMatureCellTargetSurfaceArea ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )( ::out_stream & ))(&::SurfaceAreaConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters)
+            , (void ( SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper::* )( ::out_stream & ))(&SurfaceAreaConstraintPottsUpdateRule_less__3__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDeformationEnergyParameter"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )( double ))( &::SurfaceAreaConstraintPottsUpdateRule< 3 >::SetDeformationEnergyParameter )
+            , ( bp::arg("deformationEnergyParameter") ) )    
+        .def( 
+            "SetMatureCellTargetSurfaceArea"
+            , (void ( ::SurfaceAreaConstraintPottsUpdateRule<3>::* )( double ))( &::SurfaceAreaConstraintPottsUpdateRule< 3 >::SetMatureCellTargetSurfaceArea )
+            , ( bp::arg("matureCellTargetSurfaceArea") ) );
 
     bp::class_< TransitCellProliferativeType, bp::bases< AbstractCellProliferativeType > >( "TransitCellProliferativeType", bp::init< >() );
 
@@ -23429,6 +26068,58 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         
         }
     }
+
+    bp::class_< VolumeConstraintPottsUpdateRule_less__2__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 2 > > >( "VolumeConstraintPottsUpdateRule2", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::VolumeConstraintPottsUpdateRule<2>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&::VolumeConstraintPottsUpdateRule< 2 >::EvaluateHamiltonianContribution)
+            , (double ( VolumeConstraintPottsUpdateRule_less__2__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 2 > & ))(&VolumeConstraintPottsUpdateRule_less__2__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetDeformationEnergyParameter"
+            , (double ( ::VolumeConstraintPottsUpdateRule<2>::* )(  ))( &::VolumeConstraintPottsUpdateRule< 2 >::GetDeformationEnergyParameter ) )    
+        .def( 
+            "GetMatureCellTargetVolume"
+            , (double ( ::VolumeConstraintPottsUpdateRule<2>::* )(  )const)( &::VolumeConstraintPottsUpdateRule< 2 >::GetMatureCellTargetVolume ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::VolumeConstraintPottsUpdateRule<2>::* )( ::out_stream & ))(&::VolumeConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters)
+            , (void ( VolumeConstraintPottsUpdateRule_less__2__greater__wrapper::* )( ::out_stream & ))(&VolumeConstraintPottsUpdateRule_less__2__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDeformationEnergyParameter"
+            , (void ( ::VolumeConstraintPottsUpdateRule<2>::* )( double ))( &::VolumeConstraintPottsUpdateRule< 2 >::SetDeformationEnergyParameter )
+            , ( bp::arg("deformationEnergyParameter") ) )    
+        .def( 
+            "SetMatureCellTargetVolume"
+            , (void ( ::VolumeConstraintPottsUpdateRule<2>::* )( double ))( &::VolumeConstraintPottsUpdateRule< 2 >::SetMatureCellTargetVolume )
+            , ( bp::arg("matureCellTargetVolume") ) );
+
+    bp::class_< VolumeConstraintPottsUpdateRule_less__3__greater__wrapper, bp::bases< AbstractPottsUpdateRule< 3 > > >( "VolumeConstraintPottsUpdateRule3", bp::init< >() )    
+        .def( 
+            "EvaluateHamiltonianContribution"
+            , (double ( ::VolumeConstraintPottsUpdateRule<3>::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&::VolumeConstraintPottsUpdateRule< 3 >::EvaluateHamiltonianContribution)
+            , (double ( VolumeConstraintPottsUpdateRule_less__3__greater__wrapper::* )( unsigned int,unsigned int,::PottsBasedCellPopulation< 3 > & ))(&VolumeConstraintPottsUpdateRule_less__3__greater__wrapper::default_EvaluateHamiltonianContribution)
+            , ( bp::arg("currentNodeIndex"), bp::arg("targetNodeIndex"), bp::arg("rCellPopulation") ) )    
+        .def( 
+            "GetDeformationEnergyParameter"
+            , (double ( ::VolumeConstraintPottsUpdateRule<3>::* )(  ))( &::VolumeConstraintPottsUpdateRule< 3 >::GetDeformationEnergyParameter ) )    
+        .def( 
+            "GetMatureCellTargetVolume"
+            , (double ( ::VolumeConstraintPottsUpdateRule<3>::* )(  )const)( &::VolumeConstraintPottsUpdateRule< 3 >::GetMatureCellTargetVolume ) )    
+        .def( 
+            "OutputUpdateRuleParameters"
+            , (void ( ::VolumeConstraintPottsUpdateRule<3>::* )( ::out_stream & ))(&::VolumeConstraintPottsUpdateRule< 3 >::OutputUpdateRuleParameters)
+            , (void ( VolumeConstraintPottsUpdateRule_less__3__greater__wrapper::* )( ::out_stream & ))(&VolumeConstraintPottsUpdateRule_less__3__greater__wrapper::default_OutputUpdateRuleParameters)
+            , ( bp::arg("rParamsFile") ) )    
+        .def( 
+            "SetDeformationEnergyParameter"
+            , (void ( ::VolumeConstraintPottsUpdateRule<3>::* )( double ))( &::VolumeConstraintPottsUpdateRule< 3 >::SetDeformationEnergyParameter )
+            , ( bp::arg("deformationEnergyParameter") ) )    
+        .def( 
+            "SetMatureCellTargetVolume"
+            , (void ( ::VolumeConstraintPottsUpdateRule<3>::* )( double ))( &::VolumeConstraintPottsUpdateRule< 3 >::SetMatureCellTargetVolume )
+            , ( bp::arg("matureCellTargetVolume") ) );
 
     bp::class_< VtkSceneModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > > >( "VtkSceneModifier2", bp::init< >() )    
         .def( 
