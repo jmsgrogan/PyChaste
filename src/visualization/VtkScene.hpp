@@ -41,6 +41,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #if VTK_MAJOR_VERSION > 5
     #include <vtkAutoInit.h>
     VTK_MODULE_INIT(vtkRenderingOpenGL);
+    #include <vtkOggTheoraWriter.h>
 #endif
 #define _BACKWARD_BACKWARD_WARNING_H 1 //Cut out the vtk deprecated warning
 #include <vtkSmartPointer.h>
@@ -48,7 +49,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include <vtkLookupTable.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
-#include <vtkOggTheoraWriter.h>
+
 #include <vtkWindowToImageFilter.h>
 #include "AbstractCellPopulation.hpp"
 #include "MeshBasedCellPopulation.hpp"
@@ -89,10 +90,12 @@ class VtkScene
      */
     vtkSmartPointer<vtkLookupTable> mpColorLookUpTable;
 
+    #if VTK_MAJOR_VERSION > 5
     /**
      * The animation writer
      */
     vtkSmartPointer<vtkOggTheoraWriter> mAnimationWriter;
+    #endif
 
     /**
      * The image to window filter

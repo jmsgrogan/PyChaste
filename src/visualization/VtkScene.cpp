@@ -103,7 +103,9 @@ VtkScene<DIM>::VtkScene()
       mpCellPopulation(),
       mOutputFilePath(),
       mpColorLookUpTable(vtkSmartPointer<vtkLookupTable>::New()),
+    #if VTK_MAJOR_VERSION > 5
       mAnimationWriter(vtkSmartPointer<vtkOggTheoraWriter>::New()),
+    #endif
       mWindowToImageFilter(vtkSmartPointer<vtkWindowToImageFilter>::New()),
       mIsInteractive(true),
       mSaveAsAnimation(false),
@@ -196,7 +198,7 @@ void VtkScene<DIM>::ResetRenderer(unsigned time_step)
             p_writer->Write();
         }
     }
-
+    #if VTK_MAJOR_VERSION > 5
     if(mSaveAsAnimation)
     {
         if(!mSaveAsImages)
@@ -207,7 +209,7 @@ void VtkScene<DIM>::ResetRenderer(unsigned time_step)
         }
         mAnimationWriter->Write();
     }
-
+    #endif
     if(mIsInteractive)
     {
         mpRenderWindow->SetOffScreenRendering(0);
@@ -233,7 +235,7 @@ void VtkScene<DIM>::UpdateCellPopulationActor()
     // Check the cell population type
     if(boost::dynamic_pointer_cast<MeshBasedCellPopulation<DIM> >(mpCellPopulation))
     {
-        UpdateMeshBaedCellPopulationActor();
+        UpdateMeshBasedCellPopulationActor();
     }
     else
     {
@@ -360,10 +362,12 @@ void VtkScene<DIM>::SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<D
 template<unsigned DIM>
 void VtkScene<DIM>::End()
 {
+    #if VTK_MAJOR_VERSION > 5
     if(mSaveAsAnimation and mHasStarted)
     {
         mAnimationWriter->End();
     }
+    #endif
 }
 
 template<unsigned DIM>
@@ -381,10 +385,12 @@ void VtkScene<DIM>::Start()
 
     if(mSaveAsAnimation)
     {
+        #if VTK_MAJOR_VERSION > 5
         mAnimationWriter->SetInputConnection(mWindowToImageFilter->GetOutputPort());
         mAnimationWriter->SetFileName((mOutputFilePath+".ogg").c_str());
         mAnimationWriter->SetRate(1.0);
         mAnimationWriter->Start();
+        #endif
     }
 
     mHasStarted = true;
