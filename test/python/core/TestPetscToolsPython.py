@@ -39,9 +39,17 @@ class TestPetscTools(unittest.TestCase):
     
     def test_some_vecs(self):
         
-        local = [1.0, 2.0, 3.0]
-#         vec = chaste.core.PetscTools.CreateVec(local)
-#         print vec
+        # Make a Petsc Vec
+        local = [1.0 ,2.0, 3.0]
+        vec = chaste.core.PetscTools.CreateVec(local)
+        
+        # Get a Replicatable Vec
+        replicatable_vec = chaste.core.ReplicatableVector(vec)
+        
+        self.assertAlmostEqual(replicatable_vec[0], 1.0, 6)
+        self.assertAlmostEqual(replicatable_vec[1], 2.0, 6)
+        self.assertAlmostEqual(replicatable_vec[2], 3.0, 6)
+
 
 if __name__ == '__main__':
     unittest.main()

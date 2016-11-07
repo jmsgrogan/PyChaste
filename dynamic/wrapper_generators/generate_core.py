@@ -46,8 +46,8 @@ def update_builder(builder):
                        "RandomNumberGenerator",
                        "Timer",
                        "ChasteBuildInfo",
-                       "PetscTools",]
-                       #"ReplicatableVector"]
+                       "PetscTools",
+                       "ReplicatableVector"]
     
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
@@ -55,12 +55,11 @@ def update_builder(builder):
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
     
+    builder.free_function("GetPetscMatForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
     builder.class_("PetscTools").member_functions('GetWorld').exclude()
-    builder.class_("PetscTools").member_functions('CreateAndSetVec').exclude()
-    builder.class_("PetscTools").member_functions('DumpPetscObject').exclude()
-    builder.class_("PetscTools").member_functions('Destroy').exclude()
-    builder.class_("PetscTools").member_functions('ReadPetscObject').exclude()
-    builder.class_("PetscTools").member_functions('SetupMat').exclude()
+    builder.class_("PetscTools").member_functions('CreateVec').call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
+    builder.class_("PetscTools").member_functions('CreateAndSetVec').call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
+    builder.class_("PetscTools").variables('MASTER_RANK').exclude()
 
     builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
     builder.class_("FileFinder").member_functions('FindMatches').exclude()

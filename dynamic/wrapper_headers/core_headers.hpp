@@ -42,6 +42,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Timer.hpp"
 #include "Version.hpp"
 #include "Identifiable.hpp"
+#include "ReplicatableVector.hpp"
 
 typedef boost::filesystem::path boost_filesystem_path;
 
@@ -49,3 +50,13 @@ inline int Instantiation()
 {
     return sizeof(Mat) + sizeof(Vec);
 }
+
+Mat GetPetscMatForWrapper()
+{
+    Mat A;
+
+    PetscTools::SetupMat(A, 3, 3, 3);
+    return A;
+}
+
+

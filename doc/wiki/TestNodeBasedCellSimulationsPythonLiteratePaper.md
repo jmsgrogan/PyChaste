@@ -10,13 +10,14 @@ al "A computational study of discrete mechanical tissue models", Physical Biolog
 ## The Test
 
 ```python
+import unittest
 import chaste.core
 chaste.init()
 import chaste.cell_based
 import chaste.mesh
 import chaste.visualization
 
-class TestRunningNodeBasedSimulationsTutorial(AbstractCellBasedTestSuite):
+class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 ```
 ## Test 1 - A basic node-based simulation
 In the first test, we run a simple node-based simulation, in which we create a monolayer of cells,
@@ -36,7 +37,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 
 ```
 Once we have a MutableMesh we can generate a NodesOnlyMesh from it using the following commands.
-Note you can also generate the NodesOnlyMesh from a collection of nodes, see ​`NodesOnlyMesh` for details.
+Note you can also generate the NodesOnlyMesh from a collection of nodes.
 
 ```python
         mesh = chaste.mesh.NodesOnlyMesh2()
@@ -57,9 +58,9 @@ the third argument specifies the proliferative type of the cell.
 
 ```python
         cells = chaste.cell_based.VecCellPtr()
-        default_type = chaste.cell_based.DefaultCellProliferativeType()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRnadom(cells, mesh.GetNumNodes(), default_type)
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
 
 ```
 Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`.
@@ -67,14 +68,14 @@ In general, this class associates a collection of cells with a mesh. For this te
 because we have a `NodesOnlyMesh`, we use a particular type of cell population called a `NodeBasedCellPopulation`.
 
 ```python
-        cell_population = chaste.cell_based.NodeBasedCellPopulation2(nodes_only_mesh, cells)
+        cell_population = chaste.cell_based.NodeBasedCellPopulation2(mesh, cells)
 
 ```
 We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
 
 ```python
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("PythonTestNodeBasedCellPopulation")
+        simulator.SetOutputDirectory("Python/TestNodeBasedCellPopulation")
         simulator.SetSamplingTimestepMultiple(12)
         simulator.SetEndTime(10.0)
 
@@ -82,7 +83,7 @@ We then pass in the cell population into an `OffLatticeSimulation`, and set the 
 We now pass a force law to the simulation.
 
 ```python
-        force = chaste.cell_based.GeneralisedLinearSpringForce()
+        force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
 
 ```
@@ -107,9 +108,167 @@ We may have to do: `javac Visualize2dCentreCells.java` beforehand to create the 
 Alternatively to view in Paraview Load the file `/tmp/$USER/testoutput/NodeBasedMonolayer/results_from_time_0/results.pvd`,
 and add glyphs to represent cells. An option is to use 3D spherical glyphs and then make a planar cut.
 
+## Test 2 - a basic node-based simulation in 3D
+In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and
+instead of using a mesh generator we generate the nodes directly.
+
+```python
+    def test_spheroid(self):
+
+```
+First, we generate a nodes only mesh. This time we specify the nodes manually by first creating a vector of nodes
+
+```python
+        nodes = []
+        nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(1, False, -0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(2, False, 0.0, 0.5, 0.0))
+        nodes.append(chaste.mesh.Node3(3, False, 0.0, -0.5, 0.0))
+
+```
+Finally a NodesOnlyMesh is created and the vector of nodes is passed to the ConstructNodesWithoutMesh method.
+
+```python
+        mesh = chaste.mesh.NodesOnlyMesh3()
+
+```
+To run node-based simulations you need to define a cut off length (second argument in ConstructNodesWithoutMesh),
+which defines the connectivity of the nodes by defining a radius of interaction.
+
+```python
+        mesh.ConstructNodesWithoutMesh(nodes, 1.5)
+
+```
+Having created a mesh, we now create a std::vector of CellPtrs.
+As before, we do this with the CellsGenerator helper class (this time with dimension 3).
+
+```python
+        cells = chaste.cell_based.VecCellPtr()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+
+```
+Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`.
+In general, this class associates a collection of cells with a mesh. For this test,
+because we have a `NodesOnlyMesh`, we use a particular type of cell population called a `NodeBasedCellPopulation`.
+
+```python
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
+
+```
+We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
+
+```python
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("Python/TestNodeBasedSpheroidCellPopulation")
+        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetEndTime(10.0)
+
+```
+We now pass a force law to the simulation.
+
+```python
+        force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
+        simulator.AddForce(force)
+
+```
+To run the simulation, we call `Solve()`.
+
+```python
+        simulator.Solve();
+
+```
+The next two lines are for test purposes only and are not part of this tutorial.
+If different simulation input parameters are being explored the lines should be removed.
+
+```python
+        self.assertEqual(cell_population.GetNumRealCells(), 8)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+
+```
+Note that you cannot view the results of a 3D simulation using the Java visualiser but to visualize the results,
+use Paraview. See the UserTutorials/VisualizingWithParaview tutorial for more information.
+
+## Test 3 - a node-based simulation on a restricted geometry
+In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and
+instead of using a mesh generator we generate the nodes directly.
+
+```python
+    def test_spheroid_on_sphere(self):
+
+```
+In the third test we run a node-based simulation restricted to the surface of a sphere.
+
+```python
+        nodes = []
+        nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(1, False, -0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(2, False, 0.0, 0.5, 0.0))
+        nodes.append(chaste.mesh.Node3(3, False, 0.0, -0.5, 0.0))
+        mesh = chaste.mesh.NodesOnlyMesh3()
+
+```
+To run node-based simulations you need to define a cut off length (second argument in ConstructNodesWithoutMesh),
+which defines the connectivity of the nodes by defining a radius of interaction.
+
+```python
+        mesh.ConstructNodesWithoutMesh(nodes, 1.5)
+
+        cells = chaste.cell_based.VecCellPtr()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
+
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("Python/TestNodeBasedOnSphereCellPopulation")
+        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetEndTime(10.0)
+
+```
+We now pass a force law to the simulation.
+
+```python
+        force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
+        simulator.AddForce(force)
+
+```
+This time we create a CellPopulationBoundaryCondition and pass this to the OffLatticeSimulation.
+Here we use a SphereGeometryBoundaryCondition which restricts cells to lie on a sphere (in 3D) or circle (in 2D).
+For a list of possible boundary conditions see subclasses of AbstractCellPopulationBoundaryCondition.
+Note that some of these boundary conditions are not compatible with node-based simulations see the specific class documentation
+for details, if you try to use an incompatible class then you will receive a warning.
+First we set the centre (0,0,1) and radius of the sphere (1).
+
+```python
+        centre = (0.0, 0.0, 1.0)
+        radius = 1.0
+        boundary_condition = chaste.cell_based.SphereGeometryBoundaryCondition3(cell_population, centre, radius)
+        simulator.AddCellPopulationBoundaryCondition(boundary_condition)
+
+```
+To run the simulation, we call `Solve()`.
+
+```python
+        simulator.Solve();
+
+```
+The next two lines are for test purposes only and are not part of this tutorial.
+If different simulation input parameters are being explored the lines should be removed.
+
+```python
+        self.assertEqual(cell_population.GetNumRealCells(), 8)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+
+```
+Note that you cannot view the results of a 3D simulation using the Java visualiser but to visualize the results,
+use Paraview. See the UserTutorials/VisualizingWithParaview tutorial for more information.
+
 ```python
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
 
 ```
 
@@ -121,13 +280,14 @@ The full code is given below
 ## File name `TestNodeBasedCellSimulationsPythonLiteratePaper.py` 
 
 ```python
+import unittest
 import chaste.core
 chaste.init()
 import chaste.cell_based
 import chaste.mesh
 import chaste.visualization
 
-class TestRunningNodeBasedSimulationsTutorial(AbstractCellBasedTestSuite):
+class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     def test_monolayer(self):
 
         generator = chaste.mesh.HoneycombMeshGenerator(2, 2)
@@ -138,18 +298,18 @@ class TestRunningNodeBasedSimulationsTutorial(AbstractCellBasedTestSuite):
         mesh.ConstructNodesWithoutMesh(generating_mesh, 1.5)
 
         cells = chaste.cell_based.VecCellPtr()
-        default_type = chaste.cell_based.DefaultCellProliferativeType()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRnadom(cells, mesh.GetNumNodes(), default_type)
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
 
-        cell_population = chaste.cell_based.NodeBasedCellPopulation2(nodes_only_mesh, cells)
+        cell_population = chaste.cell_based.NodeBasedCellPopulation2(mesh, cells)
 
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("PythonTestNodeBasedCellPopulation")
+        simulator.SetOutputDirectory("Python/TestNodeBasedCellPopulation")
         simulator.SetSamplingTimestepMultiple(12)
         simulator.SetEndTime(10.0)
 
-        force = chaste.cell_based.GeneralisedLinearSpringForce()
+        force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
 
         simulator.Solve();
@@ -157,11 +317,76 @@ class TestRunningNodeBasedSimulationsTutorial(AbstractCellBasedTestSuite):
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
 
+    def test_spheroid(self):
+
+        nodes = []
+        nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(1, False, -0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(2, False, 0.0, 0.5, 0.0))
+        nodes.append(chaste.mesh.Node3(3, False, 0.0, -0.5, 0.0))
+
+        mesh = chaste.mesh.NodesOnlyMesh3()
+
+        mesh.ConstructNodesWithoutMesh(nodes, 1.5)
+
+        cells = chaste.cell_based.VecCellPtr()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
+
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("Python/TestNodeBasedSpheroidCellPopulation")
+        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetEndTime(10.0)
+
+        force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
+        simulator.AddForce(force)
+
+        simulator.Solve();
+
+        self.assertEqual(cell_population.GetNumRealCells(), 8)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+
+    def test_spheroid_on_sphere(self):
+
+        nodes = []
+        nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(1, False, -0.5, 0.0, 0.0))
+        nodes.append(chaste.mesh.Node3(2, False, 0.0, 0.5, 0.0))
+        nodes.append(chaste.mesh.Node3(3, False, 0.0, -0.5, 0.0))
+        mesh = chaste.mesh.NodesOnlyMesh3()
+
+        mesh.ConstructNodesWithoutMesh(nodes, 1.5)
+
+        cells = chaste.cell_based.VecCellPtr()
+        transit_type = chaste.cell_based.TransitCellProliferativeType()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
+
+        simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
+        simulator.SetOutputDirectory("Python/TestNodeBasedOnSphereCellPopulation")
+        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetEndTime(10.0)
+
+        force = chaste.cell_based.GeneralisedLinearSpringForce3_3()
+        simulator.AddForce(force)
+
+        centre = (0.0, 0.0, 1.0)
+        radius = 1.0
+        boundary_condition = chaste.cell_based.SphereGeometryBoundaryCondition3(cell_population, centre, radius)
+        simulator.AddCellPopulationBoundaryCondition(boundary_condition)
+
+        simulator.Solve();
+
+        self.assertEqual(cell_population.GetNumRealCells(), 8)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
 
 ```
-        ## Once we have a MutableMesh we can generate a NodesOnlyMesh from it using the following commands.
-        ## Note you can also generate the NodesOnlyMesh from a collection of nodes, see ​`NodesOnlyMesh` for details
-
 

@@ -75,6 +75,8 @@ struct FileFinder_wrapper : FileFinder, bp::wrapper< FileFinder > {
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
+
 struct RandomNumberGenerator_wrapper : RandomNumberGenerator, bp::wrapper< RandomNumberGenerator > {
 
     RandomNumberGenerator_wrapper( )
@@ -85,6 +87,8 @@ struct RandomNumberGenerator_wrapper : RandomNumberGenerator, bp::wrapper< Rando
     }
 
 };
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
     { //::std::vector< unsigned int >
@@ -494,6 +498,37 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
             "BeginRoundRobin"
             , (void (*)(  ))( &::PetscTools::BeginRoundRobin ) )    
         .def( 
+            "CreateAndSetVec"
+            , (::Vec (*)( int,double ))( &::PetscTools::CreateAndSetVec )
+            , ( bp::arg("size"), bp::arg("value") )
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+        .def( 
+            "CreateVec"
+            , (::Vec (*)( int,int,bool ))( &::PetscTools::CreateVec )
+            , ( bp::arg("size"), bp::arg("localSize")=(int)(-1), bp::arg("ignoreOffProcEntries")=(bool)(true) )
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+        .def( 
+            "CreateVec"
+            , (::Vec (*)( ::std::vector< double > ))( &::PetscTools::CreateVec )
+            , ( bp::arg("data") )
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+        .def( 
+            "Destroy"
+            , (void (*)( ::Vec & ))( &::PetscTools::Destroy )
+            , ( bp::arg("rVec") ) )    
+        .def( 
+            "Destroy"
+            , (void (*)( ::Mat & ))( &::PetscTools::Destroy )
+            , ( bp::arg("rMat") ) )    
+        .def( 
+            "DumpPetscObject"
+            , (void (*)( ::Mat const &,::std::string const & ))( &::PetscTools::DumpPetscObject )
+            , ( bp::arg("rMat"), bp::arg("rOutputFileFullPath") ) )    
+        .def( 
+            "DumpPetscObject"
+            , (void (*)( ::Vec const &,::std::string const & ))( &::PetscTools::DumpPetscObject )
+            , ( bp::arg("rVec"), bp::arg("rOutputFileFullPath") ) )    
+        .def( 
             "EndRoundRobin"
             , (void (*)(  ))( &::PetscTools::EndRoundRobin ) )    
         .def( 
@@ -522,6 +557,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
             , (void (*)( bool ))( &::PetscTools::IsolateProcesses )
             , ( bp::arg("isolate")=(bool)(true) ) )    
         .def( 
+            "ReadPetscObject"
+            , (void (*)( ::Mat &,::std::string const &,::Vec ))( &::PetscTools::ReadPetscObject )
+            , ( bp::arg("rMat"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=__null ) )    
+        .def( 
+            "ReadPetscObject"
+            , (void (*)( ::Vec &,::std::string const &,::Vec ))( &::PetscTools::ReadPetscObject )
+            , ( bp::arg("rVec"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=__null ) )    
+        .def( 
             "ReplicateBool"
             , (bool (*)( bool ))( &::PetscTools::ReplicateBool )
             , ( bp::arg("flag") ) )    
@@ -535,11 +578,19 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         .def( 
             "SetOption"
             , (void (*)( char const *,char const * ))( &::PetscTools::SetOption )
-            , ( bp::arg("pOptionName"), bp::arg("pOptionValue") ) )
+            , ( bp::arg("pOptionName"), bp::arg("pOptionValue") ) )    
+        .def( 
+            "SetupMat"
+            , (void (*)( ::Mat &,int,int,unsigned int,int,int,bool,bool ))( &::PetscTools::SetupMat )
+            , ( bp::arg("rMat"), bp::arg("numRows"), bp::arg("numColumns"), bp::arg("rowPreallocation"), bp::arg("numLocalRows")=(int)(-1), bp::arg("numLocalColumns")=(int)(-1), bp::arg("ignoreOffProcEntries")=(bool)(true), bp::arg("newAllocationError")=(bool)(true) ) )    
         .staticmethod( "AmMaster" )    
         .staticmethod( "AmTopMost" )    
         .staticmethod( "Barrier" )    
-        .staticmethod( "BeginRoundRobin" )
+        .staticmethod( "BeginRoundRobin" )    
+        .staticmethod( "CreateAndSetVec" )    
+        .staticmethod( "CreateVec" )    
+        .staticmethod( "Destroy" )    
+        .staticmethod( "DumpPetscObject" )    
         .staticmethod( "EndRoundRobin" )    
         .staticmethod( "GetMyRank" )    
         .staticmethod( "GetNumProcs" )    
@@ -549,10 +600,12 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         .staticmethod( "IsParallel" )    
         .staticmethod( "IsSequential" )    
         .staticmethod( "IsolateProcesses" )    
+        .staticmethod( "ReadPetscObject" )    
         .staticmethod( "ReplicateBool" )    
         .staticmethod( "ReplicateException" )    
         .staticmethod( "ResetCache" )    
-        .staticmethod( "SetOption" );
+        .staticmethod( "SetOption" )    
+        .staticmethod( "SetupMat" );
 
     bp::class_< RandomNumberGenerator_wrapper, boost::noncopyable >( "RandomNumberGenerator", bp::no_init )    
         .def( bp::init< >() )    
@@ -596,6 +649,66 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         .staticmethod( "Destroy" )    
         .staticmethod( "Instance" );
 
+    { //::ReplicatableVector
+        typedef bp::class_< ReplicatableVector > ReplicatableVector_exposer_t;
+        ReplicatableVector_exposer_t ReplicatableVector_exposer = ReplicatableVector_exposer_t( "ReplicatableVector", bp::init< >() );
+        bp::scope ReplicatableVector_scope( ReplicatableVector_exposer );
+        ReplicatableVector_exposer.def( bp::init< Vec >(( bp::arg("vec") )) );
+        bp::implicitly_convertible< Vec, ReplicatableVector >();
+        ReplicatableVector_exposer.def( bp::init< unsigned int >(( bp::arg("size") )) );
+        bp::implicitly_convertible< unsigned int, ReplicatableVector >();
+        { //::ReplicatableVector::GetSize
+        
+            typedef unsigned int ( ::ReplicatableVector::*GetSize_function_type)(  ) ;
+            
+            ReplicatableVector_exposer.def( 
+                "GetSize"
+                , GetSize_function_type( &::ReplicatableVector::GetSize ) );
+        
+        }
+        { //::ReplicatableVector::Replicate
+        
+            typedef void ( ::ReplicatableVector::*Replicate_function_type)( unsigned int,unsigned int ) ;
+            
+            ReplicatableVector_exposer.def( 
+                "Replicate"
+                , Replicate_function_type( &::ReplicatableVector::Replicate )
+                , ( bp::arg("lo"), bp::arg("hi") ) );
+        
+        }
+        { //::ReplicatableVector::ReplicatePetscVector
+        
+            typedef void ( ::ReplicatableVector::*ReplicatePetscVector_function_type)( ::Vec ) ;
+            
+            ReplicatableVector_exposer.def( 
+                "ReplicatePetscVector"
+                , ReplicatePetscVector_function_type( &::ReplicatableVector::ReplicatePetscVector )
+                , ( bp::arg("vec") ) );
+        
+        }
+        { //::ReplicatableVector::Resize
+        
+            typedef void ( ::ReplicatableVector::*Resize_function_type)( unsigned int ) ;
+            
+            ReplicatableVector_exposer.def( 
+                "Resize"
+                , Resize_function_type( &::ReplicatableVector::Resize )
+                , ( bp::arg("size") ) );
+        
+        }
+        { //::ReplicatableVector::operator[]
+        
+            typedef double & ( ::ReplicatableVector::*__getitem___function_type)( unsigned int ) ;
+            
+            ReplicatableVector_exposer.def( 
+                "__getitem__"
+                , __getitem___function_type( &::ReplicatableVector::operator[] )
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::copy_non_const_reference >() );
+        
+        }
+    }
+
     bp::class_< Timer >( "Timer" )    
         .def( 
             "GetElapsedTime"
@@ -619,6 +732,17 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
         .staticmethod( "Print" )    
         .staticmethod( "PrintAndReset" )    
         .staticmethod( "Reset" );
+
+    { //::GetPetscMatForWrapper
+    
+        typedef ::Mat ( *GetPetscMatForWrapper_function_type )(  );
+        
+        bp::def( 
+            "GetPetscMatForWrapper"
+            , GetPetscMatForWrapper_function_type( &::GetPetscMatForWrapper )
+            , bp::return_value_policy< bp::return_opaque_pointer >() );
+    
+    }
 
     { //::Instantiation
     

@@ -33,6 +33,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+#include "PetscTools.hpp"
+
 // Base
 #include "Identifiable.hpp"
 #include "Cell.hpp"
@@ -244,7 +246,21 @@ inline int Instantiation()
             sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 2>) +
             sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 3>) +
             sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 2>) +
-            sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 3>);
+            sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 3>) +
+            sizeof(Mat) + sizeof(Vec);
+}
+
+Mat GetPetscMatForWrapper()
+{
+    Mat A;
+    PetscTools::SetupMat(A, 3, 3, 3);
+    return A;
+}
+
+Vec GetPetscVecForWrapper()
+{
+    Vec A = PetscTools::CreateAndSetVec(1, 1.0);
+    return A;
 }
 
 //pyplusplus::aliases

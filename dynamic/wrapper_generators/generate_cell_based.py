@@ -198,9 +198,9 @@ def update_builder(builder):
                                "AbstractCellKiller",
                                "PlaneBasedCellKiller",
                                "ApoptoticCellKiller",
-                               "RandomCellKiller",]
-                               ##"CellwiseSourceEllipticPde",]
-                               ##"AbstractPdeModifier",
+                               "RandomCellKiller",
+                               "CellwiseSourceEllipticPde",
+                               "AbstractPdeModifier",]
                                ##"AbstractGrowingDomainPdeModifier",]
                                ##"EllipticGrowingDomainPdeModifier"]
 
@@ -211,6 +211,9 @@ def update_builder(builder):
                            "GeneralisedLinearSpringForce",
                            "AbstractCellPopulationBoundaryCondition",
                            "PlaneBoundaryCondition",]
+
+    builder.free_function("GetPetscMatForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
+    builder.free_function("GetPetscVecForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
 
     for eachClass in non_template_classes:
         builder.class_(eachClass).include()  
@@ -261,9 +264,9 @@ def update_builder(builder):
 
     for eachTemplate in ["<2>", "<3>"]: 
         builder.class_("AbstractCellKiller"+eachTemplate).member_functions('GetCellPopulation').call_policies = default_pointer_policy  
-        #builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetSolution').exclude()  
-        #builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetFeMesh').exclude()   
-       # builder.class_('CellwiseSourceEllipticPde'+eachTemplate).calldefs().use_default_arguments=False   
+        builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetSolution').exclude()  
+        builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetFeMesh').exclude()   
+        builder.class_('CellwiseSourceEllipticPde'+eachTemplate).calldefs().use_default_arguments=False   
         #builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False   
         #builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()
         #builder.class_('AbstractGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 

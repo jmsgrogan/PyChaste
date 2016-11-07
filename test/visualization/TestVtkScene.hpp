@@ -117,16 +117,17 @@ public:
     {
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingMeshBasedPopulation/");
 
-        HoneycombMeshGenerator generator(2, 2);    // Parameters are: cells across, cells up
+        HoneycombMeshGenerator generator(2, 2, 2);    // Parameters are: cells across, cells up
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
+        std::vector<unsigned> location_indices = generator.GetCellLocationIndices();
 
         std::vector<CellPtr> cells;
         MAKE_PTR(TransitCellProliferativeType, p_transit_type);
         CellsGenerator<UniformCellCycleModel, 2> cells_generator;
-        cells_generator.GenerateBasicRandom(cells, p_mesh->GetNumNodes(), p_transit_type);
+        cells_generator.GenerateBasicRandom(cells, location_indices.size(), p_transit_type);
 
-        boost::shared_ptr<MeshBasedCellPopulation<2> > p_cell_population =
-                boost::shared_ptr<MeshBasedCellPopulation<2> >(new MeshBasedCellPopulation<2> (*p_mesh, cells));
+        boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes<2> > p_cell_population =
+                boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes<2> >(new MeshBasedCellPopulationWithGhostNodes<2> (*p_mesh, cells, location_indices));
 
         p_cell_population->AddPopulationWriter<VoronoiDataWriter>();
 
