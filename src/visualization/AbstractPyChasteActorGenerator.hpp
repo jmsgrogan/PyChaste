@@ -59,6 +59,11 @@ protected:
     vtkSmartPointer<vtkColorTransferFunction> mpColorTransferFunction;
 
     /**
+     * The color lookup for discrete entities
+     */
+    vtkSmartPointer<vtkColorTransferFunction> mpDiscreteColorTransferFunction;
+
+    /**
      * Show the edges, using a tube filter
      */
     bool mShowEdges;

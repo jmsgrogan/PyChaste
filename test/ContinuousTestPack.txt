@@ -9,4 +9,12 @@ python/mesh/TestChastePointPython.py
 python/mesh/TestPottsMeshPython.py
 python/ode/TestOdeSystemPython.py
 python/cell_based/TestCaBasedCellPopulationPython.py
+python/cell_based/TestMeshBasedCellPopulationPython.py
+python/cell_based/TestVertexBasedCellPopulationPython.py
+python/cell_based/TestNodeBasedCellPopulationPython.py
 python/cell_based/TestCellPython.py
+python/cell_based/tutorials/TestMeshBasedCellSimulationsPythonTurorial.py
+python/cell_based/tutorials/TestNodeBasedCellSimulationsPythonTurorial.py
+python/cell_based/tutorials/TestPottsBasedCellSimulationsPythonTurorial.py
+python/cell_based/tutorials/TestVertexBasedCellSimulationsPythonTurorial.py
+

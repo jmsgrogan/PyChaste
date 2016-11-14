@@ -200,9 +200,9 @@ def update_builder(builder):
                                "ApoptoticCellKiller",
                                "RandomCellKiller",
                                "CellwiseSourceEllipticPde",
-                               "AbstractPdeModifier",]
-                               ##"AbstractGrowingDomainPdeModifier",]
-                               ##"EllipticGrowingDomainPdeModifier"]
+                               "AbstractPdeModifier",
+                               "AbstractGrowingDomainPdeModifier",
+                               "EllipticGrowingDomainPdeModifier"]
 
     two_template_classes = ["AbstractCellBasedSimulation",
                            "OffLatticeSimulation",
@@ -265,14 +265,13 @@ def update_builder(builder):
     for eachTemplate in ["<2>", "<3>"]: 
         builder.class_("AbstractCellKiller"+eachTemplate).member_functions('GetCellPopulation').call_policies = default_pointer_policy  
         builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetSolution').exclude()  
-        builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetFeMesh').exclude()   
+        builder.class_("AbstractPdeModifier"+eachTemplate).member_functions('GetFeMesh').exclude() 
+        builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()  
+        builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
         builder.class_('CellwiseSourceEllipticPde'+eachTemplate).calldefs().use_default_arguments=False   
-        #builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False   
-        #builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()
-        #builder.class_('AbstractGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
-        #builder.class_("AbstractGrowingDomainPdeModifier"+eachTemplate).constructors().exclude()          
-#         builder.class_('EllipticGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False    
-#         builder.class_("EllipticGrowingDomainPdeModifier"+eachTemplate).member_functions('ConstructBoundaryConditionsContainer').exclude()  
-#         builder.class_("EllipticGrowingDomainPdeModifier"+eachTemplate).constructors().use_default_arguments=False    
+        builder.class_('AbstractGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
+        builder.class_("AbstractGrowingDomainPdeModifier"+eachTemplate).constructors().exclude()      
+        #builder.class_('EllipticGrowingDomainPdeModifier'+eachTemplate).calldefs().use_default_arguments=False    
+        builder.class_("EllipticGrowingDomainPdeModifier"+eachTemplate).member_functions('ConstructBoundaryConditionsContainer').exclude()  
 
     return builder

@@ -138,6 +138,8 @@ def generate_wrappers(args):
     
     # Make the wrapper code
     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
+    builder.balanced_split_module(work_dir+"/dynamic/", 3)
+    
     builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
     builder.write_module(work_dir + "/dynamic/" + module_name + ".cpp")
     

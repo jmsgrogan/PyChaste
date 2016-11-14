@@ -19,3 +19,4 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
 
     register_classes_3();
 }
+

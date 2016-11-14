@@ -44,15 +44,18 @@ if __name__ == '__main__':
 
     # Find all the tutorial files.
     tutorial_files = []
-    for root, dirs, files in os.walk("test/python/cell_based/tutorials/"):
+    for root, dirs, files in os.walk('test'):
         for file in files:
-            if fnmatch.fnmatch(file, 'Test*LiteratePaper*'):
-                 tutorial_files.append(file)
-
+            if fnmatch.fnmatch(file, 'Test*LiteratePaper*') or fnmatch.fnmatch(file, 'Test*Tutorial*'):
+                if not fnmatch.fnmatch(file, '*.pyc'):
+                    tutorial_files.append([root, file])
+                     
     # Generate the markdown for each and send it to the wiki repo.
     for eachFile in tutorial_files:
-        outfile = " doc/wiki/" + os.path.splitext(ntpath.basename(eachFile))[0] +".md"
-        inputfile = "test/python/cell_based/tutorials/" + eachFile
-        launch_string = "infra/CreateMarkdownTutorial.py " + inputfile + outfile 
+        outfile = " doc/wiki/" + os.path.splitext(ntpath.basename(eachFile[1]))[0] +".ipynb"
+        inputfile = eachFile[0] + "/" + eachFile[1]
+        #launch_string = "infra/CreateMarkdownTutorial.py " + inputfile + outfile 
+        launch_string = "infra/CreateJupyterNotebookTutorial.py " + inputfile + outfile 
         os.system(launch_string)
+
 

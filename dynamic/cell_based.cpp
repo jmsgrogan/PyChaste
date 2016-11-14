@@ -123,15 +123,8 @@ struct AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper : Abstract
     }
 
     virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ){
-        if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
-            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
-        else{
-            this->AbstractCellBasedSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
-        }
-    }
-    
-    virtual void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ){
-        AbstractCellBasedSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" );
+        func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
     }
 
     virtual void OutputSimulationParameters( ::out_stream & rParamsFile ){
@@ -217,15 +210,8 @@ struct AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper : Abstract
     }
 
     virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ){
-        if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
-            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
-        else{
-            this->AbstractCellBasedSimulation< 3, 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
-        }
-    }
-    
-    virtual void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ){
-        AbstractCellBasedSimulation< 3, 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" );
+        func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
     }
 
     virtual void OutputSimulationParameters( ::out_stream & rParamsFile ){
@@ -306,16 +292,9 @@ struct AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper : 
         func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
     }
 
-    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
-        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
-            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
-        else{
-            this->AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
-        }
-    }
-    
-    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
-        AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ){
+        bp::override func_SetupSolve = this->get_override( "SetupSolve" );
+        func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
     }
 
     virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
@@ -342,16 +321,9 @@ struct AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper : 
         AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
     }
 
-    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
-        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
-            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        else{
-            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        }
-    }
-    
-    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
-        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
     }
 
 };
@@ -370,16 +342,9 @@ struct AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper : 
         func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
     }
 
-    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
-        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
-            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
-        else{
-            this->AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
-        }
-    }
-    
-    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
-        AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ){
+        bp::override func_SetupSolve = this->get_override( "SetupSolve" );
+        func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
     }
 
     virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
@@ -406,16 +371,9 @@ struct AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper : 
         AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
     }
 
-    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
-        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
-            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        else{
-            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        }
-    }
-    
-    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
-        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
     }
 
 };
@@ -2526,16 +2484,9 @@ struct AbstractGrowingDomainPdeModifier_less__2__greater__wrapper : AbstractGrow
         AbstractPdeModifier< 2 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
     }
 
-    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
-        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
-            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        else{
-            this->AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        }
-    }
-    
-    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
-        AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
     }
 
 };
@@ -2647,16 +2598,9 @@ struct AbstractGrowingDomainPdeModifier_less__3__greater__wrapper : AbstractGrow
         AbstractPdeModifier< 3 >::UpdateAtEndOfSolve( boost::ref(rCellPopulation) );
     }
 
-    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
-        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
-            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        else{
-            this->AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
-        }
-    }
-    
-    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
-        AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ){
+        bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" );
+        func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
     }
 
 };
@@ -5801,6 +5745,49 @@ struct DiffusionCaUpdateRule_less__3__greater__wrapper : DiffusionCaUpdateRule< 
 
 struct EllipticGrowingDomainPdeModifier_less__2__greater__wrapper : EllipticGrowingDomainPdeModifier< 2 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 2 > > {
 
+    EllipticGrowingDomainPdeModifier_less__2__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 2, 2 > > pPde, ::boost::shared_ptr< AbstractBoundaryCondition< 2 > > pBoundaryCondition, bool isNeumannBoundaryCondition, ::Vec solution)
+    : EllipticGrowingDomainPdeModifier<2>( pPde, pBoundaryCondition, isNeumannBoundaryCondition, boost::python::ptr(solution) )
+      , bp::wrapper< EllipticGrowingDomainPdeModifier< 2 > >(){
+        // constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        EllipticGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {
+        EllipticGrowingDomainPdeModifier< 2 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
+        EllipticGrowingDomainPdeModifier< 2 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
+
     virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 2, 2 > & rCellPopulation ) {
         if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
             func_UpdateAtEndOfOutputTimeStep( boost::ref(rCellPopulation) );
@@ -5828,6 +5815,49 @@ struct EllipticGrowingDomainPdeModifier_less__2__greater__wrapper : EllipticGrow
 };
 
 struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrowingDomainPdeModifier< 3 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > > {
+
+    EllipticGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde, ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition, bool isNeumannBoundaryCondition, ::Vec solution )
+    : EllipticGrowingDomainPdeModifier<3>( pPde, pBoundaryCondition, isNeumannBoundaryCondition, boost::python::ptr(solution) )
+      , bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > >(){
+        // constructor
+    
+    }
+
+    virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
+            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        }
+    }
+    
+    void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
+        EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+    }
+
+    virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        if( bp::override func_SetupSolve = this->get_override( "SetupSolve" ) )
+            func_SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+        }
+    }
+    
+    void default_SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
+        EllipticGrowingDomainPdeModifier< 3 >::SetupSolve( boost::ref(rCellPopulation), outputDirectory );
+    }
+
+    virtual void UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        if( bp::override func_UpdateAtEndOfTimeStep = this->get_override( "UpdateAtEndOfTimeStep" ) )
+            func_UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        else{
+            this->EllipticGrowingDomainPdeModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+        }
+    }
+    
+    void default_UpdateAtEndOfTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
+        EllipticGrowingDomainPdeModifier< 3 >::UpdateAtEndOfTimeStep( boost::ref(rCellPopulation) );
+    }
 
     virtual void UpdateAtEndOfOutputTimeStep( ::AbstractCellPopulation< 3, 3 > & rCellPopulation ) {
         if( bp::override func_UpdateAtEndOfOutputTimeStep = this->get_override( "UpdateAtEndOfOutputTimeStep" ) )
@@ -12612,6 +12642,10 @@ struct VtkSceneModifier_less__3__greater__wrapper : VtkSceneModifier< 3 >, bp::w
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
+
 namespace boost { namespace python { namespace indexing {
 
 template<>
@@ -13020,7 +13054,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (bool ( ::AbstractCellBasedSimulation<2, 2>::* )(  ))( &::AbstractCellBasedSimulation< 2, 2 >::GetUpdateCellPopulationRule ) )    
         .def( 
             "OutputAdditionalSimulationSetup"
-            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_OutputAdditionalSimulationSetup)
+            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )( ::out_stream & ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::OutputAdditionalSimulationSetup)
             , ( bp::arg("rParamsFile") ) )    
         .def( 
             "OutputSimulationParameters"
@@ -13129,7 +13163,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (bool ( ::AbstractCellBasedSimulation<3, 3>::* )(  ))( &::AbstractCellBasedSimulation< 3, 3 >::GetUpdateCellPopulationRule ) )    
         .def( 
             "OutputAdditionalSimulationSetup"
-            , (void ( AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::default_OutputAdditionalSimulationSetup)
+            , (void ( AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::* )( ::out_stream & ))(&AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper::OutputAdditionalSimulationSetup)
             , ( bp::arg("rParamsFile") ) )    
         .def( 
             "OutputSimulationParameters"
@@ -13225,13 +13259,11 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         { //::AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve
         
             typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
-            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation<2, 2> &,::std::string ) ;
             
             AbstractCellBasedSimulationModifier2_2_exposer.def( 
                 "SetupSolve"
-                , SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve)
-                , default_SetupSolve_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_SetupSolve)
+                , bp::pure_virtual( SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::SetupSolve) )
                 , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
         
         }
@@ -13264,22 +13296,20 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         { //::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep
         
             typedef AbstractCellBasedSimulationModifier< 2, 2 > exported_class_t;
-            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
-            typedef void ( AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation<2, 2> & ) ;
             
             AbstractCellBasedSimulationModifier2_2_exposer.def( 
                 "UpdateAtEndOfTimeStep"
-                , UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep)
-                , default_UpdateAtEndOfTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__2_comma__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , bp::pure_virtual( UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep) )
                 , ( bp::arg("rCellPopulation") ) );
         
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractGrowingDomainPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< EllipticGrowingDomainPdeModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 2 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 2, 2 > > >();
     }
@@ -13313,13 +13343,11 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         { //::AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve
         
             typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
-            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation<3, 3> &,::std::string ) ;
             
             AbstractCellBasedSimulationModifier3_3_exposer.def( 
                 "SetupSolve"
-                , SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve)
-                , default_SetupSolve_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_SetupSolve)
+                , bp::pure_virtual( SetupSolve_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::SetupSolve) )
                 , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
         
         }
@@ -13352,22 +13380,20 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         { //::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep
         
             typedef AbstractCellBasedSimulationModifier< 3, 3 > exported_class_t;
-            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
-            typedef void ( AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation<3, 3> & ) ;
             
             AbstractCellBasedSimulationModifier3_3_exposer.def( 
                 "UpdateAtEndOfTimeStep"
-                , UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep)
-                , default_UpdateAtEndOfTimeStep_function_type(&AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , bp::pure_virtual( UpdateAtEndOfTimeStep_function_type(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep) )
                 , ( bp::arg("rCellPopulation") ) );
         
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< EllipticGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
     }
@@ -13540,8 +13566,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< RandomCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
     }
 
@@ -13598,21 +13624,21 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellLabel >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellAncestor >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellId >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
     }
 
     { //::AbstractCellMutationState
@@ -15053,8 +15079,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 3 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 3, 3 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 3 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 3, 3 > > >();
     }
 
     { //::AbstractCellProliferativeType
@@ -15890,7 +15916,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "UpdateAtEndOfTimeStep"
             , bp::pure_virtual( (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfTimeStep) )
-            , ( bp::arg("rCellPopulation") ) )    
+            , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< AbstractGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractPdeModifier< 2 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier2", bp::no_init )    
         .def( 
@@ -15923,8 +15949,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , ( bp::arg("rCellPopulation") ) )    
         .def( 
             "UpdateAtEndOfTimeStep"
-            , (void ( ::AbstractCellBasedSimulationModifier<2, 2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractCellBasedSimulationModifier< 2, 2 >::UpdateAtEndOfTimeStep)
-            , (void ( AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&AbstractGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , bp::pure_virtual( (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfTimeStep) )
             , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< AbstractPdeModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::noncopyable >( "AbstractPdeModifier3", bp::no_init )    
@@ -15982,7 +16007,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
         .def( 
             "UpdateAtEndOfTimeStep"
             , bp::pure_virtual( (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfTimeStep) )
-            , ( bp::arg("rCellPopulation") ) )    
+            , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< AbstractGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractPdeModifier< 3 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier3", bp::no_init )    
         .def( 
@@ -16015,8 +16040,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , ( bp::arg("rCellPopulation") ) )    
         .def( 
             "UpdateAtEndOfTimeStep"
-            , (void ( ::AbstractCellBasedSimulationModifier<3, 3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractCellBasedSimulationModifier< 3, 3 >::UpdateAtEndOfTimeStep)
-            , (void ( AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&AbstractGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+            , bp::pure_virtual( (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfTimeStep) )
             , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< AbstractOnLatticeCellPopulation_less__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOnLatticeCellPopulation2", bp::no_init )    
@@ -18744,29 +18768,149 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , (void ( ::DiffusionCaUpdateRule<3>::* )( double ))( &::DiffusionCaUpdateRule< 3 >::SetDiffusionParameter )
             , ( bp::arg("diffusionParameter") ) );
 
-    bp::class_< EllipticGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 2 > >, boost::noncopyable >( "type", bp::no_init )    
-        .def( 
-            "UpdateAtEndOfOutputTimeStep"
-            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep)
-            , (void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
-            , ( bp::arg("rCellPopulation") ) )    
-        .def( 
-            "UpdateAtEndOfSolve"
-            , (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve)
-            , (void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::* )( ::AbstractCellPopulation< 2, 2 > & ))(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
-            , ( bp::arg("rCellPopulation") ) );
+    { //::EllipticGrowingDomainPdeModifier< 2 >
+        typedef bp::class_< EllipticGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 2 > >, boost::noncopyable > EllipticGrowingDomainPdeModifier2_exposer_t;
+        EllipticGrowingDomainPdeModifier2_exposer_t EllipticGrowingDomainPdeModifier2_exposer = EllipticGrowingDomainPdeModifier2_exposer_t( "EllipticGrowingDomainPdeModifier2", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 2, 2 > >, boost::shared_ptr< AbstractBoundaryCondition< 2 > >, bool, Vec > >(( bp::arg("pPde"), bp::arg("pBoundaryCondition"), bp::arg("isNeumannBoundaryCondition"), bp::arg("solution") )) );
+        bp::scope EllipticGrowingDomainPdeModifier2_scope( EllipticGrowingDomainPdeModifier2_exposer );
+        bp::implicitly_convertible< boost::shared_ptr< AbstractLinearPde< 2, 2 > >, EllipticGrowingDomainPdeModifier< 2 > >();
+        { //::EllipticGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters
+        
+            typedef EllipticGrowingDomainPdeModifier< 2 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::*default_OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            
+            EllipticGrowingDomainPdeModifier2_exposer.def( 
+                "OutputSimulationModifierParameters"
+                , OutputSimulationModifierParameters_function_type(&::EllipticGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters)
+                , default_OutputSimulationModifierParameters_function_type(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::EllipticGrowingDomainPdeModifier< 2 >::SetupSolve
+        
+            typedef EllipticGrowingDomainPdeModifier< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 2, 2 > &,::std::string ) ;
+            
+            EllipticGrowingDomainPdeModifier2_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type(&::EllipticGrowingDomainPdeModifier< 2 >::SetupSolve)
+                , default_SetupSolve_function_type(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_SetupSolve)
+                , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
+        
+        }
+        { //::EllipticGrowingDomainPdeModifier< 2 >::UpdateAtEndOfTimeStep
+        
+            typedef EllipticGrowingDomainPdeModifier< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier2_exposer.def( 
+                "UpdateAtEndOfTimeStep"
+                , UpdateAtEndOfTimeStep_function_type(&::EllipticGrowingDomainPdeModifier< 2 >::UpdateAtEndOfTimeStep)
+                , default_UpdateAtEndOfTimeStep_function_type(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep
+        
+            typedef EllipticGrowingDomainPdeModifier< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::*default_UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier2_exposer.def( 
+                "UpdateAtEndOfOutputTimeStep"
+                , UpdateAtEndOfOutputTimeStep_function_type(&::AbstractPdeModifier< 2 >::UpdateAtEndOfOutputTimeStep)
+                , default_UpdateAtEndOfOutputTimeStep_function_type(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve
+        
+            typedef EllipticGrowingDomainPdeModifier< 2 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::*default_UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 2, 2 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier2_exposer.def( 
+                "UpdateAtEndOfSolve"
+                , UpdateAtEndOfSolve_function_type(&::AbstractPdeModifier< 2 >::UpdateAtEndOfSolve)
+                , default_UpdateAtEndOfSolve_function_type(&EllipticGrowingDomainPdeModifier_less__2__greater__wrapper::default_UpdateAtEndOfSolve)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+    }
 
-    bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > >, boost::noncopyable >( "type", bp::no_init )    
-        .def( 
-            "UpdateAtEndOfOutputTimeStep"
-            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep)
-            , (void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
-            , ( bp::arg("rCellPopulation") ) )    
-        .def( 
-            "UpdateAtEndOfSolve"
-            , (void ( ::AbstractPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))(&::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve)
-            , (void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::* )( ::AbstractCellPopulation< 3, 3 > & ))(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
-            , ( bp::arg("rCellPopulation") ) );
+    { //::EllipticGrowingDomainPdeModifier< 3 >
+        typedef bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > >, boost::noncopyable > EllipticGrowingDomainPdeModifier3_exposer_t;
+        EllipticGrowingDomainPdeModifier3_exposer_t EllipticGrowingDomainPdeModifier3_exposer = EllipticGrowingDomainPdeModifier3_exposer_t( "EllipticGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde"), bp::arg("pBoundaryCondition"), bp::arg("isNeumannBoundaryCondition"), bp::arg("solution") )) );
+        bp::scope EllipticGrowingDomainPdeModifier3_scope( EllipticGrowingDomainPdeModifier3_exposer );
+        bp::implicitly_convertible< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, EllipticGrowingDomainPdeModifier< 3 > >();
+        { //::EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters
+        
+            typedef EllipticGrowingDomainPdeModifier< 3 > exported_class_t;
+            typedef void ( exported_class_t::*OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::*default_OutputSimulationModifierParameters_function_type)( ::out_stream & ) ;
+            
+            EllipticGrowingDomainPdeModifier3_exposer.def( 
+                "OutputSimulationModifierParameters"
+                , OutputSimulationModifierParameters_function_type(&::EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters)
+                , default_OutputSimulationModifierParameters_function_type(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)
+                , ( bp::arg("rParamsFile") ) );
+        
+        }
+        { //::EllipticGrowingDomainPdeModifier< 3 >::SetupSolve
+        
+            typedef EllipticGrowingDomainPdeModifier< 3 > exported_class_t;
+            typedef void ( exported_class_t::*SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::*default_SetupSolve_function_type)( ::AbstractCellPopulation< 3, 3 > &,::std::string ) ;
+            
+            EllipticGrowingDomainPdeModifier3_exposer.def( 
+                "SetupSolve"
+                , SetupSolve_function_type(&::EllipticGrowingDomainPdeModifier< 3 >::SetupSolve)
+                , default_SetupSolve_function_type(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_SetupSolve)
+                , ( bp::arg("rCellPopulation"), bp::arg("outputDirectory") ) );
+        
+        }
+        { //::EllipticGrowingDomainPdeModifier< 3 >::UpdateAtEndOfTimeStep
+        
+            typedef EllipticGrowingDomainPdeModifier< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::*default_UpdateAtEndOfTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier3_exposer.def( 
+                "UpdateAtEndOfTimeStep"
+                , UpdateAtEndOfTimeStep_function_type(&::EllipticGrowingDomainPdeModifier< 3 >::UpdateAtEndOfTimeStep)
+                , default_UpdateAtEndOfTimeStep_function_type(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep
+        
+            typedef EllipticGrowingDomainPdeModifier< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::*default_UpdateAtEndOfOutputTimeStep_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier3_exposer.def( 
+                "UpdateAtEndOfOutputTimeStep"
+                , UpdateAtEndOfOutputTimeStep_function_type(&::AbstractPdeModifier< 3 >::UpdateAtEndOfOutputTimeStep)
+                , default_UpdateAtEndOfOutputTimeStep_function_type(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfOutputTimeStep)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+        { //::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve
+        
+            typedef EllipticGrowingDomainPdeModifier< 3 > exported_class_t;
+            typedef void ( exported_class_t::*UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            typedef void ( EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::*default_UpdateAtEndOfSolve_function_type)( ::AbstractCellPopulation< 3, 3 > & ) ;
+            
+            EllipticGrowingDomainPdeModifier3_exposer.def( 
+                "UpdateAtEndOfSolve"
+                , UpdateAtEndOfSolve_function_type(&::AbstractPdeModifier< 3 >::UpdateAtEndOfSolve)
+                , default_UpdateAtEndOfSolve_function_type(&EllipticGrowingDomainPdeModifier_less__3__greater__wrapper::default_UpdateAtEndOfSolve)
+                , ( bp::arg("rCellPopulation") ) );
+        
+        }
+    }
 
     bp::class_< GeneralisedLinearSpringForce_less__2_comma__2__greater__wrapper, bp::bases< AbstractTwoBodyInteractionForce< 2, 2 > > >( "GeneralisedLinearSpringForce2_2", bp::init< >() )    
         .def( 
@@ -26192,6 +26336,28 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
             , ( bp::arg("rCellPopulation") ) );
 
     bp::class_< WildTypeCellMutationState, bp::bases< AbstractCellMutationState > >( "WildTypeCellMutationState", bp::init< >() );
+
+    { //::GetPetscMatForWrapper
+    
+        typedef ::Mat ( *GetPetscMatForWrapper_function_type )(  );
+        
+        bp::def( 
+            "GetPetscMatForWrapper"
+            , GetPetscMatForWrapper_function_type( &::GetPetscMatForWrapper )
+            , bp::return_value_policy< bp::return_opaque_pointer >() );
+    
+    }
+
+    { //::GetPetscVecForWrapper
+    
+        typedef ::Vec ( *GetPetscVecForWrapper_function_type )(  );
+        
+        bp::def( 
+            "GetPetscVecForWrapper"
+            , GetPetscVecForWrapper_function_type( &::GetPetscVecForWrapper )
+            , bp::return_value_policy< bp::return_opaque_pointer >() );
+    
+    }
 
     { //::Instantiation
     
