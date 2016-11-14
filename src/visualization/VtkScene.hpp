@@ -50,9 +50,9 @@ Copyright (c) 2005-2016, University of Oxford.
 #include <vtkLookupTable.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
-
 #include <vtkWindowToImageFilter.h>
 #include "AbstractCellPopulation.hpp"
+#include "CellPopulationPyChasteActorGenerator.hpp"
 #include "MeshBasedCellPopulation.hpp"
 
 /**
@@ -75,11 +75,6 @@ class VtkScene
      * The vtk render window interactor
      */
     vtkSmartPointer<vtkRenderWindowInteractor> mpRenderWindowInteractor;
-
-    /**
-     * The cell population
-     */
-    boost::shared_ptr<AbstractCellPopulation<DIM> > mpCellPopulation;
 
     /**
      * The path for output
@@ -133,6 +128,11 @@ class VtkScene
      */
     unsigned mOutputFrequency;
 
+    /**
+     * The cell population
+     */
+    boost::shared_ptr<CellPopulationPyChasteActorGenerator<DIM> > mpCellPopulationGenerator;
+
 public:
 
     /**
@@ -150,15 +150,8 @@ public:
      */
     void End();
 
-    /**
-     * Update the actors for the cell population
-     */
-    void UpdateCellPopulationActor();
 
-    /**
-     * Update the actors for mesh based cell populations
-     */
-    void UpdateMeshBasedCellPopulationActor();
+    boost::shared_ptr<CellPopulationPyChasteActorGenerator<DIM> > GetCellPopulationActorGenerator();
 
     /**
      * Update the renderer, this will update the population actor and write output images
