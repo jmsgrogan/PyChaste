@@ -208,6 +208,7 @@ def update_builder(builder):
                            "OffLatticeSimulation",
                            "AbstractCellBasedSimulationModifier",
                            "AbstractTwoBodyInteractionForce",
+                           "AbstractForce",
                            "GeneralisedLinearSpringForce",
                            "AbstractCellPopulationBoundaryCondition",
                            "PlaneBoundaryCondition",]

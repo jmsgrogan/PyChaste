@@ -44,7 +44,12 @@ import generate_bindings
 def update_builder(builder):
     
     include_classes = ["VtkScene<3>",
-               "VtkScene<2>",]
+               "VtkScene<2>",
+               "AbstractPyChasteActorGenerator<2>",
+               "AbstractPyChasteActorGenerator<3>",
+               "CellPopulationPyChasteActorGenerator<2>",
+               "CellPopulationPyChasteActorGenerator<3>"
+               ]
     
     for eachClass in include_classes:
         builder.class_(eachClass).include()  

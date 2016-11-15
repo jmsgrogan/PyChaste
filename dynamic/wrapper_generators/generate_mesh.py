@@ -119,10 +119,13 @@ def update_builder(builder):
     builder.class_('VertexMesh<2,2>').member_functions("GetElement").exclude()
     builder.class_('VertexMesh<3,3>').member_functions("GetFace").exclude()
     builder.class_('VertexMesh<2,2>').member_functions("GetFace").exclude()
-#    builder.class_('VertexMesh<2,2>').constructors(arg_types=['TetrahedralMesh<3,3>']).exclude()
+    builder.class_('VertexMesh<3,3>').constructors(arg_types=[None]).exclude()
+    builder.class_('VertexMesh<2,2>').constructors(arg_types=[None]).exclude()
     
     builder.class_('MutableMesh<3,3>').member_functions("RescaleMeshFromBoundaryNode").exclude()
     builder.class_('MutableMesh<2,2>').member_functions("RescaleMeshFromBoundaryNode").exclude()
+    builder.class_('MutableMesh<3,3>').member_functions("SplitLongEdges").exclude() # cant deal with vec_cvec for some reason
+    builder.class_('MutableMesh<2,2>').member_functions("SplitLongEdges").exclude()
     builder.class_('NodesOnlyMesh<3>').member_functions("GetBoxCollection").exclude()
     builder.class_('NodesOnlyMesh<2>').member_functions("GetBoxCollection").exclude()
     builder.class_('NodesOnlyMesh<3>').member_functions("GetNodeOrHaloNode").exclude()

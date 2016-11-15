@@ -36,10 +36,49 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 This scipt automatically generates Python bindings using a rule based approach
 """
 import sys
+sys.setrecursionlimit(3000) # Avoid: RuntimeError: maximum recursion depth exceeded in cmp
+import os
 from pyplusplus import module_builder
-from pyplusplus.module_builder import call_policies
+from pyplusplus.module_builder import call_policies, file_cache_t
 from pyplusplus import messages
 from pygccxml import parser
+
+chaste_license = """
+/*
+
+Copyright (c) 2005-2016, University of Oxford.
+All rights reserved.
+
+University of Oxford means the Chancellor, Masters and Scholars of the
+University of Oxford, having an administrative office at Wellington
+Square, Oxford OX1 2JD, UK.
+
+This file is part of Chaste.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ * Neither the name of the University of Oxford nor the names of its
+   contributors may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+*/
+"""
 
 def template_replace(class_name):
 
@@ -126,26 +165,38 @@ def generate_wrappers(args):
                                                 xml_generator_config = xml_generator_config,
                                                 start_with_declarations = ['chaste'],
                                                 include_paths = includes,
-                                                indexing_suite_version=2)
+                                                indexing_suite_version=2,
+                                                cache=file_cache_t(work_dir + "/dynamic/wrappers/castxml_cache.xml"))
+    
     messages.disable(messages.W1040) # unexposed declaration
     messages.disable(messages.W1031) # user to expose non public member function
     
     # Don't wrap std library
     builder.global_ns.namespace('std').exclude()
     
+    if "core" not in module_name and "mesh" not in module_name:
+        builder.register_module_dependency(work_dir + "/dynamic/wrappers/core")
+        
+    if "cell_based" in module_name:
+        builder.register_module_dependency(work_dir + "/dynamic/wrappers/mesh")
+        builder.register_module_dependency(work_dir + "/dynamic/wrappers/pde")
+        builder.register_module_dependency(work_dir + "/dynamic/wrappers/ode")
+    
     # Set up the builder for each module
     builder = do_module(module_name, builder)
     
     # Make the wrapper code
     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
-    builder.balanced_split_module(work_dir+"/dynamic/", 3)
-    
+    builder.code_creator.user_defined_directories.append(work_dir)
     builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
-    builder.write_module(work_dir + "/dynamic/" + module_name + ".cpp")
+    builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
+    builder.code_creator.license = chaste_license
+    
+    builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
     
     # Fix a bug with boost units
-    boost_units_namespace_fix(work_dir + "/dynamic/" + module_name + ".cpp")
-    strip_undefined_call_policies(work_dir + "/dynamic/" + module_name + ".cpp")
+    #boost_units_namespace_fix(work_dir + "/dynamic/wrappers/" + module_name + "/" + module_name + ".cpp")
+    #strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + module_name + ".cpp")
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

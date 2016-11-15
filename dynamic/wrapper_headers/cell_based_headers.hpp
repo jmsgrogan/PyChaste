@@ -33,6 +33,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+#ifndef PYCHASTECELLBASEDHEADERS_HPP_
+#define PYCHASTECELLBASEDHEADERS_HPP_
+
 #include "PetscTools.hpp"
 
 // Base
@@ -229,6 +232,10 @@ template class EllipticGrowingDomainPdeModifier<3>;
 //// Typdef in this namespace so that pyplusplus uses the nicer typedef'd name for the class
 namespace pyplusplus{
 namespace aliases{
+typedef std::vector<unsigned> VecUnsigned;
+typedef std::vector<bool> VecDouble;
+typedef std::vector<double> VecBool;
+typedef std::set<unsigned> SetUnsigned;
 typedef CellsGenerator<UniformCellCycleModel, 2> CellsGeneratorUniformCellCycleModel_2;
 typedef CellsGenerator<UniformCellCycleModel, 3> CellsGeneratorUniformCellCycleModel_3;
 typedef CellsGenerator<SimpleOxygenBasedCellCycleModel, 2> CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
@@ -236,6 +243,25 @@ typedef CellsGenerator<SimpleOxygenBasedCellCycleModel, 3> CellsGeneratorSimpleO
 typedef CellsGenerator<UniformG1GenerationalCellCycleModel, 2> CellsGeneratorUniformG1GenerationalCellCycleModel_2;
 typedef CellsGenerator<UniformG1GenerationalCellCycleModel, 3> CellsGeneratorUniformG1GenerationalCellCycleModel_3;
 typedef std::vector<CellPtr> VecCellPtr;
+typedef std::set<CellPtr> SetCellPtr;
+typedef std::vector<c_vector<double, 2> > VecCVectorDouble_2;
+typedef std::vector<c_vector<double, 3> > VecCVectorDouble_3;
+typedef c_vector<double, 2> CVectorDouble_2;
+typedef c_vector<double, 3> CVectorDouble_3;
+typedef std::vector<boost::shared_ptr<AbstractCellProperty> >  VecAbstractCellProperty;
+typedef std::vector<boost::shared_ptr<AbstractUpdateRule<2> > >  VecAbstractUpdateRule2;
+typedef std::vector<boost::shared_ptr<AbstractUpdateRule<3> > >  VecAbstractUpdateRule3;
+typedef boost::shared_ptr<AbstractCellProperty> AbstractCellPropertySharedPtr;
+typedef boost::shared_ptr<AbstractUpdateRule<2> > AbstractUpdateRule2SharedPtr;
+typedef boost::shared_ptr<AbstractUpdateRule<3> > AbstractUpdateRule3SharedPtr;
+typedef boost::shared_ptr<Cell> CellPtr;
+typedef std::map<boost::shared_ptr<Cell>, unsigned> MapCellUnsigned;
+typedef std::map<Node<2>*, c_vector<double, 2> > MapNodePtr2CVectorDouble_2;
+typedef std::map<Node<3>*, c_vector<double, 3> > MapNodePtr2CVectorDouble_3;
+typedef std::pair<Node<3>*, Node<3>*>  PairNodePtr3;
+typedef std::pair<Node<2>*, Node<2>*>  PairNodePtr2;
+typedef std::vector<std::pair<Node<3>*, Node<3>*> > VecPairNodePtr3;
+typedef std::vector<std::pair<Node<2>*, Node<2>*> > VecPairNodePtr2;
 }
 }
 
@@ -250,17 +276,17 @@ inline int Instantiation()
             sizeof(Mat) + sizeof(Vec);
 }
 
-Mat GetPetscMatForWrapper()
+inline Mat GetPetscMatForWrapper()
 {
     Mat A;
     PetscTools::SetupMat(A, 3, 3, 3);
     return A;
 }
 
-Vec GetPetscVecForWrapper()
+inline Vec GetPetscVecForWrapper()
 {
     Vec A = PetscTools::CreateAndSetVec(1, 1.0);
     return A;
 }
 
-//pyplusplus::aliases
+#endif //PYCHASTECELLBASEDHEADERS_HPP_

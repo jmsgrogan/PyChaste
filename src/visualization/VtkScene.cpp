@@ -140,6 +140,12 @@ VtkScene<DIM>::~VtkScene()
 }
 
 template<unsigned DIM>
+boost::shared_ptr<CellPopulationPyChasteActorGenerator<DIM> > VtkScene<DIM>::GetCellPopulationActorGenerator()
+{
+    return mpCellPopulationGenerator;
+}
+
+template<unsigned DIM>
 void VtkScene<DIM>::SetIsInteractive(bool isInteractive)
 {
     mIsInteractive = isInteractive;

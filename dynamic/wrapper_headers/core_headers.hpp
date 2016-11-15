@@ -34,6 +34,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // Global
+#ifndef PYCHASTECOREHEADERS_HPP_
+#define PYCHASTECOREHEADERS_HPP_
+
+#include <vector>
+#include <set>
+#include <map>
 #include "PetscTools.hpp"
 #include "OutputFileHandler.hpp"
 #include "BoostFilesystem.hpp"
@@ -43,6 +49,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Version.hpp"
 #include "Identifiable.hpp"
 #include "ReplicatableVector.hpp"
+#include "UblasIncludes.hpp"
 
 typedef boost::filesystem::path boost_filesystem_path;
 
@@ -51,7 +58,7 @@ inline int Instantiation()
     return sizeof(Mat) + sizeof(Vec);
 }
 
-Mat GetPetscMatForWrapper()
+inline Mat GetPetscMatForWrapper()
 {
     Mat A;
 
@@ -59,4 +66,25 @@ Mat GetPetscMatForWrapper()
     return A;
 }
 
+//// Typdef in this namespace so that pyplusplus uses the nicer typedef'd name for the class/
+// include usual std types here so they ara available for other modules.
+namespace pyplusplus{
+namespace aliases{
+typedef std::map<std::string, std::string> MapString;
+typedef std::vector<double> VecDouble;
+typedef std::vector<unsigned> VecUnsigned;
+typedef std::vector<bool> VecBool;
+typedef std::set<unsigned> SetUnsigned;
+typedef c_vector<double, 2> CVectorDouble_2;
+typedef c_vector<double, 3> CVectorDouble_3;
+typedef c_vector<unsigned, 5> CVectorUnsigned_5;
+typedef std::vector<std::string, std::allocator<std::string> >  VecString;
+typedef std::vector<c_vector<unsigned, 5> > VecCVectorUnsigned_5;
+typedef std::vector<c_vector<double, 3> > VecCVectorDouble_3;
+typedef std::vector<c_vector<double, 2> > VecCVectorDouble_2;
+typedef std::vector<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >, std::allocator<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > > > VecSetInt;
+typedef std::vector<std::vector<unsigned int, std::allocator<unsigned int> >, std::allocator<std::vector<unsigned int, std::allocator<unsigned int> > > > VecVecInt;
+}
+}
 
+#endif // PYCHASTECOREHEADERS_HPP_

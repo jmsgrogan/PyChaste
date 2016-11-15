@@ -41,7 +41,7 @@ chaste.init()
 class TestCell(unittest.TestCase):
     
     def test_construct(self):
-        file_handler = chaste.core.OutputFileHandler("PythonTestVertexBasedCellPopulation");
+        file_handler = chaste.core.OutputFileHandler("Python/TestVertexBasedCellPopulation");
         
         simulation_time = chaste.cell_based.SimulationTime.Instance()
         simulation_time.SetStartTime(0.0)
@@ -74,8 +74,8 @@ class TestCell(unittest.TestCase):
  
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("PythonTestVertexBasedCellPopulation");
-        simulator.SetEndTime(20.0)
+        simulator.SetOutputDirectory("Python/TestVertexBasedCellPopulation");
+        simulator.SetEndTime(1.0)
         simulator.AddForce(force)
         simulator.SetSamplingTimestepMultiple(200);
         simulator.AddSimulationModifier(modifier)

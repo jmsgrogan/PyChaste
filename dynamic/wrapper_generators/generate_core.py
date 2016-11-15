@@ -59,7 +59,11 @@ def update_builder(builder):
     builder.class_("PetscTools").member_functions('GetWorld').exclude()
     builder.class_("PetscTools").member_functions('CreateVec').call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
     builder.class_("PetscTools").member_functions('CreateAndSetVec').call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
+    builder.class_("PetscTools").add_declaration_code("BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )")
     builder.class_("PetscTools").variables('MASTER_RANK').exclude()
+    
+    builder.class_("ReplicatableVector").add_declaration_code("BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )")
+    builder.class_("ReplicatableVector").add_declaration_code("BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )")
 
     builder.class_("OutputFileHandler").member_functions('OpenOutputFile').exclude()
     builder.class_("FileFinder").member_functions('FindMatches').exclude()
