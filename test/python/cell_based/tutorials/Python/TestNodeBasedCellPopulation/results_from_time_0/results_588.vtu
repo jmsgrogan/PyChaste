@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="7"                    NumberOfCells="0"                   >
+      <PointData>
+        <DataArray type="Float64" Name="Cell types" format="appended" RangeMin="1"                    RangeMax="1"                    offset="0"                   />
+        <DataArray type="Float64" Name="Process rank" format="appended" RangeMin="0"                    RangeMax="0"                    offset="48"                  />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float64" Name="Vertex positions" NumberOfComponents="3" format="appended" RangeMin="0.41005553684"        RangeMax="1.8955974936"         offset="88"                  />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="292"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="308"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="324"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAAA4AAAAEAAAAA==eJxjYACBD/YMJNIA1ekISg==AQAAAACAAAA4AAAADAAAAA==eJxjYCAPAAAAOAABAQAAAACAAACoAAAAhwAAAA==eJw7ape8b/LNi/YCwsJbv9hc3s8ABSe5XG2m876yn89ksehk7QN7mHiYRgqn/9qj+7n4bTb2Wj6Ci18wXeNjNP2r/fS9NefZfL/CxT1nF8o6Hv5j//hluhp3y124+Ittgc4XT123F9su+Xya5je4+OMZBa8fSX2xn76iTdh0/TW4ewByXjd2AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAA
+  </AppendedData>
+</VTKFile>
+
+<!-- Created by Chaste version 3.4.137304821 (with uncommitted modifications) on Sun, 20 Nov 2016 14:21:56 +0000.  Chaste was built on Sun, 20 Nov 2016 11:13:33 +0000 by machine (uname) 'Linux' using settings: Debug.  Checked-out project versions: PyChaste=.
+-->

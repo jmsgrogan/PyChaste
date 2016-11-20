@@ -82,18 +82,18 @@ class TestCell(unittest.TestCase):
         modifier = chaste.cell_based.VtkSceneModifier3()
         modifier.SetVtkScene(scene);
         
-        simple_modifier = SimplePythonModifier()
+        #simple_modifier = SimplePythonModifier()
 
         # Set up the simulation
         simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
-        simulator.SetOutputDirectory("Python/TestVtkScene/TestSimpleRendering/");
+        
+        simulator.SetOutputDirectory("Python/TestVtkScene/TestSimpleRendering/")
         simulator.SetEndTime(4.0);
         simulator.SetDt(1.0);
-        simulator.SetSamplingTimestepMultiple(1);
+        simulator.SetSamplingTimestepMultiple(1)
         #simulator.AddSimulationModifier(modifier)
-        simulator.AddSimulationModifier(simple_modifier)
-        
-        simulator.Solve();
+        #simulator.AddSimulationModifier(simple_modifier)
+        simulator.Solve()
 
 
 if __name__ == '__main__':

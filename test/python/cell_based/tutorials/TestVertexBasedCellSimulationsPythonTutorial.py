@@ -52,7 +52,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
     ## In the first test, we run a simple vertex-based simulation, in which we create a monolayer of cells, 
     ## using a mutable vertex mesh. Each cell is assigned a stochastic cell-cycle model.
     
-    def xtest_monolayer(self):
+    def test_monolayer(self):
         
         ## First, we generate a vertex mesh. To create a MutableVertexMesh, we can use the HoneycombVertexMeshGenerator. 
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments 

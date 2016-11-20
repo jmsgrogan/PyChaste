@@ -38,7 +38,7 @@ class BinaryDistribution(Distribution):
 
 setup(
     name = "chaste",
-    version = "0.1.dev0",
+    version = "3.4.dev0",
     packages = find_packages(),
     install_requires = ['petsc4py==3.7', 'matplotlib', 'numpy'],
     package_data={
@@ -49,7 +49,7 @@ setup(
                    'ode/_chaste_project_PyChaste_ode.so', 
                    'pde/_chaste_project_PyChaste_pde.so', 
                    'visualization/_chaste_project_PyChaste_visualization.so', 
-                  'tutorial/_chaste_project_PyChaste_hello_auto.so',],},
+                  'tutorial/_chaste_project_PyChaste_tutorial.so',],},
       
     include_package_data=True,
 

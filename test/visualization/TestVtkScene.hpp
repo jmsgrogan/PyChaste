@@ -75,7 +75,7 @@ class TestVtkScene : public AbstractCellBasedTestSuite
 {
 public:
 
-    void xTestRenderingCaBasedPopulation()
+    void TestRenderingCaBasedPopulation()
     {
         // Read the image from file
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingCaBasedPopulation/");
@@ -100,8 +100,8 @@ public:
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(false);
-        p_scene->SetSaveAsAnimation(true);
+        p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsAnimation(false);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);
@@ -116,7 +116,7 @@ public:
         simulator.Solve();
     }
 
-    void xTestRenderingMeshBasedPopulation() throw(Exception)
+    void TestRenderingMeshBasedPopulation() throw(Exception)
     {
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingMeshBasedPopulation/");
 
@@ -155,7 +155,7 @@ public:
         simulator.Solve();
     }
 
-    void xTestRendering3dMeshBasedPopulation() throw(Exception)
+    void TestRendering3dMeshBasedPopulation() throw(Exception)
     {
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRendering3dMeshBasedPopulation/");
 
@@ -189,8 +189,8 @@ public:
 
         OffLatticeSimulation<3> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkScene/TestRendering3dMeshBasedPopulation/");
-        simulator.SetEndTime(10.0);
-        simulator.SetSamplingTimestepMultiple(12);
+        simulator.SetEndTime(5.0);
+        simulator.SetSamplingTimestepMultiple(2);
 
         MAKE_PTR(GeneralisedLinearSpringForce<3>, p_force);
         p_force->SetMeinekeSpringStiffness(30.0); // default is 15.0;
@@ -219,9 +219,9 @@ public:
 
         OnLatticeSimulation<2> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkScene/TestRenderingPottsBasedPopulation/");
-        simulator.SetEndTime(50.0);
+        simulator.SetEndTime(1.0);
         simulator.SetDt(0.1);
-        simulator.SetSamplingTimestepMultiple(10);
+        simulator.SetSamplingTimestepMultiple(1);
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);

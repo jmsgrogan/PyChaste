@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="8"                    NumberOfCells="8"                   >
+      <PointData>
+      </PointData>
+      <CellData>
+        <DataArray type="Float64" Name="Cell types" format="appended" RangeMin="1"                    RangeMax="1"                    offset="0"                   />
+      </CellData>
+      <Points>
+        <DataArray type="Float64" Name="Vertex positions" NumberOfComponents="3" format="appended" RangeMin="0.36489346957"        RangeMax="1.6306833048"         offset="92"                  />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="356"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="620"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="712"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _QAAAAAAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8=wAAAAGyThsR0rdE/DKHq+j2Fzj8AAAAAAAAAAMO2y+wztuA/1ZluJGa59D8AAAAAAAAAAFAvWv9pUMK/b7mGu7245z8AAAAAAAAAAO5wDeto3uI/qkdamGRcyj8AAAAAAAAAAEoy0o0sy/k/MN+0VFKfpT8AAAAAAAAAABGLfNBi5ew/ZsWTSJfty78AAAAAAAAAAAqKyIrZp/Y/tNtzHI/h6T8AAAAAAAAAABJFdf4OTu4/mJlANHfa6T8AAAAAAAAAAA==wAAAAAUAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAMAAAAAAAAABQAAAAAAAAAEAAAAAAAAAAYAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAMAAAAAAAAABwAAAAAAAAABAAAAAAAAAAIAAAAAAAAAAQAAAAAAAAAHAAAAAAAAAAYAAAAAAAAABAAAAAAAAAAGAAAAAAAAAAIAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==QAAAAAMAAAAAAAAACAAAAAAAAAANAAAAAAAAABAAAAAAAAAAEgAAAAAAAAAUAAAAAAAAABYAAAAAAAAAGAAAAAAAAAA=CAAAAAcHBwcHBwcH
+  </AppendedData>
+</VTKFile>

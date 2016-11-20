@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="8"                    NumberOfCells="0"                   >
+      <PointData>
+        <DataArray type="Float64" Name="Cell types" format="appended" RangeMin="1"                    RangeMax="1"                    offset="0"                   />
+        <DataArray type="Float64" Name="Process rank" format="appended" RangeMin="0"                    RangeMax="0"                    offset="48"                  />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float64" Name="Vertex positions" NumberOfComponents="3" format="appended" RangeMin="0.48497995058"        RangeMax="2.0051412999"         offset="88"                  />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="320"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="336"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="352"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAABAAAAAEAAAAA==eJxjYACBD/YMZNIAGmcJeQ==AQAAAACAAABAAAAADAAAAA==eJxjYKAMAAAAQAABAQAAAACAAADAAAAAmwAAAA==eJxTtnl4MiL8gb30yQ2aGa+v7meAgllcP0vi3r6132oTcGzy5gf2MPE2palrou8u2h/1dErNp0/34OKTHn85VSP6zT791P4MXsdvcPFtQg832O38Zz9b4abV9MpHcPH7n9987nx/037S1L+fnrd8hYub8R8Q/LD0u/3pR3zzHuy8BHfPMq4/979cvLv/eBRTnGLATbg4AOd8S3I=AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAA
+  </AppendedData>
+</VTKFile>
+
+<!-- Created by Chaste version 3.4.137304821 (with uncommitted modifications) on Sun, 20 Nov 2016 14:21:58 +0000.  Chaste was built on Sun, 20 Nov 2016 11:13:33 +0000 by machine (uname) 'Linux' using settings: Debug.  Checked-out project versions: PyChaste=.
+-->

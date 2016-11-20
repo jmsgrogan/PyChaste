@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="16"                   NumberOfCells="4"                   >
+      <PointData>
+      </PointData>
+      <CellData>
+        <DataArray type="Float64" Name="Cell types" format="appended" RangeMin="1"                    RangeMax="1"                    offset="0"                   />
+        <DataArray type="Float64" Name="target area" format="appended" RangeMin="1"                    RangeMax="1"                    offset="48"                  />
+      </CellData>
+      <Points>
+        <DataArray type="Float64" Name="Vertex positions" NumberOfComponents="3" format="appended" RangeMin="0.26867721111"        RangeMax="3.087140953"          offset="96"                  />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="616"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="880"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="928"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _IAAAAAAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/IAAAAAAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/gAEAALQZsiIKft8/Pnb3ijGlpr8AAAAAAAAAAGHircasGfg//fMBELWHqL8AAAAAAAAAAGc+fUyiW6S/RTMqP4kB0T8AAAAAAAAAAB1p7A1Zze8/t1hieGPByT8AAAAAAAAAAJ+xn1mOTgBAIsDoMDuY0D8AAAAAAAAAAPfJd8ZbpKW/QVmRLl4z7D8AAAAAAAAAADAFkqYHxu8/SzDy0wKV6z8AAAAAAAAAAF2ySDJ0oQBAuSJOOht86j8AAAAAAAAAAAdtum1e9No/FEiVHNcW8z8AAAAAAAAAAGX9tiz8HPg/S0HDT2OK8j8AAAAAAAAAACnfGW+RVgRA1axzojU78j8AAAAAAAAAAP9yAjONi90/aSmC7dUu/D8AAAAAAAAAAG/LCXlTGfg/Ww6wSrgc/T8AAAAAAAAAAPb0MYluUQRAoczxaYIU/D8AAAAAAAAAADI7pHKmzO8/hzQeMZGMAEAAAAAAAAAAAMi8qbs+EABAkQoKIweFAEAAAAAAAAAAAA==wAAAAAAAAAAAAAAAAwAAAAAAAAAGAAAAAAAAAAgAAAAAAAAABQAAAAAAAAACAAAAAAAAAAEAAAAAAAAABAAAAAAAAAAHAAAAAAAAAAkAAAAAAAAABgAAAAAAAAADAAAAAAAAAAYAAAAAAAAACQAAAAAAAAAMAAAAAAAAAA4AAAAAAAAACwAAAAAAAAAIAAAAAAAAAAcAAAAAAAAACgAAAAAAAAANAAAAAAAAAA8AAAAAAAAADAAAAAAAAAAJAAAAAAAAAA==IAAAAAYAAAAAAAAADAAAAAAAAAASAAAAAAAAABgAAAAAAAAABAAAAAcHBwc=
+  </AppendedData>
+</VTKFile>

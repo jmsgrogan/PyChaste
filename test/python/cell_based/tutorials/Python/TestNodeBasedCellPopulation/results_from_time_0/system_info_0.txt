@@ -1,0 +1,21 @@
+Process 0 of 1.
+uname sysname  = Linux
+uname nodename = pavilion
+uname release  = 4.4.0-47-generic
+uname version  = #68-Ubuntu SMP Wed Oct 26 19:39:52 UTC 2016
+uname machine  = x86_64
+
+Information on number and type of processors:
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+
+Information on processor caches, in the same order as above:
+cache size	: 2048 KB
+cache size	: 2048 KB
+cache size	: 2048 KB
+cache size	: 2048 KB
+
+Information on system memory:
+MemTotal:        7076692 kB

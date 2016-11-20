@@ -51,7 +51,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     ## In the first test, we run a simple Potts-based simulation, in which we create a monolayer of cells, using a Potts mesh. 
     ## Each cell is assigned a stochastic cell-cycle model.
     
-    def xtest_monolayer(self):
+    def test_monolayer(self):
         
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size. 
@@ -140,7 +140,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     ## The next test generates a collection of cells, there are two types of cells, labelled ones and non labelled ones, 
     ## there is differential adhesion between the cell types. For the parameters specified, the cells sort into separate types.
     
-    def xtest_potts_monolayer_cell_sorting(self):
+    def test_potts_monolayer_cell_sorting(self):
         
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size. 
@@ -212,7 +212,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     ## ## Test 3 - 3D Cell Sorting
     ## The next test extends the previous example to three dimensions.
     
-    def test_potts_spheroid_cell_sorting(self):
+    def xtest_potts_spheroid_cell_sorting(self):
         
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size.

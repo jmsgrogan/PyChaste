@@ -48,7 +48,7 @@ class AbstractCellBasedTestSuite(unittest.TestCase):
         simulation_time.Destroy()
         
         chaste.core.RandomNumberGenerator.Instance().Destroy()
-        chaste.cell_based.CellPropertyRegistry.Instance().Clear()
+        #chaste.cell_based.CellPropertyRegistry.Instance().Clear()
         
 class AbstractCellBasedWithTimingsTestSuite(AbstractCellBasedTestSuite):
     

@@ -1,0 +1,82 @@
+<Chaste>
+
+	<UnknownClass-ReflectionFailed>
+		<Dt>0.002</Dt>
+		<EndTime>1</EndTime>
+		<SamplingTimestepMultiple>50</SamplingTimestepMultiple>
+		<OutputDivisionLocations>0</OutputDivisionLocations>
+		<OutputCellVelocities>0</OutputCellVelocities>
+	</UnknownClass-ReflectionFailed>
+
+	<UnknownClass-ReflectionFailed>
+		<CellRearrangementThreshold>0.01</CellRearrangementThreshold>
+		<T2Threshold>0.001</T2Threshold>
+		<CellRearrangementRatio>1.5</CellRearrangementRatio>
+		<OutputCellRearrangementLocations>1</OutputCellRearrangementLocations>
+		<VertexBasedDivisionRule>
+			<ShortAxisVertexBasedDivisionRule-2>
+			</ShortAxisVertexBasedDivisionRule-2>
+		</VertexBasedDivisionRule>
+		<DampingConstantNormal>1</DampingConstantNormal>
+		<DampingConstantMutant>1</DampingConstantMutant>
+		<OutputResultsForChasteVisualizer>1</OutputResultsForChasteVisualizer>
+	</UnknownClass-ReflectionFailed>
+
+	<CellCycleModels>
+		<UniformG1GenerationalCellCycleModel>
+			<MaxTransitGenerations>3</MaxTransitGenerations>
+			<StemCellG1Duration>14</StemCellG1Duration>
+			<TransitCellG1Duration>2</TransitCellG1Duration>
+			<SDuration>5</SDuration>
+			<G2Duration>4</G2Duration>
+			<MDuration>1</MDuration>
+		</UniformG1GenerationalCellCycleModel>
+	</CellCycleModels>
+
+	<SrnModels>
+		<NullSrnModel>
+		</NullSrnModel>
+	</SrnModels>
+
+	<CellKillers>
+		<UnknownClass-ReflectionFailed>
+			<PointOnPlane>0,3</PointOnPlane>
+			<NormalToPlane>0,1</NormalToPlane>
+		</UnknownClass-ReflectionFailed>
+		<T2SwapCellKiller-2>
+		</T2SwapCellKiller-2>
+	</CellKillers>
+
+	<SimulationModifiers>
+		<UnknownClass-ReflectionFailed>
+			<GrowthDuration>1.79769e+308</GrowthDuration>
+			<ReferenceTargetArea>1</ReferenceTargetArea>
+		</UnknownClass-ReflectionFailed>
+	</SimulationModifiers>
+
+	<Forces>
+		<UnknownClass-ReflectionFailed>
+			<NagaiHondaDeformationEnergyParameter>100</NagaiHondaDeformationEnergyParameter>
+			<NagaiHondaMembraneSurfaceEnergyParameter>10</NagaiHondaMembraneSurfaceEnergyParameter>
+			<NagaiHondaCellCellAdhesionEnergyParameter>0.5</NagaiHondaCellCellAdhesionEnergyParameter>
+			<NagaiHondaCellBoundaryAdhesionEnergyParameter>1</NagaiHondaCellBoundaryAdhesionEnergyParameter>
+		</UnknownClass-ReflectionFailed>
+	</Forces>
+
+	<CellPopulationBoundaryConditions>
+		<UnknownClass-ReflectionFailed>
+			<PointOnPlane>0,0</PointOnPlane>
+			<NormalToPlane>0,-1</NormalToPlane>
+			<UseJiggledNodesOnPlane>0</UseJiggledNodesOnPlane>
+		</UnknownClass-ReflectionFailed>
+	</CellPopulationBoundaryConditions>
+
+	<NumericalMethod>
+		<ForwardEulerNumericalMethod-2-2>
+			<UseAdaptiveTimestep>0</UseAdaptiveTimestep> 
+			<UseUpdateNodeLocation>0</UseUpdateNodeLocation> 
+			<GhostNodeForcesEnabled>0</GhostNodeForcesEnabled> 
+		</ForwardEulerNumericalMethod-2-2>
+	</NumericalMethod>
+
+</Chaste>
