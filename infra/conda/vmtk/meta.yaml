@@ -1,0 +1,24 @@
+package:
+  name: vmtk
+  version: 1.3
+
+source:
+  url: https://github.com/vmtk/vmtk/archive/v1.3.tar.gz
+  fn:  v1.3.tar.gz
+
+build:
+  number: 6
+
+requirements:
+  build:
+    - itk ==4.10.0
+    - python
+    - vtk ==6.3.0
+  run:
+    - itk ==4.10.0
+    - python
+    - vtk ==6.3.0
+
+about:
+  home: http://www.vmtk.org/
+  license: BSD. http://www.vmtk.org/license.html

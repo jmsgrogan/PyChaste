@@ -1,0 +1,58 @@
+package:
+  name: dolfin
+  version: "1.6.0"
+
+source:
+  fn: dolfin-1.6.0.tar.gz
+  url: https://bitbucket.org/fenics-project/dolfin/downloads/dolfin-1.6.0.tar.gz
+  md5: 35cb4baf7ab4152a40fb7310b34d5800
+
+build:
+  number: 6
+
+requirements:
+  build:
+    - python
+#    - openblas
+    - cmake
+    - sphinx
+    - libxml2
+    - swig ==3.0.7
+    - numpy
+    #- vtk
+    - ffc ==1.6.0
+    - ply
+    - boost
+#    - eigen3
+    - petsc ==3.6.3
+    - petsc4py ==3.6.0
+#    - slepc <=3.6.2
+
+  run:
+    - python
+#    - openblas
+    - libxml2
+    - swig ==3.0.7
+    - numpy
+    #- vtk
+    - ffc ==1.6.0
+    - ufl ==1.6.0
+    - ply
+    - boost
+#    - eigen3
+    - petsc ==3.6.3
+    - petsc4py ==3.6.0
+#    - slepc <=3.6.2
+
+test:
+  imports:
+    - dolfin
+
+about:
+  home: http://www.fenicsproject.org
+  license: The GNU Lesser General Public License, version 3.0
+  summary: 'C++/Python library for solving differential equations'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

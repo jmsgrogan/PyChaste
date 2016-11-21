@@ -1,0 +1,37 @@
+package:
+  name: petsc4py
+  version: "3.7.0"
+
+source:
+  fn: petsc4py-3.7.0.tar.gz
+  url: https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.7.0.tar.gz
+  md5: 816a20040a6a477bd637f397c9fb5b6d
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - python
+    - pip
+    - numpy
+    - petsc ==3.7.4
+
+  run:
+    - python
+    - numpy
+    - petsc ==3.7.4
+
+test:
+  imports:
+    - petsc4py
+    - petsc4py.lib
+
+about:
+  home: https://bitbucket.org/petsc/petsc4py/
+  license: BSD License
+  summary: 'PETSc for Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

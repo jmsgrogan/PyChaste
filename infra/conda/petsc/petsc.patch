@@ -1,0 +1,12 @@
+diff -Naur petsc-3.6.3/config/BuildSystem/script.py petsc-3.6.3_mod/config/BuildSystem/script.py
+--- petsc-3.6.3/config/BuildSystem/script.py	2015-07-22 16:22:46.000000000 +0100
++++ petsc-3.6.3_mod/config/BuildSystem/script.py	2016-08-04 19:06:44.781881601 +0100
+@@ -192,7 +192,7 @@
+               else:
+                 outputClosed = 1
+                 lst.remove(output)
+-            if out.find('password:') >= 0 or err.find('password:') >= 0:
++            if msg and msg.find('password:') >= 0:
+               loginError = 1
+               break
+           if outputClosed and errorClosed:

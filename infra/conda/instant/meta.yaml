@@ -1,0 +1,45 @@
+package:
+  name: instant
+  version: "1.6.0"
+
+source:
+  fn: instant-1.6.0.tar.gz
+  url: https://bitbucket.org/fenics-project/instant/downloads/instant-1.6.0.tar.gz
+  md5: 5f2522eb032a5bebbad6597b6fe0732a
+
+build:
+  number: 3
+
+requirements:
+  build:
+    - python
+
+  run:
+    - python
+    - numpy
+    #- make
+    - cmake
+    #- pkg-config
+    - swig
+#    - gcc
+#    - libgfortran
+
+test:
+  imports:
+    - instant
+
+  commands:
+    - instant-clean
+    - instant-showcache
+
+  requires:
+    - nose
+
+about:
+  home: http://www.fenicsproject.org
+  license: BSD License or The GNU Lesser General Public License, version 3.0
+  summary: 'Instant Inlining of C/C++ in Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

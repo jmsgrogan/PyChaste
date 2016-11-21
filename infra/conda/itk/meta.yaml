@@ -1,0 +1,23 @@
+package:
+  name: itk
+  version: 4.10.0
+
+source:
+  url: https://sourceforge.net/projects/itk/files/itk/4.10/InsightToolkit-4.10.0.tar.gz
+  fn:  InsightToolkit-4.10.0.tar.gz
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - cmake
+    - python
+    - vtk
+  run:
+    - python
+    - vtk
+
+about:
+  home: http://www.itk.org/
+  license: BSD

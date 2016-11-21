@@ -1,0 +1,59 @@
+package:
+  name: amara
+  version: "1.2.0.2"
+
+source:
+  fn: Amara-1.2.0.2.tar.gz
+  url: https://pypi.python.org/packages/af/0e/e81dfe4b4fb24023207d86e4d4ff418b0e83927f2155ed3552b0e3196846/Amara-1.2.0.2.tar.gz
+  md5: 79746b8f74b4a996e8e84fc029f9ce89
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - amara = amara:main
+    #
+    # Would create an entry point called amara that calls amara.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - 4suite-xml
+
+  run:
+    - python
+    - nose
+    - 4suite-xml
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://wiki.xml3k.org/Amara2
+  license: Apache Software License
+  summary: 'Library for XML processing in Python'
+  license_family: Apache
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

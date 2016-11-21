@@ -1,11 +1,16 @@
+# No shared libraries and compiled Python
 *.so
 *.pyc
+# No eclipse settings
 *.project
 *.cproject
-*~
 *.autotools
 *.pydevproject
+.settings/
+# No wrapper temporary files
+*~
 dynamic/exposed_decl*
+# No Python build folders
 src/python/chaste/projects/*
 src/python/build*
 src/python/dist*

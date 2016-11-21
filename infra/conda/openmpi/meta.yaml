@@ -1,0 +1,35 @@
+package:
+  name: openmpi
+  version: 1.8.8
+
+source:
+  fn: openmpi-1.8.8.tar.bz2
+  url: http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-1.8.8.tar.bz2
+
+requirements:
+  conflicts:
+    - mpich
+    - mpich2
+
+about:
+  home: http://www.open-mpi.org/
+  license: new BSD  (http://www.open-mpi.org/community/license.php)
+
+build:
+    number: 2
+
+# From mpi4py recipe
+test:
+  files:
+    - test/helloworld.c
+    - test/helloworld.cxx
+  commands:
+    - command -v ompi_info
+    - ompi_info
+    - command -v mpiexec
+    - mpiexec -n 4 hostname
+    - command -v mpicc
+    - mpicc -show
+    - mpicc  helloworld.c   -o helloworld_c
+    - export DYLD_LIBRARY_PATH=$PREFIX/lib # [osx]
+    - mpiexec -n 4 ./helloworld_c

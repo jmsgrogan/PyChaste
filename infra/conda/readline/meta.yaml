@@ -1,0 +1,21 @@
+package:
+  name: readline
+  version: "6.2"
+
+source:
+  fn:  readline-6.2.tar.gz
+  url: ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz
+
+build:
+    number: 5
+
+about:
+  home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+  license: GPL 3.0
+
+#requirements:
+#  build:
+#    - ncurses >=5.9
+#  run:
+#    - ncurses >=5.9
+
