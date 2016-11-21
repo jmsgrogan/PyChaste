@@ -48,6 +48,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkSmartPointer.h>
 #include <vtkImageData.h>
 #include <vtkPolyData.h>
+#include <vtkUnsignedCharArray.h>
+#include <vtkRenderer.h>
 #include "UblasIncludes.hpp"
 #include "Exception.hpp"
 #include "ChastePoint.hpp"
@@ -88,6 +90,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     bp::register_exception_translator<Exception>(&ExceptionToPython);
 
     // To Python converters
+    bp::to_python_converter<vtkSmartPointer<vtkRenderer>, VtkSmartPointerToPython<vtkRenderer> >();
+    bp::to_python_converter<vtkSmartPointer<vtkUnsignedCharArray>, VtkSmartPointerToPython<vtkUnsignedCharArray> >();
     bp::to_python_converter<vtkSmartPointer<vtkImageData>, VtkSmartPointerToPython<vtkImageData> >();
     bp::to_python_converter<vtkSmartPointer<vtkPolyData>, VtkSmartPointerToPython<vtkPolyData> >();
     bp::to_python_converter<c_vector<double, 2>, CVectorToNumpyArray<c_vector<double, 2> > >();

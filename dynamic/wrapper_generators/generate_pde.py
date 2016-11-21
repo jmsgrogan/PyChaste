@@ -43,7 +43,9 @@ import generate_bindings
 
 def update_builder(builder):
 
-    include_classes = ["AbstractLinearEllipticPde<3,3>",
+    include_classes = ["AbstractLinearPde<3,3>",
+                       "AbstractLinearPde<2,2>",
+                       "AbstractLinearEllipticPde<3,3>",
                        "AbstractLinearEllipticPde<2,2>",
                        "AbstractBoundaryCondition<2>",
                        "AbstractBoundaryCondition<3>",

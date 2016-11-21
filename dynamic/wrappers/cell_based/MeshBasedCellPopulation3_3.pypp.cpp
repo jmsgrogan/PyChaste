@@ -528,7 +528,7 @@ void register_MeshBasedCellPopulation3_3_class(){
                 , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellA ) )    
             .def( 
                 "GetCellB"
-                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellB ) )
+                , (::CellPtr ( ::MeshBasedCellPopulation<3, 3>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 3, 3 >::SpringIterator::GetCellB ) )    
             .def( bp::self != bp::self );
         MeshBasedCellPopulation3_3_exposer.def( bp::init< MutableMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< MutableMesh< 3, 3 > &, MeshBasedCellPopulation< 3, 3 > >();

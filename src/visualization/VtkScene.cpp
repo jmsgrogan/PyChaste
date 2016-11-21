@@ -116,7 +116,7 @@ VtkScene<DIM>::VtkScene()
       mAnimationWriter(vtkSmartPointer<vtkOggTheoraWriter>::New()),
     #endif
       mWindowToImageFilter(vtkSmartPointer<vtkWindowToImageFilter>::New()),
-      mIsInteractive(true),
+      mIsInteractive(false),
       mSaveAsAnimation(false),
       mSaveAsImages(false),
       mHasStarted(false),
@@ -152,9 +152,31 @@ void VtkScene<DIM>::SetIsInteractive(bool isInteractive)
 }
 
 template<unsigned DIM>
+vtkSmartPointer<vtkRenderer> VtkScene<DIM>::GetRenderer()
+{
+    return mpRenderer;
+}
+
+template<unsigned DIM>
 void VtkScene<DIM>::SetSaveAsImages(bool saveAsImages)
 {
     mSaveAsImages = saveAsImages;
+}
+
+template<unsigned DIM>
+vtkSmartPointer<vtkUnsignedCharArray> VtkScene<DIM>::GetSceneAsCharBuffer()
+{
+    ResetRenderer(0);
+
+    mpRenderWindow->SetOffScreenRendering(1);
+    mpRenderWindow->Render();
+    mWindowToImageFilter->Modified();
+    vtkSmartPointer<vtkPNGWriter> p_writer = vtkSmartPointer<vtkPNGWriter>::New();
+    p_writer->SetWriteToMemory(1);
+    p_writer->SetInputConnection(mWindowToImageFilter->GetOutputPort());
+    p_writer->Write();
+
+    return p_writer->GetResult();
 }
 
 template<unsigned DIM>
@@ -205,7 +227,7 @@ void VtkScene<DIM>::ResetRenderer(unsigned time_step)
         }
         mAnimationWriter->Write();
     }
-    #endif
+    #endif // VTK_MAJOR_VERSION > 5
     if(mIsInteractive)
     {
         mpRenderWindow->SetOffScreenRendering(0);
@@ -249,6 +271,11 @@ void VtkScene<DIM>::Start()
     if(DIM==3)
     {
         mpRenderer->GetActiveCamera()->Azimuth(45.0);
+    }
+
+    if(!mIsInteractive)
+    {
+        mpRenderWindow->SetOffScreenRendering(1);
     }
 
     if(mSaveAsImages or mSaveAsAnimation)

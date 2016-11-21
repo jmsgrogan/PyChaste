@@ -506,7 +506,7 @@ void register_AbstractCentreBasedCellPopulation3_3_class(){
         .def( 
             "WriteVtkResultsToFile"
             , (void ( AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__3_comma__3__greater__wrapper::WriteVtkResultsToFile)
-            , ( bp::arg("rDirectory") ) )
+            , ( bp::arg("rDirectory") ) )    
         .def( 
             "AcceptCellWriter"
             , bp::pure_virtual( (void ( ::AbstractCellPopulation<3, 3>::* )( ::boost::shared_ptr< AbstractCellWriter< 3, 3 > >,::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::AcceptCellWriter) )
@@ -539,7 +539,7 @@ void register_AbstractCentreBasedCellPopulation3_3_class(){
             , ( bp::arg("index") ) )    
         .def( 
             "GetNumNodes"
-            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )
+            , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetVolumeOfCell) )

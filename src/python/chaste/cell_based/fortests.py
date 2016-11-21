@@ -35,6 +35,19 @@ import unittest
 import chaste.core
 import chaste.cell_based
 
+def SetupNotebookTest():
+    simulation_time = chaste.cell_based.SimulationTime.Instance()
+    simulation_time.SetStartTime(0.0)
+    chaste.core.RandomNumberGenerator.Instance().Reseed(0)
+    chaste.cell_based.CellId.ResetMaxCellId()
+    
+def TearDownNotebookTest():
+    simulation_time = chaste.cell_based.SimulationTime.Instance()
+    simulation_time.Destroy()
+    
+    chaste.core.RandomNumberGenerator.Instance().Destroy()
+    #chaste.cell_based.CellPropertyRegistry.Instance().Clear()    
+
 class AbstractCellBasedTestSuite(unittest.TestCase):
     
     def setUp(self):

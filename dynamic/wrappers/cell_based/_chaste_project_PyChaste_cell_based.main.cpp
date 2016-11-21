@@ -94,6 +94,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractGrowingDomainPdeModifier3.pypp.hpp"
 
+#include "AbstractLinearEllipticPde2_2.pypp.hpp"
+
+#include "AbstractLinearEllipticPde3_3.pypp.hpp"
+
+#include "AbstractLinearPde2_2.pypp.hpp"
+
+#include "AbstractLinearPde3_3.pypp.hpp"
+
 #include "AbstractOffLatticeCellPopulation2_2.pypp.hpp"
 
 #include "AbstractOffLatticeCellPopulation3_3.pypp.hpp"
@@ -278,21 +286,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "VecAbstractUpdateRule3.pypp.hpp"
 
-#include "VecBool.pypp.hpp"
-
-#include "VecCVectorDouble_2.pypp.hpp"
-
-#include "VecCVectorDouble_3.pypp.hpp"
-
 #include "VecCellPtr.pypp.hpp"
 
 #include "VecDouble.pypp.hpp"
-
-#include "VecPairNodePtr2.pypp.hpp"
-
-#include "VecPairNodePtr3.pypp.hpp"
-
-#include "VecUnsigned.pypp.hpp"
 
 #include "VertexBasedCellPopulation2.pypp.hpp"
 
@@ -312,19 +308,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace bp = boost::python;
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
-    register_VecUnsigned_class();
-
-    register_VecPairNodePtr3_class();
-
-    register_VecPairNodePtr2_class();
-
-    register_VecBool_class();
-
     register_VecCellPtr_class();
 
     register_VecAbstractUpdateRule3_class();
@@ -332,10 +318,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_VecAbstractUpdateRule2_class();
 
     register_VecAbstractCellProperty_class();
-
-    register_VecCVectorDouble_3_class();
-
-    register_VecCVectorDouble_2_class();
 
     register_VecDouble_class();
 
@@ -406,6 +388,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_AbstractPdeModifier3_class();
 
     register_AbstractGrowingDomainPdeModifier3_class();
+
+    register_AbstractLinearPde2_2_class();
+
+    register_AbstractLinearEllipticPde2_2_class();
+
+    register_AbstractLinearPde3_3_class();
+
+    register_AbstractLinearEllipticPde3_3_class();
 
     register_AbstractOnLatticeCellPopulation2_class();
 

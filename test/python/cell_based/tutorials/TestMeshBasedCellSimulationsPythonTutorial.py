@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## In this tutorial we show how Chaste can be used to create, run and visualize mesh-based simulations. 
 ## Full details of the mathematical model can be found in van Leeuwen et al. (2009) [doi:10.1111/j.1365-2184.2009.00627.x].
 ##
-## ## The Test
+## ## Imports and Setup
 
 import unittest
 import chaste.core
@@ -54,10 +54,13 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     
     def test_monolayer(self):
         
+        # JUPYTER_SETUP 
+        
         ## Next, we generate a mutable mesh. To create a MutableMesh, we can use the HoneycombMeshGenerator. 
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments define the size of the mesh - 
         ## we have chosen a mesh that is 2 nodes (i.e. cells) wide, and 2 nodes high.
         
+        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellSimulationsTutorial")
         generator = chaste.mesh.HoneycombMeshGenerator(2, 2)
         mesh = generator.GetMesh()
           
@@ -89,11 +92,17 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## is resolved through the use of 'ghost nodes', as shown in the next test.
         
         cell_population.AddPopulationWriterVoronoiDataWriter()
+        
+        ## We can set up a Scene to do a quick visualization of the population before running the analysis (Jupyter only)
+        
+        scene = chaste.visualization.VtkScene2()
+        scene.SetCellPopulation(cell_population)
+        # JUPYTER_SHOW
 
         ## We then pass in the cell population into an OffLatticeSimulation, and set the output directory and end time.
 
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("Python/TestMeshBasedCellPopulation")
+        simulator.SetOutputDirectory("Python/TestMeshBasedCellSimulationsTutorial")
         simulator.SetEndTime(10.0)
         
         ## For longer simulations, we may not want to output the results every time step. In this case we can use the following method, 
@@ -109,16 +118,28 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
+        
+        ## Save images of the population during the simulation
+        
+        scene.SetSaveAsImages(True)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
+        scene_modifier = chaste.cell_based.VtkSceneModifier2()
+        scene_modifier.SetVtkScene(scene)
+        scene_modifier.SetUpdateFrequency(12)
+        simulator.AddSimulationModifier(scene_modifier)
 
-        ## To run the simulation, we call `Solve()`.
-    
-        simulator.Solve();
+        ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation (Jupyter only)
+
+        simulator.Solve()
+        # JUPYTER_SHOW   
         
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
         
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+        
+        # JUPYTER_TEARDOWN 
         
         ## To visualize the results, open a new terminal, cd to the Chaste directory, then cd to anim. 
         ## Then do: java Visualize2dCentreCells /tmp/$USER/testoutput/MeshBasedMonolayer/results_from_time_0. We may have to do: 
@@ -137,6 +158,8 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     ## Each cell is assigned a stochastic cell-cycle model.
     
     def test_monolayer_with_ghost_nodes(self):
+        
+        # JUPYTER_SETUP 
         
         ## We start by generating a mutable mesh. To create a MutableMesh, we can use the HoneycombMeshGenerator as before. 
         ## Here the first and second arguments define the size of the mesh - we have chosen a mesh that is 2 nodes (i.e. cells) wide, 
@@ -193,6 +216,8 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+        
+        # JUPYTER_TEARDOWN 
         
         ## To visualize the results, open a new terminal, cd to the Chaste directory, then cd to anim. 
         ## Then do: java Visualize2dCentreCells /tmp/$USER/testoutput/MeshBasedMonolayerWithGhostNodes/results_from_time_0.

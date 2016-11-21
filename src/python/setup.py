@@ -35,6 +35,9 @@ from setuptools import setup, Distribution,find_packages
 class BinaryDistribution(Distribution):
     def is_pure(self):
         return False
+    
+    def has_ext_modules(self):
+        return True
 
 setup(
     name = "chaste",
@@ -49,9 +52,10 @@ setup(
                    'ode/_chaste_project_PyChaste_ode.so', 
                    'pde/_chaste_project_PyChaste_pde.so', 
                    'visualization/_chaste_project_PyChaste_visualization.so', 
-                  'tutorial/_chaste_project_PyChaste_tutorial.so',],},
+                   'tutorial/_chaste_project_PyChaste_tutorial.so',],},
       
     include_package_data=True,
+    zip_safe = False,
 
     # Project Metadata
     author = "Chaste Team, University of Oxford",

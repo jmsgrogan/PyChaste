@@ -52,6 +52,12 @@ void register_VtkScene2_class(){
             "GetCellPopulationActorGenerator"
             , (::boost::shared_ptr< CellPopulationPyChasteActorGenerator< 2 > > ( ::VtkScene<2>::* )(  ))( &::VtkScene< 2 >::GetCellPopulationActorGenerator ) )    
         .def( 
+            "GetRenderer"
+            , (::vtkSmartPointer< vtkRenderer > ( ::VtkScene<2>::* )(  ))( &::VtkScene< 2 >::GetRenderer ) )    
+        .def( 
+            "GetSceneAsCharBuffer"
+            , (::vtkSmartPointer< vtkUnsignedCharArray > ( ::VtkScene<2>::* )(  ))( &::VtkScene< 2 >::GetSceneAsCharBuffer ) )    
+        .def( 
             "ResetRenderer"
             , (void ( ::VtkScene<2>::* )( unsigned int ))( &::VtkScene< 2 >::ResetRenderer )
             , ( bp::arg("timeStep")=(unsigned int)(0) ) )    

@@ -46,18 +46,22 @@ class SimplePythonModifier(chaste.cell_based.AbstractCellBasedSimulationModifier
     def UpdateAtEndOfTimeStep(self, cell_population):
          
         print cell_population.GetNumRealCells()
+        print chaste.cell_based.SimulationTime.Instance().GetTime()
+        
+    def SetupSolve(self, cell_population, outputdirectory):
+         
+        print outputdirectory
+        cell_population.Update()
         
     def OutputSimulationModifierParameters(self, rParamsFile):
          
         pass
 
-class TestCell(unittest.TestCase):
+class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
     
     def test_construct(self):
-        file_handler = chaste.core.OutputFileHandler("Python/TestVtkScene/TestSimpleRendering/");
         
-        simulation_time = chaste.cell_based.SimulationTime.Instance()
-        simulation_time.SetStartTime(0.0)
+        file_handler = chaste.core.OutputFileHandler("Python/TestVtkScene/TestSimpleRendering/");
  
         mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 3, 0, 0)
         mesh = mesh_generator.GetMesh()
@@ -71,28 +75,18 @@ class TestCell(unittest.TestCase):
         # Make the cell population
         lattice_indices = range(20)
         cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, lattice_indices)
-
-        # Set up the visualizer
-        scene = chaste.visualization.VtkScene3()
-        scene.SetCellPopulation(cell_population);
-        scene.SetIsInteractive(False);
-        scene.SetSaveAsAnimation(True);
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
         
-        modifier = chaste.cell_based.VtkSceneModifier3()
-        modifier.SetVtkScene(scene);
-        
-        #simple_modifier = SimplePythonModifier()
+        simple_modifier = SimplePythonModifier()
 
         # Set up the simulation
         simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
-        
         simulator.SetOutputDirectory("Python/TestVtkScene/TestSimpleRendering/")
-        simulator.SetEndTime(4.0);
-        simulator.SetDt(1.0);
+        simulator.SetEndTime(4.0)
+        simulator.SetDt(1.0)
+        simulator.AddSimulationModifier(simple_modifier)
+        
         simulator.SetSamplingTimestepMultiple(1)
-        #simulator.AddSimulationModifier(modifier)
-        #simulator.AddSimulationModifier(simple_modifier)
+
         simulator.Solve()
 
 

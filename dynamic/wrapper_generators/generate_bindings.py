@@ -133,7 +133,11 @@ def strip_undefined_call_policies(module_file):
         if ".def(" in eachLine:
             def_index = idx
         if "/* undefined call policies */" in eachLine:
-            strip_indices.extend(range(idx, def_index-1, -1))
+            if ";" in eachLine:
+                strip_indices.extend(range(idx-1, def_index-1, -1))
+                lines[idx] = ";"
+            else:
+                strip_indices.extend(range(idx, def_index-1, -1))                
             
     return_lines = [i for j, i in enumerate(lines) if j not in strip_indices]
     
@@ -196,7 +200,11 @@ def generate_wrappers(args):
     
     # Fix a bug with boost units
     #boost_units_namespace_fix(work_dir + "/dynamic/wrappers/" + module_name + "/" + module_name + ".cpp")
-    #strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + module_name + ".cpp")
+    
+    # Manually strip any undefined call policies we have missed.
+    for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
+        if file.endswith(".cpp"):
+            strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

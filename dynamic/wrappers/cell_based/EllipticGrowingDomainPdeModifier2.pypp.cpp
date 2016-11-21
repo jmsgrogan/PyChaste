@@ -36,16 +36,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#include "PetscTools.hpp"
 #include "boost/python.hpp"
 #include "cell_based_headers.hpp"
 #include "EllipticGrowingDomainPdeModifier2.pypp.hpp"
 
+namespace bp = boost::python;
+
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
-
-namespace bp = boost::python;
 
 struct EllipticGrowingDomainPdeModifier_less__2__greater__wrapper : EllipticGrowingDomainPdeModifier< 2 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 2 > > {
 

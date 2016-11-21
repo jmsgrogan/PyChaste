@@ -7,9 +7,11 @@
 *.autotools
 *.pydevproject
 .settings/
+.idea/
 # No wrapper temporary files
 *~
 dynamic/exposed_decl*
+castxml_cache.xml
 # No Python build folders
 src/python/chaste/projects/*
 src/python/build*

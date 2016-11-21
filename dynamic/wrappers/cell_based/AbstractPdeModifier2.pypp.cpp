@@ -156,6 +156,6 @@ void register_AbstractPdeModifier2_class(){
         .def( 
             "UpdateAtEndOfTimeStep"
             , bp::pure_virtual( (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfTimeStep) )
-            , ( bp::arg("rCellPopulation") ) )    ;
-
+            , ( bp::arg("rCellPopulation") ) )    
+;
 }

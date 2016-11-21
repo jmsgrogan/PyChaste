@@ -51,6 +51,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
 #include <vtkWindowToImageFilter.h>
+#include <vtkUnsignedCharArray.h>
 #include "AbstractCellPopulation.hpp"
 #include "CellPopulationPyChasteActorGenerator.hpp"
 #include "MeshBasedCellPopulation.hpp"
@@ -150,7 +151,23 @@ public:
      */
     void End();
 
+    /**
+     * Render the current scene and return is as a char array, can be passed
+     * into a Python buffer for display.
+     * @return the scene as a char array
+     */
+    vtkSmartPointer<vtkUnsignedCharArray> GetSceneAsCharBuffer();
 
+    /**
+     * Return the renderer
+     * @return the vtk renderer
+     */
+    vtkSmartPointer<vtkRenderer> GetRenderer();
+
+    /**
+     * Get the cell population actor generator
+     * @return the cell population actor generator
+     */
     boost::shared_ptr<CellPopulationPyChasteActorGenerator<DIM> > GetCellPopulationActorGenerator();
 
     /**
@@ -176,12 +193,27 @@ public:
      */
     void SetOutputFilePath(const std::string& rPath);
 
+    /**
+     * Set run as an interactive window
+     * @param isInteractive run as an interactive window
+     */
     void SetIsInteractive(bool isInteractive);
 
+    /**
+     * Whether to save as an animation
+     * @param saveAsAnimation save as an animation
+     */
     void SetSaveAsAnimation(bool saveAsAnimation);
 
+    /**
+     * Whether to save as images (default)
+     * @param saveAsImages save as images
+     */
     void SetSaveAsImages(bool saveAsImages);
 
+    /**
+     * Start the event handler for window interaction
+     */
     void StartInteractiveEventHandler();
 
 };

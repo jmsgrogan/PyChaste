@@ -42,22 +42,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace bp = boost::python;
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 void register_free_functions(){
-
-    { //::GetPetscMatForWrapper
-    
-        typedef ::Mat ( *GetPetscMatForWrapper_function_type )(  );
-        
-        bp::def( 
-            "GetPetscMatForWrapper"
-            , GetPetscMatForWrapper_function_type( &::GetPetscMatForWrapper )
-            , bp::return_value_policy< bp::return_opaque_pointer >() );
-    
-    }
 
     { //::GetPetscVecForWrapper
     
@@ -67,16 +54,6 @@ void register_free_functions(){
             "GetPetscVecForWrapper"
             , GetPetscVecForWrapper_function_type( &::GetPetscVecForWrapper )
             , bp::return_value_policy< bp::return_opaque_pointer >() );
-    
-    }
-
-    { //::Instantiation
-    
-        typedef int ( *Instantiation_function_type )(  );
-        
-        bp::def( 
-            "Instantiation"
-            , Instantiation_function_type( &::Instantiation ) );
     
     }
 

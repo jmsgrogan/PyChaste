@@ -234,7 +234,7 @@ void register_AbstractCellBasedSimulation2_2_class(){
             , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_UpdateCellPopulation) )    
         .def( 
             "WriteVisualizerSetupFile"
-            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile) )
+            , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile) )    
         .def( 
             "rGetCellPopulation"
             , (::AbstractCellPopulation< 2, 2 > const & ( ::AbstractCellBasedSimulation<2, 2>::* )(  )const)( &::AbstractCellBasedSimulation< 2, 2 >::rGetCellPopulation )

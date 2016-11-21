@@ -612,7 +612,14 @@ void register_PottsBasedCellPopulation2_class(){
                 , ( bp::arg("pCell") ) );
         
         }
+        { //::PottsBasedCellPopulation< 2 >::GetNode
         
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            typedef ::Node< 2 > * ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
+            
+;        
+        }
         { //::PottsBasedCellPopulation< 2 >::GetNumElements
         
             typedef PottsBasedCellPopulation< 2 > exported_class_t;
@@ -654,6 +661,14 @@ void register_PottsBasedCellPopulation2_class(){
                 "GetTemperature"
                 , GetTemperature_function_type( &::PottsBasedCellPopulation< 2 >::GetTemperature ) );
         
+        }
+        { //::PottsBasedCellPopulation< 2 >::GetTetrahedralMeshForPdeModifier
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::TetrahedralMesh< 2, 2 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            typedef ::TetrahedralMesh< 2, 2 > * ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            
+;        
         }
         { //::PottsBasedCellPopulation< 2 >::GetVolumeOfCell
         
@@ -806,7 +821,13 @@ void register_PottsBasedCellPopulation2_class(){
                 , ( bp::arg("rDirectory") ) );
         
         }
-
+        { //::PottsBasedCellPopulation< 2 >::rGetMesh
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef ::PottsMesh< 2 > & ( exported_class_t::*rGetMesh_function_type)(  ) ;
+            
+;        
+        }
         { //::PottsBasedCellPopulation< 2 >::rGetMesh
         
             typedef PottsBasedCellPopulation< 2 > exported_class_t;

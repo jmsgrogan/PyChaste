@@ -133,6 +133,11 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "AbstractGrowingDomainPdeModifier.hpp"
 #include "EllipticGrowingDomainPdeModifier.hpp"
 
+// Dependencies
+#include "AbstractLinearEllipticPde.hpp"
+#include "AbstractLinearPde.hpp"
+
+
 // Populations
 template class AbstractCellPopulation<2, 2>;
 template class AbstractCentreBasedCellPopulation<2, 2>;
@@ -220,10 +225,14 @@ template class ApoptoticCellKiller<3>;
 template class RandomCellKiller<3>;
 
 // PDE
+template class AbstractLinearPde<2, 2>;
+template class AbstractLinearEllipticPde<2, 2>;
 template class CellwiseSourceEllipticPde<2>;
 template class AbstractPdeModifier<2>;
 template class AbstractGrowingDomainPdeModifier<2>;
 template class EllipticGrowingDomainPdeModifier<2>;
+template class AbstractLinearPde<3, 3>;
+template class AbstractLinearEllipticPde<3, 3>;
 template class CellwiseSourceEllipticPde<3>;
 template class AbstractPdeModifier<3>;
 template class AbstractGrowingDomainPdeModifier<3>;

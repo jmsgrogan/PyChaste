@@ -1,0 +1,5 @@
+doc/tutorials/*.ipynb
+test/cell_based/*.py
+test/core/*.py
+test/mesh/*.py
+test/ode/*.py

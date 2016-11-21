@@ -94,7 +94,7 @@ struct AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper : AbstractLi
 
 void register_AbstractLinearEllipticPde2_2_class(){
 
-    bp::class_< AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper, boost::noncopyable >( "AbstractLinearEllipticPde2_2", bp::init< >() )    
+    bp::class_< AbstractLinearEllipticPde_less__2_comma__2__greater__wrapper, bp::bases< AbstractLinearPde< 2, 2 > >, boost::noncopyable >( "AbstractLinearEllipticPde2_2", bp::init< >() )    
         .def( 
             "ComputeConstantInUSourceTerm"
             , bp::pure_virtual( (double ( ::AbstractLinearEllipticPde<2, 2>::* )( ::ChastePoint< 2 > const &,::Element< 2, 2 > * ))(&::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTerm) )

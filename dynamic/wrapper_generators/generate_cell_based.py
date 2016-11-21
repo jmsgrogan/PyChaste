@@ -211,7 +211,9 @@ def update_builder(builder):
                            "AbstractForce",
                            "GeneralisedLinearSpringForce",
                            "AbstractCellPopulationBoundaryCondition",
-                           "PlaneBoundaryCondition",]
+                           "PlaneBoundaryCondition",
+                           "AbstractLinearEllipticPde",
+                           "AbstractLinearPde"]
 
     builder.free_function("GetPetscMatForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
     builder.free_function("GetPetscVecForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )

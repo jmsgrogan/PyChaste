@@ -591,6 +591,14 @@ void register_MeshBasedCellPopulationWithGhostNodes2_class(){
                 , ( bp::arg("pCell") ) );
         
         }
+        { //::MeshBasedCellPopulationWithGhostNodes< 2 >::GetTetrahedralMeshForPdeModifier
+        
+            typedef MeshBasedCellPopulationWithGhostNodes< 2 > exported_class_t;
+            typedef ::TetrahedralMesh< 2, 2 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            typedef ::TetrahedralMesh< 2, 2 > * ( MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            
+;        
+        }
         { //::MeshBasedCellPopulationWithGhostNodes< 2 >::IsGhostNode
         
             typedef MeshBasedCellPopulationWithGhostNodes< 2 > exported_class_t;
@@ -655,6 +663,13 @@ void register_MeshBasedCellPopulationWithGhostNodes2_class(){
                 , default_WriteVtkResultsToFile_function_type(&MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper::default_WriteVtkResultsToFile)
                 , ( bp::arg("rDirectory") ) );
         
+        }
+        { //::MeshBasedCellPopulationWithGhostNodes< 2 >::rGetGhostNodes
+        
+            typedef MeshBasedCellPopulationWithGhostNodes< 2 > exported_class_t;
+            typedef ::std::vector< bool > & ( exported_class_t::*rGetGhostNodes_function_type)(  ) ;
+            
+;        
         }
         { //::MeshBasedCellPopulation< 2, 2 >::AcceptCellWriter
         

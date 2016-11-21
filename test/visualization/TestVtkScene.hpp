@@ -100,8 +100,8 @@ public:
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsAnimation(false);
+        p_scene->SetIsInteractive(false);
+        p_scene->SetSaveAsAnimation(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);
@@ -136,8 +136,8 @@ public:
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsAnimation(false);
+        p_scene->SetIsInteractive(false);
+        p_scene->SetSaveAsAnimation(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);
@@ -179,8 +179,8 @@ public:
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsAnimation(false);
+        p_scene->SetIsInteractive(false);
+        p_scene->SetSaveAsAnimation(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);
@@ -225,8 +225,8 @@ public:
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsAnimation(false);
+        p_scene->SetIsInteractive(false);
+        p_scene->SetSaveAsAnimation(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);

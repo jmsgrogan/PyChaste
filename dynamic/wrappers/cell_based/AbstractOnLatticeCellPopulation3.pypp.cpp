@@ -449,7 +449,7 @@ void register_AbstractOnLatticeCellPopulation3_class(){
         .def( 
             "GetNeighbouringLocationIndices"
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<3, 3>::* )( ::CellPtr ))(&::AbstractCellPopulation< 3, 3 >::GetNeighbouringLocationIndices) )
-            , ( bp::arg("pCell") ) )
+            , ( bp::arg("pCell") ) )    
         .def( 
             "GetNumNodes"
             , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<3, 3>::* )(  ))(&::AbstractCellPopulation< 3, 3 >::GetNumNodes) ) )    

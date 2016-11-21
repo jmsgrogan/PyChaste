@@ -38,7 +38,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 template<unsigned DIM>
 VtkSceneModifier<DIM>::VtkSceneModifier()
     : AbstractCellBasedSimulationModifier<DIM>(),
-      mpScene()
+      mpScene(),
+      mUpdateFrequency(1)
 {
 }
 
@@ -93,7 +94,7 @@ void VtkSceneModifier<DIM>::SetupSolve(AbstractCellPopulation<DIM,DIM>& rCellPop
      * fully initialised by the time we enter the main time loop.
      */
     UpdateCellData(rCellPopulation);
-    if(mpScene)
+    if(mpScene and SimulationTime::Instance()->GetTimeStepsElapsed()%mUpdateFrequency==0)
     {
         mpScene->ResetRenderer(SimulationTime::Instance()->GetTimeStepsElapsed());
     }
@@ -111,6 +112,12 @@ void VtkSceneModifier<DIM>::OutputSimulationModifierParameters(out_stream& rPara
 {
     // No parameters to output, so just call method on direct parent class
     AbstractCellBasedSimulationModifier<DIM>::OutputSimulationModifierParameters(rParamsFile);
+}
+
+template<unsigned DIM>
+void VtkSceneModifier<DIM>::SetUpdateFrequency(unsigned frequency)
+{
+    mUpdateFrequency = frequency;
 }
 
 // Explicit instantiation

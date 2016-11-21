@@ -63,7 +63,16 @@ class VtkSceneModifier : public AbstractCellBasedSimulationModifier<DIM,DIM>
         archive & boost::serialization::base_object<AbstractCellBasedSimulationModifier<DIM,DIM> >(*this);
     }
 
-    boost::shared_ptr<VtkScene<DIM> > mpScene;;
+    /**
+     * The scene
+     */
+    boost::shared_ptr<VtkScene<DIM> > mpScene;
+
+
+    /**
+     * The scene update frequency
+     */
+    unsigned mUpdateFrequency;
 
 public:
 
@@ -116,6 +125,12 @@ public:
      * @param rParamsFile the file stream to which the parameters are output
      */
     void OutputSimulationModifierParameters(out_stream& rParamsFile);
+
+    /**
+     * Set the frequency of output
+     * @param frequency the frequency of output
+     */
+    void SetUpdateFrequency(unsigned frequency);
 };
 
 #include "SerializationExportWrapper.hpp"

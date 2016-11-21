@@ -129,6 +129,10 @@ void register_VtkSceneModifier2_class(){
             , (void ( VtkSceneModifier_less__2__greater__wrapper::* )( ::out_stream & ))(&VtkSceneModifier_less__2__greater__wrapper::default_OutputSimulationModifierParameters)
             , ( bp::arg("rParamsFile") ) )    
         .def( 
+            "SetUpdateFrequency"
+            , (void ( ::VtkSceneModifier<2>::* )( unsigned int ))( &::VtkSceneModifier< 2 >::SetUpdateFrequency )
+            , ( bp::arg("frequency") ) )    
+        .def( 
             "SetVtkScene"
             , (void ( ::VtkSceneModifier<2>::* )( ::boost::shared_ptr< VtkScene< 2 > > ))( &::VtkSceneModifier< 2 >::SetVtkScene )
             , ( bp::arg("pScene") ) )    
