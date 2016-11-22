@@ -53,6 +53,11 @@ setup(
                    'pde/_chaste_project_PyChaste_pde.so', 
                    'visualization/_chaste_project_PyChaste_visualization.so', 
                    'tutorial/_chaste_project_PyChaste_tutorial.so',],},
+
+    data_files = [('tutorials', ['doc/tutorials/TestMeshBasedCellSimulationsPythonTutorial.ipynb', 
+                                'doc/tutorials/TestNodeBasedCellSimulationsPythonTutorial.ipynb',
+                                'doc/tutorials/TestPottsBasedCellSimulationsPythonTutorial.ipynb',
+                                'doc/tutorials/TestVertexBasedCellSimulationsPythonTutorial.ipynb',])],
       
     include_package_data=True,
     zip_safe = False,

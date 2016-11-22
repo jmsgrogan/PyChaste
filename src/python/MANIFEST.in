@@ -1,5 +1,5 @@
-doc/tutorials/*.ipynb
-test/cell_based/*.py
-test/core/*.py
-test/mesh/*.py
-test/ode/*.py
+recursive-include doc/tutorials/ *
+include test/cell_based/*.py
+include test/core/*.py
+include test/mesh/*.py
+include test/ode/*.py
