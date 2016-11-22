@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+"""Helper classes for running tests
+"""
 
-"""Copyright (c) 2005-2016, University of Oxford.
+__copyright__ = """Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the

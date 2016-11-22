@@ -30,12 +30,8 @@ conda config --add channels conda-forge
 conda config --add channels jmsgrogan
 ```
 
-## Preparing Chaste for the build
+## Preparing Chaste for the build. 
 
-At the moment due to issues in the build setup it is neccesary to edit the Chaste source before building the package. 
-
-* Remove `lung`: the lung component does not support VTK 7. It needs to be removed from the main CMakeLists.txt before building Chaste. 
-* Remove `apps`: the contents of `apps/src` in the Chaste build directory must be removed. This is due to an issue with libcurl and ssl in the conda environment, which is being investigated.
 * Set the path to source: while most packages are automatically grabbed from their version control systems the path to the Chaste source must be manually specified in `chaste/meta.yaml` relative to this directory.
 
 ## Working with the package
@@ -53,6 +49,5 @@ import chaste
 ## Troubleshooting
 
 * Missing librt.so: this is a problem with the version of VTK in conda-forge, make sure VTK is being pulled from the jmsgrogan channel.
-* Missing defines in libcurl.so: this happens when Chaste executables are built. Make sure no Chaste apps or tests are being built by modifying cmake variables and CMakeLists.txt appropriately.
 * Missing liblapack.so when loading the package in Python after building: libatlas is needed on the system. Do `sudo apt-get install libatlas-base-dev` on Ubuntu, for example. 
 

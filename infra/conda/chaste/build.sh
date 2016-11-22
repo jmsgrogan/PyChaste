@@ -30,13 +30,13 @@ cmake .. \
     -DChaste_ENABLE_cell_based_TESTING=OFF \
     -DChaste_ENABLE_continuum_mechanics_TESTING=OFF \
     -DChaste_ENABLE_project_PyChaste_TESTING=OFF \
-    -DChaste_ENABLE_project_PyChaste_APPS=OFF \
     -DChaste_ERROR_ON_WARNING=OFF \
     -DVTK_DIR=$PREFIX \
     -DXERCESC_LIBRARY=$LIBRARY_PATH/libxerces-c.so \
     -DXERCESC_INCLUDE=$INCLUDE_PATH \
     -DXSD_EXECUTABLE=$PREFIX/bin/xsd \
     $SRC_DIR
+
 make chaste_project_PyChaste -j $CPU_COUNT
 make project_PyChaste_Python -j $CPU_COUNT
 make install -j $CPU_COUNT

@@ -1,5 +1,7 @@
-
-"""Copyright (c) 2005-2016, University of Oxford.
+#!/usr/bin/env python
+"""Tutorial Module
+"""
+__copyright__ = """Copyright (c) 2005-2016, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
