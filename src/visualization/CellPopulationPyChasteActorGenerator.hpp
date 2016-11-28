@@ -58,7 +58,50 @@ class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerat
      */
     boost::shared_ptr<AbstractCellPopulation<DIM> > mpCellPopulation;
 
+    /**
+     * Show mutable mesh edges for Mesh Based populations
+     */
     bool mShowMutableMeshEdges;
+
+    /**
+     * Show Potts mesh edges for Ca and Potts Based populations
+     */
+    bool mShowPottsMeshEdges;
+
+    /**
+     * Color by cell label
+     */
+    bool mColorByCellLabel;
+
+    /**
+     * Color the cells by mutation state
+     */
+    bool mColorByCellMutationState;
+
+    /**
+     * Color the cells by type
+     */
+    bool mColorByCellType;
+
+    /**
+     * Color the cells by data
+     */
+    bool mColorByCellData;
+
+    /**
+     * The label for coloring data
+     */
+    std::string mCellDataColorLabel;
+
+    /**
+     * Remove ghost cells from mesh based populations
+     */
+    bool mRemoveGhostCells;
+
+    /**
+     * Whether to show th cell centres
+     */
+    bool mShowCellCentres;
 
 public:
 
@@ -84,11 +127,31 @@ public:
      */
     void AddMeshBasedCellPopulationActor(vtkSmartPointer<vtkRenderer> pRenderer);
 
+    void AddPottsMesh(vtkSmartPointer<vtkRenderer> pRenderer);
+
     /**
      * Set the CellPopulation
      * @param pCellPopulation the CellPopulation to render
      */
     void SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<DIM> > pCellPopulation);
+
+    void SetShowMutableMeshEdges(bool showEdges);
+
+    void SetShowPottsMeshEdges(bool showEdges);
+
+    void SetColorByCellLabel(bool colorByLabel);
+
+    void SetColorByMutationState(bool colorByMutationState);
+
+    void SetColorByCellType(bool colorByCellType);
+
+    void SetColorByCellData(bool colorByCellData);
+
+    void SetColorByCellDataLabel(std::string cellDataLabel);
+
+    void SetRemoveGhostNodes(bool removeGhostNodes);
+
+    void SetShowCellCentres(bool showCentres);
 
 };
 

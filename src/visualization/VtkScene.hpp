@@ -82,11 +82,6 @@ class VtkScene
      */
     std::string mOutputFilePath;
 
-    /**
-     * The color lookup
-     */
-    vtkSmartPointer<vtkLookupTable> mpColorLookUpTable;
-
     #if VTK_MAJOR_VERSION > 5
     /**
      * The animation writer
@@ -144,7 +139,7 @@ public:
     /**
      * Destructor
      */
-    ~VtkScene();
+    virtual ~VtkScene();
 
     /**
      * Shut down the scene and close the animation
@@ -174,7 +169,7 @@ public:
      * Update the renderer, this will update the population actor and write output images
      * @param timeStep the curren time step, for annotating output files
      */
-    void ResetRenderer(unsigned timeStep=0);
+    virtual void ResetRenderer(unsigned timeStep=0);
 
     /**
     * Render the scene

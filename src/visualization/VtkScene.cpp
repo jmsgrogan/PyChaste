@@ -111,7 +111,6 @@ VtkScene<DIM>::VtkScene()
       mpRenderWindow(vtkSmartPointer<vtkRenderWindow>::New()),
       mpRenderWindowInteractor(vtkSmartPointer<vtkRenderWindowInteractor>::New()),
       mOutputFilePath(),
-      mpColorLookUpTable(vtkSmartPointer<vtkLookupTable>::New()),
     #if VTK_MAJOR_VERSION > 5
       mAnimationWriter(vtkSmartPointer<vtkOggTheoraWriter>::New()),
     #endif

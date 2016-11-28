@@ -42,9 +42,39 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace bp = boost::python;
 
+struct VtkScene_less__2__greater__wrapper : VtkScene< 2 >, bp::wrapper< VtkScene< 2 > > {
+
+    VtkScene_less__2__greater__wrapper(VtkScene<2> const & arg )
+    : VtkScene<2>( arg )
+      , bp::wrapper< VtkScene< 2 > >(){
+        // copy constructor
+        
+    }
+
+    VtkScene_less__2__greater__wrapper( )
+    : VtkScene<2>( )
+      , bp::wrapper< VtkScene< 2 > >(){
+        // null constructor
+    
+    }
+
+    virtual void ResetRenderer( unsigned int timeStep=0 ) {
+        if( bp::override func_ResetRenderer = this->get_override( "ResetRenderer" ) )
+            func_ResetRenderer( timeStep );
+        else{
+            this->VtkScene< 2 >::ResetRenderer( timeStep );
+        }
+    }
+    
+    void default_ResetRenderer( unsigned int timeStep=0 ) {
+        VtkScene< 2 >::ResetRenderer( timeStep );
+    }
+
+};
+
 void register_VtkScene2_class(){
 
-    bp::class_< VtkScene< 2 > >( "VtkScene2", bp::init< >() )    
+    bp::class_< VtkScene_less__2__greater__wrapper >( "VtkScene2", bp::init< >() )    
         .def( 
             "End"
             , (void ( ::VtkScene<2>::* )(  ))( &::VtkScene< 2 >::End ) )    
@@ -59,7 +89,8 @@ void register_VtkScene2_class(){
             , (::vtkSmartPointer< vtkUnsignedCharArray > ( ::VtkScene<2>::* )(  ))( &::VtkScene< 2 >::GetSceneAsCharBuffer ) )    
         .def( 
             "ResetRenderer"
-            , (void ( ::VtkScene<2>::* )( unsigned int ))( &::VtkScene< 2 >::ResetRenderer )
+            , (void ( ::VtkScene<2>::* )( unsigned int ))(&::VtkScene< 2 >::ResetRenderer)
+            , (void ( VtkScene_less__2__greater__wrapper::* )( unsigned int ))(&VtkScene_less__2__greater__wrapper::default_ResetRenderer)
             , ( bp::arg("timeStep")=(unsigned int)(0) ) )    
         .def( 
             "SetCellPopulation"

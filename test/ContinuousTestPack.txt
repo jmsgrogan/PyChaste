@@ -1,4 +1,8 @@
-visualization/TestVtkScene.hpp
+visualization/TestVtkSceneWithCaBased.hpp
+visualization/TestVtkSceneWithMeshBased.hpp
+visualization/TestVtkSceneWithNodeBased.hpp
+visualization/TestVtkSceneWithPottsBased.hpp
+visualization/TestVtkSceneWithVertexBased.hpp
 python/core/TestOutputFileHandlerPython.py
 python/core/TestFileFinderPython.py
 python/core/TestTimerPython.py

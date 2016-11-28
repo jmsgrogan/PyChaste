@@ -62,7 +62,7 @@ void VtkSceneModifier<DIM>::UpdateAtEndOfTimeStep(AbstractCellPopulation<DIM,DIM
 
     if(DIM>1)
     {
-        if(mpScene)
+        if(mpScene and SimulationTime::Instance()->GetTimeStepsElapsed()%mUpdateFrequency==0)
         {
             mpScene->ResetRenderer(SimulationTime::Instance()->GetTimeStepsElapsed());
         }
