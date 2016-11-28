@@ -87,6 +87,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "UniformCellCycleModel.hpp"
 #include "SimpleOxygenBasedCellCycleModel.hpp"
 #include "UniformG1GenerationalCellCycleModel.hpp"
+#include "NoCellCycleModel.hpp"
 
 // Update rules
 #include "AbstractCaUpdateRule.hpp"

@@ -64,6 +64,11 @@ class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerat
     bool mShowMutableMeshEdges;
 
     /**
+     * Show voronoi mesh edges for Mesh Based populations
+     */
+    bool mShowVoronoiMeshEdges;
+
+    /**
      * Show Potts mesh edges for Ca and Potts Based populations
      */
     bool mShowPottsMeshEdges;
@@ -134,6 +139,8 @@ public:
      * @param pCellPopulation the CellPopulation to render
      */
     void SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<DIM> > pCellPopulation);
+
+    void SetShowVoronoiMeshEdges(bool showEdges);
 
     void SetShowMutableMeshEdges(bool showEdges);
 

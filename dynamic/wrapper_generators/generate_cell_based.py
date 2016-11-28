@@ -51,7 +51,8 @@ def do_cell_cycle_models(builder, default_pointer_policy = call_policies.return_
     
     concrete_classes = ["UniformCellCycleModel", 
                        "SimpleOxygenBasedCellCycleModel",
-                       "UniformG1GenerationalCellCycleModel",] 
+                       "UniformG1GenerationalCellCycleModel",
+                       "NoCellCycleModel"] 
     
     # Set up generator names
     generator_classes = []

@@ -33,6 +33,7 @@ Copyright (c) 2005-2016, University of Oxford.
 
  */
 
+#include <algorithm>
 #include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
 #define _BACKWARD_BACKWARD_WARNING_H 1 //Cut out the vtk deprecated warning
@@ -76,10 +77,11 @@ CellPopulationPyChasteActorGenerator<DIM>::CellPopulationPyChasteActorGenerator(
     : AbstractPyChasteActorGenerator<DIM>(),
       mpCellPopulation(),
       mShowMutableMeshEdges(false),
+      mShowVoronoiMeshEdges(true),
       mShowPottsMeshEdges(false),
       mColorByCellLabel(false),
       mColorByCellMutationState(false),
-      mColorByCellType(true),
+      mColorByCellType(false),
       mColorByCellData(false),
       mCellDataColorLabel(),
       mRemoveGhostCells(true),
@@ -462,7 +464,6 @@ void CellPopulationPyChasteActorGenerator<DIM>::AddActor(vtkSmartPointer<vtkRend
 
         if(mShowPottsMeshEdges)
         {
-            std::cout << "yyyyyy" << std::endl;
             if(boost::dynamic_pointer_cast<PottsBasedCellPopulation<DIM> >(mpCellPopulation) or
                     boost::dynamic_pointer_cast<CaBasedCellPopulation<DIM> >(mpCellPopulation))
             {
@@ -483,86 +484,160 @@ void CellPopulationPyChasteActorGenerator<DIM>::AddMeshBasedCellPopulationActor(
     }
 
     // Add the voronoi mesh
-    p_cell_population->CreateVoronoiTessellation();
-    vtkSmartPointer<vtkUnstructuredGrid> p_voronoi_grid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-
-    if(p_cell_population->GetVoronoiTessellation() != NULL)
+    if(mShowVoronoiMeshEdges)
     {
-        vtkSmartPointer<vtkPoints> p_points = vtkSmartPointer<vtkPoints>::New();
-        p_points->GetData()->SetName("Vertex positions");
-        for (unsigned node_num=0; node_num<p_cell_population->GetVoronoiTessellation()->GetNumNodes(); node_num++)
-        {
-            c_vector<double, DIM> position = p_cell_population->GetVoronoiTessellation()->GetNode(node_num)->rGetLocation();
-            if (DIM==2)
-            {
-                p_points->InsertPoint(node_num, position[0], position[1], 0.0);
-            }
-            else
-            {
-                p_points->InsertPoint(node_num, position[0], position[1], position[2]);
-            }
-        }
-        p_voronoi_grid->SetPoints(p_points);
+        p_cell_population->CreateVoronoiTessellation();
+        vtkSmartPointer<vtkUnstructuredGrid> p_voronoi_grid = vtkSmartPointer<vtkUnstructuredGrid>::New();
+        vtkSmartPointer<vtkDoubleArray> p_cell_color_reference_data = vtkSmartPointer<vtkDoubleArray>::New();
+        p_cell_color_reference_data->SetName("CellColors");
 
-        for (typename VertexMesh<DIM,DIM>::VertexElementIterator iter = p_cell_population->GetVoronoiTessellation()->GetElementIteratorBegin();
-             iter != p_cell_population->GetVoronoiTessellation()->GetElementIteratorEnd(); ++iter)
+        if(p_cell_population->GetVoronoiTessellation() != NULL)
         {
-            vtkSmartPointer<vtkCell> p_cell;
-            if (DIM == 2)
+            vtkSmartPointer<vtkPoints> p_points = vtkSmartPointer<vtkPoints>::New();
+            p_points->GetData()->SetName("Vertex positions");
+            for (unsigned node_num=0; node_num<p_cell_population->GetVoronoiTessellation()->GetNumNodes(); node_num++)
             {
-                p_cell = vtkSmartPointer<vtkPolygon>::New();
+                c_vector<double, DIM> position = p_cell_population->GetVoronoiTessellation()->GetNode(node_num)->rGetLocation();
+                if (DIM==2)
+                {
+                    p_points->InsertPoint(node_num, position[0], position[1], 0.0);
+                }
+                else
+                {
+                    p_points->InsertPoint(node_num, position[0], position[1], position[2]);
+                }
             }
-            else
+            p_voronoi_grid->SetPoints(p_points);
+
+            for (typename VertexMesh<DIM,DIM>::VertexElementIterator iter = p_cell_population->GetVoronoiTessellation()->GetElementIteratorBegin();
+                 iter != p_cell_population->GetVoronoiTessellation()->GetElementIteratorEnd(); ++iter)
             {
-                p_cell = vtkSmartPointer<vtkConvexPointSet>::New();
+                vtkSmartPointer<vtkCell> p_cell;
+                if (DIM == 2)
+                {
+                    p_cell = vtkSmartPointer<vtkPolygon>::New();
+                }
+                else
+                {
+                    p_cell = vtkSmartPointer<vtkConvexPointSet>::New();
+                }
+                vtkSmartPointer<vtkIdList> p_cell_id_list = p_cell->GetPointIds();
+                p_cell_id_list->SetNumberOfIds(iter->GetNumNodes());
+                for (unsigned j=0; j<iter->GetNumNodes(); ++j)
+                {
+                    p_cell_id_list->SetId(j, iter->GetNodeGlobalIndex(j));
+                }
+                p_voronoi_grid->InsertNextCell(p_cell->GetCellType(), p_cell_id_list);
+
+                unsigned node_index =
+                        p_cell_population->GetVoronoiTessellation()->GetDelaunayNodeIndexCorrespondingToVoronoiElementIndex(iter->GetIndex());
+                CellPtr p_biological_cell = p_cell_population->GetCellUsingLocationIndex(node_index);
+
+                if(mColorByCellType)
+                {
+                    p_cell_color_reference_data->InsertNextTuple1(p_biological_cell->GetCellProliferativeType()->GetColour());
+                }
+    //            else if(mColorByCellLabel)
+    //            {
+    //                if((*cell_iter)->rGetCellPropertyCollection().template HasProperty<CellLabel>())
+    //                {
+    //                    p_cell_color_reference_data->InsertNextTuple1(iter->rGetCellPropertyCollection().GetProperty()->GetColour());
+    //                }
+    //                else
+    //                {
+    //                    p_cell_color_reference_data->InsertNextTuple1(0.0);
+    //                }
+    //            }
+                else if(mColorByCellData and !mCellDataColorLabel.empty())
+                {
+                    std::vector<std::string> keys = p_biological_cell->GetCellData()->GetKeys();
+                    if (std::find(keys.begin(), keys.end(), mCellDataColorLabel) != keys.end())
+                    {
+                        p_cell_color_reference_data->InsertNextTuple1(p_biological_cell->GetCellData()->GetItem(mCellDataColorLabel));
+                    }
+                    else
+                    {
+                        p_cell_color_reference_data->InsertNextTuple1(0.0);
+                    }
+                }
+                else
+                {
+                    p_cell_color_reference_data->InsertNextTuple1(p_biological_cell->GetCellId());
+                }
             }
-            vtkSmartPointer<vtkIdList> p_cell_id_list = p_cell->GetPointIds();
-            p_cell_id_list->SetNumberOfIds(iter->GetNumNodes());
-            for (unsigned j=0; j<iter->GetNumNodes(); ++j)
-            {
-                p_cell_id_list->SetId(j, iter->GetNodeGlobalIndex(j));
-            }
-            p_voronoi_grid->InsertNextCell(p_cell->GetCellType(), p_cell_id_list);
         }
+
+        p_voronoi_grid->GetCellData()->AddArray(p_cell_color_reference_data);
+        p_voronoi_grid->GetCellData()->SetScalars(p_cell_color_reference_data);
+
+        vtkSmartPointer<vtkColorTransferFunction> p_scaled_ctf = vtkSmartPointer<vtkColorTransferFunction>::New();
+        if(!mColorByCellData)
+        {
+            double range[2];
+            p_voronoi_grid->GetCellData()->GetArray("CellColors")->GetRange(range);
+            for(unsigned idx=0; idx<255; idx++)
+            {
+                double color[3];
+                this->mpDiscreteColorTransferFunction->GetColor((255.0-double(idx))/255.0, color);
+                p_scaled_ctf->AddRGBPoint(range[0] + double(idx)*(range[1]-range[0])/255.0, color[0], color[1], color[2]);
+            }
+        }
+        else
+        {
+            double range[2];
+            p_voronoi_grid->GetCellData()->GetArray("CellColors")->GetRange(range);
+            for(unsigned idx=0; idx<255; idx++)
+            {
+                double color[3];
+                this->mpColorTransferFunction->GetColor(double(idx)/255.0, color);
+                p_scaled_ctf->AddRGBPoint(range[0] + double(idx)*(range[1]-range[0])/255.0, color[0], color[1], color[2]);
+            }
+        }
+        p_scaled_ctf->Build();
+
+        vtkSmartPointer<vtkGeometryFilter> p_geom_filter = vtkSmartPointer<vtkGeometryFilter>::New();
+        #if VTK_MAJOR_VERSION <= 5
+            p_geom_filter->SetInput(p_voronoi_grid);
+        #else
+            p_geom_filter->SetInputData(p_voronoi_grid);
+        #endif
+
+        vtkSmartPointer<vtkPolyDataMapper> p_mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+        p_mapper->SetInputConnection(p_geom_filter->GetOutputPort());
+        p_mapper->SetLookupTable(p_scaled_ctf);
+        p_mapper->ScalarVisibilityOn();
+        //p_grid_mapper->InterpolateScalarsBeforeMappingOn();
+        p_mapper->SelectColorArray("CellColors");
+        p_mapper->SetScalarModeToUseCellData();
+        p_mapper->SetColorModeToMapScalars();
+
+        vtkSmartPointer<vtkActor> p_actor = vtkSmartPointer<vtkActor>::New();
+        p_actor->SetMapper(p_mapper);
+        //p_actor->GetProperty()->SetColor(0,1,0);
+        p_actor->GetProperty()->SetOpacity(0.8);
+        pRenderer->AddActor(p_actor);
+
+        vtkSmartPointer<vtkFeatureEdges> p_voronoi_extract_edges = vtkSmartPointer<vtkFeatureEdges>::New();
+        p_voronoi_extract_edges->SetInputConnection(p_geom_filter->GetOutputPort());
+        p_voronoi_extract_edges->SetFeatureEdges(false);
+        p_voronoi_extract_edges->SetBoundaryEdges(true);
+        p_voronoi_extract_edges->SetManifoldEdges(true);
+        p_voronoi_extract_edges->SetNonManifoldEdges(false);
+
+        vtkSmartPointer<vtkTubeFilter> p_voronoi_tubes = vtkSmartPointer<vtkTubeFilter>::New();
+        p_voronoi_tubes->SetInputConnection(p_voronoi_extract_edges->GetOutputPort());
+        p_voronoi_tubes->SetRadius(0.008);
+        p_voronoi_tubes->SetNumberOfSides(12);
+
+        vtkSmartPointer<vtkPolyDataMapper> p_voronoi_tube_mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
+        p_voronoi_tube_mapper->SetInputConnection(p_voronoi_tubes->GetOutputPort());
+        p_voronoi_tube_mapper->ScalarVisibilityOff();
+
+        vtkSmartPointer<vtkActor> p_voronoi_tube_actor = vtkSmartPointer<vtkActor>::New();
+        p_voronoi_tube_actor->SetMapper(p_voronoi_tube_mapper);
+        p_voronoi_tube_actor->GetProperty()->SetColor(0,0,0);
+        pRenderer->AddActor(p_voronoi_tube_actor);
     }
-
-    vtkSmartPointer<vtkGeometryFilter> p_geom_filter = vtkSmartPointer<vtkGeometryFilter>::New();
-    #if VTK_MAJOR_VERSION <= 5
-        p_geom_filter->SetInput(p_voronoi_grid);
-    #else
-        p_geom_filter->SetInputData(p_voronoi_grid);
-    #endif
-
-    vtkSmartPointer<vtkPolyDataMapper> p_mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-    p_mapper->SetInputConnection(p_geom_filter->GetOutputPort());
-    p_mapper->ScalarVisibilityOff();
-
-    vtkSmartPointer<vtkActor> p_actor = vtkSmartPointer<vtkActor>::New();
-    p_actor->SetMapper(p_mapper);
-    p_actor->GetProperty()->SetColor(1,1,0);
-    p_actor->GetProperty()->SetOpacity(0.8);
-    pRenderer->AddActor(p_actor);
-
-    vtkSmartPointer<vtkFeatureEdges> p_voronoi_extract_edges = vtkSmartPointer<vtkFeatureEdges>::New();
-    p_voronoi_extract_edges->SetInputConnection(p_geom_filter->GetOutputPort());
-    p_voronoi_extract_edges->SetFeatureEdges(false);
-    p_voronoi_extract_edges->SetBoundaryEdges(true);
-    p_voronoi_extract_edges->SetManifoldEdges(true);
-    p_voronoi_extract_edges->SetNonManifoldEdges(false);
-
-    vtkSmartPointer<vtkTubeFilter> p_voronoi_tubes = vtkSmartPointer<vtkTubeFilter>::New();
-    p_voronoi_tubes->SetInputConnection(p_voronoi_extract_edges->GetOutputPort());
-    p_voronoi_tubes->SetRadius(0.006);
-    p_voronoi_tubes->SetNumberOfSides(12);
-
-    vtkSmartPointer<vtkPolyDataMapper> p_voronoi_tube_mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-    p_voronoi_tube_mapper->SetInputConnection(p_voronoi_tubes->GetOutputPort());
-    p_voronoi_tube_mapper->ScalarVisibilityOff();
-
-    vtkSmartPointer<vtkActor> p_voronoi_tube_actor = vtkSmartPointer<vtkActor>::New();
-    p_voronoi_tube_actor->SetMapper(p_voronoi_tube_mapper);
-    p_voronoi_tube_actor->GetProperty()->SetColor(0,0,0);
-    pRenderer->AddActor(p_voronoi_tube_actor);
 
     if(mShowMutableMeshEdges)
     {
@@ -599,7 +674,6 @@ void CellPopulationPyChasteActorGenerator<DIM>::AddMeshBasedCellPopulationActor(
         {
 
             vtkSmartPointer<vtkCell> p_cell;
-            ///\todo This ought to look exactly like the other MakeVtkMesh
             if (DIM == 3)
             {
                 p_cell = vtkSmartPointer<vtkTetra>::New();
@@ -711,6 +785,12 @@ template<unsigned DIM>
 void CellPopulationPyChasteActorGenerator<DIM>::SetShowMutableMeshEdges(bool showEdges)
 {
     mShowMutableMeshEdges = showEdges;
+}
+
+template<unsigned DIM>
+void CellPopulationPyChasteActorGenerator<DIM>::SetShowVoronoiMeshEdges(bool showEdges)
+{
+    mShowVoronoiMeshEdges = showEdges;
 }
 
 template<unsigned DIM>
