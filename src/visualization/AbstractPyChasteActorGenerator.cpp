@@ -74,10 +74,9 @@ AbstractPyChasteActorGenerator<DIM>::AbstractPyChasteActorGenerator()
       mEdgeColor(zero_vector<double>(3)),
       mPointColor(unit_vector<double>(3, 2)),
       mVolumeColor(unit_vector<double>(3, 0)),
-      mViridisColorMap(),
-      mVolumeOpacity(0.6),
-      mPointSize(1.0),
-      mEdgeSize(0.5),
+      mVolumeOpacity(0.9),
+      mPointSize(0.5),
+      mEdgeSize(0.01),
       mDataLabel()
 {
     mPointColor*=255.0;
@@ -623,6 +622,18 @@ AbstractPyChasteActorGenerator<DIM>::~AbstractPyChasteActorGenerator()
 }
 
 template<unsigned DIM>
+vtkSmartPointer<vtkColorTransferFunction> AbstractPyChasteActorGenerator<DIM>::GetColorTransferFunction()
+{
+    return mpColorTransferFunction;
+}
+
+template<unsigned DIM>
+vtkSmartPointer<vtkColorTransferFunction> AbstractPyChasteActorGenerator<DIM>::GetDiscreteColorTransferFunction()
+{
+    return mpDiscreteColorTransferFunction;
+}
+
+template<unsigned DIM>
 void AbstractPyChasteActorGenerator<DIM>::SetShowEdges(bool show)
 {
     mShowEdges = show;
@@ -681,7 +692,6 @@ void AbstractPyChasteActorGenerator<DIM>::SetDataLabel(const std::string& rLabel
 {
     mDataLabel = rLabel;
 }
-
 
 template class AbstractPyChasteActorGenerator<2>;
 template class AbstractPyChasteActorGenerator<3>;

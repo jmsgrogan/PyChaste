@@ -147,7 +147,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace bp = boost::python;
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
-    //register_VecUnsigned_class();
+    register_VecUnsigned_class();
 
     register_VecVecInt_class();
 
@@ -157,7 +157,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
 
     register_vector_less__std_scope_pair_less_Node_less_2_greater___ptr__comma__Node_less_2_greater___ptr__greater___greater__class();
 
-    //register_VecDouble_class();
+    register_VecDouble_class();
 
     register_VecNodeSharedPtr3_class();
 
@@ -241,6 +241,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
 
     register_PottsMeshGenerator3_class();
 
-    //register_free_functions();
+    register_free_functions();
 }
 

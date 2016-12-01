@@ -310,6 +310,18 @@ struct MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper : MeshBas
         return MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices( index );
     }
 
+    virtual ::Node< 2 > * GetNode( unsigned int index ) {
+        if( bp::override func_GetNode = this->get_override( "GetNode" ) )
+            return func_GetNode( index );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNode( unsigned int index ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetNode( index );
+    }
+
     virtual unsigned int GetNumNodes(  ) {
         if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
             return func_GetNumNodes(  );
@@ -824,6 +836,20 @@ void register_MeshBasedCellPopulationWithGhostNodes2_class(){
                 , GetNeighbouringNodeIndices_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetNeighbouringNodeIndices)
                 , default_GetNeighbouringNodeIndices_function_type(&MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper::default_GetNeighbouringNodeIndices)
                 , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetNode
+        
+            typedef MeshBasedCellPopulationWithGhostNodes< 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            typedef ::Node< 2 > * ( MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulationWithGhostNodes2_exposer.def( 
+                "GetNode"
+                , GetNode_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetNode)
+                , default_GetNode_function_type(&MeshBasedCellPopulationWithGhostNodes_less__2__greater__wrapper::default_GetNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::MeshBasedCellPopulation< 2, 2 >::GetNumNodes

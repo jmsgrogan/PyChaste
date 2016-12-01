@@ -71,9 +71,11 @@ def update_builder(builder):
                        "SharedCylindricalHoneycombVertexMeshGenerator"
                        ]
 
+    class_collection = []
     for eachClass in include_classes:
         builder.class_(eachClass).include()  
         new_name = generate_bindings.template_replace(eachClass)
+        class_collection.append(new_name)
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
     
@@ -94,8 +96,8 @@ def update_builder(builder):
     returns_non_const_ref = builder.class_('ChastePoint<2>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 2> &")
     returns_non_const_ref.exclude()
     
-    builder.class_('AbstractMesh<3,3>').member_functions("GetNode").exclude()
-    builder.class_('AbstractMesh<2,2>').member_functions("GetNode").exclude()
+    builder.class_('AbstractMesh<3,3>').member_functions("GetNode").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
+    builder.class_('AbstractMesh<2,2>').member_functions("GetNode").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
     builder.class_('AbstractMesh<3,3>').member_functions("GetNodeOrHaloNode").exclude()
     builder.class_('AbstractMesh<2,2>').member_functions("GetNodeOrHaloNode").exclude()
     builder.class_('AbstractMesh<3,3>').member_functions("GetNodeFromPrePermutationIndex").exclude()
@@ -104,8 +106,8 @@ def update_builder(builder):
     builder.class_('AbstractMesh<2,2>').member_functions("GetDistributedVectorFactory").exclude()
     builder.class_('AbstractMesh<3,3>').member_functions("rGetNodePermutation").exclude()
     builder.class_('AbstractMesh<2,2>').member_functions("rGetNodePermutation").exclude()
-    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetElement").exclude()
-    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetElement").exclude()
+    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
+    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
     builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetBoundaryElement").exclude()
     builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetBoundaryElement").exclude()
     builder.class_('TetrahedralMesh<3,3>').member_functions("FreeTriangulateIo").exclude()
@@ -113,10 +115,10 @@ def update_builder(builder):
     builder.class_('TetrahedralMesh<3,3>').member_functions("InitialiseTriangulateIo").exclude()
     builder.class_('TetrahedralMesh<2,2>').member_functions("InitialiseTriangulateIo").exclude()
     
-    builder.class_('PottsMesh<3>').member_functions("GetElement").exclude()
-    builder.class_('PottsMesh<2>').member_functions("GetElement").exclude()
-    builder.class_('VertexMesh<3,3>').member_functions("GetElement").exclude()
-    builder.class_('VertexMesh<2,2>').member_functions("GetElement").exclude()
+    builder.class_('PottsMesh<3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
+    builder.class_('PottsMesh<2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
+    builder.class_('VertexMesh<3,3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
+    builder.class_('VertexMesh<2,2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
     builder.class_('VertexMesh<3,3>').member_functions("GetFace").exclude()
     builder.class_('VertexMesh<2,2>').member_functions("GetFace").exclude()
     builder.class_('VertexMesh<3,3>').constructors(arg_types=[None]).exclude()
@@ -149,8 +151,8 @@ def update_builder(builder):
     builder.class_('Node<2>').member_functions("rGetContainingElementIndices").exclude()
     builder.class_('Node<3>').member_functions("rGetNodeAttributes").exclude()
     builder.class_('Node<2>').member_functions("rGetNodeAttributes").exclude()
-    builder.class_('Node<3>').member_functions("rGetAppliedForce").exclude()
-    builder.class_('Node<2>').member_functions("rGetAppliedForce").exclude()
+    builder.class_('Node<3>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()  
+    builder.class_('Node<2>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference() 
     builder.class_('Node<3>').member_functions("rGetContainingBoundaryElementIndices").exclude()
     builder.class_('Node<2>').member_functions("rGetContainingBoundaryElementIndices").exclude()
     
@@ -158,9 +160,9 @@ def update_builder(builder):
     builder.class_('NodeAttributes<2>').member_functions("rGetAttributes").exclude()
     builder.class_('NodeAttributes<3>').member_functions("rGetNeighbours").exclude()
     builder.class_('NodeAttributes<2>').member_functions("rGetNeighbours").exclude()
-    builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").exclude()
-    builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").exclude()
+    builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()  
+    builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()    
     
     builder.class_('Cylindrical2dVertexMesh').member_functions("GetMeshForVtk").exclude()    
         
-    return builder
+    return builder, class_collection

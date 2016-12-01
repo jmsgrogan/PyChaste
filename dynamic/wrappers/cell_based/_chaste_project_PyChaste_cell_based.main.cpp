@@ -150,6 +150,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ApoptoticCellKiller3.pypp.hpp"
 
+#include "AttractingPlaneBoundaryCondition2_2.pypp.hpp"
+
+#include "AttractingPlaneBoundaryCondition3_3.pypp.hpp"
+
 #include "BetaCateninOneHitCellMutationState.pypp.hpp"
 
 #include "CaBasedCellPopulation2.pypp.hpp"
@@ -160,6 +164,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "CellAncestor.pypp.hpp"
 
+#include "CellData.pypp.hpp"
+
 #include "CellId.pypp.hpp"
 
 #include "CellLabel.pypp.hpp"
@@ -167,6 +173,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "CellPropertyCollection.pypp.hpp"
 
 #include "CellPropertyRegistry.pypp.hpp"
+
+#include "CellsGeneratorNoCellCycleModel_2.pypp.hpp"
+
+#include "CellsGeneratorNoCellCycleModel_3.pypp.hpp"
 
 #include "CellsGeneratorSimpleOxygenBasedCellCycleModel_2.pypp.hpp"
 
@@ -223,6 +233,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "NagaiHondaForce2.pypp.hpp"
 
 #include "NagaiHondaForce3.pypp.hpp"
+
+#include "NoCellCycleModel.pypp.hpp"
 
 #include "NodeBasedCellPopulation2.pypp.hpp"
 
@@ -433,6 +445,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_ApoptoticCellKiller3_class();
 
+    register_AttractingPlaneBoundaryCondition2_2_class();
+
+    register_AttractingPlaneBoundaryCondition3_3_class();
+
     register_BetaCateninOneHitCellMutationState_class();
 
     register_CaBasedCellPopulation2_class();
@@ -445,11 +461,17 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_CellAncestor_class();
 
+    register_CellData_class();
+
     register_CellId_class();
 
     register_CellLabel_class();
 
     register_CellPropertyRegistry_class();
+
+    register_CellsGeneratorNoCellCycleModel_2_class();
+
+    register_CellsGeneratorNoCellCycleModel_3_class();
 
     register_CellsGeneratorSimpleOxygenBasedCellCycleModel_2_class();
 
@@ -498,6 +520,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_NagaiHondaForce2_class();
 
     register_NagaiHondaForce3_class();
+
+    register_NoCellCycleModel_class();
 
     register_NodeBasedCellPopulation2_class();
 

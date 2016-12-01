@@ -399,6 +399,18 @@ void register_PottsMesh3_class(){
                 , ( bp::arg("index") ) );
         
         }
+        { //::PottsMesh< 3 >::GetElement
+        
+            typedef PottsMesh< 3 > exported_class_t;
+            typedef ::PottsElement< 3 > * ( exported_class_t::*GetElement_function_type)( unsigned int ) const;
+            
+            PottsMesh3_exposer.def( 
+                "GetElement"
+                , GetElement_function_type( &::PottsMesh< 3 >::GetElement )
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::PottsMesh< 3 >::GetElementIteratorBegin
         
             typedef PottsMesh< 3 > exported_class_t;

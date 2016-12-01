@@ -96,6 +96,10 @@ void register_NodeAttributes3_class(){
         .def( 
             "SetRegion"
             , (void ( ::NodeAttributes<3>::* )( unsigned int ))( &::NodeAttributes< 3 >::SetRegion )
-            , ( bp::arg("region") ) );
+            , ( bp::arg("region") ) )    
+        .def( 
+            "rGetAppliedForce"
+            , (::boost::numeric::ublas::c_vector< double, 3 > & ( ::NodeAttributes<3>::* )(  ))( &::NodeAttributes< 3 >::rGetAppliedForce )
+            , bp::return_internal_reference< >() );
 
 }

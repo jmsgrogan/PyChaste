@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef __type_hpp__pyplusplus_wrapper
-#define __type_hpp__pyplusplus_wrapper
+#ifndef AttractingPlaneBoundaryCondition2_2_hpp__pyplusplus_wrapper
+#define AttractingPlaneBoundaryCondition2_2_hpp__pyplusplus_wrapper
 
-void register___type_class();
+void register_AttractingPlaneBoundaryCondition2_2_class();
 
-#endif//__type_hpp__pyplusplus_wrapper
+#endif//AttractingPlaneBoundaryCondition2_2_hpp__pyplusplus_wrapper

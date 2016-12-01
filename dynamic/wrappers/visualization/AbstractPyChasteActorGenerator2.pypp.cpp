@@ -66,6 +66,12 @@ void register_AbstractPyChasteActorGenerator2_class(){
             , bp::pure_virtual( (void ( ::AbstractPyChasteActorGenerator<2>::* )( ::vtkSmartPointer< vtkRenderer > ))(&::AbstractPyChasteActorGenerator< 2 >::AddActor) )
             , ( bp::arg("pRenderer") ) )    
         .def( 
+            "GetColorTransferFunction"
+            , (::vtkSmartPointer< vtkColorTransferFunction > ( ::AbstractPyChasteActorGenerator<2>::* )(  ))( &::AbstractPyChasteActorGenerator< 2 >::GetColorTransferFunction ) )    
+        .def( 
+            "GetDiscreteColorTransferFunction"
+            , (::vtkSmartPointer< vtkColorTransferFunction > ( ::AbstractPyChasteActorGenerator<2>::* )(  ))( &::AbstractPyChasteActorGenerator< 2 >::GetDiscreteColorTransferFunction ) )    
+        .def( 
             "SetDataLabel"
             , (void ( ::AbstractPyChasteActorGenerator<2>::* )( ::std::string const & ))( &::AbstractPyChasteActorGenerator< 2 >::SetDataLabel )
             , ( bp::arg("rLabel") ) )    

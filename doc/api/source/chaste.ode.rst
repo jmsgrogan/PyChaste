@@ -8,3 +8,14 @@ Module contents
     :members:
     :undoc-members:
     :show-inheritance:
+    
+.. autoclass:: chaste.ode.AbstractOdeSystem
+    :members:
+
+.. autoclass:: chaste.ode.AbstractOdeSystemInformation
+    :members:
+
+.. autoclass:: chaste.ode.AbstractPythonOdeSystemInformation
+    :members:
+
+

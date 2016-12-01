@@ -40,11 +40,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## ## The Test
 
 import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
 import chaste.mesh
+import chaste.cell_based
 import chaste.visualization
+chaste.init()
 
 class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     ## ## Test 1 - A basic node-based simulation
@@ -59,6 +58,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## The second set of three arguments specify the domain height; the number of elements up; and the height of individual elements. 
         ## We have chosen a 2 by 2 block of elements, each consisting of 4 by 4 ( = 16) lattice sites.
         
+        file_handler = chaste.core.OutputFileHandler("Python/TestPottsBasedCellSimulationsTutorial")
         generator = chaste.mesh.PottsMeshGenerator2(50, 2, 4, 50, 2, 4)
         mesh = generator.GetMesh()
           
@@ -69,9 +69,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## Third argument makes all cells proliferate.
         
         cells = chaste.cell_based.VecCellPtr()
-        transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), transit_type)
+        cell_generator.GenerateBasic(cells, mesh.GetNumElements())
           
         ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. 
         ## In general, this class associates a collection of cells with a mesh. For this test, because we have a PottsMesh, 
@@ -87,11 +86,18 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## To use a different number of sweeps per timestep use the command.
 
         cell_population.SetNumSweepsPerTimestep(1)
+        
+        ## We can set up a `VtkScene` to do a quick visualization of the population before running the analysis.
+        
+        scene = chaste.visualization.VtkScene2()
+        scene.SetCellPopulation(cell_population)
+        scene.SetIsInteractive(True)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory and end time
 
         simulator = chaste.cell_based.OnLatticeSimulation2(cell_population)
-        simulator.SetOutputDirectory("Python/TestPottsBasedCellPopulation")
+        simulator.SetOutputDirectory("Python/TestPottsBasedCellSimulationsTutorial")
         simulator.SetEndTime(50.0)
         
         ## The default timestep is 0.1, but can be changed using the below command. The timestep is used in conjunction with the "Temperature" 
@@ -126,14 +132,21 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         adhesion_update_rule = chaste.cell_based.AdhesionPottsUpdateRule2()        
         simulator.AddUpdateRule(adhesion_update_rule)
         
-        ## To run the simulation, we call `Solve()`.
-    
-        simulator.Solve();
+        ## Save snapshot images of the population during the simulation
+        scene_modifier = chaste.cell_based.VtkSceneModifier2()
+        scene_modifier.SetVtkScene(scene)
+        scene_modifier.SetUpdateFrequency(100)
+        simulator.AddSimulationModifier(scene_modifier)
+
+        ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
         
+        scene.Start() 
+        simulator.Solve()
+
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
         
-        self.assertEqual(cell_population.GetNumRealCells(), 64)
+        self.assertEqual(cell_population.GetNumRealCells(), 41)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 50.0, 6)
 
     ## ## Test 2 - Cell sorting
@@ -201,7 +214,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         
         ## To run the simulation, we call `Solve()`.
     
-        simulator.Solve();
+        simulator.Solve()
         
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
@@ -212,7 +225,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     ## ## Test 3 - 3D Cell Sorting
     ## The next test extends the previous example to three dimensions.
     
-    def xtest_potts_spheroid_cell_sorting(self):
+    def test_potts_spheroid_cell_sorting(self):
         
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size.

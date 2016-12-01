@@ -45,7 +45,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include "UblasVectorInclude.hpp"
 
 /**
- * This class generates Vtk actors for geometric features.
+ * This class generates VTK actors for geometric features.
  */
 template<unsigned DIM>
 class AbstractPyChasteActorGenerator
@@ -54,7 +54,7 @@ class AbstractPyChasteActorGenerator
 protected:
 
     /**
-     * The color lookup
+     * The color lookup for continuous entities
      */
     vtkSmartPointer<vtkColorTransferFunction> mpColorTransferFunction;
 
@@ -93,17 +93,24 @@ protected:
      */
     c_vector<double, 3> mVolumeColor;
 
-    std::vector<c_vector<double, 3> > mViridisColorMap;
-
     /**
      * The volume opacity
      */
     double mVolumeOpacity;
 
+    /**
+     * The default size for points
+     */
     double mPointSize;
 
+    /**
+     * The default size for edges
+     */
     double mEdgeSize;
 
+    /**
+     * The label for contouring on data
+     */
     std::string mDataLabel;
 
 public:
@@ -117,6 +124,16 @@ public:
      * Destructor
      */
     virtual ~AbstractPyChasteActorGenerator();
+
+    /**
+     * @return return the color transfer function
+     */
+    vtkSmartPointer<vtkColorTransferFunction> GetColorTransferFunction();
+
+    /**
+     * @return return the discrete color transfer function
+     */
+    vtkSmartPointer<vtkColorTransferFunction> GetDiscreteColorTransferFunction();
 
     /**
      * Add the Abstract actor to the renderer
@@ -166,10 +183,22 @@ public:
      */
     void SetVolumeOpacity(double opacity);
 
+    /**
+     * Set the default point size
+     * @param size the default point size
+     */
     void SetPointSize(double size);
 
+    /**
+     * Set the default edge size
+     * @param size the default edge size
+     */
     void SetEdgeSize(double size);
 
+    /**
+     * Set the label for contouring data
+     * @param rLabel the label for contouring data
+     */
     void SetDataLabel(const std::string& rLabel);
 
 };

@@ -58,13 +58,6 @@ struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::w
     
     }
 
-//    VertexMesh_less__3_comma__3__greater__wrapper(::TetrahedralMesh< 2, 2 > & rMesh, bool isPeriodic=false )
-//    : VertexMesh<3, 3>( boost::ref(rMesh), isPeriodic )
-//      , bp::wrapper< VertexMesh< 3, 3 > >(){
-//        // constructor
-//
-//    }
-
     VertexMesh_less__3_comma__3__greater__wrapper( )
     : VertexMesh<3, 3>( )
       , bp::wrapper< VertexMesh< 3, 3 > >(){
@@ -381,8 +374,6 @@ void register_VertexMesh3_3_class(){
         VertexMesh3_3_exposer_t VertexMesh3_3_exposer = VertexMesh3_3_exposer_t( "VertexMesh3_3", bp::init< std::vector< Node<3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("vertexElements") )) );
         bp::scope VertexMesh3_3_scope( VertexMesh3_3_exposer );
         VertexMesh3_3_exposer.def( bp::init< std::vector< Node<3> * >, std::vector< VertexElement<2, 3> * >, std::vector< VertexElement<3, 3> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
-        //VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
-        //bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< >() );
         { //::VertexMesh< 3, 3 >::CalculateAreaOfFace
         
@@ -510,6 +501,18 @@ void register_VertexMesh3_3_class(){
                 "GetEdgeLength"
                 , GetEdgeLength_function_type( &::VertexMesh< 3, 3 >::GetEdgeLength )
                 , ( bp::arg("elementIndex1"), bp::arg("elementIndex2") ) );
+        
+        }
+        { //::VertexMesh< 3, 3 >::GetElement
+        
+            typedef VertexMesh< 3, 3 > exported_class_t;
+            typedef ::VertexElement< 3, 3 > * ( exported_class_t::*GetElement_function_type)( unsigned int ) const;
+            
+            VertexMesh3_3_exposer.def( 
+                "GetElement"
+                , GetElement_function_type( &::VertexMesh< 3, 3 >::GetElement )
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::VertexMesh< 3, 3 >::GetElementIteratorBegin

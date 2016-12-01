@@ -88,13 +88,13 @@ void register_AbstractUpdateRule2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractUpdateRule<2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractUpdateRule< 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 2 > >, boost::shared_ptr< AbstractUpdateRule< 2 > > >();
     }
 
 }

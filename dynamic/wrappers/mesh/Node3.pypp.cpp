@@ -437,6 +437,17 @@ void register_Node3_class(){
                 , ( bp::arg("region") ) );
         
         }
+        { //::Node< 3 >::rGetAppliedForce
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > & ( exported_class_t::*rGetAppliedForce_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetAppliedForce"
+                , rGetAppliedForce_function_type( &::Node< 3 >::rGetAppliedForce )
+                , bp::return_internal_reference< >() );
+        
+        }
         { //::Node< 3 >::rGetLocation
         
             typedef Node< 3 > exported_class_t;

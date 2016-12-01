@@ -114,9 +114,9 @@ void register_AbstractCellKiller3_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< RandomCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
     }
 
 }

@@ -38,21 +38,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "boost/python.hpp"
 
-#include "indexing_suite/container_suite.hpp"
-
-#include "indexing_suite/vector.hpp"
-
 #include "tutorial_headers.hpp"
 
 #include "Hello.pypp.hpp"
 
-#include "__type.pypp.hpp"
-
 namespace bp = boost::python;
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_tutorial){
-    register___type_class();
-
     register_Hello_class();
 }
 

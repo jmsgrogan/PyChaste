@@ -512,6 +512,18 @@ void register_VertexMesh2_2_class(){
                 , ( bp::arg("elementIndex1"), bp::arg("elementIndex2") ) );
         
         }
+        { //::VertexMesh< 2, 2 >::GetElement
+        
+            typedef VertexMesh< 2, 2 > exported_class_t;
+            typedef ::VertexElement< 2, 2 > * ( exported_class_t::*GetElement_function_type)( unsigned int ) const;
+            
+            VertexMesh2_2_exposer.def( 
+                "GetElement"
+                , GetElement_function_type( &::VertexMesh< 2, 2 >::GetElement )
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::VertexMesh< 2, 2 >::GetElementIteratorBegin
         
             typedef VertexMesh< 2, 2 > exported_class_t;

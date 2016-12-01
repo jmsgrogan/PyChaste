@@ -58,6 +58,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments 
         ## define the size of the mesh - we have chosen a mesh that is 2 elements (i.e. cells) wide, and 2 elements high.
         
+        file_handler = chaste.core.OutputFileHandler("Python/TestVertexBasedCellSimulationsTutorial")
         generator = chaste.mesh.HoneycombVertexMeshGenerator(2, 2)
         mesh = generator.GetMesh()
           
@@ -77,12 +78,20 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## we use a particular type of cell population called a VertexBasedCellPopulation.
         
         cell_population = chaste.cell_based.VertexBasedCellPopulation2(mesh, cells)
+        
+        ## We can set up a `VtkScene` to do a quick visualization of the population before running the analysis.
+        
+        scene = chaste.visualization.VtkScene2()
+        scene.SetCellPopulation(cell_population)
+        scene.SetSaveAsImages(True)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
+        scene.Start()        
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
 
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("Python/TestVertexBasedCellPopulation")
-        simulator.SetEndTime(1.0)
+        simulator.SetOutputDirectory("Python/TestVertexBasedCellSimulationsTutorial")
+        simulator.SetEndTime(5.0)
         
         ## For longer simulations, we may not want to output the results every time step. 
         ## In this case we can use the following method, to print results every 50 time steps instead. 
@@ -108,9 +117,16 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         growth_modifier = chaste.cell_based.SimpleTargetAreaModifier2()
         simulator.AddSimulationModifier(growth_modifier)
 
-        ## To run the simulation, we call `Solve()`.
-    
-        simulator.Solve();
+        ## Save snapshot images of the population during the simulation
+        scene_modifier = chaste.cell_based.VtkSceneModifier2()
+        scene_modifier.SetVtkScene(scene)
+        scene_modifier.SetUpdateFrequency(100)
+        simulator.AddSimulationModifier(scene_modifier)
+
+        ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
+        scene.Start() 
+        simulator.Solve()
+        scene.End() 
         
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.

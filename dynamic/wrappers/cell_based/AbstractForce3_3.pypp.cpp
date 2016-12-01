@@ -129,9 +129,9 @@ void register_AbstractForce3_3_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractForce<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractForce< 3, 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTwoBodyInteractionForce< 3, 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 3, 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 3 > >, boost::shared_ptr< AbstractForce< 3, 3 > > >();
     }
 
 }

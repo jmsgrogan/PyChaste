@@ -50,6 +50,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkPolyData.h>
 #include <vtkUnsignedCharArray.h>
 #include <vtkRenderer.h>
+#include <vtkColorTransferFunction.h>
 #include "UblasIncludes.hpp"
 #include "Exception.hpp"
 #include "ChastePoint.hpp"
@@ -90,6 +91,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     bp::register_exception_translator<Exception>(&ExceptionToPython);
 
     // To Python converters
+    bp::to_python_converter<vtkSmartPointer<vtkColorTransferFunction>, VtkSmartPointerToPython<vtkColorTransferFunction> >();
     bp::to_python_converter<vtkSmartPointer<vtkRenderer>, VtkSmartPointerToPython<vtkRenderer> >();
     bp::to_python_converter<vtkSmartPointer<vtkUnsignedCharArray>, VtkSmartPointerToPython<vtkUnsignedCharArray> >();
     bp::to_python_converter<vtkSmartPointer<vtkImageData>, VtkSmartPointerToPython<vtkImageData> >();

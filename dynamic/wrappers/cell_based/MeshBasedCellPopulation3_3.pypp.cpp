@@ -142,6 +142,18 @@ struct MeshBasedCellPopulation_less__3_comma__3__greater__wrapper : MeshBasedCel
         return MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices( index );
     }
 
+    virtual ::Node< 3 > * GetNode( unsigned int index ) {
+        if( bp::override func_GetNode = this->get_override( "GetNode" ) )
+            return func_GetNode( index );
+        else{
+            return this->MeshBasedCellPopulation< 3, 3 >::GetNode( index );
+        }
+    }
+    
+    ::Node< 3 > * default_GetNode( unsigned int index ) {
+        return MeshBasedCellPopulation< 3, 3 >::GetNode( index );
+    }
+
     virtual unsigned int GetNumNodes(  ) {
         if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
             return func_GetNumNodes(  );
@@ -672,6 +684,20 @@ void register_MeshBasedCellPopulation3_3_class(){
                 , GetNeighbouringNodeIndices_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetNeighbouringNodeIndices)
                 , default_GetNeighbouringNodeIndices_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNeighbouringNodeIndices)
                 , ( bp::arg("index") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::GetNode
+        
+            typedef MeshBasedCellPopulation< 3, 3 > exported_class_t;
+            typedef ::Node< 3 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            typedef ::Node< 3 > * ( MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
+            
+            MeshBasedCellPopulation3_3_exposer.def( 
+                "GetNode"
+                , GetNode_function_type(&::MeshBasedCellPopulation< 3, 3 >::GetNode)
+                , default_GetNode_function_type(&MeshBasedCellPopulation_less__3_comma__3__greater__wrapper::default_GetNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::MeshBasedCellPopulation< 3, 3 >::GetNumNodes

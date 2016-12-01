@@ -202,6 +202,18 @@ struct VertexBasedCellPopulation_less__3__greater__wrapper : VertexBasedCellPopu
         return VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices( index );
     }
 
+    virtual ::Node< 3 > * GetNode( unsigned int index ) {
+        if( bp::override func_GetNode = this->get_override( "GetNode" ) )
+            return func_GetNode( index );
+        else{
+            return this->VertexBasedCellPopulation< 3 >::GetNode( index );
+        }
+    }
+    
+    ::Node< 3 > * default_GetNode( unsigned int index ) {
+        return VertexBasedCellPopulation< 3 >::GetNode( index );
+    }
+
     virtual unsigned int GetNumNodes(  ) {
         if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
             return func_GetNumNodes(  );
@@ -669,6 +681,20 @@ void register_VertexBasedCellPopulation3_class(){
                 , GetNeighbouringNodeIndices_function_type(&::VertexBasedCellPopulation< 3 >::GetNeighbouringNodeIndices)
                 , default_GetNeighbouringNodeIndices_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringNodeIndices)
                 , ( bp::arg("index") ) );
+        
+        }
+        { //::VertexBasedCellPopulation< 3 >::GetNode
+        
+            typedef VertexBasedCellPopulation< 3 > exported_class_t;
+            typedef ::Node< 3 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            typedef ::Node< 3 > * ( VertexBasedCellPopulation_less__3__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
+            
+            VertexBasedCellPopulation3_exposer.def( 
+                "GetNode"
+                , GetNode_function_type(&::VertexBasedCellPopulation< 3 >::GetNode)
+                , default_GetNode_function_type(&VertexBasedCellPopulation_less__3__greater__wrapper::default_GetNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::VertexBasedCellPopulation< 3 >::GetNumElements

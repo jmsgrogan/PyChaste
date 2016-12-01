@@ -38,6 +38,7 @@ This scipt automatically generates Python bindings using a rule based approach
 import sys
 sys.setrecursionlimit(3000) # Avoid: RuntimeError: maximum recursion depth exceeded in cmp
 import os
+import doxygen_extractor
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies, file_cache_t
 from pyplusplus import messages
@@ -145,11 +146,19 @@ def strip_undefined_call_policies(module_file):
         for line in return_lines:
             outfile.write(line) 
             
-def do_module(module_name, builder):
+def do_module(module_name, builder, work_dir):
     
     # Set up the builder with module specifc classes
     this_module = __import__("generate_" + module_name)
-    return this_module.update_builder(builder)
+    builder, class_names = this_module.update_builder(builder)
+    
+    # Write the class names to file
+    f = open(work_dir + '/class_names_for_doc.txt','w')
+    for eachClass in class_names:
+        f.write('.. autoclass:: chaste.'+module_name+'.'+eachClass + '\n\t:members:\n\n')
+    f.close()
+        
+    return builder
        
 def generate_wrappers(args):
     module_name = args[1]
@@ -187,9 +196,11 @@ def generate_wrappers(args):
         builder.register_module_dependency(work_dir + "/dynamic/wrappers/ode")
     
     # Set up the builder for each module
-    builder = do_module(module_name, builder)
+    builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/")
     
     # Make the wrapper code
+#     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name, 
+#                                doc_extractor=doxygen_extractor.doxygen_doc_extractor())
     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
     builder.code_creator.user_defined_directories.append(work_dir)
     builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
@@ -197,9 +208,6 @@ def generate_wrappers(args):
     builder.code_creator.license = chaste_license
     
     builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
-    
-    # Fix a bug with boost units
-    #boost_units_namespace_fix(work_dir + "/dynamic/wrappers/" + module_name + "/" + module_name + ".cpp")
     
     # Manually strip any undefined call policies we have missed.
     for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):

@@ -1,8 +1,6 @@
 visualization/TestVtkSceneWithCaBased.hpp
 visualization/TestVtkSceneWithMeshBased.hpp
-visualization/TestVtkSceneWithNodeBased.hpp
 visualization/TestVtkSceneWithPottsBased.hpp
-visualization/TestVtkSceneWithVertexBased.hpp
 python/core/TestOutputFileHandlerPython.py
 python/core/TestFileFinderPython.py
 python/core/TestTimerPython.py
@@ -16,9 +14,11 @@ python/cell_based/TestCaBasedCellPopulationPython.py
 python/cell_based/TestMeshBasedCellPopulationPython.py
 python/cell_based/TestVertexBasedCellPopulationPython.py
 python/cell_based/TestNodeBasedCellPopulationPython.py
-python/cell_based/TestCellPython.py
 python/cell_based/tutorials/TestMeshBasedCellSimulationsPythonTutorial.py
 python/cell_based/tutorials/TestNodeBasedCellSimulationsPythonTutorial.py
 python/cell_based/tutorials/TestPottsBasedCellSimulationsPythonTutorial.py
 python/cell_based/tutorials/TestVertexBasedCellSimulationsPythonTutorial.py
-
+python/cell_based/tutorials/TestScratchAssayTutorial.py
+python/cell_based/tutorials/TestTensileTestTutorial.py
+python/cell_based/tutorials/TestCellSortingTutorial.py
+python/cell_based/tutorials/TestSpheroidTutorial.py

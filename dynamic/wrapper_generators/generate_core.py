@@ -54,6 +54,10 @@ def update_builder(builder):
         new_name = generate_bindings.template_replace(eachClass)
         if(new_name != eachClass):
             builder.class_(eachClass).rename(new_name) 
+            
+    class_collection = []
+    for eachClass in include_classes:
+        class_collection.append(eachClass)
     
     builder.free_function("GetPetscMatForWrapper").call_policies = call_policies.return_value_policy( call_policies.return_opaque_pointer )
     builder.class_("PetscTools").member_functions('GetWorld').exclude()
@@ -69,4 +73,4 @@ def update_builder(builder):
     builder.class_("FileFinder").member_functions('FindMatches').exclude()
     builder.class_("RandomNumberGenerator").member_function("Instance").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)
 
-    return builder
+    return builder, class_collection

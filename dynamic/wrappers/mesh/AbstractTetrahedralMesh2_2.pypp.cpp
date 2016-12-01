@@ -506,6 +506,11 @@ void register_AbstractTetrahedralMesh2_2_class(){
             , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const &,bool,::std::set< unsigned int >,bool ))( &::AbstractTetrahedralMesh< 2, 2 >::GetContainingElementIndex )
             , ( bp::arg("rTestPoint"), bp::arg("strict")=(bool)(false), bp::arg("testElements")=std::set<unsigned int>(), bp::arg("onlyTryWithTestElements")=(bool)(false) ) )    
         .def( 
+            "GetElement"
+            , (::Element< 2, 2 > * ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int )const)( &::AbstractTetrahedralMesh< 2, 2 >::GetElement )
+            , ( bp::arg("index") )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
             "GetElementIteratorBegin"
             , (::AbstractTetrahedralMesh< 2, 2 >::ElementIterator ( ::AbstractTetrahedralMesh<2, 2>::* )( bool ))( &::AbstractTetrahedralMesh< 2, 2 >::GetElementIteratorBegin )
             , ( bp::arg("skipDeletedElements")=(bool)(true) ) )    

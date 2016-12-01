@@ -178,18 +178,6 @@ struct PottsBasedCellPopulation_less__2__greater__wrapper : PottsBasedCellPopula
         return PottsBasedCellPopulation< 2 >::GetNumNodes( );
     }
 
-    virtual ::TetrahedralMesh< 2, 2 > * GetTetrahedralMeshForPdeModifier(  ) {
-        if( bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" ) )
-            return func_GetTetrahedralMeshForPdeModifier(  );
-        else{
-            return this->PottsBasedCellPopulation< 2 >::GetTetrahedralMeshForPdeModifier(  );
-        }
-    }
-    
-    ::TetrahedralMesh< 2, 2 > * default_GetTetrahedralMeshForPdeModifier(  ) {
-        return PottsBasedCellPopulation< 2 >::GetTetrahedralMeshForPdeModifier( );
-    }
-
     virtual double GetVolumeOfCell( ::CellPtr pCell ) {
         if( bp::override func_GetVolumeOfCell = this->get_override( "GetVolumeOfCell" ) )
             return func_GetVolumeOfCell( pCell );
@@ -284,18 +272,6 @@ struct PottsBasedCellPopulation_less__2__greater__wrapper : PottsBasedCellPopula
     
     void default_UpdateCellLocations( double dt ) {
         PottsBasedCellPopulation< 2 >::UpdateCellLocations( dt );
-    }
-
-    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
-        else{
-            this->PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
-        }
-    }
-    
-    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
     }
 
     virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {
@@ -478,6 +454,18 @@ struct PottsBasedCellPopulation_less__2__greater__wrapper : PottsBasedCellPopula
         AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation( );
     }
 
+    virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
+            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        else{
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        }
+    }
+    
+    void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+    }
+
 };
 
 void register_PottsBasedCellPopulation2_class(){
@@ -618,7 +606,13 @@ void register_PottsBasedCellPopulation2_class(){
             typedef ::Node< 2 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
             typedef ::Node< 2 > * ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
             
-;        
+            PottsBasedCellPopulation2_exposer.def( 
+                "GetNode"
+                , GetNode_function_type(&::PottsBasedCellPopulation< 2 >::GetNode)
+                , default_GetNode_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_GetNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
         }
         { //::PottsBasedCellPopulation< 2 >::GetNumElements
         
@@ -661,14 +655,6 @@ void register_PottsBasedCellPopulation2_class(){
                 "GetTemperature"
                 , GetTemperature_function_type( &::PottsBasedCellPopulation< 2 >::GetTemperature ) );
         
-        }
-        { //::PottsBasedCellPopulation< 2 >::GetTetrahedralMeshForPdeModifier
-        
-            typedef PottsBasedCellPopulation< 2 > exported_class_t;
-            typedef ::TetrahedralMesh< 2, 2 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
-            typedef ::TetrahedralMesh< 2, 2 > * ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
-            
-;        
         }
         { //::PottsBasedCellPopulation< 2 >::GetVolumeOfCell
         
@@ -795,19 +781,6 @@ void register_PottsBasedCellPopulation2_class(){
                 , ( bp::arg("dt") ) );
         
         }
-        { //::PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile
-        
-            typedef PottsBasedCellPopulation< 2 > exported_class_t;
-            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
-            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
-            
-            PottsBasedCellPopulation2_exposer.def( 
-                "WriteDataToVisualizerSetupFile"
-                , WriteDataToVisualizerSetupFile_function_type(&::PottsBasedCellPopulation< 2 >::WriteDataToVisualizerSetupFile)
-                , default_WriteDataToVisualizerSetupFile_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
-                , ( bp::arg("pVizSetupFile") ) );
-        
-        }
         { //::PottsBasedCellPopulation< 2 >::WriteResultsToFiles
         
             typedef PottsBasedCellPopulation< 2 > exported_class_t;
@@ -819,24 +792,6 @@ void register_PottsBasedCellPopulation2_class(){
                 , WriteResultsToFiles_function_type(&::PottsBasedCellPopulation< 2 >::WriteResultsToFiles)
                 , default_WriteResultsToFiles_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_WriteResultsToFiles)
                 , ( bp::arg("rDirectory") ) );
-        
-        }
-        { //::PottsBasedCellPopulation< 2 >::rGetMesh
-        
-            typedef PottsBasedCellPopulation< 2 > exported_class_t;
-            typedef ::PottsMesh< 2 > & ( exported_class_t::*rGetMesh_function_type)(  ) ;
-            
-;        
-        }
-        { //::PottsBasedCellPopulation< 2 >::rGetMesh
-        
-            typedef PottsBasedCellPopulation< 2 > exported_class_t;
-            typedef ::PottsMesh< 2 > const & ( exported_class_t::*rGetMesh_function_type)(  ) const;
-            
-            PottsBasedCellPopulation2_exposer.def( 
-                "rGetMesh"
-                , rGetMesh_function_type( &::PottsBasedCellPopulation< 2 >::rGetMesh )
-                , bp::return_value_policy< bp::copy_const_reference >() );
         
         }
         { //::AbstractCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation
@@ -1012,6 +967,19 @@ void register_PottsBasedCellPopulation2_class(){
                 "UpdateCellProcessLocation"
                 , UpdateCellProcessLocation_function_type(&::AbstractCellPopulation< 2, 2 >::UpdateCellProcessLocation)
                 , default_UpdateCellProcessLocation_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_UpdateCellProcessLocation) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile
+        
+            typedef PottsBasedCellPopulation< 2 > exported_class_t;
+            typedef void ( exported_class_t::*WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            typedef void ( PottsBasedCellPopulation_less__2__greater__wrapper::*default_WriteDataToVisualizerSetupFile_function_type)( ::out_stream & ) ;
+            
+            PottsBasedCellPopulation2_exposer.def( 
+                "WriteDataToVisualizerSetupFile"
+                , WriteDataToVisualizerSetupFile_function_type(&::AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile)
+                , default_WriteDataToVisualizerSetupFile_function_type(&PottsBasedCellPopulation_less__2__greater__wrapper::default_WriteDataToVisualizerSetupFile)
+                , ( bp::arg("pVizSetupFile") ) );
         
         }
         PottsBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation<2>::AddCellWriter<CellLabelWriter>);

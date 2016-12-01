@@ -97,21 +97,21 @@ void register_AbstractCellProperty_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProperty >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellId >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellLabel >, boost::shared_ptr< AbstractCellProperty > >();
         bp::implicitly_convertible< boost::shared_ptr< CellAncestor >, boost::shared_ptr< AbstractCellProperty > >();
-        bp::implicitly_convertible< boost::shared_ptr< CellId >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellVecData >, boost::shared_ptr< AbstractCellProperty > >();
+        bp::implicitly_convertible< boost::shared_ptr< CellData >, boost::shared_ptr< AbstractCellProperty > >();
     }
 
 }

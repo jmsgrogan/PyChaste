@@ -33,8 +33,8 @@ Copyright (c) 2005-2016, University of Oxford.
 
  */
 
-#ifndef TESTVTKSCENE_HPP_
-#define TESTVTKSCENE_HPP_
+#ifndef TESTVTKSCENEWITHMESHBASEDPOPULATION_HPP_
+#define TESTVTKSCENEWITHMESHBASEDPOPULATION_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -71,54 +71,13 @@ Copyright (c) 2005-2016, University of Oxford.
 
 #include "PetscSetupAndFinalize.hpp"
 
-class TestVtkScene : public AbstractCellBasedTestSuite
+class TestVtkSceneWithMeshBasedPopulation : public AbstractCellBasedTestSuite
 {
 public:
 
-    void TestRenderingCaBasedPopulation()
-    {
-        // Read the image from file
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingCaBasedPopulation/");
-
-        PottsMeshGenerator<3> generator(10, 0, 0, 10, 0, 0, 3, 0, 0);
-        PottsMesh<3>* p_mesh = generator.GetMesh();
-
-        // Create a tumour cells in a cylinder in the middle of the domain
-        std::vector<unsigned> location_indices;
-        for(unsigned idx=0; idx<100; idx++)
-        {
-            location_indices.push_back(idx);
-        }
-
-        std::vector<CellPtr> cells;
-        CellsGenerator<UniformCellCycleModel, 3> cells_generator;
-        cells_generator.GenerateBasic(cells, location_indices.size());
-
-        // Create cell population
-        boost::shared_ptr<CaBasedCellPopulation<3> > p_cell_population =
-                boost::shared_ptr<CaBasedCellPopulation<3> >(new CaBasedCellPopulation<3> (*p_mesh, cells, location_indices));
-
-        boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
-        p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(false);
-        p_scene->SetSaveAsAnimation(true);
-        p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
-
-        boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);
-        p_scene_modifier->SetVtkScene(p_scene);
-
-        p_scene->Start();
-        OnLatticeSimulation<3> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRenderingCaBasedPopulation");
-        simulator.SetDt(1.0);
-        simulator.SetEndTime(4.0);
-        simulator.AddSimulationModifier(p_scene_modifier);
-        simulator.Solve();
-    }
-
     void TestRenderingMeshBasedPopulation() throw(Exception)
     {
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingMeshBasedPopulation/");
+        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithMeshBasedPopulation/2d/");
 
         HoneycombMeshGenerator generator(2, 2, 2);    // Parameters are: cells across, cells up
         MutableMesh<2,2>* p_mesh = generator.GetMesh();
@@ -128,16 +87,14 @@ public:
         MAKE_PTR(TransitCellProliferativeType, p_transit_type);
         CellsGenerator<UniformCellCycleModel, 2> cells_generator;
         cells_generator.GenerateBasicRandom(cells, location_indices.size(), p_transit_type);
-
         boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes<2> > p_cell_population =
                 boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes<2> >(new MeshBasedCellPopulationWithGhostNodes<2> (*p_mesh, cells, location_indices));
-
         p_cell_population->AddPopulationWriter<VoronoiDataWriter>();
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(false);
-        p_scene->SetSaveAsAnimation(true);
+        p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsImages(false);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);
@@ -145,7 +102,7 @@ public:
         p_scene->Start();
 
         OffLatticeSimulation<2> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRenderingMeshBasedPopulation/");
+        simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/2d/");
         simulator.SetEndTime(10.0);
         simulator.SetSamplingTimestepMultiple(12);
 
@@ -157,7 +114,7 @@ public:
 
     void TestRendering3dMeshBasedPopulation() throw(Exception)
     {
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRendering3dMeshBasedPopulation/");
+        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithMeshBasedPopulation/3d/");
 
         std::vector<Node<3>*> nodes;
         nodes.push_back(new Node<3>(0, true,  0.0, 0.0, 0.0));
@@ -188,7 +145,7 @@ public:
         p_scene->Start();
 
         OffLatticeSimulation<3> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRendering3dMeshBasedPopulation/");
+        simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/3d/");
         simulator.SetEndTime(5.0);
         simulator.SetSamplingTimestepMultiple(2);
 
@@ -197,48 +154,6 @@ public:
         p_force->SetCutOffLength(1.5);
         simulator.AddForce(p_force);
         simulator.AddSimulationModifier(p_scene_modifier);
-        simulator.Solve();
-    }
-
-    void TestRenderingPottsBasedPopulation() throw(Exception)
-    {
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingPottsBasedPopulation/");
-
-        PottsMeshGenerator<2> generator(50, 2, 4, 50, 2, 4);
-        PottsMesh<2>* p_mesh = generator.GetMesh();
-
-        std::vector<CellPtr> cells;
-        MAKE_PTR(TransitCellProliferativeType, p_transit_type);
-        CellsGenerator<UniformCellCycleModel, 2> cells_generator;
-        cells_generator.GenerateBasicRandom(cells, p_mesh->GetNumElements(), p_transit_type);
-
-        boost::shared_ptr<PottsBasedCellPopulation<2> >  p_cell_population =
-                boost::shared_ptr<PottsBasedCellPopulation<2> >(new PottsBasedCellPopulation<2> (*p_mesh, cells));
-        p_cell_population->SetTemperature(0.1);
-        p_cell_population->SetNumSweepsPerTimestep(1);
-
-        OnLatticeSimulation<2> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRenderingPottsBasedPopulation/");
-        simulator.SetEndTime(1.0);
-        simulator.SetDt(0.1);
-        simulator.SetSamplingTimestepMultiple(1);
-
-        boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
-        p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(false);
-        p_scene->SetSaveAsAnimation(true);
-        p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
-
-        boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);
-        p_scene_modifier->SetVtkScene(p_scene);
-        p_scene->Start();
-
-        MAKE_PTR(VolumeConstraintPottsUpdateRule<2>, p_volume_constraint_update_rule);
-        p_volume_constraint_update_rule->SetMatureCellTargetVolume(16);
-        p_volume_constraint_update_rule->SetDeformationEnergyParameter(0.2);
-        simulator.AddUpdateRule(p_volume_constraint_update_rule);
-        MAKE_PTR(AdhesionPottsUpdateRule<2>, p_adhesion_update_rule);
-        simulator.AddUpdateRule(p_adhesion_update_rule);
         simulator.Solve();
     }
 };

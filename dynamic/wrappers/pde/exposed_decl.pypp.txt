@@ -16685,6 +16685,7 @@
 ~@free_function_t@log1pf@float (*)( float )float (*)( float )
 ~@free_function_t@tgammaf@float (*)( float )float (*)( float )
 ~@free_function_t@MPI_Group_f2c@::MPI_Group (*)( int )::MPI_Group (*)( int )
+~@free_function_t@SafeDivide@double (*)( double,double )double (*)( double,double )
 ~@free_function_t@PetscViewerVUGetPointer@::PetscErrorCode (*)( ::PetscViewer,::FILE * * )::PetscErrorCode (*)( ::PetscViewer,::FILE * * )
 ~@free_function_t@__fill_bvector@void (*)( ::std::_Bit_iterator,::std::_Bit_iterator,bool )void (*)( ::std::_Bit_iterator,::std::_Bit_iterator,bool )
 ~@free_function_t@PMPI_Allgatherv@int (*)( void const *,int,::MPI_Datatype,void *,int const *,int const *,::MPI_Datatype,::MPI_Comm )int (*)( void const *,int,::MPI_Datatype,void *,int const *,int const *,::MPI_Datatype,::MPI_Comm )

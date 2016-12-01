@@ -68,7 +68,6 @@ class VtkSceneModifier : public AbstractCellBasedSimulationModifier<DIM,DIM>
      */
     boost::shared_ptr<VtkScene<DIM> > mpScene;
 
-
     /**
      * The scene update frequency
      */
@@ -85,6 +84,12 @@ public:
      * Destructor.
      */
     virtual ~VtkSceneModifier();
+
+    /**
+     * Get the scene
+     * @return the scene
+     */
+    boost::shared_ptr<VtkScene<DIM> > GetVtkScene();
 
     /**
      * Overridden UpdateAtEndOfTimeStep() method.
@@ -105,6 +110,10 @@ public:
      */
     virtual void SetupSolve(AbstractCellPopulation<DIM,DIM>& rCellPopulation, std::string outputDirectory);
 
+    /**
+     * Set the scene
+     * @param pScene the scene
+     */
     void SetVtkScene(boost::shared_ptr<VtkScene<DIM> > pScene);
 
     /**

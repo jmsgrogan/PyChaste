@@ -37,20 +37,25 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "indexing_suite/container_suite.hpp"
-#include "indexing_suite/vector.hpp"
-#include "tutorial_headers.hpp"
-#include "__type.pypp.hpp"
+#include "cell_based_headers.hpp"
+#include "CellsGeneratorNoCellCycleModel_2.pypp.hpp"
 
 namespace bp = boost::python;
 
-void register___type_class(){
+void register_CellsGeneratorNoCellCycleModel_2_class(){
 
-    { //::std::vector< double >
-        typedef bp::class_< std::vector< double > > __type_exposer_t;
-        __type_exposer_t __type_exposer = __type_exposer_t( "__type" );
-        bp::scope __type_scope( __type_exposer );
-        __type_exposer.def( bp::indexing::vector_suite< std::vector< double > >() );
-    }
+    bp::class_< CellsGenerator< NoCellCycleModel, 2 > >( "CellsGeneratorNoCellCycleModel_2" )    
+        .def( 
+            "GenerateBasic"
+            , (void ( ::CellsGenerator<NoCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,unsigned int,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< NoCellCycleModel, 2 >::GenerateBasic )
+            , ( bp::arg("rCells"), bp::arg("numCells"), bp::arg("locationIndices")=std::vector<unsigned int>(), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) )    
+        .def( 
+            "GenerateBasicRandom"
+            , (void ( ::CellsGenerator<NoCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,unsigned int,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< NoCellCycleModel, 2 >::GenerateBasicRandom )
+            , ( bp::arg("rCells"), bp::arg("numCells"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) )    
+        .def( 
+            "GenerateGivenLocationIndices"
+            , (void ( ::CellsGenerator<NoCellCycleModel, 2>::* )( ::std::vector< boost::shared_ptr<Cell> > &,::std::vector< unsigned int > const,::boost::shared_ptr< AbstractCellProperty > ))( &::CellsGenerator< NoCellCycleModel, 2 >::GenerateGivenLocationIndices )
+            , ( bp::arg("rCells"), bp::arg("locationIndices"), bp::arg("pCellProliferativeType")=boost::shared_ptr<AbstractCellProperty>() ) );
 
 }

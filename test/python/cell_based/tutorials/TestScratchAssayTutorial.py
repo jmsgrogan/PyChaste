@@ -36,13 +36,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## # Introduction
 ## This tutorial is an example of modelling a scratch assay using a simple cellular automaton
 ## representation of cells. It will cover the following techniques:
+##
 ## * Setting up a regular mesh (or lattice)
 ## * Visualizing the mesh
 ## * Working with file-based output
 ## * Generating cells and adding them to the mesh
 ## * Simulating cell migration on the mesh
 ## * Real-time visualization of the cell population and plotting of population statistics
-## ## The Test
+##
 
 import unittest # Python testing framework
 import matplotlib.pyplot as plt # Plotting

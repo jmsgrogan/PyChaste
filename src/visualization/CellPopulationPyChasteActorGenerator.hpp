@@ -48,7 +48,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include "AbstractPyChasteActorGenerator.hpp"
 
 /**
- * This class generates Vtk actors for CellPopulations
+ * This class generates VTK actors for CellPopulations
  */
 template<unsigned DIM>
 class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerator<DIM>
@@ -64,7 +64,7 @@ class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerat
     bool mShowMutableMeshEdges;
 
     /**
-     * Show voronoi mesh edges for Mesh Based populations
+     * Show voronoi mesh edges for Mesh and Vertex Based populations
      */
     bool mShowVoronoiMeshEdges;
 
@@ -74,14 +74,9 @@ class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerat
     bool mShowPottsMeshEdges;
 
     /**
-     * Color by cell label
+     * Show Potts mesh outlines
      */
-    bool mColorByCellLabel;
-
-    /**
-     * Color the cells by mutation state
-     */
-    bool mColorByCellMutationState;
+    bool mShowPottsMeshOutlines;
 
     /**
      * Color the cells by type
@@ -94,19 +89,14 @@ class CellPopulationPyChasteActorGenerator : public AbstractPyChasteActorGenerat
     bool mColorByCellData;
 
     /**
-     * The label for coloring data
-     */
-    std::string mCellDataColorLabel;
-
-    /**
-     * Remove ghost cells from mesh based populations
-     */
-    bool mRemoveGhostCells;
-
-    /**
-     * Whether to show th cell centres
+     * Whether to show the cell centres
      */
     bool mShowCellCentres;
+
+    /**
+     * Color cells using a user defined color
+     */
+    bool mColorCellByUserDefined;
 
 public:
 
@@ -127,12 +117,28 @@ public:
     void AddActor(vtkSmartPointer<vtkRenderer> pRenderer);
 
     /**
-     * Add the CellPopulation actor to the renderer
+     * Specialized class for adding Mesh based population
      * @param pRenderer the current renderer
      */
     void AddMeshBasedCellPopulationActor(vtkSmartPointer<vtkRenderer> pRenderer);
 
-    void AddPottsMesh(vtkSmartPointer<vtkRenderer> pRenderer);
+    /**
+     * Specialized class for adding Mesh based population
+     * @param pRenderer the current renderer
+     */
+    void AddVertexBasedCellPopulationActor(vtkSmartPointer<vtkRenderer> pRenderer);
+
+    /**
+     * Specialized class for adding Ca based population
+     * @param pRenderer the current renderer
+     */
+    void AddCaBasedCellPopulationActor(vtkSmartPointer<vtkRenderer> pRenderer);
+
+    /**
+     * Specialized class for adding Potts based population
+     * @param pRenderer the current renderer
+     */
+    void AddPottsBasedCellPopulationActor(vtkSmartPointer<vtkRenderer> pRenderer);
 
     /**
      * Set the CellPopulation
@@ -140,26 +146,46 @@ public:
      */
     void SetCellPopulation(boost::shared_ptr<AbstractCellPopulation<DIM> > pCellPopulation);
 
+    /**
+     * @param showEdges show the voronoi mesh
+     */
     void SetShowVoronoiMeshEdges(bool showEdges);
 
+    /**
+     * @param showEdges show the mutable mesh
+     */
     void SetShowMutableMeshEdges(bool showEdges);
 
+    /**
+     * @param showEdges show the potts mesh
+     */
     void SetShowPottsMeshEdges(bool showEdges);
 
-    void SetColorByCellLabel(bool colorByLabel);
+    /**
+     * @param showOutlines show the outlines of Potts cells
+     */
+    void SetShowPottsMeshOutlines(bool showOutlines);
 
-    void SetColorByMutationState(bool colorByMutationState);
-
+    /**
+     * @param colorByCellType color cells by type
+     */
     void SetColorByCellType(bool colorByCellType);
 
+    /**
+     * @param colorByCellType color cells by the user defined point color
+     */
+    void SetColorByUserDefined(bool colorByCellUserDefined);
+
+
+    /**
+     * @param colorByCellData color cells by data
+     */
     void SetColorByCellData(bool colorByCellData);
 
-    void SetColorByCellDataLabel(std::string cellDataLabel);
-
-    void SetRemoveGhostNodes(bool removeGhostNodes);
-
+    /**
+     * @param showCentres show cell centres
+     */
     void SetShowCellCentres(bool showCentres);
-
 };
 
 #endif /* CELLPOPULATIONPYCHASTEACTORGENERATOR_HPP_*/

@@ -136,7 +136,9 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         scene.GetCellPopulationActorGenerator().SetColorByCellData(True)
-        scene.GetCellPopulationActorGenerator().SetColorByCellDataLabel("oxygen")      
+        scene.GetCellPopulationActorGenerator().SetDataLabel("oxygen")  
+        scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)
+        scene.GetCellPopulationActorGenerator().SetShowVoronoiMeshEdges(False)    
         scene.SetIsInteractive(True)
         
         scene_modifier = chaste.cell_based.VtkSceneModifier2()

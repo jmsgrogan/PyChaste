@@ -125,6 +125,11 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
         return func_GetNeighbouringNodeIndices( index );
     }
 
+    virtual ::Node< 2 > * GetNode( unsigned int index ){
+        bp::override func_GetNode = this->get_override( "GetNode" );
+        return func_GetNode( index );
+    }
+
     virtual unsigned int GetNumNodes(  ){
         bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
         return func_GetNumNodes(  );
@@ -581,6 +586,18 @@ void register_AbstractCellPopulation2_2_class(){
                 "GetNeighbouringNodeIndices"
                 , bp::pure_virtual( GetNeighbouringNodeIndices_function_type(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
                 , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::GetNode
+        
+            typedef AbstractCellPopulation< 2, 2 > exported_class_t;
+            typedef ::Node<2> * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            
+            AbstractCellPopulation2_2_exposer.def( 
+                "GetNode"
+                , bp::pure_virtual( GetNode_function_type(&::AbstractCellPopulation< 2, 2 >::GetNode) )
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractCellPopulation< 2, 2 >::GetNumAllCells

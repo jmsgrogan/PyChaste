@@ -124,6 +124,9 @@ void register_VtkSceneModifier3_class(){
 
     bp::class_< VtkSceneModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > > >( "VtkSceneModifier3", bp::init< >() )    
         .def( 
+            "GetVtkScene"
+            , (::boost::shared_ptr< VtkScene< 3 > > ( ::VtkSceneModifier<3>::* )(  ))( &::VtkSceneModifier< 3 >::GetVtkScene ) )    
+        .def( 
             "OutputSimulationModifierParameters"
             , (void ( ::VtkSceneModifier<3>::* )( ::out_stream & ))(&::VtkSceneModifier< 3 >::OutputSimulationModifierParameters)
             , (void ( VtkSceneModifier_less__3__greater__wrapper::* )( ::out_stream & ))(&VtkSceneModifier_less__3__greater__wrapper::default_OutputSimulationModifierParameters)

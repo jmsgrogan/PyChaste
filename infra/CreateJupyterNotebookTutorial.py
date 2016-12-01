@@ -193,7 +193,11 @@ def ConvertFileToJupyterNotebook(fileobj, filepath, nb):
             ignore_lines_contain = ["class", "def", "unittest", "main", "self.assert"]
             for eachLine in block_list:
                 if not any(ignore_string in eachLine for ignore_string in ignore_lines_contain):
-                    output_lines.append(eachLine.strip())
+                    right_stripped = eachLine.rstrip()
+                    if right_stripped[:8].isspace():
+                        output_lines.append(right_stripped[8:])
+                    else:
+                        output_lines.append(right_stripped)
                     
             # Look for the setup and teardown marks
             for idx, eachLine in enumerate(output_lines):
@@ -206,7 +210,8 @@ def ConvertFileToJupyterNotebook(fileobj, filepath, nb):
             if len(output_lines)>0:
                 out_string = "\n".join(output_lines) 
                 out_string = os.linesep.join([s for s in out_string.splitlines() if s])
-                nb['cells'].append(nbf.v4.new_code_cell(out_string))  
+                if out_string.strip():
+                    nb['cells'].append(nbf.v4.new_code_cell(out_string))  
         else:
             nb['cells'].append(nbf.v4.new_markdown_cell(eachBlock[0]))                
         

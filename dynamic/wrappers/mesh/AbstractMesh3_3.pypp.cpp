@@ -263,6 +263,11 @@ void register_AbstractMesh3_3_class(){
             , (unsigned int ( AbstractMesh_less__3_comma__3__greater__wrapper::* )( ::ChastePoint< 3 > const & ))(&AbstractMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
             , ( bp::arg("rTestPoint") ) )    
         .def( 
+            "GetNode"
+            , (::Node< 3 > * ( ::AbstractMesh<3, 3>::* )( unsigned int )const)( &::AbstractMesh< 3, 3 >::GetNode )
+            , ( bp::arg("index") )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
             "GetNodeIteratorBegin"
             , (::AbstractMesh< 3, 3 >::NodeIterator ( ::AbstractMesh<3, 3>::* )( bool ))( &::AbstractMesh< 3, 3 >::GetNodeIteratorBegin )
             , ( bp::arg("skipDeletedNodes")=(bool)(true) ) )    

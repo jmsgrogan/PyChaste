@@ -33,8 +33,8 @@ Copyright (c) 2005-2016, University of Oxford.
 
  */
 
-#ifndef TESTVTKSCENE_HPP_
-#define TESTVTKSCENE_HPP_
+#ifndef TESTVTKSCENEWITHPOTTSBASEDPOPAULTION_HPP_
+#define TESTVTKSCENEWITHPOTTSBASEDPOPAULTION_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -77,7 +77,7 @@ public:
 
     void TestRenderingPottsBasedPopulation() throw(Exception)
     {
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingPottsBasedPopulation/");
+        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithMeshBasedPopulation/2d/");
 
         PottsMeshGenerator<2> generator(50, 2, 4, 50, 2, 4);
         PottsMesh<2>* p_mesh = generator.GetMesh();
@@ -93,7 +93,7 @@ public:
         p_cell_population->SetNumSweepsPerTimestep(1);
 
         OnLatticeSimulation<2> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRenderingPottsBasedPopulation/");
+        simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/2d/");
         simulator.SetEndTime(10.0);
         simulator.SetDt(0.1);
         simulator.SetSamplingTimestepMultiple(1);
@@ -101,6 +101,7 @@ public:
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
         p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsImages(false);
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
@@ -116,12 +117,11 @@ public:
         simulator.AddUpdateRule(p_adhesion_update_rule);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
-        p_scene->StartInteractiveEventHandler();
     }
 
     void TestRenderingPottsBasedPopulation3d() throw(Exception)
     {
-        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkScene/TestRenderingPottsBasedPopulation3d/");
+        OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithMeshBasedPopulation/3d/");
 
         PottsMeshGenerator<3> generator(50, 2, 4, 50, 2, 4, 50, 2, 4);
         PottsMesh<3>* p_mesh = generator.GetMesh();
@@ -137,7 +137,7 @@ public:
         p_cell_population->SetNumSweepsPerTimestep(1);
 
         OnLatticeSimulation<3> simulator(*p_cell_population);
-        simulator.SetOutputDirectory("TestVtkScene/TestRenderingPottsBasedPopulation3d/");
+        simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/3d/");
         simulator.SetEndTime(10.0);
         simulator.SetDt(0.1);
         simulator.SetSamplingTimestepMultiple(1);
@@ -145,6 +145,7 @@ public:
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
         p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsImages(false);
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
@@ -160,9 +161,6 @@ public:
         simulator.AddUpdateRule(p_adhesion_update_rule);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
-        p_scene->StartInteractiveEventHandler();
     }
-
-
 };
 #endif

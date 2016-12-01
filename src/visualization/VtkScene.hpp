@@ -57,7 +57,7 @@ Copyright (c) 2005-2016, University of Oxford.
 #include "MeshBasedCellPopulation.hpp"
 
 /**
- * A simple vtk renderer for cell populations
+ * A simple VTK renderer for cell populations
  */
 template<unsigned DIM>
 class VtkScene

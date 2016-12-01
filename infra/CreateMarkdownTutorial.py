@@ -59,6 +59,7 @@ Notes:
 import optparse
 import os
 import sys
+import re
 
 # This had better match GenerateHowTo.py!
 HOWTO_TAG = "HOW_TO_TAG"
@@ -209,8 +210,15 @@ def ConvertTutorialToMarkdownText(test_file_path, test_file, other_files, revisi
         revision = ' at revision r' + str(revision)
     output = []
     # Header
+    regex = re.compile(ur'(?!^)(?=[A-Z])', re.MULTILINE)
+    ugly_file_name = os.path.splitext(os.path.basename(test_file_path))[0] 
+    nice_file_name = re.sub(regex, " ", ugly_file_name)
+    
+    output.append('---\nlayout: page-full-width \ntitle: ' + nice_file_name + '\n---\n')
     output.append('This tutorial is automatically generated from the file ' + test_file_path + revision + '.\n')
-    output.append('Note that the code is given in full at the bottom of the page.\n\n\n')
+    output.append('[Go to the Jupyter Notebook version.]({{ site.baseurl}}/documentation/md_tutorials/'+ ugly_file_name + '_nb.html)\n')
+    output.append('Note that the code is given in full at the bottom of the page.\n\n\n')  
+    
     # Convert each file in turn
     test_output, test_code = ConvertFileToMarkdownText(test_file, test_file_path)
     output.append(test_output)

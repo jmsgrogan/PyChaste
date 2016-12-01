@@ -428,6 +428,11 @@ void register_AbstractOffLatticeCellPopulation2_2_class(){
             , bp::pure_virtual( (::std::set< unsigned int > ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNeighbouringNodeIndices) )
             , ( bp::arg("index") ) )    
         .def( 
+            "GetNode"
+            , bp::pure_virtual( (::Node< 2 > * ( ::AbstractCellPopulation<2, 2>::* )( unsigned int ))(&::AbstractCellPopulation< 2, 2 >::GetNode) )
+            , ( bp::arg("index") )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
             "GetNumNodes"
             , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
         .def( 

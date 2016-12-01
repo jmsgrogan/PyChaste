@@ -12,6 +12,9 @@ Module contents
 .. autoclass:: chaste.core.OutputFileHandler
     :members:
 
+.. autoclass:: chaste.core.RelativeTo
+    :members:
+
 .. autoclass:: chaste.core.FileFinder
     :members:
 
@@ -29,3 +32,4 @@ Module contents
 
 .. autoclass:: chaste.core.ReplicatableVector
     :members:
+

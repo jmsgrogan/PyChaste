@@ -33,16 +33,45 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import unittest
 import chaste.mesh
+import chaste.cell_based
+import chaste.visualization
 chaste.init()
 
-class TestPottsMesh(unittest.TestCase):
+class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
     
     def test_construct(self):
         
-        
+        file_handler = chaste.core.OutputFileHandler("Python/TestCaBasedPopulationPython")
         generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 10, 0, 0)
         mesh = generator.GetMesh()
-        self.assertEqual(mesh.GetNumNodes(), 1000)
+
+        location_indices = range(5)
+        cells = chaste.cell_based.VecCellPtr()
+        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
+        cell_generator.GenerateBasic(cells, len(location_indices))
+        cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, location_indices)
+
+        scene = chaste.visualization.VtkScene3()
+        scene.SetCellPopulation(cell_population)
+        scene.SetIsInteractive(True)
+        scene.SetSaveAsImages(False)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath()+"/cell_population")
+        scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True);
+        #scene.GetCellPopulationActorGenerator().SetColorByCellType(True);
+        scene.GetCellPopulationActorGenerator().SetVolumeOpacity(1.0);
+
+        scene_modifier = chaste.cell_based.VtkSceneModifier3()
+        scene_modifier.SetVtkScene(scene)
+
+        scene.Start()
+        simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
+        simulator.SetOutputDirectory("Python/TestCaBasedPopulationPython")
+        simulator.SetDt(10.0)
+        simulator.SetEndTime(300.0)
+        simulator.AddSimulationModifier(scene_modifier)
+        simulator.Solve()
+
+        scene.StartInteractiveEventHandler()
 
 if __name__ == '__main__':
     unittest.main()

@@ -42,10 +42,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace bp = boost::python;
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
-
 struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrowingDomainPdeModifier< 3 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > > {
 
     EllipticGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde=boost::shared_ptr<AbstractLinearPde<3, 3> >(), ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bool isNeumannBoundaryCondition=true, ::Vec solution=__null )
@@ -116,6 +112,10 @@ struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrow
     }
 
 };
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
 
 void register_EllipticGrowingDomainPdeModifier3_class(){
 

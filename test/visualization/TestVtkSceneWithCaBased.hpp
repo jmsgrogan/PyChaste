@@ -33,8 +33,8 @@ Copyright (c) 2005-2016, University of Oxford.
 
  */
 
-#ifndef TESTVTKSCENE_HPP_
-#define TESTVTKSCENE_HPP_
+#ifndef TESTVTKSCENEWITHCABASEDPOPULATION_HPP_
+#define TESTVTKSCENEWITHCABASEDPOPULATION_HPP_
 
 #include <cxxtest/TestSuite.h>
 #include "CheckpointArchiveTypes.hpp"
@@ -71,13 +71,12 @@ Copyright (c) 2005-2016, University of Oxford.
 
 #include "PetscSetupAndFinalize.hpp"
 
-class TestVtkScene : public AbstractCellBasedTestSuite
+class TestVtkSceneWithCaBasedPopulation : public AbstractCellBasedTestSuite
 {
 public:
 
     void Test2dCaBasedPopulation()
     {
-        // Read the image from file
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithCaBasedPopulation/2d");
 
         PottsMeshGenerator<2> generator(10, 0, 0, 10, 0, 0);
@@ -101,6 +100,7 @@ public:
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
         p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsImages(false);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
 
@@ -111,21 +111,18 @@ public:
         OnLatticeSimulation<2> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithCaBasedPopulation/2d");
         simulator.SetDt(10.0);
-        simulator.SetEndTime(400.0);
+        simulator.SetEndTime(40.0);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
+
         p_scene->StartInteractiveEventHandler();
     }
 
     void Test3dCaBasedPopulation()
     {
-        // Read the image from file
         OutputFileHandler file_handler1 = OutputFileHandler("TestVtkSceneWithCaBasedPopulation/3d");
-
         PottsMeshGenerator<3> generator(10, 0, 0, 10, 0, 0, 3, 0, 0);
         PottsMesh<3>* p_mesh = generator.GetMesh();
-
-        // Create a tumour cells in a cylinder in the middle of the domain
         std::vector<unsigned> location_indices;
         for(unsigned idx=0; idx<100; idx++)
         {
@@ -143,6 +140,7 @@ public:
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
         p_scene->SetIsInteractive(true);
+        p_scene->SetSaveAsImages(false);
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
@@ -153,7 +151,7 @@ public:
         OnLatticeSimulation<3> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithCaBasedPopulation/3d");
         simulator.SetDt(10.0);
-        simulator.SetEndTime(400.0);
+        simulator.SetEndTime(40.0);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
     }

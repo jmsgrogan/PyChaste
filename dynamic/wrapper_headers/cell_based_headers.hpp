@@ -36,6 +36,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef PYCHASTECELLBASEDHEADERS_HPP_
 #define PYCHASTECELLBASEDHEADERS_HPP_
 
+#include "AttractingPlaneBoundaryCondition.hpp"
 #include "PetscTools.hpp"
 
 // Base
@@ -210,9 +211,11 @@ template class NagaiHondaForce<3>;
 // Boundary Conditions
 template class AbstractCellPopulationBoundaryCondition<2, 2>;
 template class PlaneBoundaryCondition<2, 2>;
+template class AttractingPlaneBoundaryCondition<2, 2>;
 template class SphereGeometryBoundaryCondition<2>;
 template class AbstractCellPopulationBoundaryCondition<3, 3>;
 template class PlaneBoundaryCondition<3, 3>;
+template class AttractingPlaneBoundaryCondition<3, 3>;
 template class SphereGeometryBoundaryCondition<3>;
 
 // Killers
@@ -246,6 +249,8 @@ typedef std::vector<unsigned> VecUnsigned;
 typedef std::vector<bool> VecDouble;
 typedef std::vector<double> VecBool;
 typedef std::set<unsigned> SetUnsigned;
+typedef CellsGenerator<NoCellCycleModel, 2> CellsGeneratorNoCellCycleModel_2;
+typedef CellsGenerator<NoCellCycleModel, 3> CellsGeneratorNoCellCycleModel_3;
 typedef CellsGenerator<UniformCellCycleModel, 2> CellsGeneratorUniformCellCycleModel_2;
 typedef CellsGenerator<UniformCellCycleModel, 3> CellsGeneratorUniformCellCycleModel_3;
 typedef CellsGenerator<SimpleOxygenBasedCellCycleModel, 2> CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
@@ -262,6 +267,7 @@ typedef std::vector<boost::shared_ptr<AbstractCellProperty> >  VecAbstractCellPr
 typedef std::vector<boost::shared_ptr<AbstractUpdateRule<2> > >  VecAbstractUpdateRule2;
 typedef std::vector<boost::shared_ptr<AbstractUpdateRule<3> > >  VecAbstractUpdateRule3;
 typedef boost::shared_ptr<AbstractCellProperty> AbstractCellPropertySharedPtr;
+typedef boost::shared_ptr<CellData> CellDataSharedPtr;
 typedef boost::shared_ptr<AbstractUpdateRule<2> > AbstractUpdateRule2SharedPtr;
 typedef boost::shared_ptr<AbstractUpdateRule<3> > AbstractUpdateRule3SharedPtr;
 typedef boost::shared_ptr<Cell> CellPtr;
@@ -279,6 +285,8 @@ inline int Instantiation()
 {
     return sizeof(CellsGenerator<UniformCellCycleModel, 2>) +
             sizeof(CellsGenerator<UniformCellCycleModel, 3>) +
+            sizeof(CellsGenerator<NoCellCycleModel, 2>) +
+            sizeof(CellsGenerator<NoCellCycleModel, 3>) +
             sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 2>) +
             sizeof(CellsGenerator<SimpleOxygenBasedCellCycleModel, 3>) +
             sizeof(CellsGenerator<UniformG1GenerationalCellCycleModel, 2>) +

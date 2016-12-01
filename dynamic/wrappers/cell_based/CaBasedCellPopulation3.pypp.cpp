@@ -178,6 +178,18 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
         return CaBasedCellPopulation< 3 >::GetNeighbouringLocationIndices( pCell );
     }
 
+    virtual ::Node< 3 > * GetNode( unsigned int index ) {
+        if( bp::override func_GetNode = this->get_override( "GetNode" ) )
+            return func_GetNode( index );
+        else{
+            return this->CaBasedCellPopulation< 3 >::GetNode( index );
+        }
+    }
+    
+    ::Node< 3 > * default_GetNode( unsigned int index ) {
+        return CaBasedCellPopulation< 3 >::GetNode( index );
+    }
+
     virtual unsigned int GetNumNodes(  ) {
         if( bp::override func_GetNumNodes = this->get_override( "GetNumNodes" ) )
             return func_GetNumNodes(  );
@@ -626,6 +638,20 @@ void register_CaBasedCellPopulation3_class(){
                 , GetNeighbouringLocationIndices_function_type(&::CaBasedCellPopulation< 3 >::GetNeighbouringLocationIndices)
                 , default_GetNeighbouringLocationIndices_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_GetNeighbouringLocationIndices)
                 , ( bp::arg("pCell") ) );
+        
+        }
+        { //::CaBasedCellPopulation< 3 >::GetNode
+        
+            typedef CaBasedCellPopulation< 3 > exported_class_t;
+            typedef ::Node< 3 > * ( exported_class_t::*GetNode_function_type)( unsigned int ) ;
+            typedef ::Node< 3 > * ( CaBasedCellPopulation_less__3__greater__wrapper::*default_GetNode_function_type)( unsigned int ) ;
+            
+            CaBasedCellPopulation3_exposer.def( 
+                "GetNode"
+                , GetNode_function_type(&::CaBasedCellPopulation< 3 >::GetNode)
+                , default_GetNode_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_GetNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::CaBasedCellPopulation< 3 >::GetNumNodes

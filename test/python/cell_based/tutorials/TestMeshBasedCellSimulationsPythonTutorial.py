@@ -40,7 +40,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## ## Imports and Setup
 
 import unittest
-import chaste.core
+import chaste
 chaste.init()
 import chaste.cell_based
 import chaste.mesh
@@ -60,7 +60,7 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments define the size of the mesh - 
         ## we have chosen a mesh that is 4 nodes (i.e. cells) wide, and 4 nodes high.
         
-        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellSimulationsTutorial")
+        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellSimulationsTutorial", True)
         generator = chaste.mesh.HoneycombMeshGenerator(4, 4)
         mesh = generator.GetMesh()
           
@@ -116,21 +116,19 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         simulator.AddForce(force)
         
         ## Save snapshot images of the population during the simulation
+        
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
+        
+        print scene_modifier.GetScene()
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
-
-        simulator.Solve()
+        
         scene.Start() 
-        
-        ## The next two lines are for test purposes only and are not part of this tutorial. 
-        ## If different simulation input parameters are being explored the lines should be removed.
-        
-        self.assertEqual(cell_population.GetNumRealCells(), 30)
-        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
+        simulator.Solve()
+        scene.End() 
         
         # JUPYTER_TEARDOWN 
         
@@ -183,8 +181,9 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         scene.SetSaveAsImages(True)
+        #scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)
+        scene.GetCellPopulationActorGenerator().SetShowVoronoiMeshEdges(True)
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time.
 
@@ -197,7 +196,7 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
-        scene_modifier.SetUpdateFrequency(100)
+        scene_modifier.SetUpdateFrequency(300)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## Again we create a force law, and pass it to the `OffLatticeSimulation`. 
@@ -208,9 +207,9 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
 
         ## To run the simulation, we call `Solve()`.
     
+        scene.Start()
         simulator.Solve()
-        scene.Start() 
-        
+
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
         

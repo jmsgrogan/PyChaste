@@ -37,6 +37,11 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 PYCHASTE_CAN_IMPORT_IPYTHON = True
 PYCHASTE_CAN_IMPORT_VTK = True
 
+from six.moves import StringIO
+import os.path
+from pkg_resources import resource_filename
+import chaste.cell_based
+
 try:
     import IPython                    
 except ImportError:
@@ -48,9 +53,11 @@ except ImportError:
     PYCHASTE_CAN_IMPORT_VTK = False      
     
 if PYCHASTE_CAN_IMPORT_IPYTHON:
-    from IPython.display import Image
+    #from IPython import display
+    from IPython.display import Image, HTML, display
     
-    def vtk_show_basic(scene, width=400, height=300):
+    
+    def vtk_show_basic(scene, width=800, height=600):
         
         """
         Takes a Scene instance and returns an IPython Image with the rendering.
@@ -61,28 +68,137 @@ if PYCHASTE_CAN_IMPORT_IPYTHON:
         return Image(data)
     
     if PYCHASTE_CAN_IMPORT_VTK:
-        def vtk_show(scene, width=400, height=300):
+        
+        class JupyterNotebookManager():
+            
+            interactive_plotting_loaded = False
+            three_js_dir = resource_filename('chaste', os.path.join('external'))
+            container_id = 0
+            
+            def __init__(self):
+                pass
+            
+            def interactive_plot_init(self):
+                
+                if not JupyterNotebookManager.interactive_plotting_loaded:
+                
+                    library_javascript = StringIO()
+                    library_javascript.write("""
+                    <script type="text/javascript">
+                    var pychaste_javascript_injected = true;
+                    """)
+                    
+                    three_js_libraries = ("three.min.js", "OrbitControls.js", "VRMLLoader.js", "Detector.js")
+                    
+                    # Include three.js
+                    for library in three_js_libraries:
+                        with open(os.path.join(JupyterNotebookManager.three_js_dir, library)) as infile:
+                            library_javascript.write(infile.read())
+                            
+                    # Include internal plotting functions
+                    with open(os.path.join(JupyterNotebookManager.three_js_dir, "plotting_script.js")) as infile:
+                        library_javascript.write(infile.read())
+                        
+                    JupyterNotebookManager.interactive_plotting_loaded = True
+                    display(HTML(library_javascript.getvalue()))
+                    
+            def interactive_plot_show(self, width, height, file_name = "temp_scene.wrl", increment = True):
+                
+                self.interactive_plot_init()
+                if increment:
+                    JupyterNotebookManager.container_id +=1 
+                
+                html_source = """
+                <div id="pychaste_plotting_container_{container_id}" style="width:{width}px; height:{height}px">
+                <script type="text/javascript">
+                    (function(){{
+                    var three_container = document.getElementById("pychaste_plotting_container_{container_id}");
+                    pychaste_plot(three_container, {file}, {width}, {height});
+                    }})();
+                </script>
+                """.format(width=str(width), height=str(height), 
+                           container_id=str(JupyterNotebookManager.container_id), file='"files/' + file_name + '"')
+
+                display(HTML(html_source))
+        
+            def vtk_show(self, scene, width=400, height=300, output_format = "png", increment = True):
+                
+                """
+                Takes vtkRenderer instance and returns an IPython Image with the rendering.
+                """
+                
+                scene.ResetRenderer(0)
+                
+                renderWindow = vtk.vtkRenderWindow()
+                renderWindow.SetOffScreenRendering(1)
+                renderWindow.AddRenderer(scene.GetRenderer())
+                renderWindow.SetSize(width, height)
+                renderWindow.Render()
+                
+                if output_format == "wrl":
+                    exporter = vtk.vtkVRMLExporter()
+                    exporter.SetInput(renderWindow)
+                    exporter.SetFileName(os.getcwd() + "/temp_scene.wrl")
+                    exporter.Write()
+                    self.interactive_plot_show(width, height, "temp_scene.wrl", increment)
+                 
+                else:
+                    windowToImageFilter = vtk.vtkWindowToImageFilter()
+                    windowToImageFilter.SetInput(renderWindow)
+                    windowToImageFilter.Update()
+                      
+                    writer = vtk.vtkPNGWriter()
+                    writer.SetWriteToMemory(1)
+                    writer.SetInputConnection(windowToImageFilter.GetOutputPort())
+                    writer.Write()
+                    data = str(buffer(writer.GetResult()))
+                     
+                    return Image(data)
+                
+    class JupyterSceneModifier2(chaste.cell_based.VtkSceneModifier2):
+        
+        """ Class for real time plotting of output
+        """
+
+        def __init__(self, plotting_manager):
+            
+            self.output_format = 'png'
+            self.plotting_manager = plotting_manager
+            super(JupyterSceneModifier2, self).__init__()
+            
+            
+        def UpdateAtEndOfTimeStep(self, cell_population):
+            
+            """ Update the Jupyter notebook plot with the new scene
             
             """
-            Takes vtkRenderer instance and returns an IPython Image with the rendering.
+            
+            super(JupyterSceneModifier2, self).UpdateAtEndOfTimeStep(cell_population)
+            
+            IPython.display.clear_output(wait=True)
+            
+            if self.output_format == 'png':
+                IPython.display.display(self.plotting_manager.vtk_show(self.GetVtkScene(), output_format=self.output_format))
+            else:
+                self.plotting_manager.vtk_show(self.GetVtkScene(), output_format=self.output_format)
+            
+            
+    class JupyterSceneModifier3(chaste.cell_based.VtkSceneModifier3):
+        
+        """ Class for real time plotting of output
+        """
+
+        def __init__(self):
+            super(JupyterSceneModifier3, self).__init__()
+            
+            
+        def UpdateAtEndOfTimeStep(self, cell_population):
+            
+            """ Update the Jupyter notebook plot with the new scene
             """
             
-            scene.ResetRenderer(0)
+            super(JupyterSceneModifier3, self).UpdateAtEndOfTimeStep(cell_population)
             
-            renderWindow = vtk.vtkRenderWindow()
-            renderWindow.SetOffScreenRendering(1)
-            renderWindow.AddRenderer(scene.GetRenderer())
-            renderWindow.SetSize(width, height)
-            renderWindow.Render()
-             
-            windowToImageFilter = vtk.vtkWindowToImageFilter()
-            windowToImageFilter.SetInput(renderWindow)
-            windowToImageFilter.Update()
-             
-            writer = vtk.vtkPNGWriter()
-            writer.SetWriteToMemory(1)
-            writer.SetInputConnection(windowToImageFilter.GetOutputPort())
-            writer.Write()
-            data = str(buffer(writer.GetResult()))
-            
-            return Image(data)
+            IPython.display.clear_output(wait=True)
+            IPython.display.display(self.plotting_manager.vtk_show(self.GetVtkScene()))
+

@@ -91,6 +91,17 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
                 , ( bp::arg("pRenderer") ) );
         
         }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::AddCaBasedCellPopulationActor
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddCaBasedCellPopulationActor_function_type)( ::vtkSmartPointer< vtkRenderer > ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "AddCaBasedCellPopulationActor"
+                , AddCaBasedCellPopulationActor_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::AddCaBasedCellPopulationActor )
+                , ( bp::arg("pRenderer") ) );
+        
+        }
         { //::CellPopulationPyChasteActorGenerator< 2 >::AddMeshBasedCellPopulationActor
         
             typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
@@ -102,14 +113,25 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
                 , ( bp::arg("pRenderer") ) );
         
         }
-        { //::CellPopulationPyChasteActorGenerator< 2 >::AddPottsMesh
+        { //::CellPopulationPyChasteActorGenerator< 2 >::AddPottsBasedCellPopulationActor
         
             typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
-            typedef void ( exported_class_t::*AddPottsMesh_function_type)( ::vtkSmartPointer< vtkRenderer > ) ;
+            typedef void ( exported_class_t::*AddPottsBasedCellPopulationActor_function_type)( ::vtkSmartPointer< vtkRenderer > ) ;
             
             CellPopulationPyChasteActorGenerator2_exposer.def( 
-                "AddPottsMesh"
-                , AddPottsMesh_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::AddPottsMesh )
+                "AddPottsBasedCellPopulationActor"
+                , AddPottsBasedCellPopulationActor_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::AddPottsBasedCellPopulationActor )
+                , ( bp::arg("pRenderer") ) );
+        
+        }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::AddVertexBasedCellPopulationActor
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*AddVertexBasedCellPopulationActor_function_type)( ::vtkSmartPointer< vtkRenderer > ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "AddVertexBasedCellPopulationActor"
+                , AddVertexBasedCellPopulationActor_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::AddVertexBasedCellPopulationActor )
                 , ( bp::arg("pRenderer") ) );
         
         }
@@ -135,28 +157,6 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
                 , ( bp::arg("colorByCellData") ) );
         
         }
-        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellDataLabel
-        
-            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetColorByCellDataLabel_function_type)( ::std::string ) ;
-            
-            CellPopulationPyChasteActorGenerator2_exposer.def( 
-                "SetColorByCellDataLabel"
-                , SetColorByCellDataLabel_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellDataLabel )
-                , ( bp::arg("cellDataLabel") ) );
-        
-        }
-        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellLabel
-        
-            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetColorByCellLabel_function_type)( bool ) ;
-            
-            CellPopulationPyChasteActorGenerator2_exposer.def( 
-                "SetColorByCellLabel"
-                , SetColorByCellLabel_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellLabel )
-                , ( bp::arg("colorByLabel") ) );
-        
-        }
         { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellType
         
             typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
@@ -168,26 +168,15 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
                 , ( bp::arg("colorByCellType") ) );
         
         }
-        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByMutationState
+        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByUserDefined
         
             typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetColorByMutationState_function_type)( bool ) ;
+            typedef void ( exported_class_t::*SetColorByUserDefined_function_type)( bool ) ;
             
             CellPopulationPyChasteActorGenerator2_exposer.def( 
-                "SetColorByMutationState"
-                , SetColorByMutationState_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByMutationState )
-                , ( bp::arg("colorByMutationState") ) );
-        
-        }
-        { //::CellPopulationPyChasteActorGenerator< 2 >::SetRemoveGhostNodes
-        
-            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
-            typedef void ( exported_class_t::*SetRemoveGhostNodes_function_type)( bool ) ;
-            
-            CellPopulationPyChasteActorGenerator2_exposer.def( 
-                "SetRemoveGhostNodes"
-                , SetRemoveGhostNodes_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetRemoveGhostNodes )
-                , ( bp::arg("removeGhostNodes") ) );
+                "SetColorByUserDefined"
+                , SetColorByUserDefined_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByUserDefined )
+                , ( bp::arg("colorByCellUserDefined") ) );
         
         }
         { //::CellPopulationPyChasteActorGenerator< 2 >::SetShowCellCentres
@@ -220,6 +209,28 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
             CellPopulationPyChasteActorGenerator2_exposer.def( 
                 "SetShowPottsMeshEdges"
                 , SetShowPottsMeshEdges_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetShowPottsMeshEdges )
+                , ( bp::arg("showEdges") ) );
+        
+        }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::SetShowPottsMeshOutlines
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetShowPottsMeshOutlines_function_type)( bool ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "SetShowPottsMeshOutlines"
+                , SetShowPottsMeshOutlines_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetShowPottsMeshOutlines )
+                , ( bp::arg("showOutlines") ) );
+        
+        }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::SetShowVoronoiMeshEdges
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetShowVoronoiMeshEdges_function_type)( bool ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "SetShowVoronoiMeshEdges"
+                , SetShowVoronoiMeshEdges_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetShowVoronoiMeshEdges )
                 , ( bp::arg("showEdges") ) );
         
         }
