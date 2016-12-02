@@ -82,6 +82,7 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), stem_type)
         
         ## Define when cells become apoptotic
+        
         for eachCell in cells:
             cell_cycle_model = eachCell.GetCellCycleModel()
             cell_cycle_model.SetDimension(2)
