@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>PyChaste</title>
+    <title>New Year Resolutions | PyChaste</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -33,13 +33,14 @@
   <body>
 
 
-<div class="splash">
-  <div class="darkblue-overlay">&nbsp;</div>
-  <div class="container">
-    <div class="row">
-      <div class="span12">
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
         <div class="scala-logo">
-          <img src="/resources/img/PyChaste_logo_25.png" alt="PyChaste Logo" />
+          <a href="/index.html"><img src="/resources/img/scala-logo-white-sm.png" alt="white Scala logo" /></a>
         </div>
         <ul class="nav">
   <li><a href="/documentation/">Documentation</a></li>
@@ -58,81 +59,92 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="span12">
-        <div class="splash-text ontop">
-          <h2 style="font-weight: 700;">PyChaste</h2>
-          <p class="splash-pitch">
-            A Python wrapper for the open source <a href="http://www.cs.ox.ac.uk/chaste/">Chaste</a> library for multi-scale problems in biology and physiology.
-          </p>
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>&nbsp;</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
- <div class="bullet-point-box">
-
-  <div class="bullet-row-1-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="java-interop">
-          <h3>Cellular Automata</h3>
-          <a href="/documentation/tutorials/TestScratchAssayTutorial.html"><img src="/resources/img/demo_scratch.png" alt="Scractch Assay Demo" /></a>
-          <p>A scratch assay simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="type-inference">
-          <h3>Centre Based Cells</h3>
-          <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="concurrency-distribution">
-          <h3>Cellular Potts Models</h3>
-          <a href="/documentation/tutorials/TestCellSortingTutorial.html"><img src="/resources/img/demo_sorting.png" alt="Sorting Demo" /></a>
-          <p>A cell sorting simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="bullet-row-2-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="traits">
-          <h3>Vertex Models</h3>
-                    <a href="/documentation/tutorials/TestTensileTestTutorial.html"><img src="/resources/img/demo_tensile.png" alt="Tensile Demo" /></a>
-          <p>An epithelial sheet tensile test.</p>
-        </div>
-        <div class="span4 bullet-point" id="pattern-matching">
-          <h3>Mesh Based Models</h3>
-                    <a href="/documentation/tutorials/TestMeshBasedCellSimulationsPythonTutorial.html"><img src="/resources/img/demo_monolayer.png" alt="Monolayer Demo" /></a>
-          <p>An epithelial sheet growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="higher-order-functions">
-          <h3>Chemical Transport</h3>
-                    <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="where-to-learn-more">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>or visit the <a class="italicize" href="/documentation">PyChaste Documentation</a></p>
-        </div>
-      </div>
-    </div>
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">New Year Resolutions</h1>
   </div>
 </div>
 
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            <div class="article-date">January 2, 2016</div>
+            
+              <div class="written">Written By: <span class="by">Martin Odersky</span></div>
+            
+            <p>For most of us, the change of the year is an occasion for thinking
+about what we missed doing last year and where we want to improve. I decided
+there are a couple of things where I would like to do better in 2016
+than in 2015. The first is that I would like to do more blogging and
+writing in general. I have been pretty silent for most of the last
+year. This was mostly caused by the fact that I had been heads down to
+work on DOT, Scala&#39;s foundations, and <em>dotty</em>, the new Scala compiler
+platform we are working on. It&#39;s been a lot of work, but we are finally
+getting good results. DOT now has a mechanized proof of type soundness
+and the dotty compiler <a href="http://www.scala-lang.org/blog/2015/10/23/dotty-compiler-bootstraps.html">can now compile
+itself</a>
+as well as large parts of Scala&#39;s standard library.</p>
+
+<p>The dotty compiler has a completely new and quite unusual
+architecture, which makes it resemble a functional database or a
+functional reactive program. My <a href="https://www.youtube.com/watch?v=WxyyJyB_Ssc">talk at the JVM language
+summit</a> gives an
+overview. In the coming months I want to write together with my
+collaborators a series of blog posts
+ that explain details of the code base. The
+aim of these posts will be to present the new architectural patterns
+to a larger audience and also to help existing and potential
+contributors get familiar with the code base.</p>
+
+<p>My second resolution is to take a larger effort to promote simplicity
+in Scala. I believe the recent <a href="http://jimplush.com/talk/2015/12/19/moving-a-team-from-scala-to-golang/">blog post by Jim
+Plush</a> should be a wakeup call for our
+community. Scala is a very powerful and un-opinionated language.  This
+means we have a large spectrum of choice how to write a Scala
+application or library. It&#39;s very important for all of us to use this
+power wisely, and to promote simplicity of usage wherever possible.
+Unfortunately, most of us fall all too easily into the complexity
+trap, as Alex Payne&#39;s tweet sums it up very nicely.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">“Complexity is like a bug light for smart people. We can&#39;t resist it, even though we know it&#39;s bad for us.” <a href="https://t.co/V9Izi573CF">https://t.co/V9Izi573CF</a></p>&mdash; Alex Payne (@al3x) <a href="https://twitter.com/al3x/status/683036775942496256">January 1, 2016</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>I have been as guilty of complication as everybody else. Is
+<code>CanBuildFrom</code> the most appropriate solution to deal with the
+constraints of embedding special types such as arrays and strings in a
+collection library? It achieves its purpose of providing a uniform
+user-level API on disparate datatypes. But I now think with more
+effort we might be able come up with a solution that works as well and
+is simpler. Another example, where I have doubts if not regrets are
+the <code>/:</code> and <code>:\</code> operators in scala.collections.  They are cute
+synonyms for folds, and I am still fond of the analogy with falling
+dominoes they evoke. But in retrospect I think maybe they did give a
+bad example for others to go overboard with symbolic operators.</p>
+
+<p>So my main agenda for the coming year is to work on making Scala
+simpler: The language, its foundations, its libraries. I hope you
+will join me in that venture.</p>
+
+<p>With that thought, I wish you a happy new year 2016.</p>
+
+            
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
 
 
   <div class="footer">

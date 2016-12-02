@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Python API Docs | PyChaste</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+      <!--<link rel="icon" type="image/png" href="/resources/favicon.ico">-->
+      <!--<link rel="shortcut icon" type="image/png" href="/resources/favicon.ico">-->
+
+    <!-- prettify CSS (corresponding js at footer)-->
+    <link rel="stylesheet" href="/resources/css/prettify.css" type="text/css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/resources/css/bootstrap.css" type="text/css" />
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="/resources/css/main.css" type="text/css" />
+
+    <!-- Typekit (should stay at top of page, do not move to footer)-->
+    <script type="text/javascript" src="//use.typekit.net/abh3wgk.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    <!-- Atom feeds -->
+    <link rel="alternate" type="application/atom+xml" title="News Feed" href="/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Blog Feed" href="/feed/blog.xml" />
+
+
+  </head>
+  <body>
+
+
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
+        <div class="scala-logo">
+          <a href="/index.html"><img src="/resources/img/chaste-40x50.jpg" alt="Chaste logo" /></a>
+        </div>
+        <ul class="nav">
+  <li><a href="/documentation/">Documentation</a></li>
+  <li><a href="/download/">Download</a></li>
+  <li><a href="/community/">Community</a></li>
+  <li><a href="/contribute/">Contribute</a></li>
+  <li id="source-code" >
+    <a href="https://github.com/jmsgrogan/MicrovesselChaste"><img src="/resources/img/github-logo.png" alt="GitHub Logo" /></a>
+    <div class="toptip">Source Code</div>
+  </li>
+  <li id="scala-lang-twitter">
+    <a href="https://twitter.com/chaste_project"><img src="/resources/img/twitter-logo-white.png" alt="Twitter Logo" /></a>
+    <div class="toptip">Chaste on Twitter</div>
+  </li>
+</ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Python API Docs</h1>
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <h2 id="latest-releases">Latest releases</h2>
+<ul>
+  <li>Scala 2.12.0
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.8
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.8/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.8/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.8/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.8/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.8/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.8/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.8/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.8/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://www.scala-lang.org/api/2.10.6/">Scala 2.10.6</a></li>
+</ul>
+
+<h2 id="nightly-builds">Nightly builds</h2>
+
+<ul>
+  <li>Scala 2.11.x
+    <ul>
+      <li><a href="http://www.scala-lang.org/files/archive/nightly/2.11.x/api/2.11.x/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/files/archive/nightly/2.11.x/api/2.11.x/scala-compiler/">Compiler API</a></li>
+    </ul>
+  </li>
+  <li>Scala 2.12.x
+    <ul>
+      <li><a href="http://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/files/archive/nightly/2.12.x/api/2.12.x/scala-compiler/">Compiler API</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="previous-releases">Previous releases</h2>
+<ul>
+  <li>Scala 2.12.0-RC2
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC2/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.12.0-RC1
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-RC1/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.12.0-M5
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M5/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M5/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M5/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M5/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M5/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M5/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.12.0-M4
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M4/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M4/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M4/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M4/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M4/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M4/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.12.0-M3
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M3/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M3/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.12.0-M3/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M3/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M3/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.12.0-M3/scala-swing/#scala.swing.package">Swing API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.7
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.7/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.7/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.7/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.7/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.7/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.7/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.7/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.7/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.6
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.6/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.6/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.6/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.6/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.6/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.6/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.6/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.6/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.5
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.5/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.5/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.5/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.5/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.5/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.5/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.5/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.5/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.4
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.4/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.4/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.4/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.4/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.4/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.4/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.4/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.4/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.2
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.2/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.2/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.2/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.2/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.2/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.2/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.2/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.2/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.1
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.1/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.1/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.1/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.1/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.1/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.1/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.1/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.1/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Scala 2.11.0
+    <ul>
+      <li><a href="http://www.scala-lang.org/api/2.11.0/">Library API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.0/scala-compiler/">Compiler API</a></li>
+      <li><a href="http://www.scala-lang.org/api/2.11.0/scala-reflect/#scala.reflect.package">Reflection API</a></li>
+      <li>Scala Modules
+        <ul>
+          <li><a href="http://www.scala-lang.org/api/2.11.0/scala-xml/#scala.xml.package">XML API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.0/scala-parser-combinators/">Parser Combinators API</a></li>
+          <li><a href="http://www.scala-lang.org/api/2.11.0/scala-actors/#scala.actors.package">Actors API</a> (deprecated)</li>
+          <li><a href="http://www.scala-lang.org/api/2.11.0/scala-swing/#scala.swing.package">Swing API</a></li>
+          <li><a href="http://www.scala-lang.org/files/archive/api/2.11.0/scala-continuations-library/#scala.util.continuations.package">Continuations API</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="http://www.scala-lang.org/api/2.10.5/">Scala 2.10.5</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.10.4/">Scala 2.10.4</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.10.3/">Scala 2.10.3</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.10.2/">Scala 2.10.2</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.10.1/">Scala 2.10.1</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.3/">Scala 2.9.3</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.2/">Scala 2.9.2</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.1-1/">Scala 2.9.1-1</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.1/">Scala 2.9.1.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.0.1/">Scala 2.9.0.1</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.9.0/">Scala 2.9.0.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.8.2/">Scala 2.8.2.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.8.1/">Scala 2.8.1.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.8.0/">Scala 2.8.0.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.7/">Scala 2.7.7.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.6/">Scala 2.7.6.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.5/">Scala 2.7.5.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.4/">Scala 2.7.4.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.3/">Scala 2.7.3.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.2/">Scala 2.7.2.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.1/">Scala 2.7.1.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.7.0/">Scala 2.7.0.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.6.1/">Scala 2.6.1.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.6.0/">Scala 2.6.0.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.5.1/">Scala 2.5.1.final</a></li>
+  <li><a href="http://www.scala-lang.org/api/2.5.0/">Scala 2.5.0.final</a></li>
+</ul>
+
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+              <br/>
+              <div class="alert-info">
+                <a href="/contribute/documentation.html#updating_scalalangorg"><p><strong>Problem with this page?</strong>
+                Please help us fix it!</p></a>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+
+  <div class="footer">
+  <div class="container">
+    <ul>
+      <li><h5>Documentation</h5></li>
+      <li><a href="/documentation/getting-started.html">Getting Started</a></li>
+      <li><a href="http://www.scala-lang.org/api/current/index.html#package">API</a></li>
+      <li><a href="http://docs.scala-lang.org/overviews/">Overviews/Guides</a></li>
+      <li><a href="http://docs.scala-lang.org/tutorials/">Tutorials</a></li>
+    </ul>
+    <ul>
+      <li><h5>Download</h5></li>
+        <li><a href="/download/">Stable Release</a></li>
+        <li><a href="/download/.html">Development Release</a></li>
+    </ul>
+    <ul>
+      <li><h5>Community</h5></li>
+      <li><a href="/community/">Community</a></li>
+      <li><a href="/community/index.html#mailing-lists">Mailing Lists</a></li>
+    </ul>
+    <ul>
+      <li><h5>Contribute</h5></li>
+      <li><a href="/contribute">How to Help</a></li>
+      <li><a href="/contribute/bug-reporting-guide.html">Report an Issue</a></li>
+    </ul>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        <p style="float: left;"><br/>Copyright &copy; 2015-<span class="current-year"></span> University of Oxford<br/> Oxford, United Kingdom. Released under <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.<br />
+Source code for this website was modified from the <a href="https://www.scala-lang.org/">scala website</a> on <a href="https://www.scala-lang.org/">github</a>. <br />
+See <a href="https://raw.github.com/scala/scala-lang/master/license.md">original license</a> for details. </p>
+      </div>
+      <div class="scala-logo-footer">
+        <img src="/resources/img/chaste-60-75.jpg" alt="Chaste footer logo" />
+      </div>
+    </div> <!-- container -->
+    </div> <!-- footer -->
+
+    <!-- prettify  js -->
+    <script src="/resources/js/vendor/prettify/prettify.js" type="text/javascript" ></script>
+    <script src="/resources/js/vendor/prettify/lang-scala.js" type="text/javascript" ></script>
+
+    <!-- jquery js -->
+    <script src="/resources/js/vendor/jquery-1.8.3.min.js" type="text/javascript" ></script>
+    <script src="/resources/js/vendor/jquery.stellar.min.js" type="text/javascript" ></script>
+    <script src="/resources/js/vendor/tweetMachine.min.js" type="text/javascript" ></script>
+
+    <!-- modernizr js -->
+    <script src="/resources/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js" type="text/javascript" ></script>
+
+    <!-- retina js -->
+    <script src="/resources/js/vendor/retina.js" type="text/javascript" ></script>
+
+    <!-- backstretch js -->
+    <script src="/resources/js/vendor/jquery.backstretch.min.js" type="text/javascript" ></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/resources/js/vendor/bootstrap.min.js" type="text/javascript" ></script>
+
+    
+    <!-- table of contents JS -->
+    <script src="/resources/js/vendor/toc.js" type="text/javascript" ></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#toc').toc({exclude: 'h1, h5, h6', context: '', autoId: true, numerate: false});
+        function moveScroller() {
+          if ($(".sidebar").length == 0)
+            return;
+          var a = function() {
+            var topOfScroll = $(window).scrollTop();
+            var topOfSidebar = $(".sidebar").offset().top;
+            var sidebarInner = $(".sidebar-inner");
+            var bottomOfSidebarInner = $(".sidebar-inner").offset().top + $(".sidebar-inner").outerHeight();
+            var topOfFooter = $(".footer").offset().top - 10;
+            var footerHeight = $(".footer").outerHeight();
+            if (topOfScroll > topOfSidebar) {
+              if (bottomOfSidebarInner > topOfFooter) {
+                sidebarInner.css({position:"fixed",bottom:footerHeight,top:""});
+              } else {
+                sidebarInner.css({position:"fixed",top:"10px",bottom:""});
+              }
+            } else {
+              sidebarInner.css({position:"relative",top:""});
+            }
+          };
+          $(window).scroll(a);a()
+        }
+        moveScroller();
+      })
+    </script>
+    
+
+    <!-- Custom javascript -->
+    <script src="/resources/js/main.js" type="text/javascript"></script>
+  </body>
+</html>
+

@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>PyChaste</title>
+    <title>Core Library Contributions | PyChaste</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -33,13 +33,14 @@
   <body>
 
 
-<div class="splash">
-  <div class="darkblue-overlay">&nbsp;</div>
-  <div class="container">
-    <div class="row">
-      <div class="span12">
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
         <div class="scala-logo">
-          <img src="/resources/img/PyChaste_logo_25.png" alt="PyChaste Logo" />
+          <a href="/index.html"><img src="/resources/img/PyChaste_logo_25.png" alt="Chaste logo" /></a>
         </div>
         <ul class="nav">
   <li><a href="/documentation/">Documentation</a></li>
@@ -58,81 +59,58 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="span12">
-        <div class="splash-text ontop">
-          <h2 style="font-weight: 700;">PyChaste</h2>
-          <p class="splash-pitch">
-            A Python wrapper for the open source <a href="http://www.cs.ox.ac.uk/chaste/">Chaste</a> library for multi-scale problems in biology and physiology.
-          </p>
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>&nbsp;</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
- <div class="bullet-point-box">
-
-  <div class="bullet-row-1-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="java-interop">
-          <h3>Cellular Automata</h3>
-          <a href="/documentation/tutorials/TestScratchAssayTutorial.html"><img src="/resources/img/demo_scratch.png" alt="Scractch Assay Demo" /></a>
-          <p>A scratch assay simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="type-inference">
-          <h3>Centre Based Cells</h3>
-          <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="concurrency-distribution">
-          <h3>Cellular Potts Models</h3>
-          <a href="/documentation/tutorials/TestCellSortingTutorial.html"><img src="/resources/img/demo_sorting.png" alt="Sorting Demo" /></a>
-          <p>A cell sorting simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="bullet-row-2-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="traits">
-          <h3>Vertex Models</h3>
-                    <a href="/documentation/tutorials/TestTensileTestTutorial.html"><img src="/resources/img/demo_tensile.png" alt="Tensile Demo" /></a>
-          <p>An epithelial sheet tensile test.</p>
-        </div>
-        <div class="span4 bullet-point" id="pattern-matching">
-          <h3>Mesh Based Models</h3>
-                    <a href="/documentation/tutorials/TestMeshBasedCellSimulationsPythonTutorial.html"><img src="/resources/img/demo_monolayer.png" alt="Monolayer Demo" /></a>
-          <p>An epithelial sheet growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="higher-order-functions">
-          <h3>Chemical Transport</h3>
-                    <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="where-to-learn-more">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>or visit the <a class="italicize" href="/documentation">PyChaste Documentation</a></p>
-        </div>
-      </div>
-    </div>
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Core Library Contributions</h1>
   </div>
 </div>
 
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <h2>Core Library Contributions</h2>
+
+<p>There are several options for contributing to Scala&#39;s core libraries. You can:</p>
+
+<ul>
+<li>Help with <a href="./scala-standard-library-api-documentation.html">Documentation</a>.</li>
+<li><a href="./bug-reporting-guide.html">Report Bugs or Issues</a> against the core libraries.</li>
+<li><a href="./guide.html">Fix Bugs or Issues</a> against the 
+<a href="https://issues.scala-lang.org/issues/?filter=13001">reported library bugs/issues</a>.</li>
+<li>Contribute significant new functionality or a new API by submitting
+a Scala Library Improvement Process (SLIP) Document.</li>
+</ul>
+
+<h3>Submitting a SLIP</h3>
+
+<p>For significant new functionality or a whole new API to be considered for 
+inclusion in the core Scala distribution, you will be asked to submit a SLIP (Scala Library Improvement Process) document.</p>
+
+<p>Please see <a href="http://docs.scala-lang.org/sips/slip-submission.html">instructions for submitting a new SLIP</a> and familiarize yourself with the <a href="http://docs.scala-lang.org/sips/">SIP/SLIP</a> section of the Scala documentation site. Also please pay particular attention to the <a href="http://docs.scala-lang.org/sips/slip-submission.html">pre-requisites</a> before submitting a SLIP.</p>
+
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+              <br/>
+              <div class="alert-info">
+                <a href="/contribute/documentation.html#updating_scalalangorg"><p><strong>Problem with this page?</strong>
+                Please help us fix it!</p></a>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
 
 
   <div class="footer">

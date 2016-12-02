@@ -1,0 +1,10 @@
+chaste.projects package
+=======================
+
+Module contents
+---------------
+
+.. automodule:: chaste.projects
+    :members:
+    :undoc-members:
+    :show-inheritance:

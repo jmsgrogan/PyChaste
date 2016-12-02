@@ -1,0 +1,1102 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chaste.core package &mdash; chaste 3.4dev documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="chaste 3.4dev documentation" href="index.html"/>
+        <link rel="up" title="chaste package" href="chaste.html"/>
+        <link rel="next" title="chaste.mesh package" href="chaste.mesh.html"/>
+        <link rel="prev" title="chaste.cell_based package" href="chaste.cell_based.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> chaste
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="chaste.html">chaste package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="chaste.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chaste.cell_based.html">chaste.cell_based package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">chaste.core package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-chaste.core">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.mesh.html">chaste.mesh package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.ode.html">chaste.ode package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.pde.html">chaste.pde package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.tutorial.html">chaste.tutorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.visualization.html">chaste.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaste.html#module-chaste">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">chaste</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="chaste.html">chaste package</a> &raquo;</li>
+      
+    <li>chaste.core package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/chaste.core.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chaste-core-package">
+<h1>chaste.core package<a class="headerlink" href="#chaste-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-chaste.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chaste.core" title="Permalink to this headline">¶</a></h2>
+<p>Core Module</p>
+<dl class="class">
+<dt id="chaste.core.OutputFileHandler">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">OutputFileHandler</code><a class="headerlink" href="#chaste.core.OutputFileHandler" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.core.OutputFileHandler.CopyFileTo">
+<code class="descname">CopyFileTo</code><span class="sig-paren">(</span><em>(OutputFileHandler)arg1</em>, <em>(FileFinder)rSourceFile</em><span class="sig-paren">)</span> &rarr; FileFinder :<a class="headerlink" href="#chaste.core.OutputFileHandler.CopyFileTo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>FileFinder CopyFileTo(OutputFileHandler {lvalue},FileFinder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.OutputFileHandler.FindFile">
+<code class="descname">FindFile</code><span class="sig-paren">(</span><em>(OutputFileHandler)arg1</em>, <em>(str)leafName</em><span class="sig-paren">)</span> &rarr; FileFinder :<a class="headerlink" href="#chaste.core.OutputFileHandler.FindFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>FileFinder FindFile(OutputFileHandler {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.OutputFileHandler.GetChasteTestOutputDirectory">
+<em class="property">static </em><code class="descname">GetChasteTestOutputDirectory</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.OutputFileHandler.GetChasteTestOutputDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetChasteTestOutputDirectory()</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.OutputFileHandler.GetOutputDirectoryFullPath">
+<code class="descname">GetOutputDirectoryFullPath</code><span class="sig-paren">(</span><em>(OutputFileHandler)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.OutputFileHandler.GetOutputDirectoryFullPath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetOutputDirectoryFullPath(OutputFileHandler {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.OutputFileHandler.GetRelativePath">
+<code class="descname">GetRelativePath</code><span class="sig-paren">(</span><em>(OutputFileHandler)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.OutputFileHandler.GetRelativePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetRelativePath(OutputFileHandler {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.OutputFileHandler.SetArchiveDirectory">
+<code class="descname">SetArchiveDirectory</code><span class="sig-paren">(</span><em>(OutputFileHandler)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.OutputFileHandler.SetArchiveDirectory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetArchiveDirectory(OutputFileHandler {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.RelativeTo">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">RelativeTo</code><a class="headerlink" href="#chaste.core.RelativeTo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.FileFinder">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">FileFinder</code><a class="headerlink" href="#chaste.core.FileFinder" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.core.FileFinder.CopyTo">
+<code class="descname">CopyTo</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em>, <em>(FileFinder)rDest</em><span class="sig-paren">)</span> &rarr; FileFinder :<a class="headerlink" href="#chaste.core.FileFinder.CopyTo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>FileFinder CopyTo(FileFinder {lvalue},FileFinder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.DangerousRemove">
+<code class="descname">DangerousRemove</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.DangerousRemove" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void DangerousRemove(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.Exists">
+<code class="descname">Exists</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.Exists" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool Exists(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.FileFinder.FakePath">
+<em class="property">static </em><code class="descname">FakePath</code><span class="sig-paren">(</span><em>(Value)fakeWhat</em>, <em>(str)rFakePath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.FakePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void FakePath(RelativeTo::Value,std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetAbsolutePath">
+<code class="descname">GetAbsolutePath</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.FileFinder.GetAbsolutePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetAbsolutePath(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetExtension">
+<code class="descname">GetExtension</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.FileFinder.GetExtension" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetExtension(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetLeafName">
+<code class="descname">GetLeafName</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.FileFinder.GetLeafName" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetLeafName(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetLeafNameNoExtension">
+<code class="descname">GetLeafNameNoExtension</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.FileFinder.GetLeafNameNoExtension" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetLeafNameNoExtension(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetParent">
+<code class="descname">GetParent</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; FileFinder :<a class="headerlink" href="#chaste.core.FileFinder.GetParent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>FileFinder GetParent(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.GetRelativePath">
+<code class="descname">GetRelativePath</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em>, <em>(FileFinder)rBasePath</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.FileFinder.GetRelativePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetRelativePath(FileFinder {lvalue},FileFinder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.FileFinder.IsAbsolutePath">
+<em class="property">static </em><code class="descname">IsAbsolutePath</code><span class="sig-paren">(</span><em>(str)rPath</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsAbsolutePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsAbsolutePath(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.IsDir">
+<code class="descname">IsDir</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsDir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsDir(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.IsEmpty">
+<code class="descname">IsEmpty</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsEmpty(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.IsFile">
+<code class="descname">IsFile</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsFile(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.IsNewerThan">
+<code class="descname">IsNewerThan</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em>, <em>(FileFinder)rOtherEntity</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsNewerThan" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsNewerThan(FileFinder {lvalue},FileFinder)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.IsPathSet">
+<code class="descname">IsPathSet</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.FileFinder.IsPathSet" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsPathSet(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.Remove">
+<code class="descname">Remove</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.Remove" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Remove(FileFinder {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.FileFinder.ReplaceSpacesWithUnderscores">
+<em class="property">static </em><code class="descname">ReplaceSpacesWithUnderscores</code><span class="sig-paren">(</span><em>(str)rPath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.ReplaceSpacesWithUnderscores" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReplaceSpacesWithUnderscores(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.FileFinder.ReplaceUnderscoresWithSpaces">
+<em class="property">static </em><code class="descname">ReplaceUnderscoresWithSpaces</code><span class="sig-paren">(</span><em>(str)rPath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.ReplaceUnderscoresWithSpaces" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReplaceUnderscoresWithSpaces(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.FileFinder.SetPath">
+<code class="descname">SetPath</code><span class="sig-paren">(</span><em>(FileFinder)arg1</em>, <em>(str)rPath</em>, <em>(Value)relativeTo</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.SetPath" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPath(FileFinder {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,RelativeTo::Value)</dd>
+</dl>
+</div></blockquote>
+<p>SetPath( (FileFinder)arg1, (str)rPath, (Value)relativeTo) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPath(FileFinder_wrapper {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,RelativeTo::Value)</dd>
+</dl>
+</div></blockquote>
+<p>SetPath( (FileFinder)arg1, (str)rLeafName, (FileFinder)rParentOrSibling) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPath(FileFinder {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,FileFinder)</dd>
+</dl>
+</div></blockquote>
+<p>SetPath( (FileFinder)arg1, (str)rLeafName, (FileFinder)rParentOrSibling) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPath(FileFinder_wrapper {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,FileFinder)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.FileFinder.StopFaking">
+<em class="property">static </em><code class="descname">StopFaking</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.FileFinder.StopFaking" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void StopFaking()</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.RandomNumberGenerator">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">RandomNumberGenerator</code><a class="headerlink" href="#chaste.core.RandomNumberGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="chaste.core.RandomNumberGenerator.Destroy">
+<em class="property">static </em><code class="descname">Destroy</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Destroy()</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.ExponentialRandomDeviate">
+<code class="descname">ExponentialRandomDeviate</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(float)scale</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.ExponentialRandomDeviate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double ExponentialRandomDeviate(RandomNumberGenerator {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.GammaRandomDeviate">
+<code class="descname">GammaRandomDeviate</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(float)shape</em>, <em>(float)scale</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.GammaRandomDeviate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double GammaRandomDeviate(RandomNumberGenerator {lvalue},double,double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.RandomNumberGenerator.Instance">
+<em class="property">static </em><code class="descname">Instance</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; RandomNumberGenerator :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.Instance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>RandomNumberGenerator* Instance()</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.NormalRandomDeviate">
+<code class="descname">NormalRandomDeviate</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(float)mean</em>, <em>(float)stdDev</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.NormalRandomDeviate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double NormalRandomDeviate(RandomNumberGenerator {lvalue},double,double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.Reseed">
+<code class="descname">Reseed</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(int)seed</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.Reseed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Reseed(RandomNumberGenerator {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.Shuffle">
+<code class="descname">Shuffle</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(int)num</em>, <em>(VecUnsigned)rValues</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.Shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Shuffle(RandomNumberGenerator {lvalue},unsigned int,std::vector&lt;unsigned int, std::allocator&lt;unsigned int&gt; &gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.StandardNormalRandomDeviate">
+<code class="descname">StandardNormalRandomDeviate</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.StandardNormalRandomDeviate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double StandardNormalRandomDeviate(RandomNumberGenerator {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.randMod">
+<code class="descname">randMod</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em>, <em>(int)base</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.randMod" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int randMod(RandomNumberGenerator {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.RandomNumberGenerator.ranf">
+<code class="descname">ranf</code><span class="sig-paren">(</span><em>(RandomNumberGenerator)arg1</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.RandomNumberGenerator.ranf" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double ranf(RandomNumberGenerator {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.Timer">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">Timer</code><a class="headerlink" href="#chaste.core.Timer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="chaste.core.Timer.GetElapsedTime">
+<em class="property">static </em><code class="descname">GetElapsedTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.Timer.GetElapsedTime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double GetElapsedTime()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.Timer.GetWallTime">
+<em class="property">static </em><code class="descname">GetWallTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.core.Timer.GetWallTime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double GetWallTime()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.Timer.Print">
+<em class="property">static </em><code class="descname">Print</code><span class="sig-paren">(</span><em>(str)message</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.Timer.Print" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Print(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.Timer.PrintAndReset">
+<em class="property">static </em><code class="descname">PrintAndReset</code><span class="sig-paren">(</span><em>(str)message</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.Timer.PrintAndReset" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void PrintAndReset(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.Timer.Reset">
+<em class="property">static </em><code class="descname">Reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.Timer.Reset" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Reset()</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.ChasteBuildInfo">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">ChasteBuildInfo</code><a class="headerlink" href="#chaste.core.ChasteBuildInfo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetBuildInformation">
+<em class="property">static </em><code class="descname">GetBuildInformation</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetBuildInformation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetBuildInformation()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetBuildTime">
+<em class="property">static </em><code class="descname">GetBuildTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetBuildTime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetBuildTime()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetBuilderUnameInfo">
+<em class="property">static </em><code class="descname">GetBuilderUnameInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetBuilderUnameInfo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetBuilderUnameInfo()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetCompilerFlags">
+<em class="property">static </em><code class="descname">GetCompilerFlags</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetCompilerFlags" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetCompilerFlags()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetCompilerType">
+<em class="property">static </em><code class="descname">GetCompilerType</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetCompilerType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetCompilerType()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetCompilerVersion">
+<em class="property">static </em><code class="descname">GetCompilerVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetCompilerVersion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetCompilerVersion()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetCurrentTime">
+<em class="property">static </em><code class="descname">GetCurrentTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetCurrentTime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetCurrentTime()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetLicenceText">
+<em class="property">static </em><code class="descname">GetLicenceText</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetLicenceText" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetLicenceText()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetMajorReleaseNumber">
+<em class="property">static </em><code class="descname">GetMajorReleaseNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetMajorReleaseNumber" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetMajorReleaseNumber()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetMinorReleaseNumber">
+<em class="property">static </em><code class="descname">GetMinorReleaseNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetMinorReleaseNumber" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetMinorReleaseNumber()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetProvenanceString">
+<em class="property">static </em><code class="descname">GetProvenanceString</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetProvenanceString" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetProvenanceString()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetRevisionNumber">
+<em class="property">static </em><code class="descname">GetRevisionNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetRevisionNumber" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetRevisionNumber()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetRootDir">
+<em class="property">static </em><code class="descname">GetRootDir</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetRootDir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetRootDir()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetVersionString">
+<em class="property">static </em><code class="descname">GetVersionString</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetVersionString" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetVersionString()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.GetXsdVersion">
+<em class="property">static </em><code class="descname">GetXsdVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.GetXsdVersion" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>char const* GetXsdVersion()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.IsWorkingCopyModified">
+<em class="property">static </em><code class="descname">IsWorkingCopyModified</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.IsWorkingCopyModified" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsWorkingCopyModified()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.ChasteBuildInfo.rGetProjectVersions">
+<em class="property">static </em><code class="descname">rGetProjectVersions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; MapString :<a class="headerlink" href="#chaste.core.ChasteBuildInfo.rGetProjectVersions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::map&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::less&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;, std::allocator&lt;std::pair&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const, std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; &gt; rGetProjectVersions()</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.PetscTools">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">PetscTools</code><a class="headerlink" href="#chaste.core.PetscTools" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="chaste.core.PetscTools.AmMaster">
+<em class="property">static </em><code class="descname">AmMaster</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.AmMaster" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool AmMaster()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.AmTopMost">
+<em class="property">static </em><code class="descname">AmTopMost</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.AmTopMost" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool AmTopMost()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.Barrier">
+<em class="property">static </em><code class="descname">Barrier</code><span class="sig-paren">(</span><span class="optional">[</span><em>(str)callerId=''</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.Barrier" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Barrier([ std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;=&#8217;&#8216;])</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.BeginRoundRobin">
+<em class="property">static </em><code class="descname">BeginRoundRobin</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.BeginRoundRobin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void BeginRoundRobin()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.CreateAndSetVec">
+<em class="property">static </em><code class="descname">CreateAndSetVec</code><span class="sig-paren">(</span><em>(int)size</em>, <em>(float)value</em><span class="sig-paren">)</span> &rarr; _p_Vec* :<a class="headerlink" href="#chaste.core.PetscTools.CreateAndSetVec" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>_p_Vec* CreateAndSetVec(int,double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.CreateVec">
+<em class="property">static </em><code class="descname">CreateVec</code><span class="sig-paren">(</span><em>(int)size</em><span class="optional">[</span>, <em>(int)localSize=-1</em><span class="optional">[</span>, <em>(bool)ignoreOffProcEntries=True</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &rarr; _p_Vec* :<a class="headerlink" href="#chaste.core.PetscTools.CreateVec" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>_p_Vec* CreateVec(int [,int=-1 [,bool=True]])</dd>
+</dl>
+</div></blockquote>
+<p>CreateVec( (VecDouble)data) -&gt; _p_Vec* :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>_p_Vec* CreateVec(std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.Destroy">
+<em class="property">static </em><code class="descname">Destroy</code><span class="sig-paren">(</span><em>(_p_Vec*)rVec</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.Destroy" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Destroy(_p_Vec* {lvalue})</dd>
+</dl>
+</div></blockquote>
+<p>Destroy( (_p_Mat*)rMat) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Destroy(_p_Mat* {lvalue})</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.DumpPetscObject">
+<em class="property">static </em><code class="descname">DumpPetscObject</code><span class="sig-paren">(</span><em>(_p_Mat*)rMat</em>, <em>(str)rOutputFileFullPath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.DumpPetscObject" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void DumpPetscObject(_p_Mat*,std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+<p>DumpPetscObject( (_p_Vec*)rVec, (str)rOutputFileFullPath) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void DumpPetscObject(_p_Vec*,std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.EndRoundRobin">
+<em class="property">static </em><code class="descname">EndRoundRobin</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.EndRoundRobin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void EndRoundRobin()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.GetMyRank">
+<em class="property">static </em><code class="descname">GetMyRank</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.PetscTools.GetMyRank" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetMyRank()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.GetNumProcs">
+<em class="property">static </em><code class="descname">GetNumProcs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.PetscTools.GetNumProcs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetNumProcs()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.HasParMetis">
+<em class="property">static </em><code class="descname">HasParMetis</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.HasParMetis" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasParMetis()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.IsInitialised">
+<em class="property">static </em><code class="descname">IsInitialised</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.IsInitialised" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsInitialised()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.IsIsolated">
+<em class="property">static </em><code class="descname">IsIsolated</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.IsIsolated" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsIsolated()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.IsParallel">
+<em class="property">static </em><code class="descname">IsParallel</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.IsParallel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsParallel()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.IsSequential">
+<em class="property">static </em><code class="descname">IsSequential</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.IsSequential" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool IsSequential()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.IsolateProcesses">
+<em class="property">static </em><code class="descname">IsolateProcesses</code><span class="sig-paren">(</span><span class="optional">[</span><em>(bool)isolate=True</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.IsolateProcesses" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void IsolateProcesses([ bool=True])</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.ReadPetscObject">
+<em class="property">static </em><code class="descname">ReadPetscObject</code><span class="sig-paren">(</span><em>(_p_Mat*)rMat</em>, <em>(str)rOutputFileFullPath</em><span class="optional">[</span>, <em>(_p_Vec*)rParallelLayout=0</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.ReadPetscObject" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReadPetscObject(_p_Mat* {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; [,_p_Vec*=0])</dd>
+</dl>
+</div></blockquote>
+<p>ReadPetscObject( (_p_Vec*)rVec, (str)rOutputFileFullPath [, (_p_Vec*)rParallelLayout=0]) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReadPetscObject(_p_Vec* {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; [,_p_Vec*=0])</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.ReplicateBool">
+<em class="property">static </em><code class="descname">ReplicateBool</code><span class="sig-paren">(</span><em>(bool)flag</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.core.PetscTools.ReplicateBool" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool ReplicateBool(bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.ReplicateException">
+<em class="property">static </em><code class="descname">ReplicateException</code><span class="sig-paren">(</span><em>(bool)flag</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.ReplicateException" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReplicateException(bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.ResetCache">
+<em class="property">static </em><code class="descname">ResetCache</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.ResetCache" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ResetCache()</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.SetOption">
+<em class="property">static </em><code class="descname">SetOption</code><span class="sig-paren">(</span><em>(str)pOptionName</em>, <em>(str)pOptionValue</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.SetOption" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetOption(char const*,char const*)</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chaste.core.PetscTools.SetupMat">
+<em class="property">static </em><code class="descname">SetupMat</code><span class="sig-paren">(</span><em>(_p_Mat*)rMat</em>, <em>(int)numRows</em>, <em>(int)numColumns</em>, <em>(int)rowPreallocation</em><span class="optional">[</span>, <em>(int)numLocalRows=-1</em><span class="optional">[</span>, <em>(int)numLocalColumns=-1</em><span class="optional">[</span>, <em>(bool)ignoreOffProcEntries=True</em><span class="optional">[</span>, <em>(bool)newAllocationError=True</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.PetscTools.SetupMat" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetupMat(_p_Mat* {lvalue},int,int,unsigned int [,int=-1 [,int=-1 [,bool=True [,bool=True]]]])</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.core.ReplicatableVector">
+<em class="property">class </em><code class="descclassname">chaste.core.</code><code class="descname">ReplicatableVector</code><a class="headerlink" href="#chaste.core.ReplicatableVector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.core.ReplicatableVector.GetSize">
+<code class="descname">GetSize</code><span class="sig-paren">(</span><em>(ReplicatableVector)arg1</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.core.ReplicatableVector.GetSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetSize(ReplicatableVector {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.ReplicatableVector.Replicate">
+<code class="descname">Replicate</code><span class="sig-paren">(</span><em>(ReplicatableVector)arg1</em>, <em>(int)lo</em>, <em>(int)hi</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.ReplicatableVector.Replicate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Replicate(ReplicatableVector {lvalue},unsigned int,unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.ReplicatableVector.ReplicatePetscVector">
+<code class="descname">ReplicatePetscVector</code><span class="sig-paren">(</span><em>(ReplicatableVector)arg1</em>, <em>(_p_Vec*)vec</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.ReplicatableVector.ReplicatePetscVector" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ReplicatePetscVector(ReplicatableVector {lvalue},_p_Vec*)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.core.ReplicatableVector.Resize">
+<code class="descname">Resize</code><span class="sig-paren">(</span><em>(ReplicatableVector)arg1</em>, <em>(int)size</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.core.ReplicatableVector.Resize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Resize(ReplicatableVector {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="chaste.mesh.html" class="btn btn-neutral float-right" title="chaste.mesh package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="chaste.cell_based.html" class="btn btn-neutral" title="chaste.cell_based package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, University of Oxford.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.4dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

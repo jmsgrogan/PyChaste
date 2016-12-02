@@ -1,0 +1,1089 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chaste.visualization package &mdash; chaste 3.4dev documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="chaste 3.4dev documentation" href="index.html"/>
+        <link rel="up" title="chaste package" href="chaste.html"/>
+        <link rel="prev" title="chaste.tutorial package" href="chaste.tutorial.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> chaste
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="chaste.html">chaste package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="chaste.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chaste.cell_based.html">chaste.cell_based package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.core.html">chaste.core package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.mesh.html">chaste.mesh package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.ode.html">chaste.ode package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.pde.html">chaste.pde package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.tutorial.html">chaste.tutorial package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">chaste.visualization package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-chaste.visualization.fortests">chaste.visualization.fortests module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-chaste.visualization">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaste.html#module-chaste">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">chaste</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="chaste.html">chaste package</a> &raquo;</li>
+      
+    <li>chaste.visualization package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/chaste.visualization.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chaste-visualization-package">
+<h1>chaste.visualization package<a class="headerlink" href="#chaste-visualization-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-chaste.visualization.fortests">
+<span id="chaste-visualization-fortests-module"></span><h2>chaste.visualization.fortests module<a class="headerlink" href="#module-chaste.visualization.fortests" title="Permalink to this headline">¶</a></h2>
+<p>Helper classes for running tests</p>
+<dl class="class">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager">
+<em class="property">class </em><code class="descclassname">chaste.visualization.fortests.</code><code class="descname">JupyterNotebookManager</code><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterNotebookManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.container_id">
+<code class="descname">container_id</code><em class="property"> = 0</em><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.container_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.interactive_plot_init">
+<code class="descname">interactive_plot_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterNotebookManager.interactive_plot_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.interactive_plot_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.interactive_plot_show">
+<code class="descname">interactive_plot_show</code><span class="sig-paren">(</span><em>width</em>, <em>height</em>, <em>file_name='temp_scene.wrl'</em>, <em>increment=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterNotebookManager.interactive_plot_show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.interactive_plot_show" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.interactive_plotting_loaded">
+<code class="descname">interactive_plotting_loaded</code><em class="property"> = False</em><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.interactive_plotting_loaded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.three_js_dir">
+<code class="descname">three_js_dir</code><em class="property"> = '/home/grogan/git/PyChaste/src/python/chaste/external'</em><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.three_js_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.fortests.JupyterNotebookManager.vtk_show">
+<code class="descname">vtk_show</code><span class="sig-paren">(</span><em>scene</em>, <em>width=400</em>, <em>height=300</em>, <em>output_format='png'</em>, <em>increment=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterNotebookManager.vtk_show"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterNotebookManager.vtk_show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes vtkRenderer instance and returns an IPython Image with the rendering.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.fortests.JupyterSceneModifier2">
+<em class="property">class </em><code class="descclassname">chaste.visualization.fortests.</code><code class="descname">JupyterSceneModifier2</code><span class="sig-paren">(</span><em>plotting_manager</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterSceneModifier2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterSceneModifier2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">chaste.cell_based._chaste_project_PyChaste_cell_based.VtkSceneModifier2</span></code></p>
+<p>Class for real time plotting of output</p>
+<dl class="method">
+<dt id="chaste.visualization.fortests.JupyterSceneModifier2.UpdateAtEndOfTimeStep">
+<code class="descname">UpdateAtEndOfTimeStep</code><span class="sig-paren">(</span><em>cell_population</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterSceneModifier2.UpdateAtEndOfTimeStep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterSceneModifier2.UpdateAtEndOfTimeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the Jupyter notebook plot with the new scene</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.fortests.JupyterSceneModifier3">
+<em class="property">class </em><code class="descclassname">chaste.visualization.fortests.</code><code class="descname">JupyterSceneModifier3</code><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterSceneModifier3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterSceneModifier3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">chaste.cell_based._chaste_project_PyChaste_cell_based.VtkSceneModifier3</span></code></p>
+<p>Class for real time plotting of output</p>
+<dl class="method">
+<dt id="chaste.visualization.fortests.JupyterSceneModifier3.UpdateAtEndOfTimeStep">
+<code class="descname">UpdateAtEndOfTimeStep</code><span class="sig-paren">(</span><em>cell_population</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#JupyterSceneModifier3.UpdateAtEndOfTimeStep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.JupyterSceneModifier3.UpdateAtEndOfTimeStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the Jupyter notebook plot with the new scene</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="chaste.visualization.fortests.vtk_show_basic">
+<code class="descclassname">chaste.visualization.fortests.</code><code class="descname">vtk_show_basic</code><span class="sig-paren">(</span><em>scene</em>, <em>width=800</em>, <em>height=600</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chaste/visualization/fortests.html#vtk_show_basic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chaste.visualization.fortests.vtk_show_basic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a Scene instance and returns an IPython Image with the rendering.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-chaste.visualization">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chaste.visualization" title="Permalink to this headline">¶</a></h2>
+<p>Visualization Module</p>
+<dl class="class">
+<dt id="chaste.visualization.VtkScene3">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">VtkScene3</code><a class="headerlink" href="#chaste.visualization.VtkScene3" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.VtkScene3.End">
+<code class="descname">End</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.End" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void End(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.GetCellPopulationActorGenerator">
+<code class="descname">GetCellPopulationActorGenerator</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; CellPopulationPyChasteActorGenerator3 :<a class="headerlink" href="#chaste.visualization.VtkScene3.GetCellPopulationActorGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>boost::shared_ptr&lt;CellPopulationPyChasteActorGenerator&lt;3u&gt; &gt; GetCellPopulationActorGenerator(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.GetRenderer">
+<code class="descname">GetRenderer</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.VtkScene3.GetRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkRenderer&gt; GetRenderer(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.GetSceneAsCharBuffer">
+<code class="descname">GetSceneAsCharBuffer</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.VtkScene3.GetSceneAsCharBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkUnsignedCharArray&gt; GetSceneAsCharBuffer(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.ResetRenderer">
+<code class="descname">ResetRenderer</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="optional">[</span>, <em>(int)timeStep=0</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.ResetRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ResetRenderer(VtkScene&lt;3u&gt; {lvalue} [,unsigned int=0])</dd>
+</dl>
+</div></blockquote>
+<p>ResetRenderer( (VtkScene3)arg1 [, (int)timeStep=0]) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ResetRenderer(VtkScene_less__3__greater__wrapper {lvalue} [,unsigned int=0])</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.SetCellPopulation">
+<code class="descname">SetCellPopulation</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em>, <em>(AbstractCellPopulation3_3)pCellPopulation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.SetCellPopulation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetCellPopulation(VtkScene&lt;3u&gt; {lvalue},boost::shared_ptr&lt;AbstractCellPopulation&lt;3u, 3u&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.SetIsInteractive">
+<code class="descname">SetIsInteractive</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em>, <em>(bool)isInteractive</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.SetIsInteractive" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetIsInteractive(VtkScene&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.SetOutputFilePath">
+<code class="descname">SetOutputFilePath</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em>, <em>(str)rPath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.SetOutputFilePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetOutputFilePath(VtkScene&lt;3u&gt; {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.SetSaveAsAnimation">
+<code class="descname">SetSaveAsAnimation</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em>, <em>(bool)saveAsAnimation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.SetSaveAsAnimation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetSaveAsAnimation(VtkScene&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.SetSaveAsImages">
+<code class="descname">SetSaveAsImages</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em>, <em>(bool)saveAsImages</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.SetSaveAsImages" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetSaveAsImages(VtkScene&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.Start">
+<code class="descname">Start</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.Start" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Start(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene3.StartInteractiveEventHandler">
+<code class="descname">StartInteractiveEventHandler</code><span class="sig-paren">(</span><em>(VtkScene3)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene3.StartInteractiveEventHandler" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void StartInteractiveEventHandler(VtkScene&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.VtkScene2">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">VtkScene2</code><a class="headerlink" href="#chaste.visualization.VtkScene2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.VtkScene2.End">
+<code class="descname">End</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.End" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void End(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.GetCellPopulationActorGenerator">
+<code class="descname">GetCellPopulationActorGenerator</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; CellPopulationPyChasteActorGenerator2 :<a class="headerlink" href="#chaste.visualization.VtkScene2.GetCellPopulationActorGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>boost::shared_ptr&lt;CellPopulationPyChasteActorGenerator&lt;2u&gt; &gt; GetCellPopulationActorGenerator(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.GetRenderer">
+<code class="descname">GetRenderer</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.VtkScene2.GetRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkRenderer&gt; GetRenderer(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.GetSceneAsCharBuffer">
+<code class="descname">GetSceneAsCharBuffer</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.VtkScene2.GetSceneAsCharBuffer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkUnsignedCharArray&gt; GetSceneAsCharBuffer(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.ResetRenderer">
+<code class="descname">ResetRenderer</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="optional">[</span>, <em>(int)timeStep=0</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.ResetRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ResetRenderer(VtkScene&lt;2u&gt; {lvalue} [,unsigned int=0])</dd>
+</dl>
+</div></blockquote>
+<p>ResetRenderer( (VtkScene2)arg1 [, (int)timeStep=0]) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void ResetRenderer(VtkScene_less__2__greater__wrapper {lvalue} [,unsigned int=0])</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.SetCellPopulation">
+<code class="descname">SetCellPopulation</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em>, <em>(AbstractCellPopulation2_2)pCellPopulation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.SetCellPopulation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetCellPopulation(VtkScene&lt;2u&gt; {lvalue},boost::shared_ptr&lt;AbstractCellPopulation&lt;2u, 2u&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.SetIsInteractive">
+<code class="descname">SetIsInteractive</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em>, <em>(bool)isInteractive</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.SetIsInteractive" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetIsInteractive(VtkScene&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.SetOutputFilePath">
+<code class="descname">SetOutputFilePath</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em>, <em>(str)rPath</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.SetOutputFilePath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetOutputFilePath(VtkScene&lt;2u&gt; {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.SetSaveAsAnimation">
+<code class="descname">SetSaveAsAnimation</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em>, <em>(bool)saveAsAnimation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.SetSaveAsAnimation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetSaveAsAnimation(VtkScene&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.SetSaveAsImages">
+<code class="descname">SetSaveAsImages</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em>, <em>(bool)saveAsImages</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.SetSaveAsImages" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetSaveAsImages(VtkScene&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.Start">
+<code class="descname">Start</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.Start" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Start(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.VtkScene2.StartInteractiveEventHandler">
+<code class="descname">StartInteractiveEventHandler</code><span class="sig-paren">(</span><em>(VtkScene2)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.VtkScene2.StartInteractiveEventHandler" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void StartInteractiveEventHandler(VtkScene&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">AbstractPyChasteActorGenerator2</code><a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.AddActor">
+<code class="descname">AddActor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.AddActor" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+<p>AddActor( (AbstractPyChasteActorGenerator2)arg1, (object)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(AbstractPyChasteActorGenerator_less__2__greater__wrapper {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.GetColorTransferFunction">
+<code class="descname">GetColorTransferFunction</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.GetColorTransferFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkColorTransferFunction&gt; GetColorTransferFunction(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.GetDiscreteColorTransferFunction">
+<code class="descname">GetDiscreteColorTransferFunction</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.GetDiscreteColorTransferFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkColorTransferFunction&gt; GetDiscreteColorTransferFunction(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetDataLabel">
+<code class="descname">SetDataLabel</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(str)rLabel</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetDataLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetDataLabel(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetEdgeColor">
+<code class="descname">SetEdgeColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetEdgeColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetEdgeColor(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetEdgeSize">
+<code class="descname">SetEdgeSize</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(float)size</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetEdgeSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetEdgeSize(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetPointColor">
+<code class="descname">SetPointColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetPointColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPointColor(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetPointSize">
+<code class="descname">SetPointSize</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(float)size</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetPointSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPointSize(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetShowEdges">
+<code class="descname">SetShowEdges</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetShowEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowEdges(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetShowPoints">
+<code class="descname">SetShowPoints</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetShowPoints" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPoints(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetShowVolume">
+<code class="descname">SetShowVolume</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetShowVolume" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowVolume(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetVolumeColor">
+<code class="descname">SetVolumeColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetVolumeColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetVolumeColor(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator2.SetVolumeOpacity">
+<code class="descname">SetVolumeOpacity</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator2)arg1</em>, <em>(float)opacity</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator2.SetVolumeOpacity" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetVolumeOpacity(AbstractPyChasteActorGenerator&lt;2u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">AbstractPyChasteActorGenerator3</code><a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.AddActor">
+<code class="descname">AddActor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.AddActor" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+<p>AddActor( (AbstractPyChasteActorGenerator3)arg1, (object)arg2) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(AbstractPyChasteActorGenerator_less__3__greater__wrapper {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.GetColorTransferFunction">
+<code class="descname">GetColorTransferFunction</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.GetColorTransferFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkColorTransferFunction&gt; GetColorTransferFunction(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.GetDiscreteColorTransferFunction">
+<code class="descname">GetDiscreteColorTransferFunction</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em><span class="sig-paren">)</span> &rarr; object :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.GetDiscreteColorTransferFunction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>vtkSmartPointer&lt;vtkColorTransferFunction&gt; GetDiscreteColorTransferFunction(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetDataLabel">
+<code class="descname">SetDataLabel</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(str)rLabel</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetDataLabel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetDataLabel(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetEdgeColor">
+<code class="descname">SetEdgeColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetEdgeColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetEdgeColor(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetEdgeSize">
+<code class="descname">SetEdgeSize</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(float)size</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetEdgeSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetEdgeSize(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetPointColor">
+<code class="descname">SetPointColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetPointColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPointColor(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetPointSize">
+<code class="descname">SetPointSize</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(float)size</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetPointSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetPointSize(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetShowEdges">
+<code class="descname">SetShowEdges</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetShowEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowEdges(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetShowPoints">
+<code class="descname">SetShowPoints</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetShowPoints" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPoints(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetShowVolume">
+<code class="descname">SetShowVolume</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(bool)show</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetShowVolume" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowVolume(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetVolumeColor">
+<code class="descname">SetVolumeColor</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(object)rColor</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetVolumeColor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetVolumeColor(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},boost::numeric::ublas::c_vector&lt;double, 3ul&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.AbstractPyChasteActorGenerator3.SetVolumeOpacity">
+<code class="descname">SetVolumeOpacity</code><span class="sig-paren">(</span><em>(AbstractPyChasteActorGenerator3)arg1</em>, <em>(float)opacity</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.AbstractPyChasteActorGenerator3.SetVolumeOpacity" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetVolumeOpacity(AbstractPyChasteActorGenerator&lt;3u&gt; {lvalue},double)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">CellPopulationPyChasteActorGenerator2</code><a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.AddActor">
+<code class="descname">AddActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.AddActor" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+<p>AddActor( (CellPopulationPyChasteActorGenerator2)arg1, (object)pRenderer) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(CellPopulationPyChasteActorGenerator_less__2__greater__wrapper {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.AddCaBasedCellPopulationActor">
+<code class="descname">AddCaBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.AddCaBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddCaBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.AddMeshBasedCellPopulationActor">
+<code class="descname">AddMeshBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.AddMeshBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddMeshBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.AddPottsBasedCellPopulationActor">
+<code class="descname">AddPottsBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.AddPottsBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddPottsBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.AddVertexBasedCellPopulationActor">
+<code class="descname">AddVertexBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.AddVertexBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddVertexBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetCellPopulation">
+<code class="descname">SetCellPopulation</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(AbstractCellPopulation2_2)pCellPopulation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetCellPopulation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetCellPopulation(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},boost::shared_ptr&lt;AbstractCellPopulation&lt;2u, 2u&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByCellData">
+<code class="descname">SetColorByCellData</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)colorByCellData</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByCellData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByCellData(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByCellType">
+<code class="descname">SetColorByCellType</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)colorByCellType</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByCellType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByCellType(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByUserDefined">
+<code class="descname">SetColorByUserDefined</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)colorByCellUserDefined</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetColorByUserDefined" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByUserDefined(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowCellCentres">
+<code class="descname">SetShowCellCentres</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)showCentres</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowCellCentres" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowCellCentres(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowMutableMeshEdges">
+<code class="descname">SetShowMutableMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowMutableMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowMutableMeshEdges(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowPottsMeshEdges">
+<code class="descname">SetShowPottsMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowPottsMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPottsMeshEdges(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowPottsMeshOutlines">
+<code class="descname">SetShowPottsMeshOutlines</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)showOutlines</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowPottsMeshOutlines" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPottsMeshOutlines(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowVoronoiMeshEdges">
+<code class="descname">SetShowVoronoiMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator2)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator2.SetShowVoronoiMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowVoronoiMeshEdges(CellPopulationPyChasteActorGenerator&lt;2u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3">
+<em class="property">class </em><code class="descclassname">chaste.visualization.</code><code class="descname">CellPopulationPyChasteActorGenerator3</code><a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.AddActor">
+<code class="descname">AddActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.AddActor" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+<p>AddActor( (CellPopulationPyChasteActorGenerator3)arg1, (object)pRenderer) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddActor(CellPopulationPyChasteActorGenerator_less__3__greater__wrapper {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.AddCaBasedCellPopulationActor">
+<code class="descname">AddCaBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.AddCaBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddCaBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.AddMeshBasedCellPopulationActor">
+<code class="descname">AddMeshBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.AddMeshBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddMeshBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.AddPottsBasedCellPopulationActor">
+<code class="descname">AddPottsBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.AddPottsBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddPottsBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.AddVertexBasedCellPopulationActor">
+<code class="descname">AddVertexBasedCellPopulationActor</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(object)pRenderer</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.AddVertexBasedCellPopulationActor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddVertexBasedCellPopulationActor(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},vtkSmartPointer&lt;vtkRenderer&gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetCellPopulation">
+<code class="descname">SetCellPopulation</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(AbstractCellPopulation3_3)pCellPopulation</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetCellPopulation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetCellPopulation(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},boost::shared_ptr&lt;AbstractCellPopulation&lt;3u, 3u&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByCellData">
+<code class="descname">SetColorByCellData</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)colorByCellData</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByCellData" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByCellData(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByCellType">
+<code class="descname">SetColorByCellType</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)colorByCellType</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByCellType" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByCellType(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByUserDefined">
+<code class="descname">SetColorByUserDefined</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)colorByCellUserDefined</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetColorByUserDefined" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetColorByUserDefined(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowCellCentres">
+<code class="descname">SetShowCellCentres</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)showCentres</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowCellCentres" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowCellCentres(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowMutableMeshEdges">
+<code class="descname">SetShowMutableMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowMutableMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowMutableMeshEdges(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowPottsMeshEdges">
+<code class="descname">SetShowPottsMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowPottsMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPottsMeshEdges(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowPottsMeshOutlines">
+<code class="descname">SetShowPottsMeshOutlines</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)showOutlines</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowPottsMeshOutlines" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowPottsMeshOutlines(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowVoronoiMeshEdges">
+<code class="descname">SetShowVoronoiMeshEdges</code><span class="sig-paren">(</span><em>(CellPopulationPyChasteActorGenerator3)arg1</em>, <em>(bool)showEdges</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.visualization.CellPopulationPyChasteActorGenerator3.SetShowVoronoiMeshEdges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetShowVoronoiMeshEdges(CellPopulationPyChasteActorGenerator&lt;3u&gt; {lvalue},bool)</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="chaste.tutorial.html" class="btn btn-neutral" title="chaste.tutorial package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, University of Oxford.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.4dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

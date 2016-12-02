@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>PyChaste</title>
+    <title>August SIP Meeting Results: 2 SIPs Rejected and 2 SIPs Updated | PyChaste</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -33,13 +33,14 @@
   <body>
 
 
-<div class="splash">
-  <div class="darkblue-overlay">&nbsp;</div>
-  <div class="container">
-    <div class="row">
-      <div class="span12">
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
         <div class="scala-logo">
-          <img src="/resources/img/PyChaste_logo_25.png" alt="PyChaste Logo" />
+          <a href="/index.html"><img src="/resources/img/scala-logo-white-sm.png" alt="white Scala logo" /></a>
         </div>
         <ul class="nav">
   <li><a href="/documentation/">Documentation</a></li>
@@ -58,81 +59,98 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="span12">
-        <div class="splash-text ontop">
-          <h2 style="font-weight: 700;">PyChaste</h2>
-          <p class="splash-pitch">
-            A Python wrapper for the open source <a href="http://www.cs.ox.ac.uk/chaste/">Chaste</a> library for multi-scale problems in biology and physiology.
-          </p>
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>&nbsp;</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
- <div class="bullet-point-box">
-
-  <div class="bullet-row-1-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="java-interop">
-          <h3>Cellular Automata</h3>
-          <a href="/documentation/tutorials/TestScratchAssayTutorial.html"><img src="/resources/img/demo_scratch.png" alt="Scractch Assay Demo" /></a>
-          <p>A scratch assay simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="type-inference">
-          <h3>Centre Based Cells</h3>
-          <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="concurrency-distribution">
-          <h3>Cellular Potts Models</h3>
-          <a href="/documentation/tutorials/TestCellSortingTutorial.html"><img src="/resources/img/demo_sorting.png" alt="Sorting Demo" /></a>
-          <p>A cell sorting simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="bullet-row-2-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="traits">
-          <h3>Vertex Models</h3>
-                    <a href="/documentation/tutorials/TestTensileTestTutorial.html"><img src="/resources/img/demo_tensile.png" alt="Tensile Demo" /></a>
-          <p>An epithelial sheet tensile test.</p>
-        </div>
-        <div class="span4 bullet-point" id="pattern-matching">
-          <h3>Mesh Based Models</h3>
-                    <a href="/documentation/tutorials/TestMeshBasedCellSimulationsPythonTutorial.html"><img src="/resources/img/demo_monolayer.png" alt="Monolayer Demo" /></a>
-          <p>An epithelial sheet growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="higher-order-functions">
-          <h3>Chemical Transport</h3>
-                    <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="where-to-learn-more">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>or visit the <a class="italicize" href="/documentation">PyChaste Documentation</a></p>
-        </div>
-      </div>
-    </div>
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">August SIP Meeting Results: 2 SIPs Rejected and 2 SIPs Updated</h1>
   </div>
 </div>
 
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            <div class="article-date">August 15, 2016</div>
+            
+              <div class="written">Written By: <span class="by">Jorge Vicente Cantero</span></div>
+            
+            <p>On August 10, the Scala Improvement Process (SIP) Committee held
+their monthly meeting to discuss and give feedback on four proposals,
+both new and old. We&#39;re happy that these discussions sparked so much
+interest and participation in the community. It&#39;s comforting to see the
+new SIP process becoming fruitful!</p>
+
+<p>Of the four discussed proposals, two were unanimously rejected.
+The other two progressed and will have a follow-up iteration.</p>
+
+<p>The rejected proposals were:</p>
+
+<ul>
+<li>  <a href="http://docs.scala-lang.org/sips/pending/uncluttering-control.html">SIP-12: Uncluttering Scala&#39;s syntax for control structures</a>.
+Originally proposed in 2011. The proposal suggested syntax changes
+in if&#39;s, for and while loops, moving Scala&#39;s syntax away from Java
+and C-like languages. Whereas such changes may be arguably more
+beautiful, the Committee agreed that would give more problems
+than benefits. Seth Tisue, the appointed reviewer, fully explains
+the Committee&#39;s reaction <a href="https://github.com/scala/scala.github.com/issues/555">here</a>.</li>
+<li>  <a href="http://docs.scala-lang.org/sips/pending/self-cleaning-macros.html">SIP-16: Self-cleaning macros</a>.
+Originally proposed in 2012. Macros add a whole new dimension to the
+Scala language. Their experimental implementation was adopted by a
+lot of Scala libraries and were immensely useful for the creation
+and evolution of first-class Scala tools. As described by his
+creator and reviewer, Eugene Burmako, they turned out to be a good
+experiment, but one that could be improved if major downsides in the
+design were addressed. With the intention of letting scala.meta
+eventually replace the old macros, he proposed rejecting SIP-16 to
+revisit its basic foundations and create a new proposal that would
+considerably enhance the metaprogramming experience in Scala. In the
+meantime, the experimental implementation will remain in place. If
+you&#39;re interested in Eugene&#39;s explanation, follow <a href="https://github.com/scala/scala.github.com/pull/57">this</a>.</li>
+</ul>
+
+<p>The two proposals that made it to the next iteration are
+<a href="http://docs.scala-lang.org/sips/pending/42.type.html">SIP-23: Literal-based singleton types</a> (reviewer:
+Adriaan Moors) and <a href="https://github.com/scala/scala.github.com/pull/533%23issuecomment-239422098">SIP-27: Trailing
+Commas</a> (reviewer:
+Eugene Burmako). The reviewers and committee members provided more feedback to
+iterate on. Both proposals already have
+provisional implementations and will continue to be discussed for
+inclusion in the language.</p>
+
+<p>Overall, we&#39;re happy to report these results and see Scala
+continue to move forward! We&#39;re excited to see the Scala community
+speaking up and collaborating with the process—your vibrant
+responses will greatly enrich our future deliberations.</p>
+
+<p>Next month, we’ll discuss five more proposals, including
+<a href="http://docs.scala-lang.org/sips/pending/spores.html">SIP-21: Spores</a> and
+<a href="http://docs.scala-lang.org/sips/pending/repeated-byname.html">SIP-24: Repeated by-name
+parameters</a>.
+We hope to finish off the list of old proposals in the queue and focus
+ourselves on the most recent proposals and the ones that are to
+come!</p>
+
+<p>Did you know that each month, we conduct these SIP meetings
+on-air? You can tune in and ask questions to the SIP committee, and have
+them answered live. Videos of the meetings are then <a href="https://plus.google.com/+ScalaProcess/posts">archived on
+YouTube</a>. Check the minutes of this
+meeting <a href="http://docs.scala-lang.org/sips/minutes/sip-10th-august-minutes.html">in the SIP website</a>.</p>
+
+            
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div id="toc"></div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
 
 
   <div class="footer">

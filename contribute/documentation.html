@@ -2,7 +2,7 @@
 <html>
   <head>
 
-    <title>PyChaste</title>
+    <title>Documentation Contributions | PyChaste</title>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
@@ -33,13 +33,14 @@
   <body>
 
 
-<div class="splash">
-  <div class="darkblue-overlay">&nbsp;</div>
-  <div class="container">
-    <div class="row">
-      <div class="span12">
+<div class="darkstrip"></div>
+
+<div class="darkbluetopbar">
+  <div class="container" style="height: 100%">
+    <div class="navbar-wrap">
+      <div class="container" style="position: relative; height: 100%;">
         <div class="scala-logo">
-          <img src="/resources/img/PyChaste_logo_25.png" alt="PyChaste Logo" />
+          <a href="/index.html"><img src="/resources/img/PyChaste_logo_25.png" alt="Chaste logo" /></a>
         </div>
         <ul class="nav">
   <li><a href="/documentation/">Documentation</a></li>
@@ -58,81 +59,104 @@
 
       </div>
     </div>
-    <div class="row">
-      <div class="span12">
-        <div class="splash-text ontop">
-          <h2 style="font-weight: 700;">PyChaste</h2>
-          <p class="splash-pitch">
-            A Python wrapper for the open source <a href="http://www.cs.ox.ac.uk/chaste/">Chaste</a> library for multi-scale problems in biology and physiology.
-          </p>
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>&nbsp;</p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
- <div class="bullet-point-box">
-
-  <div class="bullet-row-1-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="java-interop">
-          <h3>Cellular Automata</h3>
-          <a href="/documentation/tutorials/TestScratchAssayTutorial.html"><img src="/resources/img/demo_scratch.png" alt="Scractch Assay Demo" /></a>
-          <p>A scratch assay simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="type-inference">
-          <h3>Centre Based Cells</h3>
-          <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="concurrency-distribution">
-          <h3>Cellular Potts Models</h3>
-          <a href="/documentation/tutorials/TestCellSortingTutorial.html"><img src="/resources/img/demo_sorting.png" alt="Sorting Demo" /></a>
-          <p>A cell sorting simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="bullet-row-2-wrap">
-    <div class="container">
-      <div class="row">
-        <div class="span4 bullet-point" id="traits">
-          <h3>Vertex Models</h3>
-                    <a href="/documentation/tutorials/TestTensileTestTutorial.html"><img src="/resources/img/demo_tensile.png" alt="Tensile Demo" /></a>
-          <p>An epithelial sheet tensile test.</p>
-        </div>
-        <div class="span4 bullet-point" id="pattern-matching">
-          <h3>Mesh Based Models</h3>
-                    <a href="/documentation/tutorials/TestMeshBasedCellSimulationsPythonTutorial.html"><img src="/resources/img/demo_monolayer.png" alt="Monolayer Demo" /></a>
-          <p>An epithelial sheet growth simulation.</p>
-        </div>
-        <div class="span4 bullet-point" id="higher-order-functions">
-          <h3>Chemical Transport</h3>
-                    <a href="/documentation/tutorials/TestSpheroidTutorial.html"><img src="/resources/img/demo_spheroid.png" alt="Spheroid Demo" /></a>
-          <p>A spheroid growth simulation.</p>
-        </div>
-      </div>
-      <div class="code-snippet-arrow"></div>
-    </div>
-  </div>
-
-  <div class="where-to-learn-more">
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <a class="learn-more-btn" href="/documentation/">Learn More</a>
-          <p>or visit the <a class="italicize" href="/documentation">PyChaste Documentation</a></p>
-        </div>
-      </div>
-    </div>
+<div class="midbluebar">
+  <div class="container">
+    <h1 id="page-title">Documentation Contributions</h1>
   </div>
 </div>
 
+<div class="page-container">
+  <div class="container" style="min-height: 540px;">
+    <!-- <div class="row"> -->
+      <!-- <div class="span12"> -->
+          <div class="main-page-column">
+            
+            <h2>Contributing Documentation to the Scala project</h2>
+
+<p>There are several ways you can help out with the improvement of Scala documentation. These include:</p>
+
+<ul>
+<li>API Documentation in Scaladoc</li>
+<li>Code examples and tutorials in activator templates.</li>
+<li>Guides, Overviews, Tutorials, Cheat Sheets and more on the docs.scala-lang.org site</li>
+<li>Updating scala-lang.org</li>
+</ul>
+
+<p>Please read this page, and the pages linked from this one, fully before contributing documentation. Many of the questions you have will be answered in these resources. If you have a question that isn&#39;t answered, feel free to ask on the <a href="https://groups.google.com/forum/#!forum/scala-internals">scala-internals Google group</a> and then, please, submit a pull request with updated documentation reflecting that answer.</p>
+
+<p><strong>General requirements</strong> for documentation submissions include spell-checking all written language, ensuring code samples compile and run correctly, correct grammar, and clean formatting/layout of the documentation. </p>
+
+<p>Thanks</p>
+
+<h3>API Documentation (Scaladoc)</h3>
+
+<p>The Scala API documentation lives with the scala project source code. There are many ways you can help with improving Scaladoc, including:</p>
+
+<ul>
+<li><a href="./scala-standard-library-api-documentation.html#contribute_api_documentation_bug_reports">Log issues for missing scaladoc documentation</a> - 
+Please <em>follow the issue submission process closely</em> to help prevent duplicate issues being created.</li>
+<li><a href="./scala-standard-library-api-documentation.html">Claim Scaladoc Issues and Provide Documentation</a> - please claim issues prior to working on a specific scaladoc task to prevent duplication of effort. If you sit on an issue for too long without submitting a pull request, it will revert back to unassigned and you will need to re-claim it.</li>
+<li>You can also just 
+<a href="./scala-standard-library-api-documentation.html">submit new Scaladoc</a> 
+without creating an issue, but please look to see if there is an issue already submitted for your task and claim it if there is. If not, please post your intention to work on a specific scaladoc task on scala-internals so that people know what you are doing. </li>
+</ul>
+
+<h3>Examples/Tutorials in Activator Templates</h3>
+
+<p><a href="https://www.lightbend.com/community/core-tools/activator-and-sbt">Lightbend Activator</a> 
+is a tool based on SBT, with a UI mode that is ideal for code based tutorials, overviews and walk-throughs. To contribute an example in activator, you can fork an existing template, edit it, add a tutorial, upload it to github and then submit the github project into the template repository. It&#39;s the fastest way to produce a working code example with tutorial.</p>
+
+<p>Please see <a href="https://www.lightbend.com/activator/template/contribute">Contributing an Activator Template</a> for more details.</p>
+
+<h3>The Main Scala Documentation Site</h3>
+
+<p><a href="https://wiki.scala-lang.org/">docs.scala-lang.org</a> houses the primary source of written, non-API documentation for Scala. It&#39;s a github project that you can fork and submit pull requests from. It includes:</p>
+
+<ul>
+<li>Overviews</li>
+<li>Tutorials</li>
+<li>Conversion Guides from Other Languages</li>
+<li>Cheat Sheets</li>
+<li>A Glossary</li>
+<li>The Scala Style Guide</li>
+<li>The Scala Language Specification</li>
+<li>SIP (Scala Improvement Process) Proposals
+and more</li>
+</ul>
+
+<p>Please read <a href="http://docs.scala-lang.org/contribute.html">contributing to the docs.scala-lang.org site</a> through before embarking on changes. The site uses 
+the <a href="http://jekyllrb.com/">Jekyll</a> markdown engine so you will need to follow the instructions to get that running as well.</p>
+
+<h3>Updating scala-lang.org</h3>
+
+<p>Additional high-level documentation (including documentation on contributing
+to Scala and related projects) is provided on the main 
+<a href="http://scala-lang.org">Scala Language site</a>, and is also kept in the 
+<a href="https://github.com/scala/scala-lang">scala-lang github project</a> which may be forked to create pull requests. </p>
+
+<p>Please read both the
+<a href="http://docs.scala-lang.org/contribute.html">docs.scala-lang.org contribution</a> document and the <a href="https://github.com/scala/scala-lang#scala-langorg">scala-lang.org github README</a> before embarking on any changes to the Scala language site, as it uses the same Jekyll markdown tool and many of the same conventions as the Scala documentation site.</p>
+
+          </div>
+          <div class="sidebar">
+            <div class="sidebar-inner">
+              <div class="contents">Contents</div>
+              <div id="toc"></div>
+              <br/>
+              <div class="alert-info">
+                <a href="/contribute/documentation.html#updating_scalalangorg"><p><strong>Problem with this page?</strong>
+                Please help us fix it!</p></a>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+      <!-- </div> -->
+    <!-- </div> -->
+  </div>
+</div>
 
 
   <div class="footer">

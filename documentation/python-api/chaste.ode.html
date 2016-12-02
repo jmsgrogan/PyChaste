@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>chaste.ode package &mdash; chaste 3.4dev documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="chaste 3.4dev documentation" href="index.html"/>
+        <link rel="up" title="chaste package" href="chaste.html"/>
+        <link rel="next" title="chaste.pde package" href="chaste.pde.html"/>
+        <link rel="prev" title="chaste.mesh package" href="chaste.mesh.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> chaste
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="chaste.html">chaste package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="chaste.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chaste.cell_based.html">chaste.cell_based package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.core.html">chaste.core package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.mesh.html">chaste.mesh package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">chaste.ode package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-chaste.ode">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.pde.html">chaste.pde package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.tutorial.html">chaste.tutorial package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaste.visualization.html">chaste.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaste.html#module-chaste">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">chaste</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="chaste.html">chaste package</a> &raquo;</li>
+      
+    <li>chaste.ode package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/chaste.ode.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="chaste-ode-package">
+<h1>chaste.ode package<a class="headerlink" href="#chaste-ode-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-chaste.ode">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chaste.ode" title="Permalink to this headline">¶</a></h2>
+<p>Ode Module</p>
+<dl class="class">
+<dt id="chaste.ode.AbstractOdeSystem">
+<em class="property">class </em><code class="descclassname">chaste.ode.</code><code class="descname">AbstractOdeSystem</code><a class="headerlink" href="#chaste.ode.AbstractOdeSystem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.ode.AbstractOdeSystem.CalculateRootFunction">
+<code class="descname">CalculateRootFunction</code><span class="sig-paren">(</span><em>(AbstractOdeSystem)arg1</em>, <em>(float)time</em>, <em>(VecDouble)rY</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.ode.AbstractOdeSystem.CalculateRootFunction" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double CalculateRootFunction(AbstractOdeSystem {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+<p>CalculateRootFunction( (AbstractOdeSystem)arg1, (float)time, (VecDouble)rY) -&gt; float :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double CalculateRootFunction(AbstractOdeSystem_wrapper {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystem.CalculateStoppingEvent">
+<code class="descname">CalculateStoppingEvent</code><span class="sig-paren">(</span><em>(AbstractOdeSystem)arg1</em>, <em>(float)time</em>, <em>(VecDouble)rY</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystem.CalculateStoppingEvent" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool CalculateStoppingEvent(AbstractOdeSystem {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+<p>CalculateStoppingEvent( (AbstractOdeSystem)arg1, (float)time, (VecDouble)rY) -&gt; bool :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool CalculateStoppingEvent(AbstractOdeSystem_wrapper {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystem.EvaluateYDerivatives">
+<code class="descname">EvaluateYDerivatives</code><span class="sig-paren">(</span><em>(AbstractOdeSystem)arg1</em>, <em>(float)time</em>, <em>(VecDouble)rY</em>, <em>(VecDouble)rDY</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractOdeSystem.EvaluateYDerivatives" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void EvaluateYDerivatives(AbstractOdeSystem {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;,std::vector&lt;double, std::allocator&lt;double&gt; &gt; {lvalue})</dd>
+</dl>
+</div></blockquote>
+<p>EvaluateYDerivatives( (AbstractOdeSystem)arg1, (float)arg2, (VecDouble)arg3, (VecDouble)arg4) -&gt; None :</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void EvaluateYDerivatives(AbstractOdeSystem_wrapper {lvalue},double,std::vector&lt;double, std::allocator&lt;double&gt; &gt;,std::vector&lt;double, std::allocator&lt;double&gt; &gt; {lvalue})</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystem.GetUseAnalyticJacobian">
+<code class="descname">GetUseAnalyticJacobian</code><span class="sig-paren">(</span><em>(AbstractOdeSystem)arg1</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystem.GetUseAnalyticJacobian" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool GetUseAnalyticJacobian(AbstractOdeSystem {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystem.rGetConstStateVariables">
+<code class="descname">rGetConstStateVariables</code><span class="sig-paren">(</span><em>(AbstractOdeSystem)arg1</em><span class="sig-paren">)</span> &rarr; VecDouble :<a class="headerlink" href="#chaste.ode.AbstractOdeSystem.rGetConstStateVariables" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;double, std::allocator&lt;double&gt; &gt; rGetConstStateVariables(AbstractOdeSystem {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.ode.AbstractOdeSystemInformation">
+<em class="property">class </em><code class="descclassname">chaste.ode.</code><code class="descname">AbstractOdeSystemInformation</code><a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetAnyVariableIndex">
+<code class="descname">GetAnyVariableIndex</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetAnyVariableIndex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetAnyVariableIndex(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetAnyVariableUnits">
+<code class="descname">GetAnyVariableUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(int)index</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetAnyVariableUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetAnyVariableUnits(AbstractOdeSystemInformation {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetAttribute">
+<code class="descname">GetAttribute</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; float :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>double GetAttribute(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetDerivedQuantityIndex">
+<code class="descname">GetDerivedQuantityIndex</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetDerivedQuantityIndex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetDerivedQuantityIndex(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetDerivedQuantityUnits">
+<code class="descname">GetDerivedQuantityUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(int)index</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetDerivedQuantityUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetDerivedQuantityUnits(AbstractOdeSystemInformation {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetFreeVariableName">
+<code class="descname">GetFreeVariableName</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetFreeVariableName" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetFreeVariableName(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetFreeVariableUnits">
+<code class="descname">GetFreeVariableUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetFreeVariableUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetFreeVariableUnits(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetInitialConditions">
+<code class="descname">GetInitialConditions</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecDouble :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetInitialConditions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;double, std::allocator&lt;double&gt; &gt; GetInitialConditions(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetNumberOfAttributes">
+<code class="descname">GetNumberOfAttributes</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetNumberOfAttributes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetNumberOfAttributes(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetNumberOfDerivedQuantities">
+<code class="descname">GetNumberOfDerivedQuantities</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetNumberOfDerivedQuantities" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetNumberOfDerivedQuantities(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetNumberOfParameters">
+<code class="descname">GetNumberOfParameters</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetNumberOfParameters" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetNumberOfParameters(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetParameterIndex">
+<code class="descname">GetParameterIndex</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetParameterIndex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetParameterIndex(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetParameterUnits">
+<code class="descname">GetParameterUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(int)index</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetParameterUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetParameterUnits(AbstractOdeSystemInformation {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetStateVariableIndex">
+<code class="descname">GetStateVariableIndex</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; int :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetStateVariableIndex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>unsigned int GetStateVariableIndex(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetStateVariableUnits">
+<code class="descname">GetStateVariableUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(int)index</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetStateVariableUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetStateVariableUnits(AbstractOdeSystemInformation {lvalue},unsigned int)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.GetSystemName">
+<code class="descname">GetSystemName</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; str :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.GetSystemName" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; GetSystemName(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.HasAnyVariable">
+<code class="descname">HasAnyVariable</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.HasAnyVariable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasAnyVariable(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.HasAttribute">
+<code class="descname">HasAttribute</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.HasAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasAttribute(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.HasDerivedQuantity">
+<code class="descname">HasDerivedQuantity</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.HasDerivedQuantity" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasDerivedQuantity(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.HasParameter">
+<code class="descname">HasParameter</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.HasParameter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasParameter(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.HasStateVariable">
+<code class="descname">HasStateVariable</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; bool :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.HasStateVariable" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>bool HasStateVariable(AbstractOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.Initialise">
+<code class="descname">Initialise</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.Initialise" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Initialise(AbstractOdeSystemInformation_wrapper {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.SetDefaultInitialCondition">
+<code class="descname">SetDefaultInitialCondition</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(int)index</em>, <em>(float)initialCondition</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.SetDefaultInitialCondition" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetDefaultInitialCondition(AbstractOdeSystemInformation {lvalue},unsigned int,double)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.SetDefaultInitialConditions">
+<code class="descname">SetDefaultInitialConditions</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em>, <em>(VecDouble)rInitialConditions</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.SetDefaultInitialConditions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetDefaultInitialConditions(AbstractOdeSystemInformation {lvalue},std::vector&lt;double, std::allocator&lt;double&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetDerivedQuantityNames">
+<code class="descname">rGetDerivedQuantityNames</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetDerivedQuantityNames" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetDerivedQuantityNames(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetDerivedQuantityUnits">
+<code class="descname">rGetDerivedQuantityUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetDerivedQuantityUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetDerivedQuantityUnits(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetParameterNames">
+<code class="descname">rGetParameterNames</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetParameterNames" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetParameterNames(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetParameterUnits">
+<code class="descname">rGetParameterUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetParameterUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetParameterUnits(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetStateVariableNames">
+<code class="descname">rGetStateVariableNames</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetStateVariableNames" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetStateVariableNames(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractOdeSystemInformation.rGetStateVariableUnits">
+<code class="descname">rGetStateVariableUnits</code><span class="sig-paren">(</span><em>(AbstractOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; VecString :<a class="headerlink" href="#chaste.ode.AbstractOdeSystemInformation.rGetStateVariableUnits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>std::vector&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;, std::allocator&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt; &gt; rGetStateVariableUnits(AbstractOdeSystemInformation {lvalue})</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chaste.ode.AbstractPythonOdeSystemInformation">
+<em class="property">class </em><code class="descclassname">chaste.ode.</code><code class="descname">AbstractPythonOdeSystemInformation</code><a class="headerlink" href="#chaste.ode.AbstractPythonOdeSystemInformation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chaste.ode.AbstractPythonOdeSystemInformation.AddVariableName">
+<code class="descname">AddVariableName</code><span class="sig-paren">(</span><em>(AbstractPythonOdeSystemInformation)arg1</em>, <em>(str)rName</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractPythonOdeSystemInformation.AddVariableName" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddVariableName(AbstractPythonOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractPythonOdeSystemInformation.AddVariableUnit">
+<code class="descname">AddVariableUnit</code><span class="sig-paren">(</span><em>(AbstractPythonOdeSystemInformation)arg1</em>, <em>(str)rUnit</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractPythonOdeSystemInformation.AddVariableUnit" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void AddVariableUnit(AbstractPythonOdeSystemInformation {lvalue},std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractPythonOdeSystemInformation.Initialise">
+<code class="descname">Initialise</code><span class="sig-paren">(</span><em>(AbstractPythonOdeSystemInformation)arg1</em><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractPythonOdeSystemInformation.Initialise" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void Initialise(AbstractPythonOdeSystemInformation_wrapper {lvalue})</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="chaste.ode.AbstractPythonOdeSystemInformation.SetIsInitialised">
+<code class="descname">SetIsInitialised</code><span class="sig-paren">(</span><em>(AbstractPythonOdeSystemInformation)arg1</em><span class="optional">[</span>, <em>(bool)isInitialized=True</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; None :<a class="headerlink" href="#chaste.ode.AbstractPythonOdeSystemInformation.SetIsInitialised" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>C++ signature :</dt>
+<dd>void SetIsInitialised(AbstractPythonOdeSystemInformation {lvalue} [,bool=True])</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="chaste.pde.html" class="btn btn-neutral float-right" title="chaste.pde package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="chaste.mesh.html" class="btn btn-neutral" title="chaste.mesh package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, University of Oxford.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.4dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
