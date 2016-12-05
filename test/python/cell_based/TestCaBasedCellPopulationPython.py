@@ -53,11 +53,9 @@ class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
 
         scene = chaste.visualization.VtkScene3()
         scene.SetCellPopulation(cell_population)
-        scene.SetIsInteractive(True)
-        scene.SetSaveAsImages(False)
+        scene.SetSaveAsImages(True)
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath()+"/cell_population")
         scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True);
-        #scene.GetCellPopulationActorGenerator().SetColorByCellType(True);
         scene.GetCellPopulationActorGenerator().SetVolumeOpacity(1.0);
 
         scene_modifier = chaste.cell_based.VtkSceneModifier3()
@@ -70,8 +68,6 @@ class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
         simulator.SetEndTime(300.0)
         simulator.AddSimulationModifier(scene_modifier)
         simulator.Solve()
-
-        scene.StartInteractiveEventHandler()
 
 if __name__ == '__main__':
     unittest.main()

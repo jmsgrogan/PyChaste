@@ -42,13 +42,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ## * Setting up a cell killer
 ## ## Imports and Setup
 
-import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.pde
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
+import chaste.pde # PDEs
 
 class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
@@ -86,12 +88,14 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         for eachCell in cells:
             cell_cycle_model = eachCell.GetCellCycleModel()
             cell_cycle_model.SetDimension(2)
-            cell_cycle_model.SetStemCellG1Duration(4.0);
-            cell_cycle_model.SetHypoxicConcentration(0.1);
-            cell_cycle_model.SetQuiescentConcentration(0.3);
-            cell_cycle_model.SetCriticalHypoxicDuration(8);
-            birth_time = -chaste.core.RandomNumberGenerator.Instance().ranf() * (cell_cycle_model.GetStemCellG1Duration() + 
-                                                                                 cell_cycle_model.GetSG2MDuration())
+            cell_cycle_model.SetStemCellG1Duration(4.0)
+            cell_cycle_model.SetHypoxicConcentration(0.1)
+            cell_cycle_model.SetQuiescentConcentration(0.3)
+            cell_cycle_model.SetCriticalHypoxicDuration(8)
+            g1_duration = cell_cycle_model.GetStemCellG1Duration()
+            sg2m_duration = cell_cycle_model.GetSG2MDuration()
+            rnum = chaste.core.RandomNumberGenerator.Instance().ranf()
+            birth_time = -rnum * (g1_duration + sg2m_duration)
             eachCell.SetBirthTime(birth_time);
     
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation` as before. 
@@ -106,11 +110,11 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("Python/TestSpheroidTutorial")
-        simulator.SetEndTime(50.0)
+        simulator.SetEndTime(5.0)
         
         ## We ask for output every 12 increments
         
-        simulator.SetSamplingTimestepMultiple(12)
+        simulator.SetSamplingTimestepMultiple(100)
 
         ## We define how the springs between cells behave using a force law.
         
@@ -128,7 +132,7 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         
         ## Set up a pde modifier to solve the PDE at each simulation time step
 
-        pde_modifier = chaste.cell_based.EllipticGrowingDomainPdeModifier2(pde,bc, is_neumann_bc)
+        pde_modifier = chaste.cell_based.EllipticGrowingDomainPdeModifier2(pde, bc, is_neumann_bc)
         pde_modifier.SetDependentVariableName("oxygen")
         simulator.AddSimulationModifier(pde_modifier)
         
@@ -140,11 +144,11 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         scene.GetCellPopulationActorGenerator().SetDataLabel("oxygen")  
         scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)
         scene.GetCellPopulationActorGenerator().SetShowVoronoiMeshEdges(False)    
-        scene.SetIsInteractive(True)
-        
+        # JUPYTER_SHOW_FIRST
+
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
-        scene_modifier.SetUpdateFrequency(10)
+        scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
         
         ## Eventually remove apoptotic cells
@@ -153,9 +157,9 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         simulator.AddCellKiller(killer)
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
+        
         scene.Start() 
         simulator.Solve()
-        scene.StartInteractiveEventHandler()
         
         # JUPYTER_TEARDOWN 
         

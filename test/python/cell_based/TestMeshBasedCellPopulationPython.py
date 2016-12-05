@@ -60,8 +60,7 @@ class TestMeshBasedPopulation(chaste.cell_based.AbstractCellBasedTestSuite):
         # Set up the visualizer
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population);
-        scene.SetIsInteractive(True);
-        scene.SetSaveAsAnimation(False);
+        scene.SetSaveAsAnimation(True);
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
           
         modifier = chaste.cell_based.VtkSceneModifier2()
@@ -70,7 +69,7 @@ class TestMeshBasedPopulation(chaste.cell_based.AbstractCellBasedTestSuite):
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("Python/TestMeshBasedCellPopulation");
-        simulator.SetEndTime(10.0);
+        simulator.SetEndTime(5.0);
         simulator.SetSamplingTimestepMultiple(12);
         
         force  = chaste.cell_based.GeneralisedLinearSpringForce2_2()

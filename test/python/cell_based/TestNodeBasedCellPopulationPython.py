@@ -62,8 +62,7 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
         # Set up the visualizer
         scene = chaste.visualization.VtkScene3()
         scene.SetCellPopulation(cell_population);
-        scene.SetIsInteractive(True);
-        scene.SetSaveAsAnimation(False);
+        scene.SetSaveAsAnimation(True);
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
           
         modifier = chaste.cell_based.VtkSceneModifier3()

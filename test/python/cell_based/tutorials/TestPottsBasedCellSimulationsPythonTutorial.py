@@ -39,11 +39,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## The Test
 
-import unittest
-import chaste.mesh
-import chaste.cell_based
-import chaste.visualization
-chaste.init()
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     ## ## Test 1 - A basic node-based simulation
@@ -52,6 +55,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     
     def test_monolayer(self):
         
+        # JUPYTER_SETUP 
+                
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size. 
         ## Here the first three arguments specify the domain width; the number of elements across; and the width of elements. 
@@ -91,8 +96,9 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
-        scene.SetIsInteractive(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
+        scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True)
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory and end time
 
@@ -133,6 +139,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         simulator.AddUpdateRule(adhesion_update_rule)
         
         ## Save snapshot images of the population during the simulation
+        
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
@@ -148,6 +155,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         
         self.assertEqual(cell_population.GetNumRealCells(), 41)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 50.0, 6)
+        
+        # JUPYTER_TEARDOWN 
 
     ## ## Test 2 - Cell sorting
     ## The next test generates a collection of cells, there are two types of cells, labelled ones and non labelled ones, 
@@ -155,6 +164,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
     
     def test_potts_monolayer_cell_sorting(self):
         
+        # JUPYTER_SETUP 
+                
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size. 
         ## We have chosen an 8 by 8 block of elements each consisting of 4 by 4 ( = 16) lattice sites.
@@ -183,7 +194,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         
         ## In order to visualize labelled cells we need to use the following command.
         
-        cell_population.AddCellWriterCellLabelWriter();
+        cell_population.AddCellWriterCellLabelWriter()
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory and end time
 
@@ -222,11 +233,15 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         self.assertEqual(cell_population.GetNumRealCells(), 64)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 20.0, 6)
         
+        # JUPYTER_TEARDOWN 
+        
     ## ## Test 3 - 3D Cell Sorting
     ## The next test extends the previous example to three dimensions.
     
     def test_potts_spheroid_cell_sorting(self):
         
+        # JUPYTER_SETUP 
+                
         ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size.
         ## Here the first three arguments specify the domain width; the number of elements across; and the width of elements. 
@@ -295,7 +310,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         self.assertEqual(cell_population.GetNumRealCells(), 64)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 20.0, 6)
         
-
+        # JUPYTER_TEARDOWN 
+        
 if __name__ == '__main__':
     unittest.main(verbosity=2)
     

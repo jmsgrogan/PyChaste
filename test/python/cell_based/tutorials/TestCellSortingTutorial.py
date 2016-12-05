@@ -41,12 +41,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## The Test
 
-import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
@@ -56,14 +58,16 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
     def test_potts_monolayer_cell_sorting(self):
         
-        ## First, we generate a Potts mesh. To create a PottsMesh, we can use the PottsMeshGenerator. 
+        # JUPYTER_SETUP 
+        
+        ## First, we generate a `Potts` mesh. To create a `PottsMesh`, we can use the `PottsMeshGenerator`. 
         ## This generates a regular square-shaped mesh, in which all elements are the same size. 
         ## We have chosen an 8 by 8 block of elements each consisting of 4 by 4 ( = 16) lattice sites.
         
         generator = chaste.mesh.PottsMeshGenerator2(50, 8, 4, 50, 8, 4)
         mesh = generator.GetMesh()
           
-        ## Having created a mesh, we now create some cells. To do this, we the CellsGenerator helper class, 
+        ## Having created a mesh, we now create some cells. To do this, we the `CellsGenerator` helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
         cells = chaste.cell_based.VecCellPtr()
@@ -78,14 +82,23 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
             if(chaste.core.RandomNumberGenerator.Instance().ranf()<0.5):
                 eachCell.AddCellProperty(label)
           
-        ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. 
+        ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         
         cell_population = chaste.cell_based.PottsBasedCellPopulation2(mesh, cells)
         
         ## In order to visualize labelled cells we need to use the following command.
         
-        cell_population.AddCellWriterCellLabelWriter();
-
+        cell_population.AddCellWriterCellLabelWriter()
+        
+        ## PyChaste can do simple 3D rendering with VTK. We set up a VtkScene so that we can 
+        ## see the population evovle in real time.
+        
+        scene= chaste.visualization.VtkScene2()
+        scene.SetCellPopulation(cell_population)
+        scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True)
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW
+        
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory and end time
 
         simulator = chaste.cell_based.OnLatticeSimulation2(cell_population)
@@ -94,9 +107,9 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         simulator.SetSamplingTimestepMultiple(10)
 
         ## We must now create one or more update rules, which determine the Hamiltonian in the Potts simulation. 
-        ## For this test, we use two update rules based upon a volume constraint (VolumeConstraintPottsUpdateRule) and 
-        ## differential adhesion between cells (DifferentialAdhesionPottsUpdateRule), set appropriate parameters, and 
-        ## pass them to the OnLatticeSimulation.
+        ## For this test, we use two update rules based upon a volume constraint (`VolumeConstraintPottsUpdateRule`) and 
+        ## differential adhesion between cells (`DifferentialAdhesionPottsUpdateRule`), set appropriate parameters, and 
+        ## pass them to the `OnLatticeSimulation`.
         
         volume_constraint_update_rule = chaste.cell_based.VolumeConstraintPottsUpdateRule2()
         volume_constraint_update_rule.SetMatureCellTargetVolume(16)
@@ -113,9 +126,19 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         differential_adhesion_update_rule.SetCellBoundaryAdhesionEnergyParameter(0.16)       
         simulator.AddUpdateRule(differential_adhesion_update_rule)
         
+        ## Set up plotting
+        
+        scene_modifier = chaste.cell_based.VtkSceneModifier2()
+        scene_modifier.SetVtkScene(scene)
+        scene_modifier.SetUpdateFrequency(1000)
+        simulator.AddSimulationModifier(scene_modifier)
+        
         ## To run the simulation, we call `Solve()`.
     
-        simulator.Solve();
+        scene.Start()
+        simulator.Solve()
+        
+        # JUPYTER_TEARDOWN 
         
 if __name__ == '__main__':
     unittest.main(verbosity=2)

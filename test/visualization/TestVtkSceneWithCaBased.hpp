@@ -99,8 +99,7 @@ public:
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsImages(false);
+        p_scene->SetSaveAsImages(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
 
@@ -114,8 +113,6 @@ public:
         simulator.SetEndTime(40.0);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
-
-        p_scene->StartInteractiveEventHandler();
     }
 
     void Test3dCaBasedPopulation()
@@ -139,8 +136,7 @@ public:
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsImages(false);
+        p_scene->SetSaveAsImages(true);
         p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
@@ -151,7 +147,7 @@ public:
         OnLatticeSimulation<3> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithCaBasedPopulation/3d");
         simulator.SetDt(10.0);
-        simulator.SetEndTime(40.0);
+        simulator.SetEndTime(10.0);
         simulator.AddSimulationModifier(p_scene_modifier);
         simulator.Solve();
     }

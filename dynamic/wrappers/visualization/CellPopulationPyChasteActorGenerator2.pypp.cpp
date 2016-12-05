@@ -157,6 +157,28 @@ void register_CellPopulationPyChasteActorGenerator2_class(){
                 , ( bp::arg("colorByCellData") ) );
         
         }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellLabel
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetColorByCellLabel_function_type)( bool ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "SetColorByCellLabel"
+                , SetColorByCellLabel_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellLabel )
+                , ( bp::arg("colorByCellLabel") ) );
+        
+        }
+        { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellMutationState
+        
+            typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetColorByCellMutationState_function_type)( bool ) ;
+            
+            CellPopulationPyChasteActorGenerator2_exposer.def( 
+                "SetColorByCellMutationState"
+                , SetColorByCellMutationState_function_type( &::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellMutationState )
+                , ( bp::arg("colorByCellMutationState") ) );
+        
+        }
         { //::CellPopulationPyChasteActorGenerator< 2 >::SetColorByCellType
         
             typedef CellPopulationPyChasteActorGenerator< 2 > exported_class_t;

@@ -96,7 +96,7 @@ public:
         simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/2d/");
         simulator.SetEndTime(10.0);
         simulator.SetDt(0.1);
-        simulator.SetSamplingTimestepMultiple(1);
+        simulator.SetSamplingTimestepMultiple(10);
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
@@ -107,6 +107,7 @@ public:
 
         boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);
         p_scene_modifier->SetVtkScene(p_scene);
+        p_scene_modifier->SetUpdateFrequency(10);
         p_scene->Start();
 
         MAKE_PTR(VolumeConstraintPottsUpdateRule<2>, p_volume_constraint_update_rule);
@@ -138,15 +139,16 @@ public:
 
         OnLatticeSimulation<3> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/3d/");
-        simulator.SetEndTime(10.0);
+        simulator.SetEndTime(1.0);
         simulator.SetDt(0.1);
-        simulator.SetSamplingTimestepMultiple(1);
+        simulator.SetSamplingTimestepMultiple(100);
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
         p_scene->SetIsInteractive(true);
         p_scene->SetSaveAsImages(false);
-        p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshEdges(true);
+        p_scene->GetCellPopulationActorGenerator()->SetShowCellCentres(true);
+        p_scene->GetCellPopulationActorGenerator()->SetShowPottsMeshOutlines(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);

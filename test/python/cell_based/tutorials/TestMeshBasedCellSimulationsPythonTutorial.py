@@ -39,12 +39,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## Imports and Setup
 
-import unittest
-import chaste
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
@@ -83,7 +85,8 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh, cells)
         
-        ## To view the results of this and the next test in Paraview it is necessary to explicitly generate the required .vtu files. 
+        ## To view the results of this and the next test in Paraview it is necessary to explicitly 
+        ## generate the required .vtu files. 
         
         cell_population.AddPopulationWriterVoronoiDataWriter()
         
@@ -91,9 +94,8 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory and end time.
 
@@ -121,14 +123,12 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
-        
-        print scene_modifier.GetScene()
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
         
         scene.Start() 
         simulator.Solve()
-        scene.End() 
+        scene.End()
         
         # JUPYTER_TEARDOWN 
         
@@ -180,10 +180,8 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        #scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)
         scene.GetCellPopulationActorGenerator().SetShowVoronoiMeshEdges(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
+        # JUPYTER_SHOW
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time.
 

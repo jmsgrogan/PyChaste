@@ -63,10 +63,12 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
     def test_single_scratch(self):
         
+        # JUPYTER_SETUP 
+        
         ## Chaste is based on the concept of `Cells` and `Meshes`. 'Cells' do not store their position in space,
         ## or connectivity, these are managed by a `Mesh`. The first step in most Chaste simulations is to
-        ## set up a mesh, on which we can locate cells. A collection of `Cells` and a `Mesh` are a `Cell Population`
-        ## in Chaste terminology. The most simple `Cell Population` is the `CaBasedCellPopulation` which corresponds
+        ## set up a mesh, on which we can locate cells. A collection of `Cells` and a `Mesh` are a `CellPopulation`
+        ## in Chaste terminology. The most simple `CellPopulation` is the `CaBasedCellPopulation` which corresponds
         ## to cells occupying discrete locations on a regular mesh (lattice). Our first step is to set up the mesh.
         ## Here we set up a 2D lattice.
         
@@ -92,8 +94,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         
         ## We are not interested in cell cycling so we specialize the generator to NoCellCycleModel.
         
-        #cell_generator = chaste.cell_based.CellsGeneratorNoCellCycleModel_2()
-        cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
+        cell_generator = chaste.cell_based.CellsGeneratorNoCellCycleModel_2()
         
         ## We want two sets of cells, starting on opposite sides of the mesh. We use `location_indices` to map cells onto
         ## locations (or Nodes) on the mesh. For our regular mesh the Node indices increase fastest in x, then y. We will
@@ -102,13 +103,16 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         num_cell_layers = 4
         bottom_location_indices = range(num_cell_layers*num_points_in_x)
         num_grid_points = num_points_in_x*num_points_in_y
-        top_location_indices = range(num_grid_points-1, num_grid_points - num_cell_layers*num_points_in_x-1, -1)
-        cell_generator.GenerateGivenLocationIndices(cells, bottom_location_indices + top_location_indices, 
+        top_location_indices = range(num_grid_points-1, num_grid_points - 
+                                     num_cell_layers*num_points_in_x-1, -1)
+        cell_generator.GenerateGivenLocationIndices(cells, 
+                                                    bottom_location_indices + top_location_indices, 
                                                     differentiated_type)            
             
         ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. 
 
-        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh, cells, bottom_location_indices + 
+        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh, cells, 
+                                                                   bottom_location_indices + 
                                                                    top_location_indices)
         
         ## Next, we set up an `OffLatticeSimulation` which will manage the solver. We need to add some custom rules to 
@@ -129,9 +133,10 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## evovle in real time.
         
         scene= chaste.visualization.VtkScene2()
-        scene.SetIsInteractive(True)
         scene.SetCellPopulation(cell_population)
-        scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)    
+        scene.GetCellPopulationActorGenerator().SetShowCellCentres(True)  
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW
         
         ## We add the scene to the simulation for real-time updating using a `VtkSceneModifier`. Such
         ## modifiers are called by the simulator at regular periods during the main time loop and
@@ -140,7 +145,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
-        scene_modifier.SetUpdateFrequency(1)
+        scene_modifier.SetUpdateFrequency(10)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## Chaste and PyChaste use object oriented programming. This may require some background reading,
@@ -160,6 +165,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                 super(PlottingModifier, self).__init__()
                 
                 # Set up a figure for plotting
+                plt.ioff()
                 self.fig = plt.figure()
                 self.fig.ax = self.fig.add_subplot(111) 
                 self.fig.ax.set_xlabel("y - Position (Cell Lengths)")
@@ -182,16 +188,19 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                     for idx in range(num_points_in_y):
                         counter = 0
                         for jdx in range(num_points_in_x):
-                            if cell_population.IsCellAttachedToLocationIndex(jdx + idx*num_points_in_x):
+                            if cell_population.IsCellAttachedToLocationIndex(jdx + 
+                                                                             idx*num_points_in_x):
                                 counter +=1
                         num_cells.append(counter)   
                         
                     self.fig.ax.plot(y_locations, num_cells, color='black')
                     self.fig.canvas.draw()
+                    display.display(self.fig)
+                    display.clear_output(wait=True)
                 
             def SetupSolve(self, cell_population, output_directory):
                 
-                """ Make sure the cell population is in the correct state at the start of the simulation
+                """ Ensure the cell population is in the correct state at the start of the simulation
                 """
                  
                 cell_population.Update()
@@ -213,7 +222,8 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         plt.ion()
         plt.show()
         simulator.Solve();
-        scene.StartInteractiveEventHandler()
+        
+        # JUPYTER_TEARDOWN 
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

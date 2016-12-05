@@ -188,17 +188,25 @@ if PYCHASTE_CAN_IMPORT_IPYTHON:
         """ Class for real time plotting of output
         """
 
-        def __init__(self):
+        def __init__(self, plotting_manager):
+            
+            self.output_format = 'png'
+            self.plotting_manager = plotting_manager
             super(JupyterSceneModifier3, self).__init__()
             
             
         def UpdateAtEndOfTimeStep(self, cell_population):
             
             """ Update the Jupyter notebook plot with the new scene
+            
             """
             
             super(JupyterSceneModifier3, self).UpdateAtEndOfTimeStep(cell_population)
             
             IPython.display.clear_output(wait=True)
-            IPython.display.display(self.plotting_manager.vtk_show(self.GetVtkScene()))
+            
+            if self.output_format == 'png':
+                IPython.display.display(self.plotting_manager.vtk_show(self.GetVtkScene(), output_format=self.output_format))
+            else:
+                self.plotting_manager.vtk_show(self.GetVtkScene(), output_format=self.output_format)
 

@@ -40,12 +40,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## The Test
 
-import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     ## ## Test 1 - A basic vertex-based simulation
@@ -53,6 +55,8 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
     ## using a mutable vertex mesh. Each cell is assigned a stochastic cell-cycle model.
     
     def test_monolayer(self):
+                
+        # JUPYTER_SETUP 
         
         ## First, we generate a vertex mesh. To create a MutableVertexMesh, we can use the HoneycombVertexMeshGenerator. 
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments 
@@ -83,9 +87,8 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()        
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW    
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
 
@@ -118,12 +121,14 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         simulator.AddSimulationModifier(growth_modifier)
 
         ## Save snapshot images of the population during the simulation
+        
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
+        
         scene.Start() 
         simulator.Solve()
         scene.End() 
@@ -131,12 +136,10 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
         
-        self.assertEqual(cell_population.GetNumRealCells(), 4)
-        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 1.0, 6)
+        self.assertEqual(cell_population.GetNumRealCells(), 7)
+        self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 5.0, 6)
         
-        ## To visualize the results, open a new terminal, cd to the Chaste directory, then cd to anim. 
-        ## Then do: java Visualize2dVertexCells /tmp/$USER/testoutput/VertexBasedMonolayer/results_from_time_0. 
-        ## We may have to do: javac Visualize2dVertexCells.java beforehand to create the java executable.
+        # JUPYTER_TEARDOWN 
         
     ## ## Test 2 - introducing periodicity, boundaries and cell killers
     ## In the second test, we run a simple vertex-based simulation, in which we create a monolayer of cells in a periodic geometry, 
@@ -144,6 +147,8 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
     ## cells once they leave a region. As before each cell is assigned a stochastic cell-cycle model.
     
     def test_periodoc_monolayer(self):
+        
+        # JUPYTER_SETUP 
         
         ## First, we generate a periodic vertex mesh. To create a Cylindrical2dVertexMesh, we can use the CylindricalHoneycombVertexMeshGenerator. 
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant and the right hand side is associated with the left hand side. 
@@ -187,6 +192,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## Note that some of these boundary conditions are not compatible with vertex-based simulations see the specific class documentation 
         ## for details, if you try to use an incompatible class then you will receive a warning.
         ## The first step is to define a point on the plane boundary and a normal to the plane.
+        
         point = (0.0, 0.0)
         normal = (0.0, -1.0)
         
@@ -218,10 +224,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         self.assertEqual(cell_population.GetNumRealCells(), 12)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 1.0, 6)
         
-        ## To visualize the results, open a new terminal, cd to the Chaste directory, then cd to anim. 
-        ## Then do: java Visualize2dVertexCells /tmp/$USER/testoutput/VertexBasedMonolayer/results_from_time_0. 
-        ## We may have to do: javac Visualize2dVertexCells.java beforehand to create the java executable.
-        ## You should see that the edges of the mesh are identical on both sides; cells no longer pass through the line y=0; and cells are removed at y=3.
+        # JUPYTER_TEARDOWN 
         
 if __name__ == '__main__':
     unittest.main(verbosity=2)

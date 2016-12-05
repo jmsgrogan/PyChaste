@@ -77,7 +77,9 @@ AbstractPyChasteActorGenerator<DIM>::AbstractPyChasteActorGenerator()
       mVolumeOpacity(0.9),
       mPointSize(0.5),
       mEdgeSize(0.01),
-      mDataLabel()
+      mDataLabel(),
+      mpScaleBar(vtkSmartPointer<vtkScalarBarActor>::New()),
+      mShowScaleBar(false)
 {
     mPointColor*=255.0;
     mVolumeColor*=255.0;
@@ -613,6 +615,21 @@ AbstractPyChasteActorGenerator<DIM>::AbstractPyChasteActorGenerator()
                                                accent_colors[idx][1],
                                                accent_colors[idx][2]);
     }
+
+    mpScaleBar->SetOrientationToHorizontal();
+    mpScaleBar->GetPositionCoordinate()->SetCoordinateSystemToNormalizedViewport();
+    mpScaleBar->GetPositionCoordinate()->SetValue(0.25, 0.84);
+    mpScaleBar->SetWidth(0.5);
+    mpScaleBar->SetHeight(0.1);
+    mpScaleBar->GetTitleTextProperty()->ItalicOff();
+    mpScaleBar->GetLabelTextProperty()->ItalicOff();
+    mpScaleBar->GetTitleTextProperty()->BoldOff();
+    mpScaleBar->GetLabelTextProperty()->BoldOff();
+    mpScaleBar->SetLabelFormat("%.2g");
+    mpScaleBar->GetTitleTextProperty()->SetFontSize(5.0);
+    mpScaleBar->GetLabelTextProperty()->SetFontSize(5.0);
+    mpScaleBar->GetTitleTextProperty()->SetColor(0.0, 0.0, 0.0);
+    mpScaleBar->GetLabelTextProperty()->SetColor(0.0, 0.0, 0.0);
 }
 
 template<unsigned DIM>
@@ -626,6 +643,13 @@ vtkSmartPointer<vtkColorTransferFunction> AbstractPyChasteActorGenerator<DIM>::G
 {
     return mpColorTransferFunction;
 }
+
+template<unsigned DIM>
+vtkSmartPointer<vtkScalarBarActor> AbstractPyChasteActorGenerator<DIM>::GetScaleBar()
+{
+    return mpScaleBar;
+}
+
 
 template<unsigned DIM>
 vtkSmartPointer<vtkColorTransferFunction> AbstractPyChasteActorGenerator<DIM>::GetDiscreteColorTransferFunction()
@@ -655,6 +679,12 @@ template<unsigned DIM>
 void AbstractPyChasteActorGenerator<DIM>::SetEdgeSize(double size)
 {
     mEdgeSize = size;
+}
+
+template<unsigned DIM>
+void AbstractPyChasteActorGenerator<DIM>::SetShowScaleBar(double show)
+{
+    mShowScaleBar = show;
 }
 
 template<unsigned DIM>

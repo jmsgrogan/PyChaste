@@ -42,19 +42,22 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## The Test
 
-import numpy as np
-import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
     ## ## Test 1 - A 2d test
     
     def test_monolayer(self):
+        
+        # JUPYTER_SETUP 
         
         ## First, we generate a vertex mesh using a HoneycombVertexMeshGenerator. 
         
@@ -76,18 +79,18 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("Python/TestTensileTest")
-        simulator.SetEndTime(2.0)
-        simulator.SetSamplingTimestepMultiple(50)
+        simulator.SetEndTime(1.0)
+        simulator.SetSamplingTimestepMultiple(1000)
 
         ## Now create a force law
         
         force = chaste.cell_based.NagaiHondaForce2()
         simulator.AddForce(force)
         
-        ## A NagaiHondaForce assumes that each cell has a target area. The target areas of cells are used to determine 
+        ## A `NagaiHondaForce` assumes that each cell has a target area. The target areas of cells are used to determine 
         ## pressure forces on each vertex and eventually determine the size of each cell in the simulation. 
-        ## In order to assign target areas to cells and update them in each time step we add a SimpleTargetAreaModifier 
-        ## to the simulation, which inherits from AbstractTargetAreaModifier.
+        ## In order to assign target areas to cells and update them in each time step we add a `SimpleTargetAreaModifier` 
+        ## to the simulation, which inherits from `AbstractTargetAreaModifier`.
         
         growth_modifier = chaste.cell_based.SimpleTargetAreaModifier2()
         simulator.AddSimulationModifier(growth_modifier)
@@ -99,8 +102,7 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         normal = (0.0, -1.0)
         bc = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc)
-        
-        point = (0.0, 13.3) # Top of domain
+        point = (0.0, 13.3)
         normal = (0.0, 1.0)
         bc2 = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc2)
@@ -126,7 +128,8 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                 """
                 
                 total_time = chaste.cell_based.SimulationTime.Instance().GetTime()
-                new_location = [self.original_location[0], self.original_location[1]+self.velocity*total_time]
+                new_location = [self.original_location[0], 
+                                self.original_location[1] + self.velocity*total_time]
                 self.boundary_condition.SetPointOnPlane(np.array(new_location))
                     
             def SetupSolve(self, cell_population, output_directory):
@@ -150,21 +153,20 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## evovle in real time.
         
         scene= chaste.visualization.VtkScene2()
-        scene.SetIsInteractive(True)
         scene.SetCellPopulation(cell_population)
-        
-        ## Save snapshot images of the population during the simulation
+        # JUPYTER_SHOW_FIRST
         
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
-        scene_modifier.SetUpdateFrequency(100)
+        scene_modifier.SetUpdateFrequency(1000)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## To run the simulation, we call `Solve()`.
         
         scene.Start()
-        simulator.Solve();
-        scene.StartInteractiveEventHandler()
+        simulator.Solve()
+        
+        # JUPYTER_TEARDOWN 
         
 if __name__ == '__main__':
     unittest.main(verbosity=2)

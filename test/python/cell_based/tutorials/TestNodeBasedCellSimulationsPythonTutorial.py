@@ -39,12 +39,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## The Test
 
-import unittest
-import chaste.core
-chaste.init()
-import chaste.cell_based
-import chaste.mesh
-import chaste.visualization
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
 class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     ## ## Test 1 - A basic node-based simulation
@@ -52,6 +54,8 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     ## using a nodes only mesh. Each cell is assigned a uniform cell-cycle model.
     
     def test_monolayer(self):
+        
+        # JUPYTER_SETUP 
         
         ## The first thing we do is generate a nodes only mesh. To do this we first create a `MutableMesh` to use as a generating mesh. 
         ## To do this we can use the `HoneycombMeshGenerator`. This generates a honeycomb-shaped mesh, in which all nodes are equidistant.
@@ -92,9 +96,8 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()        
+        # JUPYTER_SHOW_FIRST
+        scene.Start()  # JUPYTER_SHOW    
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
 
@@ -109,6 +112,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         simulator.AddForce(force)
 
         ## Save snapshot images of the population during the simulation
+        
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
@@ -125,12 +129,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
         
-        ## To visualize the results, open a new terminal, cd to the Chaste directory, then cd to anim.
-        ## Then do: `java Visualize2dCentreCells /tmp/$USER/testoutput/NodeBasedMonolayer/results_from_time_0`. 
-        ## We need to select the 'Cells as circles' option to be able to visualize the cells, as opposed to just the centres. 
-        ## We may have to do: `javac Visualize2dCentreCells.java` beforehand to create the java executable.
-        ## Alternatively to view in Paraview Load the file `/tmp/$USER/testoutput/NodeBasedMonolayer/results_from_time_0/results.pvd`,
-        ## and add glyphs to represent cells. An option is to use 3D spherical glyphs and then make a planar cut.
+        # JUPYTER_TEARDOWN 
         
     ## ## Test 2 - a basic node-based simulation in 3D
     ## In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and 
@@ -138,7 +137,10 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     
     def test_spheroid(self):
         
+        # JUPYTER_SETUP 
+                
         ## First, we generate a nodes only mesh. This time we specify the nodes manually by first creating a vector of nodes
+        
         file_handler = chaste.core.OutputFileHandler("Python/TestNodeBasedCellSimulationsSpheroidTutorial")
         nodes = []
         nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
@@ -173,9 +175,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene = chaste.visualization.VtkScene3()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()   
+        scene.Start() # JUPYTER_SHOW
 
         ## We then pass in the cell population into an `OffLatticeSimulation`, and set the output directory, output multiple and end time
 
@@ -190,12 +190,14 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         simulator.AddForce(force)
 
         ## Save snapshot images of the population during the simulation
+        
         scene_modifier = chaste.cell_based.VtkSceneModifier3()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
+        
         scene.Start() 
         simulator.Solve()
         scene.End() 
@@ -206,8 +208,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
         
-        ## Note that you cannot view the results of a 3D simulation using the Java visualiser but to visualize the results, 
-        ## use Paraview. See the UserTutorials/VisualizingWithParaview tutorial for more information.
+        # JUPYTER_TEARDOWN 
         
     ## ## Test 3 - a node-based simulation on a restricted geometry
     ## In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and 
@@ -215,7 +216,10 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     
     def test_spheroid_on_sphere(self):
         
+        # JUPYTER_SETUP
+                
         ## In the third test we run a node-based simulation restricted to the surface of a sphere.
+        
         file_handler = chaste.core.OutputFileHandler("Python/TestNodeBasedCellSimulationsRestrictedSpheroidTutorial")
         nodes = []
         nodes.append(chaste.mesh.Node3(0, False, 0.5, 0.0, 0.0))
@@ -239,9 +243,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         scene = chaste.visualization.VtkScene3()
         scene.SetCellPopulation(cell_population)
-        scene.SetSaveAsImages(True)
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-        scene.Start()   
+        scene.Start() # JUPYTER_SHOW
         
         simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
         simulator.SetOutputDirectory("Python/TestNodeBasedCellSimulationsRestrictedSpheroidTutorial")
@@ -282,8 +284,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         self.assertEqual(cell_population.GetNumRealCells(), 8)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
         
-        ## Note that you cannot view the results of a 3D simulation using the Java visualiser but to visualize the results, 
-        ## use Paraview. See the UserTutorials/VisualizingWithParaview tutorial for more information.
+        # JUPYTER_TEARDOWN 
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

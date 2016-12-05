@@ -72,6 +72,9 @@ void register_AbstractPyChasteActorGenerator3_class(){
             "GetDiscreteColorTransferFunction"
             , (::vtkSmartPointer< vtkColorTransferFunction > ( ::AbstractPyChasteActorGenerator<3>::* )(  ))( &::AbstractPyChasteActorGenerator< 3 >::GetDiscreteColorTransferFunction ) )    
         .def( 
+            "GetScaleBar"
+            , (::vtkSmartPointer< vtkScalarBarActor > ( ::AbstractPyChasteActorGenerator<3>::* )(  ))( &::AbstractPyChasteActorGenerator< 3 >::GetScaleBar ) )    
+        .def( 
             "SetDataLabel"
             , (void ( ::AbstractPyChasteActorGenerator<3>::* )( ::std::string const & ))( &::AbstractPyChasteActorGenerator< 3 >::SetDataLabel )
             , ( bp::arg("rLabel") ) )    
@@ -98,6 +101,10 @@ void register_AbstractPyChasteActorGenerator3_class(){
         .def( 
             "SetShowPoints"
             , (void ( ::AbstractPyChasteActorGenerator<3>::* )( bool ))( &::AbstractPyChasteActorGenerator< 3 >::SetShowPoints )
+            , ( bp::arg("show") ) )    
+        .def( 
+            "SetShowScaleBar"
+            , (void ( ::AbstractPyChasteActorGenerator<3>::* )( double ))( &::AbstractPyChasteActorGenerator< 3 >::SetShowScaleBar )
             , ( bp::arg("show") ) )    
         .def( 
             "SetShowVolume"

@@ -31,25 +31,28 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import unittest
-import chaste.cell_based
-import chaste.mesh
-import chaste.core
-import chaste.visualization
-chaste.init()
+import unittest # Python testing framework
+import matplotlib.pyplot as plt # Plotting
+import numpy as np # Matrix tools
+import chaste # The PyChaste module
+chaste.init() # Set up MPI
+import chaste.cell_based # Contains cell populations
+import chaste.mesh # Contains meshes
+import chaste.visualization # Visualization tools
 
-class TestCell(unittest.TestCase):
+class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
     
     def test_construct(self):
+
         file_handler = chaste.core.OutputFileHandler("Python/TestVertexBasedCellPopulation");
         
-        simulation_time = chaste.cell_based.SimulationTime.Instance()
-        simulation_time.SetStartTime(0.0)
- 
+        ## Set up the mesh
+        
         mesh_generator = chaste.mesh.HoneycombVertexMeshGenerator(2, 2)
         mesh = mesh_generator.GetMesh()
         
-        # Make the cells
+        ## Make the cells
+        
         cells = chaste.cell_based.VecCellPtr()
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
@@ -61,7 +64,6 @@ class TestCell(unittest.TestCase):
 #         # Set up the visualizer
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population);
-        scene.SetIsInteractive(False);
         scene.SetSaveAsAnimation(True);
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
          
@@ -75,7 +77,7 @@ class TestCell(unittest.TestCase):
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("Python/TestVertexBasedCellPopulation");
-        simulator.SetEndTime(1.0)
+        simulator.SetEndTime(0.2)
         simulator.AddForce(force)
         simulator.SetSamplingTimestepMultiple(200);
         simulator.AddSimulationModifier(modifier)

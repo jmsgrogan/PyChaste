@@ -93,8 +93,7 @@ public:
 
         boost::shared_ptr<VtkScene<2> > p_scene = boost::shared_ptr<VtkScene<2> >(new VtkScene<2>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(true);
-        p_scene->SetSaveAsImages(false);
+        p_scene->SetSaveAsImages(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<2> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<2> >(new VtkSceneModifier<2>);
@@ -103,7 +102,7 @@ public:
 
         OffLatticeSimulation<2> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/2d/");
-        simulator.SetEndTime(10.0);
+        simulator.SetEndTime(4.0);
         simulator.SetSamplingTimestepMultiple(12);
 
         MAKE_PTR(GeneralisedLinearSpringForce<2>, p_force);
@@ -136,8 +135,7 @@ public:
 
         boost::shared_ptr<VtkScene<3> > p_scene = boost::shared_ptr<VtkScene<3> >(new VtkScene<3>);
         p_scene->SetCellPopulation(p_cell_population);
-        p_scene->SetIsInteractive(false);
-        p_scene->SetSaveAsAnimation(true);
+        p_scene->SetSaveAsImages(true);
         p_scene->SetOutputFilePath(file_handler1.GetOutputDirectoryFullPath()+"/cell_population");
 
         boost::shared_ptr<VtkSceneModifier<3> > p_scene_modifier = boost::shared_ptr<VtkSceneModifier<3> >(new VtkSceneModifier<3>);
@@ -146,8 +144,8 @@ public:
 
         OffLatticeSimulation<3> simulator(*p_cell_population);
         simulator.SetOutputDirectory("TestVtkSceneWithMeshBasedPopulation/3d/");
-        simulator.SetEndTime(5.0);
-        simulator.SetSamplingTimestepMultiple(2);
+        simulator.SetEndTime(2.0);
+        simulator.SetSamplingTimestepMultiple(5);
 
         MAKE_PTR(GeneralisedLinearSpringForce<3>, p_force);
         p_force->SetMeinekeSpringStiffness(30.0); // default is 15.0;

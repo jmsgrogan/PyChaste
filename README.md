@@ -1,14 +1,6 @@
 # PyChaste
 
-This is an unofficial collection of Python bindings for [Chaste](http://www.cs.ox.ac.uk/chaste/). Currently a limited number of
-features are supported, mostly related to Cell Based Chaste.
-
-# Features 
-
-* On- and off-lattice agent based cell modelling
-* Visualization using VTK
-
-See the [project wiki](https://github.com/jmsgrogan/PyChaste/wiki) for some sample applications. Further examples based on the [Chaste User Tutorials](https://chaste.cs.ox.ac.uk/trac/wiki/UserTutorials) are under development.
+This is a Python wrapper for [Chaste](http://www.cs.ox.ac.uk/chaste/). See the [project website](https://jmsgrogan.github.io/PyChaste/) for more details.
 
 ## Getting Started (Linux Only)
 
@@ -21,7 +13,7 @@ conda config --add channels jmsgrogan
 conda install chaste
 ```
 
-This will take 15 to 20 minutes, depending on your internet connection. The `chaste` package is approximately 500 MB in size.
+This will take 15 to 20 minutes, depending on your internet connection.
 
 
 If you do not already have `conda` (a cross platform package manager) you can do:
@@ -32,17 +24,6 @@ chmod 777 Miniconda2-latest-Linux-x86_64.sh
 ./Miniconda2-latest-Linux-x86_64.sh
 conda update conda
 ```
-
-As part of the installation of `conda` you will need to read and accept the license terms, specify where to install `miniconda` and decide if you want to allow the installer to modify your `bashrc`. It is recommended that you agree to the latter, if not the `miniconda` directory needs to be added to your `PATH`. Once `conda` is installed you can install `chaste` as above.
-
-
-If you install this package you can proceed straight to the [project wiki](https://github.com/jmsgrogan/PyChaste/wiki) to run some sample applications, or do:
-
-```bash
-chaste-notebooks
-```
-
-to see a selection of Jupyter notebook demos in your web-browser.
 
 ### Install from Source
 
