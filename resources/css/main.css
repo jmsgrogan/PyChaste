@@ -2607,12 +2607,12 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   float: left;
   height: 180px;
   width: 450px;
-  background: url(https://jmsgrogan.github.io/PyChaste//resources/img/scaladays2014.png) no-repeat;
+  background: url(https://jmsgrogan.github.io/PyChaste/resources/img/scaladays2014.png) no-repeat;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   #scaladays {
-    background-image: url('https://jmsgrogan.github.io/PyChaste//resources/img/scaladays2014@2x.png');
+    background-image: url('https://jmsgrogan.github.io/PyChaste/resources/img/scaladays2014@2x.png');
     background-size: 450px 180px;
   }
 }
@@ -2621,12 +2621,12 @@ div#toc ul > li + ul > li { margin-top: 12px; }
   float: right;
   height: 180px;
   width: 450px;
-  background: url(https://jmsgrogan.github.io/PyChaste//resources/img/scala2014.png) no-repeat;
+  background: url(https://jmsgrogan.github.io/PyChaste/resources/img/scala2014.png) no-repeat;
 }
 
 @media all and (-webkit-min-device-pixel-ratio: 1.5) {
   #scalawksp {
-    background-image: url('https://jmsgrogan.github.io/PyChaste//resources/img/scala2014@2x.png');
+    background-image: url('https://jmsgrogan.github.io/PyChaste/resources/img/scala2014@2x.png');
     background-size: 450px 180px;
   }
 }
