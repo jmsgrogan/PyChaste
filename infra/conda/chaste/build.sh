@@ -39,8 +39,16 @@ cmake .. \
 
 make chaste_project_PyChaste -j $CPU_COUNT
 make project_PyChaste_Python -j $CPU_COUNT
-make install -j $CPU_COUNT
-cp projects/PyChaste/libchaste_project_PyChaste.so $LIBRARY_PATH/chaste/
 cd projects/PyChaste/python
 python setup.py install --prefix=$PREFIX
-
+cd $PREFIX/build
+rm -rf cell_based/CMakeFiles
+rm -rf global/CMakeFiles
+rm -rf io/CMakeFiles
+rm -rf linalg/CMakeFiles
+rm -rf mesh/CMakeFiles
+rm -rf ode/CMakeFiles
+rm -rf pde/CMakeFiles
+rm -rf python
+rm -rf projects/PyChaste/CMakeFiles
+rm -rf projects/PyChaste/python

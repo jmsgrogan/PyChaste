@@ -1,43 +1,69 @@
 #!/bin/bash
 
+# FIXME: This is a hack to make sure the environment is activated.
+# The reason this is required is due to the conda-build issue
+# mentioned below.
+#
+# https://github.com/conda/conda-build/issues/910
+#
+source activate "${CONDA_DEFAULT_ENV}"
+
 mkdir build
 cd build
 
-if [ `uname` == Linux ]; then
-    CC=${PREFIX}/bin/gcc
-    CXX=${PREFIX}/bin/g++
+BUILD_CONFIG=Release
 
-    # FIXME refactor to reuse the python name (e.g. python3.5m)
-    # FIXME detect any kind of suffix (m, or d)
-    include_path=${PREFIX}/include/python${PY_VER}
-    if [ ! -d $include_path ]; then
-      # Control will enter here if $DIRECTORY doesn't exist.
-      include_path=${PREFIX}/include/python${PY_VER}m
-    fi
-
-    PY_LIB="libpython${PY_VER}.so"
-    library_file_path=${PREFIX}/lib/${PY_LIB}
-    if [ ! -f $library_file_path ]; then
-        library_file_path=${PREFIX}/lib/libpython${PY_VER}m.so
-    fi
-
-    cmake .. \
-        -DCMAKE_C_COMPILER=$CC \
-        -DCMAKE_CXX_COMPILER=$CXX \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
-        -DCMAKE_INSTALL_RPATH:STRING="${PREFIX}/lib" \
-        -DBUILD_DOCUMENTATION=OFF \
-        -DBUILD_TESTING=OFF \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_SHARED_LIBS=ON \
-        -DVTK_WRAP_PYTHON=ON \
-        -DVTK_USE_X=OFF \
-        -DVTK_RENDERING_BACKEND=OpenGL \
-        -DPYTHON_EXECUTABLE=${PYTHON} \
-        -DPYTHON_INCLUDE_PATH:PATH=$include_path \
-        -DPYTHON_LIBRARY:FILEPATH=$library_file_path
+# sometimes python is suffixed, these are quick fixes to find some variables
+# in a future PR we should probably switch to cmake find python scripting
+PYTHON_INCLUDE="${PREFIX}/include/python${PY_VER}"
+if [ ! -d $PYTHON_INCLUDE ]; then
+    PYTHON_INCLUDE="${PREFIX}/include/python${PY_VER}m"
 fi
 
-make -j${CPU_COUNT}
-make install
+PYTHON_LIBRARY_EXT="so"
+if [ `uname` = "Darwin" ] ; then
+    PYTHON_LIBRARY_EXT="dylib"
+fi
+
+PYTHON_LIBRARY="${PREFIX}/lib/libpython${PY_VER}.${PYTHON_LIBRARY_EXT}"
+if [ ! -f $PYTHON_LIBRARY ]; then
+    PYTHON_LIBRARY="${PREFIX}/lib/libpython${PY_VER}m.${PYTHON_LIBRARY_EXT}"
+fi
+
+# choose different screen settings for OS X and Linux
+if [ `uname` = "Darwin" ]; then
+    SCREEN_ARGS=(
+        "-DVTK_USE_X:BOOL=OFF"
+        "-DVTK_USE_COCOA:BOOL=ON"
+        "-DVTK_USE_CARBON:BOOL=OFF"
+    )
+else
+    SCREEN_ARGS=(
+        "-DVTK_USE_X:BOOL=ON"
+    )
+fi
+
+# now we can start configuring
+cmake .. -G "Ninja" \
+    -Wno-dev \
+    -DCMAKE_BUILD_TYPE=$BUILD_CONFIG \
+    -DCMAKE_INSTALL_PREFIX:PATH="${PREFIX}" \
+    -DCMAKE_INSTALL_RPATH:PATH="${PREFIX}/lib" \
+    -DBUILD_DOCUMENTATION:BOOL=OFF \
+    -DBUILD_TESTING:BOOL=OFF \
+    -DBUILD_EXAMPLES:BOOL=OFF \
+    -DBUILD_SHARED_LIBS:BOOL=ON \
+    -DPYTHON_EXECUTABLE:FILEPATH=$PYTHON \
+    -DPYTHON_INCLUDE_DIR:PATH=$PYTHON_INCLUDE \
+    -DPYTHON_LIBRARY:FILEPATH=$PYTHON_LIBRARY \
+    -DVTK_ENABLE_VTKPYTHON:BOOL=OFF \
+    -DVTK_WRAP_PYTHON:BOOL=ON \
+    -DVTK_PYTHON_VERSION:STRING="${PY_VER}" \
+    -DVTK_INSTALL_PYTHON_MODULE_DIR:PATH="${SP_DIR}" \
+    -DVTK_HAS_FEENABLEEXCEPT:BOOL=OFF \
+    -DVTK_RENDERING_BACKEND=OpenGL \
+    -DModule_vtkRenderingMatplotlib=ON \
+    ${SCREEN_ARGS[@]}
+
+# compile & install!
+ninja install

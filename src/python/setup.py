@@ -41,9 +41,9 @@ class BinaryDistribution(Distribution):
 
 setup(
     name = "chaste",
-    version = "3.4.dev0",
+    version = "3.4.1",
     packages = find_packages(),
-    install_requires = ['petsc4py==3.7', 'matplotlib', 'numpy'],
+    #install_requires = ['petsc4py==3.7', 'matplotlib', 'numpy'],
     package_data={
         'chaste': ['_chaste_project_PyChaste_preload.so', 
                    'cell_based/_chaste_project_PyChaste_cell_based.so',
@@ -57,7 +57,11 @@ setup(
     data_files = [('tutorials', ['doc/tutorials/TestMeshBasedCellSimulationsPythonTutorial.ipynb', 
                                 'doc/tutorials/TestNodeBasedCellSimulationsPythonTutorial.ipynb',
                                 'doc/tutorials/TestPottsBasedCellSimulationsPythonTutorial.ipynb',
-                                'doc/tutorials/TestVertexBasedCellSimulationsPythonTutorial.ipynb',])],
+                                'doc/tutorials/TestVertexBasedCellSimulationsPythonTutorial.ipynb',
+                                'doc/tutorials/TestScratchAssayTutorial.ipynb',
+                                'doc/tutorials/TestSpheroidTutorial.ipynb',
+                                'doc/tutorials/TestTensileTestTutorial.ipynb',
+                                'doc/tutorials/TestCellSortingTutorial.ipynb'])],
       
     include_package_data=True,
     zip_safe = False,

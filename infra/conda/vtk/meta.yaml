@@ -1,28 +1,33 @@
+{% set version = "7.0.0" %}
+{% set minor_version = ".".join(version.split(".")[:2]) %}
+
 package:
   name: vtk
-  version: "7.0.0"
+  version: {{ version }}
 
 source:
-  url: http://www.vtk.org/files/release/7.0/VTK-7.0.0.tar.gz
-  fn:  VTK-7.0.0.tar.gz
+  url: http://www.vtk.org/files/release/{{ minor_version }}/VTK-{{ version }}.tar.gz
+  fn:  VTK-{{ version }}.tar.gz
+  sha256: 78a990a15ead79cdc752e86b83cfab7dbf5b7ef51ba409db02570dbdd9ec32c3
 
 build:
-  number: 6
+  number: 8
   features:
-    - vc9                [win and py27]
-    - vc10               [win and py34]
-    - vc14               [win and py35]
+    - vc9  # [win and py27]
+    - vc10  # [win and py34]
+    - vc14  # [win and py35]
+  skip: True  # [osx or (linux and py34)]
 
 requirements:
   build:
-    - gcc # [linux and (py27 or py34 or py35)]
-    - mesa # [linux and (py27 or py34 or py35)]
+    - toolchain
     - cmake
+    - ninja
     - python
+
   run:
-    - mesa # [linux and (py27 or py34 or py35)]
-    - libgcc # [linux and (py27 or py34 or py35)]
     - python
+    - future  # used in the generated python wrapperss
 
 test:
   imports:
@@ -43,5 +48,17 @@ test:
 
 about:
   home: http://www.vtk.org/
-  license: BSD
-  summary: VTK is an open-source, freely available software system for 3D computer graphics
+  license: BSD 3-Clause
+  summary: >
+    The Visualization Toolkit (VTK) is an open-source, freely available software
+    system for 3D computer graphics, modeling, image processing, volume 
+    rendering, scientific visualization, and information visualization.
+extra:
+  recipe-maintainers:
+    - Korijn
+    - ivoflipse
+    - Maxyme
+    - ccordoba12
+    - grlee77
+    - msarahan
+    - patricksnape
