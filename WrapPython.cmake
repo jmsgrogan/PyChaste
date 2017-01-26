@@ -33,6 +33,8 @@ add_compile_options(-Wno-unused-local-typedefs)
 
 ######### Find the dependencies for wrapper building ###################### 
 # The Boost Python headers and shared library are needed, use CMake to find them.
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
 find_package(Boost COMPONENTS python REQUIRED)
 
 # Python headers and shared library are also needed. The version needs to be the same
@@ -44,6 +46,8 @@ include_directories(${PYTHON_INCLUDE_DIRS})
 #find_python_module(pyplusplus 1.6.0)
 #find_python_module(pygccxml 1.7.2)
 #find_package(castxml)
+
+find_package(NumPy)
 set(CASTXML_EXE_LOC "/usr/bin/castxml" CACHE FILEPATH "Path to the castxml executable.")
 
 # Find the Chaste and third party dependency header files.
@@ -54,7 +58,7 @@ set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.s
 
 # Collect the header directories for this project
 include(${CMAKE_CURRENT_SOURCE_DIR}/ProjectIncludes.cmake)
-include_directories(${PYCHASTE_INCLUDE_DIRS})
+include_directories(${PYCHASTE_INCLUDE_DIRS} ${PYTHON_NUMPY_INCLUDE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_headers)
 
