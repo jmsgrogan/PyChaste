@@ -32,9 +32,10 @@
 add_compile_options(-Wno-unused-local-typedefs)
 
 ######### Find the dependencies for wrapper building ###################### 
-# The Boost Python headers and shared library are needed, use CMake to find them.
-
+# Add any cmake modules defined in this project
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
+
+# The Boost Python headers and shared library are needed, use CMake to find them.
 find_package(Boost COMPONENTS python REQUIRED)
 
 # Python headers and shared library are also needed. The version needs to be the same
@@ -42,11 +43,12 @@ find_package(Boost COMPONENTS python REQUIRED)
 find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_DIRS})
 
-# These packages are needed for binding generation
+# These packages are needed for binding generation - Need script from M Moll
 #find_python_module(pyplusplus 1.6.0)
 #find_python_module(pygccxml 1.7.2)
 #find_package(castxml)
 
+# Numpy is needed for wrapping
 find_package(NumPy)
 set(CASTXML_EXE_LOC "/usr/bin/castxml" CACHE FILEPATH "Path to the castxml executable.")
 

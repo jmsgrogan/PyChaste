@@ -1,0 +1,18 @@
+# Enable C++ support
+language: cpp
+sudo: required
+dist: trusty
+# Compiler selection
+compiler:
+  - gcc
+# Build steps
+before_script:
+  - sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 422C4D99
+  - echo "deb http://www.cs.ox.ac.uk/chaste/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update -qq
+  - sudo apt-get install chaste-source -y
+  - tar -jxf /usr/src/chaste-source.tar.bz2
+script:
+  - mkdir chaste-build
+  - cd chaste-build
+  - cmake ../chaste-source && make cell_based && ctest -L cell_based
