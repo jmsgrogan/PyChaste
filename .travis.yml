@@ -10,11 +10,9 @@ before_script:
   - sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 422C4D99
   - echo "deb http://www.cs.ox.ac.uk/chaste/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update -qq
-  - sudo apt-get install -y libpq-dev
+  - sudo apt-get install libpq-dev libboost-all-dev python-numpy -y
   - sudo apt-get install chaste-source -y
   - tar -jxf /usr/src/chaste-source.tar.bz2
 script:
-  - ln -s $PWD chaste-source/projects/
-  - mkdir chaste-build
-  - cd chaste-build
+  - ln -s $PWD chaste-source/projects/ && mkdir chaste-build && cd chaste-build
   - cmake ../chaste-source && make project_PyChaste && ctest -L project_PyChaste
