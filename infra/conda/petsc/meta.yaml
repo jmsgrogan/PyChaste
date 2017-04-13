@@ -1,7 +1,8 @@
-{% set build = 1 %}
-{% set version = '3.7.4' %}
-{% set md5 = '5e6fd3c047c4a087d6deecc9a6a77743' %}
+{% set build = 0 %}
+{% set version = '3.7.5' %}
+{% set md5 = 'bfc7a5535d5c18c6ec81ab90f3ce5074' %}
 {% set blas = os.environ.get('BLAS') or 'openblas' %}
+{% set openblas_version = '0.2.19' %}
 {% set mpi = os.environ.get('MPI') or 'mpich' %}
 {% set req = {'mpich':'>=3.2', 'openmpi':'>=1.10'} %}
 
