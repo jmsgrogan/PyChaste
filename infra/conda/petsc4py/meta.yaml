@@ -8,19 +8,19 @@ source:
   md5: 816a20040a6a477bd637f397c9fb5b6d
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
     - python
     - pip
     - numpy
-    - petsc ==3.7.4
+    - petsc ==3.7.5
 
   run:
     - python
     - numpy
-    - petsc ==3.7.4
+    - petsc ==3.7.5
 
 test:
   imports:

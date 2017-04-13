@@ -15,7 +15,7 @@ $PYTHON ./configure \
   --COPTFLAGS=-O3 \
   --CXXOPTFLAGS=-O3 \
   --LIBS=-Wl,-rpath,$PREFIX/lib \
-  --with-blas-lapack-lib=libopenblas.$SO \
+  --with-blas-lapack-lib=libopenblas${SHLIB_EXT} \
   --with-hwloc=0 \
   --with-ssl=0 \
   --with-x=0 \

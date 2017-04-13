@@ -1,6 +1,8 @@
 # How to build the conda package
 
-The `chaste` conda package is on the channel`jmsgrogan` on the anaconda cloud. This directory contains build scripts for the package and all neccessary dependency packages. Assuming conda has been suitably set up, each package can be re-built by doing:
+The `chaste` conda package is on the channel`jmsgrogan` on the anaconda cloud. 
+This directory contains build scripts for the package and all neccessary dependency packages. 
+Assuming conda has been suitably set up, each package can be re-built by doing:
 
 ```bash
 cd <package-name>
@@ -13,7 +15,8 @@ If you are happy with the package it can be uploaded to the anaconda cloud chann
 anaconda upload <path-to_package>
 ```
 
-where `<path-to_package>` will be shown in the console after a successful build. Additional steps are needed for the `chaste` package, detailed below.
+where `<path-to_package>` will be shown in the console after a successful build. 
+Additional steps are needed for the `chaste` package, detailed below.
 
 ## Preparing conda for the build
 
