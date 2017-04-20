@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "visualization_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "CellPopulationPyChasteActorGenerator3.pypp.hpp"
 
 namespace bp = boost::python;

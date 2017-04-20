@@ -42,7 +42,8 @@ import doxygen_extractor
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies, file_cache_t
 from pyplusplus import messages
-from pygccxml import parser
+from pygccxml import parser, declarations
+import classes_to_be_wrapped
 
 chaste_license = """
 /*
@@ -80,6 +81,100 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 """
+
+def add_autowrap_classes_to_builder(builder, component_name):
+    
+    # Convience dict for call policies
+    call_policies_collection = {"reference_existing_object": call_policies.return_value_policy(call_policies.reference_existing_object),
+                                "return_opaque_pointer": call_policies.return_value_policy(call_policies.return_opaque_pointer) ,
+                                "return_internal_reference" : call_policies.return_internal_reference()}
+    
+    # Collect the class names for building the Python documentation
+    # later on.
+    class_collection = []
+    
+    # Remove any classes not in this module
+    classes_not_in_module = []
+    for eachClass in classes_to_be_wrapped.classes:
+        if not eachClass.needs_auto_wrapper_generation():
+            continue
+         
+        if eachClass.component != component_name:
+            full_class_names = eachClass.get_full_names()
+            for eachTemplatedClassName in full_class_names:
+                classes_not_in_module.append(eachTemplatedClassName.replace(' ', ''))
+    builder.classes(lambda decl: decl.name.replace(' ', '') in classes_not_in_module).exclude()
+    
+    # Exclude all iterators
+    builder.classes( lambda x: x.name in ("Iterator",)).exclude()
+    
+    for eachClass in classes_to_be_wrapped.classes:
+        
+        if not eachClass.needs_auto_wrapper_generation():
+            continue
+        
+        if eachClass.component == component_name:
+            short_class_names = eachClass.get_short_names()
+            full_class_names = eachClass.get_full_names()
+            for idx, eachTemplatedClassName in enumerate(full_class_names):
+                
+                # Add the class to the builder and doc names collection
+                class_collection.append(short_class_names[idx])
+                print eachTemplatedClassName, short_class_names[idx]
+                this_class = builder.class_(eachTemplatedClassName)
+                this_class.include() 
+                
+                # Rename the class with its short name, avoids having complicated
+                # class names, which Py++ would have to deal with, in the C++ wrapper code.
+                if(short_class_names[idx] != eachTemplatedClassName):
+                    this_class.rename(short_class_names[idx]) 
+                    
+                # Set up member function excludes and pointer management
+                has_members = False
+                try:
+                    this_class.member_functions()
+                    has_members = True
+                except RuntimeError:
+                    pass
+                if has_members:
+                    for eachMemberFunction in this_class.member_functions():
+                        if eachClass.excluded_methods is not None and eachMemberFunction.name in eachClass.excluded_methods:
+                            eachMemberFunction.exclude()
+                            continue
+                            
+                        break_out = False
+                        if eachClass.pointer_return_methods is not None:
+                            for eachDefinedPointerPolicy in eachClass.pointer_return_methods:
+                                if eachMemberFunction.name == eachDefinedPointerPolicy[0]:
+                                    eachMemberFunction.call_policies = call_policies_collection[eachDefinedPointerPolicy[1]]
+                                    break_out = True
+                                    break
+                        if break_out:
+                            continue
+                                
+                        if declarations.is_pointer(eachMemberFunction.return_type):
+                            eachMemberFunction.call_policies = call_policies_collection["reference_existing_object"]
+                            continue
+                        
+                        if declarations.is_reference(eachMemberFunction.return_type):
+                            eachMemberFunction.call_policies = call_policies_collection["return_internal_reference"]
+                            continue                        
+                        
+                # Explicitly remove abstract class constructors
+#                 if "Abstract" in eachClass.name:
+#                     this_class.constructors().exclude()
+                        
+                # Set up variable excludes
+                if eachClass.excluded_variables is not None:
+                    for eachVariable in eachClass.excluded_variables:
+                        this_class.variables(eachVariable).exclude()                
+                        
+                # Add declaration code
+                if eachClass.declaration_code is not None:
+                    for eachLine in eachClass.declaration_code:
+                        this_class.add_declaration_code(eachLine)
+    
+    return builder, class_collection
 
 def template_replace(class_name):
 
@@ -121,8 +216,6 @@ def strip_undefined_call_policies(module_file):
     
     # Can't access methods in abstract classes by return type to apply call policies with py++. 
     # Need to remove these methods manually.
-    # There is a bug (maybe in boost units) where sometimes static_rational does not have
-    # the full boost::units namespace. Manually put it in.
     lines = []
     with open(module_file) as infile:
         for line in infile:
@@ -149,23 +242,33 @@ def strip_undefined_call_policies(module_file):
 def do_module(module_name, builder, work_dir):
     
     # Set up the builder with module specifc classes
-    this_module = __import__("generate_" + module_name)
-    builder, class_names = this_module.update_builder(builder)
+    builder, class_names = add_autowrap_classes_to_builder(builder, module_name)
     
-    # Write the class names to file
+    # If there is a module with some extra wrapper code execute it
+    has_extra_wrapper_code = False
+    try: 
+        this_module = __import__("generate_" + module_name)
+        has_extra_wrapper_code = True
+    except:
+        pass
+    
+    if has_extra_wrapper_code:
+        builder, class_names = this_module.update_builder(builder, class_names)
+    
+    # Write the class names to file for building Python docs later on
     f = open(work_dir + '/class_names_for_doc.txt','w')
     for eachClass in class_names:
-        f.write('.. autoclass:: chaste.'+module_name+'.'+eachClass + '\n\t:members:\n\n')
+        f.write('.. autoclass:: chaste.' + module_name + '.' + eachClass + '\n\t:members:\n\n')
     f.close()
         
     return builder
        
 def generate_wrappers(args):
-    module_name = args[1]
-    work_dir = args[2]
-    header_collection = args[3]
-    castxml_binary = args[4]
-    includes = args[5:]
+    
+    work_dir = args[1]
+    header_collection = args[2]
+    castxml_binary = args[3]
+    includes = args[4:]
     
     xml_generator_config = parser.xml_generator_configuration_t(xml_generator_path=castxml_binary, 
                                                                 xml_generator="castxml",
@@ -183,36 +286,63 @@ def generate_wrappers(args):
     
     messages.disable(messages.W1040) # unexposed declaration
     messages.disable(messages.W1031) # user to expose non public member function
+    messages.disable(messages.W1023) # user to define some functions
+    messages.disable(messages.W1014) # operator not supported
+    messages.disable(messages.W1036) # can't expose immutable member variables
     
     # Don't wrap std library
     builder.global_ns.namespace('std').exclude()
     
-    if "core" not in module_name and "mesh" not in module_name:
-        builder.register_module_dependency(work_dir + "/dynamic/wrappers/core")
+    # Strip out Instantiation 'tricks' in the header file
+    # todo - the first line is presumably no longer necessary
+    builder.free_function("GetPetscMatForWrapper").call_policies = call_policies.return_value_policy(
+        call_policies.return_opaque_pointer)
+    builder.free_function("GetPetscMatForWrapper").exclude()
+    builder.free_function("Instantiation").exclude()
+    
+    module_names = [
+        "core", 
+        "ode", 
+        "pde",
+        "mesh",
+        "cell_based",
+        "tutorial",
+        "visualization"
+        ]
+    
+    # Just for debugging
+    #ignore_modules = ["mesh", "tutorial", "visualization", "ode", "pde", "core"]
+    ignore_modules = []
+    
+    for idx, module_name in enumerate(module_names):
         
-    if "cell_based" in module_name:
-        builder.register_module_dependency(work_dir + "/dynamic/wrappers/mesh")
-        builder.register_module_dependency(work_dir + "/dynamic/wrappers/pde")
-        builder.register_module_dependency(work_dir + "/dynamic/wrappers/ode")
-    
-    # Set up the builder for each module
-    builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/")
-    
-    # Make the wrapper code
-#     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name, 
-#                                doc_extractor=doxygen_extractor.doxygen_doc_extractor())
-    builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
-    builder.code_creator.user_defined_directories.append(work_dir)
-    builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
-    builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
-    builder.code_creator.license = chaste_license
-    
-    builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
-    
-    # Manually strip any undefined call policies we have missed.
-    for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
-        if file.endswith(".cpp"):
-            strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
+        if module_name in ignore_modules:
+            continue
+        
+        print 'Generating Wrapper Code for: ' + module_name + ' Module.'
+        
+        if "core" not in module_name:
+            builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+module_names[idx-1])
+        
+        # Set up the builder for each module
+        builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/")
+
+        # Make the wrapper code
+    #     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name, 
+    #                                doc_extractor=doxygen_extractor.doxygen_doc_extractor())
+        builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
+        builder.code_creator.user_defined_directories.append(work_dir)
+        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/")
+        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
+        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
+        builder.code_creator.license = chaste_license
+        
+        builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
+        
+        # Manually strip any undefined call policies we have missed.
+        for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
+            if file.endswith(".cpp"):
+                strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

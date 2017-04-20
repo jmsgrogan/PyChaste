@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellCycleModel.pypp.hpp"
 
 namespace bp = boost::python;
@@ -147,7 +147,7 @@ struct AbstractCellCycleModel_wrapper : AbstractCellCycleModel, bp::wrapper< Abs
 
 void register_AbstractCellCycleModel_class(){
 
-    bp::class_< AbstractCellCycleModel_wrapper, bp::bases< Identifiable >, boost::noncopyable >( "AbstractCellCycleModel", bp::init< AbstractCellCycleModel const & >(( bp::arg("rModel") )) )    
+    bp::class_< AbstractCellCycleModel_wrapper, boost::noncopyable >( "AbstractCellCycleModel", bp::init< AbstractCellCycleModel const & >(( bp::arg("rModel") )) )    
         .def( bp::init< >() )    
         .def( 
             "CanCellTerminallyDifferentiate"
@@ -156,7 +156,7 @@ void register_AbstractCellCycleModel_class(){
         .def( 
             "CreateCellCycleModel"
             , bp::pure_virtual( (::AbstractCellCycleModel * ( ::AbstractCellCycleModel::* )(  ))(&::AbstractCellCycleModel::CreateCellCycleModel) )
-            , bp::return_value_policy< bp::manage_new_object >() )    
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetAge"
             , (double ( ::AbstractCellCycleModel::* )(  ))( &::AbstractCellCycleModel::GetAge ) )    

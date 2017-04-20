@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "Node3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -48,6 +48,22 @@ void register_Node3_class(){
         typedef bp::class_< Node< 3 > > Node3_exposer_t;
         Node3_exposer_t Node3_exposer = Node3_exposer_t( "Node3", bp::init< unsigned int, ChastePoint< 3 >, bp::optional< bool > >(( bp::arg("index"), bp::arg("point"), bp::arg("isBoundaryNode")=(bool)(false) )) );
         bp::scope Node3_scope( Node3_exposer );
+        { //::Node< 3 >::ContainingBoundaryElementIterator
+            typedef bp::class_< Node< 3 >::ContainingBoundaryElementIterator > ContainingBoundaryElementIterator_exposer_t;
+            ContainingBoundaryElementIterator_exposer_t ContainingBoundaryElementIterator_exposer = ContainingBoundaryElementIterator_exposer_t( "ContainingBoundaryElementIterator", bp::init< std::set< unsigned int >::const_iterator >(( bp::arg("indexIterator") )) );
+            bp::scope ContainingBoundaryElementIterator_scope( ContainingBoundaryElementIterator_exposer );
+            bp::implicitly_convertible< std::set< unsigned int >::const_iterator, Node< 3 >::ContainingBoundaryElementIterator >();
+            ContainingBoundaryElementIterator_exposer.def( bp::self != bp::self );
+            ContainingBoundaryElementIterator_exposer.def( bp::self == bp::self );
+        }
+        { //::Node< 3 >::ContainingElementIterator
+            typedef bp::class_< Node< 3 >::ContainingElementIterator > ContainingElementIterator_exposer_t;
+            ContainingElementIterator_exposer_t ContainingElementIterator_exposer = ContainingElementIterator_exposer_t( "ContainingElementIterator", bp::init< std::set< unsigned int >::const_iterator >(( bp::arg("indexIterator") )) );
+            bp::scope ContainingElementIterator_scope( ContainingElementIterator_exposer );
+            bp::implicitly_convertible< std::set< unsigned int >::const_iterator, Node< 3 >::ContainingElementIterator >();
+            ContainingElementIterator_exposer.def( bp::self != bp::self );
+            ContainingElementIterator_exposer.def( bp::self == bp::self );
+        }
         Node3_exposer.def( bp::init< unsigned int, std::vector< double >, bp::optional< bool > >(( bp::arg("index"), bp::arg("coords"), bp::arg("isBoundaryNode")=(bool)(false) )) );
         Node3_exposer.def( bp::init< unsigned int, boost::numeric::ublas::c_vector< double, 3 >, bp::optional< bool > >(( bp::arg("index"), bp::arg("location"), bp::arg("isBoundaryNode")=(bool)(false) )) );
         Node3_exposer.def( bp::init< unsigned int, bp::optional< bool, double, double, double > >(( bp::arg("index"), bp::arg("isBoundaryNode")=(bool)(false), bp::arg("v1")=0, bp::arg("v2")=0, bp::arg("v3")=0 )) );
@@ -448,6 +464,28 @@ void register_Node3_class(){
                 , bp::return_internal_reference< >() );
         
         }
+        { //::Node< 3 >::rGetContainingBoundaryElementIndices
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > & ( exported_class_t::*rGetContainingBoundaryElementIndices_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetContainingBoundaryElementIndices"
+                , rGetContainingBoundaryElementIndices_function_type( &::Node< 3 >::rGetContainingBoundaryElementIndices )
+                , bp::return_internal_reference< >() );
+        
+        }
+        { //::Node< 3 >::rGetContainingElementIndices
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::std::set< unsigned int > & ( exported_class_t::*rGetContainingElementIndices_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetContainingElementIndices"
+                , rGetContainingElementIndices_function_type( &::Node< 3 >::rGetContainingElementIndices )
+                , bp::return_internal_reference< >() );
+        
+        }
         { //::Node< 3 >::rGetLocation
         
             typedef Node< 3 > exported_class_t;
@@ -456,7 +494,40 @@ void register_Node3_class(){
             Node3_exposer.def( 
                 "rGetLocation"
                 , rGetLocation_function_type( &::Node< 3 >::rGetLocation )
-                , bp::return_value_policy< bp::copy_const_reference >() );
+                , bp::return_internal_reference< >() );
+        
+        }
+        { //::Node< 3 >::rGetModifiableLocation
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 3 > & ( exported_class_t::*rGetModifiableLocation_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetModifiableLocation"
+                , rGetModifiableLocation_function_type( &::Node< 3 >::rGetModifiableLocation )
+                , bp::return_internal_reference< >() );
+        
+        }
+        { //::Node< 3 >::rGetNeighbours
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::std::vector< unsigned int > & ( exported_class_t::*rGetNeighbours_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetNeighbours"
+                , rGetNeighbours_function_type( &::Node< 3 >::rGetNeighbours )
+                , bp::return_internal_reference< >() );
+        
+        }
+        { //::Node< 3 >::rGetNodeAttributes
+        
+            typedef Node< 3 > exported_class_t;
+            typedef ::std::vector< double > & ( exported_class_t::*rGetNodeAttributes_function_type)(  ) ;
+            
+            Node3_exposer.def( 
+                "rGetNodeAttributes"
+                , rGetNodeAttributes_function_type( &::Node< 3 >::rGetNodeAttributes )
+                , bp::return_internal_reference< >() );
         
         }
         bp::register_ptr_to_python< boost::shared_ptr< Node<3> > >();

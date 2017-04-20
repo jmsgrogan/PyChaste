@@ -37,19 +37,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "ode_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractOdeSystemInformation.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractOdeSystemInformation_wrapper : AbstractOdeSystemInformation, bp::wrapper< AbstractOdeSystemInformation > {
-
-    AbstractOdeSystemInformation_wrapper( )
-    : AbstractOdeSystemInformation( )
-      , bp::wrapper< AbstractOdeSystemInformation >(){
-        // null constructor
-    
-    }
 
     virtual void Initialise(  ){
         bp::override func_Initialise = this->get_override( "Initialise" );
@@ -60,7 +53,7 @@ struct AbstractOdeSystemInformation_wrapper : AbstractOdeSystemInformation, bp::
 
 void register_AbstractOdeSystemInformation_class(){
 
-    bp::class_< AbstractOdeSystemInformation_wrapper, boost::noncopyable >( "AbstractOdeSystemInformation", bp::init< >() )    
+    bp::class_< AbstractOdeSystemInformation_wrapper, boost::noncopyable >( "AbstractOdeSystemInformation" )    
         .def( 
             "GetAnyVariableIndex"
             , (unsigned int ( ::AbstractOdeSystemInformation::* )( ::std::string const & )const)( &::AbstractOdeSystemInformation::GetAnyVariableIndex )
@@ -152,26 +145,26 @@ void register_AbstractOdeSystemInformation_class(){
         .def( 
             "rGetDerivedQuantityNames"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetDerivedQuantityNames )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetDerivedQuantityUnits"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetDerivedQuantityUnits )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetParameterNames"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetParameterNames )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetParameterUnits"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetParameterUnits )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetStateVariableNames"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetStateVariableNames )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetStateVariableUnits"
             , (::std::vector< std::string > const & ( ::AbstractOdeSystemInformation::* )(  )const)( &::AbstractOdeSystemInformation::rGetStateVariableUnits )
-            , bp::return_value_policy< bp::copy_const_reference >() );
+            , bp::return_internal_reference< >() );
 
 }

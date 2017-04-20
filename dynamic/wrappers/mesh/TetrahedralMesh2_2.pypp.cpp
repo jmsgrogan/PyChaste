@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "TetrahedralMesh2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -295,6 +295,18 @@ struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 
         AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh( width, height, stagger );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -329,6 +341,18 @@ struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -515,227 +539,666 @@ struct TetrahedralMesh_less__2_comma__2__greater__wrapper : TetrahedralMesh< 2, 
 
 void register_TetrahedralMesh2_2_class(){
 
-    bp::class_< TetrahedralMesh_less__2_comma__2__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 2, 2 > >, boost::noncopyable >( "TetrahedralMesh2_2", bp::init< >() )    
-        .def( 
-            "CheckIsConforming"
-            , (bool ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::CheckIsConforming ) )    
-        .def( 
-            "Clear"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::Clear)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Clear) )    
-        .def( 
-            "ConstructFromMeshReader"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::AbstractMeshReader< 2, 2 > & ))(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::AbstractMeshReader< 2, 2 > & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
-            , ( bp::arg("rMeshReader") ) )    
-        .def( 
-            "EdgesBegin"
-            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesBegin ) )    
-        .def( 
-            "EdgesEnd"
-            , (::TetrahedralMesh< 2, 2 >::EdgeIterator ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgesEnd ) )    
-        .def( 
-            "GetAngleBetweenNodes"
-            , (double ( ::TetrahedralMesh<2, 2>::* )( unsigned int,unsigned int ))( &::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes )
-            , ( bp::arg("indexA"), bp::arg("indexB") ) )    
-        .def( 
-            "GetContainingElementIndexWithInitialGuess"
-            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const &,unsigned int,bool ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndexWithInitialGuess )
-            , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) )    
-        .def( 
-            "GetContainingElementIndices"
-            , (::std::vector< unsigned int > ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndices )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetInverseJacobianForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) )    
-        .def( 
-            "GetJacobianForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetNearestElementIndex"
-            , (unsigned int ( ::TetrahedralMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))( &::TetrahedralMesh< 2, 2 >::GetNearestElementIndex )
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetSurfaceArea"
-            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetSurfaceArea ) )    
-        .def( 
-            "GetVolume"
-            , (double ( ::TetrahedralMesh<2, 2>::* )(  ))( &::TetrahedralMesh< 2, 2 >::GetVolume ) )    
-        .def( 
-            "GetWeightedDirectionForBoundaryElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "GetWeightedDirectionForElement"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
-            , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) )    
-        .def( 
-            "PermuteNodes"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > const & ))( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
-            , ( bp::arg("perm") ) )    
-        .def( 
-            "ReadNodesPerProcessorFile"
-            , (void ( ::TetrahedralMesh<2, 2>::* )( ::std::string const & ))(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
-            , ( bp::arg("rNodesPerProcessorFile") ) )    
-        .def( 
-            "RefreshJacobianCachedData"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) )    
-        .def( 
-            "RefreshMesh"
-            , (void ( ::TetrahedralMesh<2, 2>::* )(  ))(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) )    
-        .def( 
-            "SolveBoundaryElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveElementMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "SolveNodeMapping"
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping)
-            , ( bp::arg("index") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid<2> ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox)
-            , ( bp::arg("rNodes") ) )    
-        .def( 
-            "CalculateBoundingBox"
-            , (::ChasteCuboid< 2 > ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
-            , (::ChasteCuboid< 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfBoundaryElement"
-            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
-            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
-            , ( bp::arg("faceIndex") ) )    
-        .def( 
-            "CalculateDesignatedOwnershipOfElement"
-            , (bool ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
-            , (bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
-            , ( bp::arg("elementIndex") ) )    
-        .def( 
-            "CalculateMinMaxEdgeLengths"
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) )    
-        .def( 
-            "ConstructCuboid"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) )    
-        .def( 
-            "ConstructLinearMesh"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
-            , ( bp::arg("width") ) )    
-        .def( 
-            "ConstructRectangularMesh"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( unsigned int,unsigned int,bool ))(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int,unsigned int,bool ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
-            , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) )    
-        .def( 
-            "GetHaloNodeIndices"
-            , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::std::vector< unsigned int > & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
-            , ( bp::arg("rHaloIndices") ) )    
-        .def( 
-            "GetMaximumNodeIndex"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  ))(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) )    
-        .def( 
-            "GetNearestNodeIndex"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )( ::ChastePoint< 2 > const & ))(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::ChastePoint< 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
-            , ( bp::arg("rTestPoint") ) )    
-        .def( 
-            "GetNumAllNodes"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) )    
-        .def( 
-            "GetNumBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) )    
-        .def( 
-            "GetNumCableElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) )    
-        .def( 
-            "GetNumElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) )    
-        .def( 
-            "GetNumLocalBoundaryElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) )    
-        .def( 
-            "GetNumLocalElements"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) )    
-        .def( 
-            "GetNumNodes"
-            , (unsigned int ( ::AbstractMesh<2, 2>::* )(  )const)(&::AbstractMesh< 2, 2 >::GetNumNodes)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) )    
-        .def( 
-            "GetNumVertices"
-            , (unsigned int ( ::AbstractTetrahedralMesh<2, 2>::* )(  )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
-            , (unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) )    
-        .def( 
-            "GetVectorFromAtoB"
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
-            , (::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
-            , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) )    
-        .def( 
-            "GetWidth"
-            , (double ( ::AbstractMesh<2, 2>::* )( unsigned int const & )const)(&::AbstractMesh< 2, 2 >::GetWidth)
-            , (double ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( unsigned int const & )const)(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
-            , ( bp::arg("rDimension") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&::AbstractMesh< 2, 2 >::Rotate)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Rotate)
-            , ( bp::arg("rotationMatrix") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 3 >,double ))( &::AbstractMesh< 2, 2 >::Rotate )
-            , ( bp::arg("axis"), bp::arg("angle") ) )    
-        .def( 
-            "Rotate"
-            , (void ( ::AbstractMesh<2, 2>::* )( double ))( &::AbstractMesh< 2, 2 >::Rotate )
-            , ( bp::arg("theta") ) )    
-        .def( 
-            "Scale"
-            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))(&::AbstractMesh< 2, 2 >::Scale)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( double const,double const,double const ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Scale)
-            , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) )    
-        .def( 
-            "SetDistributedVectorFactory"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::DistributedVectorFactory * ))(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::DistributedVectorFactory * ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
-            , ( bp::arg("pFactory") ) )    
-        .def( 
-            "SetElementOwnerships"
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )(  ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<2, 2>::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&::AbstractMesh< 2, 2 >::Translate)
-            , (void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::* )( ::boost::numeric::ublas::c_vector< double, 2 > const & ))(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Translate)
-            , ( bp::arg("rDisplacement") ) )    
-        .def( 
-            "Translate"
-            , (void ( ::AbstractMesh<2, 2>::* )( double const,double const,double const ))( &::AbstractMesh< 2, 2 >::Translate )
-            , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+    { //::TetrahedralMesh< 2, 2 >
+        typedef bp::class_< TetrahedralMesh_less__2_comma__2__greater__wrapper, bp::bases< AbstractTetrahedralMesh< 2, 2 > >, boost::noncopyable > TetrahedralMesh2_2_exposer_t;
+        TetrahedralMesh2_2_exposer_t TetrahedralMesh2_2_exposer = TetrahedralMesh2_2_exposer_t( "TetrahedralMesh2_2", bp::init< >() );
+        bp::scope TetrahedralMesh2_2_scope( TetrahedralMesh2_2_exposer );
+        bp::class_< TetrahedralMesh< 2, 2 >::EdgeIterator, boost::noncopyable >( "EdgeIterator", bp::init< TetrahedralMesh< 2, 2 > &, unsigned int >(( bp::arg("rMesh"), bp::arg("elemIndex") )) )    
+            .def( 
+                "GetNodeA"
+                , (::Node< 2 > * ( ::TetrahedralMesh<2, 2>::EdgeIterator::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgeIterator::GetNodeA )
+                , bp::return_value_policy< bp::reference_existing_object >() )    
+            .def( 
+                "GetNodeB"
+                , (::Node< 2 > * ( ::TetrahedralMesh<2, 2>::EdgeIterator::* )(  ))( &::TetrahedralMesh< 2, 2 >::EdgeIterator::GetNodeB )
+                , bp::return_value_policy< bp::reference_existing_object >() )    
+            .def( bp::self != bp::self );
+        { //::TetrahedralMesh< 2, 2 >::CheckIsConforming
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CheckIsConforming_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CheckIsConforming"
+                , CheckIsConforming_function_type( &::TetrahedralMesh< 2, 2 >::CheckIsConforming ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::Clear
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Clear_function_type)(  ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_Clear_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Clear"
+                , Clear_function_type(&::TetrahedralMesh< 2, 2 >::Clear)
+                , default_Clear_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Clear) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_ConstructFromMeshReader_function_type)( ::AbstractMeshReader< 2, 2 > & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "ConstructFromMeshReader"
+                , ConstructFromMeshReader_function_type(&::TetrahedralMesh< 2, 2 >::ConstructFromMeshReader)
+                , default_ConstructFromMeshReader_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructFromMeshReader)
+                , ( bp::arg("rMeshReader") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::EdgesBegin
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::TetrahedralMesh< 2, 2 >::EdgeIterator ( exported_class_t::*EdgesBegin_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "EdgesBegin"
+                , EdgesBegin_function_type( &::TetrahedralMesh< 2, 2 >::EdgesBegin ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::EdgesEnd
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::TetrahedralMesh< 2, 2 >::EdgeIterator ( exported_class_t::*EdgesEnd_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "EdgesEnd"
+                , EdgesEnd_function_type( &::TetrahedralMesh< 2, 2 >::EdgesEnd ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetAngleBetweenNodes_function_type)( unsigned int,unsigned int ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetAngleBetweenNodes"
+                , GetAngleBetweenNodes_function_type( &::TetrahedralMesh< 2, 2 >::GetAngleBetweenNodes )
+                , ( bp::arg("indexA"), bp::arg("indexB") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetContainingElementIndexWithInitialGuess
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetContainingElementIndexWithInitialGuess_function_type)( ::ChastePoint< 2 > const &,unsigned int,bool ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetContainingElementIndexWithInitialGuess"
+                , GetContainingElementIndexWithInitialGuess_function_type( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndexWithInitialGuess )
+                , ( bp::arg("rTestPoint"), bp::arg("startingElementGuess"), bp::arg("strict")=(bool)(false) ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetContainingElementIndices
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::std::vector< unsigned int > ( exported_class_t::*GetContainingElementIndices_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetContainingElementIndices"
+                , GetContainingElementIndices_function_type( &::TetrahedralMesh< 2, 2 >::GetContainingElementIndices )
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetInverseJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double &,::boost::numeric::ublas::c_matrix< double, 2, 2 > & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetInverseJacobianForElement"
+                , GetInverseJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetInverseJacobianForElement)
+                , default_GetInverseJacobianForElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetInverseJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant"), bp::arg("rInverseJacobian") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetJacobianForElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetJacobianForElement_function_type)( unsigned int,::boost::numeric::ublas::c_matrix< double, 2, 2 > &,double & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetJacobianForElement"
+                , GetJacobianForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetJacobianForElement)
+                , default_GetJacobianForElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetJacobianForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rJacobian"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetNearestElementIndex
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNearestElementIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNearestElementIndex"
+                , GetNearestElementIndex_function_type( &::TetrahedralMesh< 2, 2 >::GetNearestElementIndex )
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetSurfaceArea
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetSurfaceArea_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetSurfaceArea"
+                , GetSurfaceArea_function_type( &::TetrahedralMesh< 2, 2 >::GetSurfaceArea ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetVolume
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetVolume_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetVolume"
+                , GetVolume_function_type( &::TetrahedralMesh< 2, 2 >::GetVolume ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForBoundaryElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetWeightedDirectionForBoundaryElement"
+                , GetWeightedDirectionForBoundaryElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForBoundaryElement)
+                , default_GetWeightedDirectionForBoundaryElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForBoundaryElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetWeightedDirectionForElement_function_type)( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetWeightedDirectionForElement"
+                , GetWeightedDirectionForElement_function_type(&::TetrahedralMesh< 2, 2 >::GetWeightedDirectionForElement)
+                , default_GetWeightedDirectionForElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWeightedDirectionForElement)
+                , ( bp::arg("elementIndex"), bp::arg("rWeightedDirection"), bp::arg("rJacobianDeterminant") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)(  ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_PermuteNodes_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type(&::TetrahedralMesh< 2, 2 >::PermuteNodes)
+                , default_PermuteNodes_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_PermuteNodes) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::PermuteNodes
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*PermuteNodes_function_type)( ::std::vector< unsigned int > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "PermuteNodes"
+                , PermuteNodes_function_type( &::TetrahedralMesh< 2, 2 >::PermuteNodes )
+                , ( bp::arg("perm") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_ReadNodesPerProcessorFile_function_type)( ::std::string const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "ReadNodesPerProcessorFile"
+                , ReadNodesPerProcessorFile_function_type(&::TetrahedralMesh< 2, 2 >::ReadNodesPerProcessorFile)
+                , default_ReadNodesPerProcessorFile_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ReadNodesPerProcessorFile)
+                , ( bp::arg("rNodesPerProcessorFile") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshJacobianCachedData_function_type)(  ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_RefreshJacobianCachedData_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "RefreshJacobianCachedData"
+                , RefreshJacobianCachedData_function_type(&::TetrahedralMesh< 2, 2 >::RefreshJacobianCachedData)
+                , default_RefreshJacobianCachedData_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshJacobianCachedData) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::RefreshMesh
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*RefreshMesh_function_type)(  ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_RefreshMesh_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "RefreshMesh"
+                , RefreshMesh_function_type(&::TetrahedralMesh< 2, 2 >::RefreshMesh)
+                , default_RefreshMesh_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_RefreshMesh) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveBoundaryElementMapping
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*SolveBoundaryElementMapping_function_type)( unsigned int ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "SolveBoundaryElementMapping"
+                , SolveBoundaryElementMapping_function_type( &TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveBoundaryElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveElementMapping
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*SolveElementMapping_function_type)( unsigned int ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "SolveElementMapping"
+                , SolveElementMapping_function_type( &TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveElementMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::TetrahedralMesh< 2, 2 >::SolveNodeMapping
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*SolveNodeMapping_function_type)( unsigned int ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "SolveNodeMapping"
+                , SolveNodeMapping_function_type( &TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SolveNodeMapping )
+                , ( bp::arg("index") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*CalculateBoundingBox_function_type)( ::std::vector< Node<2> * > const & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type( &TetrahedralMesh_less__2_comma__2__greater__wrapper::CalculateBoundingBox )
+                , ( bp::arg("rNodes") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::CalculateBoundingBox
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::ChasteCuboid< 2 > ( exported_class_t::*CalculateBoundingBox_function_type)(  ) const;
+            typedef ::ChasteCuboid< 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_CalculateBoundingBox_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CalculateBoundingBox"
+                , CalculateBoundingBox_function_type(&::AbstractMesh< 2, 2 >::CalculateBoundingBox)
+                , default_CalculateBoundingBox_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            typedef bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfBoundaryElement_function_type)( unsigned int ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CalculateDesignatedOwnershipOfBoundaryElement"
+                , CalculateDesignatedOwnershipOfBoundaryElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfBoundaryElement)
+                , default_CalculateDesignatedOwnershipOfBoundaryElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfBoundaryElement)
+                , ( bp::arg("faceIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef bool ( exported_class_t::*CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            typedef bool ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_CalculateDesignatedOwnershipOfElement_function_type)( unsigned int ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CalculateDesignatedOwnershipOfElement"
+                , CalculateDesignatedOwnershipOfElement_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateDesignatedOwnershipOfElement)
+                , default_CalculateDesignatedOwnershipOfElement_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateDesignatedOwnershipOfElement)
+                , ( bp::arg("elementIndex") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_CalculateMinMaxEdgeLengths_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "CalculateMinMaxEdgeLengths"
+                , CalculateMinMaxEdgeLengths_function_type(&::AbstractTetrahedralMesh< 2, 2 >::CalculateMinMaxEdgeLengths)
+                , default_CalculateMinMaxEdgeLengths_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_CalculateMinMaxEdgeLengths) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_ConstructCuboid_function_type)( unsigned int,unsigned int,unsigned int ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "ConstructCuboid"
+                , ConstructCuboid_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructCuboid)
+                , default_ConstructCuboid_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructCuboid)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructLinearMesh_function_type)( unsigned int ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_ConstructLinearMesh_function_type)( unsigned int ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "ConstructLinearMesh"
+                , ConstructLinearMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructLinearMesh)
+                , default_ConstructLinearMesh_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructLinearMesh)
+                , ( bp::arg("width") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_ConstructRectangularMesh_function_type)( unsigned int,unsigned int,bool ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "ConstructRectangularMesh"
+                , ConstructRectangularMesh_function_type(&::AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh)
+                , default_ConstructRectangularMesh_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_ConstructRectangularMesh)
+                , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetHaloNodeIndices_function_type)( ::std::vector< unsigned int > & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetHaloNodeIndices"
+                , GetHaloNodeIndices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)
+                , default_GetHaloNodeIndices_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetHaloNodeIndices)
+                , ( bp::arg("rHaloIndices") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetMaximumNodeIndex_function_type)(  ) ;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetMaximumNodeIndex_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetMaximumNodeIndex"
+                , GetMaximumNodeIndex_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetMaximumNodeIndex)
+                , default_GetMaximumNodeIndex_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetMaximumNodeIndex) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNearestNodeIndex_function_type)( ::ChastePoint< 2 > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNearestNodeIndex"
+                , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
+                , default_GetNearestNodeIndex_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
+                , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNumAllNodes
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumAllNodes_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumAllNodes_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumAllNodes"
+                , GetNumAllNodes_function_type(&::AbstractMesh< 2, 2 >::GetNumAllNodes)
+                , default_GetNumAllNodes_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumAllNodes) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumBoundaryElements
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumBoundaryElements_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumBoundaryElements"
+                , GetNumBoundaryElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumBoundaryElements)
+                , default_GetNumBoundaryElements_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumBoundaryElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumCableElements_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumCableElements_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumCableElements"
+                , GetNumCableElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumCableElements)
+                , default_GetNumCableElements_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumCableElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumElements
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumElements_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumElements_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumElements"
+                , GetNumElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumElements)
+                , default_GetNumElements_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalBoundaryElements_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalBoundaryElements_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumLocalBoundaryElements"
+                , GetNumLocalBoundaryElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalBoundaryElements)
+                , default_GetNumLocalBoundaryElements_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalBoundaryElements) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumLocalElements_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumLocalElements_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumLocalElements"
+                , GetNumLocalElements_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumLocalElements)
+                , default_GetNumLocalElements_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumLocalElements) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNumNodes
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumNodes_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumNodes_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumNodes"
+                , GetNumNodes_function_type(&::AbstractMesh< 2, 2 >::GetNumNodes)
+                , default_GetNumNodes_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef unsigned int ( exported_class_t::*GetNumVertices_function_type)(  ) const;
+            typedef unsigned int ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetNumVertices_function_type)(  ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetNumVertices"
+                , GetNumVertices_function_type(&::AbstractTetrahedralMesh< 2, 2 >::GetNumVertices)
+                , default_GetNumVertices_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetNumVertices) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetVectorFromAtoB
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( exported_class_t::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef ::boost::numeric::ublas::c_vector< double, 2 > ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetVectorFromAtoB"
+                , GetVectorFromAtoB_function_type(&::AbstractMesh< 2, 2 >::GetVectorFromAtoB)
+                , default_GetVectorFromAtoB_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetVectorFromAtoB)
+                , ( bp::arg("rLocationA"), bp::arg("rLocationB") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetWidth
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef double ( exported_class_t::*GetWidth_function_type)( unsigned int const & ) const;
+            typedef double ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_GetWidth_function_type)( unsigned int const & ) const;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "GetWidth"
+                , GetWidth_function_type(&::AbstractMesh< 2, 2 >::GetWidth)
+                , default_GetWidth_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_GetWidth)
+                , ( bp::arg("rDimension") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_Rotate_function_type)( ::boost::numeric::ublas::c_matrix< double, 2, 2 > ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type(&::AbstractMesh< 2, 2 >::Rotate)
+                , default_Rotate_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Rotate)
+                , ( bp::arg("rotationMatrix") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( ::boost::numeric::ublas::c_vector< double, 3 >,double ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("axis"), bp::arg("angle") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Rotate
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Rotate_function_type)( double ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Rotate"
+                , Rotate_function_type( &::AbstractMesh< 2, 2 >::Rotate )
+                , ( bp::arg("theta") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Scale
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Scale_function_type)( double const,double const,double const ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_Scale_function_type)( double const,double const,double const ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Scale"
+                , Scale_function_type(&::AbstractMesh< 2, 2 >::Scale)
+                , default_Scale_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Scale)
+                , ( bp::arg("xFactor")=1., bp::arg("yFactor")=1., bp::arg("zFactor")=1. ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::SetDistributedVectorFactory
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_SetDistributedVectorFactory_function_type)( ::DistributedVectorFactory * ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "SetDistributedVectorFactory"
+                , SetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::SetDistributedVectorFactory)
+                , default_SetDistributedVectorFactory_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetDistributedVectorFactory)
+                , ( bp::arg("pFactory") ) );
+        
+        }
+        { //::AbstractTetrahedralMesh< 2, 2 >::SetElementOwnerships
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*SetElementOwnerships_function_type)(  ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "SetElementOwnerships"
+                , SetElementOwnerships_function_type( &TetrahedralMesh_less__2_comma__2__greater__wrapper::default_SetElementOwnerships ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            typedef void ( TetrahedralMesh_less__2_comma__2__greater__wrapper::*default_Translate_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Translate"
+                , Translate_function_type(&::AbstractMesh< 2, 2 >::Translate)
+                , default_Translate_function_type(&TetrahedralMesh_less__2_comma__2__greater__wrapper::default_Translate)
+                , ( bp::arg("rDisplacement") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::Translate
+        
+            typedef TetrahedralMesh< 2, 2 > exported_class_t;
+            typedef void ( exported_class_t::*Translate_function_type)( double const,double const,double const ) ;
+            
+            TetrahedralMesh2_2_exposer.def( 
+                "Translate"
+                , Translate_function_type( &::AbstractMesh< 2, 2 >::Translate )
+                , ( bp::arg("xMovement")=0., bp::arg("yMovement")=0., bp::arg("zMovement")=0. ) );
+        
+        }
+    }
 
 }

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "Cylindrical2dVertexMesh.pypp.hpp"
 
 namespace bp = boost::python;
@@ -194,6 +194,18 @@ struct Cylindrical2dVertexMesh_wrapper : Cylindrical2dVertexMesh, bp::wrapper< C
         return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
         return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
     }
@@ -208,6 +220,18 @@ struct Cylindrical2dVertexMesh_wrapper : Cylindrical2dVertexMesh, bp::wrapper< C
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -482,6 +506,16 @@ void register_Cylindrical2dVertexMesh_class(){
                 , ( bp::arg("pNewNode") ) );
         
         }
+        { //::Cylindrical2dVertexMesh::GetMeshForVtk
+        
+            typedef ::MutableVertexMesh< 2, 2 > * ( ::Cylindrical2dVertexMesh::*GetMeshForVtk_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetMeshForVtk"
+                , GetMeshForVtk_function_type( &::Cylindrical2dVertexMesh::GetMeshForVtk )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::Cylindrical2dVertexMesh::GetVectorFromAtoB
         
             typedef ::boost::numeric::ublas::c_vector< double, 2 > ( ::Cylindrical2dVertexMesh::*GetVectorFromAtoB_function_type)( ::boost::numeric::ublas::c_vector< double, 2 > const &,::boost::numeric::ublas::c_vector< double, 2 > const & ) ;
@@ -667,6 +701,19 @@ void register_Cylindrical2dVertexMesh_class(){
                 , ( bp::arg("index") ) );
         
         }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( Cylindrical2dVertexMesh_wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint
         
             typedef Cylindrical2dVertexMesh exported_class_t;
@@ -689,6 +736,20 @@ void register_Cylindrical2dVertexMesh_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef Cylindrical2dVertexMesh exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( Cylindrical2dVertexMesh_wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            Cylindrical2dVertexMesh_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&Cylindrical2dVertexMesh_wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 2, 2 >::GetNumAllNodes

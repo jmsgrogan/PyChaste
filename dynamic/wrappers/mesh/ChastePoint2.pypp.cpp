@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "ChastePoint2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -105,7 +105,7 @@ void register_ChastePoint2_class(){
             ChastePoint2_exposer.def( 
                 "rGetLocation"
                 , rGetLocation_function_type( &::ChastePoint< 2 >::rGetLocation )
-                , bp::return_value_policy< bp::copy_const_reference >() );
+                , bp::return_internal_reference< >() );
         
         }
     }

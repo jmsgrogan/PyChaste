@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
 
 namespace bp = boost::python;
@@ -284,7 +284,7 @@ void register_SimpleOxygenBasedCellCycleModel_class(){
             "CreateCellCycleModel"
             , (::AbstractCellCycleModel * ( ::SimpleOxygenBasedCellCycleModel::* )(  ))(&::SimpleOxygenBasedCellCycleModel::CreateCellCycleModel)
             , (::AbstractCellCycleModel * ( SimpleOxygenBasedCellCycleModel_wrapper::* )(  ))(&SimpleOxygenBasedCellCycleModel_wrapper::default_CreateCellCycleModel)
-            , bp::return_value_policy< bp::manage_new_object >() )    
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetCriticalHypoxicDuration"
             , (double ( ::SimpleOxygenBasedCellCycleModel::* )(  )const)( &::SimpleOxygenBasedCellCycleModel::GetCriticalHypoxicDuration ) )    

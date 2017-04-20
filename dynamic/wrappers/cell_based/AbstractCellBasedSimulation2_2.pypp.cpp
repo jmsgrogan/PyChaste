@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellBasedSimulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -131,7 +131,7 @@ struct AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper : Abstract
 
 void register_AbstractCellBasedSimulation2_2_class(){
 
-    bp::class_< AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable >( "AbstractCellBasedSimulation2_2", bp::no_init )    
+    bp::class_< AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper, boost::noncopyable >( "AbstractCellBasedSimulation2_2", bp::no_init )    
         .def( 
             "AddCellKiller"
             , (void ( ::AbstractCellBasedSimulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellKiller< 2 > > ))( &::AbstractCellBasedSimulation< 2, 2 >::AddCellKiller )
@@ -237,7 +237,11 @@ void register_AbstractCellBasedSimulation2_2_class(){
             , (void ( AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile) )    
         .def( 
             "rGetCellPopulation"
+            , (::AbstractCellPopulation< 2, 2 > & ( ::AbstractCellBasedSimulation<2, 2>::* )(  ))( &::AbstractCellBasedSimulation< 2, 2 >::rGetCellPopulation )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetCellPopulation"
             , (::AbstractCellPopulation< 2, 2 > const & ( ::AbstractCellBasedSimulation<2, 2>::* )(  )const)( &::AbstractCellBasedSimulation< 2, 2 >::rGetCellPopulation )
-            , bp::return_value_policy< bp::copy_const_reference >() );
+            , bp::return_internal_reference< >() );
 
 }

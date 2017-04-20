@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MeshBasedCellPopulationWithGhostNodes3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -609,7 +609,12 @@ void register_MeshBasedCellPopulationWithGhostNodes3_class(){
             typedef ::TetrahedralMesh< 3, 3 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
             typedef ::TetrahedralMesh< 3, 3 > * ( MeshBasedCellPopulationWithGhostNodes_less__3__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
             
-;        
+            MeshBasedCellPopulationWithGhostNodes3_exposer.def( 
+                "GetTetrahedralMeshForPdeModifier"
+                , GetTetrahedralMeshForPdeModifier_function_type(&::MeshBasedCellPopulationWithGhostNodes< 3 >::GetTetrahedralMeshForPdeModifier)
+                , default_GetTetrahedralMeshForPdeModifier_function_type(&MeshBasedCellPopulationWithGhostNodes_less__3__greater__wrapper::default_GetTetrahedralMeshForPdeModifier)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
         }
         { //::MeshBasedCellPopulationWithGhostNodes< 3 >::IsGhostNode
         
@@ -681,7 +686,11 @@ void register_MeshBasedCellPopulationWithGhostNodes3_class(){
             typedef MeshBasedCellPopulationWithGhostNodes< 3 > exported_class_t;
             typedef ::std::vector< bool > & ( exported_class_t::*rGetGhostNodes_function_type)(  ) ;
             
-;        
+            MeshBasedCellPopulationWithGhostNodes3_exposer.def( 
+                "rGetGhostNodes"
+                , rGetGhostNodes_function_type( &::MeshBasedCellPopulationWithGhostNodes< 3 >::rGetGhostNodes )
+                , bp::return_internal_reference< >() );
+        
         }
         { //::MeshBasedCellPopulation< 3, 3 >::AcceptCellWriter
         
@@ -1068,6 +1077,17 @@ void register_MeshBasedCellPopulationWithGhostNodes3_class(){
                 , WriteResultsToFiles_function_type(&::MeshBasedCellPopulation< 3, 3 >::WriteResultsToFiles)
                 , default_WriteResultsToFiles_function_type(&MeshBasedCellPopulationWithGhostNodes_less__3__greater__wrapper::default_WriteResultsToFiles)
                 , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 3, 3 >::rGetNodePairs
+        
+            typedef MeshBasedCellPopulationWithGhostNodes< 3 > exported_class_t;
+            typedef ::std::vector< std::pair<Node<3> *, Node<3> *> > & ( exported_class_t::*rGetNodePairs_function_type)(  ) ;
+            
+            MeshBasedCellPopulationWithGhostNodes3_exposer.def( 
+                "rGetNodePairs"
+                , rGetNodePairs_function_type(&::MeshBasedCellPopulation< 3, 3 >::rGetNodePairs)
+                , bp::return_internal_reference< >() );
         
         }
         MeshBasedCellPopulationWithGhostNodes3_exposer.def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulationWithGhostNodes<3>::AddPopulationWriter<VoronoiDataWriter>);

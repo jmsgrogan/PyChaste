@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "CellPropertyRegistry.pypp.hpp"
 
 namespace bp = boost::python;
@@ -73,7 +73,7 @@ void register_CellPropertyRegistry_class(){
             CellPropertyRegistry_exposer.def( 
                 "Instance"
                 , Instance_function_type( &::CellPropertyRegistry::Instance )
-                , bp::return_value_policy< bp::manage_new_object >() );
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::CellPropertyRegistry::SpecifyOrdering

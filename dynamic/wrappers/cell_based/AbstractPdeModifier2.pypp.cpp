@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractPdeModifier2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -99,12 +99,20 @@ struct AbstractPdeModifier_less__2__greater__wrapper : AbstractPdeModifier< 2 >,
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
+
 void register_AbstractPdeModifier2_class(){
 
     bp::class_< AbstractPdeModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::noncopyable >( "AbstractPdeModifier2", bp::no_init )    
         .def( 
             "GetBoundaryCondition"
             , (::boost::shared_ptr< AbstractBoundaryCondition< 2 > > ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetBoundaryCondition ) )    
+        .def( 
+            "GetFeMesh"
+            , (::TetrahedralMesh< 2, 2 > * ( ::AbstractPdeModifier<2>::* )(  )const)( &::AbstractPdeModifier< 2 >::GetFeMesh )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetOutputGradient"
             , (bool ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetOutputGradient ) )    
@@ -157,5 +165,9 @@ void register_AbstractPdeModifier2_class(){
             "UpdateAtEndOfTimeStep"
             , bp::pure_virtual( (void ( ::AbstractPdeModifier<2>::* )( ::AbstractCellPopulation< 2, 2 > & ))(&::AbstractPdeModifier< 2 >::UpdateAtEndOfTimeStep) )
             , ( bp::arg("rCellPopulation") ) )    
-;
+        .def( 
+            "rGetDependentVariableName"
+            , (::std::string & ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::rGetDependentVariableName )
+            , bp::return_internal_reference< >() );
+
 }

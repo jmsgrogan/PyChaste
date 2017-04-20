@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "CellwiseSourceEllipticPde3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -99,24 +99,12 @@ struct CellwiseSourceEllipticPde_less__3__greater__wrapper : CellwiseSourceEllip
         return CellwiseSourceEllipticPde< 3 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
     }
 
-    virtual double ComputeConstantInUSourceTermAtNode( ::Node< 3 > const & rNode ) {
-        if( bp::override func_ComputeConstantInUSourceTermAtNode = this->get_override( "ComputeConstantInUSourceTermAtNode" ) )
-            return func_ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
-        else{
-            return this->AbstractLinearEllipticPde< 3, 3 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
-        }
-    }
-    
-    double default_ComputeConstantInUSourceTermAtNode( ::Node< 3 > const & rNode ) {
-        return AbstractLinearEllipticPde< 3, 3 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
-    }
-
 };
 
 void register_CellwiseSourceEllipticPde3_class(){
 
     { //::CellwiseSourceEllipticPde< 3 >
-        typedef bp::class_< CellwiseSourceEllipticPde_less__3__greater__wrapper, bp::bases< AbstractLinearEllipticPde< 3, 3 > >, boost::noncopyable > CellwiseSourceEllipticPde3_exposer_t;
+        typedef bp::class_< CellwiseSourceEllipticPde_less__3__greater__wrapper, boost::noncopyable > CellwiseSourceEllipticPde3_exposer_t;
         CellwiseSourceEllipticPde3_exposer_t CellwiseSourceEllipticPde3_exposer = CellwiseSourceEllipticPde3_exposer_t( "CellwiseSourceEllipticPde3", bp::init< AbstractCellPopulation< 3, 3 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient") )) );
         bp::scope CellwiseSourceEllipticPde3_scope( CellwiseSourceEllipticPde3_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 3, 3 > &, CellwiseSourceEllipticPde< 3 > >();
@@ -190,20 +178,7 @@ void register_CellwiseSourceEllipticPde3_class(){
             CellwiseSourceEllipticPde3_exposer.def( 
                 "rGetCellPopulation"
                 , rGetCellPopulation_function_type( &::CellwiseSourceEllipticPde< 3 >::rGetCellPopulation )
-                , bp::return_value_policy< bp::copy_const_reference >() );
-        
-        }
-        { //::AbstractLinearEllipticPde< 3, 3 >::ComputeConstantInUSourceTermAtNode
-        
-            typedef CellwiseSourceEllipticPde< 3 > exported_class_t;
-            typedef double ( exported_class_t::*ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 3 > const & ) ;
-            typedef double ( CellwiseSourceEllipticPde_less__3__greater__wrapper::*default_ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 3 > const & ) ;
-            
-            CellwiseSourceEllipticPde3_exposer.def( 
-                "ComputeConstantInUSourceTermAtNode"
-                , ComputeConstantInUSourceTermAtNode_function_type(&::AbstractLinearEllipticPde< 3, 3 >::ComputeConstantInUSourceTermAtNode)
-                , default_ComputeConstantInUSourceTermAtNode_function_type(&CellwiseSourceEllipticPde_less__3__greater__wrapper::default_ComputeConstantInUSourceTermAtNode)
-                , ( bp::arg("rNode") ) );
+                , bp::return_internal_reference< >() );
         
         }
     }

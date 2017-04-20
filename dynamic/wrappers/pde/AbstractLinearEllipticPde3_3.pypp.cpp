@@ -37,19 +37,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "pde_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractLinearEllipticPde3_3.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper : AbstractLinearEllipticPde< 3, 3 >, bp::wrapper< AbstractLinearEllipticPde< 3, 3 > > {
-
-    AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper( )
-    : AbstractLinearEllipticPde<3, 3>( )
-      , bp::wrapper< AbstractLinearEllipticPde< 3, 3 > >(){
-        // null constructor
-    
-    }
 
     virtual double ComputeConstantInUSourceTerm( ::ChastePoint< 3 > const & rX, ::Element< 3, 3 > * pElement ){
         bp::override func_ComputeConstantInUSourceTerm = this->get_override( "ComputeConstantInUSourceTerm" );
@@ -94,7 +87,7 @@ struct AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper : AbstractLi
 
 void register_AbstractLinearEllipticPde3_3_class(){
 
-    bp::class_< AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper, bp::bases< AbstractLinearPde< 3, 3 > >, boost::noncopyable >( "AbstractLinearEllipticPde3_3", bp::init< >() )    
+    bp::class_< AbstractLinearEllipticPde_less__3_comma__3__greater__wrapper, bp::bases< AbstractLinearPde< 3, 3 > >, boost::noncopyable >( "AbstractLinearEllipticPde3_3" )    
         .def( 
             "ComputeConstantInUSourceTerm"
             , bp::pure_virtual( (double ( ::AbstractLinearEllipticPde<3, 3>::* )( ::ChastePoint< 3 > const &,::Element< 3, 3 > * ))(&::AbstractLinearEllipticPde< 3, 3 >::ComputeConstantInUSourceTerm) )

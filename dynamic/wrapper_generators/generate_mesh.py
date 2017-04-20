@@ -40,54 +40,15 @@ from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies
 from pygccxml import parser
 import generate_bindings
+import classes_to_be_wrapped
 
-def update_builder(builder):
+def update_builder(builder, class_collection):
 
-    include_classes = ["ChastePoint<3>", 
-                       "Node<3>",
-                       "NodeAttributes<3>",
-                       "PottsMesh<3>",
-                       "SharedPottsMeshGenerator<3>",
-                       "ChastePoint<2>",
-                       "Node<2>",
-                       "NodeAttributes<2>",
-                       "PottsMesh<2>",
-                       "SharedPottsMeshGenerator<2>",
-                       "NodesOnlyMesh<2>",
-                       "NodesOnlyMesh<3>",
-                       "MutableMesh<2,2>",
-                       "MutableMesh<3,3>",
-                       "TetrahedralMesh<2,2>",
-                       "TetrahedralMesh<3,3>",
-                       "AbstractTetrahedralMesh<2,2>",
-                       "AbstractTetrahedralMesh<3,3>",
-                       "AbstractMesh<2,2>",
-                       "AbstractMesh<3,3>",
-                       "VertexMesh<2,2>",
-                       "VertexMesh<3,3>",
-                       "MutableVertexMesh<2,2>",
-                       "MutableVertexMesh<3,3>",
-                       "Cylindrical2dVertexMesh",
-                       "SharedCylindricalHoneycombVertexMeshGenerator"
-                       ]
-
-    class_collection = []
-    for eachClass in include_classes:
-        builder.class_(eachClass).include()  
-        new_name = generate_bindings.template_replace(eachClass)
-        class_collection.append(new_name)
-        if(new_name != eachClass):
-            builder.class_(eachClass).rename(new_name) 
-    
-    builder.class_('SharedPottsMeshGenerator<3>').include()  
+    # Rename the PyChaste custom mesh generators
     builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
-    builder.class_('SharedPottsMeshGenerator<2>').include()  
     builder.class_('SharedPottsMeshGenerator<2>').rename("PottsMeshGenerator2")
-    builder.class_('SharedHoneycombMeshGenerator').include()  
     builder.class_('SharedHoneycombMeshGenerator').rename("HoneycombMeshGenerator")
-    builder.class_('SharedHoneycombVertexMeshGenerator').include()  
-    builder.class_('SharedHoneycombVertexMeshGenerator').rename("HoneycombVertexMeshGenerator")
-    builder.class_('SharedCylindricalHoneycombVertexMeshGenerator').include()  
+    builder.class_('SharedHoneycombVertexMeshGenerator').rename("HoneycombVertexMeshGenerator") 
     builder.class_('SharedCylindricalHoneycombVertexMeshGenerator').rename("CylindricalHoneycombVertexMeshGenerator")
 
     # Do not return the non-const reference to the location
@@ -96,73 +57,9 @@ def update_builder(builder):
     returns_non_const_ref = builder.class_('ChastePoint<2>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 2> &")
     returns_non_const_ref.exclude()
     
-    builder.class_('AbstractMesh<3,3>').member_functions("GetNode").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('AbstractMesh<2,2>').member_functions("GetNode").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('AbstractMesh<3,3>').member_functions("GetNodeOrHaloNode").exclude()
-    builder.class_('AbstractMesh<2,2>').member_functions("GetNodeOrHaloNode").exclude()
-    builder.class_('AbstractMesh<3,3>').member_functions("GetNodeFromPrePermutationIndex").exclude()
-    builder.class_('AbstractMesh<2,2>').member_functions("GetNodeFromPrePermutationIndex").exclude()
-    builder.class_('AbstractMesh<3,3>').member_functions("GetDistributedVectorFactory").exclude()
-    builder.class_('AbstractMesh<2,2>').member_functions("GetDistributedVectorFactory").exclude()
-    builder.class_('AbstractMesh<3,3>').member_functions("rGetNodePermutation").exclude()
-    builder.class_('AbstractMesh<2,2>').member_functions("rGetNodePermutation").exclude()
-    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('AbstractTetrahedralMesh<3,3>').member_functions("GetBoundaryElement").exclude()
-    builder.class_('AbstractTetrahedralMesh<2,2>').member_functions("GetBoundaryElement").exclude()
-    builder.class_('TetrahedralMesh<3,3>').member_functions("FreeTriangulateIo").exclude()
-    builder.class_('TetrahedralMesh<2,2>').member_functions("FreeTriangulateIo").exclude()
-    builder.class_('TetrahedralMesh<3,3>').member_functions("InitialiseTriangulateIo").exclude()
-    builder.class_('TetrahedralMesh<2,2>').member_functions("InitialiseTriangulateIo").exclude()
-    
-    builder.class_('PottsMesh<3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('PottsMesh<2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('VertexMesh<3,3>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('VertexMesh<2,2>').member_functions("GetElement").call_policies = call_policies.return_value_policy(call_policies.reference_existing_object)  
-    builder.class_('VertexMesh<3,3>').member_functions("GetFace").exclude()
-    builder.class_('VertexMesh<2,2>').member_functions("GetFace").exclude()
+    # There is a problem with wrapping VertexMesh constructor so remove for now.
     builder.class_('VertexMesh<3,3>').constructors(arg_types=[None]).exclude()
-    builder.class_('VertexMesh<2,2>').constructors(arg_types=[None]).exclude()
-    
-    builder.class_('MutableMesh<3,3>').member_functions("RescaleMeshFromBoundaryNode").exclude()
-    builder.class_('MutableMesh<2,2>').member_functions("RescaleMeshFromBoundaryNode").exclude()
-    builder.class_('MutableMesh<3,3>').member_functions("SplitLongEdges").exclude() # cant deal with vec_cvec for some reason
-    builder.class_('MutableMesh<2,2>').member_functions("SplitLongEdges").exclude()
-    builder.class_('NodesOnlyMesh<3>').member_functions("GetBoxCollection").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("GetBoxCollection").exclude()
-    builder.class_('NodesOnlyMesh<3>').member_functions("GetNodeOrHaloNode").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("GetNodeOrHaloNode").exclude()
-    builder.class_('NodesOnlyMesh<3>').member_functions("rGetHaloNodesToSendLeft").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("rGetHaloNodesToSendLeft").exclude()
-    builder.class_('NodesOnlyMesh<3>').member_functions("rGetHaloNodesToSendRight").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("rGetHaloNodesToSendRight").exclude() 
-    builder.class_('NodesOnlyMesh<3>').member_functions("rGetInitiallyOwnedNodes").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("rGetInitiallyOwnedNodes").exclude()  
-    builder.class_('NodesOnlyMesh<3>').member_functions("rGetNodesToSendLeft").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("rGetNodesToSendLeft").exclude()  
-    builder.class_('NodesOnlyMesh<3>').member_functions("rGetNodesToSendRight").exclude()
-    builder.class_('NodesOnlyMesh<2>').member_functions("rGetNodesToSendRight").exclude()         
-    
-    builder.class_('Node<3>').member_functions("rGetModifiableLocation").exclude()
-    builder.class_('Node<2>').member_functions("rGetModifiableLocation").exclude()
-    builder.class_('Node<3>').member_functions("rGetNeighbours").exclude()
-    builder.class_('Node<2>').member_functions("rGetNeighbours").exclude()
-    builder.class_('Node<3>').member_functions("rGetContainingElementIndices").exclude()
-    builder.class_('Node<2>').member_functions("rGetContainingElementIndices").exclude()
-    builder.class_('Node<3>').member_functions("rGetNodeAttributes").exclude()
-    builder.class_('Node<2>').member_functions("rGetNodeAttributes").exclude()
-    builder.class_('Node<3>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()  
-    builder.class_('Node<2>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference() 
-    builder.class_('Node<3>').member_functions("rGetContainingBoundaryElementIndices").exclude()
-    builder.class_('Node<2>').member_functions("rGetContainingBoundaryElementIndices").exclude()
-    
-    builder.class_('NodeAttributes<3>').member_functions("rGetAttributes").exclude()
-    builder.class_('NodeAttributes<2>').member_functions("rGetAttributes").exclude()
-    builder.class_('NodeAttributes<3>').member_functions("rGetNeighbours").exclude()
-    builder.class_('NodeAttributes<2>').member_functions("rGetNeighbours").exclude()
-    builder.class_('NodeAttributes<3>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()  
-    builder.class_('NodeAttributes<2>').member_functions("rGetAppliedForce").call_policies = call_policies.return_internal_reference()    
-    
-    builder.class_('Cylindrical2dVertexMesh').member_functions("GetMeshForVtk").exclude()    
+    builder.class_('VertexMesh<3,3>').constructors(arg_types=[None, None]).exclude()
+    builder.class_('VertexMesh<2,2>').constructors(arg_types=[None]).exclude()  
         
     return builder, class_collection

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MutableVertexMesh2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -258,6 +258,18 @@ struct MutableVertexMesh_less__2_comma__2__greater__wrapper : MutableVertexMesh<
         return VertexMesh< 2, 2 >::GetCentroidOfElement( index );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 2 > const & rTestPoint, unsigned int elementIndex ){
         return VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
     }
@@ -272,6 +284,18 @@ struct MutableVertexMesh_less__2_comma__2__greater__wrapper : MutableVertexMesh<
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -1106,6 +1130,19 @@ void register_MutableVertexMesh2_2_class(){
                 , ( bp::arg("index") ) );
         
         }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef MutableVertexMesh< 2, 2 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( MutableVertexMesh_less__2_comma__2__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            MutableVertexMesh2_2_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&MutableVertexMesh_less__2_comma__2__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::VertexMesh< 2, 2 >::GetLocalIndexForElementEdgeClosestToPoint
         
             typedef MutableVertexMesh< 2, 2 > exported_class_t;
@@ -1128,6 +1165,20 @@ void register_MutableVertexMesh2_2_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&MutableVertexMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef MutableVertexMesh< 2, 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( MutableVertexMesh_less__2_comma__2__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            MutableVertexMesh2_2_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&MutableVertexMesh_less__2_comma__2__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 2, 2 >::GetNumAllNodes

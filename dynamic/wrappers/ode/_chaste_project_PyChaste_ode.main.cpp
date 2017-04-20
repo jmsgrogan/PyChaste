@@ -42,7 +42,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/vector.hpp"
 
-#include "ode_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 
 #include "AbstractOdeSystem.pypp.hpp"
 
@@ -50,12 +50,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractPythonOdeSystemInformation.pypp.hpp"
 
-#include "VecString.pypp.hpp"
+#include "StdvectorStdstring.pypp.hpp"
 
 namespace bp = boost::python;
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_ode){
-    register_VecString_class();
+    register_StdvectorStdstring_class();
 
     register_AbstractOdeSystem_class();
 

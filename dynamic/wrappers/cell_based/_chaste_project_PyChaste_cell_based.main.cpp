@@ -48,7 +48,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/map.hpp"
 
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 
 #include "AbstractCaUpdateRule2.pypp.hpp"
 
@@ -94,14 +94,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractGrowingDomainPdeModifier3.pypp.hpp"
 
-#include "AbstractLinearEllipticPde2_2.pypp.hpp"
-
-#include "AbstractLinearEllipticPde3_3.pypp.hpp"
-
-#include "AbstractLinearPde2_2.pypp.hpp"
-
-#include "AbstractLinearPde3_3.pypp.hpp"
-
 #include "AbstractOffLatticeCellPopulation2_2.pypp.hpp"
 
 #include "AbstractOffLatticeCellPopulation3_3.pypp.hpp"
@@ -138,6 +130,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractUpdateRule3.pypp.hpp"
 
+#include "AbstractVertexBasedDivisionRule2.pypp.hpp"
+
+#include "AbstractVertexBasedDivisionRule3.pypp.hpp"
+
 #include "AdhesionPottsUpdateRule2.pypp.hpp"
 
 #include "AdhesionPottsUpdateRule3.pypp.hpp"
@@ -169,6 +165,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "CellId.pypp.hpp"
 
 #include "CellLabel.pypp.hpp"
+
+#include "CellLabelWriter2_2.pypp.hpp"
+
+#include "CellLabelWriter3_3.pypp.hpp"
 
 #include "CellPropertyCollection.pypp.hpp"
 
@@ -214,14 +214,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "GeneralisedLinearSpringForce3_3.pypp.hpp"
 
-#include "Identifiable.pypp.hpp"
-
-#include "MapCellUnsigned.pypp.hpp"
-
-#include "MapNodePtr2CVectorDouble_2.pypp.hpp"
-
-#include "MapNodePtr2CVectorDouble_3.pypp.hpp"
-
 #include "MeshBasedCellPopulation2_2.pypp.hpp"
 
 #include "MeshBasedCellPopulation3_3.pypp.hpp"
@@ -260,14 +252,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "PottsBasedCellPopulation3.pypp.hpp"
 
-#include "RandomCellKiller2.pypp.hpp"
-
-#include "RandomCellKiller3.pypp.hpp"
-
-#include "SetCellPtr.pypp.hpp"
-
-#include "SetUnsigned.pypp.hpp"
-
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
 
 #include "SimpleTargetAreaModifier2.pypp.hpp"
@@ -279,6 +263,26 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SphereGeometryBoundaryCondition2.pypp.hpp"
 
 #include "SphereGeometryBoundaryCondition3.pypp.hpp"
+
+#include "StdmapBoostshared_ptrCellunsigned.pypp.hpp"
+
+#include "StdmapNode2c_vectordouble2.pypp.hpp"
+
+#include "StdmapNode3c_vectordouble3.pypp.hpp"
+
+#include "StdsetCellPtr.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrAbstractCellProperty.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrAbstractForce2.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrAbstractForce3.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrAbstractUpdateRule2.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrAbstractUpdateRule3.pypp.hpp"
+
+#include "StdvectorCellPtr.pypp.hpp"
 
 #include "StemCellProliferativeType.pypp.hpp"
 
@@ -292,16 +296,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "UniformG1GenerationalCellCycleModel.pypp.hpp"
 
-#include "VecAbstractCellProperty.pypp.hpp"
-
-#include "VecAbstractUpdateRule2.pypp.hpp"
-
-#include "VecAbstractUpdateRule3.pypp.hpp"
-
-#include "VecCellPtr.pypp.hpp"
-
-#include "VecDouble.pypp.hpp"
-
 #include "VertexBasedCellPopulation2.pypp.hpp"
 
 #include "VertexBasedCellPopulation3.pypp.hpp"
@@ -310,40 +304,78 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "VolumeConstraintPottsUpdateRule3.pypp.hpp"
 
+#include "VoronoiDataWriter2_2.pypp.hpp"
+
+#include "VoronoiDataWriter3_3.pypp.hpp"
+
 #include "VtkSceneModifier2.pypp.hpp"
 
 #include "VtkSceneModifier3.pypp.hpp"
 
 #include "WildTypeCellMutationState.pypp.hpp"
 
-#include "_chaste_project_PyChaste_cell_based_free_functions.pypp.hpp"
-
 namespace bp = boost::python;
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< boost::numeric::ublas::c_vector< double, 2 > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< boost::numeric::ublas::c_vector< double, 3 > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
-    register_VecCellPtr_class();
+    register_StdvectorCellPtr_class();
 
-    register_VecAbstractUpdateRule3_class();
+    register_StdvectorBoostshared_ptrAbstractUpdateRule3_class();
 
-    register_VecAbstractUpdateRule2_class();
+    register_StdvectorBoostshared_ptrAbstractUpdateRule2_class();
 
-    register_VecAbstractCellProperty_class();
+    register_StdvectorBoostshared_ptrAbstractForce3_class();
 
-    register_VecDouble_class();
+    register_StdvectorBoostshared_ptrAbstractForce2_class();
 
-    register_SetUnsigned_class();
+    register_StdvectorBoostshared_ptrAbstractCellProperty_class();
 
-    register_SetCellPtr_class();
+    register_StdsetCellPtr_class();
 
-    register_MapCellUnsigned_class();
+    register_StdmapBoostshared_ptrCellunsigned_class();
 
-    register_MapNodePtr2CVectorDouble_3_class();
+    register_StdmapNode3c_vectordouble3_class();
 
-    register_MapNodePtr2CVectorDouble_2_class();
-
-    register_Identifiable_class();
+    register_StdmapNode2c_vectordouble2_class();
 
     register_AbstractUpdateRule2_class();
 
@@ -401,14 +433,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_AbstractGrowingDomainPdeModifier3_class();
 
-    register_AbstractLinearPde2_2_class();
-
-    register_AbstractLinearEllipticPde2_2_class();
-
-    register_AbstractLinearPde3_3_class();
-
-    register_AbstractLinearEllipticPde3_3_class();
-
     register_AbstractOnLatticeCellPopulation2_class();
 
     register_AbstractOnLatticeCellPopulation3_class();
@@ -432,6 +456,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_AbstractTwoBodyInteractionForce2_2_class();
 
     register_AbstractTwoBodyInteractionForce3_3_class();
+
+    register_AbstractVertexBasedDivisionRule2_class();
+
+    register_AbstractVertexBasedDivisionRule3_class();
 
     register_AdhesionPottsUpdateRule2_class();
 
@@ -466,6 +494,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_CellId_class();
 
     register_CellLabel_class();
+
+    register_CellLabelWriter2_2_class();
+
+    register_CellLabelWriter3_3_class();
 
     register_CellPropertyRegistry_class();
 
@@ -547,10 +579,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_PottsBasedCellPopulation3_class();
 
-    register_RandomCellKiller2_class();
-
-    register_RandomCellKiller3_class();
-
     register_SimpleOxygenBasedCellCycleModel_class();
 
     register_SimpleTargetAreaModifier2_class();
@@ -583,12 +611,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_VolumeConstraintPottsUpdateRule3_class();
 
+    register_VoronoiDataWriter2_2_class();
+
+    register_VoronoiDataWriter3_3_class();
+
     register_VtkSceneModifier2_class();
 
     register_VtkSceneModifier3_class();
 
     register_WildTypeCellMutationState_class();
-
-    register_free_functions();
 }
 

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "VertexBasedCellPopulation2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -94,7 +94,7 @@ struct VertexBasedCellPopulation_less__2__greater__wrapper : VertexBasedCellPopu
         VertexBasedCellPopulation< 2 >::AcceptPopulationWriter( pPopulationWriter );
     }
 
-    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         if( bp::override func_AddCell = this->get_override( "AddCell" ) )
             return func_AddCell( pNewCell, pParentCell );
         else{
@@ -102,7 +102,7 @@ struct VertexBasedCellPopulation_less__2__greater__wrapper : VertexBasedCellPopu
         }
     }
     
-    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         return VertexBasedCellPopulation< 2 >::AddCell( pNewCell, pParentCell );
     }
 
@@ -525,7 +525,7 @@ void register_VertexBasedCellPopulation2_class(){
                 "AddCell"
                 , AddCell_function_type(&::VertexBasedCellPopulation< 2 >::AddCell)
                 , default_AddCell_function_type(&VertexBasedCellPopulation_less__2__greater__wrapper::default_AddCell)
-                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::boost::shared_ptr<Cell>( ) ) );
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
         
         }
         { //::VertexBasedCellPopulation< 2 >::AddCellIdOfT2Swap

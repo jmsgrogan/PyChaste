@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellPopulationBoundaryCondition2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -71,7 +71,7 @@ struct AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrappe
 void register_AbstractCellPopulationBoundaryCondition2_2_class(){
 
     { //::AbstractCellPopulationBoundaryCondition< 2, 2 >
-        typedef bp::class_< AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellPopulationBoundaryCondition2_2_exposer_t;
+        typedef bp::class_< AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrapper, boost::noncopyable > AbstractCellPopulationBoundaryCondition2_2_exposer_t;
         AbstractCellPopulationBoundaryCondition2_2_exposer_t AbstractCellPopulationBoundaryCondition2_2_exposer = AbstractCellPopulationBoundaryCondition2_2_exposer_t( "AbstractCellPopulationBoundaryCondition2_2", bp::init< AbstractCellPopulation< 2, 2 > * >(( bp::arg("pCellPopulation") )) );
         bp::scope AbstractCellPopulationBoundaryCondition2_2_scope( AbstractCellPopulationBoundaryCondition2_2_exposer );
         { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::GetCellPopulation
@@ -82,7 +82,7 @@ void register_AbstractCellPopulationBoundaryCondition2_2_class(){
             AbstractCellPopulationBoundaryCondition2_2_exposer.def( 
                 "GetCellPopulation"
                 , GetCellPopulation_function_type( &::AbstractCellPopulationBoundaryCondition< 2, 2 >::GetCellPopulation )
-                , bp::return_value_policy< bp::manage_new_object >() );
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractCellPopulationBoundaryCondition< 2, 2 >::ImposeBoundaryCondition
@@ -130,9 +130,9 @@ void register_AbstractCellPopulationBoundaryCondition2_2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
     }
 
 }

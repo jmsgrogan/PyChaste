@@ -37,12 +37,26 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractOffLatticeCellPopulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper : AbstractOffLatticeCellPopulation< 2, 2 >, bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > > {
+
+    AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh )
+    : AbstractOffLatticeCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractOffLatticeCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractOffLatticeCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
 
     virtual unsigned int AddNode( ::Node< 2 > * pNewNode ){
         bp::override func_AddNode = this->get_override( "AddNode" );
@@ -115,7 +129,7 @@ struct AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper : Abs
         func_AcceptPopulationWriter( pPopulationWriter );
     }
 
-    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ){
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ){
         bp::override func_AddCell = this->get_override( "AddCell" );
         return func_AddCell( pNewCell, pParentCell );
     }
@@ -331,7 +345,8 @@ struct AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper : Abs
 
 void register_AbstractOffLatticeCellPopulation2_2_class(){
 
-    bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::no_init )    
+    bp::class_< AbstractOffLatticeCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractOffLatticeCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
         .def( 
             "AddNode"
             , bp::pure_virtual( (unsigned int ( ::AbstractOffLatticeCellPopulation<2, 2>::* )( ::Node< 2 > * ))(&::AbstractOffLatticeCellPopulation< 2, 2 >::AddNode) )
@@ -397,7 +412,7 @@ void register_AbstractOffLatticeCellPopulation2_2_class(){
         .def( 
             "AddCell"
             , bp::pure_virtual( (::CellPtr ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AddCell) )
-            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::boost::shared_ptr<Cell>( ) ) )    
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
         .def( 
             "AddCellUsingLocationIndex"
             , (void ( ::AbstractCellPopulation<2, 2>::* )( unsigned int,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AddCellUsingLocationIndex)
@@ -435,6 +450,10 @@ void register_AbstractOffLatticeCellPopulation2_2_class(){
         .def( 
             "GetNumNodes"
             , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
+        .def( 
+            "GetTetrahedralMeshForPdeModifier"
+            , bp::pure_virtual( (::TetrahedralMesh< 2, 2 > * ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier) )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )

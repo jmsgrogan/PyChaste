@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MeshBasedCellPopulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -164,6 +164,18 @@ struct MeshBasedCellPopulation_less__2_comma__2__greater__wrapper : MeshBasedCel
     
     unsigned int default_GetNumNodes(  ) {
         return MeshBasedCellPopulation< 2, 2 >::GetNumNodes( );
+    }
+
+    virtual ::TetrahedralMesh< 2, 2 > * GetTetrahedralMeshForPdeModifier(  ) {
+        if( bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" ) )
+            return func_GetTetrahedralMeshForPdeModifier(  );
+        else{
+            return this->MeshBasedCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier(  );
+        }
+    }
+    
+    ::TetrahedralMesh< 2, 2 > * default_GetTetrahedralMeshForPdeModifier(  ) {
+        return MeshBasedCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier( );
     }
 
     virtual double GetVolumeOfCell( ::CellPtr pCell ) {
@@ -541,6 +553,14 @@ void register_MeshBasedCellPopulation2_2_class(){
             .def( 
                 "GetCellB"
                 , (::CellPtr ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetCellB ) )    
+            .def( 
+                "GetNodeA"
+                , (::Node< 2 > * ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetNodeA )
+                , bp::return_value_policy< bp::reference_existing_object >() )    
+            .def( 
+                "GetNodeB"
+                , (::Node< 2 > * ( ::MeshBasedCellPopulation<2, 2>::SpringIterator::* )(  ))( &::MeshBasedCellPopulation< 2, 2 >::SpringIterator::GetNodeB )
+                , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( bp::self != bp::self );
         MeshBasedCellPopulation2_2_exposer.def( bp::init< MutableMesh< 2, 2 > & >(( bp::arg("rMesh") )) );
         bp::implicitly_convertible< MutableMesh< 2, 2 > &, MeshBasedCellPopulation< 2, 2 > >();
@@ -744,6 +764,19 @@ void register_MeshBasedCellPopulation2_2_class(){
                 , ( bp::arg("index") ) );
         
         }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::TetrahedralMesh< 2, 2 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            typedef ::TetrahedralMesh< 2, 2 > * ( MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetTetrahedralMeshForPdeModifier"
+                , GetTetrahedralMeshForPdeModifier_function_type(&::MeshBasedCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier)
+                , default_GetTetrahedralMeshForPdeModifier_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_GetTetrahedralMeshForPdeModifier)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::MeshBasedCellPopulation< 2, 2 >::GetVolumeOfCell
         
             typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
@@ -777,6 +810,17 @@ void register_MeshBasedCellPopulation2_2_class(){
                 "GetVoronoiEdgeLength"
                 , GetVoronoiEdgeLength_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetVoronoiEdgeLength )
                 , ( bp::arg("index1"), bp::arg("index2") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::GetVoronoiTessellation
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::VertexMesh< 2, 2 > * ( exported_class_t::*GetVoronoiTessellation_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "GetVoronoiTessellation"
+                , GetVoronoiTessellation_function_type( &::MeshBasedCellPopulation< 2, 2 >::GetVoronoiTessellation )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::MeshBasedCellPopulation< 2, 2 >::GetWidth
@@ -1019,6 +1063,17 @@ void register_MeshBasedCellPopulation2_2_class(){
                 , WriteVtkResultsToFile_function_type(&::MeshBasedCellPopulation< 2, 2 >::WriteVtkResultsToFile)
                 , default_WriteVtkResultsToFile_function_type(&MeshBasedCellPopulation_less__2_comma__2__greater__wrapper::default_WriteVtkResultsToFile)
                 , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::MeshBasedCellPopulation< 2, 2 >::rGetNodePairs
+        
+            typedef MeshBasedCellPopulation< 2, 2 > exported_class_t;
+            typedef ::std::vector< std::pair<Node<2> *, Node<2> *> > & ( exported_class_t::*rGetNodePairs_function_type)(  ) ;
+            
+            MeshBasedCellPopulation2_2_exposer.def( 
+                "rGetNodePairs"
+                , rGetNodePairs_function_type(&::MeshBasedCellPopulation< 2, 2 >::rGetNodePairs)
+                , bp::return_internal_reference< >() );
         
         }
         { //::AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation

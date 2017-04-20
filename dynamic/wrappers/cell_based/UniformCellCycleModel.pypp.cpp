@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "UniformCellCycleModel.pypp.hpp"
 
 namespace bp = boost::python;
@@ -200,7 +200,7 @@ void register_UniformCellCycleModel_class(){
             "CreateCellCycleModel"
             , (::AbstractCellCycleModel * ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::CreateCellCycleModel)
             , (::AbstractCellCycleModel * ( UniformCellCycleModel_wrapper::* )(  ))(&UniformCellCycleModel_wrapper::default_CreateCellCycleModel)
-            , bp::return_value_policy< bp::manage_new_object >() )    
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetAverageStemCellCycleTime"
             , (double ( ::UniformCellCycleModel::* )(  ))(&::UniformCellCycleModel::GetAverageStemCellCycleTime)

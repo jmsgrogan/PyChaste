@@ -37,12 +37,26 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellPopulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellPopulation< 2, 2 >, bp::wrapper< AbstractCellPopulation< 2, 2 > > {
+
+    AbstractCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh )
+    : AbstractCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    AbstractCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
 
     virtual void AcceptCellWriter( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > > pCellWriter, ::CellPtr pCell ){
         bp::override func_AcceptCellWriter = this->get_override( "AcceptCellWriter" );
@@ -71,7 +85,7 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
         func_AcceptPopulationWriter( pPopulationWriter );
     }
 
-    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ){
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ){
         bp::override func_AddCell = this->get_override( "AddCell" );
         return func_AddCell( pNewCell, pParentCell );
     }
@@ -133,6 +147,11 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
     virtual unsigned int GetNumNodes(  ){
         bp::override func_GetNumNodes = this->get_override( "GetNumNodes" );
         return func_GetNumNodes(  );
+    }
+
+    virtual ::TetrahedralMesh< 2, 2 > * GetTetrahedralMeshForPdeModifier(  ){
+        bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" );
+        return func_GetTetrahedralMeshForPdeModifier(  );
     }
 
     virtual double GetVolumeOfCell( ::CellPtr pCell ){
@@ -293,11 +312,12 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
 void register_AbstractCellPopulation2_2_class(){
 
     { //::AbstractCellPopulation< 2, 2 >
-        typedef bp::class_< AbstractCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellPopulation2_2_exposer_t;
-        AbstractCellPopulation2_2_exposer_t AbstractCellPopulation2_2_exposer = AbstractCellPopulation2_2_exposer_t( "AbstractCellPopulation2_2", bp::no_init );
+        typedef bp::class_< AbstractCellPopulation_less__2_comma__2__greater__wrapper, boost::noncopyable > AbstractCellPopulation2_2_exposer_t;
+        AbstractCellPopulation2_2_exposer_t AbstractCellPopulation2_2_exposer = AbstractCellPopulation2_2_exposer_t( "AbstractCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) );
         bp::scope AbstractCellPopulation2_2_scope( AbstractCellPopulation2_2_exposer );
-        bp::class_< AbstractCellPopulation< 2, 2 >::Iterator, boost::noncopyable >( "Iterator", bp::no_init )    
+        bp::class_< AbstractCellPopulation< 2, 2 >::Iterator, boost::noncopyable >( "Iterator", bp::init< AbstractCellPopulation< 2, 2 > &, std::list< boost::shared_ptr<Cell> >::iterator >(( bp::arg("rCellPopulation"), bp::arg("cellIter") )) )    
             .def( bp::self != bp::self );
+        AbstractCellPopulation2_2_exposer.def( bp::init< AbstractMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) );
         { //::AbstractCellPopulation< 2, 2 >::AcceptCellWriter
         
             typedef AbstractCellPopulation< 2, 2 > exported_class_t;
@@ -349,7 +369,7 @@ void register_AbstractCellPopulation2_2_class(){
             AbstractCellPopulation2_2_exposer.def( 
                 "AddCell"
                 , bp::pure_virtual( AddCell_function_type(&::AbstractCellPopulation< 2, 2 >::AddCell) )
-                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::boost::shared_ptr<Cell>( ) ) );
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
         
         }
         { //::AbstractCellPopulation< 2, 2 >::AddCellPopulationCountWriter
@@ -650,6 +670,17 @@ void register_AbstractCellPopulation2_2_class(){
                 , GetSizeOfCellPopulation_function_type( &::AbstractCellPopulation< 2, 2 >::GetSizeOfCellPopulation ) );
         
         }
+        { //::AbstractCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier
+        
+            typedef AbstractCellPopulation< 2, 2 > exported_class_t;
+            typedef ::TetrahedralMesh<2, 2> * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            
+            AbstractCellPopulation2_2_exposer.def( 
+                "GetTetrahedralMeshForPdeModifier"
+                , bp::pure_virtual( GetTetrahedralMeshForPdeModifier_function_type(&::AbstractCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier) )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell
         
             typedef AbstractCellPopulation< 2, 2 > exported_class_t;
@@ -946,6 +977,17 @@ void register_AbstractCellPopulation2_2_class(){
                 "WriteVtkResultsToFile"
                 , WriteVtkResultsToFile_function_type( &AbstractCellPopulation_less__2_comma__2__greater__wrapper::WriteVtkResultsToFile )
                 , ( bp::arg("rDirectory") ) );
+        
+        }
+        { //::AbstractCellPopulation< 2, 2 >::rGetMesh
+        
+            typedef AbstractCellPopulation< 2, 2 > exported_class_t;
+            typedef ::AbstractMesh< 2, 2 > & ( exported_class_t::*rGetMesh_function_type)(  ) ;
+            
+            AbstractCellPopulation2_2_exposer.def( 
+                "rGetMesh"
+                , rGetMesh_function_type( &::AbstractCellPopulation< 2, 2 >::rGetMesh )
+                , bp::return_internal_reference< >() );
         
         }
     }

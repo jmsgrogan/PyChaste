@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellMutationState.pypp.hpp"
 
 namespace bp = boost::python;
@@ -60,10 +60,10 @@ void register_AbstractCellMutationState_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellMutationState > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellMutationState >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
         bp::implicitly_convertible< boost::shared_ptr< BetaCateninOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcTwoHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApcOneHitCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
+        bp::implicitly_convertible< boost::shared_ptr< WildTypeCellMutationState >, boost::shared_ptr< AbstractCellMutationState > >();
     }
 
 }

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellProliferativeType.pypp.hpp"
 
 namespace bp = boost::python;
@@ -60,10 +60,10 @@ void register_AbstractCellProliferativeType_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
-        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
-        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
     }
 
 }

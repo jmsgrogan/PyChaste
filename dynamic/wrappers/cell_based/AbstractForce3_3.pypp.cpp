@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractForce3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -78,7 +78,7 @@ struct AbstractForce_less__3_comma__3__greater__wrapper : AbstractForce< 3, 3 >,
 void register_AbstractForce3_3_class(){
 
     { //::AbstractForce< 3, 3 >
-        typedef bp::class_< AbstractForce_less__3_comma__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractForce3_3_exposer_t;
+        typedef bp::class_< AbstractForce_less__3_comma__3__greater__wrapper, boost::noncopyable > AbstractForce3_3_exposer_t;
         AbstractForce3_3_exposer_t AbstractForce3_3_exposer = AbstractForce3_3_exposer_t( "AbstractForce3_3", bp::init< >() );
         bp::scope AbstractForce3_3_scope( AbstractForce3_3_exposer );
         { //::AbstractForce< 3, 3 >::AddForceContribution

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "OffLatticeSimulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -311,6 +311,17 @@ void register_OffLatticeSimulation2_2_class(){
             OffLatticeSimulation2_2_exposer.def( 
                 "WriteVisualizerSetupFile"
                 , WriteVisualizerSetupFile_function_type( &OffLatticeSimulation_less__2_comma__2__greater__wrapper::default_WriteVisualizerSetupFile ) );
+        
+        }
+        { //::OffLatticeSimulation< 2, 2 >::rGetForceCollection
+        
+            typedef OffLatticeSimulation< 2, 2 > exported_class_t;
+            typedef ::std::vector< boost::shared_ptr<AbstractForce<2, 2> > > const & ( exported_class_t::*rGetForceCollection_function_type)(  ) const;
+            
+            OffLatticeSimulation2_2_exposer.def( 
+                "rGetForceCollection"
+                , rGetForceCollection_function_type( &::OffLatticeSimulation< 2, 2 >::rGetForceCollection )
+                , bp::return_internal_reference< >() );
         
         }
         { //::AbstractCellBasedSimulation< 2, 2 >::DoCellBirth

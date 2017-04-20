@@ -13,9 +13,6 @@
 .. autoclass:: chaste.core.Timer
 	:members:
 
-.. autoclass:: chaste.core.ChasteBuildInfo
-	:members:
-
 .. autoclass:: chaste.core.PetscTools
 	:members:
 

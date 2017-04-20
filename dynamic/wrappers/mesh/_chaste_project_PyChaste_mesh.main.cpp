@@ -46,7 +46,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/set.hpp"
 
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 
 #include "AbstractMesh2_2.pypp.hpp"
 
@@ -63,6 +63,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "Cylindrical2dVertexMesh.pypp.hpp"
 
 #include "CylindricalHoneycombVertexMeshGenerator.pypp.hpp"
+
+#include "Element2_2.pypp.hpp"
+
+#include "Element3_3.pypp.hpp"
 
 #include "HoneycombMeshGenerator.pypp.hpp"
 
@@ -88,6 +92,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "NodesOnlyMesh3.pypp.hpp"
 
+#include "PottsElement2.pypp.hpp"
+
+#include "PottsElement3.pypp.hpp"
+
 #include "PottsMesh2.pypp.hpp"
 
 #include "PottsMesh3.pypp.hpp"
@@ -96,94 +104,108 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "PottsMeshGenerator3.pypp.hpp"
 
-#include "SetUnsigned.pypp.hpp"
+#include "StdsetUnsigned.pypp.hpp"
+
+#include "StdvectorBool.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrNode2.pypp.hpp"
+
+#include "StdvectorBoostshared_ptrNode3.pypp.hpp"
+
+#include "StdvectorC_vectordouble2.pypp.hpp"
+
+#include "StdvectorC_vectordouble3.pypp.hpp"
+
+#include "StdvectorNode2.pypp.hpp"
+
+#include "StdvectorNode3.pypp.hpp"
+
+#include "StdvectorPottsElement2.pypp.hpp"
+
+#include "StdvectorPottsElement3.pypp.hpp"
+
+#include "StdvectorStdpairNode2Node2.pypp.hpp"
+
+#include "StdvectorStdpairNode3Node3.pypp.hpp"
+
+#include "StdvectorStdsetunsignedint.pypp.hpp"
+
+#include "StdvectorStdvectorunsignedint.pypp.hpp"
+
+#include "StdvectorVertexElement12.pypp.hpp"
+
+#include "StdvectorVertexElement22.pypp.hpp"
+
+#include "StdvectorVertexElement23.pypp.hpp"
+
+#include "StdvectorVertexElement33.pypp.hpp"
 
 #include "TetrahedralMesh2_2.pypp.hpp"
 
 #include "TetrahedralMesh3_3.pypp.hpp"
 
-#include "VecCVectorDouble_2.pypp.hpp"
-
-#include "VecCVectorDouble_3.pypp.hpp"
-
-#include "VecDouble.pypp.hpp"
-
-#include "VecNodePtr2.pypp.hpp"
-
-#include "VecNodePtr3.pypp.hpp"
-
-#include "VecNodeSharedPtr2.pypp.hpp"
-
-#include "VecNodeSharedPtr3.pypp.hpp"
-
-#include "VecPottsElementPtr2.pypp.hpp"
-
-#include "VecPottsElementPtr3.pypp.hpp"
-
-#include "VecSetInt.pypp.hpp"
-
-#include "VecUnsigned.pypp.hpp"
-
-#include "VecVecInt.pypp.hpp"
-
-#include "VecVertexElementPtr1_2.pypp.hpp"
-
-#include "VecVertexElementPtr2_2.pypp.hpp"
-
-#include "VecVertexElementPtr2_3.pypp.hpp"
-
-#include "VecVertexElementPtr3_3.pypp.hpp"
-
 #include "VertexMesh2_2.pypp.hpp"
 
 #include "VertexMesh3_3.pypp.hpp"
 
-#include "_chaste_project_PyChaste_mesh_free_functions.pypp.hpp"
-
-#include "vector_less__std_scope_pair_less_Node_less_2_greater___ptr__comma__Node_less_2_greater___ptr__greater___greater_.pypp.hpp"
-
-#include "vector_less__std_scope_pair_less_Node_less_3_greater___ptr__comma__Node_less_3_greater___ptr__greater___greater_.pypp.hpp"
-
 namespace bp = boost::python;
 
+namespace boost { namespace python { namespace indexing {
+
+template<>
+struct value_traits< std::vector< unsigned int > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
-    register_VecUnsigned_class();
+    register_StdvectorStdvectorunsignedint_class();
 
-    register_VecVecInt_class();
+    register_StdvectorStdsetunsignedint_class();
 
-    register_VecSetInt_class();
+    register_StdvectorStdpairNode3Node3_class();
 
-    register_vector_less__std_scope_pair_less_Node_less_3_greater___ptr__comma__Node_less_3_greater___ptr__greater___greater__class();
+    register_StdvectorStdpairNode2Node2_class();
 
-    register_vector_less__std_scope_pair_less_Node_less_2_greater___ptr__comma__Node_less_2_greater___ptr__greater___greater__class();
+    register_StdvectorBoostshared_ptrNode3_class();
 
-    register_VecDouble_class();
+    register_StdvectorBoostshared_ptrNode2_class();
 
-    register_VecNodeSharedPtr3_class();
+    register_StdvectorC_vectordouble3_class();
 
-    register_VecNodeSharedPtr2_class();
+    register_StdvectorC_vectordouble2_class();
 
-    register_VecCVectorDouble_3_class();
+    register_StdvectorBool_class();
 
-    register_VecCVectorDouble_2_class();
+    register_StdvectorVertexElement33_class();
 
-    register_VecVertexElementPtr3_3_class();
+    register_StdvectorVertexElement23_class();
 
-    register_VecVertexElementPtr2_3_class();
+    register_StdvectorVertexElement22_class();
 
-    register_VecVertexElementPtr2_2_class();
+    register_StdvectorVertexElement12_class();
 
-    register_VecVertexElementPtr1_2_class();
+    register_StdvectorPottsElement3_class();
 
-    register_VecPottsElementPtr3_class();
+    register_StdvectorPottsElement2_class();
 
-    register_VecPottsElementPtr2_class();
+    register_StdvectorNode3_class();
 
-    register_VecNodePtr3_class();
+    register_StdvectorNode2_class();
 
-    register_VecNodePtr2_class();
-
-    register_SetUnsigned_class();
+    register_StdsetUnsigned_class();
 
     register_AbstractMesh2_2_class();
 
@@ -202,6 +224,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
     register_MutableVertexMesh2_2_class();
 
     register_Cylindrical2dVertexMesh_class();
+
+    register_Element2_2_class();
+
+    register_Element3_3_class();
 
     register_TetrahedralMesh2_2_class();
 
@@ -227,6 +253,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
 
     register_NodesOnlyMesh3_class();
 
+    register_PottsElement2_class();
+
+    register_PottsElement3_class();
+
     register_PottsMesh2_class();
 
     register_PottsMesh3_class();
@@ -240,7 +270,5 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
     register_PottsMeshGenerator2_class();
 
     register_PottsMeshGenerator3_class();
-
-    register_free_functions();
 }
 

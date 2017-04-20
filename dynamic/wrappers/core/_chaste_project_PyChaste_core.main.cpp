@@ -38,19 +38,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "boost/python.hpp"
 
+#include "indexing_suite/value_traits.hpp"
+
 #include "indexing_suite/container_suite.hpp"
 
 #include "indexing_suite/vector.hpp"
 
-#include "indexing_suite/map.hpp"
-
-#include "core_headers.hpp"
-
-#include "ChasteBuildInfo.pypp.hpp"
+#include "classes_to_be_wrapped.hpp"
 
 #include "FileFinder.pypp.hpp"
-
-#include "MapString.pypp.hpp"
 
 #include "OutputFileHandler.pypp.hpp"
 
@@ -62,28 +58,24 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ReplicatableVector.pypp.hpp"
 
+#include "StdvectorDouble.pypp.hpp"
+
+#include "StdvectorUnsigned.pypp.hpp"
+
 #include "Timer.pypp.hpp"
 
-#include "VecDouble.pypp.hpp"
-
-#include "VecUnsigned.pypp.hpp"
-
-#include "_chaste_project_PyChaste_core_free_functions.pypp.hpp"
+#include "vector_less__FileFinder__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
-    register_VecUnsigned_class();
+    register_StdvectorUnsigned_class();
 
-    register_VecDouble_class();
+    register_StdvectorDouble_class();
 
-    register_MapString_class();
-
-    register_ChasteBuildInfo_class();
+    register_vector_less__FileFinder__greater__class();
 
     register_RelativeTo_class();
 
@@ -98,7 +90,5 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
     register_ReplicatableVector_class();
 
     register_Timer_class();
-
-    register_free_functions();
 }
 

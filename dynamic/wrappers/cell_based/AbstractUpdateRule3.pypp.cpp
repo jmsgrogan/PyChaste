@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractUpdateRule3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -61,7 +61,7 @@ struct AbstractUpdateRule_less__3__greater__wrapper : AbstractUpdateRule< 3 >, b
 void register_AbstractUpdateRule3_class(){
 
     { //::AbstractUpdateRule< 3 >
-        typedef bp::class_< AbstractUpdateRule_less__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractUpdateRule3_exposer_t;
+        typedef bp::class_< AbstractUpdateRule_less__3__greater__wrapper, boost::noncopyable > AbstractUpdateRule3_exposer_t;
         AbstractUpdateRule3_exposer_t AbstractUpdateRule3_exposer = AbstractUpdateRule3_exposer_t( "AbstractUpdateRule3", bp::init< >() );
         bp::scope AbstractUpdateRule3_scope( AbstractUpdateRule3_exposer );
         { //::AbstractUpdateRule< 3 >::OutputUpdateRuleInfo
@@ -91,10 +91,10 @@ void register_AbstractUpdateRule3_class(){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
     }
 
 }

@@ -1,13 +1,13 @@
-.. autoclass:: chaste.pde.AbstractLinearPde3_3
-	:members:
-
 .. autoclass:: chaste.pde.AbstractLinearPde2_2
 	:members:
 
-.. autoclass:: chaste.pde.AbstractLinearEllipticPde3_3
+.. autoclass:: chaste.pde.AbstractLinearPde3_3
 	:members:
 
 .. autoclass:: chaste.pde.AbstractLinearEllipticPde2_2
+	:members:
+
+.. autoclass:: chaste.pde.AbstractLinearEllipticPde3_3
 	:members:
 
 .. autoclass:: chaste.pde.AbstractBoundaryCondition2

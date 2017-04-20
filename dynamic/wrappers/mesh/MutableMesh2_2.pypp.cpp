@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MutableMesh2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -266,6 +266,18 @@ struct MutableMesh_less__2_comma__2__greater__wrapper : MutableMesh< 2, 2 >, bp:
         AbstractTetrahedralMesh< 2, 2 >::ConstructRectangularMesh( width, height, stagger );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -324,6 +336,18 @@ struct MutableMesh_less__2_comma__2__greater__wrapper : MutableMesh< 2, 2 >, bp:
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -912,6 +936,19 @@ void register_MutableMesh2_2_class(){
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
         
         }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
         
             typedef MutableMesh< 2, 2 > exported_class_t;
@@ -974,6 +1011,20 @@ void register_MutableMesh2_2_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef MutableMesh< 2, 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( MutableMesh_less__2_comma__2__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            MutableMesh2_2_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 2, 2 >::GetNumAllNodes
@@ -1280,8 +1331,8 @@ void register_MutableMesh2_2_class(){
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< TetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractTetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
     }
 
 }

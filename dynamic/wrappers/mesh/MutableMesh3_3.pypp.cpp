@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MutableMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -266,6 +266,18 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
         AbstractTetrahedralMesh< 3, 3 >::ConstructRectangularMesh( width, height, stagger );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 3, 3 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 3, 3 >::GetDistributedVectorFactory( );
+    }
+
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
         if( bp::override func_GetHaloNodeIndices = this->get_override( "GetHaloNodeIndices" ) )
             func_GetHaloNodeIndices( boost::ref(rHaloIndices) );
@@ -324,6 +336,18 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 3 > const & rTestPoint ) {
         return AbstractMesh< 3, 3 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 3 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 3, 3 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 3 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 3, 3 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -912,6 +936,19 @@ void register_MutableMesh3_3_class(){
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("stagger")=(bool)(true) ) );
         
         }
+        { //::AbstractMesh< 3, 3 >::GetDistributedVectorFactory
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices
         
             typedef MutableMesh< 3, 3 > exported_class_t;
@@ -974,6 +1011,20 @@ void register_MutableMesh3_3_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 3, 3 >::GetNodeOrHaloNode
+        
+            typedef MutableMesh< 3, 3 > exported_class_t;
+            typedef ::Node< 3 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 3 > * ( MutableMesh_less__3_comma__3__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            MutableMesh3_3_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 3, 3 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 3, 3 >::GetNumAllNodes

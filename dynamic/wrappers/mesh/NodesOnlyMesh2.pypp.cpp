@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "NodesOnlyMesh2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -103,6 +103,10 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
         NodesOnlyMesh< 2 >::DeleteNode( index );
     }
 
+    ::DistributedBoxCollection< 2 > * GetBoxCollection(  ){
+        return NodesOnlyMesh< 2 >::GetBoxCollection(  );
+    }
+
     virtual unsigned int GetMaximumNodeIndex(  ) {
         if( bp::override func_GetMaximumNodeIndex = this->get_override( "GetMaximumNodeIndex" ) )
             return func_GetMaximumNodeIndex(  );
@@ -113,6 +117,18 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
     
     unsigned int default_GetMaximumNodeIndex(  ) {
         return NodesOnlyMesh< 2 >::GetMaximumNodeIndex( );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->NodesOnlyMesh< 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return NodesOnlyMesh< 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumNodes(  ) const  {
@@ -285,6 +301,18 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
     
     void default_DeleteElement( unsigned int index ) {
         MutableMesh< 2, 2 >::DeleteElement( index );
+    }
+
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
     }
 
     virtual void GetHaloNodeIndices( ::std::vector< unsigned int > & rHaloIndices ) const  {
@@ -659,12 +687,22 @@ void register_NodesOnlyMesh2_class(){
             , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( unsigned int ))(&NodesOnlyMesh_less__2__greater__wrapper::default_DeleteNode)
             , ( bp::arg("index") ) )    
         .def( 
+            "GetBoxCollection"
+            , (::DistributedBoxCollection<2> * ( NodesOnlyMesh_less__2__greater__wrapper::* )(  ))(&NodesOnlyMesh_less__2__greater__wrapper::GetBoxCollection)
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
             "GetMaximumInteractionDistance"
             , (double ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::GetMaximumInteractionDistance ) )    
         .def( 
             "GetMaximumNodeIndex"
             , (unsigned int ( ::NodesOnlyMesh<2>::* )(  ))(&::NodesOnlyMesh< 2 >::GetMaximumNodeIndex)
             , (unsigned int ( NodesOnlyMesh_less__2__greater__wrapper::* )(  ))(&NodesOnlyMesh_less__2__greater__wrapper::default_GetMaximumNodeIndex) )    
+        .def( 
+            "GetNodeOrHaloNode"
+            , (::Node< 2 > * ( ::NodesOnlyMesh<2>::* )( unsigned int )const)(&::NodesOnlyMesh< 2 >::GetNodeOrHaloNode)
+            , (::Node< 2 > * ( NodesOnlyMesh_less__2__greater__wrapper::* )( unsigned int )const)(&NodesOnlyMesh_less__2__greater__wrapper::default_GetNodeOrHaloNode)
+            , ( bp::arg("index") )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetNumNodes"
             , (unsigned int ( ::NodesOnlyMesh<2>::* )(  )const)(&::NodesOnlyMesh< 2 >::GetNumNodes)
@@ -723,6 +761,26 @@ void register_NodesOnlyMesh2_class(){
             "UpdateBoxCollection"
             , (void ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::UpdateBoxCollection ) )    
         .def( 
+            "rGetHaloNodesToSendLeft"
+            , (::std::vector< unsigned int > & ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::rGetHaloNodesToSendLeft )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetHaloNodesToSendRight"
+            , (::std::vector< unsigned int > & ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::rGetHaloNodesToSendRight )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetInitiallyOwnedNodes"
+            , (::std::vector< bool > & ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::rGetInitiallyOwnedNodes )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetNodesToSendLeft"
+            , (::std::vector< unsigned int > & ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::rGetNodesToSendLeft )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetNodesToSendRight"
+            , (::std::vector< unsigned int > & ( ::NodesOnlyMesh<2>::* )(  ))( &::NodesOnlyMesh< 2 >::rGetNodesToSendRight )
+            , bp::return_internal_reference< >() )    
+        .def( 
             "CalculateBoundingBox"
             , (::ChasteCuboid<2> ( NodesOnlyMesh_less__2__greater__wrapper::* )( ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & )const)(&NodesOnlyMesh_less__2__greater__wrapper::CalculateBoundingBox)
             , ( bp::arg("rNodes") ) )    
@@ -764,6 +822,11 @@ void register_NodesOnlyMesh2_class(){
             , (void ( ::MutableMesh<2, 2>::* )( unsigned int ))(&::MutableMesh< 2, 2 >::DeleteElement)
             , (void ( NodesOnlyMesh_less__2__greater__wrapper::* )( unsigned int ))(&NodesOnlyMesh_less__2__greater__wrapper::default_DeleteElement)
             , ( bp::arg("index") ) )    
+        .def( 
+            "GetDistributedVectorFactory"
+            , (::DistributedVectorFactory * ( ::AbstractMesh<2, 2>::* )(  ))(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+            , (::DistributedVectorFactory * ( NodesOnlyMesh_less__2__greater__wrapper::* )(  ))(&NodesOnlyMesh_less__2__greater__wrapper::default_GetDistributedVectorFactory)
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetHaloNodeIndices"
             , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)

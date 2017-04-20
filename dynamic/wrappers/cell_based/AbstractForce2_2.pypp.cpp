@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractForce2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -78,7 +78,7 @@ struct AbstractForce_less__2_comma__2__greater__wrapper : AbstractForce< 2, 2 >,
 void register_AbstractForce2_2_class(){
 
     { //::AbstractForce< 2, 2 >
-        typedef bp::class_< AbstractForce_less__2_comma__2__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractForce2_2_exposer_t;
+        typedef bp::class_< AbstractForce_less__2_comma__2__greater__wrapper, boost::noncopyable > AbstractForce2_2_exposer_t;
         AbstractForce2_2_exposer_t AbstractForce2_2_exposer = AbstractForce2_2_exposer_t( "AbstractForce2_2", bp::init< >() );
         bp::scope AbstractForce2_2_scope( AbstractForce2_2_exposer );
         { //::AbstractForce< 2, 2 >::AddForceContribution
@@ -129,9 +129,9 @@ void register_AbstractForce2_2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractForce<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractForce< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTwoBodyInteractionForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
     }
 
 }

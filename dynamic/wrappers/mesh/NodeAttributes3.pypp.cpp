@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "NodeAttributes3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -100,6 +100,14 @@ void register_NodeAttributes3_class(){
         .def( 
             "rGetAppliedForce"
             , (::boost::numeric::ublas::c_vector< double, 3 > & ( ::NodeAttributes<3>::* )(  ))( &::NodeAttributes< 3 >::rGetAppliedForce )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetAttributes"
+            , (::std::vector< double > & ( ::NodeAttributes<3>::* )(  ))( &::NodeAttributes< 3 >::rGetAttributes )
+            , bp::return_internal_reference< >() )    
+        .def( 
+            "rGetNeighbours"
+            , (::std::vector< unsigned int > & ( ::NodeAttributes<3>::* )(  ))( &::NodeAttributes< 3 >::rGetNeighbours )
             , bp::return_internal_reference< >() );
 
 }

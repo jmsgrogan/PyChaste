@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellBasedSimulationModifier3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -95,7 +95,7 @@ struct AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper : 
 void register_AbstractCellBasedSimulationModifier3_3_class(){
 
     { //::AbstractCellBasedSimulationModifier< 3, 3 >
-        typedef bp::class_< AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellBasedSimulationModifier3_3_exposer_t;
+        typedef bp::class_< AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper, boost::noncopyable > AbstractCellBasedSimulationModifier3_3_exposer_t;
         AbstractCellBasedSimulationModifier3_3_exposer_t AbstractCellBasedSimulationModifier3_3_exposer = AbstractCellBasedSimulationModifier3_3_exposer_t( "AbstractCellBasedSimulationModifier3_3", bp::init< >() );
         bp::scope AbstractCellBasedSimulationModifier3_3_scope( AbstractCellBasedSimulationModifier3_3_exposer );
         { //::AbstractCellBasedSimulationModifier< 3, 3 >::OutputSimulationModifierInfo
@@ -170,11 +170,11 @@ void register_AbstractCellBasedSimulationModifier3_3_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellBasedSimulationModifier<3, 3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< EllipticGrowingDomainPdeModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AbstractTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SimpleTargetAreaModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< VtkSceneModifier< 3 > >, boost::shared_ptr< AbstractCellBasedSimulationModifier< 3, 3 > > >();
     }
 

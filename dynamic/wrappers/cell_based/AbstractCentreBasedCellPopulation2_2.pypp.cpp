@@ -37,12 +37,26 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCentreBasedCellPopulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : AbstractCentreBasedCellPopulation< 2, 2 >, bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > > {
+
+    AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh )
+    : AbstractCentreBasedCellPopulation<2, 2>( boost::ref(rMesh) )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
+
+    AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper(::AbstractMesh< 2, 2 > & rMesh, ::std::vector< boost::shared_ptr<Cell> > & rCells, ::std::vector< unsigned int > const locationIndices=std::vector<unsigned int>() )
+    : AbstractCentreBasedCellPopulation<2, 2>( boost::ref(rMesh), boost::ref(rCells), locationIndices )
+      , bp::wrapper< AbstractCentreBasedCellPopulation< 2, 2 > >(){
+        // constructor
+    
+    }
 
     virtual void AcceptCellWritersAcrossPopulation(  ){
         if( bp::override func_AcceptCellWritersAcrossPopulation = this->get_override( "AcceptCellWritersAcrossPopulation" ) )
@@ -56,7 +70,7 @@ struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : Ab
         AbstractCentreBasedCellPopulation< 2, 2 >::AcceptCellWritersAcrossPopulation( );
     }
 
-    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         if( bp::override func_AddCell = this->get_override( "AddCell" ) )
             return func_AddCell( pNewCell, pParentCell );
         else{
@@ -64,7 +78,7 @@ struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : Ab
         }
     }
     
-    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         return AbstractCentreBasedCellPopulation< 2, 2 >::AddCell( pNewCell, pParentCell );
     }
 
@@ -415,7 +429,8 @@ struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : Ab
 
 void register_AbstractCentreBasedCellPopulation2_2_class(){
 
-    bp::class_< AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractCentreBasedCellPopulation2_2", bp::no_init )    
+    bp::class_< AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper, bp::bases< AbstractOffLatticeCellPopulation< 2, 2 > >, boost::noncopyable >( "AbstractCentreBasedCellPopulation2_2", bp::init< AbstractMesh< 2, 2 > & >(( bp::arg("rMesh") )) )    
+        .def( bp::init< AbstractMesh< 2, 2 > &, std::vector< boost::shared_ptr<Cell> > &, bp::optional< std::vector< unsigned int > > >(( bp::arg("rMesh"), bp::arg("rCells"), bp::arg("locationIndices")=std::vector<unsigned int>() )) )    
         .def( 
             "AcceptCellWritersAcrossPopulation"
             , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )(  ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AcceptCellWritersAcrossPopulation) )    
@@ -423,7 +438,7 @@ void register_AbstractCentreBasedCellPopulation2_2_class(){
             "AddCell"
             , (::CellPtr ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( ::CellPtr,::CellPtr ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::AddCell)
             , (::CellPtr ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::CellPtr,::CellPtr ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::default_AddCell)
-            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::boost::shared_ptr<Cell>( ) ) )    
+            , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) )    
         .def( 
             "CheckForStepSizeException"
             , (void ( ::AbstractCentreBasedCellPopulation<2, 2>::* )( unsigned int,::boost::numeric::ublas::c_vector< double, 2 > &,double ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::CheckForStepSizeException)
@@ -508,6 +523,10 @@ void register_AbstractCentreBasedCellPopulation2_2_class(){
             , (void ( AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::* )( ::std::string const & ))(&AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper::WriteVtkResultsToFile)
             , ( bp::arg("rDirectory") ) )    
         .def( 
+            "rGetNodePairs"
+            , bp::pure_virtual( (::std::vector< std::pair<Node<2> *, Node<2> *> > & ( ::AbstractCentreBasedCellPopulation<2, 2>::* )(  ))(&::AbstractCentreBasedCellPopulation< 2, 2 >::rGetNodePairs) )
+            , bp::return_internal_reference< >() )    
+        .def( 
             "AcceptCellWriter"
             , bp::pure_virtual( (void ( ::AbstractCellPopulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellWriter< 2, 2 > >,::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::AcceptCellWriter) )
             , ( bp::arg("pCellWriter"), bp::arg("pCell") ) )    
@@ -545,6 +564,10 @@ void register_AbstractCentreBasedCellPopulation2_2_class(){
         .def( 
             "GetNumNodes"
             , bp::pure_virtual( (unsigned int ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetNumNodes) ) )    
+        .def( 
+            "GetTetrahedralMeshForPdeModifier"
+            , bp::pure_virtual( (::TetrahedralMesh< 2, 2 > * ( ::AbstractCellPopulation<2, 2>::* )(  ))(&::AbstractCellPopulation< 2, 2 >::GetTetrahedralMeshForPdeModifier) )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetVolumeOfCell"
             , bp::pure_virtual( (double ( ::AbstractCellPopulation<2, 2>::* )( ::CellPtr ))(&::AbstractCellPopulation< 2, 2 >::GetVolumeOfCell) )

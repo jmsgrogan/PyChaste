@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AttractingPlaneBoundaryCondition3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -131,10 +131,10 @@ void register_AttractingPlaneBoundaryCondition3_3_class(){
         .def( 
             "rGetNormalToPlane"
             , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::AttractingPlaneBoundaryCondition<3, 3>::* )(  )const)( &::AttractingPlaneBoundaryCondition< 3, 3 >::rGetNormalToPlane )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_internal_reference< >() )    
         .def( 
             "rGetPointOnPlane"
             , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::AttractingPlaneBoundaryCondition<3, 3>::* )(  )const)( &::AttractingPlaneBoundaryCondition< 3, 3 >::rGetPointOnPlane )
-            , bp::return_value_policy< bp::copy_const_reference >() );
+            , bp::return_internal_reference< >() );
 
 }

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "MutableVertexMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -258,6 +258,18 @@ struct MutableVertexMesh_less__3_comma__3__greater__wrapper : MutableVertexMesh<
         return VertexMesh< 3, 3 >::GetCentroidOfElement( index );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 3, 3 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 3, 3 >::GetDistributedVectorFactory( );
+    }
+
     unsigned int GetLocalIndexForElementEdgeClosestToPoint( ::boost::numeric::ublas::c_vector< double, 3 > const & rTestPoint, unsigned int elementIndex ){
         return VertexMesh< 3, 3 >::GetLocalIndexForElementEdgeClosestToPoint( boost::ref(rTestPoint), elementIndex );
     }
@@ -272,6 +284,18 @@ struct MutableVertexMesh_less__3_comma__3__greater__wrapper : MutableVertexMesh<
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 3 > const & rTestPoint ) {
         return AbstractMesh< 3, 3 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 3 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 3, 3 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 3 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 3, 3 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -689,6 +713,11 @@ void register_MutableVertexMesh3_3_class(){
             , (::boost::numeric::ublas::c_vector< double, 3 > ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )( unsigned int ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::default_GetCentroidOfElement)
             , ( bp::arg("index") ) )    
         .def( 
+            "GetDistributedVectorFactory"
+            , (::DistributedVectorFactory * ( ::AbstractMesh<3, 3>::* )(  ))(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
+            , (::DistributedVectorFactory * ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )(  ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
+            , bp::return_value_policy< bp::reference_existing_object >() )    
+        .def( 
             "GetLocalIndexForElementEdgeClosestToPoint"
             , (unsigned int ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector<double, 3> const &,unsigned int ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::GetLocalIndexForElementEdgeClosestToPoint)
             , ( bp::arg("rTestPoint"), bp::arg("elementIndex") ) )    
@@ -697,6 +726,12 @@ void register_MutableVertexMesh3_3_class(){
             , (unsigned int ( ::AbstractMesh<3, 3>::* )( ::ChastePoint< 3 > const & ))(&::AbstractMesh< 3, 3 >::GetNearestNodeIndex)
             , (unsigned int ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )( ::ChastePoint< 3 > const & ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::default_GetNearestNodeIndex)
             , ( bp::arg("rTestPoint") ) )    
+        .def( 
+            "GetNodeOrHaloNode"
+            , (::Node< 3 > * ( ::AbstractMesh<3, 3>::* )( unsigned int )const)(&::AbstractMesh< 3, 3 >::GetNodeOrHaloNode)
+            , (::Node< 3 > * ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )( unsigned int )const)(&MutableVertexMesh_less__3_comma__3__greater__wrapper::default_GetNodeOrHaloNode)
+            , ( bp::arg("index") )
+            , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "GetNumAllNodes"
             , (unsigned int ( ::AbstractMesh<3, 3>::* )(  )const)(&::AbstractMesh< 3, 3 >::GetNumAllNodes)

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "CaBasedCellPopulation3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -94,7 +94,7 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
         CaBasedCellPopulation< 3 >::AcceptPopulationWriter( pPopulationWriter );
     }
 
-    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    virtual ::CellPtr AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         if( bp::override func_AddCell = this->get_override( "AddCell" ) )
             return func_AddCell( pNewCell, pParentCell );
         else{
@@ -102,7 +102,7 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
         }
     }
     
-    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::boost::shared_ptr<Cell>( ) ) {
+    ::CellPtr default_AddCell( ::CellPtr pNewCell, ::CellPtr pParentCell=::CellPtr( ) ) {
         return CaBasedCellPopulation< 3 >::AddCell( pNewCell, pParentCell );
     }
 
@@ -200,6 +200,18 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
     
     unsigned int default_GetNumNodes(  ) {
         return CaBasedCellPopulation< 3 >::GetNumNodes( );
+    }
+
+    virtual ::TetrahedralMesh< 3, 3 > * GetTetrahedralMeshForPdeModifier(  ) {
+        if( bp::override func_GetTetrahedralMeshForPdeModifier = this->get_override( "GetTetrahedralMeshForPdeModifier" ) )
+            return func_GetTetrahedralMeshForPdeModifier(  );
+        else{
+            return this->CaBasedCellPopulation< 3 >::GetTetrahedralMeshForPdeModifier(  );
+        }
+    }
+    
+    ::TetrahedralMesh< 3, 3 > * default_GetTetrahedralMeshForPdeModifier(  ) {
+        return CaBasedCellPopulation< 3 >::GetTetrahedralMeshForPdeModifier( );
     }
 
     virtual ::std::vector< boost::shared_ptr<AbstractUpdateRule<3> > > const GetUpdateRuleCollection(  ) const  {
@@ -549,7 +561,7 @@ void register_CaBasedCellPopulation3_class(){
                 "AddCell"
                 , AddCell_function_type(&::CaBasedCellPopulation< 3 >::AddCell)
                 , default_AddCell_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_AddCell)
-                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::boost::shared_ptr<Cell>( ) ) );
+                , ( bp::arg("pNewCell"), bp::arg("pParentCell")=::CellPtr( ) ) );
         
         }
         { //::CaBasedCellPopulation< 3 >::AddCellUsingLocationIndex
@@ -654,6 +666,18 @@ void register_CaBasedCellPopulation3_class(){
                 , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
+        { //::CaBasedCellPopulation< 3 >::GetNodeCorrespondingToCell
+        
+            typedef CaBasedCellPopulation< 3 > exported_class_t;
+            typedef ::Node< 3 > * ( exported_class_t::*GetNodeCorrespondingToCell_function_type)( ::CellPtr ) ;
+            
+            CaBasedCellPopulation3_exposer.def( 
+                "GetNodeCorrespondingToCell"
+                , GetNodeCorrespondingToCell_function_type( &::CaBasedCellPopulation< 3 >::GetNodeCorrespondingToCell )
+                , ( bp::arg("pCell") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::CaBasedCellPopulation< 3 >::GetNumNodes
         
             typedef CaBasedCellPopulation< 3 > exported_class_t;
@@ -664,6 +688,19 @@ void register_CaBasedCellPopulation3_class(){
                 "GetNumNodes"
                 , GetNumNodes_function_type(&::CaBasedCellPopulation< 3 >::GetNumNodes)
                 , default_GetNumNodes_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_GetNumNodes) );
+        
+        }
+        { //::CaBasedCellPopulation< 3 >::GetTetrahedralMeshForPdeModifier
+        
+            typedef CaBasedCellPopulation< 3 > exported_class_t;
+            typedef ::TetrahedralMesh< 3, 3 > * ( exported_class_t::*GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            typedef ::TetrahedralMesh< 3, 3 > * ( CaBasedCellPopulation_less__3__greater__wrapper::*default_GetTetrahedralMeshForPdeModifier_function_type)(  ) ;
+            
+            CaBasedCellPopulation3_exposer.def( 
+                "GetTetrahedralMeshForPdeModifier"
+                , GetTetrahedralMeshForPdeModifier_function_type(&::CaBasedCellPopulation< 3 >::GetTetrahedralMeshForPdeModifier)
+                , default_GetTetrahedralMeshForPdeModifier_function_type(&CaBasedCellPopulation_less__3__greater__wrapper::default_GetTetrahedralMeshForPdeModifier)
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::CaBasedCellPopulation< 3 >::GetUpdateRuleCollection

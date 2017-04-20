@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "core_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "FileFinder.pypp.hpp"
 
 namespace bp = boost::python;
@@ -151,6 +151,16 @@ void register_FileFinder_class(){
                 "FakePath"
                 , FakePath_function_type( &::FileFinder::FakePath )
                 , ( bp::arg("fakeWhat"), bp::arg("rFakePath") ) );
+        
+        }
+        { //::FileFinder::FindMatches
+        
+            typedef ::std::vector< FileFinder > ( ::FileFinder::*FindMatches_function_type)( ::std::string const & ) const;
+            
+            FileFinder_exposer.def( 
+                "FindMatches"
+                , FindMatches_function_type( &::FileFinder::FindMatches )
+                , ( bp::arg("rPattern") ) );
         
         }
         { //::FileFinder::GetAbsolutePath

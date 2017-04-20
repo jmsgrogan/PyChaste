@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "PottsMesh2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -166,6 +166,18 @@ struct PottsMesh_less__2__greater__wrapper : PottsMesh< 2 >, bp::wrapper< PottsM
         return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
             return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
@@ -176,6 +188,18 @@ struct PottsMesh_less__2__greater__wrapper : PottsMesh< 2 >, bp::wrapper< PottsM
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -318,6 +342,8 @@ void register_PottsMesh2_class(){
         typedef bp::class_< PottsMesh_less__2__greater__wrapper, bp::bases< AbstractMesh< 2, 2 > >, boost::noncopyable > PottsMesh2_exposer_t;
         PottsMesh2_exposer_t PottsMesh2_exposer = PottsMesh2_exposer_t( "PottsMesh2", bp::init< std::vector< Node<2> * >, std::vector< PottsElement<2> * >, std::vector< std::set< unsigned int > >, std::vector< std::set< unsigned int > > >(( bp::arg("nodes"), bp::arg("pottsElements"), bp::arg("vonNeumannNeighbouringNodeIndices"), bp::arg("mooreNeighbouringNodeIndices") )) );
         bp::scope PottsMesh2_scope( PottsMesh2_exposer );
+        bp::class_< PottsMesh< 2 >::PottsElementIterator, boost::noncopyable >( "PottsElementIterator", bp::init< PottsMesh< 2 > &, std::vector< PottsElement<2> * >::iterator, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("elementIter"), bp::arg("skipDeletedElements")=(bool)(true) )) )    
+            .def( bp::self != bp::self );
         PottsMesh2_exposer.def( bp::init< >() );
         { //::PottsMesh< 2 >::AddElement
         
@@ -591,6 +617,19 @@ void register_PottsMesh2_class(){
                 , default_CalculateBoundingBox_function_type(&PottsMesh_less__2__greater__wrapper::default_CalculateBoundingBox) );
         
         }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef PottsMesh< 2 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( PottsMesh_less__2__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            PottsMesh2_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&PottsMesh_less__2__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
         
             typedef PottsMesh< 2 > exported_class_t;
@@ -602,6 +641,20 @@ void register_PottsMesh2_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&PottsMesh_less__2__greater__wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef PottsMesh< 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( PottsMesh_less__2__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            PottsMesh2_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&PottsMesh_less__2__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 2, 2 >::GetNumAllNodes

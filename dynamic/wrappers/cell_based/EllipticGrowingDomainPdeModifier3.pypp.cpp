@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "EllipticGrowingDomainPdeModifier3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -121,7 +121,7 @@ void register_EllipticGrowingDomainPdeModifier3_class(){
 
     { //::EllipticGrowingDomainPdeModifier< 3 >
         typedef bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > >, boost::noncopyable > EllipticGrowingDomainPdeModifier3_exposer_t;
-        EllipticGrowingDomainPdeModifier3_exposer_t EllipticGrowingDomainPdeModifier3_exposer = EllipticGrowingDomainPdeModifier3_exposer_t( "EllipticGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<3, 3> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=__null )) );
+        EllipticGrowingDomainPdeModifier3_exposer_t EllipticGrowingDomainPdeModifier3_exposer = EllipticGrowingDomainPdeModifier3_exposer_t( "EllipticGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde"), bp::arg("pBoundaryCondition"), bp::arg("isNeumannBoundaryCondition"), bp::arg("solution") )) );
         bp::scope EllipticGrowingDomainPdeModifier3_scope( EllipticGrowingDomainPdeModifier3_exposer );
         bp::implicitly_convertible< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, EllipticGrowingDomainPdeModifier< 3 > >();
         { //::EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters

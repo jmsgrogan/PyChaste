@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "mesh_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "VertexMesh2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -240,6 +240,18 @@ struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::w
         return AbstractMesh< 2, 2 >::CalculateBoundingBox( );
     }
 
+    virtual ::DistributedVectorFactory * GetDistributedVectorFactory(  ) {
+        if( bp::override func_GetDistributedVectorFactory = this->get_override( "GetDistributedVectorFactory" ) )
+            return func_GetDistributedVectorFactory(  );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetDistributedVectorFactory(  );
+        }
+    }
+    
+    ::DistributedVectorFactory * default_GetDistributedVectorFactory(  ) {
+        return AbstractMesh< 2, 2 >::GetDistributedVectorFactory( );
+    }
+
     virtual unsigned int GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         if( bp::override func_GetNearestNodeIndex = this->get_override( "GetNearestNodeIndex" ) )
             return func_GetNearestNodeIndex( boost::ref(rTestPoint) );
@@ -250,6 +262,18 @@ struct VertexMesh_less__2_comma__2__greater__wrapper : VertexMesh< 2, 2 >, bp::w
     
     unsigned int default_GetNearestNodeIndex( ::ChastePoint< 2 > const & rTestPoint ) {
         return AbstractMesh< 2, 2 >::GetNearestNodeIndex( boost::ref(rTestPoint) );
+    }
+
+    virtual ::Node< 2 > * GetNodeOrHaloNode( unsigned int index ) const  {
+        if( bp::override func_GetNodeOrHaloNode = this->get_override( "GetNodeOrHaloNode" ) )
+            return func_GetNodeOrHaloNode( index );
+        else{
+            return this->AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
+        }
+    }
+    
+    ::Node< 2 > * default_GetNodeOrHaloNode( unsigned int index ) const  {
+        return AbstractMesh< 2, 2 >::GetNodeOrHaloNode( index );
     }
 
     virtual unsigned int GetNumAllNodes(  ) const  {
@@ -380,6 +404,8 @@ void register_VertexMesh2_2_class(){
         typedef bp::class_< VertexMesh_less__2_comma__2__greater__wrapper, bp::bases< AbstractMesh< 2, 2 > >, boost::noncopyable > VertexMesh2_2_exposer_t;
         VertexMesh2_2_exposer_t VertexMesh2_2_exposer = VertexMesh2_2_exposer_t( "VertexMesh2_2", bp::init< std::vector< Node<2> * >, std::vector< VertexElement<2, 2> * > >(( bp::arg("nodes"), bp::arg("vertexElements") )) );
         bp::scope VertexMesh2_2_scope( VertexMesh2_2_exposer );
+        bp::class_< VertexMesh< 2, 2 >::VertexElementIterator, boost::noncopyable >( "VertexElementIterator", bp::init< VertexMesh< 2, 2 > &, std::vector< VertexElement<2, 2> * >::iterator, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("elementIter"), bp::arg("skipDeletedElements")=(bool)(true) )) )    
+            .def( bp::self != bp::self );
         VertexMesh2_2_exposer.def( bp::init< std::vector< Node<2> * >, std::vector< VertexElement<1, 2> * >, std::vector< VertexElement<2, 2> * > >(( bp::arg("nodes"), bp::arg("faces"), bp::arg("vertexElements") )) );
         VertexMesh2_2_exposer.def( bp::init< TetrahedralMesh< 2, 2 > &, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("isPeriodic")=(bool)(false) )) );
         bp::implicitly_convertible< TetrahedralMesh< 2, 2 > &, VertexMesh< 2, 2 > >();
@@ -807,6 +833,19 @@ void register_VertexMesh2_2_class(){
                 , default_CalculateBoundingBox_function_type(&VertexMesh_less__2_comma__2__greater__wrapper::default_CalculateBoundingBox) );
         
         }
+        { //::AbstractMesh< 2, 2 >::GetDistributedVectorFactory
+        
+            typedef VertexMesh< 2, 2 > exported_class_t;
+            typedef ::DistributedVectorFactory * ( exported_class_t::*GetDistributedVectorFactory_function_type)(  ) ;
+            typedef ::DistributedVectorFactory * ( VertexMesh_less__2_comma__2__greater__wrapper::*default_GetDistributedVectorFactory_function_type)(  ) ;
+            
+            VertexMesh2_2_exposer.def( 
+                "GetDistributedVectorFactory"
+                , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
+                , default_GetDistributedVectorFactory_function_type(&VertexMesh_less__2_comma__2__greater__wrapper::default_GetDistributedVectorFactory)
+                , bp::return_value_policy< bp::reference_existing_object >() );
+        
+        }
         { //::AbstractMesh< 2, 2 >::GetNearestNodeIndex
         
             typedef VertexMesh< 2, 2 > exported_class_t;
@@ -818,6 +857,20 @@ void register_VertexMesh2_2_class(){
                 , GetNearestNodeIndex_function_type(&::AbstractMesh< 2, 2 >::GetNearestNodeIndex)
                 , default_GetNearestNodeIndex_function_type(&VertexMesh_less__2_comma__2__greater__wrapper::default_GetNearestNodeIndex)
                 , ( bp::arg("rTestPoint") ) );
+        
+        }
+        { //::AbstractMesh< 2, 2 >::GetNodeOrHaloNode
+        
+            typedef VertexMesh< 2, 2 > exported_class_t;
+            typedef ::Node< 2 > * ( exported_class_t::*GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            typedef ::Node< 2 > * ( VertexMesh_less__2_comma__2__greater__wrapper::*default_GetNodeOrHaloNode_function_type)( unsigned int ) const;
+            
+            VertexMesh2_2_exposer.def( 
+                "GetNodeOrHaloNode"
+                , GetNodeOrHaloNode_function_type(&::AbstractMesh< 2, 2 >::GetNodeOrHaloNode)
+                , default_GetNodeOrHaloNode_function_type(&VertexMesh_less__2_comma__2__greater__wrapper::default_GetNodeOrHaloNode)
+                , ( bp::arg("index") )
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractMesh< 2, 2 >::GetNumAllNodes

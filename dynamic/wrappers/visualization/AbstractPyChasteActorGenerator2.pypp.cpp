@@ -37,19 +37,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "visualization_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractPyChasteActorGenerator2.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractPyChasteActorGenerator_less__2__greater__wrapper : AbstractPyChasteActorGenerator< 2 >, bp::wrapper< AbstractPyChasteActorGenerator< 2 > > {
-
-    AbstractPyChasteActorGenerator_less__2__greater__wrapper( )
-    : AbstractPyChasteActorGenerator<2>( )
-      , bp::wrapper< AbstractPyChasteActorGenerator< 2 > >(){
-        // null constructor
-    
-    }
 
     virtual void AddActor( ::vtkSmartPointer< vtkRenderer > pRenderer ){
         bp::override func_AddActor = this->get_override( "AddActor" );
@@ -60,7 +53,7 @@ struct AbstractPyChasteActorGenerator_less__2__greater__wrapper : AbstractPyChas
 
 void register_AbstractPyChasteActorGenerator2_class(){
 
-    bp::class_< AbstractPyChasteActorGenerator_less__2__greater__wrapper, boost::noncopyable >( "AbstractPyChasteActorGenerator2", bp::init< >() )    
+    bp::class_< AbstractPyChasteActorGenerator_less__2__greater__wrapper, boost::noncopyable >( "AbstractPyChasteActorGenerator2" )    
         .def( 
             "AddActor"
             , bp::pure_virtual( (void ( ::AbstractPyChasteActorGenerator<2>::* )( ::vtkSmartPointer< vtkRenderer > ))(&::AbstractPyChasteActorGenerator< 2 >::AddActor) )

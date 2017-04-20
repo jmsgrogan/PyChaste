@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "cell_based_headers.hpp"
+#include "classes_to_be_wrapped.hpp"
 #include "AbstractCellKiller3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -66,7 +66,7 @@ struct AbstractCellKiller_less__3__greater__wrapper : AbstractCellKiller< 3 >, b
 void register_AbstractCellKiller3_class(){
 
     { //::AbstractCellKiller< 3 >
-        typedef bp::class_< AbstractCellKiller_less__3__greater__wrapper, bp::bases< Identifiable >, boost::noncopyable > AbstractCellKiller3_exposer_t;
+        typedef bp::class_< AbstractCellKiller_less__3__greater__wrapper, boost::noncopyable > AbstractCellKiller3_exposer_t;
         AbstractCellKiller3_exposer_t AbstractCellKiller3_exposer = AbstractCellKiller3_exposer_t( "AbstractCellKiller3", bp::init< AbstractCellPopulation< 3, 3 > * >(( bp::arg("pCellPopulation") )) );
         bp::scope AbstractCellKiller3_scope( AbstractCellKiller3_exposer );
         { //::AbstractCellKiller< 3 >::CheckAndLabelCellsForApoptosisOrDeath
@@ -87,7 +87,7 @@ void register_AbstractCellKiller3_class(){
             AbstractCellKiller3_exposer.def( 
                 "GetCellPopulation"
                 , GetCellPopulation_function_type( &::AbstractCellKiller< 3 >::GetCellPopulation )
-                , bp::return_value_policy< bp::manage_new_object >() );
+                , bp::return_value_policy< bp::reference_existing_object >() );
         
         }
         { //::AbstractCellKiller< 3 >::OutputCellKillerInfo
@@ -114,7 +114,6 @@ void register_AbstractCellKiller3_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< RandomCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
     }
