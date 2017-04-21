@@ -1,4 +1,4 @@
-# Copyright (c) 2005-2016, University of Oxford.
+# Copyright (c) 2005-2017, University of Oxford.
 # All rights reserved.
 # 
 # University of Oxford means the Chancellor, Masters and Scholars of the
@@ -62,7 +62,6 @@ set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.s
 include(${CMAKE_CURRENT_SOURCE_DIR}/ProjectIncludes.cmake)
 include_directories(${PYCHASTE_INCLUDE_DIRS} ${PYTHON_NUMPY_INCLUDE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_headers)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers)
 
 ######### Build the Python modules ###################### 
@@ -102,8 +101,9 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/doc/ DESTINATION ${CMAKE_CURRENT_BINARY_DI
 
 # Loop through each module that uses auto wrapper code generation and make the wrapper code
 add_custom_target(project_PyChaste_Python_Bindings)
-SET(arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/)
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_classes_to_be_wrapped_hpp.py ${arguments})
+SET(arguments ${CMAKE_SOURCE_DIR})
+LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/)
+add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_header_collection.py ${arguments})
 
 list(LENGTH PYCHASTE_PYTHON_AUTO_MODULES len1_auto)
 math(EXPR len2_auto "${len1_auto} - 1")
@@ -113,12 +113,12 @@ foreach(val RANGE ${len2_auto})
 endforeach()
 
 SET(arguments ${CMAKE_CURRENT_SOURCE_DIR})
-LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/classes_to_be_wrapped.hpp)
+LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/wrapper_header_collection.hpp)
 LIST(APPEND arguments ${CASTXML_EXE_LOC})
 LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_bindings.py ${arguments})
+add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_code.py ${arguments})
 
 # Loop through each module and create the shared library targets
 list(LENGTH PYCHASTE_PYTHON_MODULES len1)

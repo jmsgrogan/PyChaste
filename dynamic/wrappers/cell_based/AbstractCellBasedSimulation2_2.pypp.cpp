@@ -37,12 +37,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractCellBasedSimulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper : AbstractCellBasedSimulation< 2, 2 >, bp::wrapper< AbstractCellBasedSimulation< 2, 2 > > {
+
+    AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper(::AbstractCellPopulation< 2, 2 > & rCellPopulation, bool deleteCellPopulationInDestructor=false, bool initialiseCells=true )
+    : AbstractCellBasedSimulation<2, 2>( boost::ref(rCellPopulation), deleteCellPopulationInDestructor, initialiseCells )
+      , bp::wrapper< AbstractCellBasedSimulation< 2, 2 > >(){
+        // constructor
+    
+    }
 
     virtual unsigned int DoCellBirth(  ){
         if( bp::override func_DoCellBirth = this->get_override( "DoCellBirth" ) )
@@ -131,7 +138,7 @@ struct AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper : Abstract
 
 void register_AbstractCellBasedSimulation2_2_class(){
 
-    bp::class_< AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper, boost::noncopyable >( "AbstractCellBasedSimulation2_2", bp::no_init )    
+    bp::class_< AbstractCellBasedSimulation_less__2_comma__2__greater__wrapper, boost::noncopyable >( "AbstractCellBasedSimulation2_2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< bool, bool > >(( bp::arg("rCellPopulation"), bp::arg("deleteCellPopulationInDestructor")=(bool)(false), bp::arg("initialiseCells")=(bool)(true) )) )    
         .def( 
             "AddCellKiller"
             , (void ( ::AbstractCellBasedSimulation<2, 2>::* )( ::boost::shared_ptr< AbstractCellKiller< 2 > > ))( &::AbstractCellBasedSimulation< 2, 2 >::AddCellKiller )

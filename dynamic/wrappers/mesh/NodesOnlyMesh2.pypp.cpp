@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "NodesOnlyMesh2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -617,6 +617,8 @@ struct NodesOnlyMesh_less__2__greater__wrapper : NodesOnlyMesh< 2 >, bp::wrapper
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_NodesOnlyMesh2_class(){
 
     bp::class_< NodesOnlyMesh_less__2__greater__wrapper, bp::bases< MutableMesh< 2, 2 > >, boost::noncopyable >( "NodesOnlyMesh2", bp::init< >() )    
@@ -826,7 +828,7 @@ void register_NodesOnlyMesh2_class(){
             "GetDistributedVectorFactory"
             , (::DistributedVectorFactory * ( ::AbstractMesh<2, 2>::* )(  ))(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
             , (::DistributedVectorFactory * ( NodesOnlyMesh_less__2__greater__wrapper::* )(  ))(&NodesOnlyMesh_less__2__greater__wrapper::default_GetDistributedVectorFactory)
-            , bp::return_value_policy< bp::reference_existing_object >() )    
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
         .def( 
             "GetHaloNodeIndices"
             , (void ( ::AbstractTetrahedralMesh<2, 2>::* )( ::std::vector< unsigned int > & )const)(&::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices)

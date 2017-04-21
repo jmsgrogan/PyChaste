@@ -38,12 +38,17 @@ This scipt automatically generates Python bindings using a rule based approach
 import sys
 sys.setrecursionlimit(3000) # Avoid: RuntimeError: maximum recursion depth exceeded in cmp
 import os
+try:
+   import cPickle as pickle
+except:
+   import pickle
 import doxygen_extractor
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies, file_cache_t
 from pyplusplus import messages
 from pygccxml import parser, declarations
-import classes_to_be_wrapped
+from pprint import pprint
+import wrapper_utilities.mesh_additions
 
 chaste_license = """
 /*
@@ -82,34 +87,49 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 """
 
-def add_autowrap_classes_to_builder(builder, component_name):
+def add_autowrap_classes_to_builder(builder, component_name, classes):
     
     # Convience dict for call policies
     call_policies_collection = {"reference_existing_object": call_policies.return_value_policy(call_policies.reference_existing_object),
                                 "return_opaque_pointer": call_policies.return_value_policy(call_policies.return_opaque_pointer) ,
                                 "return_internal_reference" : call_policies.return_internal_reference()}
     
-    # Collect the class names for building the Python documentation
-    # later on.
-    class_collection = []
+    # Classes which have methods taking or returning PETSc vec or mat need to add
+    # this custom wrapper code to allow wrapping of PETSc opaque pointers. Any 
+    # methods returning them also needs to set up opaque pointer management by
+    # choosing the Py++ 'return_opaque_pointer' option.
+    petsc_mat_custom_code = "BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )"
+    petsc_vec_custom_code = "BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )"
     
-    # Remove any classes not in this module
+    # Remove any classes not in this module. Also use the class to collect cell and population writers.
+    cell_writers = []
+    population_writers = []
     classes_not_in_module = []
-    for eachClass in classes_to_be_wrapped.classes:
+    for eachClass in classes:
+        
+        # Collect writers
+        if eachClass.full_path is not None:
+            if "/cell_based/src/writers/cell_writers/" in eachClass.full_path:
+                if "Abstract" not in eachClass.name:
+                    cell_writers.append(eachClass.name)
+            if "/cell_based/src/writers/population_writers/" in eachClass.full_path:
+                if "Abstract" not in eachClass.name:
+                    population_writers.append(eachClass.name)
+        
         if not eachClass.needs_auto_wrapper_generation():
             continue
-         
         if eachClass.component != component_name:
             full_class_names = eachClass.get_full_names()
             for eachTemplatedClassName in full_class_names:
                 classes_not_in_module.append(eachTemplatedClassName.replace(' ', ''))
+                
     builder.classes(lambda decl: decl.name.replace(' ', '') in classes_not_in_module).exclude()
     
     # Exclude all iterators
     builder.classes( lambda x: x.name in ("Iterator",)).exclude()
     
-    for eachClass in classes_to_be_wrapped.classes:
-        
+    # Set up the class in the Py++ builder
+    for eachClass in classes:
         if not eachClass.needs_auto_wrapper_generation():
             continue
         
@@ -118,9 +138,8 @@ def add_autowrap_classes_to_builder(builder, component_name):
             full_class_names = eachClass.get_full_names()
             for idx, eachTemplatedClassName in enumerate(full_class_names):
                 
-                # Add the class to the builder and doc names collection
-                class_collection.append(short_class_names[idx])
-                print eachTemplatedClassName, short_class_names[idx]
+                # Add the class to the builder
+                print "Processing: ", eachTemplatedClassName, " aka ", short_class_names[idx]
                 this_class = builder.class_(eachTemplatedClassName)
                 this_class.include() 
                 
@@ -136,12 +155,65 @@ def add_autowrap_classes_to_builder(builder, component_name):
                     has_members = True
                 except RuntimeError:
                     pass
+                
+                has_constructors = False
+                try:
+                    this_class.constructors()
+                    has_constructors = True
+                except RuntimeError:
+                    pass
+                
+                add_petsc_vec_code = False
+                add_petsc_mat_code = False
+                petsc_vec_code_will_auto = False
+                petsc_mat_code_will_auto = False
+                
+                if has_constructors:
+                    for eachConstructor in this_class.constructors():
+                        for eachArgType in eachConstructor.arguments:
+                            
+                            if "Vec" in eachArgType.type.decl_string and not "CellVecData" in eachArgType.type.decl_string:
+                                add_petsc_vec_code = True
+                            if "Mat" in eachArgType.type.decl_string:
+                                add_petsc_mat_code = True
+                            
+                            # Workaround for Bug with default arguments and templates.
+                            # Assume the template value in the argument is the same as
+                            # in the default.
+                            if eachArgType.default_value is not None:
+                                if "DIM" in eachArgType.default_value:
+                                    print "INFO: Found method default arguement with incomplete type. Guessing the type."
+                                    if "3" in eachArgType.type.decl_string:
+                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(3))
+                                    if "2" in eachArgType.type.decl_string:
+                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(2))                                
+                
                 if has_members:
                     for eachMemberFunction in this_class.member_functions():
+                        
+                        # Exclude any specified member functions
                         if eachClass.excluded_methods is not None and eachMemberFunction.name in eachClass.excluded_methods:
                             eachMemberFunction.exclude()
                             continue
-                            
+                        
+                        # PETSc Vec and Mat args need special care
+                        for eachArgType in eachMemberFunction.arguments:
+                            #pprint (vars(eachArgType))
+                            if "Vec" in eachArgType.type.decl_string and not "CellVecData" in eachArgType.type.decl_string:
+                                add_petsc_vec_code = True
+                            if "Mat" in eachArgType.type.decl_string:
+                                add_petsc_mat_code = True
+                                
+                            # Bug with default arguments and templates
+                            if eachArgType.default_value is not None:
+                                if "DIM" in eachArgType.default_value:
+                                    print "INFO: Found method default arguement with incomplete type. Guessing the type."
+                                    if "3" in eachArgType.type.decl_string:
+                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(3))
+                                    if "2" in eachArgType.type.decl_string:
+                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(2)) 
+                                
+                        # If there are explicit call policies add them
                         break_out = False
                         if eachClass.pointer_return_methods is not None:
                             for eachDefinedPointerPolicy in eachClass.pointer_return_methods:
@@ -151,7 +223,18 @@ def add_autowrap_classes_to_builder(builder, component_name):
                                     break
                         if break_out:
                             continue
-                                
+                        
+                        # PETSc Vec and Mat need special care
+                        if "Vec" in str(eachMemberFunction.return_type) and not "CellVecData" in str(eachMemberFunction.return_type):
+                            eachMemberFunction.call_policies = call_policies_collection["return_opaque_pointer"]
+                            petsc_vec_code_will_auto = True
+                            continue
+                        
+                        if "Mat" in str(eachMemberFunction.return_type):
+                            eachMemberFunction.call_policies = call_policies_collection["return_opaque_pointer"]
+                            petsc_mat_code_will_auto = True
+                            continue
+                        
                         if declarations.is_pointer(eachMemberFunction.return_type):
                             eachMemberFunction.call_policies = call_policies_collection["reference_existing_object"]
                             continue
@@ -170,52 +253,45 @@ def add_autowrap_classes_to_builder(builder, component_name):
                         this_class.variables(eachVariable).exclude()                
                         
                 # Add declaration code
+                if add_petsc_vec_code and not petsc_vec_code_will_auto:
+                    print "Petsc Vec found: Adding custom declaration code."
+                    this_class.add_declaration_code(petsc_vec_custom_code)
+                     
+                if add_petsc_mat_code and not petsc_mat_code_will_auto:
+                    print "Petsc Mat found: Adding custom declaration code."
+                    this_class.add_declaration_code(petsc_mat_custom_code)
+                
                 if eachClass.declaration_code is not None:
                     for eachLine in eachClass.declaration_code:
                         this_class.add_declaration_code(eachLine)
+                        
+                # If this is a suitable class (i.e. concentrete cell population)
+                # add writer template functions.
+                if eachClass.full_path is not None:
+                    if "/cell_based/src/population/" in eachClass.full_path:
+                        if "Abstract" not in eachClass.name and "CellwiseDataGradient" not in eachClass.name:
+                            if "BasedCellPopulation" in eachClass.name:
+                                for eachWriter in cell_writers:
+                                        writer_prefix = 'def("AddCellWriter' + eachWriter + 'Writer", &'
+                                        writer_suffix = '::AddCellWriter<' + eachWriter + '>)'
+                                        this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)  
+                                for eachWriter in population_writers:
+                                        writer_prefix = 'def("AddPopulationWriter' + eachWriter + 'Writer", &'
+                                        writer_suffix = '::AddPopulationWriter<' + eachWriter + '>)'
+                                        this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)   
     
-    return builder, class_collection
-
-def template_replace(class_name):
-
-    # How to replace template names in Python output
-    new_name = class_name
-    if "<3>" in class_name[-3:]:
-        new_name = class_name[:-3] + "3"            
-    if "<2>" in class_name[-3:]:
-        new_name = class_name[:-3] + "2"       
-    if "<3,3>" in class_name[-5:]:
-        new_name = class_name[:-5] + "3_3"        
-    if "<2,2>" in class_name[-5:]:
-        new_name = class_name[:-5] + "2_2"  
-    return new_name
-
-def template_replace_list(builder, classes):
+    # Bug with null type in default template arguements
+    for eachTemplate in ["<2>", "<3>"]: 
+        builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()  
+        builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
     
-    for eachClass in classes:
-        new_name = template_replace(eachClass)
-        if(new_name != eachClass):
-            builder.class_(eachClass).rename(new_name)   
-
-def boost_units_namespace_fix(module_file):
-    
-    # There is a bug (maybe in boost units) where sometimes static_rational does not have
-    # the full boost::units namespace. Manually put it in.
-    lines = []
-    replacements = {", static_rational": ", boost::units::static_rational"}
-    with open(module_file) as infile:
-        for line in infile:
-            for src, target in replacements.iteritems():
-                line = line.replace(src, target)
-            lines.append(line)
-    with open(module_file, 'w') as outfile:
-        for line in lines:
-            outfile.write(line)    
+    return builder, classes
             
 def strip_undefined_call_policies(module_file):
     
-    # Can't access methods in abstract classes by return type to apply call policies with py++. 
-    # Need to remove these methods manually.
+    # Catch-all to remove methods with undefined call policies that
+    # might otherwise have been missed.
+    
     lines = []
     with open(module_file) as infile:
         for line in infile:
@@ -233,34 +309,54 @@ def strip_undefined_call_policies(module_file):
             else:
                 strip_indices.extend(range(idx, def_index-1, -1))                
             
+    if len(strip_indices)>0:
+        print "Note: found undefined call policies in ", module_file, ". Stripping them out."
+        
     return_lines = [i for j, i in enumerate(lines) if j not in strip_indices]
     
     with open(module_file, 'w') as outfile:
         for line in return_lines:
             outfile.write(line) 
             
-def do_module(module_name, builder, work_dir):
+def strip_value_traits(module_file):
+    
+    # Do not strip for C_vectors or shared ptrs...they are actually needed!
+    if(("C_vector" in module_file) or ("Boostshared" in module_file) 
+       or ("CellPtr" in module_file) or ("FileFinder") in module_file):
+        return
+    
+    lines = []
+    with open(module_file) as infile:
+        for line in infile:
+            lines.append(line)
+            
+    return_lines = []
+    for idx, eachLine in enumerate(lines):
+        if "__value_traits.pypp.hpp" not in eachLine:
+            return_lines.append(eachLine)
+            
+    if len(return_lines) != len(lines):
+        print "Stripped value traits from: ", module_file
+    
+    with open(module_file, 'w') as outfile:
+        for line in return_lines:
+            outfile.write(line)     
+    
+def do_module(module_name, builder, work_dir, classes):
     
     # Set up the builder with module specifc classes
-    builder, class_names = add_autowrap_classes_to_builder(builder, module_name)
+    builder, classes = add_autowrap_classes_to_builder(builder, module_name, classes)
     
     # If there is a module with some extra wrapper code execute it
-    has_extra_wrapper_code = False
-    try: 
-        this_module = __import__("generate_" + module_name)
-        has_extra_wrapper_code = True
-    except:
-        pass
-    
-    if has_extra_wrapper_code:
-        builder, class_names = this_module.update_builder(builder, class_names)
-    
+    if module_name == "mesh":
+        builder, classes = wrapper_utilities.mesh_additions.update_builder(builder, classes)     
+        
     # Write the class names to file for building Python docs later on
     f = open(work_dir + '/class_names_for_doc.txt','w')
-    for eachClass in class_names:
-        f.write('.. autoclass:: chaste.' + module_name + '.' + eachClass + '\n\t:members:\n\n')
+    for eachClass in classes:
+        for eachName in eachClass.get_short_names():
+            f.write('.. autoclass:: chaste.' + module_name + '.' + eachName + '\n\t:members:\n\n')
     f.close()
-        
     return builder
        
 def generate_wrappers(args):
@@ -300,15 +396,11 @@ def generate_wrappers(args):
     builder.free_function("GetPetscMatForWrapper").exclude()
     builder.free_function("Instantiation").exclude()
     
-    module_names = [
-        "core", 
-        "ode", 
-        "pde",
-        "mesh",
-        "cell_based",
-        "tutorial",
-        "visualization"
-        ]
+    # Load the classes to be wrapped
+    with open(work_dir + "/dynamic/wrappers/class_data.p", 'rb') as fp:
+        classes = pickle.load(fp)
+    
+    module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
     
     # Just for debugging
     #ignore_modules = ["mesh", "tutorial", "visualization", "ode", "pde", "core"]
@@ -325,7 +417,9 @@ def generate_wrappers(args):
             builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+module_names[idx-1])
         
         # Set up the builder for each module
-        builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/")
+        
+        print 'Starting Module: ' + module_name + ' Module.'
+        builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/", classes)
 
         # Make the wrapper code
     #     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name, 
@@ -333,16 +427,20 @@ def generate_wrappers(args):
         builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
         builder.code_creator.user_defined_directories.append(work_dir)
         builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/")
-        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrapper_headers/")
         builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
         builder.code_creator.license = chaste_license
         
         builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
         
-        # Manually strip any undefined call policies we have missed.
+        # Manually strip any undefined call policies we have missed. Strictly there should not be any/many.
         for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
             if file.endswith(".cpp"):
                 strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
+                
+        # Manually remove some value traits in std headers (https://mail.python.org/pipermail/cplusplus-sig/2008-April/013105.html)
+        for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
+            if file.endswith(".cpp"):
+                strip_value_traits(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

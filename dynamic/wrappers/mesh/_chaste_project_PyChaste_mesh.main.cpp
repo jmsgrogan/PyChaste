@@ -46,7 +46,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/set.hpp"
 
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 
 #include "AbstractMesh2_2.pypp.hpp"
 
@@ -149,6 +149,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "VertexMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
 
 namespace boost { namespace python { namespace indexing {
 

@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "MutableMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -604,6 +604,8 @@ struct MutableMesh_less__3_comma__3__greater__wrapper : MutableMesh< 3, 3 >, bp:
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_MutableMesh3_3_class(){
 
     { //::MutableMesh< 3, 3 >
@@ -946,7 +948,7 @@ void register_MutableMesh3_3_class(){
                 "GetDistributedVectorFactory"
                 , GetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
                 , default_GetDistributedVectorFactory_function_type(&MutableMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
-                , bp::return_value_policy< bp::reference_existing_object >() );
+                , bp::return_value_policy< bp::return_opaque_pointer >() );
         
         }
         { //::AbstractTetrahedralMesh< 3, 3 >::GetHaloNodeIndices

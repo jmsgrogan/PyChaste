@@ -37,12 +37,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractBoundaryCondition3.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractBoundaryCondition_less__3__greater__wrapper : AbstractBoundaryCondition< 3 >, bp::wrapper< AbstractBoundaryCondition< 3 > > {
+
+    AbstractBoundaryCondition_less__3__greater__wrapper( )
+    : AbstractBoundaryCondition<3>( )
+      , bp::wrapper< AbstractBoundaryCondition< 3 > >(){
+        // null constructor
+    
+    }
 
     virtual double GetValue( ::ChastePoint< 3 > const & rX ) const {
         bp::override func_GetValue = this->get_override( "GetValue" );
@@ -53,7 +60,7 @@ struct AbstractBoundaryCondition_less__3__greater__wrapper : AbstractBoundaryCon
 
 void register_AbstractBoundaryCondition3_class(){
 
-    bp::class_< AbstractBoundaryCondition_less__3__greater__wrapper, boost::noncopyable >( "AbstractBoundaryCondition3" )    
+    bp::class_< AbstractBoundaryCondition_less__3__greater__wrapper, boost::noncopyable >( "AbstractBoundaryCondition3", bp::init< >() )    
         .def( 
             "GetValue"
             , bp::pure_virtual( (double ( ::AbstractBoundaryCondition<3>::* )( ::ChastePoint< 3 > const & )const)(&::AbstractBoundaryCondition< 3 >::GetValue) )

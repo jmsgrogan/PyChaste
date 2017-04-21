@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractPdeModifier3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -101,11 +101,9 @@ struct AbstractPdeModifier_less__3__greater__wrapper : AbstractPdeModifier< 3 >,
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
 void register_AbstractPdeModifier3_class(){
 
-    bp::class_< AbstractPdeModifier_less__3__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 3, 3 > >, boost::noncopyable >( "AbstractPdeModifier3", bp::no_init )    
+    bp::class_< AbstractPdeModifier_less__3__greater__wrapper, boost::noncopyable >( "AbstractPdeModifier3", bp::no_init )    
         .def( 
             "GetBoundaryCondition"
             , (::boost::shared_ptr< AbstractBoundaryCondition< 3 > > ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetBoundaryCondition ) )    
@@ -119,6 +117,14 @@ void register_AbstractPdeModifier3_class(){
         .def( 
             "GetPde"
             , (::boost::shared_ptr< AbstractLinearPde< 3, 3 > > ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetPde ) )    
+        .def( 
+            "GetSolution"
+            , (::Vec ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::GetSolution )
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+        .def( 
+            "GetSolution"
+            , (::Vec ( ::AbstractPdeModifier<3>::* )(  )const)( &::AbstractPdeModifier< 3 >::GetSolution )
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
         .def( 
             "HasAveragedSourcePde"
             , (bool ( ::AbstractPdeModifier<3>::* )(  ))( &::AbstractPdeModifier< 3 >::HasAveragedSourcePde ) )    

@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper
-#define AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper
+#ifndef AbstractLinearParabolicPde3_3_hpp__pyplusplus_wrapper
+#define AbstractLinearParabolicPde3_3_hpp__pyplusplus_wrapper
 
-void register_AbstractCellBasedSimulationModifier3_3_class();
+void register_AbstractLinearParabolicPde3_3_class();
 
-#endif//AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper
+#endif//AbstractLinearParabolicPde3_3_hpp__pyplusplus_wrapper

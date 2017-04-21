@@ -39,7 +39,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "_shared_ptr_less__AbstractUpdateRule_less__3__greater___greater___value_traits.pypp.hpp"
 #include "StdvectorBoostshared_ptrAbstractUpdateRule3.pypp.hpp"
 

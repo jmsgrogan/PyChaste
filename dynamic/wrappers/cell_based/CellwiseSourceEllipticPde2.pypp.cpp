@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "CellwiseSourceEllipticPde2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -105,7 +105,7 @@ void register_CellwiseSourceEllipticPde2_class(){
 
     { //::CellwiseSourceEllipticPde< 2 >
         typedef bp::class_< CellwiseSourceEllipticPde_less__2__greater__wrapper, boost::noncopyable > CellwiseSourceEllipticPde2_exposer_t;
-        CellwiseSourceEllipticPde2_exposer_t CellwiseSourceEllipticPde2_exposer = CellwiseSourceEllipticPde2_exposer_t( "CellwiseSourceEllipticPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient") )) );
+        CellwiseSourceEllipticPde2_exposer_t CellwiseSourceEllipticPde2_exposer = CellwiseSourceEllipticPde2_exposer_t( "CellwiseSourceEllipticPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient")=0. )) );
         bp::scope CellwiseSourceEllipticPde2_scope( CellwiseSourceEllipticPde2_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, CellwiseSourceEllipticPde< 2 > >();
         { //::CellwiseSourceEllipticPde< 2 >::ComputeConstantInUSourceTerm

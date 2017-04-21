@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef SimpleTargetAreaModifier3_hpp__pyplusplus_wrapper
-#define SimpleTargetAreaModifier3_hpp__pyplusplus_wrapper
+#ifndef CellwiseSourceParabolicPde3_hpp__pyplusplus_wrapper
+#define CellwiseSourceParabolicPde3_hpp__pyplusplus_wrapper
 
-void register_SimpleTargetAreaModifier3_class();
+void register_CellwiseSourceParabolicPde3_class();
 
-#endif//SimpleTargetAreaModifier3_hpp__pyplusplus_wrapper
+#endif//CellwiseSourceParabolicPde3_hpp__pyplusplus_wrapper

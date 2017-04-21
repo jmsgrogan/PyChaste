@@ -44,13 +44,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/vector.hpp"
 
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 
 #include "FileFinder.pypp.hpp"
 
 #include "OutputFileHandler.pypp.hpp"
 
 #include "PetscTools.pypp.hpp"
+
+#include "ProgressReporter.pypp.hpp"
 
 #include "RandomNumberGenerator.pypp.hpp"
 
@@ -61,6 +63,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "StdvectorDouble.pypp.hpp"
 
 #include "StdvectorUnsigned.pypp.hpp"
+
+#include "TimeStepper.pypp.hpp"
 
 #include "Timer.pypp.hpp"
 
@@ -85,9 +89,13 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
 
     register_PetscTools_class();
 
+    register_ProgressReporter_class();
+
     register_RandomNumberGenerator_class();
 
     register_ReplicatableVector_class();
+
+    register_TimeStepper_class();
 
     register_Timer_class();
 }

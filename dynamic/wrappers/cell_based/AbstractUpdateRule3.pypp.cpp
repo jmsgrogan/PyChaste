@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractUpdateRule3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -91,10 +91,10 @@ void register_AbstractUpdateRule3_class(){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
     }
 
 }

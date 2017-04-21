@@ -37,13 +37,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractLinearPde3_3.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_AbstractLinearPde3_3_class(){
 
-    bp::class_< AbstractLinearPde< 3, 3 > >( "AbstractLinearPde3_3" );
+    bp::class_< AbstractLinearPde< 3, 3 > >( "AbstractLinearPde3_3", bp::init< >() );
 
 }

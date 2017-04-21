@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractForce2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -129,9 +129,9 @@ void register_AbstractForce2_2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractForce<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractForce< 2, 2 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractTwoBodyInteractionForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< GeneralisedLinearSpringForce< 2, 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NagaiHondaForce< 2 > >, boost::shared_ptr< AbstractForce< 2, 2 > > >();
     }
 
 }

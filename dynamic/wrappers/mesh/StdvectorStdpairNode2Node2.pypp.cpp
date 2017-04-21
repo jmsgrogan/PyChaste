@@ -39,14 +39,18 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "StdvectorStdpairNode2Node2.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_StdvectorStdpairNode2Node2_class(){
 
-    bp::class_< std::vector< std::pair<Node<2> *, Node<2> *> > >("StdvectorStdpairNode2Node2")    
-        .def( bp::indexing::vector_suite< std::vector< std::pair<Node<2> *, Node<2> *> > >() );
+    { //::std::vector< std::pair<Node<2> *, Node<2> *> >
+        typedef bp::class_< std::vector< std::pair<Node<2> *, Node<2> *> > > StdvectorStdpairNode2Node2_exposer_t;
+        StdvectorStdpairNode2Node2_exposer_t StdvectorStdpairNode2Node2_exposer = StdvectorStdpairNode2Node2_exposer_t( "StdvectorStdpairNode2Node2" );
+        bp::scope StdvectorStdpairNode2Node2_scope( StdvectorStdpairNode2Node2_exposer );
+        StdvectorStdpairNode2Node2_exposer.def( bp::indexing::vector_suite< std::vector< std::pair<Node<2> *, Node<2> *> > >() );
+    }
 
 }

@@ -39,8 +39,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "classes_to_be_wrapped.hpp"
-//#include "_C_vectorDouble_3__value_traits.pypp.hpp"
+#include "wrapper_header_collection.hpp"
 #include "StdmapNode3c_vectordouble3.pypp.hpp"
 
 namespace bp = boost::python;

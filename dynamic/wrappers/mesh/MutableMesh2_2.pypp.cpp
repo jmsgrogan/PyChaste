@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "MutableMesh2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -604,6 +604,8 @@ struct MutableMesh_less__2_comma__2__greater__wrapper : MutableMesh< 2, 2 >, bp:
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_MutableMesh2_2_class(){
 
     { //::MutableMesh< 2, 2 >
@@ -946,7 +948,7 @@ void register_MutableMesh2_2_class(){
                 "GetDistributedVectorFactory"
                 , GetDistributedVectorFactory_function_type(&::AbstractMesh< 2, 2 >::GetDistributedVectorFactory)
                 , default_GetDistributedVectorFactory_function_type(&MutableMesh_less__2_comma__2__greater__wrapper::default_GetDistributedVectorFactory)
-                , bp::return_value_policy< bp::reference_existing_object >() );
+                , bp::return_value_policy< bp::return_opaque_pointer >() );
         
         }
         { //::AbstractTetrahedralMesh< 2, 2 >::GetHaloNodeIndices
@@ -1331,8 +1333,8 @@ void register_MutableMesh2_2_class(){
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< TetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractTetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
     }
 
 }

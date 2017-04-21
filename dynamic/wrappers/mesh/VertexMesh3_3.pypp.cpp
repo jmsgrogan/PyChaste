@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "VertexMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -46,6 +46,13 @@ struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::w
 
     VertexMesh_less__3_comma__3__greater__wrapper(::std::vector< Node<3> * > nodes, ::std::vector< VertexElement<2, 3> * > faces, ::std::vector< VertexElement<3, 3> * > vertexElements )
     : VertexMesh<3, 3>( nodes, faces, vertexElements )
+      , bp::wrapper< VertexMesh< 3, 3 > >(){
+        // constructor
+    
+    }
+
+    VertexMesh_less__3_comma__3__greater__wrapper(::TetrahedralMesh< 3, 3 > & rMesh )
+    : VertexMesh<3, 3>( boost::ref(rMesh) )
       , bp::wrapper< VertexMesh< 3, 3 > >(){
         // constructor
     
@@ -384,6 +391,8 @@ struct VertexMesh_less__3_comma__3__greater__wrapper : VertexMesh< 3, 3 >, bp::w
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_VertexMesh3_3_class(){
 
     { //::VertexMesh< 3, 3 >
@@ -392,6 +401,8 @@ void register_VertexMesh3_3_class(){
         bp::scope VertexMesh3_3_scope( VertexMesh3_3_exposer );
         bp::class_< VertexMesh< 3, 3 >::VertexElementIterator, boost::noncopyable >( "VertexElementIterator", bp::init< VertexMesh< 3, 3 > &, std::vector< VertexElement<3, 3> * >::iterator, bp::optional< bool > >(( bp::arg("rMesh"), bp::arg("elementIter"), bp::arg("skipDeletedElements")=(bool)(true) )) )    
             .def( bp::self != bp::self );
+        VertexMesh3_3_exposer.def( bp::init< TetrahedralMesh< 3, 3 > & >(( bp::arg("rMesh") )) );
+        bp::implicitly_convertible< TetrahedralMesh< 3, 3 > &, VertexMesh< 3, 3 > >();
         VertexMesh3_3_exposer.def( bp::init< >() );
         { //::VertexMesh< 3, 3 >::CalculateAreaOfFace
         
@@ -826,7 +837,7 @@ void register_VertexMesh3_3_class(){
                 "GetDistributedVectorFactory"
                 , GetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
                 , default_GetDistributedVectorFactory_function_type(&VertexMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
-                , bp::return_value_policy< bp::reference_existing_object >() );
+                , bp::return_value_policy< bp::return_opaque_pointer >() );
         
         }
         { //::AbstractMesh< 3, 3 >::GetNearestNodeIndex

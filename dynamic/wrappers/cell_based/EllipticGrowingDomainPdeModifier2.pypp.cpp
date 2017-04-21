@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "EllipticGrowingDomainPdeModifier2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -115,13 +115,11 @@ struct EllipticGrowingDomainPdeModifier_less__2__greater__wrapper : EllipticGrow
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
-BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Mat )
-
 void register_EllipticGrowingDomainPdeModifier2_class(){
 
     { //::EllipticGrowingDomainPdeModifier< 2 >
         typedef bp::class_< EllipticGrowingDomainPdeModifier_less__2__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 2 > >, boost::noncopyable > EllipticGrowingDomainPdeModifier2_exposer_t;
-        EllipticGrowingDomainPdeModifier2_exposer_t EllipticGrowingDomainPdeModifier2_exposer = EllipticGrowingDomainPdeModifier2_exposer_t( "EllipticGrowingDomainPdeModifier2", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 2, 2 > >, boost::shared_ptr< AbstractBoundaryCondition< 2 > >, bool, Vec > >(( bp::arg("pPde"), bp::arg("pBoundaryCondition"), bp::arg("isNeumannBoundaryCondition"), bp::arg("solution") )) );
+        EllipticGrowingDomainPdeModifier2_exposer_t EllipticGrowingDomainPdeModifier2_exposer = EllipticGrowingDomainPdeModifier2_exposer_t( "EllipticGrowingDomainPdeModifier2", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 2, 2 > >, boost::shared_ptr< AbstractBoundaryCondition< 2 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<2, 2> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<2> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=__null )) );
         bp::scope EllipticGrowingDomainPdeModifier2_scope( EllipticGrowingDomainPdeModifier2_exposer );
         bp::implicitly_convertible< boost::shared_ptr< AbstractLinearPde< 2, 2 > >, EllipticGrowingDomainPdeModifier< 2 > >();
         { //::EllipticGrowingDomainPdeModifier< 2 >::OutputSimulationModifierParameters

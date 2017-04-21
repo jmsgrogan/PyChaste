@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "PottsMesh3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -336,6 +336,8 @@ struct PottsMesh_less__3__greater__wrapper : PottsMesh< 3 >, bp::wrapper< PottsM
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_PottsMesh3_class(){
 
     { //::PottsMesh< 3 >
@@ -627,7 +629,7 @@ void register_PottsMesh3_class(){
                 "GetDistributedVectorFactory"
                 , GetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
                 , default_GetDistributedVectorFactory_function_type(&PottsMesh_less__3__greater__wrapper::default_GetDistributedVectorFactory)
-                , bp::return_value_policy< bp::reference_existing_object >() );
+                , bp::return_value_policy< bp::return_opaque_pointer >() );
         
         }
         { //::AbstractMesh< 3, 3 >::GetNearestNodeIndex

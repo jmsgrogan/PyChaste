@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef SimpleTargetAreaModifier2_hpp__pyplusplus_wrapper
-#define SimpleTargetAreaModifier2_hpp__pyplusplus_wrapper
+#ifndef TimeStepper_hpp__pyplusplus_wrapper
+#define TimeStepper_hpp__pyplusplus_wrapper
 
-void register_SimpleTargetAreaModifier2_class();
+void register_TimeStepper_class();
 
-#endif//SimpleTargetAreaModifier2_hpp__pyplusplus_wrapper
+#endif//TimeStepper_hpp__pyplusplus_wrapper

@@ -37,12 +37,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractOdeSystem.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractOdeSystem_wrapper : AbstractOdeSystem, bp::wrapper< AbstractOdeSystem > {
+
+    AbstractOdeSystem_wrapper(unsigned int numberOfStateVariables )
+    : AbstractOdeSystem( numberOfStateVariables )
+      , bp::wrapper< AbstractOdeSystem >(){
+        // constructor
+    
+    }
 
     virtual double CalculateRootFunction( double time, ::std::vector< double > const & rY ) {
         if( bp::override func_CalculateRootFunction = this->get_override( "CalculateRootFunction" ) )
@@ -77,7 +84,7 @@ struct AbstractOdeSystem_wrapper : AbstractOdeSystem, bp::wrapper< AbstractOdeSy
 
 void register_AbstractOdeSystem_class(){
 
-    bp::class_< AbstractOdeSystem_wrapper, boost::noncopyable >( "AbstractOdeSystem", bp::no_init )    
+    bp::class_< AbstractOdeSystem_wrapper, boost::noncopyable >( "AbstractOdeSystem", bp::init< unsigned int >(( bp::arg("numberOfStateVariables") )) )    
         .def( 
             "CalculateRootFunction"
             , (double ( ::AbstractOdeSystem::* )( double,::std::vector< double > const & ))(&::AbstractOdeSystem::CalculateRootFunction)

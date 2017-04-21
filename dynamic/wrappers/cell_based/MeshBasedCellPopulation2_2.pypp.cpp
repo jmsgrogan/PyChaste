@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "MeshBasedCellPopulation2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -1305,7 +1305,8 @@ void register_MeshBasedCellPopulation2_2_class(){
                 , ( bp::arg("dt") ) );
         
         }
-        MeshBasedCellPopulation2_2_exposer.def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulation<2,2>::AddPopulationWriter<VoronoiDataWriter>);
+        MeshBasedCellPopulation2_2_exposer.def("AddCellWriterCellLabelWriterWriter", &MeshBasedCellPopulation<2,2 >::AddCellWriter<CellLabelWriter>);
+        MeshBasedCellPopulation2_2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &MeshBasedCellPopulation<2,2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

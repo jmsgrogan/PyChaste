@@ -42,7 +42,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/vector.hpp"
 
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 
 #include "AbstractOdeSystem.pypp.hpp"
 

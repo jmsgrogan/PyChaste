@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "MutableVertexMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -488,6 +488,8 @@ struct MutableVertexMesh_less__3_comma__3__greater__wrapper : MutableVertexMesh<
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_MutableVertexMesh3_3_class(){
 
     bp::class_< MutableVertexMesh_less__3_comma__3__greater__wrapper, bp::bases< VertexMesh< 3, 3 > >, boost::noncopyable >( "MutableVertexMesh3_3", bp::init< std::vector< Node<3> * >, std::vector< VertexElement<3, 3> * >, bp::optional< double, double, double, double, double, double > >(( bp::arg("nodes"), bp::arg("vertexElements"), bp::arg("cellRearrangementThreshold")=0.01, bp::arg("t2Threshold")=0.001, bp::arg("cellRearrangementRatio")=1.5, bp::arg("protorosetteFormationProbability")=0., bp::arg("protorosetteResolutionProbabilityPerTimestep")=0., bp::arg("rosetteResolutionProbabilityPerTimestep")=0. )) )    
@@ -716,7 +718,7 @@ void register_MutableVertexMesh3_3_class(){
             "GetDistributedVectorFactory"
             , (::DistributedVectorFactory * ( ::AbstractMesh<3, 3>::* )(  ))(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
             , (::DistributedVectorFactory * ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )(  ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
-            , bp::return_value_policy< bp::reference_existing_object >() )    
+            , bp::return_value_policy< bp::return_opaque_pointer >() )    
         .def( 
             "GetLocalIndexForElementEdgeClosestToPoint"
             , (unsigned int ( MutableVertexMesh_less__3_comma__3__greater__wrapper::* )( ::boost::numeric::ublas::c_vector<double, 3> const &,unsigned int ))(&MutableVertexMesh_less__3_comma__3__greater__wrapper::GetLocalIndexForElementEdgeClosestToPoint)

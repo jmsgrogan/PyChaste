@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef VtkSceneModifier2_hpp__pyplusplus_wrapper
-#define VtkSceneModifier2_hpp__pyplusplus_wrapper
+#ifndef AveragedSourceEllipticPde2_hpp__pyplusplus_wrapper
+#define AveragedSourceEllipticPde2_hpp__pyplusplus_wrapper
 
-void register_VtkSceneModifier2_class();
+void register_AveragedSourceEllipticPde2_class();
 
-#endif//VtkSceneModifier2_hpp__pyplusplus_wrapper
+#endif//AveragedSourceEllipticPde2_hpp__pyplusplus_wrapper

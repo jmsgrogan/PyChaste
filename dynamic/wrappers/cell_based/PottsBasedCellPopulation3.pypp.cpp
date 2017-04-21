@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "PottsBasedCellPopulation3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -982,7 +982,8 @@ void register_PottsBasedCellPopulation3_class(){
                 , ( bp::arg("pVizSetupFile") ) );
         
         }
-        PottsBasedCellPopulation3_exposer.def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation<3>::AddCellWriter<CellLabelWriter>);
+        PottsBasedCellPopulation3_exposer.def("AddCellWriterCellLabelWriterWriter", &PottsBasedCellPopulation<3 >::AddCellWriter<CellLabelWriter>);
+        PottsBasedCellPopulation3_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &PottsBasedCellPopulation<3 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

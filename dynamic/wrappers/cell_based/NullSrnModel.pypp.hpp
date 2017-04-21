@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef AbstractTargetAreaModifier3_hpp__pyplusplus_wrapper
-#define AbstractTargetAreaModifier3_hpp__pyplusplus_wrapper
+#ifndef NullSrnModel_hpp__pyplusplus_wrapper
+#define NullSrnModel_hpp__pyplusplus_wrapper
 
-void register_AbstractTargetAreaModifier3_class();
+void register_NullSrnModel_class();
 
-#endif//AbstractTargetAreaModifier3_hpp__pyplusplus_wrapper
+#endif//NullSrnModel_hpp__pyplusplus_wrapper

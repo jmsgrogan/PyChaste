@@ -36,9 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper
-#define AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper
+#ifndef PdeSimulationTime_hpp__pyplusplus_wrapper
+#define PdeSimulationTime_hpp__pyplusplus_wrapper
 
-void register_AbstractCellBasedSimulationModifier2_2_class();
+void register_PdeSimulationTime_class();
 
-#endif//AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper
+#endif//PdeSimulationTime_hpp__pyplusplus_wrapper

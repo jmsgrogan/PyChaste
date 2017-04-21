@@ -39,27 +39,12 @@ import sys
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies
 from pygccxml import parser
-import generate_bindings
-import classes_to_be_wrapped
 
-def update_builder(builder, class_collection):
+def update_builder(builder, classes):
 
-    # Rename the PyChaste custom mesh generators
-    builder.class_('SharedPottsMeshGenerator<3>').rename("PottsMeshGenerator3")
-    builder.class_('SharedPottsMeshGenerator<2>').rename("PottsMeshGenerator2")
-    builder.class_('SharedHoneycombMeshGenerator').rename("HoneycombMeshGenerator")
-    builder.class_('SharedHoneycombVertexMeshGenerator').rename("HoneycombVertexMeshGenerator") 
-    builder.class_('SharedCylindricalHoneycombVertexMeshGenerator').rename("CylindricalHoneycombVertexMeshGenerator")
-
-    # Do not return the non-const reference to the location
-    returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
-    returns_non_const_ref.exclude()
-    returns_non_const_ref = builder.class_('ChastePoint<2>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 2> &")
-    returns_non_const_ref.exclude()
-    
-    # There is a problem with wrapping VertexMesh constructor so remove for now.
-    builder.class_('VertexMesh<3,3>').constructors(arg_types=[None]).exclude()
+    # Mixed dimension meshes are not supported yet, so remove the vertex mesh constructor that
+    # takes one.
     builder.class_('VertexMesh<3,3>').constructors(arg_types=[None, None]).exclude()
     builder.class_('VertexMesh<2,2>').constructors(arg_types=[None]).exclude()  
         
-    return builder, class_collection
+    return builder, classes

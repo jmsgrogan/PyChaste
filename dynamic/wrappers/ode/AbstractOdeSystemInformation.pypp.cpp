@@ -37,12 +37,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractOdeSystemInformation.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct AbstractOdeSystemInformation_wrapper : AbstractOdeSystemInformation, bp::wrapper< AbstractOdeSystemInformation > {
+
+    AbstractOdeSystemInformation_wrapper( )
+    : AbstractOdeSystemInformation( )
+      , bp::wrapper< AbstractOdeSystemInformation >(){
+        // null constructor
+    
+    }
 
     virtual void Initialise(  ){
         bp::override func_Initialise = this->get_override( "Initialise" );
@@ -53,7 +60,7 @@ struct AbstractOdeSystemInformation_wrapper : AbstractOdeSystemInformation, bp::
 
 void register_AbstractOdeSystemInformation_class(){
 
-    bp::class_< AbstractOdeSystemInformation_wrapper, boost::noncopyable >( "AbstractOdeSystemInformation" )    
+    bp::class_< AbstractOdeSystemInformation_wrapper, boost::noncopyable >( "AbstractOdeSystemInformation", bp::init< >() )    
         .def( 
             "GetAnyVariableIndex"
             , (unsigned int ( ::AbstractOdeSystemInformation::* )( ::std::string const & )const)( &::AbstractOdeSystemInformation::GetAnyVariableIndex )

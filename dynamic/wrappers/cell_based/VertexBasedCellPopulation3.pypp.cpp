@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "VertexBasedCellPopulation3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -1027,6 +1027,8 @@ void register_VertexBasedCellPopulation3_class(){
                 , ( bp::arg("rDirectory") ) );
         
         }
+        VertexBasedCellPopulation3_exposer.def("AddCellWriterCellLabelWriterWriter", &VertexBasedCellPopulation<3 >::AddCellWriter<CellLabelWriter>);
+        VertexBasedCellPopulation3_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &VertexBasedCellPopulation<3 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

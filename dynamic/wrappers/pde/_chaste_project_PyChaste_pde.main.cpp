@@ -38,7 +38,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "boost/python.hpp"
 
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 
 #include "AbstractBoundaryCondition2.pypp.hpp"
 
@@ -48,13 +48,23 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractLinearEllipticPde3_3.pypp.hpp"
 
+#include "AbstractLinearParabolicPde2_2.pypp.hpp"
+
+#include "AbstractLinearParabolicPde3_3.pypp.hpp"
+
 #include "AbstractLinearPde2_2.pypp.hpp"
 
 #include "AbstractLinearPde3_3.pypp.hpp"
 
+#include "AbstractNonlinearEllipticPde2.pypp.hpp"
+
+#include "AbstractNonlinearEllipticPde3.pypp.hpp"
+
 #include "ConstBoundaryCondition2.pypp.hpp"
 
 #include "ConstBoundaryCondition3.pypp.hpp"
+
+#include "PdeSimulationTime.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -71,8 +81,18 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
 
     register_AbstractLinearEllipticPde3_3_class();
 
+    register_AbstractLinearParabolicPde2_2_class();
+
+    register_AbstractLinearParabolicPde3_3_class();
+
+    register_AbstractNonlinearEllipticPde2_class();
+
+    register_AbstractNonlinearEllipticPde3_class();
+
     register_ConstBoundaryCondition2_class();
 
     register_ConstBoundaryCondition3_class();
+
+    register_PdeSimulationTime_class();
 }
 

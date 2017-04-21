@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractMesh3_3.pypp.hpp"
 
 namespace bp = boost::python;
@@ -254,6 +254,8 @@ struct AbstractMesh_less__3_comma__3__greater__wrapper : AbstractMesh< 3, 3 >, b
 
 };
 
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
+
 void register_AbstractMesh3_3_class(){
 
     { //::AbstractMesh< 3, 3 >
@@ -336,7 +338,7 @@ void register_AbstractMesh3_3_class(){
                 "GetDistributedVectorFactory"
                 , GetDistributedVectorFactory_function_type(&::AbstractMesh< 3, 3 >::GetDistributedVectorFactory)
                 , default_GetDistributedVectorFactory_function_type(&AbstractMesh_less__3_comma__3__greater__wrapper::default_GetDistributedVectorFactory)
-                , bp::return_value_policy< bp::reference_existing_object >() );
+                , bp::return_value_policy< bp::return_opaque_pointer >() );
         
         }
         { //::AbstractMesh< 3, 3 >::GetMeshFileBaseName

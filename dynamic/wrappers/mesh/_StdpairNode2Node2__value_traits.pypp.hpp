@@ -36,9 +36,27 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef AbstractTargetAreaModifier2_hpp__pyplusplus_wrapper
-#define AbstractTargetAreaModifier2_hpp__pyplusplus_wrapper
+#ifndef _StdpairNode2Node2__value_traits_pypp_hpp_hpp__pyplusplus_wrapper
+#define _StdpairNode2Node2__value_traits_pypp_hpp_hpp__pyplusplus_wrapper
 
-void register_AbstractTargetAreaModifier2_class();
+namespace boost { namespace python { namespace indexing {
 
-#endif//AbstractTargetAreaModifier2_hpp__pyplusplus_wrapper
+template<>
+struct value_traits< std::pair< Node< 2 >, Node< 2 > > >{
+
+    static bool const equality_comparable = false;
+    
+
+    static bool const less_than_comparable = false;
+    
+
+    template<typename PythonClass, typename Policy>
+    static void visit_container_class(PythonClass &, Policy const &){
+        
+    }
+
+};
+
+}/*indexing*/ } /*python*/ } /*boost*/
+
+#endif//_StdpairNode2Node2__value_traits_pypp_hpp_hpp__pyplusplus_wrapper

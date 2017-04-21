@@ -37,7 +37,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "boost/python.hpp"
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 #include "AbstractCellPopulationBoundaryCondition2_2.pypp.hpp"
 
 namespace bp = boost::python;
@@ -130,9 +130,9 @@ void register_AbstractCellPopulationBoundaryCondition2_2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > >, boost::shared_ptr< Identifiable > >();
+        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
     }
 
 }

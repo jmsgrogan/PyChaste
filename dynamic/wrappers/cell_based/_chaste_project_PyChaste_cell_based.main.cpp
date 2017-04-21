@@ -48,7 +48,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/map.hpp"
 
-#include "classes_to_be_wrapped.hpp"
+#include "wrapper_header_collection.hpp"
 
 #include "AbstractCaUpdateRule2.pypp.hpp"
 
@@ -57,10 +57,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "AbstractCellBasedSimulation2_2.pypp.hpp"
 
 #include "AbstractCellBasedSimulation3_3.pypp.hpp"
-
-#include "AbstractCellBasedSimulationModifier2_2.pypp.hpp"
-
-#include "AbstractCellBasedSimulationModifier3_3.pypp.hpp"
 
 #include "AbstractCellCycleModel.pypp.hpp"
 
@@ -118,9 +114,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractSimplePhaseBasedCellCycleModel.pypp.hpp"
 
-#include "AbstractTargetAreaModifier2.pypp.hpp"
-
-#include "AbstractTargetAreaModifier3.pypp.hpp"
+#include "AbstractSrnModel.pypp.hpp"
 
 #include "AbstractTwoBodyInteractionForce2_2.pypp.hpp"
 
@@ -146,9 +140,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ApoptoticCellKiller3.pypp.hpp"
 
+#include "ApoptoticCellProperty.pypp.hpp"
+
 #include "AttractingPlaneBoundaryCondition2_2.pypp.hpp"
 
 #include "AttractingPlaneBoundaryCondition3_3.pypp.hpp"
+
+#include "AveragedSourceEllipticPde2.pypp.hpp"
+
+#include "AveragedSourceEllipticPde3.pypp.hpp"
+
+#include "AveragedSourceParabolicPde2.pypp.hpp"
+
+#include "AveragedSourceParabolicPde3.pypp.hpp"
 
 #include "BetaCateninOneHitCellMutationState.pypp.hpp"
 
@@ -194,6 +198,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "CellwiseSourceEllipticPde3.pypp.hpp"
 
+#include "CellwiseSourceParabolicPde2.pypp.hpp"
+
+#include "CellwiseSourceParabolicPde3.pypp.hpp"
+
 #include "DefaultCellProliferativeType.pypp.hpp"
 
 #include "DifferentialAdhesionPottsUpdateRule2.pypp.hpp"
@@ -232,6 +240,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "NodeBasedCellPopulation3.pypp.hpp"
 
+#include "NullSrnModel.pypp.hpp"
+
 #include "OffLatticeSimulation2_2.pypp.hpp"
 
 #include "OffLatticeSimulation3_3.pypp.hpp"
@@ -253,10 +263,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "PottsBasedCellPopulation3.pypp.hpp"
 
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
-
-#include "SimpleTargetAreaModifier2.pypp.hpp"
-
-#include "SimpleTargetAreaModifier3.pypp.hpp"
 
 #include "SimulationTime.pypp.hpp"
 
@@ -308,13 +314,11 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "VoronoiDataWriter3_3.pypp.hpp"
 
-#include "VtkSceneModifier2.pypp.hpp"
-
-#include "VtkSceneModifier3.pypp.hpp"
-
 #include "WildTypeCellMutationState.pypp.hpp"
 
 namespace bp = boost::python;
+
+BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 namespace boost { namespace python { namespace indexing {
 
@@ -389,10 +393,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_AbstractCellBasedSimulation3_3_class();
 
-    register_AbstractCellBasedSimulationModifier2_2_class();
-
-    register_AbstractCellBasedSimulationModifier3_3_class();
-
     register_AbstractCellCycleModel_class();
 
     register_AbstractCellKiller2_class();
@@ -449,9 +449,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_AbstractSimpleGenerationalCellCycleModel_class();
 
-    register_AbstractTargetAreaModifier2_class();
-
-    register_AbstractTargetAreaModifier3_class();
+    register_AbstractSrnModel_class();
 
     register_AbstractTwoBodyInteractionForce2_2_class();
 
@@ -473,9 +471,19 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_ApoptoticCellKiller3_class();
 
+    register_ApoptoticCellProperty_class();
+
     register_AttractingPlaneBoundaryCondition2_2_class();
 
     register_AttractingPlaneBoundaryCondition3_3_class();
+
+    register_AveragedSourceEllipticPde2_class();
+
+    register_AveragedSourceEllipticPde3_class();
+
+    register_AveragedSourceParabolicPde2_class();
+
+    register_AveragedSourceParabolicPde3_class();
 
     register_BetaCateninOneHitCellMutationState_class();
 
@@ -521,6 +529,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_CellwiseSourceEllipticPde3_class();
 
+    register_CellwiseSourceParabolicPde2_class();
+
+    register_CellwiseSourceParabolicPde3_class();
+
     register_DefaultCellProliferativeType_class();
 
     register_DifferentialAdhesionPottsUpdateRule2_class();
@@ -559,6 +571,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_NodeBasedCellPopulation3_class();
 
+    register_NullSrnModel_class();
+
     register_OffLatticeSimulation2_2_class();
 
     register_OffLatticeSimulation3_3_class();
@@ -580,10 +594,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_PottsBasedCellPopulation3_class();
 
     register_SimpleOxygenBasedCellCycleModel_class();
-
-    register_SimpleTargetAreaModifier2_class();
-
-    register_SimpleTargetAreaModifier3_class();
 
     register_SimulationTime_class();
 
@@ -614,10 +624,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_VoronoiDataWriter2_2_class();
 
     register_VoronoiDataWriter3_3_class();
-
-    register_VtkSceneModifier2_class();
-
-    register_VtkSceneModifier3_class();
 
     register_WildTypeCellMutationState_class();
 }

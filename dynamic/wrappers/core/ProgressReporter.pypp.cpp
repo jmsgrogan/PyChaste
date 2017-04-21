@@ -36,9 +36,24 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#ifndef VtkSceneModifier3_hpp__pyplusplus_wrapper
-#define VtkSceneModifier3_hpp__pyplusplus_wrapper
+#include "boost/python.hpp"
+#include "wrapper_header_collection.hpp"
+#include "ProgressReporter.pypp.hpp"
 
-void register_VtkSceneModifier3_class();
+namespace bp = boost::python;
 
-#endif//VtkSceneModifier3_hpp__pyplusplus_wrapper
+void register_ProgressReporter_class(){
+
+    bp::class_< ProgressReporter, boost::noncopyable >( "ProgressReporter", bp::init< std::string, double, double >(( bp::arg("outputDirectory"), bp::arg("startTime"), bp::arg("endTime") )) )    
+        .def( 
+            "PrintFinalising"
+            , (void ( ::ProgressReporter::* )(  ))( &::ProgressReporter::PrintFinalising ) )    
+        .def( 
+            "PrintInitialising"
+            , (void ( ::ProgressReporter::* )(  ))( &::ProgressReporter::PrintInitialising ) )    
+        .def( 
+            "Update"
+            , (void ( ::ProgressReporter::* )( double ))( &::ProgressReporter::Update )
+            , ( bp::arg("currentTime") ) );
+
+}
