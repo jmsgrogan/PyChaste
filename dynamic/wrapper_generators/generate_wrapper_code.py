@@ -320,9 +320,8 @@ def strip_undefined_call_policies(module_file):
             
 def strip_value_traits(module_file):
     
-    # Do not strip for C_vectors or shared ptrs...they are actually needed!
-    if(("C_vector" in module_file) or ("Boostshared" in module_file) 
-       or ("CellPtr" in module_file) or ("FileFinder") in module_file):
+    # Just vector of vector types
+    if not "VectorVector" in module_file:
         return
     
     lines = []
@@ -403,8 +402,8 @@ def generate_wrappers(args):
     module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
     
     # Just for debugging
-    #ignore_modules = ["mesh", "tutorial", "visualization", "ode", "pde", "core"]
-    ignore_modules = []
+    ignore_modules = ["ode", "pde", "core"]
+    #ignore_modules = []
     
     for idx, module_name in enumerate(module_names):
         

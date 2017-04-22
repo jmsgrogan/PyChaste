@@ -52,15 +52,17 @@ pde_classes = [CppClass('AbstractLinearPde'), CppClass('AbstractLinearParabolicP
                ]
 
 ################################## MESH ##########################################
-mesh_classes = [CppClass('ChastePoint'), CppClass('NodeAttributes'), CppClass('Node'),
-                CppClass('Element', excluded_methods = ["CalculateCircumsphereVolume"]), # method not found
+mesh_classes = [CppClass('ChastePoint'), CppClass('NodeAttributes'), 
+                CppClass('Node', include_vec_ptr_self=True),
+                CppClass('Element', excluded_methods = ["CalculateCircumsphereVolume"],
+                         include_vec_ptr_self=True), # method not found
                 CppClass('NodesOnlyMesh'),
                 CppClass('MutableMesh', excluded_methods = ["SplitLongEdges", # can't work with vec<c_vec>
                                                             "RescaleMeshFromBoundaryNode"]), # method not found
                 CppClass('PottsMesh'),
                 CppClass('SharedPottsMeshGenerator', component = "mesh",
                          name_override = "PottsMeshGenerator"), # manual override component and name
-                CppClass('PottsElement'),
+                CppClass('PottsElement', include_vec_ptr_self=True),
                 CppClass('TetrahedralMesh', excluded_methods = ["FreeTriangulateIo", "InitialiseTriangulateIo"]),
                 CppClass('AbstractTetrahedralMesh'),
                 CppClass('AbstractMesh'),
@@ -73,19 +75,13 @@ mesh_classes = [CppClass('ChastePoint'), CppClass('NodeAttributes'), CppClass('N
                          name_override = "HoneycombVertexMeshGenerator"),
                 CppClass('SharedCylindricalHoneycombVertexMeshGenerator', component = "mesh", 
                          name_override = "CylindricalHoneycombVertexMeshGenerator"),
-                CppClass('std::vector', skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["std::pair<Node<3>*, Node<3>* >"], ["std::pair<Node<2>*, Node<2>* >"],
-                                         ["PottsElement<3>*"], ["PottsElement<2>*"],
-                                         ["VertexElement<1, 2>*"], ["VertexElement<2, 2>*"],
-                                         ["VertexElement<2, 3>*"], ["VertexElement<3, 3>*"], ["VertexElement<3, 3>*"],
-                                         ["Element<3, 3>*"], ["Element<2, 2>*"],
-                                         ["Node<3>*"], ["Node<2>*"],
-                                         ["boost::shared_ptr<Node<3> >"], ["boost::shared_ptr<Node<2> >"],
-                                         ]),
-                CppClass('boost::shared_ptr', skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["Node<3>"], ["Node<2>"]]),
                 CppClass('std::pair', skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["Node<3>*, Node<3>*"], ["Node<2>*, Node<2>*"]]),
+                          template_args=[["Node3Ptr, Node3Ptr"], ["Node2Ptr, Node2Ptr"]]),
+                CppClass('std::vector', skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
+                          template_args=[["PairNode3PtrNode3Ptr"], ["PairNode2PtrNode2Ptr"],
+                                         ["VertexElement<1,2>*"], ["VertexElement<2,2>*"],
+                                         ["VertexElement<2,3>*"], ["VertexElement<3,3>*"],
+                                         ]),
                 ]
 
 ################################## CELL_BASED ##########################################
@@ -96,7 +92,7 @@ cell_based_cell_cycle_classes = [CppClass('AbstractCellCycleModel'),
                       CppClass('UniformG1GenerationalCellCycleModel'), CppClass('NoCellCycleModel'),]
 
 cell_based_cell_property_classes = [
-                    CppClass('AbstractCellProperty', excluded_methods=["IsType"]),
+                    CppClass('AbstractCellProperty', excluded_methods=["IsType"], include_vec_ptr_self=True),
                       CppClass('CellPropertyCollection', excluded_methods=["GetCellPropertyRegistry"]),
                       CppClass('AbstractCellProliferativeType'), CppClass('StemCellProliferativeType'),
                       CppClass('DefaultCellProliferativeType'), CppClass('TransitCellProliferativeType'),
@@ -112,7 +108,8 @@ cell_based_cell_property_classes = [
 cell_based_cell_srn_classes = [CppClass('AbstractSrnModel'), CppClass('NullSrnModel'),]
 
 cell_based_cell_classes = [CppClass('Cell', excluded_methods=["rGetCellPropertyCollection",
-                                                                        "GetSrnModel"]),
+                                                                        "GetSrnModel"], 
+                                    include_vec_ptr_self=True),
                       CppClass('CellsGenerator')
                            ]
 
@@ -130,7 +127,7 @@ cell_based_population_writers_classes = [
                     ]
 
 cell_based_population_update_rules_classes = [
-                      CppClass('AbstractCaUpdateRule'), CppClass('AbstractUpdateRule'),
+                      CppClass('AbstractCaUpdateRule'), CppClass('AbstractUpdateRule', include_vec_ptr_self=True),
                       CppClass('DiffusionCaUpdateRule'), CppClass('AbstractPottsUpdateRule'),
                       CppClass('VolumeConstraintPottsUpdateRule'), CppClass('SurfaceAreaConstraintPottsUpdateRule'),
                       CppClass('DifferentialAdhesionPottsUpdateRule'), CppClass('AdhesionPottsUpdateRule')
@@ -141,7 +138,7 @@ cell_based_population_division_rules_classes = [
     ]
 
 cell_based_population_forces_classes = [
-                    CppClass('AbstractForce'), CppClass('AbstractTwoBodyInteractionForce'),
+                    CppClass('AbstractForce', include_vec_ptr_self=True), CppClass('AbstractTwoBodyInteractionForce'),
                     CppClass('GeneralisedLinearSpringForce'), CppClass('NagaiHondaForce'),
                     ]
 
@@ -188,21 +185,12 @@ cell_based_simulation_classes = [
                         ]
 
 cell_based_classes = [
-                      CppClass('std::vector', "cell_based", skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["CellPtr"],
-                                         ["boost::shared_ptr<AbstractCellProperty> "],
-                                         ["boost::shared_ptr<AbstractUpdateRule<2> >"],
-                                         ["boost::shared_ptr<AbstractUpdateRule<3> >"],
-                                         ["boost::shared_ptr<AbstractForce<2> >"], ["boost::shared_ptr<AbstractForce<3> >"],
-                                         ["std::pair<Node<3>*, Node<3>* >"], ["std::pair<Node<2>*, Node<2>* >"],]),
                       CppClass('std::set', "cell_based", skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
                           template_args=[["CellPtr"],]),
-                      CppClass('std::pair', "cell_based", skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["Node<3>*, Node<3>*"], ["Node<2>*, Node<2>*"]]),
                       CppClass('std::map', "cell_based", skip_wrapping=True, needs_include_file=False, needs_instantiation = False,
-                          template_args=[["Node<2>*, c_vector<double, 2> "], 
-                                         ["Node<3>*, c_vector<double, 3> "],
-                                         ["boost::shared_ptr<Cell>, unsigned"]]),
+                          template_args=[["Node2Ptr, c_vector<double, 2> "], 
+                                         ["Node3Ptr, c_vector<double, 3> "],
+                                         ["CellPtr, unsigned"]]),
                       ]
 
 cell_based_classes += cell_based_simulation_classes + cell_based_population_classes + cell_based_cell_based_pde_classes
@@ -215,5 +203,23 @@ tutorial_classes = [CppClass('Hello'),]
 visualization_classes = [CppClass('VtkScene'), CppClass('AbstractPyChasteActorGenerator'),
                          CppClass('CellPopulationPyChasteActorGenerator'),]
 
+################################## EXTRA #################################################
+extra_classes = [
+                 CppClass("std::string", "extra", skip_wrapping=True, needs_include_file=False, needs_instantiation = False),
+                 CppClass("std::map","extra",  [["std::string", "std::string"]], skip_wrapping=True, needs_include_file=False, needs_instantiation = False),
+                 CppClass("std::set","extra",  [["unsigned"]], skip_wrapping=True, needs_include_file=False, needs_instantiation = False),
+                 CppClass("std::vector","extra", [["double"], 
+                                          ["unsigned"], 
+                                          ["bool"],
+                                          ["std::string"],
+                                          ["c_vector<double,3>"],
+                                          ["c_vector<double,2>"],
+                                          ["c_vector<unsigned,5>"],
+                                          ["std::set<unsigned int>"],
+                                          ["std::vector<unsigned int>"]], 
+                          skip_wrapping=True, needs_include_file=False, needs_instantiation = False),
+                 CppClass("c_vector","extra", [["double", 2], ["double", 3], ["unsigned", 5]], 
+                          skip_wrapping=True, needs_include_file=False, needs_instantiation = False)]
+
 # This final list will be pulled in by the autowrapper code by name...i.e. don't change the name.
-classes = core_classes + ode_classes + pde_classes + mesh_classes + cell_based_classes + tutorial_classes + visualization_classes
+classes = extra_classes + core_classes + ode_classes + pde_classes + mesh_classes + cell_based_classes + tutorial_classes + visualization_classes

@@ -222,6 +222,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "GeneralisedLinearSpringForce3_3.pypp.hpp"
 
+#include "MapCellPtrUnsigned.pypp.hpp"
+
+#include "MapNode2PtrCVectorDouble2.pypp.hpp"
+
+#include "MapNode3PtrCVectorDouble3.pypp.hpp"
+
 #include "MeshBasedCellPopulation2_2.pypp.hpp"
 
 #include "MeshBasedCellPopulation3_3.pypp.hpp"
@@ -262,6 +268,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "PottsBasedCellPopulation3.pypp.hpp"
 
+#include "SetCellPtr.pypp.hpp"
+
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
 
 #include "SimulationTime.pypp.hpp"
@@ -269,26 +277,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SphereGeometryBoundaryCondition2.pypp.hpp"
 
 #include "SphereGeometryBoundaryCondition3.pypp.hpp"
-
-#include "StdmapBoostshared_ptrCellunsigned.pypp.hpp"
-
-#include "StdmapNode2c_vectordouble2.pypp.hpp"
-
-#include "StdmapNode3c_vectordouble3.pypp.hpp"
-
-#include "StdsetCellPtr.pypp.hpp"
-
-#include "StdvectorBoostshared_ptrAbstractCellProperty.pypp.hpp"
-
-#include "StdvectorBoostshared_ptrAbstractForce2.pypp.hpp"
-
-#include "StdvectorBoostshared_ptrAbstractForce3.pypp.hpp"
-
-#include "StdvectorBoostshared_ptrAbstractUpdateRule2.pypp.hpp"
-
-#include "StdvectorBoostshared_ptrAbstractUpdateRule3.pypp.hpp"
-
-#include "StdvectorCellPtr.pypp.hpp"
 
 #include "StemCellProliferativeType.pypp.hpp"
 
@@ -301,6 +289,18 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "UniformCellCycleModel.pypp.hpp"
 
 #include "UniformG1GenerationalCellCycleModel.pypp.hpp"
+
+#include "VectorSharedPtrAbstractCellProperty.pypp.hpp"
+
+#include "VectorSharedPtrAbstractForce2_2.pypp.hpp"
+
+#include "VectorSharedPtrAbstractForce3_3.pypp.hpp"
+
+#include "VectorSharedPtrAbstractUpdateRule2.pypp.hpp"
+
+#include "VectorSharedPtrAbstractUpdateRule3.pypp.hpp"
+
+#include "VectorSharedPtrCell.pypp.hpp"
 
 #include "VertexBasedCellPopulation2.pypp.hpp"
 
@@ -361,25 +361,25 @@ struct value_traits< boost::numeric::ublas::c_vector< double, 3 > >{
 }/*indexing*/ } /*python*/ } /*boost*/
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
-    register_StdvectorCellPtr_class();
+    register_VectorSharedPtrCell_class();
 
-    register_StdvectorBoostshared_ptrAbstractUpdateRule3_class();
+    register_VectorSharedPtrAbstractUpdateRule3_class();
 
-    register_StdvectorBoostshared_ptrAbstractUpdateRule2_class();
+    register_VectorSharedPtrAbstractUpdateRule2_class();
 
-    register_StdvectorBoostshared_ptrAbstractForce3_class();
+    register_VectorSharedPtrAbstractForce3_3_class();
 
-    register_StdvectorBoostshared_ptrAbstractForce2_class();
+    register_VectorSharedPtrAbstractForce2_2_class();
 
-    register_StdvectorBoostshared_ptrAbstractCellProperty_class();
+    register_VectorSharedPtrAbstractCellProperty_class();
 
-    register_StdsetCellPtr_class();
+    register_SetCellPtr_class();
 
-    register_StdmapBoostshared_ptrCellunsigned_class();
+    register_MapCellPtrUnsigned_class();
 
-    register_StdmapNode3c_vectordouble3_class();
+    register_MapNode3PtrCVectorDouble3_class();
 
-    register_StdmapNode2c_vectordouble2_class();
+    register_MapNode2PtrCVectorDouble2_class();
 
     register_AbstractUpdateRule2_class();
 

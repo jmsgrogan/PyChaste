@@ -60,13 +60,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "ReplicatableVector.pypp.hpp"
 
-#include "StdvectorDouble.pypp.hpp"
-
-#include "StdvectorUnsigned.pypp.hpp"
-
 #include "TimeStepper.pypp.hpp"
 
 #include "Timer.pypp.hpp"
+
+#include "VectorDouble.pypp.hpp"
+
+#include "VectorUnsigned.pypp.hpp"
 
 #include "vector_less__FileFinder__greater_.pypp.hpp"
 
@@ -75,9 +75,9 @@ namespace bp = boost::python;
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
-    register_StdvectorUnsigned_class();
+    register_VectorUnsigned_class();
 
-    register_StdvectorDouble_class();
+    register_VectorDouble_class();
 
     register_vector_less__FileFinder__greater__class();
 

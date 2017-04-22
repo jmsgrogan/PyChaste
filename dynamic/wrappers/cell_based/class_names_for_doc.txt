@@ -1,3 +1,48 @@
+.. autoclass:: chaste.cell_based.std::string
+	:members:
+
+.. autoclass:: chaste.cell_based.MapString_String
+	:members:
+
+.. autoclass:: chaste.cell_based.SetUnsigned
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorDouble
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorUnsigned
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorBool
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorString
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorCVectorDouble3
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorCVectorDouble2
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorCVectorUnsigned5
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorSetUnsigned
+	:members:
+
+.. autoclass:: chaste.cell_based.VectorVectorUnsigned
+	:members:
+
+.. autoclass:: chaste.cell_based.CVectorDouble_2
+	:members:
+
+.. autoclass:: chaste.cell_based.CVectorDouble_3
+	:members:
+
+.. autoclass:: chaste.cell_based.CVectorUnsigned_5
+	:members:
+
 .. autoclass:: chaste.cell_based.BoostFilesystem
 	:members:
 
@@ -184,103 +229,40 @@
 .. autoclass:: chaste.cell_based.CylindricalHoneycombVertexMeshGenerator
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorStdpairNode3Node3
+.. autoclass:: chaste.cell_based.PairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorStdpairNode2Node2
+.. autoclass:: chaste.cell_based.PairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorPottsElement3
+.. autoclass:: chaste.cell_based.VectorPairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorPottsElement2
+.. autoclass:: chaste.cell_based.VectorPairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorVertexElement12
+.. autoclass:: chaste.cell_based.VectorVertexElement12Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorVertexElement22
+.. autoclass:: chaste.cell_based.VectorVertexElement22Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorVertexElement23
+.. autoclass:: chaste.cell_based.VectorVertexElement23Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorVertexElement33
+.. autoclass:: chaste.cell_based.VectorVertexElement33Ptr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorVertexElement33
+.. autoclass:: chaste.cell_based.SetCellPtr
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorElement33
+.. autoclass:: chaste.cell_based.MapNode2PtrCVectorDouble2
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorElement22
+.. autoclass:: chaste.cell_based.MapNode3PtrCVectorDouble3
 	:members:
 
-.. autoclass:: chaste.cell_based.StdvectorNode3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorNode2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.cell_based.Boostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.cell_based.Boostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorCellPtr
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrAbstractCellProperty
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrAbstractUpdateRule2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrAbstractUpdateRule3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrAbstractForce2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorBoostshared_ptrAbstractForce3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorStdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdvectorStdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdsetCellPtr
-	:members:
-
-.. autoclass:: chaste.cell_based.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdmapNode2c_vectordouble2
-	:members:
-
-.. autoclass:: chaste.cell_based.StdmapNode3c_vectordouble3
-	:members:
-
-.. autoclass:: chaste.cell_based.StdmapBoostshared_ptrCellunsigned
+.. autoclass:: chaste.cell_based.MapCellPtrUnsigned
 	:members:
 
 .. autoclass:: chaste.cell_based.AbstractCellBasedSimulation2_2

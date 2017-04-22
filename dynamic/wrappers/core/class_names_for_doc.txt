@@ -1,3 +1,48 @@
+.. autoclass:: chaste.core.std::string
+	:members:
+
+.. autoclass:: chaste.core.MapString_String
+	:members:
+
+.. autoclass:: chaste.core.SetUnsigned
+	:members:
+
+.. autoclass:: chaste.core.VectorDouble
+	:members:
+
+.. autoclass:: chaste.core.VectorUnsigned
+	:members:
+
+.. autoclass:: chaste.core.VectorBool
+	:members:
+
+.. autoclass:: chaste.core.VectorString
+	:members:
+
+.. autoclass:: chaste.core.VectorCVectorDouble3
+	:members:
+
+.. autoclass:: chaste.core.VectorCVectorDouble2
+	:members:
+
+.. autoclass:: chaste.core.VectorCVectorUnsigned5
+	:members:
+
+.. autoclass:: chaste.core.VectorSetUnsigned
+	:members:
+
+.. autoclass:: chaste.core.VectorVectorUnsigned
+	:members:
+
+.. autoclass:: chaste.core.CVectorDouble_2
+	:members:
+
+.. autoclass:: chaste.core.CVectorDouble_3
+	:members:
+
+.. autoclass:: chaste.core.CVectorUnsigned_5
+	:members:
+
 .. autoclass:: chaste.core.BoostFilesystem
 	:members:
 
@@ -184,103 +229,40 @@
 .. autoclass:: chaste.core.CylindricalHoneycombVertexMeshGenerator
 	:members:
 
-.. autoclass:: chaste.core.StdvectorStdpairNode3Node3
+.. autoclass:: chaste.core.PairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorStdpairNode2Node2
+.. autoclass:: chaste.core.PairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorPottsElement3
+.. autoclass:: chaste.core.VectorPairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorPottsElement2
+.. autoclass:: chaste.core.VectorPairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorVertexElement12
+.. autoclass:: chaste.core.VectorVertexElement12Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorVertexElement22
+.. autoclass:: chaste.core.VectorVertexElement22Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorVertexElement23
+.. autoclass:: chaste.core.VectorVertexElement23Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorVertexElement33
+.. autoclass:: chaste.core.VectorVertexElement33Ptr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorVertexElement33
+.. autoclass:: chaste.core.SetCellPtr
 	:members:
 
-.. autoclass:: chaste.core.StdvectorElement33
+.. autoclass:: chaste.core.MapNode2PtrCVectorDouble2
 	:members:
 
-.. autoclass:: chaste.core.StdvectorElement22
+.. autoclass:: chaste.core.MapNode3PtrCVectorDouble3
 	:members:
 
-.. autoclass:: chaste.core.StdvectorNode3
-	:members:
-
-.. autoclass:: chaste.core.StdvectorNode2
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.core.Boostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.core.Boostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.core.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.core.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.core.StdvectorCellPtr
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrAbstractCellProperty
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrAbstractUpdateRule2
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrAbstractUpdateRule3
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrAbstractForce2
-	:members:
-
-.. autoclass:: chaste.core.StdvectorBoostshared_ptrAbstractForce3
-	:members:
-
-.. autoclass:: chaste.core.StdvectorStdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.core.StdvectorStdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.core.StdsetCellPtr
-	:members:
-
-.. autoclass:: chaste.core.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.core.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.core.StdmapNode2c_vectordouble2
-	:members:
-
-.. autoclass:: chaste.core.StdmapNode3c_vectordouble3
-	:members:
-
-.. autoclass:: chaste.core.StdmapBoostshared_ptrCellunsigned
+.. autoclass:: chaste.core.MapCellPtrUnsigned
 	:members:
 
 .. autoclass:: chaste.core.AbstractCellBasedSimulation2_2

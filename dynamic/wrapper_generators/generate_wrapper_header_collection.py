@@ -58,7 +58,8 @@ def generate_class_data(args):
     
     # Traverse the source tree and get the filepath for each class to be wrapped
     source_root = args[1]
-    component_keys = ["pde", "ode", "cell_based", "mesh", "linalg", "global", "tutorial", "visualization"]
+    component_keys = ["pde", "ode", "cell_based", "mesh", "linalg", 
+                      "global", "tutorial", "visualization", "extra"]
     
     for root, dirnames, filenames in os.walk(source_root, followlinks=True):
         for filename in fnmatch.filter(filenames, '*.hpp'):
@@ -172,31 +173,25 @@ def generate_hpp_file(args):
         short_names = eachClass.get_short_names()
         for idx, eachClassTemplateName in enumerate(eachClass.get_full_names()):
             hpp_file.write("typedef " + eachClassTemplateName + " " + 
-                           short_names[idx] + ";\n")    
+                           short_names[idx] + ";\n")
             
-    # Add extra typdefs for STL and UBLAS components so name conflicts do not arise
-    # in wrapper classes.
-    extra_typdefs = [CppClass("std::map", "std", [["std::string", "std::string"]], True),
-                     CppClass("std::set", "std", [["unsigned"]], True),
-                     CppClass("std::vector", "std", [["double"], 
-                                                    ["unsigned"], 
-                                                    ["bool"],
-                                                    ["std::string"],
-                                                    ["c_vector<double,3>"],
-                                                    ["c_vector<double,2>"],
-                                                    ["c_vector<unsigned,5>"],
-                                                    ["std::set<unsigned int>"],
-                                                    ["std::vector<unsigned int>"]], True),
-                     CppClass("c_vector", "blas",[["double", 2], ["double", 3], ["unsigned", 5]], True)]
-    for eachClass in extra_typdefs:
-        if not eachClass.needs_header_file_typdef():
-            continue
+            if eachClass.include_vec_ptr_self:
+                hpp_file.write("typedef " + eachClassTemplateName + "* " + 
+                               short_names[idx] + "Ptr;\n")    
+                hpp_file.write("typedef boost::shared_ptr<" + eachClassTemplateName + " > SharedPtr" + 
+                               short_names[idx] + ";\n")   
+                hpp_file.write("typedef std::vector<" + short_names[idx] + "Ptr> " + 
+                               "Vector" + short_names[idx] + "Ptr;\n")   
+                hpp_file.write("typedef std::vector<SharedPtr" + short_names[idx] + "> " + 
+                               "VectorSharedPtr" + short_names[idx] + ";\n") 
+                
+            if  eachClass.include_ptr_self and not eachClass.include_vec_ptr_self: 
+                hpp_file.write("typedef boost::shared_ptr<" + eachClassTemplateName + " > SharedPtr" + 
+                               short_names[idx] + ";\n")  
+            if eachClass.include_raw_ptr_self and not eachClass.include_vec_ptr_self:
+                hpp_file.write("typedef " + eachClassTemplateName + "* " + 
+                               short_names[idx] + "Ptr;\n")                                 
         
-        short_names = eachClass.get_short_names()
-        for idx, eachClassTemplateName in enumerate(eachClass.get_full_names()):
-            hpp_file.write("typedef " + eachClassTemplateName + " " + 
-                           short_names[idx] + ";\n")    
-      
     hpp_file.write("    }\n")
     hpp_file.write("}\n")
     

@@ -1,3 +1,48 @@
+.. autoclass:: chaste.visualization.std::string
+	:members:
+
+.. autoclass:: chaste.visualization.MapString_String
+	:members:
+
+.. autoclass:: chaste.visualization.SetUnsigned
+	:members:
+
+.. autoclass:: chaste.visualization.VectorDouble
+	:members:
+
+.. autoclass:: chaste.visualization.VectorUnsigned
+	:members:
+
+.. autoclass:: chaste.visualization.VectorBool
+	:members:
+
+.. autoclass:: chaste.visualization.VectorString
+	:members:
+
+.. autoclass:: chaste.visualization.VectorCVectorDouble3
+	:members:
+
+.. autoclass:: chaste.visualization.VectorCVectorDouble2
+	:members:
+
+.. autoclass:: chaste.visualization.VectorCVectorUnsigned5
+	:members:
+
+.. autoclass:: chaste.visualization.VectorSetUnsigned
+	:members:
+
+.. autoclass:: chaste.visualization.VectorVectorUnsigned
+	:members:
+
+.. autoclass:: chaste.visualization.CVectorDouble_2
+	:members:
+
+.. autoclass:: chaste.visualization.CVectorDouble_3
+	:members:
+
+.. autoclass:: chaste.visualization.CVectorUnsigned_5
+	:members:
+
 .. autoclass:: chaste.visualization.BoostFilesystem
 	:members:
 
@@ -184,103 +229,40 @@
 .. autoclass:: chaste.visualization.CylindricalHoneycombVertexMeshGenerator
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorStdpairNode3Node3
+.. autoclass:: chaste.visualization.PairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorStdpairNode2Node2
+.. autoclass:: chaste.visualization.PairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorPottsElement3
+.. autoclass:: chaste.visualization.VectorPairNode3PtrNode3Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorPottsElement2
+.. autoclass:: chaste.visualization.VectorPairNode2PtrNode2Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorVertexElement12
+.. autoclass:: chaste.visualization.VectorVertexElement12Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorVertexElement22
+.. autoclass:: chaste.visualization.VectorVertexElement22Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorVertexElement23
+.. autoclass:: chaste.visualization.VectorVertexElement23Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorVertexElement33
+.. autoclass:: chaste.visualization.VectorVertexElement33Ptr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorVertexElement33
+.. autoclass:: chaste.visualization.SetCellPtr
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorElement33
+.. autoclass:: chaste.visualization.MapNode2PtrCVectorDouble2
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorElement22
+.. autoclass:: chaste.visualization.MapNode3PtrCVectorDouble3
 	:members:
 
-.. autoclass:: chaste.visualization.StdvectorNode3
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorNode2
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.visualization.Boostshared_ptrNode3
-	:members:
-
-.. autoclass:: chaste.visualization.Boostshared_ptrNode2
-	:members:
-
-.. autoclass:: chaste.visualization.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.visualization.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorCellPtr
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrAbstractCellProperty
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrAbstractUpdateRule2
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrAbstractUpdateRule3
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrAbstractForce2
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorBoostshared_ptrAbstractForce3
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorStdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.visualization.StdvectorStdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.visualization.StdsetCellPtr
-	:members:
-
-.. autoclass:: chaste.visualization.StdpairNode3Node3
-	:members:
-
-.. autoclass:: chaste.visualization.StdpairNode2Node2
-	:members:
-
-.. autoclass:: chaste.visualization.StdmapNode2c_vectordouble2
-	:members:
-
-.. autoclass:: chaste.visualization.StdmapNode3c_vectordouble3
-	:members:
-
-.. autoclass:: chaste.visualization.StdmapBoostshared_ptrCellunsigned
+.. autoclass:: chaste.visualization.MapCellPtrUnsigned
 	:members:
 
 .. autoclass:: chaste.visualization.AbstractCellBasedSimulation2_2

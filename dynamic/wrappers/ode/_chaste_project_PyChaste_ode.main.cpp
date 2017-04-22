@@ -50,12 +50,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractPythonOdeSystemInformation.pypp.hpp"
 
-#include "StdvectorStdstring.pypp.hpp"
+#include "VectorString.pypp.hpp"
 
 namespace bp = boost::python;
 
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_ode){
-    register_StdvectorStdstring_class();
+    register_VectorString_class();
 
     register_AbstractOdeSystem_class();
 
