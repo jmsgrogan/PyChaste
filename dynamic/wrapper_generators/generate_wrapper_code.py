@@ -42,6 +42,7 @@ try:
    import cPickle as pickle
 except:
    import pickle
+import ntpath
 import doxygen_extractor
 from pyplusplus import module_builder
 from pyplusplus.module_builder import call_policies, file_cache_t
@@ -318,11 +319,7 @@ def strip_undefined_call_policies(module_file):
         for line in return_lines:
             outfile.write(line) 
             
-def strip_value_traits(module_file):
-    
-    # Just vector of vector types
-    if not "VectorVector" in module_file:
-        return
+def strip_value_traits(module_file, file_list):
     
     lines = []
     with open(module_file) as infile:
@@ -331,8 +328,12 @@ def strip_value_traits(module_file):
             
     return_lines = []
     for idx, eachLine in enumerate(lines):
-        if "__value_traits.pypp.hpp" not in eachLine:
-            return_lines.append(eachLine)
+        if "__value_traits.pypp.hpp" in eachLine:
+            # Get the base file name
+            cleaned_line = eachLine.rstrip().replace(" ", "").replace("#include", "").translate(None, '"')
+            if cleaned_line not in file_list:
+                continue
+        return_lines.append(eachLine)
             
     if len(return_lines) != len(lines):
         print "Stripped value traits from: ", module_file
@@ -402,8 +403,8 @@ def generate_wrappers(args):
     module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
     
     # Just for debugging
-    ignore_modules = ["ode", "pde", "core"]
-    #ignore_modules = []
+    #ignore_modules = ["ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
+    ignore_modules = []
     
     for idx, module_name in enumerate(module_names):
         
@@ -429,7 +430,11 @@ def generate_wrappers(args):
         builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
         builder.code_creator.license = chaste_license
         
-        builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
+        file_list = builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
+        value_traits_files = []
+        for eachFile in file_list:
+            if "__value_traits" in eachFile:
+                value_traits_files.append(ntpath.basename(eachFile))
         
         # Manually strip any undefined call policies we have missed. Strictly there should not be any/many.
         for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
@@ -439,7 +444,7 @@ def generate_wrappers(args):
         # Manually remove some value traits in std headers (https://mail.python.org/pipermail/cplusplus-sig/2008-April/013105.html)
         for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
             if file.endswith(".cpp"):
-                strip_value_traits(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
+                strip_value_traits(work_dir + "/dynamic/wrappers/" + module_name + "/" + file, value_traits_files)
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)
