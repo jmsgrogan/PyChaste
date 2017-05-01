@@ -47,7 +47,6 @@ script:
       cd "${TRAVIS_BUILD_DIR}"/../root_build
     else
       cmake "${TRAVIS_BUILD_DIR}"/../chaste-source
-#  - cmake "${TRAVIS_BUILD_DIR}"/../chaste-source && make project_PyChaste -j 2 && make project_PyChaste_Python -j 2 && ctest -L PyChaste -j 2 --verbose
     fi
     make project_PyChaste -j 2
 
