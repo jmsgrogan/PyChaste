@@ -58,6 +58,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractCellBasedSimulation3_3.pypp.hpp"
 
+#include "AbstractCellBasedSimulationModifier2_2.pypp.hpp"
+
+#include "AbstractCellBasedSimulationModifier3_3.pypp.hpp"
+
 #include "AbstractCellCycleModel.pypp.hpp"
 
 #include "AbstractCellKiller2.pypp.hpp"
@@ -90,6 +94,18 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractGrowingDomainPdeModifier3.pypp.hpp"
 
+#include "AbstractLinearEllipticPde2_2.pypp.hpp"
+
+#include "AbstractLinearEllipticPde3_3.pypp.hpp"
+
+#include "AbstractLinearParabolicPde2_2.pypp.hpp"
+
+#include "AbstractLinearParabolicPde3_3.pypp.hpp"
+
+#include "AbstractLinearPde2_2.pypp.hpp"
+
+#include "AbstractLinearPde3_3.pypp.hpp"
+
 #include "AbstractOffLatticeCellPopulation2_2.pypp.hpp"
 
 #include "AbstractOffLatticeCellPopulation3_3.pypp.hpp"
@@ -115,6 +131,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "AbstractSimplePhaseBasedCellCycleModel.pypp.hpp"
 
 #include "AbstractSrnModel.pypp.hpp"
+
+#include "AbstractTargetAreaModifier2.pypp.hpp"
+
+#include "AbstractTargetAreaModifier3.pypp.hpp"
 
 #include "AbstractTwoBodyInteractionForce2_2.pypp.hpp"
 
@@ -272,6 +292,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
 
+#include "SimpleTargetAreaModifier2.pypp.hpp"
+
+#include "SimpleTargetAreaModifier3.pypp.hpp"
+
 #include "SimulationTime.pypp.hpp"
 
 #include "SphereGeometryBoundaryCondition2.pypp.hpp"
@@ -313,6 +337,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "VoronoiDataWriter2_2.pypp.hpp"
 
 #include "VoronoiDataWriter3_3.pypp.hpp"
+
+#include "VtkSceneModifier2.pypp.hpp"
+
+#include "VtkSceneModifier3.pypp.hpp"
 
 #include "WildTypeCellMutationState.pypp.hpp"
 
@@ -393,6 +421,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_AbstractCellBasedSimulation3_3_class();
 
+    register_AbstractCellBasedSimulationModifier2_2_class();
+
+    register_AbstractCellBasedSimulationModifier3_3_class();
+
     register_AbstractCellCycleModel_class();
 
     register_AbstractCellKiller2_class();
@@ -433,6 +465,18 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_AbstractGrowingDomainPdeModifier3_class();
 
+    register_AbstractLinearPde2_2_class();
+
+    register_AbstractLinearEllipticPde2_2_class();
+
+    register_AbstractLinearPde3_3_class();
+
+    register_AbstractLinearEllipticPde3_3_class();
+
+    register_AbstractLinearParabolicPde2_2_class();
+
+    register_AbstractLinearParabolicPde3_3_class();
+
     register_AbstractOnLatticeCellPopulation2_class();
 
     register_AbstractOnLatticeCellPopulation3_class();
@@ -450,6 +494,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_AbstractSimpleGenerationalCellCycleModel_class();
 
     register_AbstractSrnModel_class();
+
+    register_AbstractTargetAreaModifier2_class();
+
+    register_AbstractTargetAreaModifier3_class();
 
     register_AbstractTwoBodyInteractionForce2_2_class();
 
@@ -595,6 +643,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
 
     register_SimpleOxygenBasedCellCycleModel_class();
 
+    register_SimpleTargetAreaModifier2_class();
+
+    register_SimpleTargetAreaModifier3_class();
+
     register_SimulationTime_class();
 
     register_SphereGeometryBoundaryCondition2_class();
@@ -624,6 +676,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_VoronoiDataWriter2_2_class();
 
     register_VoronoiDataWriter3_3_class();
+
+    register_VtkSceneModifier2_class();
+
+    register_VtkSceneModifier3_class();
 
     register_WildTypeCellMutationState_class();
 }

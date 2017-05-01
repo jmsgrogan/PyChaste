@@ -81,7 +81,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## The second argument represents the size of that the vector cells should become - one cell for each node, 
         ## the third argument specifies the proliferative type of the cell.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
@@ -160,7 +160,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## Having created a mesh, we now create a std::vector of CellPtrs. 
         ## As before, we do this with the CellsGenerator helper class (this time with dimension 3).
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
@@ -233,7 +233,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         mesh.ConstructNodesWithoutMesh(nodes, 1.5)
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)

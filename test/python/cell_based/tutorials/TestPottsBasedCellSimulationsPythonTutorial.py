@@ -73,7 +73,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## The second argument represents the size of that the vector cells should become - one cell for each element. 
         ## Third argument makes all cells proliferate.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasic(cells, mesh.GetNumElements())
           
@@ -173,10 +173,10 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         generator = chaste.mesh.PottsMeshGenerator2(50, 8, 4, 50, 8, 4)
         mesh = generator.GetMesh()
           
-        ## Having created a mesh, we now create a VecCellPtrs. To do this, we the CellsGenerator helper class, 
+        ## Having created a mesh, we now create a VectorSharedPtrCells. To do this, we the CellsGenerator helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)
@@ -252,10 +252,10 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         generator = chaste.mesh.PottsMeshGenerator3(10, 4, 2, 10, 4, 2, 10, 4, 2)
         mesh = generator.GetMesh()
           
-        ## Having created a mesh, we now create a VecCellPtrs. To do this, we the CellsGenerator helper class, 
+        ## Having created a mesh, we now create a VectorSharedPtrCells. To do this, we the CellsGenerator helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)

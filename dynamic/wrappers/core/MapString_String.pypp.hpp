@@ -36,14 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#include "boost/python.hpp"
-#include "wrapper_header_collection.hpp"
-#include "AbstractLinearPde3_3.pypp.hpp"
+#ifndef MapString_String_hpp__pyplusplus_wrapper
+#define MapString_String_hpp__pyplusplus_wrapper
 
-namespace bp = boost::python;
+void register_MapString_String_class();
 
-void register_AbstractLinearPde3_3_class(){
-
-    bp::class_< AbstractLinearPde< 3, 3 > >( "AbstractLinearPde3_3", bp::init< >() );
-
-}
+#endif//MapString_String_hpp__pyplusplus_wrapper

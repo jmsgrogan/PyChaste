@@ -36,14 +36,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#include "boost/python.hpp"
-#include "wrapper_header_collection.hpp"
-#include "AbstractLinearPde2_2.pypp.hpp"
+#ifndef AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper
+#define AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper
 
-namespace bp = boost::python;
+void register_AbstractCellBasedSimulationModifier3_3_class();
 
-void register_AbstractLinearPde2_2_class(){
-
-    bp::class_< AbstractLinearPde< 2, 2 > >( "AbstractLinearPde2_2", bp::init< >() );
-
-}
+#endif//AbstractCellBasedSimulationModifier3_3_hpp__pyplusplus_wrapper

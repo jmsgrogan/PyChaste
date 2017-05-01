@@ -1,258 +1,3 @@
-.. autoclass:: chaste.cell_based.std::string
-	:members:
-
-.. autoclass:: chaste.cell_based.MapString_String
-	:members:
-
-.. autoclass:: chaste.cell_based.SetUnsigned
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorDouble
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorUnsigned
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorBool
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorString
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorCVectorDouble3
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorCVectorDouble2
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorCVectorUnsigned5
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorSetUnsigned
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorVectorUnsigned
-	:members:
-
-.. autoclass:: chaste.cell_based.CVectorDouble_2
-	:members:
-
-.. autoclass:: chaste.cell_based.CVectorDouble_3
-	:members:
-
-.. autoclass:: chaste.cell_based.CVectorUnsigned_5
-	:members:
-
-.. autoclass:: chaste.cell_based.BoostFilesystem
-	:members:
-
-.. autoclass:: chaste.cell_based.RelativeTo
-	:members:
-
-.. autoclass:: chaste.cell_based.FileFinder
-	:members:
-
-.. autoclass:: chaste.cell_based.OutputFileHandler
-	:members:
-
-.. autoclass:: chaste.cell_based.ProgressReporter
-	:members:
-
-.. autoclass:: chaste.cell_based.RandomNumberGenerator
-	:members:
-
-.. autoclass:: chaste.cell_based.SmartPointers
-	:members:
-
-.. autoclass:: chaste.cell_based.TimeStepper
-	:members:
-
-.. autoclass:: chaste.cell_based.Version
-	:members:
-
-.. autoclass:: chaste.cell_based.Identifiable
-	:members:
-
-.. autoclass:: chaste.cell_based.PetscTools
-	:members:
-
-.. autoclass:: chaste.cell_based.ReplicatableVector
-	:members:
-
-.. autoclass:: chaste.cell_based.Timer
-	:members:
-
-.. autoclass:: chaste.cell_based.UblasIncludes
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractOdeSystemInformation
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractPythonOdeSystemInformation
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractOdeSystem
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearPde2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearPde3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearParabolicPde2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearParabolicPde3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearEllipticPde2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractLinearEllipticPde3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractNonlinearEllipticPde2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractNonlinearEllipticPde3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractBoundaryCondition2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractBoundaryCondition3
-	:members:
-
-.. autoclass:: chaste.cell_based.ConstBoundaryCondition2
-	:members:
-
-.. autoclass:: chaste.cell_based.ConstBoundaryCondition3
-	:members:
-
-.. autoclass:: chaste.cell_based.PdeSimulationTime
-	:members:
-
-.. autoclass:: chaste.cell_based.ChastePoint2
-	:members:
-
-.. autoclass:: chaste.cell_based.ChastePoint3
-	:members:
-
-.. autoclass:: chaste.cell_based.NodeAttributes2
-	:members:
-
-.. autoclass:: chaste.cell_based.NodeAttributes3
-	:members:
-
-.. autoclass:: chaste.cell_based.Node2
-	:members:
-
-.. autoclass:: chaste.cell_based.Node3
-	:members:
-
-.. autoclass:: chaste.cell_based.Element2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.Element3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.NodesOnlyMesh2
-	:members:
-
-.. autoclass:: chaste.cell_based.NodesOnlyMesh3
-	:members:
-
-.. autoclass:: chaste.cell_based.MutableMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.MutableMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsMesh2
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsMesh3
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsMeshGenerator2
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsMeshGenerator3
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsElement2
-	:members:
-
-.. autoclass:: chaste.cell_based.PottsElement3
-	:members:
-
-.. autoclass:: chaste.cell_based.TetrahedralMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.TetrahedralMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractTetrahedralMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractTetrahedralMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.AbstractMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.VertexMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.VertexMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.MutableVertexMesh2_2
-	:members:
-
-.. autoclass:: chaste.cell_based.MutableVertexMesh3_3
-	:members:
-
-.. autoclass:: chaste.cell_based.Cylindrical2dVertexMesh
-	:members:
-
-.. autoclass:: chaste.cell_based.HoneycombMeshGenerator
-	:members:
-
-.. autoclass:: chaste.cell_based.HoneycombVertexMeshGenerator
-	:members:
-
-.. autoclass:: chaste.cell_based.CylindricalHoneycombVertexMeshGenerator
-	:members:
-
-.. autoclass:: chaste.cell_based.PairNode3PtrNode3Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.PairNode2PtrNode2Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorPairNode3PtrNode3Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorPairNode2PtrNode2Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorVertexElement12Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorVertexElement22Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorVertexElement23Ptr
-	:members:
-
-.. autoclass:: chaste.cell_based.VectorVertexElement33Ptr
-	:members:
-
 .. autoclass:: chaste.cell_based.SetCellPtr
 	:members:
 
@@ -478,6 +223,24 @@
 .. autoclass:: chaste.cell_based.AdhesionPottsUpdateRule3
 	:members:
 
+.. autoclass:: chaste.cell_based.AbstractLinearPde2_2
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractLinearPde3_3
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractLinearParabolicPde2_2
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractLinearParabolicPde3_3
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractLinearEllipticPde2_2
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractLinearEllipticPde3_3
+	:members:
+
 .. autoclass:: chaste.cell_based.CellwiseSourceEllipticPde2
 	:members:
 
@@ -634,24 +397,27 @@
 .. autoclass:: chaste.cell_based.NullSrnModel
 	:members:
 
-.. autoclass:: chaste.cell_based.Hello
+.. autoclass:: chaste.cell_based.AbstractTargetAreaModifier2
 	:members:
 
-.. autoclass:: chaste.cell_based.VtkScene2
+.. autoclass:: chaste.cell_based.AbstractTargetAreaModifier3
 	:members:
 
-.. autoclass:: chaste.cell_based.VtkScene3
+.. autoclass:: chaste.cell_based.SimpleTargetAreaModifier2
 	:members:
 
-.. autoclass:: chaste.cell_based.AbstractPyChasteActorGenerator2
+.. autoclass:: chaste.cell_based.SimpleTargetAreaModifier3
 	:members:
 
-.. autoclass:: chaste.cell_based.AbstractPyChasteActorGenerator3
+.. autoclass:: chaste.cell_based.VtkSceneModifier2
 	:members:
 
-.. autoclass:: chaste.cell_based.CellPopulationPyChasteActorGenerator2
+.. autoclass:: chaste.cell_based.VtkSceneModifier3
 	:members:
 
-.. autoclass:: chaste.cell_based.CellPopulationPyChasteActorGenerator3
+.. autoclass:: chaste.cell_based.AbstractCellBasedSimulationModifier2_2
+	:members:
+
+.. autoclass:: chaste.cell_based.AbstractCellBasedSimulationModifier3_3
 	:members:
 

@@ -47,10 +47,10 @@ import matplotlib.pyplot as plt # Plotting
 import numpy as np # Matrix tools
 import chaste # The PyChaste module
 chaste.init() # Set up MPI
-import chaste.cell_based # Contains cell populations
 import chaste.mesh # Contains meshes
-import chaste.visualization # Visualization tools
 import chaste.pde # PDEs
+import chaste.cell_based # Contains cell populations
+import chaste.visualization # Visualization tools
 
 class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
     
@@ -78,7 +78,7 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## We create some cells next, with a stem-like proliferative type. This means they will continually
         ## proliferate if there is enough oxygen, similar to how a tumour spheroid may behave.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         stem_type = chaste.cell_based.StemCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorSimpleOxygenBasedCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), stem_type)

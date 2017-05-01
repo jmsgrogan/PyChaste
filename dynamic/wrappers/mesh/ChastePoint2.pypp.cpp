@@ -100,23 +100,12 @@ void register_ChastePoint2_class(){
         { //::ChastePoint< 2 >::rGetLocation
         
             typedef ChastePoint< 2 > exported_class_t;
-            typedef ::boost::numeric::ublas::c_vector< double, 2 > & ( exported_class_t::*rGetLocation_function_type)(  ) ;
-            
-            ChastePoint2_exposer.def( 
-                "rGetLocation"
-                , rGetLocation_function_type( &::ChastePoint< 2 >::rGetLocation )
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::ChastePoint< 2 >::rGetLocation
-        
-            typedef ChastePoint< 2 > exported_class_t;
             typedef ::boost::numeric::ublas::c_vector< double, 2 > const & ( exported_class_t::*rGetLocation_function_type)(  ) const;
             
             ChastePoint2_exposer.def( 
                 "rGetLocation"
                 , rGetLocation_function_type( &::ChastePoint< 2 >::rGetLocation )
-                , bp::return_internal_reference< >() );
+                , bp::return_value_policy< bp::copy_const_reference >() );
         
         }
     }

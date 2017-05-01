@@ -1090,8 +1090,8 @@ void register_MeshBasedCellPopulationWithGhostNodes3_class(){
                 , bp::return_internal_reference< >() );
         
         }
-        MeshBasedCellPopulationWithGhostNodes3_exposer.def("AddCellWriterCellLabelWriterWriter", &MeshBasedCellPopulationWithGhostNodes<3 >::AddCellWriter<CellLabelWriter>);
-        MeshBasedCellPopulationWithGhostNodes3_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &MeshBasedCellPopulationWithGhostNodes<3 >::AddPopulationWriter<VoronoiDataWriter>);
+        MeshBasedCellPopulationWithGhostNodes3_exposer.def("AddCellWriterCellLabelWriter", &MeshBasedCellPopulationWithGhostNodes<3 >::AddCellWriter<CellLabelWriter>);
+        MeshBasedCellPopulationWithGhostNodes3_exposer.def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulationWithGhostNodes<3 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

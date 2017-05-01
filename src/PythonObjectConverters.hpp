@@ -33,41 +33,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-/*
-
- Copyright (c) 2005-2016, University of Oxford.
- All rights reserved.
-
- University of Oxford means the Chancellor, Masters and Scholars of the
- University of Oxford, having an administrative office at Wellington
- Square, Oxford OX1 2JD, UK.
-
- This file is part of Chaste.
-
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are met:
- * Redistributions of source code must retain the above copyright notice,
- this list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice,
- this list of conditions and the following disclaimer in the documentation
- and/or other materials provided with the distribution.
- * Neither the name of the University of Oxford nor the names of its
- contributors may be used to endorse or promote products derived from this
- software without specific prior written permission.
-
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
- LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
- */
-
 #ifndef PYTHONOBJECTCONVERTERS_HPP_
 #define PYTHONOBJECTCONVERTERS_HPP_
 
@@ -261,6 +226,64 @@ struct NumpyArrayToCVector
             if(idx < unsigned(size_array))
             {
                 (*vec)[idx] = extract<double>(PyArray_GETITEM(arrayObjPtr, (const char*)PyArray_GETPTR1(arrayObjPtr, idx)));
+            }
+            else
+            {
+                (*vec)[idx] = 0.0;
+            }
+        }
+        data->convertible = storage;
+    }
+};
+
+/**
+ *  Convert a numpy array to a cvector, templated over the c_vector dimension
+ *  If the numpy array is to small extra dimensions are zero padded. If it is too
+ *  large extra dimensions are ignored.
+ */
+struct NumpyArrayToCVectorUnsigned
+{
+    template <unsigned DIM>
+    NumpyArrayToCVectorUnsigned& from_python()
+    {
+        boost::python::converter::registry::push_back(&NumpyArrayToCVectorUnsigned::convertible,
+                &NumpyArrayToCVectorUnsigned::construct<DIM>,
+                boost::python::type_id<c_vector<unsigned, DIM> >());
+        return *this;
+    }
+
+    // Determine if a c_vector can be generated, otherwise return null
+    static void* convertible(PyObject* pPythonObject)
+    {
+        if (PyArray_Check(pPythonObject))
+        {
+            PyArrayObject* arrayObjPtr = reinterpret_cast<PyArrayObject*>(pPythonObject);
+            if(PyArray_NDIM(arrayObjPtr) == 1)
+            {
+                return pPythonObject;
+            }
+        }
+        return NULL;
+    }
+
+    // Do the conversion
+    template <unsigned DIM>
+    static void construct(PyObject* pPythonObject, boost::python::converter::rvalue_from_python_stage1_data* data)
+    {
+        // Set up the c_vector
+        typedef boost::python::converter::rvalue_from_python_storage<c_vector<unsigned, DIM> > storage_type;
+        void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
+        new (storage) c_vector<unsigned, DIM>;
+        c_vector<unsigned, DIM>* vec = (c_vector<unsigned, DIM>*) storage;
+
+        // Populate the vector, fill unused dimensions with 0, excess dimensions are ignored
+        PyArrayObject* arrayObjPtr = reinterpret_cast<PyArrayObject*>(pPythonObject);
+        int size_array = PyArray_DIM(arrayObjPtr, 0);
+        for(unsigned idx = 0; idx<DIM; idx++)
+        {
+            if(idx < unsigned(size_array))
+            {
+                (*vec)[idx] = extract<unsigned>(PyArray_GETITEM(arrayObjPtr, (const char*)PyArray_GETPTR1(arrayObjPtr, idx)));
             }
             else
             {

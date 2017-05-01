@@ -1333,8 +1333,8 @@ void register_MutableMesh2_2_class(){
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< TetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractTetrahedralMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< MutableMesh< 2, 2 > >, boost::shared_ptr< AbstractMesh< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< NodesOnlyMesh< 2 > >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< Cylindrical2dMesh >, boost::shared_ptr< MutableMesh< 2, 2 > > >();
     }
 
 }

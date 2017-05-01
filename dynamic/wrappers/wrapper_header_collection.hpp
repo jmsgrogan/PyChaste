@@ -120,18 +120,16 @@
 #include "CellPropertyRegistry.hpp"
 #include "AbstractSrnModel.hpp"
 #include "NullSrnModel.hpp"
+#include "AbstractTargetAreaModifier.hpp"
+#include "SimpleTargetAreaModifier.hpp"
+#include "VtkSceneModifier.hpp"
+#include "AbstractCellBasedSimulationModifier.hpp"
 #include "Hello.hpp"
 #include "VtkScene.hpp"
 #include "AbstractPyChasteActorGenerator.hpp"
 #include "CellPopulationPyChasteActorGenerator.hpp"
 
 // Instantiate Template Classes 
-template class AbstractLinearPde<2,2 >;
-template class AbstractLinearPde<3,3 >;
-template class AbstractLinearParabolicPde<2,2 >;
-template class AbstractLinearParabolicPde<3,3 >;
-template class AbstractLinearEllipticPde<2,2 >;
-template class AbstractLinearEllipticPde<3,3 >;
 template class AbstractNonlinearEllipticPde<2 >;
 template class AbstractNonlinearEllipticPde<3 >;
 template class AbstractBoundaryCondition<2 >;
@@ -258,6 +256,14 @@ template class CellsGenerator<UniformG1GenerationalCellCycleModel,2 >;
 template class CellsGenerator<UniformG1GenerationalCellCycleModel,3 >;
 template class CellsGenerator<NoCellCycleModel,2 >;
 template class CellsGenerator<NoCellCycleModel,3 >;
+template class AbstractTargetAreaModifier<2 >;
+template class AbstractTargetAreaModifier<3 >;
+template class SimpleTargetAreaModifier<2 >;
+template class SimpleTargetAreaModifier<3 >;
+template class VtkSceneModifier<2 >;
+template class VtkSceneModifier<3 >;
+template class AbstractCellBasedSimulationModifier<2,2 >;
+template class AbstractCellBasedSimulationModifier<3,3 >;
 template class VtkScene<2 >;
 template class VtkScene<3 >;
 template class AbstractPyChasteActorGenerator<2 >;
@@ -282,12 +288,6 @@ typedef std::vector<std::vector<unsigned int> > VectorVectorUnsigned;
 typedef c_vector<double,2 > CVectorDouble_2;
 typedef c_vector<double,3 > CVectorDouble_3;
 typedef c_vector<unsigned,5 > CVectorUnsigned_5;
-typedef AbstractLinearPde<2,2 > AbstractLinearPde2_2;
-typedef AbstractLinearPde<3,3 > AbstractLinearPde3_3;
-typedef AbstractLinearParabolicPde<2,2 > AbstractLinearParabolicPde2_2;
-typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
-typedef AbstractLinearEllipticPde<2,2 > AbstractLinearEllipticPde2_2;
-typedef AbstractLinearEllipticPde<3,3 > AbstractLinearEllipticPde3_3;
 typedef AbstractNonlinearEllipticPde<2 > AbstractNonlinearEllipticPde2;
 typedef AbstractNonlinearEllipticPde<3 > AbstractNonlinearEllipticPde3;
 typedef AbstractBoundaryCondition<2 > AbstractBoundaryCondition2;
@@ -444,6 +444,12 @@ typedef DifferentialAdhesionPottsUpdateRule<2 > DifferentialAdhesionPottsUpdateR
 typedef DifferentialAdhesionPottsUpdateRule<3 > DifferentialAdhesionPottsUpdateRule3;
 typedef AdhesionPottsUpdateRule<2 > AdhesionPottsUpdateRule2;
 typedef AdhesionPottsUpdateRule<3 > AdhesionPottsUpdateRule3;
+typedef AbstractLinearPde<2,2 > AbstractLinearPde2_2;
+typedef AbstractLinearPde<3,3 > AbstractLinearPde3_3;
+typedef AbstractLinearParabolicPde<2,2 > AbstractLinearParabolicPde2_2;
+typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
+typedef AbstractLinearEllipticPde<2,2 > AbstractLinearEllipticPde2_2;
+typedef AbstractLinearEllipticPde<3,3 > AbstractLinearEllipticPde3_3;
 typedef CellwiseSourceEllipticPde<2 > CellwiseSourceEllipticPde2;
 typedef CellwiseSourceEllipticPde<3 > CellwiseSourceEllipticPde3;
 typedef AveragedSourceEllipticPde<2 > AveragedSourceEllipticPde2;
@@ -476,6 +482,14 @@ typedef AbstractCellProperty* AbstractCellPropertyPtr;
 typedef boost::shared_ptr<AbstractCellProperty > SharedPtrAbstractCellProperty;
 typedef std::vector<AbstractCellPropertyPtr> VectorAbstractCellPropertyPtr;
 typedef std::vector<SharedPtrAbstractCellProperty> VectorSharedPtrAbstractCellProperty;
+typedef AbstractTargetAreaModifier<2 > AbstractTargetAreaModifier2;
+typedef AbstractTargetAreaModifier<3 > AbstractTargetAreaModifier3;
+typedef SimpleTargetAreaModifier<2 > SimpleTargetAreaModifier2;
+typedef SimpleTargetAreaModifier<3 > SimpleTargetAreaModifier3;
+typedef VtkSceneModifier<2 > VtkSceneModifier2;
+typedef VtkSceneModifier<3 > VtkSceneModifier3;
+typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
+typedef AbstractCellBasedSimulationModifier<3,3 > AbstractCellBasedSimulationModifier3_3;
 typedef VtkScene<2 > VtkScene2;
 typedef VtkScene<3 > VtkScene3;
 typedef AbstractPyChasteActorGenerator<2 > AbstractPyChasteActorGenerator2;

@@ -1027,8 +1027,8 @@ void register_VertexBasedCellPopulation2_class(){
                 , ( bp::arg("rDirectory") ) );
         
         }
-        VertexBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriterWriter", &VertexBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
-        VertexBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &VertexBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
+        VertexBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &VertexBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
+        VertexBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriter", &VertexBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

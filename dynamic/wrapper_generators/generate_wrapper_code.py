@@ -93,7 +93,8 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
     # Convience dict for call policies
     call_policies_collection = {"reference_existing_object": call_policies.return_value_policy(call_policies.reference_existing_object),
                                 "return_opaque_pointer": call_policies.return_value_policy(call_policies.return_opaque_pointer) ,
-                                "return_internal_reference" : call_policies.return_internal_reference()}
+                                "return_internal_reference" : call_policies.return_internal_reference(),
+                                "copy_const_reference" : call_policies.return_value_policy(call_policies.copy_const_reference)}
     
     # Classes which have methods taking or returning PETSc vec or mat need to add
     # this custom wrapper code to allow wrapping of PETSc opaque pointers. Any 
@@ -219,7 +220,8 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                         if eachClass.pointer_return_methods is not None:
                             for eachDefinedPointerPolicy in eachClass.pointer_return_methods:
                                 if eachMemberFunction.name == eachDefinedPointerPolicy[0]:
-                                    eachMemberFunction.call_policies = call_policies_collection[eachDefinedPointerPolicy[1]]
+                                    if eachDefinedPointerPolicy[1] in call_policies_collection.keys():
+                                        eachMemberFunction.call_policies = call_policies_collection[eachDefinedPointerPolicy[1]]
                                     break_out = True
                                     break
                         if break_out:
@@ -273,11 +275,11 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                         if "Abstract" not in eachClass.name and "CellwiseDataGradient" not in eachClass.name:
                             if "BasedCellPopulation" in eachClass.name:
                                 for eachWriter in cell_writers:
-                                        writer_prefix = 'def("AddCellWriter' + eachWriter + 'Writer", &'
+                                        writer_prefix = 'def("AddCellWriter' + eachWriter + '", &'
                                         writer_suffix = '::AddCellWriter<' + eachWriter + '>)'
                                         this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)  
                                 for eachWriter in population_writers:
-                                        writer_prefix = 'def("AddPopulationWriter' + eachWriter + 'Writer", &'
+                                        writer_prefix = 'def("AddPopulationWriter' + eachWriter + '", &'
                                         writer_suffix = '::AddPopulationWriter<' + eachWriter + '>)'
                                         this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)   
     
@@ -285,6 +287,12 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
     for eachTemplate in ["<2>", "<3>"]: 
         builder.class_("AbstractPdeModifier"+eachTemplate).constructors().exclude()  
         builder.class_('AbstractPdeModifier'+eachTemplate).calldefs().use_default_arguments=False 
+        
+    # Don't return non-const reference for ChastePoint
+    returns_non_const_ref = builder.class_('ChastePoint<3>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 3> &")
+    returns_non_const_ref.exclude()
+    returns_non_const_ref = builder.class_('ChastePoint<2>').member_functions(return_type = "::boost::numeric::ublas::c_vector<double, 2> &")
+    returns_non_const_ref.exclude()
     
     return builder, classes
             
@@ -354,8 +362,9 @@ def do_module(module_name, builder, work_dir, classes):
     # Write the class names to file for building Python docs later on
     f = open(work_dir + '/class_names_for_doc.txt','w')
     for eachClass in classes:
-        for eachName in eachClass.get_short_names():
-            f.write('.. autoclass:: chaste.' + module_name + '.' + eachName + '\n\t:members:\n\n')
+        if eachClass.component is not None and module_name in eachClass.component:
+            for eachName in eachClass.get_short_names():
+                f.write('.. autoclass:: chaste.' + module_name + '.' + eachName + '\n\t:members:\n\n')
     f.close()
     return builder
        
@@ -386,8 +395,9 @@ def generate_wrappers(args):
     messages.disable(messages.W1014) # operator not supported
     messages.disable(messages.W1036) # can't expose immutable member variables
     
-    # Don't wrap std library
+    # Don't wrap std or boost library
     builder.global_ns.namespace('std').exclude()
+    builder.global_ns.namespace('boost').exclude()
     
     # Strip out Instantiation 'tricks' in the header file
     # todo - the first line is presumably no longer necessary
@@ -403,8 +413,8 @@ def generate_wrappers(args):
     module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
     
     # Just for debugging
-    #ignore_modules = ["ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
-    ignore_modules = []
+    ignore_modules = ["ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
+    #ignore_modules = []
     
     for idx, module_name in enumerate(module_names):
         

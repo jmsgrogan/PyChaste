@@ -116,7 +116,7 @@ struct AveragedSourceParabolicPde_less__3__greater__wrapper : AveragedSourcePara
 void register_AveragedSourceParabolicPde3_class(){
 
     { //::AveragedSourceParabolicPde< 3 >
-        typedef bp::class_< AveragedSourceParabolicPde_less__3__greater__wrapper, boost::noncopyable > AveragedSourceParabolicPde3_exposer_t;
+        typedef bp::class_< AveragedSourceParabolicPde_less__3__greater__wrapper, bp::bases< AbstractLinearParabolicPde< 3, 3 > >, boost::noncopyable > AveragedSourceParabolicPde3_exposer_t;
         AveragedSourceParabolicPde3_exposer_t AveragedSourceParabolicPde3_exposer = AveragedSourceParabolicPde3_exposer_t( "AveragedSourceParabolicPde3", bp::init< AbstractCellPopulation< 3, 3 > &, bp::optional< double, double, double > >(( bp::arg("rCellPopulation"), bp::arg("duDtCoefficient")=1., bp::arg("diffusionCoefficient")=1., bp::arg("sourceCoefficient")=0. )) );
         bp::scope AveragedSourceParabolicPde3_scope( AveragedSourceParabolicPde3_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 3, 3 > &, AveragedSourceParabolicPde< 3 > >();

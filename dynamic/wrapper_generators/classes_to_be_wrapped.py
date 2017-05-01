@@ -28,7 +28,16 @@ global_classes = [
     CppClass('SmartPointers', include_file_only = True),
     CppClass('TimeStepper'),
     CppClass('Version', include_file_only = True),
-                  ]
+    CppClass('ChasteBuildInfo', component = "core", needs_include_file = False,
+             pointer_return_methods=[["GetBuildInformation", ""],
+                                     ["GetBuildTime", ""],
+                                     ["GetBuilderUnameInfo", ""],
+                                     ["GetCompilerFlags", ""],
+                                     ["GetCompilerType", ""],
+                                     ["GetCompilerVersion", ""],
+                                     ["GetCurrentTime", ""],
+                                     ["GetRootDir", ""],
+                                     ["GetXsdVersion", ""]],),]
 
 global_classes += global_checkpointing_classes + global_parallel_classes + global_timing_classes
 
@@ -52,7 +61,8 @@ pde_classes = [CppClass('AbstractLinearPde'), CppClass('AbstractLinearParabolicP
                ]
 
 ################################## MESH ##########################################
-mesh_classes = [CppClass('ChastePoint'), CppClass('NodeAttributes'), 
+mesh_classes = [CppClass('ChastePoint', pointer_return_methods=[["rGetLocation", "copy_const_reference"]],), 
+                CppClass('NodeAttributes'), 
                 CppClass('Node', include_vec_ptr_self=True),
                 CppClass('Element', excluded_methods = ["CalculateCircumsphereVolume"],
                          include_vec_ptr_self=True), # method not found
@@ -116,6 +126,9 @@ cell_based_cell_classes = [CppClass('Cell', excluded_methods=["rGetCellPropertyC
 cell_based_cell_classes += cell_based_cell_cycle_classes + cell_based_cell_property_classes + cell_based_cell_srn_classes
 
 cell_based_cell_based_pde_classes = [
+                      CppClass('AbstractLinearPde', component = "cell_based", needs_include_file=False, needs_instantiation = False), 
+                      CppClass('AbstractLinearParabolicPde',component = "cell_based", needs_include_file=False, needs_instantiation = False),
+                      CppClass('AbstractLinearEllipticPde', component = "cell_based", needs_include_file=False, needs_instantiation = False), 
                       CppClass('CellwiseSourceEllipticPde'), CppClass('AveragedSourceEllipticPde'),
                       CppClass('AveragedSourceParabolicPde'), CppClass('CellwiseSourceParabolicPde'),
                       CppClass('AbstractPdeModifier', excluded_methods = ["GetSolution, GetFeMesh"]),
@@ -127,7 +140,8 @@ cell_based_population_writers_classes = [
                     ]
 
 cell_based_population_update_rules_classes = [
-                      CppClass('AbstractCaUpdateRule'), CppClass('AbstractUpdateRule', include_vec_ptr_self=True),
+                      CppClass('AbstractCaUpdateRule'), 
+                      CppClass('AbstractUpdateRule', include_vec_ptr_self=True),
                       CppClass('DiffusionCaUpdateRule'), CppClass('AbstractPottsUpdateRule'),
                       CppClass('VolumeConstraintPottsUpdateRule'), CppClass('SurfaceAreaConstraintPottsUpdateRule'),
                       CppClass('DifferentialAdhesionPottsUpdateRule'), CppClass('AdhesionPottsUpdateRule')
@@ -138,8 +152,10 @@ cell_based_population_division_rules_classes = [
     ]
 
 cell_based_population_forces_classes = [
-                    CppClass('AbstractForce', include_vec_ptr_self=True), CppClass('AbstractTwoBodyInteractionForce'),
-                    CppClass('GeneralisedLinearSpringForce'), CppClass('NagaiHondaForce'),
+                    CppClass('AbstractForce', include_vec_ptr_self=True), 
+                    CppClass('AbstractTwoBodyInteractionForce'),
+                    CppClass('GeneralisedLinearSpringForce'), 
+                    CppClass('NagaiHondaForce'),
                     ]
 
 cell_based_population_killer_classes = [
@@ -148,8 +164,11 @@ cell_based_population_killer_classes = [
                     ]
 
 cell_based_population_boundary_conditions_classes = [
-                      CppClass('AbstractCellPopulationBoundaryCondition'), CppClass('PlaneBoundaryCondition'),
-                      CppClass('AttractingPlaneBoundaryCondition'), CppClass('SphereGeometryBoundaryCondition'),
+                      CppClass('AbstractCellPopulationBoundaryCondition'), 
+                      CppClass('PlaneBoundaryCondition'),
+                      CppClass('AttractingPlaneBoundaryCondition', pointer_return_methods=[["rGetNormalToPlane", "copy_const_reference"],
+                                                                                           ["rGetPointOnPlane", "copy_const_reference"]]), 
+                      CppClass('SphereGeometryBoundaryCondition'),
                     ]
 
 cell_based_population_classes = [
@@ -176,7 +195,8 @@ cell_based_population_classes += cell_based_population_division_rules_classes + 
 
 cell_based_simulation_modifier_classes = [
                     CppClass('AbstractTargetAreaModifier'), CppClass('SimpleTargetAreaModifier'),
-                      CppClass('VtkSceneModifier', component="cell_based"), CppClass('AbstractCellBasedSimulationModifier'),
+                      CppClass('VtkSceneModifier', component="cell_based"), 
+                      CppClass('AbstractCellBasedSimulationModifier'),
                       ]
 
 cell_based_simulation_classes = [
@@ -194,7 +214,7 @@ cell_based_classes = [
                       ]
 
 cell_based_classes += cell_based_simulation_classes + cell_based_population_classes + cell_based_cell_based_pde_classes
-cell_based_classes += cell_based_cell_classes
+cell_based_classes += cell_based_cell_classes + cell_based_simulation_modifier_classes
 
 ################################## TUTORIAL ##########################################
 tutorial_classes = [CppClass('Hello'),]

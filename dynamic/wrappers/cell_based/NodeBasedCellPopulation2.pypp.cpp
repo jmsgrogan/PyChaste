@@ -1117,8 +1117,8 @@ void register_NodeBasedCellPopulation2_class(){
                 , ( bp::arg("rDirectory") ) );
         
         }
-        NodeBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriterWriter", &NodeBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
-        NodeBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &NodeBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
+        NodeBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &NodeBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
+        NodeBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriter", &NodeBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

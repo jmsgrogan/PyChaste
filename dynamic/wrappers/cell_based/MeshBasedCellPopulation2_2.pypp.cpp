@@ -1305,8 +1305,8 @@ void register_MeshBasedCellPopulation2_2_class(){
                 , ( bp::arg("dt") ) );
         
         }
-        MeshBasedCellPopulation2_2_exposer.def("AddCellWriterCellLabelWriterWriter", &MeshBasedCellPopulation<2,2 >::AddCellWriter<CellLabelWriter>);
-        MeshBasedCellPopulation2_2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &MeshBasedCellPopulation<2,2 >::AddPopulationWriter<VoronoiDataWriter>);
+        MeshBasedCellPopulation2_2_exposer.def("AddCellWriterCellLabelWriter", &MeshBasedCellPopulation<2,2 >::AddCellWriter<CellLabelWriter>);
+        MeshBasedCellPopulation2_2_exposer.def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulation<2,2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

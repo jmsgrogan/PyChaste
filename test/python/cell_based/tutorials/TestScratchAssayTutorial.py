@@ -83,13 +83,13 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## tells us that we are working in 2D. Most Chaste classes are specialized (templated) for spatial dimension,
         ## so we need to make sure we are consistent in the dimensionality of the classes we are using. 
         ##
-        ## Next we set up some cells. We create and empty container `VecCellPtr` (which will behave like a Python list)
+        ## Next we set up some cells. We create and empty container `VectorSharedPtrCell` (which will behave like a Python list)
         ## and will fill it with cells of our chosen type. In Chaste cells can be assinged a number of proliferative types
         ## (Default, Differentiated, Stem, Transit or User Defined). These types will define how cells behave in certain
         ## simulations, for example whether they will proliferate. We just want our cells to migrate in this example, so
         ## we set a DifferentiatedCellProliferativeType. 
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         
         ## We are not interested in cell cycling so we specialize the generator to NoCellCycleModel.
@@ -195,8 +195,8 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                         
                     self.fig.ax.plot(y_locations, num_cells, color='black')
                     self.fig.canvas.draw()
-                    display.display(self.fig)
-                    display.clear_output(wait=True)
+                    #display.display(self.fig)
+                    #display.clear_output(wait=True)
                 
             def SetupSolve(self, cell_population, output_directory):
                 
