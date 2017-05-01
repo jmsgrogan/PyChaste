@@ -104,7 +104,7 @@ struct CellwiseSourceParabolicPde_less__2__greater__wrapper : CellwiseSourcePara
 void register_CellwiseSourceParabolicPde2_class(){
 
     { //::CellwiseSourceParabolicPde< 2 >
-        typedef bp::class_< CellwiseSourceParabolicPde_less__2__greater__wrapper, boost::noncopyable > CellwiseSourceParabolicPde2_exposer_t;
+        typedef bp::class_< CellwiseSourceParabolicPde_less__2__greater__wrapper, bp::bases< AbstractLinearParabolicPde< 2, 2 > >, boost::noncopyable > CellwiseSourceParabolicPde2_exposer_t;
         CellwiseSourceParabolicPde2_exposer_t CellwiseSourceParabolicPde2_exposer = CellwiseSourceParabolicPde2_exposer_t( "CellwiseSourceParabolicPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double, double, double > >(( bp::arg("rCellPopulation"), bp::arg("duDtCoefficient")=1., bp::arg("diffusionCoefficient")=1., bp::arg("sourceCoefficient")=0. )) );
         bp::scope CellwiseSourceParabolicPde2_scope( CellwiseSourceParabolicPde2_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, CellwiseSourceParabolicPde< 2 > >();

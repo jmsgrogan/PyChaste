@@ -5,6 +5,11 @@ dist: trusty
 # Compiler selection
 compiler:
   - gcc
+cache:
+  timeout: 1000
+  directories:
+  - chaste-build  # the build directory
+
 # Build steps
 before_script:
   - sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 422C4D99
@@ -15,5 +20,5 @@ before_script:
   - sudo apt-get install chaste-source -y
   - git clone --depth=2 -b develop https://chaste.cs.ox.ac.uk/git/chaste.git chaste-source
 script:
-  - ln -s $PWD chaste-source/projects/ && mkdir chaste-build && cd chaste-build
+  - ln -s $PWD chaste-source/projects/ && mkdir -p chaste-build && cd chaste-build
   - cmake ../chaste-source && make project_PyChaste -j 2 && make project_PyChaste_Python -j 2

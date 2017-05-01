@@ -99,12 +99,24 @@ struct CellwiseSourceEllipticPde_less__2__greater__wrapper : CellwiseSourceEllip
         return CellwiseSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
     }
 
+    virtual double ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeConstantInUSourceTermAtNode = this->get_override( "ComputeConstantInUSourceTermAtNode" ) )
+            return func_ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+    }
+
 };
 
 void register_CellwiseSourceEllipticPde2_class(){
 
     { //::CellwiseSourceEllipticPde< 2 >
-        typedef bp::class_< CellwiseSourceEllipticPde_less__2__greater__wrapper, boost::noncopyable > CellwiseSourceEllipticPde2_exposer_t;
+        typedef bp::class_< CellwiseSourceEllipticPde_less__2__greater__wrapper, bp::bases< AbstractLinearEllipticPde< 2, 2 > >, boost::noncopyable > CellwiseSourceEllipticPde2_exposer_t;
         CellwiseSourceEllipticPde2_exposer_t CellwiseSourceEllipticPde2_exposer = CellwiseSourceEllipticPde2_exposer_t( "CellwiseSourceEllipticPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient")=0. )) );
         bp::scope CellwiseSourceEllipticPde2_scope( CellwiseSourceEllipticPde2_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, CellwiseSourceEllipticPde< 2 > >();
@@ -179,6 +191,19 @@ void register_CellwiseSourceEllipticPde2_class(){
                 "rGetCellPopulation"
                 , rGetCellPopulation_function_type( &::CellwiseSourceEllipticPde< 2 >::rGetCellPopulation )
                 , bp::return_internal_reference< >() );
+        
+        }
+        { //::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode
+        
+            typedef CellwiseSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            typedef double ( CellwiseSourceEllipticPde_less__2__greater__wrapper::*default_ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            
+            CellwiseSourceEllipticPde2_exposer.def( 
+                "ComputeConstantInUSourceTermAtNode"
+                , ComputeConstantInUSourceTermAtNode_function_type(&::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode)
+                , default_ComputeConstantInUSourceTermAtNode_function_type(&CellwiseSourceEllipticPde_less__2__greater__wrapper::default_ComputeConstantInUSourceTermAtNode)
+                , ( bp::arg("rNode") ) );
         
         }
     }

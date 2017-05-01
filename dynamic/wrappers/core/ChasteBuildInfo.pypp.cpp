@@ -47,32 +47,25 @@ void register_ChasteBuildInfo_class(){
     bp::class_< ChasteBuildInfo >( "ChasteBuildInfo" )    
         .def( 
             "GetBuildInformation"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildInformation )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildInformation ) )    
         .def( 
             "GetBuildTime"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildTime )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuildTime ) )    
         .def( 
             "GetBuilderUnameInfo"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuilderUnameInfo )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetBuilderUnameInfo ) )    
         .def( 
             "GetCompilerFlags"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerFlags )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerFlags ) )    
         .def( 
             "GetCompilerType"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerType )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerType ) )    
         .def( 
             "GetCompilerVersion"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerVersion )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCompilerVersion ) )    
         .def( 
             "GetCurrentTime"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCurrentTime )
-             )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetCurrentTime ) )    
         .def( 
             "GetLicenceText"
             , (::std::string (*)(  ))( &::ChasteBuildInfo::GetLicenceText ) )    
@@ -90,14 +83,13 @@ void register_ChasteBuildInfo_class(){
             , (unsigned int (*)(  ))( &::ChasteBuildInfo::GetRevisionNumber ) )    
         .def( 
             "GetRootDir"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetRootDir ))
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetRootDir ) )    
         .def( 
             "GetVersionString"
             , (::std::string (*)(  ))( &::ChasteBuildInfo::GetVersionString ) )    
         .def( 
             "GetXsdVersion"
-            , (char const * (*)(  ))( &::ChasteBuildInfo::GetXsdVersion )
-            )
+            , (char const * (*)(  ))( &::ChasteBuildInfo::GetXsdVersion ) )    
         .def( 
             "IsWorkingCopyModified"
             , (bool (*)(  ))( &::ChasteBuildInfo::IsWorkingCopyModified ) )    

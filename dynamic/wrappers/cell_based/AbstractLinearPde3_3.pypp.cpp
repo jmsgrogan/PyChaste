@@ -44,6 +44,11 @@ namespace bp = boost::python;
 
 void register_AbstractLinearPde3_3_class(){
 
-    bp::class_< AbstractLinearPde< 3, 3 > >( "AbstractLinearPde3_3", bp::init< >() );
+    { //::AbstractLinearPde< 3, 3 >
+        typedef bp::class_< AbstractLinearPde< 3, 3 > > AbstractLinearPde3_3_exposer_t;
+        AbstractLinearPde3_3_exposer_t AbstractLinearPde3_3_exposer = AbstractLinearPde3_3_exposer_t( "AbstractLinearPde3_3", bp::init< >() );
+        bp::scope AbstractLinearPde3_3_scope( AbstractLinearPde3_3_exposer );
+        bp::register_ptr_to_python< boost::shared_ptr< AbstractLinearPde<3, 3> > >();
+    }
 
 }

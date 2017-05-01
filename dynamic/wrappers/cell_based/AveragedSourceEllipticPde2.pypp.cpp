@@ -99,12 +99,36 @@ struct AveragedSourceEllipticPde_less__2__greater__wrapper : AveragedSourceEllip
         AveragedSourceEllipticPde< 2 >::SetupSourceTerms( boost::ref(rCoarseMesh), boost::python::ptr(pCellPdeElementMap) );
     }
 
+    virtual double ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeConstantInUSourceTermAtNode = this->get_override( "ComputeConstantInUSourceTermAtNode" ) )
+            return func_ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeConstantInUSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode( boost::ref(rNode) );
+    }
+
+    virtual double ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        if( bp::override func_ComputeLinearInUCoeffInSourceTermAtNode = this->get_override( "ComputeLinearInUCoeffInSourceTermAtNode" ) )
+            return func_ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        else{
+            return this->AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+        }
+    }
+    
+    double default_ComputeLinearInUCoeffInSourceTermAtNode( ::Node< 2 > const & rNode ) {
+        return AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode( boost::ref(rNode) );
+    }
+
 };
 
 void register_AveragedSourceEllipticPde2_class(){
 
     { //::AveragedSourceEllipticPde< 2 >
-        typedef bp::class_< AveragedSourceEllipticPde_less__2__greater__wrapper, boost::noncopyable > AveragedSourceEllipticPde2_exposer_t;
+        typedef bp::class_< AveragedSourceEllipticPde_less__2__greater__wrapper, bp::bases< AbstractLinearEllipticPde< 2, 2 > >, boost::noncopyable > AveragedSourceEllipticPde2_exposer_t;
         AveragedSourceEllipticPde2_exposer_t AveragedSourceEllipticPde2_exposer = AveragedSourceEllipticPde2_exposer_t( "AveragedSourceEllipticPde2", bp::init< AbstractCellPopulation< 2, 2 > &, bp::optional< double, double > >(( bp::arg("rCellPopulation"), bp::arg("sourceCoefficient")=0., bp::arg("diffusionCoefficient")=1. )) );
         bp::scope AveragedSourceEllipticPde2_scope( AveragedSourceEllipticPde2_exposer );
         bp::implicitly_convertible< AbstractCellPopulation< 2, 2 > &, AveragedSourceEllipticPde< 2 > >();
@@ -190,6 +214,32 @@ void register_AveragedSourceEllipticPde2_class(){
                 "rGetCellPopulation"
                 , rGetCellPopulation_function_type( &::AveragedSourceEllipticPde< 2 >::rGetCellPopulation )
                 , bp::return_internal_reference< >() );
+        
+        }
+        { //::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode
+        
+            typedef AveragedSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            typedef double ( AveragedSourceEllipticPde_less__2__greater__wrapper::*default_ComputeConstantInUSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            
+            AveragedSourceEllipticPde2_exposer.def( 
+                "ComputeConstantInUSourceTermAtNode"
+                , ComputeConstantInUSourceTermAtNode_function_type(&::AbstractLinearEllipticPde< 2, 2 >::ComputeConstantInUSourceTermAtNode)
+                , default_ComputeConstantInUSourceTermAtNode_function_type(&AveragedSourceEllipticPde_less__2__greater__wrapper::default_ComputeConstantInUSourceTermAtNode)
+                , ( bp::arg("rNode") ) );
+        
+        }
+        { //::AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode
+        
+            typedef AveragedSourceEllipticPde< 2 > exported_class_t;
+            typedef double ( exported_class_t::*ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            typedef double ( AveragedSourceEllipticPde_less__2__greater__wrapper::*default_ComputeLinearInUCoeffInSourceTermAtNode_function_type)( ::Node< 2 > const & ) ;
+            
+            AveragedSourceEllipticPde2_exposer.def( 
+                "ComputeLinearInUCoeffInSourceTermAtNode"
+                , ComputeLinearInUCoeffInSourceTermAtNode_function_type(&::AbstractLinearEllipticPde< 2, 2 >::ComputeLinearInUCoeffInSourceTermAtNode)
+                , default_ComputeLinearInUCoeffInSourceTermAtNode_function_type(&AveragedSourceEllipticPde_less__2__greater__wrapper::default_ComputeLinearInUCoeffInSourceTermAtNode)
+                , ( bp::arg("rNode") ) );
         
         }
     }

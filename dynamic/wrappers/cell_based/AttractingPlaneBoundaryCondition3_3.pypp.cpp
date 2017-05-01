@@ -131,10 +131,10 @@ void register_AttractingPlaneBoundaryCondition3_3_class(){
         .def( 
             "rGetNormalToPlane"
             , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::AttractingPlaneBoundaryCondition<3, 3>::* )(  )const)( &::AttractingPlaneBoundaryCondition< 3, 3 >::rGetNormalToPlane )
-            , bp::return_internal_reference< >() )    
+            , bp::return_value_policy< bp::copy_const_reference >() )    
         .def( 
             "rGetPointOnPlane"
             , (::boost::numeric::ublas::c_vector< double, 3 > const & ( ::AttractingPlaneBoundaryCondition<3, 3>::* )(  )const)( &::AttractingPlaneBoundaryCondition< 3, 3 >::rGetPointOnPlane )
-            , bp::return_internal_reference< >() );
+            , bp::return_value_policy< bp::copy_const_reference >() );
 
 }

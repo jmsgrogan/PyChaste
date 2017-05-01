@@ -94,6 +94,18 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractGrowingDomainPdeModifier3.pypp.hpp"
 
+#include "AbstractLinearEllipticPde2_2.pypp.hpp"
+
+#include "AbstractLinearEllipticPde3_3.pypp.hpp"
+
+#include "AbstractLinearParabolicPde2_2.pypp.hpp"
+
+#include "AbstractLinearParabolicPde3_3.pypp.hpp"
+
+#include "AbstractLinearPde2_2.pypp.hpp"
+
+#include "AbstractLinearPde3_3.pypp.hpp"
+
 #include "AbstractOffLatticeCellPopulation2_2.pypp.hpp"
 
 #include "AbstractOffLatticeCellPopulation3_3.pypp.hpp"
@@ -452,6 +464,18 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_AbstractPdeModifier3_class();
 
     register_AbstractGrowingDomainPdeModifier3_class();
+
+    register_AbstractLinearPde2_2_class();
+
+    register_AbstractLinearEllipticPde2_2_class();
+
+    register_AbstractLinearPde3_3_class();
+
+    register_AbstractLinearEllipticPde3_3_class();
+
+    register_AbstractLinearParabolicPde2_2_class();
+
+    register_AbstractLinearParabolicPde3_3_class();
 
     register_AbstractOnLatticeCellPopulation2_class();
 

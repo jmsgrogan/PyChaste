@@ -55,7 +55,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkTextProperty.h>
 #include "UblasIncludes.hpp"
 #include "Exception.hpp"
-#include "ChastePoint.hpp"
+//#include "ChastePoint.hpp"
 #include "PythonObjectConverters.hpp"
 #include "Node.hpp"
 
@@ -101,6 +101,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     bp::to_python_converter<vtkSmartPointer<vtkPolyData>, VtkSmartPointerToPython<vtkPolyData> >();
     bp::to_python_converter<c_vector<double, 2>, CVectorToNumpyArray<c_vector<double, 2> > >();
     bp::to_python_converter<c_vector<double, 3>, CVectorToNumpyArray<c_vector<double, 3> > >();
+    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 3ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 3ul> > >();
+    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 2ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 2ul> > >();
     bp::to_python_converter<c_vector<double, 6>, CVectorToNumpyArray<c_vector<double, 6> > >();
     bp::to_python_converter<std::vector<double>, StdVectorToNumpyArray<std::vector<double> > >();
 
@@ -114,22 +116,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
         .def_readwrite("first", &std::pair<double, double>::first)
         .def_readwrite("second", &std::pair<double, double>::second)
     ;
-
-//    bp::class_<std::vector<unsigned> > ("VecUnsigned")
-//         .def(vector_ptr_indexing_suite<std::vector<unsigned> >())
-//    ;
-
-//    bp::class_<std::vector<std::pair<double, double> > > ("VecPairDoubleDouble")
-//         .def(vector_ptr_indexing_suite<std::vector<std::pair<double, double> > >())
-//    ;
-//
-//    bp::class_<std::vector<std::vector<unsigned> > > ("VecVecUnsigned")
-//         .def(vector_ptr_indexing_suite<std::vector<std::vector<unsigned> > >())
-//    ;
-
-//    bp::class_<std::vector<std::vector<double> > > ("VecVecDouble")
-//         .def(vector_ptr_indexing_suite<std::vector<std::vector<double> > >())
-//    ;
 
     bp::class_<std::map<unsigned, double> >("UnsignedDoubleMap")
         .def(map_indexing_suite<std::map<unsigned, double> >())
@@ -151,7 +137,7 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
       .from_python<std::vector<double> >()
       .from_python<std::vector<std::vector<double> > >()
       .from_python<std::vector<unsigned> >()
-      .from_python<std::vector<boost::shared_ptr<Node<3> > > >()
+      .from_python<std::vector<boost::shared_ptr<Node<3> > > >() // Support lists of nodes
       .from_python<std::vector<boost::shared_ptr<Node<2> > > >()
       .from_python<std::vector<unsigned> >()
       .from_python<std::vector<c_vector<double, 3> > >()

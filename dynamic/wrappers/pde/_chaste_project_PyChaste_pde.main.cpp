@@ -44,18 +44,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "AbstractBoundaryCondition3.pypp.hpp"
 
-#include "AbstractLinearEllipticPde2_2.pypp.hpp"
-
-#include "AbstractLinearEllipticPde3_3.pypp.hpp"
-
-#include "AbstractLinearParabolicPde2_2.pypp.hpp"
-
-#include "AbstractLinearParabolicPde3_3.pypp.hpp"
-
-#include "AbstractLinearPde2_2.pypp.hpp"
-
-#include "AbstractLinearPde3_3.pypp.hpp"
-
 #include "AbstractNonlinearEllipticPde2.pypp.hpp"
 
 #include "AbstractNonlinearEllipticPde3.pypp.hpp"
@@ -72,18 +60,6 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_pde){
     register_AbstractBoundaryCondition2_class();
 
     register_AbstractBoundaryCondition3_class();
-
-    register_AbstractLinearPde2_2_class();
-
-    register_AbstractLinearEllipticPde2_2_class();
-
-    register_AbstractLinearPde3_3_class();
-
-    register_AbstractLinearEllipticPde3_3_class();
-
-    register_AbstractLinearParabolicPde2_2_class();
-
-    register_AbstractLinearParabolicPde3_3_class();
 
     register_AbstractNonlinearEllipticPde2_class();
 

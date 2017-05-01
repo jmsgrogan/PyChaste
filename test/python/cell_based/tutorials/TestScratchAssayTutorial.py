@@ -195,8 +195,8 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                         
                     self.fig.ax.plot(y_locations, num_cells, color='black')
                     self.fig.canvas.draw()
-                    display.display(self.fig)
-                    display.clear_output(wait=True)
+                    #display.display(self.fig)
+                    #display.clear_output(wait=True)
                 
             def SetupSolve(self, cell_population, output_directory):
                 
