@@ -28,7 +28,7 @@ before_script:
 script:
   - |
     if [ ! -d "${TRAVIS_BUILD_DIR}"/../chaste-source/projects/PyChaste/ ]; then
-        ln -s $PWD "${TRAVIS_BUILD_DIR}"/../chaste-source/projects/
+        ln -s "${TRAVIS_BUILD_DIR}" "${TRAVIS_BUILD_DIR}"/../chaste-source/projects/
     fi
   - mkdir -p "${TRAVIS_BUILD_DIR}"/../chaste-build && cd "${TRAVIS_BUILD_DIR}"/../chaste-build
   - |
