@@ -132,6 +132,11 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
         .from_python<3>()
         ;
 
+    NumpyArrayToCVectorUnsigned()
+        .from_python<2>()
+        .from_python<3>()
+        ;
+
     // Iterators
     PythonIterableToStl()
       .from_python<std::vector<double> >()

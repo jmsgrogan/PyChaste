@@ -237,6 +237,64 @@ struct NumpyArrayToCVector
 };
 
 /**
+ *  Convert a numpy array to a cvector, templated over the c_vector dimension
+ *  If the numpy array is to small extra dimensions are zero padded. If it is too
+ *  large extra dimensions are ignored.
+ */
+struct NumpyArrayToCVectorUnsigned
+{
+    template <unsigned DIM>
+    NumpyArrayToCVectorUnsigned& from_python()
+    {
+        boost::python::converter::registry::push_back(&NumpyArrayToCVectorUnsigned::convertible,
+                &NumpyArrayToCVectorUnsigned::construct<DIM>,
+                boost::python::type_id<c_vector<unsigned, DIM> >());
+        return *this;
+    }
+
+    // Determine if a c_vector can be generated, otherwise return null
+    static void* convertible(PyObject* pPythonObject)
+    {
+        if (PyArray_Check(pPythonObject))
+        {
+            PyArrayObject* arrayObjPtr = reinterpret_cast<PyArrayObject*>(pPythonObject);
+            if(PyArray_NDIM(arrayObjPtr) == 1)
+            {
+                return pPythonObject;
+            }
+        }
+        return NULL;
+    }
+
+    // Do the conversion
+    template <unsigned DIM>
+    static void construct(PyObject* pPythonObject, boost::python::converter::rvalue_from_python_stage1_data* data)
+    {
+        // Set up the c_vector
+        typedef boost::python::converter::rvalue_from_python_storage<c_vector<unsigned, DIM> > storage_type;
+        void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
+        new (storage) c_vector<unsigned, DIM>;
+        c_vector<unsigned, DIM>* vec = (c_vector<unsigned, DIM>*) storage;
+
+        // Populate the vector, fill unused dimensions with 0, excess dimensions are ignored
+        PyArrayObject* arrayObjPtr = reinterpret_cast<PyArrayObject*>(pPythonObject);
+        int size_array = PyArray_DIM(arrayObjPtr, 0);
+        for(unsigned idx = 0; idx<DIM; idx++)
+        {
+            if(idx < unsigned(size_array))
+            {
+                (*vec)[idx] = extract<unsigned>(PyArray_GETITEM(arrayObjPtr, (const char*)PyArray_GETPTR1(arrayObjPtr, idx)));
+            }
+            else
+            {
+                (*vec)[idx] = 0.0;
+            }
+        }
+        data->convertible = storage;
+    }
+};
+
+/**
  *  Convert a Python tuple to a cvector
  *  If the tuple is too small extra dimensions are zero padded. If it is too
  *  large extra dimensions are ignored.
