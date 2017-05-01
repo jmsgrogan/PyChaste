@@ -57,7 +57,7 @@ script:
     else
       cmake "${TRAVIS_BUILD_DIR}"/../chaste-source -DCASTXML_EXE_LOC="${TRAVIS_BUILD_DIR}"/../castxml/bin/castxml
     fi
-    make project_PyChaste -j 2 && project_PyChaste_Python -j 2 && ctest -L PyChaste -j 2 --verbose
+    make project_PyChaste -j 2 && make project_PyChaste_Python -j 2 && ctest -L PyChaste -j 2 --verbose
 
 # # following: https://github.com/NLeSC/root-roofit-dev/blob/travis_make-optimize_deps/.travis.yml
 # Save the order of timestamps of the files so we can recreate it with touch in the next build.
