@@ -26,5 +26,9 @@ before_script:
         git clone --depth=2 -b develop https://chaste.cs.ox.ac.uk/git/chaste.git chaste-source
     fi
 script:
-  - ln -s $PWD chaste-source/projects/ && mkdir -p chaste-build && cd chaste-build
+  - |
+    if [ ! -d chaste-source/projects/PyChaste/ ]; then
+        ln -s $PWD chaste-source/projects/
+    fi
+  - mkdir -p chaste-build && cd chaste-build
   - cmake ../chaste-source && make project_PyChaste -j 2 #&& make project_PyChaste_Python -j 2
