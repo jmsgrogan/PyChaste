@@ -20,7 +20,7 @@ before_script:
   - sudo cp /usr/lib/x86_64-linux-gnu/libpq.so /usr/lib/
   - sudo apt-get install chaste-source -y
   - |
-    if [ -d chaste-source ]; then
+    if [ -d chaste-source/projects/ ]; then
         cd chaste-source && git pull && cd ..
     else
         git clone --depth=2 -b develop https://chaste.cs.ox.ac.uk/git/chaste.git chaste-source
