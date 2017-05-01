@@ -70,6 +70,9 @@
 .. autoclass:: chaste.core.Version
 	:members:
 
+.. autoclass:: chaste.core.ChasteBuildInfo
+	:members:
+
 .. autoclass:: chaste.core.Identifiable
 	:members:
 
@@ -632,6 +635,30 @@
 	:members:
 
 .. autoclass:: chaste.core.NullSrnModel
+	:members:
+
+.. autoclass:: chaste.core.AbstractTargetAreaModifier2
+	:members:
+
+.. autoclass:: chaste.core.AbstractTargetAreaModifier3
+	:members:
+
+.. autoclass:: chaste.core.SimpleTargetAreaModifier2
+	:members:
+
+.. autoclass:: chaste.core.SimpleTargetAreaModifier3
+	:members:
+
+.. autoclass:: chaste.core.VtkSceneModifier2
+	:members:
+
+.. autoclass:: chaste.core.VtkSceneModifier3
+	:members:
+
+.. autoclass:: chaste.core.AbstractCellBasedSimulationModifier2_2
+	:members:
+
+.. autoclass:: chaste.core.AbstractCellBasedSimulationModifier3_3
 	:members:
 
 .. autoclass:: chaste.core.Hello

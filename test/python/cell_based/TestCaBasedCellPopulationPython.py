@@ -46,7 +46,7 @@ class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
         mesh = generator.GetMesh()
 
         location_indices = range(5)
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
         cell_generator.GenerateBasic(cells, len(location_indices))
         cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, location_indices)

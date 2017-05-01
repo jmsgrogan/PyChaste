@@ -1018,8 +1018,8 @@ void register_CaBasedCellPopulation2_class(){
                 , ( bp::arg("rDirectory") ) );
         
         }
-        CaBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriterWriter", &CaBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
-        CaBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &CaBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
+        CaBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &CaBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
+        CaBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriter", &CaBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

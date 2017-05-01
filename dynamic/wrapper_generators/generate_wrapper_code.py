@@ -273,11 +273,11 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                         if "Abstract" not in eachClass.name and "CellwiseDataGradient" not in eachClass.name:
                             if "BasedCellPopulation" in eachClass.name:
                                 for eachWriter in cell_writers:
-                                        writer_prefix = 'def("AddCellWriter' + eachWriter + 'Writer", &'
+                                        writer_prefix = 'def("AddCellWriter' + eachWriter + '", &'
                                         writer_suffix = '::AddCellWriter<' + eachWriter + '>)'
                                         this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)  
                                 for eachWriter in population_writers:
-                                        writer_prefix = 'def("AddPopulationWriter' + eachWriter + 'Writer", &'
+                                        writer_prefix = 'def("AddPopulationWriter' + eachWriter + '", &'
                                         writer_suffix = '::AddPopulationWriter<' + eachWriter + '>)'
                                         this_class.add_registration_code(writer_prefix + eachTemplatedClassName + writer_suffix)   
     
@@ -403,8 +403,8 @@ def generate_wrappers(args):
     module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
     
     # Just for debugging
-    #ignore_modules = ["ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
-    ignore_modules = []
+    ignore_modules = ["ode", "pde", "mesh", "tutorial", "visualization"]
+    #ignore_modules = []
     
     for idx, module_name in enumerate(module_names):
         

@@ -53,7 +53,7 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
         
         ## Make the cells
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), proliferative_type)

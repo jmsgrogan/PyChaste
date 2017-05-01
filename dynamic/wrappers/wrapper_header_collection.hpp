@@ -120,6 +120,10 @@
 #include "CellPropertyRegistry.hpp"
 #include "AbstractSrnModel.hpp"
 #include "NullSrnModel.hpp"
+#include "AbstractTargetAreaModifier.hpp"
+#include "SimpleTargetAreaModifier.hpp"
+#include "VtkSceneModifier.hpp"
+#include "AbstractCellBasedSimulationModifier.hpp"
 #include "Hello.hpp"
 #include "VtkScene.hpp"
 #include "AbstractPyChasteActorGenerator.hpp"
@@ -258,6 +262,14 @@ template class CellsGenerator<UniformG1GenerationalCellCycleModel,2 >;
 template class CellsGenerator<UniformG1GenerationalCellCycleModel,3 >;
 template class CellsGenerator<NoCellCycleModel,2 >;
 template class CellsGenerator<NoCellCycleModel,3 >;
+template class AbstractTargetAreaModifier<2 >;
+template class AbstractTargetAreaModifier<3 >;
+template class SimpleTargetAreaModifier<2 >;
+template class SimpleTargetAreaModifier<3 >;
+template class VtkSceneModifier<2 >;
+template class VtkSceneModifier<3 >;
+template class AbstractCellBasedSimulationModifier<2,2 >;
+template class AbstractCellBasedSimulationModifier<3,3 >;
 template class VtkScene<2 >;
 template class VtkScene<3 >;
 template class AbstractPyChasteActorGenerator<2 >;
@@ -476,6 +488,14 @@ typedef AbstractCellProperty* AbstractCellPropertyPtr;
 typedef boost::shared_ptr<AbstractCellProperty > SharedPtrAbstractCellProperty;
 typedef std::vector<AbstractCellPropertyPtr> VectorAbstractCellPropertyPtr;
 typedef std::vector<SharedPtrAbstractCellProperty> VectorSharedPtrAbstractCellProperty;
+typedef AbstractTargetAreaModifier<2 > AbstractTargetAreaModifier2;
+typedef AbstractTargetAreaModifier<3 > AbstractTargetAreaModifier3;
+typedef SimpleTargetAreaModifier<2 > SimpleTargetAreaModifier2;
+typedef SimpleTargetAreaModifier<3 > SimpleTargetAreaModifier3;
+typedef VtkSceneModifier<2 > VtkSceneModifier2;
+typedef VtkSceneModifier<3 > VtkSceneModifier3;
+typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
+typedef AbstractCellBasedSimulationModifier<3,3 > AbstractCellBasedSimulationModifier3_3;
 typedef VtkScene<2 > VtkScene2;
 typedef VtkScene<3 > VtkScene3;
 typedef AbstractPyChasteActorGenerator<2 > AbstractPyChasteActorGenerator2;

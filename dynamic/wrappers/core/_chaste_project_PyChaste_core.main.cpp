@@ -44,9 +44,15 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "indexing_suite/vector.hpp"
 
+#include "indexing_suite/map.hpp"
+
 #include "wrapper_header_collection.hpp"
 
+#include "ChasteBuildInfo.pypp.hpp"
+
 #include "FileFinder.pypp.hpp"
+
+#include "MapString_String.pypp.hpp"
 
 #include "OutputFileHandler.pypp.hpp"
 
@@ -80,6 +86,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_core){
     register_VectorDouble_class();
 
     register_vector_less__FileFinder__greater__class();
+
+    register_MapString_String_class();
+
+    register_ChasteBuildInfo_class();
 
     register_RelativeTo_class();
 

@@ -103,7 +103,7 @@ BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 void register_AbstractPdeModifier2_class(){
 
-    bp::class_< AbstractPdeModifier_less__2__greater__wrapper, boost::noncopyable >( "AbstractPdeModifier2", bp::no_init )    
+    bp::class_< AbstractPdeModifier_less__2__greater__wrapper, bp::bases< AbstractCellBasedSimulationModifier< 2, 2 > >, boost::noncopyable >( "AbstractPdeModifier2", bp::no_init )    
         .def( 
             "GetBoundaryCondition"
             , (::boost::shared_ptr< AbstractBoundaryCondition< 2 > > ( ::AbstractPdeModifier<2>::* )(  ))( &::AbstractPdeModifier< 2 >::GetBoundaryCondition ) )    

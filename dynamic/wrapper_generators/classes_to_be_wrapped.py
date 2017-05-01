@@ -28,7 +28,16 @@ global_classes = [
     CppClass('SmartPointers', include_file_only = True),
     CppClass('TimeStepper'),
     CppClass('Version', include_file_only = True),
-                  ]
+    CppClass('ChasteBuildInfo', component = "core", needs_include_file = False,
+             pointer_return_methods=[["GetBuildInformation", ""],
+                                     ["GetBuildTime", ""],
+                                     ["GetBuilderUnameInfo", ""],
+                                     ["GetCompilerFlags", ""],
+                                     ["GetCompilerType", ""],
+                                     ["GetCompilerVersion", ""],
+                                     ["GetCurrentTime", ""],
+                                     ["GetRootDir", ""],
+                                     ["GetXsdVersion", ""]],),]
 
 global_classes += global_checkpointing_classes + global_parallel_classes + global_timing_classes
 
@@ -176,7 +185,8 @@ cell_based_population_classes += cell_based_population_division_rules_classes + 
 
 cell_based_simulation_modifier_classes = [
                     CppClass('AbstractTargetAreaModifier'), CppClass('SimpleTargetAreaModifier'),
-                      CppClass('VtkSceneModifier', component="cell_based"), CppClass('AbstractCellBasedSimulationModifier'),
+                      CppClass('VtkSceneModifier', component="cell_based"), 
+                      CppClass('AbstractCellBasedSimulationModifier'),
                       ]
 
 cell_based_simulation_classes = [
@@ -194,7 +204,7 @@ cell_based_classes = [
                       ]
 
 cell_based_classes += cell_based_simulation_classes + cell_based_population_classes + cell_based_cell_based_pde_classes
-cell_based_classes += cell_based_cell_classes
+cell_based_classes += cell_based_cell_classes + cell_based_simulation_modifier_classes
 
 ################################## TUTORIAL ##########################################
 tutorial_classes = [CppClass('Hello'),]

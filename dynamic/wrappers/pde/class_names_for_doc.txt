@@ -634,6 +634,30 @@
 .. autoclass:: chaste.pde.NullSrnModel
 	:members:
 
+.. autoclass:: chaste.pde.AbstractTargetAreaModifier2
+	:members:
+
+.. autoclass:: chaste.pde.AbstractTargetAreaModifier3
+	:members:
+
+.. autoclass:: chaste.pde.SimpleTargetAreaModifier2
+	:members:
+
+.. autoclass:: chaste.pde.SimpleTargetAreaModifier3
+	:members:
+
+.. autoclass:: chaste.pde.VtkSceneModifier2
+	:members:
+
+.. autoclass:: chaste.pde.VtkSceneModifier3
+	:members:
+
+.. autoclass:: chaste.pde.AbstractCellBasedSimulationModifier2_2
+	:members:
+
+.. autoclass:: chaste.pde.AbstractCellBasedSimulationModifier3_3
+	:members:
+
 .. autoclass:: chaste.pde.Hello
 	:members:
 

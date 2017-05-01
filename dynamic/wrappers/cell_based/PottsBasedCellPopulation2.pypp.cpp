@@ -982,8 +982,8 @@ void register_PottsBasedCellPopulation2_class(){
                 , ( bp::arg("pVizSetupFile") ) );
         
         }
-        PottsBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriterWriter", &PottsBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
-        PottsBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriterWriter", &PottsBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
+        PottsBasedCellPopulation2_exposer.def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation<2 >::AddCellWriter<CellLabelWriter>);
+        PottsBasedCellPopulation2_exposer.def("AddPopulationWriterVoronoiDataWriter", &PottsBasedCellPopulation<2 >::AddPopulationWriter<VoronoiDataWriter>);
     }
 
 }

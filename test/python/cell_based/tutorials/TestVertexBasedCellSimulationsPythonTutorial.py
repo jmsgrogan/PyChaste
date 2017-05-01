@@ -72,7 +72,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## The second argument represents the size of that the vector cells should become - one cell for each element, 
         ## the third argument specifies the proliferative type of the cell.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformG1GenerationalCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), transit_type)
@@ -158,9 +158,9 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         generator = chaste.mesh.CylindricalHoneycombVertexMeshGenerator(4, 4)
         mesh = generator.GetCylindricalMesh()
           
-        ## Having created a mesh, we now create a VecCellPtrs. This is exactly the same as the above test.
+        ## Having created a mesh, we now create a VectorSharedPtrCells. This is exactly the same as the above test.
         
-        cells = chaste.cell_based.VecCellPtr()
+        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformG1GenerationalCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), transit_type)
