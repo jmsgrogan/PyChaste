@@ -107,8 +107,10 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
     bp::to_python_converter<std::vector<double>, StdVectorToNumpyArray<std::vector<double> > >();
 
     bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkImageData>());
+    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkPoints>());
     bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkImageData> >());
     bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPolyData> >());
+    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPoints> >());
 
     bp::class_<std::basic_ofstream<char, std::char_traits<char> >, std::auto_ptr<std::basic_ofstream<char, std::char_traits<char> > >, boost::noncopyable > ("StdOutputFileStream", bp::no_init);
 
