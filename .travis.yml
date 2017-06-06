@@ -15,6 +15,12 @@ before_install:
   - wget https://www.dropbox.com/s/p05hu95q30rsllt/castxml-linux.tar.gz && tar -C "${TRAVIS_BUILD_DIR}"/../ -zxvf castxml-linux.tar.gz
 
 install:
+  - sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 422C4D99
+  - echo "deb http://www.cs.ox.ac.uk/chaste/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update -qq
+  - sudo apt-get install libpq-dev libboost-all-dev python-numpy -y
+  - sudo cp /usr/lib/x86_64-linux-gnu/libpq.so /usr/lib/
+  - sudo apt-get install chaste-source -y
   - export PETSC_DIR=/usr/lib/petscdir/3.4.2/
   - export PETSC_ARCH=linux-gnu-c-opt
   - pip install pygccxml==1.7.2 https://bitbucket.org/ompl/pyplusplus/get/1.6.tar.gz numpy matplotlib 
@@ -23,12 +29,6 @@ install:
 
 # Build steps
 before_script:
-  - sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 422C4D99
-  - echo "deb http://www.cs.ox.ac.uk/chaste/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update -qq
-  - sudo apt-get install libpq-dev libboost-all-dev python-numpy -y
-  - sudo cp /usr/lib/x86_64-linux-gnu/libpq.so /usr/lib/
-  - sudo apt-get install chaste-source -y
   - "export DISPLAY=:99.0" # For GUI tests
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
