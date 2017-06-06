@@ -17,7 +17,7 @@ before_install:
 install:
   - export PETSC_DIR=/usr/lib/petscdir/3.4.2/
   - export PETSC_ARCH=linux-gnu-c-opt
-  - pip install pygccxml==1.7.2 https://bitbucket.org/ompl/pyplusplus/get/1.6.tar.gz numpy matplotlib petsc4py==3.4
+  - pip install pygccxml==1.7.2 https://bitbucket.org/ompl/pyplusplus/get/1.6.tar.gz numpy matplotlib https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.4.tar.gz
 
 # Build steps
 before_script:
