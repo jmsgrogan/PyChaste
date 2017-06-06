@@ -136,7 +136,7 @@ foreach(val RANGE ${len2})
     
     # order is important, boost python and python come first
     target_link_libraries(_chaste_project_PyChaste_${python_module} boost_python ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
-    add_dependencies(_chaste_project_PyChaste_${python_module} project_PyChaste)
+    add_dependencies(_chaste_project_PyChaste_${python_module} chaste_project_PyChaste)
 endforeach()
 
 # Add a target so all the libraries are built with a single command

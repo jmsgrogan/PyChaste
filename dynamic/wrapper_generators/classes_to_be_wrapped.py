@@ -96,10 +96,14 @@ mesh_classes = [CppClass('ChastePoint', pointer_return_methods=[["rGetLocation",
 
 ################################## CELL_BASED ##########################################
 cell_based_cell_cycle_classes = [CppClass('AbstractCellCycleModel'),
-                      CppClass('AbstractPhaseBasedCellCycleModel'), CppClass('AbstractSimpleCellCycleModel'),
-                      CppClass('AbstractSimplePhaseBasedCellCycleModel'),CppClass('AbstractSimpleGenerationalCellCycleModel'),
-                      CppClass('UniformCellCycleModel'),CppClass('SimpleOxygenBasedCellCycleModel'),
-                      CppClass('UniformG1GenerationalCellCycleModel'), CppClass('NoCellCycleModel'),]
+                      CppClass('AbstractPhaseBasedCellCycleModel'), 
+                      CppClass('AbstractSimpleCellCycleModel'),
+                      CppClass('AbstractSimplePhaseBasedCellCycleModel'),
+                      CppClass('AbstractSimpleGenerationalCellCycleModel'),
+                      CppClass('UniformCellCycleModel'),
+                      CppClass('SimpleOxygenBasedCellCycleModel'),
+                      CppClass('UniformG1GenerationalCellCycleModel'), 
+                      CppClass('NoCellCycleModel'),]
 
 cell_based_cell_property_classes = [
                     CppClass('AbstractCellProperty', excluded_methods=["IsType"], include_vec_ptr_self=True),
@@ -115,7 +119,9 @@ cell_based_cell_property_classes = [
                                                                     "TakeOwnership",
                                                                     "Get"]),]
 
-cell_based_cell_srn_classes = [CppClass('AbstractSrnModel'), CppClass('NullSrnModel'),]
+cell_based_cell_srn_classes = [CppClass('AbstractSrnModel'), 
+                               CppClass('NullSrnModel', pointer_return_methods=[["CreateSrnModel", "reference_existing_object"]]),
+                               ]
 
 cell_based_cell_classes = [CppClass('Cell', excluded_methods=["rGetCellPropertyCollection",
                                                                         "GetSrnModel"], 
