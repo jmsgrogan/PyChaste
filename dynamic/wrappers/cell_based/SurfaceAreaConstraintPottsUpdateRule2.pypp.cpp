@@ -72,14 +72,14 @@ struct SurfaceAreaConstraintPottsUpdateRule_less__2__greater__wrapper : SurfaceA
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
-            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            func_OutputUpdateRuleParameters( rParamsFile );
         else{
-            this->SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            this->SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( rParamsFile );
         }
     }
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
-        SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        SurfaceAreaConstraintPottsUpdateRule< 2 >::OutputUpdateRuleParameters( rParamsFile );
     }
 
 };

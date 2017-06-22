@@ -58,19 +58,19 @@ struct AbstractForce_less__3_comma__3__greater__wrapper : AbstractForce< 3, 3 >,
 
     virtual void OutputForceParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" );
-        func_OutputForceParameters( boost::ref(rParamsFile) );
+        func_OutputForceParameters( rParamsFile );
     }
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
 };

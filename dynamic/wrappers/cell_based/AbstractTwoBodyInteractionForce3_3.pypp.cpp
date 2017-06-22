@@ -70,26 +70,26 @@ struct AbstractTwoBodyInteractionForce_less__3_comma__3__greater__wrapper : Abst
 
     virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
-            func_OutputForceParameters( boost::ref(rParamsFile) );
+            func_OutputForceParameters( rParamsFile );
         else{
-            this->AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( rParamsFile );
         }
     }
     
     void default_OutputForceParameters( ::out_stream & rParamsFile ) {
-        AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        AbstractTwoBodyInteractionForce< 3, 3 >::OutputForceParameters( rParamsFile );
     }
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
 };

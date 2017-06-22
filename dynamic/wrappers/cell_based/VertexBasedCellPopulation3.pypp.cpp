@@ -288,14 +288,14 @@ struct VertexBasedCellPopulation_less__3__greater__wrapper : VertexBasedCellPopu
 
     virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
-            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationParameters( rParamsFile );
         else{
-            this->VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            this->VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
-        VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        VertexBasedCellPopulation< 3 >::OutputCellPopulationParameters( rParamsFile );
     }
 
     virtual unsigned int RemoveDeadCells(  ) {
@@ -348,14 +348,14 @@ struct VertexBasedCellPopulation_less__3__greater__wrapper : VertexBasedCellPopu
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        VertexBasedCellPopulation< 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
     virtual void AcceptCellWritersAcrossPopulation(  ){

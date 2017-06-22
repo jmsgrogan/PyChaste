@@ -96,14 +96,14 @@ struct UniformCellCycleModel_wrapper : UniformCellCycleModel, bp::wrapper< Unifo
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->UniformCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->UniformCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        UniformCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        UniformCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual void SetCellCycleDuration(  ) {

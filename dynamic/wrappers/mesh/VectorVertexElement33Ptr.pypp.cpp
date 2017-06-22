@@ -40,6 +40,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
 #include "wrapper_header_collection.hpp"
+#include "_VertexElement_less__3_comma__3__greater___value_traits.pypp.hpp"
 #include "VectorVertexElement33Ptr.pypp.hpp"
 
 namespace bp = boost::python;

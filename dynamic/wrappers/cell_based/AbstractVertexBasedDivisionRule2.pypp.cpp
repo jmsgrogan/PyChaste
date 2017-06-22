@@ -58,14 +58,14 @@ struct AbstractVertexBasedDivisionRule_less__2__greater__wrapper : AbstractVerte
 
     virtual void OutputCellVertexBasedDivisionRuleParameters( ::out_stream & rParamsFile ){
         if( bp::override func_OutputCellVertexBasedDivisionRuleParameters = this->get_override( "OutputCellVertexBasedDivisionRuleParameters" ) )
-            func_OutputCellVertexBasedDivisionRuleParameters( boost::ref(rParamsFile) );
+            func_OutputCellVertexBasedDivisionRuleParameters( rParamsFile );
         else{
-            this->AbstractVertexBasedDivisionRule< 2 >::OutputCellVertexBasedDivisionRuleParameters( boost::ref(rParamsFile) );
+            this->AbstractVertexBasedDivisionRule< 2 >::OutputCellVertexBasedDivisionRuleParameters( rParamsFile );
         }
     }
     
     virtual void default_OutputCellVertexBasedDivisionRuleParameters( ::out_stream & rParamsFile ){
-        AbstractVertexBasedDivisionRule< 2 >::OutputCellVertexBasedDivisionRuleParameters( boost::ref(rParamsFile) );
+        AbstractVertexBasedDivisionRule< 2 >::OutputCellVertexBasedDivisionRuleParameters( rParamsFile );
     }
 
 };

@@ -53,7 +53,7 @@ struct AbstractCellBasedSimulationModifier_less__3_comma__3__greater__wrapper : 
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" );
-        func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        func_OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ){

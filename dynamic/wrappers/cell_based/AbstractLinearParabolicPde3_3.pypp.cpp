@@ -61,7 +61,7 @@ struct AbstractLinearParabolicPde_less__3_comma__3__greater__wrapper : AbstractL
         return func_ComputeDuDtCoefficientFunction( boost::ref(rX) );
     }
 
-    virtual double ComputeSourceTerm( ::ChastePoint< 3 > const & rX, double u, ::Element< 3, 3 > * pElement=__null ){
+    virtual double ComputeSourceTerm( ::ChastePoint< 3 > const & rX, double u, ::Element< 3, 3 > * pElement=NULL ){
         bp::override func_ComputeSourceTerm = this->get_override( "ComputeSourceTerm" );
         return func_ComputeSourceTerm( boost::ref(rX), u, boost::python::ptr(pElement) );
     }
@@ -94,7 +94,7 @@ void register_AbstractLinearParabolicPde3_3_class(){
         .def( 
             "ComputeSourceTerm"
             , bp::pure_virtual( (double ( ::AbstractLinearParabolicPde<3, 3>::* )( ::ChastePoint< 3 > const &,double,::Element< 3, 3 > * ))(&::AbstractLinearParabolicPde< 3, 3 >::ComputeSourceTerm) )
-            , ( bp::arg("rX"), bp::arg("u"), bp::arg("pElement")=__null ) )    
+            , ( bp::arg("rX"), bp::arg("u"), bp::arg("pElement")=NULL ) )    
         .def( 
             "ComputeSourceTermAtNode"
             , (double ( ::AbstractLinearParabolicPde<3, 3>::* )( ::Node< 3 > const &,double ))(&::AbstractLinearParabolicPde< 3, 3 >::ComputeSourceTermAtNode)

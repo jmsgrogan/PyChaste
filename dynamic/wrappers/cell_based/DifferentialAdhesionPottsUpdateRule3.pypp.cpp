@@ -84,14 +84,14 @@ struct DifferentialAdhesionPottsUpdateRule_less__3__greater__wrapper : Different
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
-            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            func_OutputUpdateRuleParameters( rParamsFile );
         else{
-            this->DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            this->DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
         }
     }
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
-        DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        DifferentialAdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
     }
 
     virtual double EvaluateHamiltonianContribution( unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation< 3 > & rCellPopulation ) {

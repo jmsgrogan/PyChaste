@@ -44,7 +44,8 @@ namespace bp = boost::python;
 
 void register_CellPropertyCollection_class(){
 
-    bp::class_< CellPropertyCollection >( "CellPropertyCollection", bp::init< >() )    
+    bp::class_< CellPropertyCollection, boost::noncopyable >( "CellPropertyCollection", bp::no_init )    
+        .def( bp::init< >() )    
         .def( 
             "AddProperty"
             , (void ( ::CellPropertyCollection::* )( ::boost::shared_ptr< AbstractCellProperty > const & ))( &::CellPropertyCollection::AddProperty )

@@ -46,14 +46,14 @@ struct AbstractPdeModifier_less__2__greater__wrapper : AbstractPdeModifier< 2 >,
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
-            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationModifierParameters( rParamsFile );
         else{
-            this->AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            this->AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
-        AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        AbstractPdeModifier< 2 >::OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {

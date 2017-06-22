@@ -87,7 +87,7 @@ struct AveragedSourceEllipticPde_less__2__greater__wrapper : AveragedSourceEllip
         return AveragedSourceEllipticPde< 2 >::ComputeLinearInUCoeffInSourceTerm( boost::ref(rX), boost::python::ptr(pElement) );
     }
 
-    virtual void SetupSourceTerms( ::TetrahedralMesh< 2, 2 > & rCoarseMesh, ::std::map< boost::shared_ptr<Cell>, unsigned int > * pCellPdeElementMap=__null ) {
+    virtual void SetupSourceTerms( ::TetrahedralMesh< 2, 2 > & rCoarseMesh, ::std::map< boost::shared_ptr<Cell>, unsigned int > * pCellPdeElementMap=NULL ) {
         if( bp::override func_SetupSourceTerms = this->get_override( "SetupSourceTerms" ) )
             func_SetupSourceTerms( boost::ref(rCoarseMesh), boost::python::ptr(pCellPdeElementMap) );
         else{
@@ -95,7 +95,7 @@ struct AveragedSourceEllipticPde_less__2__greater__wrapper : AveragedSourceEllip
         }
     }
     
-    void default_SetupSourceTerms( ::TetrahedralMesh< 2, 2 > & rCoarseMesh, ::std::map< boost::shared_ptr<Cell>, unsigned int > * pCellPdeElementMap=__null ) {
+    void default_SetupSourceTerms( ::TetrahedralMesh< 2, 2 > & rCoarseMesh, ::std::map< boost::shared_ptr<Cell>, unsigned int > * pCellPdeElementMap=NULL ) {
         AveragedSourceEllipticPde< 2 >::SetupSourceTerms( boost::ref(rCoarseMesh), boost::python::ptr(pCellPdeElementMap) );
     }
 
@@ -202,7 +202,7 @@ void register_AveragedSourceEllipticPde2_class(){
                 "SetupSourceTerms"
                 , SetupSourceTerms_function_type(&::AveragedSourceEllipticPde< 2 >::SetupSourceTerms)
                 , default_SetupSourceTerms_function_type(&AveragedSourceEllipticPde_less__2__greater__wrapper::default_SetupSourceTerms)
-                , ( bp::arg("rCoarseMesh"), bp::arg("pCellPdeElementMap")=__null ) );
+                , ( bp::arg("rCoarseMesh"), bp::arg("pCellPdeElementMap")=NULL ) );
         
         }
         { //::AveragedSourceEllipticPde< 2 >::rGetCellPopulation

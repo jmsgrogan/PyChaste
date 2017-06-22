@@ -60,10 +60,10 @@ void register_AbstractCellProliferativeType_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellProliferativeType >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
-        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
-        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
         bp::implicitly_convertible< boost::shared_ptr< DefaultCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< DifferentiatedCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< TransitCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
+        bp::implicitly_convertible< boost::shared_ptr< StemCellProliferativeType >, boost::shared_ptr< AbstractCellProliferativeType > >();
     }
 
 }

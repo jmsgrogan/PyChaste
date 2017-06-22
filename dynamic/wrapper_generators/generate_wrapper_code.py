@@ -173,22 +173,24 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                 if has_constructors:
                     for eachConstructor in this_class.constructors():
                         for eachArgType in eachConstructor.arguments:
+                            declaration_string = eachArgType.decl_type.decl_string
+                            default_value = eachArgType.default_value
                             
-                            if "Vec" in eachArgType.type.decl_string and not "CellVecData" in eachArgType.type.decl_string:
+                            if "Vec" in declaration_string and not "CellVecData" in declaration_string:
                                 add_petsc_vec_code = True
-                            if "Mat" in eachArgType.type.decl_string:
+                            if "Mat" in declaration_string:
                                 add_petsc_mat_code = True
                             
                             # Workaround for Bug with default arguments and templates.
                             # Assume the template value in the argument is the same as
                             # in the default.
-                            if eachArgType.default_value is not None:
-                                if "DIM" in eachArgType.default_value:
+                            if default_value is not None:
+                                if "DIM" in default_value:
                                     print "INFO: Found method default arguement with incomplete type. Guessing the type."
-                                    if "3" in eachArgType.type.decl_string:
-                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(3))
-                                    if "2" in eachArgType.type.decl_string:
-                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(2))                                
+                                    if "3" in declaration_string:
+                                        eachArgType.default_value = default_value.replace("DIM", str(3))
+                                    if "2" in declaration_string:
+                                        eachArgType.default_value = default_value.replace("DIM", str(2))                                
                 
                 if has_members:
                     for eachMemberFunction in this_class.member_functions():
@@ -200,20 +202,23 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                         
                         # PETSc Vec and Mat args need special care
                         for eachArgType in eachMemberFunction.arguments:
+                            declaration_string = eachArgType.decl_type.decl_string
+                            default_value = eachArgType.default_value
+                            
                             #pprint (vars(eachArgType))
-                            if "Vec" in eachArgType.type.decl_string and not "CellVecData" in eachArgType.type.decl_string:
+                            if "Vec" in declaration_string and not "CellVecData" in declaration_string:
                                 add_petsc_vec_code = True
-                            if "Mat" in eachArgType.type.decl_string:
+                            if "Mat" in declaration_string:
                                 add_petsc_mat_code = True
                                 
                             # Bug with default arguments and templates
                             if eachArgType.default_value is not None:
                                 if "DIM" in eachArgType.default_value:
                                     print "INFO: Found method default arguement with incomplete type. Guessing the type."
-                                    if "3" in eachArgType.type.decl_string:
-                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(3))
-                                    if "2" in eachArgType.type.decl_string:
-                                        eachArgType.default_value = eachArgType.default_value.replace("DIM", str(2)) 
+                                    if "3" in declaration_string:
+                                        eachArgType.default_value = default_value.replace("DIM", str(3))
+                                    if "2" in declaration_string:
+                                        eachArgType.default_value = default_value.replace("DIM", str(2)) 
                                 
                         # If there are explicit call policies add them
                         break_out = False
@@ -373,12 +378,14 @@ def generate_wrappers(args):
     work_dir = args[1]
     header_collection = args[2]
     castxml_binary = args[3]
-    includes = args[4:]
-    
+    module_name = args[4]
+    includes = args[5:]
+
     xml_generator_config = parser.xml_generator_configuration_t(xml_generator_path=castxml_binary, 
                                                                 xml_generator="castxml",
-                                                                compiler = "gnu",
-                                                                compiler_path="/usr/bin/c++",
+                                                                #compiler = "gnu",
+                                                                #compiler_path="/usr/bin/c++",
+                                                                cflags = "-std=c++11",
                                                                 include_paths=includes)
      
     builder = module_builder.module_builder_t([header_collection],
@@ -386,6 +393,7 @@ def generate_wrappers(args):
                                                 xml_generator_config = xml_generator_config,
                                                 start_with_declarations = ['chaste'],
                                                 include_paths = includes,
+                                                #cflags = "-std=c++11",
                                                 indexing_suite_version=2,
                                                 cache=file_cache_t(work_dir + "/dynamic/wrappers/castxml_cache.xml"))
     
@@ -410,51 +418,47 @@ def generate_wrappers(args):
     with open(work_dir + "/dynamic/wrappers/class_data.p", 'rb') as fp:
         classes = pickle.load(fp)
     
-    module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
+    possible_module_names = [module_name]
+    possible_module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
+    if module_name == "All":
+        possible_module_names = ["core", "ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]        
     
-    # Just for debugging
-    ignore_modules = ["ode", "pde", "mesh", "cell_based", "tutorial", "visualization"]
-    #ignore_modules = []
-    
-    for idx, module_name in enumerate(module_names):
+    for idx, eachModule in enumerate(possible_module_names):
         
-        if module_name in ignore_modules:
-            continue
+        print 'Generating Wrapper Code for: ' + eachModule + ' Module.'
         
-        print 'Generating Wrapper Code for: ' + module_name + ' Module.'
-        
-        if "core" not in module_name:
-            builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+module_names[idx-1])
+#         if "core" not in eachModule and len(possible_module_names)>1:
+#             builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+possible_module_names[idx-1])
         
         # Set up the builder for each module
         
-        print 'Starting Module: ' + module_name + ' Module.'
-        builder = do_module(module_name, builder, work_dir + "/dynamic/wrappers/" + module_name + "/", classes)
+        print 'Starting Module: ' + eachModule + ' Module.'
+        builder = do_module(eachModule, builder, work_dir + "/dynamic/wrappers/" + eachModule + "/", classes)
 
         # Make the wrapper code
     #     builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name, 
     #                                doc_extractor=doxygen_extractor.doxygen_doc_extractor())
-        builder.build_code_creator(module_name="_chaste_project_PyChaste_" + module_name)
+        builder.build_code_creator(module_name="_chaste_project_PyChaste_" + eachModule)
         builder.code_creator.user_defined_directories.append(work_dir)
         builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/")
-        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + module_name + "/")
+        builder.code_creator.user_defined_directories.append(work_dir + "/dynamic/wrappers/" + eachModule + "/")
         builder.code_creator.license = chaste_license
         
-        file_list = builder.split_module(work_dir+"/dynamic/wrappers/"+module_name)
+        file_list = builder.split_module(work_dir+"/dynamic/wrappers/"+eachModule)
         value_traits_files = []
         for eachFile in file_list:
             if "__value_traits" in eachFile:
                 value_traits_files.append(ntpath.basename(eachFile))
         
         # Manually strip any undefined call policies we have missed. Strictly there should not be any/many.
-        for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
+        for file in os.listdir(work_dir + "/dynamic/wrappers/" + eachModule + "/"):
             if file.endswith(".cpp"):
-                strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + module_name + "/" + file)
+                strip_undefined_call_policies(work_dir + "/dynamic/wrappers/" + eachModule + "/" + file)
                 
         # Manually remove some value traits in std headers (https://mail.python.org/pipermail/cplusplus-sig/2008-April/013105.html)
-        for file in os.listdir(work_dir + "/dynamic/wrappers/" + module_name + "/"):
+        for file in os.listdir(work_dir + "/dynamic/wrappers/" + eachModule + "/"):
             if file.endswith(".cpp"):
-                strip_value_traits(work_dir + "/dynamic/wrappers/" + module_name + "/" + file, value_traits_files)
+                strip_value_traits(work_dir + "/dynamic/wrappers/" + eachModule + "/" + file, value_traits_files)
     
 if __name__=="__main__":
     generate_wrappers(sys.argv)

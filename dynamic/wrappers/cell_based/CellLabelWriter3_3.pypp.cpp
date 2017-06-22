@@ -44,6 +44,13 @@ namespace bp = boost::python;
 
 struct CellLabelWriter_less__3_comma__3__greater__wrapper : CellLabelWriter< 3, 3 >, bp::wrapper< CellLabelWriter< 3, 3 > > {
 
+    CellLabelWriter_less__3_comma__3__greater__wrapper(CellLabelWriter<3, 3> const & arg )
+    : CellLabelWriter<3, 3>( arg )
+      , bp::wrapper< CellLabelWriter< 3, 3 > >(){
+        // copy constructor
+        
+    }
+
     CellLabelWriter_less__3_comma__3__greater__wrapper( )
     : CellLabelWriter<3, 3>( )
       , bp::wrapper< CellLabelWriter< 3, 3 > >(){
@@ -79,7 +86,7 @@ struct CellLabelWriter_less__3_comma__3__greater__wrapper : CellLabelWriter< 3, 
 
 void register_CellLabelWriter3_3_class(){
 
-    bp::class_< CellLabelWriter_less__3_comma__3__greater__wrapper, boost::noncopyable >( "CellLabelWriter3_3", bp::init< >() )    
+    bp::class_< CellLabelWriter_less__3_comma__3__greater__wrapper >( "CellLabelWriter3_3", bp::init< >() )    
         .def( 
             "GetCellDataForVtkOutput"
             , (double ( ::CellLabelWriter<3, 3>::* )( ::CellPtr,::AbstractCellPopulation< 3, 3 > * ))(&::CellLabelWriter< 3, 3 >::GetCellDataForVtkOutput)

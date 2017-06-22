@@ -72,14 +72,14 @@ struct UniformG1GenerationalCellCycleModel_wrapper : UniformG1GenerationalCellCy
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->UniformG1GenerationalCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->UniformG1GenerationalCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        UniformG1GenerationalCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        UniformG1GenerationalCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual void SetG1Duration(  ){

@@ -94,6 +94,10 @@ void register_ChasteBuildInfo_class(){
             "IsWorkingCopyModified"
             , (bool (*)(  ))( &::ChasteBuildInfo::IsWorkingCopyModified ) )    
         .def( 
+            "rGetIfProjectsModified"
+            , (::std::map< std::string, std::string > const & (*)(  ))( &::ChasteBuildInfo::rGetIfProjectsModified )
+            , bp::return_internal_reference< >() )    
+        .def( 
             "rGetProjectVersions"
             , (::std::map< std::string, std::string > const & (*)(  ))( &::ChasteBuildInfo::rGetProjectVersions )
             , bp::return_internal_reference< >() )    
@@ -113,6 +117,7 @@ void register_ChasteBuildInfo_class(){
         .staticmethod( "GetVersionString" )    
         .staticmethod( "GetXsdVersion" )    
         .staticmethod( "IsWorkingCopyModified" )    
+        .staticmethod( "rGetIfProjectsModified" )    
         .staticmethod( "rGetProjectVersions" );
 
 }

@@ -72,14 +72,14 @@ struct DiffusionCaUpdateRule_less__2__greater__wrapper : DiffusionCaUpdateRule< 
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
-            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            func_OutputUpdateRuleParameters( rParamsFile );
         else{
-            this->DiffusionCaUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            this->DiffusionCaUpdateRule< 2 >::OutputUpdateRuleParameters( rParamsFile );
         }
     }
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
-        DiffusionCaUpdateRule< 2 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        DiffusionCaUpdateRule< 2 >::OutputUpdateRuleParameters( rParamsFile );
     }
 
 };

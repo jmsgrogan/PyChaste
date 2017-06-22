@@ -192,14 +192,14 @@ struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : Ab
 
     virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
-            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationParameters( rParamsFile );
         else{
-            this->AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            this->AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
-        AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        AbstractCentreBasedCellPopulation< 2, 2 >::OutputCellPopulationParameters( rParamsFile );
     }
 
     virtual void WriteVtkResultsToFile( ::std::string const & rDirectory ){
@@ -403,14 +403,14 @@ struct AbstractCentreBasedCellPopulation_less__2_comma__2__greater__wrapper : Ab
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
     virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {

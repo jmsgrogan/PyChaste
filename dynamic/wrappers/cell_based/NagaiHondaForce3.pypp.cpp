@@ -84,26 +84,26 @@ struct NagaiHondaForce_less__3__greater__wrapper : NagaiHondaForce< 3 >, bp::wra
 
     virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
-            func_OutputForceParameters( boost::ref(rParamsFile) );
+            func_OutputForceParameters( rParamsFile );
         else{
-            this->NagaiHondaForce< 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+            this->NagaiHondaForce< 3 >::OutputForceParameters( rParamsFile );
         }
     }
     
     void default_OutputForceParameters( ::out_stream & rParamsFile ) {
-        NagaiHondaForce< 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        NagaiHondaForce< 3 >::OutputForceParameters( rParamsFile );
     }
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
 };

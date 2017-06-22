@@ -53,26 +53,26 @@ struct OnLatticeSimulation_less__3__greater__wrapper : OnLatticeSimulation< 3 >,
 
     virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
-            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+            func_OutputAdditionalSimulationSetup( rParamsFile );
         else{
-            this->OnLatticeSimulation< 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+            this->OnLatticeSimulation< 3 >::OutputAdditionalSimulationSetup( rParamsFile );
         }
     }
     
     void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
-        OnLatticeSimulation< 3 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        OnLatticeSimulation< 3 >::OutputAdditionalSimulationSetup( rParamsFile );
     }
 
     virtual void OutputSimulationParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationParameters = this->get_override( "OutputSimulationParameters" ) )
-            func_OutputSimulationParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationParameters( rParamsFile );
         else{
-            this->OnLatticeSimulation< 3 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+            this->OnLatticeSimulation< 3 >::OutputSimulationParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationParameters( ::out_stream & rParamsFile ) {
-        OnLatticeSimulation< 3 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+        OnLatticeSimulation< 3 >::OutputSimulationParameters( rParamsFile );
     }
 
     virtual void UpdateCellLocationsAndTopology(  ){

@@ -72,14 +72,14 @@ struct SphereGeometryBoundaryCondition_less__2__greater__wrapper : SphereGeometr
 
     virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
-            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         else{
-            this->SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            this->SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
-        SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        SphereGeometryBoundaryCondition< 2 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
     }
 
     virtual bool VerifyBoundaryCondition(  ) {

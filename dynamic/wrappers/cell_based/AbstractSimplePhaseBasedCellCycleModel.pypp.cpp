@@ -84,14 +84,14 @@ struct AbstractSimplePhaseBasedCellCycleModel_wrapper : AbstractSimplePhaseBased
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->AbstractSimplePhaseBasedCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->AbstractSimplePhaseBasedCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        AbstractSimplePhaseBasedCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        AbstractSimplePhaseBasedCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual void ResetForDivision(  ) {

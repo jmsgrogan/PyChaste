@@ -96,14 +96,14 @@ struct NoCellCycleModel_wrapper : NoCellCycleModel, bp::wrapper< NoCellCycleMode
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->NoCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->NoCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        NoCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        NoCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual bool ReadyToDivide(  ) {

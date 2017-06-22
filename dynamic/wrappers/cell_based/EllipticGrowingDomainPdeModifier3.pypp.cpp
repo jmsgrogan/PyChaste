@@ -44,7 +44,14 @@ namespace bp = boost::python;
 
 struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrowingDomainPdeModifier< 3 >, bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > > {
 
-    EllipticGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde=boost::shared_ptr<AbstractLinearPde<3, 3> >(), ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bool isNeumannBoundaryCondition=true, ::Vec solution=__null )
+    EllipticGrowingDomainPdeModifier_less__3__greater__wrapper(EllipticGrowingDomainPdeModifier<3> const & arg )
+    : EllipticGrowingDomainPdeModifier<3>( arg )
+      , bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > >(){
+        // copy constructor
+        
+    }
+
+    EllipticGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde=boost::shared_ptr<AbstractLinearPde<3, 3> >(), ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bool isNeumannBoundaryCondition=true, ::Vec solution=NULL )
     : EllipticGrowingDomainPdeModifier<3>( pPde, pBoundaryCondition, isNeumannBoundaryCondition, boost::python::ptr(solution) )
       , bp::wrapper< EllipticGrowingDomainPdeModifier< 3 > >(){
         // constructor
@@ -53,14 +60,14 @@ struct EllipticGrowingDomainPdeModifier_less__3__greater__wrapper : EllipticGrow
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
-            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationModifierParameters( rParamsFile );
         else{
-            this->EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            this->EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
-        EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
@@ -118,8 +125,8 @@ BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 void register_EllipticGrowingDomainPdeModifier3_class(){
 
     { //::EllipticGrowingDomainPdeModifier< 3 >
-        typedef bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > >, boost::noncopyable > EllipticGrowingDomainPdeModifier3_exposer_t;
-        EllipticGrowingDomainPdeModifier3_exposer_t EllipticGrowingDomainPdeModifier3_exposer = EllipticGrowingDomainPdeModifier3_exposer_t( "EllipticGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<3, 3> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=__null )) );
+        typedef bp::class_< EllipticGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractGrowingDomainPdeModifier< 3 > > > EllipticGrowingDomainPdeModifier3_exposer_t;
+        EllipticGrowingDomainPdeModifier3_exposer_t EllipticGrowingDomainPdeModifier3_exposer = EllipticGrowingDomainPdeModifier3_exposer_t( "EllipticGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<3, 3> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=NULL )) );
         bp::scope EllipticGrowingDomainPdeModifier3_scope( EllipticGrowingDomainPdeModifier3_exposer );
         bp::implicitly_convertible< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, EllipticGrowingDomainPdeModifier< 3 > >();
         { //::EllipticGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters

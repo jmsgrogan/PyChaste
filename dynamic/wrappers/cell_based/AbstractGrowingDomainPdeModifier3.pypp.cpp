@@ -44,7 +44,7 @@ namespace bp = boost::python;
 
 struct AbstractGrowingDomainPdeModifier_less__3__greater__wrapper : AbstractGrowingDomainPdeModifier< 3 >, bp::wrapper< AbstractGrowingDomainPdeModifier< 3 > > {
 
-    AbstractGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde=boost::shared_ptr<AbstractLinearPde<3, 3> >(), ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bool isNeumannBoundaryCondition=true, ::Vec solution=__null )
+    AbstractGrowingDomainPdeModifier_less__3__greater__wrapper(::boost::shared_ptr< AbstractLinearPde< 3, 3 > > pPde=boost::shared_ptr<AbstractLinearPde<3, 3> >(), ::boost::shared_ptr< AbstractBoundaryCondition< 3 > > pBoundaryCondition=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bool isNeumannBoundaryCondition=true, ::Vec solution=NULL )
     : AbstractGrowingDomainPdeModifier<3>( pPde, pBoundaryCondition, isNeumannBoundaryCondition, boost::python::ptr(solution) )
       , bp::wrapper< AbstractGrowingDomainPdeModifier< 3 > >(){
         // constructor
@@ -53,14 +53,14 @@ struct AbstractGrowingDomainPdeModifier_less__3__greater__wrapper : AbstractGrow
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
-            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationModifierParameters( rParamsFile );
         else{
-            this->AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            this->AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
-        AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        AbstractGrowingDomainPdeModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {
@@ -110,7 +110,7 @@ BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 void register_AbstractGrowingDomainPdeModifier3_class(){
 
-    bp::class_< AbstractGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractPdeModifier< 3 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<3, 3> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=__null )) )    
+    bp::class_< AbstractGrowingDomainPdeModifier_less__3__greater__wrapper, bp::bases< AbstractPdeModifier< 3 > >, boost::noncopyable >( "AbstractGrowingDomainPdeModifier3", bp::init< bp::optional< boost::shared_ptr< AbstractLinearPde< 3, 3 > >, boost::shared_ptr< AbstractBoundaryCondition< 3 > >, bool, Vec > >(( bp::arg("pPde")=boost::shared_ptr<AbstractLinearPde<3, 3> >(), bp::arg("pBoundaryCondition")=boost::shared_ptr<AbstractBoundaryCondition<3> >(), bp::arg("isNeumannBoundaryCondition")=(bool)(true), bp::arg("solution")=NULL )) )    
         .def( 
             "GenerateFeMesh"
             , (void ( ::AbstractGrowingDomainPdeModifier<3>::* )( ::AbstractCellPopulation< 3, 3 > & ))( &::AbstractGrowingDomainPdeModifier< 3 >::GenerateFeMesh )

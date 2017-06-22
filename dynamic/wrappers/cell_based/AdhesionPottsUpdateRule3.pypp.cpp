@@ -96,14 +96,14 @@ struct AdhesionPottsUpdateRule_less__3__greater__wrapper : AdhesionPottsUpdateRu
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
-            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            func_OutputUpdateRuleParameters( rParamsFile );
         else{
-            this->AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            this->AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
         }
     }
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
-        AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        AdhesionPottsUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
     }
 
 };

@@ -89,14 +89,14 @@ struct AbstractSrnModel_wrapper : AbstractSrnModel, bp::wrapper< AbstractSrnMode
 
     virtual void OutputSrnModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSrnModelParameters = this->get_override( "OutputSrnModelParameters" ) )
-            func_OutputSrnModelParameters( boost::ref(rParamsFile) );
+            func_OutputSrnModelParameters( rParamsFile );
         else{
-            this->AbstractSrnModel::OutputSrnModelParameters( boost::ref(rParamsFile) );
+            this->AbstractSrnModel::OutputSrnModelParameters( rParamsFile );
         }
     }
     
     void default_OutputSrnModelParameters( ::out_stream & rParamsFile ) {
-        AbstractSrnModel::OutputSrnModelParameters( boost::ref(rParamsFile) );
+        AbstractSrnModel::OutputSrnModelParameters( rParamsFile );
     }
 
     virtual void ResetForDivision(  ) {

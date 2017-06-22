@@ -72,14 +72,14 @@ struct PlaneBoundaryCondition_less__2_comma__2__greater__wrapper : PlaneBoundary
 
     virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
-            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         else{
-            this->PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            this->PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
-        PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        PlaneBoundaryCondition< 2, 2 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
     }
 
     virtual bool VerifyBoundaryCondition(  ) {

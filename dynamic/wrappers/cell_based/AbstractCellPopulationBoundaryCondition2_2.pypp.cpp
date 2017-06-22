@@ -58,7 +58,7 @@ struct AbstractCellPopulationBoundaryCondition_less__2_comma__2__greater__wrappe
 
     virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" );
-        func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        func_OutputCellPopulationBoundaryConditionParameters( rParamsFile );
     }
 
     virtual bool VerifyBoundaryCondition(  ){
@@ -130,9 +130,9 @@ void register_AbstractCellPopulationBoundaryCondition2_2_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellPopulationBoundaryCondition<2, 2> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< AttractingPlaneBoundaryCondition< 2, 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< SphereGeometryBoundaryCondition< 2 > >, boost::shared_ptr< AbstractCellPopulationBoundaryCondition< 2, 2 > > >();
     }
 
 }

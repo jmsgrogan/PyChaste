@@ -45,7 +45,7 @@ namespace bp = boost::python;
 void register_OutputFileHandler_class(){
 
     { //::OutputFileHandler
-        typedef bp::class_< OutputFileHandler, boost::noncopyable > OutputFileHandler_exposer_t;
+        typedef bp::class_< OutputFileHandler > OutputFileHandler_exposer_t;
         OutputFileHandler_exposer_t OutputFileHandler_exposer = OutputFileHandler_exposer_t( "OutputFileHandler", bp::init< std::string const &, bp::optional< bool > >(( bp::arg("rDirectory"), bp::arg("cleanOutputDirectory")=(bool)(true) )) );
         bp::scope OutputFileHandler_scope( OutputFileHandler_exposer );
         bp::implicitly_convertible< std::string const &, OutputFileHandler >();
@@ -107,7 +107,7 @@ void register_OutputFileHandler_class(){
                 , SetArchiveDirectory_function_type( &::OutputFileHandler::SetArchiveDirectory ) );
         
         }
-        OutputFileHandler_exposer.def_readonly( "SIG_FILE_NAME", &OutputFileHandler::SIG_FILE_NAME );
+        OutputFileHandler_exposer.def_readonly( "SIG_FILE_NAME", OutputFileHandler::SIG_FILE_NAME );
         OutputFileHandler_exposer.staticmethod( "GetChasteTestOutputDirectory" );
     }
 

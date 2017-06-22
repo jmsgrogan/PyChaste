@@ -69,12 +69,12 @@ struct AbstractCellBasedSimulation_less__3_comma__3__greater__wrapper : Abstract
 
     virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ){
         bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" );
-        func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        func_OutputAdditionalSimulationSetup( rParamsFile );
     }
 
     virtual void OutputSimulationParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputSimulationParameters = this->get_override( "OutputSimulationParameters" );
-        func_OutputSimulationParameters( boost::ref(rParamsFile) );
+        func_OutputSimulationParameters( rParamsFile );
     }
 
     void OutputSimulationSetup(  ){

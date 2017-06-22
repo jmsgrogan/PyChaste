@@ -60,14 +60,14 @@ struct VtkSceneModifier_less__2__greater__wrapper : VtkSceneModifier< 2 >, bp::w
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
-            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationModifierParameters( rParamsFile );
         else{
-            this->VtkSceneModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            this->VtkSceneModifier< 2 >::OutputSimulationModifierParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
-        VtkSceneModifier< 2 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        VtkSceneModifier< 2 >::OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 2, 2 > & rCellPopulation, ::std::string outputDirectory ) {

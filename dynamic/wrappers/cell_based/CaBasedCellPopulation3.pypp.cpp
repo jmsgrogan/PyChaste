@@ -312,14 +312,14 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
 
     virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" ) )
-            func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationParameters( rParamsFile );
         else{
-            this->CaBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+            this->CaBasedCellPopulation< 3 >::OutputCellPopulationParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationParameters( ::out_stream & rParamsFile ) {
-        CaBasedCellPopulation< 3 >::OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        CaBasedCellPopulation< 3 >::OutputCellPopulationParameters( rParamsFile );
     }
 
     virtual void RemoveAllUpdateRules(  ) {
@@ -480,14 +480,14 @@ struct CaBasedCellPopulation_less__3__greater__wrapper : CaBasedCellPopulation< 
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractCellPopulation< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
     virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {

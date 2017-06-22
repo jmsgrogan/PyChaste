@@ -44,6 +44,13 @@ namespace bp = boost::python;
 
 struct VoronoiDataWriter_less__3_comma__3__greater__wrapper : VoronoiDataWriter< 3, 3 >, bp::wrapper< VoronoiDataWriter< 3, 3 > > {
 
+    VoronoiDataWriter_less__3_comma__3__greater__wrapper(VoronoiDataWriter<3, 3> const & arg )
+    : VoronoiDataWriter<3, 3>( arg )
+      , bp::wrapper< VoronoiDataWriter< 3, 3 > >(){
+        // copy constructor
+        
+    }
+
     VoronoiDataWriter_less__3_comma__3__greater__wrapper( )
     : VoronoiDataWriter<3, 3>( )
       , bp::wrapper< VoronoiDataWriter< 3, 3 > >(){
@@ -115,7 +122,7 @@ struct VoronoiDataWriter_less__3_comma__3__greater__wrapper : VoronoiDataWriter<
 
 void register_VoronoiDataWriter3_3_class(){
 
-    bp::class_< VoronoiDataWriter_less__3_comma__3__greater__wrapper, boost::noncopyable >( "VoronoiDataWriter3_3", bp::init< >() )    
+    bp::class_< VoronoiDataWriter_less__3_comma__3__greater__wrapper >( "VoronoiDataWriter3_3", bp::init< >() )    
         .def( 
             "Visit"
             , (void ( ::VoronoiDataWriter<3, 3>::* )( ::MeshBasedCellPopulation< 3, 3 > * ))(&::VoronoiDataWriter< 3, 3 >::Visit)

@@ -48,7 +48,7 @@ BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
 void register_PetscTools_class(){
 
-    bp::class_< PetscTools, boost::noncopyable >( "PetscTools", bp::no_init )    
+    bp::class_< PetscTools >( "PetscTools" )    
         .def( 
             "AmMaster"
             , (bool (*)(  ))( &::PetscTools::AmMaster ) )    
@@ -124,11 +124,11 @@ void register_PetscTools_class(){
         .def( 
             "ReadPetscObject"
             , (void (*)( ::Mat &,::std::string const &,::Vec ))( &::PetscTools::ReadPetscObject )
-            , ( bp::arg("rMat"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=__null ) )    
+            , ( bp::arg("rMat"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=NULL ) )    
         .def( 
             "ReadPetscObject"
             , (void (*)( ::Vec &,::std::string const &,::Vec ))( &::PetscTools::ReadPetscObject )
-            , ( bp::arg("rVec"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=__null ) )    
+            , ( bp::arg("rVec"), bp::arg("rOutputFileFullPath"), bp::arg("rParallelLayout")=NULL ) )    
         .def( 
             "ReplicateBool"
             , (bool (*)( bool ))( &::PetscTools::ReplicateBool )

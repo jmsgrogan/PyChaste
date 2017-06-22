@@ -53,14 +53,14 @@ struct AbstractTargetAreaModifier_less__3__greater__wrapper : AbstractTargetArea
 
     virtual void OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationModifierParameters = this->get_override( "OutputSimulationModifierParameters" ) )
-            func_OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationModifierParameters( rParamsFile );
         else{
-            this->AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+            this->AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationModifierParameters( ::out_stream & rParamsFile ) {
-        AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( boost::ref(rParamsFile) );
+        AbstractTargetAreaModifier< 3 >::OutputSimulationModifierParameters( rParamsFile );
     }
 
     virtual void SetupSolve( ::AbstractCellPopulation< 3, 3 > & rCellPopulation, ::std::string outputDirectory ) {

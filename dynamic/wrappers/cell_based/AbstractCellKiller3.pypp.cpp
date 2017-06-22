@@ -58,7 +58,7 @@ struct AbstractCellKiller_less__3__greater__wrapper : AbstractCellKiller< 3 >, b
 
     virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" );
-        func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        func_OutputCellKillerParameters( rParamsFile );
     }
 
 };
@@ -114,8 +114,8 @@ void register_AbstractCellKiller3_class(){
         }
         bp::register_ptr_to_python< boost::shared_ptr< AbstractCellKiller<3> > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractCellKiller< 3 > >, boost::shared_ptr< Identifiable > >();
-        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< PlaneBasedCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< ApoptoticCellKiller< 3 > >, boost::shared_ptr< AbstractCellKiller< 3 > > >();
     }
 
 }

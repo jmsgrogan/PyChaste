@@ -72,14 +72,14 @@ struct AttractingPlaneBoundaryCondition_less__3_comma__3__greater__wrapper : Att
 
     virtual void OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellPopulationBoundaryConditionParameters = this->get_override( "OutputCellPopulationBoundaryConditionParameters" ) )
-            func_OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            func_OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         else{
-            this->AttractingPlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+            this->AttractingPlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
         }
     }
     
     void default_OutputCellPopulationBoundaryConditionParameters( ::out_stream & rParamsFile ) {
-        AttractingPlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( boost::ref(rParamsFile) );
+        AttractingPlaneBoundaryCondition< 3, 3 >::OutputCellPopulationBoundaryConditionParameters( rParamsFile );
     }
 
     virtual bool VerifyBoundaryCondition(  ) {

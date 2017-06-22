@@ -53,7 +53,7 @@ struct AbstractUpdateRule_less__3__greater__wrapper : AbstractUpdateRule< 3 >, b
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" );
-        func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        func_OutputUpdateRuleParameters( rParamsFile );
     }
 
 };
@@ -91,10 +91,10 @@ void register_AbstractUpdateRule3_class(){
         bp::implicitly_convertible< boost::shared_ptr< AbstractCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DiffusionCaUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AbstractPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
-        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< AdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< DifferentialAdhesionPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
         bp::implicitly_convertible< boost::shared_ptr< SurfaceAreaConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
+        bp::implicitly_convertible< boost::shared_ptr< VolumeConstraintPottsUpdateRule< 3 > >, boost::shared_ptr< AbstractUpdateRule< 3 > > >();
     }
 
 }

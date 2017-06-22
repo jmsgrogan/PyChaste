@@ -57,26 +57,26 @@ struct OffLatticeSimulation_less__2_comma__2__greater__wrapper : OffLatticeSimul
 
     virtual void OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputAdditionalSimulationSetup = this->get_override( "OutputAdditionalSimulationSetup" ) )
-            func_OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+            func_OutputAdditionalSimulationSetup( rParamsFile );
         else{
-            this->OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+            this->OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( rParamsFile );
         }
     }
     
     void default_OutputAdditionalSimulationSetup( ::out_stream & rParamsFile ) {
-        OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( boost::ref(rParamsFile) );
+        OffLatticeSimulation< 2, 2 >::OutputAdditionalSimulationSetup( rParamsFile );
     }
 
     virtual void OutputSimulationParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputSimulationParameters = this->get_override( "OutputSimulationParameters" ) )
-            func_OutputSimulationParameters( boost::ref(rParamsFile) );
+            func_OutputSimulationParameters( rParamsFile );
         else{
-            this->OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+            this->OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( rParamsFile );
         }
     }
     
     void default_OutputSimulationParameters( ::out_stream & rParamsFile ) {
-        OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( boost::ref(rParamsFile) );
+        OffLatticeSimulation< 2, 2 >::OutputSimulationParameters( rParamsFile );
     }
 
     void RevertToOldLocations( ::std::map< Node<2> *, boost::numeric::ublas::c_vector<double, 2> > oldNodeLoctions ){

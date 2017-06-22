@@ -58,7 +58,7 @@ struct AbstractCellKiller_less__2__greater__wrapper : AbstractCellKiller< 2 >, b
 
     virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" );
-        func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+        func_OutputCellKillerParameters( rParamsFile );
     }
 
 };

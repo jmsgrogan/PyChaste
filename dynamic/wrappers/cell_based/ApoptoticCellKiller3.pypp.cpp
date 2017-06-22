@@ -72,14 +72,14 @@ struct ApoptoticCellKiller_less__3__greater__wrapper : ApoptoticCellKiller< 3 >,
 
     virtual void OutputCellKillerParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellKillerParameters = this->get_override( "OutputCellKillerParameters" ) )
-            func_OutputCellKillerParameters( boost::ref(rParamsFile) );
+            func_OutputCellKillerParameters( rParamsFile );
         else{
-            this->ApoptoticCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+            this->ApoptoticCellKiller< 3 >::OutputCellKillerParameters( rParamsFile );
         }
     }
     
     void default_OutputCellKillerParameters( ::out_stream & rParamsFile ) {
-        ApoptoticCellKiller< 3 >::OutputCellKillerParameters( boost::ref(rParamsFile) );
+        ApoptoticCellKiller< 3 >::OutputCellKillerParameters( rParamsFile );
     }
 
 };

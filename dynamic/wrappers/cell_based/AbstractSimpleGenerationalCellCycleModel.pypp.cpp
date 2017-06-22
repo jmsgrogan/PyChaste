@@ -72,14 +72,14 @@ struct AbstractSimpleGenerationalCellCycleModel_wrapper : AbstractSimpleGenerati
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->AbstractSimpleGenerationalCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->AbstractSimpleGenerationalCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        AbstractSimpleGenerationalCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        AbstractSimpleGenerationalCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual void ResetForDivision(  ) {

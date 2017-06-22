@@ -290,6 +290,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "SetCellPtr.pypp.hpp"
 
+#include "SetUnsigned.pypp.hpp"
+
 #include "SimpleOxygenBasedCellCycleModel.pypp.hpp"
 
 #include "SimpleTargetAreaModifier2.pypp.hpp"
@@ -314,6 +316,18 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "UniformG1GenerationalCellCycleModel.pypp.hpp"
 
+#include "VectorBool.pypp.hpp"
+
+#include "VectorCVectorDouble2.pypp.hpp"
+
+#include "VectorCVectorDouble3.pypp.hpp"
+
+#include "VectorDouble.pypp.hpp"
+
+#include "VectorPairNode2PtrNode2Ptr.pypp.hpp"
+
+#include "VectorPairNode3PtrNode3Ptr.pypp.hpp"
+
 #include "VectorSharedPtrAbstractCellProperty.pypp.hpp"
 
 #include "VectorSharedPtrAbstractForce2_2.pypp.hpp"
@@ -325,6 +339,10 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "VectorSharedPtrAbstractUpdateRule3.pypp.hpp"
 
 #include "VectorSharedPtrCell.pypp.hpp"
+
+#include "VectorString.pypp.hpp"
+
+#include "VectorUnsigned.pypp.hpp"
 
 #include "VertexBasedCellPopulation2.pypp.hpp"
 
@@ -348,47 +366,17 @@ namespace bp = boost::python;
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( _p_Vec )
 
-namespace boost { namespace python { namespace indexing {
-
-template<>
-struct value_traits< boost::numeric::ublas::c_vector< double, 2 > >{
-
-    static bool const equality_comparable = false;
-    
-
-    static bool const less_than_comparable = false;
-    
-
-    template<typename PythonClass, typename Policy>
-    static void visit_container_class(PythonClass &, Policy const &){
-        
-    }
-
-};
-
-}/*indexing*/ } /*python*/ } /*boost*/
-
-namespace boost { namespace python { namespace indexing {
-
-template<>
-struct value_traits< boost::numeric::ublas::c_vector< double, 3 > >{
-
-    static bool const equality_comparable = false;
-    
-
-    static bool const less_than_comparable = false;
-    
-
-    template<typename PythonClass, typename Policy>
-    static void visit_container_class(PythonClass &, Policy const &){
-        
-    }
-
-};
-
-}/*indexing*/ } /*python*/ } /*boost*/
-
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
+    register_VectorUnsigned_class();
+
+    register_VectorPairNode3PtrNode3Ptr_class();
+
+    register_VectorPairNode2PtrNode2Ptr_class();
+
+    register_VectorString_class();
+
+    register_VectorDouble_class();
+
     register_VectorSharedPtrCell_class();
 
     register_VectorSharedPtrAbstractUpdateRule3_class();
@@ -400,6 +388,14 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_cell_based){
     register_VectorSharedPtrAbstractForce2_2_class();
 
     register_VectorSharedPtrAbstractCellProperty_class();
+
+    register_VectorCVectorDouble3_class();
+
+    register_VectorCVectorDouble2_class();
+
+    register_VectorBool_class();
+
+    register_SetUnsigned_class();
 
     register_SetCellPtr_class();
 

@@ -72,14 +72,14 @@ struct SimpleOxygenBasedCellCycleModel_wrapper : SimpleOxygenBasedCellCycleModel
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" ) )
-            func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            func_OutputCellCycleModelParameters( rParamsFile );
         else{
-            this->SimpleOxygenBasedCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+            this->SimpleOxygenBasedCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
         }
     }
     
     void default_OutputCellCycleModelParameters( ::out_stream & rParamsFile ) {
-        SimpleOxygenBasedCellCycleModel::OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        SimpleOxygenBasedCellCycleModel::OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual void UpdateCellCyclePhase(  ) {

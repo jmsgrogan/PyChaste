@@ -72,14 +72,14 @@ struct GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper : General
 
     virtual void OutputForceParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputForceParameters = this->get_override( "OutputForceParameters" ) )
-            func_OutputForceParameters( boost::ref(rParamsFile) );
+            func_OutputForceParameters( rParamsFile );
         else{
-            this->GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+            this->GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( rParamsFile );
         }
     }
     
     void default_OutputForceParameters( ::out_stream & rParamsFile ) {
-        GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( boost::ref(rParamsFile) );
+        GeneralisedLinearSpringForce< 3, 3 >::OutputForceParameters( rParamsFile );
     }
 
     virtual double VariableSpringConstantMultiplicationFactor( unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation< 3, 3 > & rCellPopulation, bool isCloserThanRestLength ) {
@@ -108,14 +108,14 @@ struct GeneralisedLinearSpringForce_less__3_comma__3__greater__wrapper : General
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractTwoBodyInteractionForce< 3, 3 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
 };

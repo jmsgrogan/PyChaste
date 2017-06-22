@@ -58,14 +58,14 @@ struct AbstractCaUpdateRule_less__3__greater__wrapper : AbstractCaUpdateRule< 3 
 
     virtual void OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
         if( bp::override func_OutputUpdateRuleParameters = this->get_override( "OutputUpdateRuleParameters" ) )
-            func_OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            func_OutputUpdateRuleParameters( rParamsFile );
         else{
-            this->AbstractCaUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+            this->AbstractCaUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
         }
     }
     
     void default_OutputUpdateRuleParameters( ::out_stream & rParamsFile ) {
-        AbstractCaUpdateRule< 3 >::OutputUpdateRuleParameters( boost::ref(rParamsFile) );
+        AbstractCaUpdateRule< 3 >::OutputUpdateRuleParameters( rParamsFile );
     }
 
 };

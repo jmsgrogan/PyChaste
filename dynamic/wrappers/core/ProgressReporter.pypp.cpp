@@ -44,7 +44,7 @@ namespace bp = boost::python;
 
 void register_ProgressReporter_class(){
 
-    bp::class_< ProgressReporter, boost::noncopyable >( "ProgressReporter", bp::init< std::string, double, double >(( bp::arg("outputDirectory"), bp::arg("startTime"), bp::arg("endTime") )) )    
+    bp::class_< ProgressReporter >( "ProgressReporter", bp::init< std::string, double, double >(( bp::arg("outputDirectory"), bp::arg("startTime"), bp::arg("endTime") )) )    
         .def( 
             "PrintFinalising"
             , (void ( ::ProgressReporter::* )(  ))( &::ProgressReporter::PrintFinalising ) )    

@@ -46,7 +46,7 @@ void register_Cell_class(){
 
     { //::Cell
         typedef bp::class_< Cell, boost::shared_ptr< Cell >, boost::noncopyable > Cell_exposer_t;
-        Cell_exposer_t Cell_exposer = Cell_exposer_t( "Cell", bp::init< boost::shared_ptr< AbstractCellProperty >, AbstractCellCycleModel *, bp::optional< AbstractSrnModel *, bool, CellPropertyCollection > >(( bp::arg("pMutationState"), bp::arg("pCellCycleModel"), bp::arg("pSrnModel")=__null, bp::arg("archiving")=(bool)(false), bp::arg("cellPropertyCollection")=::CellPropertyCollection( ) )) );
+        Cell_exposer_t Cell_exposer = Cell_exposer_t( "Cell", bp::init< boost::shared_ptr< AbstractCellProperty >, AbstractCellCycleModel *, bp::optional< AbstractSrnModel *, bool, CellPropertyCollection > >(( bp::arg("pMutationState"), bp::arg("pCellCycleModel"), bp::arg("pSrnModel")=NULL, bp::arg("archiving")=(bool)(false), bp::arg("cellPropertyCollection")=::CellPropertyCollection( ) )) );
         bp::scope Cell_scope( Cell_exposer );
         { //::Cell::AddCellProperty
         

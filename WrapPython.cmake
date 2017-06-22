@@ -110,11 +110,23 @@ math(EXPR len2_auto "${len1_auto} - 1")
 foreach(val RANGE ${len2_auto})
     list(GET PYCHASTE_PYTHON_AUTO_MODULES ${val} python_module)
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/${python_module})
+    
+    # Convenience targets to allow individual bindings to be regenerated. 
+    LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/wrapper_header_collection.hpp)
+    LIST(APPEND arguments ${CASTXML_EXE_LOC})
+    LIST(APPEND arguments ${python_module})
+    LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
+    LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
+    LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
+    add_custom_target(project_PyChaste_Python_Bindings_${python_module})
+    add_custom_command(TARGET project_PyChaste_Python_Bindings_${python_module} COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_code.py ${arguments})
 endforeach()
 
+# Target to generate all bindings
 SET(arguments ${CMAKE_CURRENT_SOURCE_DIR})
 LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/wrapper_header_collection.hpp)
 LIST(APPEND arguments ${CASTXML_EXE_LOC})
+LIST(APPEND arguments "All")
 LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
@@ -133,7 +145,7 @@ foreach(val RANGE ${len2})
     # to start the name with an underscore. The usual 'lib' prefix is disabled.
     add_library(_chaste_project_PyChaste_${python_module} SHARED ${MODULE_SOURCES})
     set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES PREFIX "" LIBRARY_OUTPUT_DIRECTORY ${python_module_location})
-    
+    target_compile_features(_chaste_project_PyChaste_${python_module} PRIVATE cxx_range_for)
     # order is important, boost python and python come first
     target_link_libraries(_chaste_project_PyChaste_${python_module} boost_python ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
     add_dependencies(_chaste_project_PyChaste_${python_module} chaste_project_PyChaste)

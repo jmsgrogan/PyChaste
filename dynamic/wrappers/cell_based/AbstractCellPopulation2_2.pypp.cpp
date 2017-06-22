@@ -219,7 +219,7 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
 
     virtual void OutputCellPopulationParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputCellPopulationParameters = this->get_override( "OutputCellPopulationParameters" );
-        func_OutputCellPopulationParameters( boost::ref(rParamsFile) );
+        func_OutputCellPopulationParameters( rParamsFile );
     }
 
     virtual void RemoveCellUsingLocationIndex( unsigned int index, ::CellPtr pCell ) {
@@ -280,14 +280,14 @@ struct AbstractCellPopulation_less__2_comma__2__greater__wrapper : AbstractCellP
 
     virtual void WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
         if( bp::override func_WriteDataToVisualizerSetupFile = this->get_override( "WriteDataToVisualizerSetupFile" ) )
-            func_WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            func_WriteDataToVisualizerSetupFile( pVizSetupFile );
         else{
-            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+            this->AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
         }
     }
     
     void default_WriteDataToVisualizerSetupFile( ::out_stream & pVizSetupFile ) {
-        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( boost::ref(pVizSetupFile) );
+        AbstractCellPopulation< 2, 2 >::WriteDataToVisualizerSetupFile( pVizSetupFile );
     }
 
     virtual void WriteResultsToFiles( ::std::string const & rDirectory ) {

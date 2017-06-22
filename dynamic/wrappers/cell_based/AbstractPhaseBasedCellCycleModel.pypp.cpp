@@ -132,7 +132,7 @@ struct AbstractPhaseBasedCellCycleModel_wrapper : AbstractPhaseBasedCellCycleMod
 
     virtual void OutputCellCycleModelParameters( ::out_stream & rParamsFile ){
         bp::override func_OutputCellCycleModelParameters = this->get_override( "OutputCellCycleModelParameters" );
-        func_OutputCellCycleModelParameters( boost::ref(rParamsFile) );
+        func_OutputCellCycleModelParameters( rParamsFile );
     }
 
     virtual bool ReadyToDivide(  ) {

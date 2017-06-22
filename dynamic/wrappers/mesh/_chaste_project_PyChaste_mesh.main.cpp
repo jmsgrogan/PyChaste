@@ -116,6 +116,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "VectorCVectorDouble3.pypp.hpp"
 
+#include "VectorDouble.pypp.hpp"
+
 #include "VectorNode2Ptr.pypp.hpp"
 
 #include "VectorNode3Ptr.pypp.hpp"
@@ -133,6 +135,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "VectorSharedPtrNode2.pypp.hpp"
 
 #include "VectorSharedPtrNode3.pypp.hpp"
+
+#include "VectorUnsigned.pypp.hpp"
 
 #include "VectorVectorUnsigned.pypp.hpp"
 
@@ -152,27 +156,9 @@ namespace bp = boost::python;
 
 BOOST_PYTHON_OPAQUE_SPECIALIZED_TYPE_ID( DistributedVectorFactory )
 
-namespace boost { namespace python { namespace indexing {
-
-template<>
-struct value_traits< std::vector< unsigned int > >{
-
-    static bool const equality_comparable = false;
-    
-
-    static bool const less_than_comparable = false;
-    
-
-    template<typename PythonClass, typename Policy>
-    static void visit_container_class(PythonClass &, Policy const &){
-        
-    }
-
-};
-
-}/*indexing*/ } /*python*/ } /*boost*/
-
 BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
+    register_VectorUnsigned_class();
+
     register_VectorVectorUnsigned_class();
 
     register_VectorSetUnsigned_class();
@@ -180,6 +166,8 @@ BOOST_PYTHON_MODULE(_chaste_project_PyChaste_mesh){
     register_VectorPairNode3PtrNode3Ptr_class();
 
     register_VectorPairNode2PtrNode2Ptr_class();
+
+    register_VectorDouble_class();
 
     register_VectorSharedPtrNode3_class();
 

@@ -46,7 +46,7 @@ void register_CellAncestor_class(){
 
     { //::CellAncestor
         typedef bp::class_< CellAncestor, bp::bases< AbstractCellProperty > > CellAncestor_exposer_t;
-        CellAncestor_exposer_t CellAncestor_exposer = CellAncestor_exposer_t( "CellAncestor", bp::init< bp::optional< unsigned int > >(( bp::arg("ancestor")=(unsigned int)(UNSIGNED_UNSET) )) );
+        CellAncestor_exposer_t CellAncestor_exposer = CellAncestor_exposer_t( "CellAncestor", bp::init< bp::optional< unsigned int > >(( bp::arg("ancestor")=(unsigned int)(::UNSIGNED_UNSET) )) );
         bp::scope CellAncestor_scope( CellAncestor_exposer );
         bp::implicitly_convertible< unsigned int, CellAncestor >();
         { //::CellAncestor::GetAncestor
