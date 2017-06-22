@@ -205,6 +205,9 @@ def add_autowrap_classes_to_builder(builder, component_name, classes):
                             declaration_string = eachArgType.decl_type.decl_string
                             default_value = eachArgType.default_value
                             
+                            if default_value is not None and "nullptr" in default_value:
+                                eachArgType.default_value = default_value.replace("nullptr", "NULL") 
+                                
                             #pprint (vars(eachArgType))
                             if "Vec" in declaration_string and not "CellVecData" in declaration_string:
                                 add_petsc_vec_code = True
@@ -427,8 +430,8 @@ def generate_wrappers(args):
         
         print 'Generating Wrapper Code for: ' + eachModule + ' Module.'
         
-#         if "core" not in eachModule and len(possible_module_names)>1:
-#             builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+possible_module_names[idx-1])
+        if "core" not in eachModule and len(possible_module_names)>1:
+            builder.register_module_dependency(work_dir + "/dynamic/wrappers/"+possible_module_names[idx-1])
         
         # Set up the builder for each module
         

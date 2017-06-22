@@ -38,7 +38,8 @@ import warnings
 
 # At the moment there are many harmless duplicate registration warnings from boost python. Ignore them until a suitable
 # way to avoid duplicate registration during wrapper building is found.
-warnings.filterwarnings("ignore")
+#warnings.filterwarnings("ignore")
 
-from _chaste_project_PyChaste_cell_based import *
+import chaste
+from chaste.cell_based._chaste_project_PyChaste_cell_based import *
 from fortests import *
