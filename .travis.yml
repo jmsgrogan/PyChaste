@@ -72,7 +72,7 @@ script:
     fi
     export PYTHONPATH=$PYTHONPATH:${TRAVIS_BUILD_DIR}/../chaste-build/projects/PyChaste/python/
     cmake --version
-    cmake chaste_cell_based
+    cmake . && make chaste_cell_based -j 2
 #    cmake . && make project_PyChaste -j 2 && make project_PyChaste_Python -j 2 && ctest -L PyChaste -j 2
 
 # # following: https://github.com/NLeSC/root-roofit-dev/blob/travis_make-optimize_deps/.travis.yml
