@@ -56,7 +56,13 @@ set(CASTXML_EXE_LOC "/usr/bin/castxml" CACHE FILEPATH "Path to the castxml execu
 include_directories(${Chaste_INCLUDE_DIRS} ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
 
 # Any non-wrapper code (code in the src folder) in this project needs to be put in its own shared library. 
-set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.so)
+if(APPLE)
+    set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.dylib)
+elseif(WIN32)
+    set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.dll)  
+else()
+    set(PYCHASTE_SHARED_LIB ${CMAKE_CURRENT_BINARY_DIR}/libchaste_project_PyChaste.so)  
+endif()
 
 # Collect the header directories for this project
 include(${CMAKE_CURRENT_SOURCE_DIR}/ProjectIncludes.cmake)
@@ -132,6 +138,12 @@ LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
 add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_code.py ${arguments})
 
+IF(CMAKE_BUILD_TYPE MATCHES DEBUG)
+set(BOOST_PYTHON_LIB_ALL ${Boost_PYTHON_LIBRARY_DEBUG})
+ELSE()
+set(BOOST_PYTHON_LIB_ALL ${Boost_PYTHON_LIBRARY_RELEASE})
+ENDIF()
+
 # Loop through each module and create the shared library targets
 list(LENGTH PYCHASTE_PYTHON_MODULES len1)
 math(EXPR len2 "${len1} - 1")
@@ -144,10 +156,10 @@ foreach(val RANGE ${len2})
     # each module is in the 'dynamic' directory. The library name must be the same as that defined in the cpp file. It is customary
     # to start the name with an underscore. The usual 'lib' prefix is disabled.
     add_library(_chaste_project_PyChaste_${python_module} SHARED ${MODULE_SOURCES})
-    set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES PREFIX "" LIBRARY_OUTPUT_DIRECTORY ${python_module_location})
+    set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES PREFIX "" SUFFIX ".so" LIBRARY_OUTPUT_DIRECTORY ${python_module_location})
     target_compile_features(_chaste_project_PyChaste_${python_module} PRIVATE cxx_range_for)
     # order is important, boost python and python come first
-    target_link_libraries(_chaste_project_PyChaste_${python_module} boost_python ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
+    target_link_libraries(_chaste_project_PyChaste_${python_module} ${BOOST_PYTHON_LIB_ALL} ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
     add_dependencies(_chaste_project_PyChaste_${python_module} chaste_project_PyChaste)
 endforeach()
 
