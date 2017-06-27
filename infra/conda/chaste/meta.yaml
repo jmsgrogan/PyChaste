@@ -3,10 +3,10 @@ package:
   version: 3.4.2
 
 source:
-  path: /home/grogan/Chaste
+  path: /home/grogan/Software/Chaste
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
