@@ -70,6 +70,14 @@ include_directories(${PYCHASTE_INCLUDE_DIRS} ${PYTHON_NUMPY_INCLUDE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers)
 
+set (CMAKE_CXX_STANDARD 11)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/pybind11/include)
+
+set(PYBIND11_PYTHON_VERSION 2.7)
+set(PYBIND11_CPP_STANDARD -std=c++11)
+add_subdirectory(dynamic/pybind11)
+include_directories(${PYTHON_INCLUDE_DIRS})
+
 ######### Build the Python modules ###################### 
 set (PYCHASTE_PYTHON_AUTO_MODULES "")
 set (PYCHASTE_PYTHON_MODULES "")
@@ -78,27 +86,27 @@ set (PYCHASTE_PYTHON_MODULE_LOCATIONS "")
 
 # Add each module to be built to this list. 
 # Modules with auto wrapping
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES core)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/core)
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES ode)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/ode)
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES pde)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/pde)
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES mesh)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/mesh)
+#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES core)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/core)
+#ist (APPEND PYCHASTE_PYTHON_AUTO_MODULES ode)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/ode)
+#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES pde)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/pde)
+#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES mesh)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/mesh)
 list (APPEND PYCHASTE_PYTHON_AUTO_MODULES cell_based)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/cell_based)
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES visualization)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/visualization)
-list (APPEND PYCHASTE_PYTHON_AUTO_MODULES tutorial)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial)
+#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES visualization)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/visualization)
+#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES tutorial)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial)
 list (APPEND PYCHASTE_PYTHON_MODULES ${PYCHASTE_PYTHON_AUTO_MODULES})
 
 # Modules with manual wrapping
-list (APPEND PYCHASTE_PYTHON_MODULES preload)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/)
-list (APPEND PYCHASTE_PYTHON_MODULES tutorial_manual)
-list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
+#list (APPEND PYCHASTE_PYTHON_MODULES preload)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/)
+#list (APPEND PYCHASTE_PYTHON_MODULES tutorial_manual)
+#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/tutorial/)
 
 # Copy the Python package (i.e. all source files etc) to the build folder, ignore any shared libraries that might be in there.
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/ PATTERN "*.so" EXCLUDE)
@@ -156,10 +164,11 @@ foreach(val RANGE ${len2})
     # each module is in the 'dynamic' directory. The library name must be the same as that defined in the cpp file. It is customary
     # to start the name with an underscore. The usual 'lib' prefix is disabled.
     add_library(_chaste_project_PyChaste_${python_module} SHARED ${MODULE_SOURCES})
-    set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES PREFIX "" SUFFIX ".so" LIBRARY_OUTPUT_DIRECTORY ${python_module_location})
+    set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${python_module_location} 
+        PREFIX "${PYTHON_MODULE_PREFIX}" SUFFIX ".so")
     target_compile_features(_chaste_project_PyChaste_${python_module} PRIVATE cxx_range_for)
     # order is important, boost python and python come first
-    target_link_libraries(_chaste_project_PyChaste_${python_module} ${BOOST_PYTHON_LIB_ALL} ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
+    target_link_libraries(_chaste_project_PyChaste_${python_module} pybind11::module ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
     add_dependencies(_chaste_project_PyChaste_${python_module} chaste_project_PyChaste)
 endforeach()
 

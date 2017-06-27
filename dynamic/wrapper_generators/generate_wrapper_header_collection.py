@@ -37,174 +37,133 @@ Generate the file classes_to_be_wrapped.hpp, which contains includes, instantiat
 naming typedefs for all classes that are to be automatically wrapped.
 """
 
-import os
 import sys
-import fnmatch
-try:
-   import cPickle as pickle
-except:
-   import pickle
-import classes_to_be_wrapped
-from wrapper_utilities.class_data import CppClass
+from wrapper_utilities.class_info import ClassInfoHelper
 
-package_name = "PYCHASTE"
 
-def generate_class_data(args):
-    
-    # Store the classes to be wrapped in a dict
-    class_dict = {}
-    for eachClass in classes_to_be_wrapped.classes:
-        class_dict[eachClass.name] = eachClass
-    
-    # Traverse the source tree and get the filepath for each class to be wrapped
-    source_root = args[1]
-    component_keys = ["pde", "ode", "cell_based", "mesh", "linalg", 
-                      "global", "tutorial", "visualization", "extra"]
-    
-    for root, dirnames, filenames in os.walk(source_root, followlinks=True):
-        for filename in fnmatch.filter(filenames, '*.hpp'):
-            filename_no_ext = os.path.splitext(filename)[0]
-            if filename_no_ext in class_dict.keys():
-                class_dict[filename_no_ext].full_path = os.path.join(root, filename)
+class CastXmlHeaderGenerator():
 
-    # Set the component name
-    for eachClass in classes_to_be_wrapped.classes:
-        if eachClass.component is None and eachClass.full_path is not None:
-            for eachKey in component_keys:
-                if "/" + eachKey + "/" in eachClass.full_path:
-                    if eachKey in ["global", "linalg"]:
-                        eachClass.component = "core"
-                    else:
-                        eachClass.component = eachKey
-                    
-    # Set the template args by trying to guess what they are from the HPP files.
-    # DOn't guess if they have been manually specified.
-    same_dims_1 = [[2], [3]] # i.e. <DIM>
-    same_dims_2 = [[2, 2], [3, 3]] # i.e. <ELEMENT_DIM, SPACE_DIM>
-    
-    template_strings_2d = ["<unsignedELEMENT_DIM,unsignedSPACE_DIM>", 
-                           "<unsignedDIM,unsignedDIM>",
-                           "unsignedELEMENT_DIM,unsignedSPACE_DIM=ELEMENT_DIM"]
-    template_strings_1d = ["<unsignedSPACE_DIM>", 
-                           "<unsignedDIM>"]    
-    
-    for eachClass in classes_to_be_wrapped.classes:
-        if eachClass.template_args is None and eachClass.full_path is not None:
-            if os.path.exists(eachClass.full_path):
-                f = open(eachClass.full_path)
-                lines = (line.rstrip() for line in f) # Remove blank lines
-                lines = list(line for line in lines if line)
-                for idx, eachLine in enumerate(lines):
-                    stripped_line = eachLine.replace(" ", "")
-                    if idx+1 < len(lines):
-                        stripped_next_line = lines[idx+1].replace(" ", "")
-                    else:
-                        continue
-                    
-                    for eachTemplateString in template_strings_2d:
-                        if eachTemplateString in stripped_line:
-                            if "class" + eachClass.name +":" in stripped_next_line or "class" + eachClass.name ==stripped_next_line:
-                                eachClass.template_args = same_dims_2
-                                break
-                        
-                    for eachTemplateString in template_strings_1d:
-                        if eachTemplateString in stripped_line:
-                            if "class" + eachClass.name +":" in stripped_next_line or "class" + eachClass.name ==stripped_next_line:
-                                eachClass.template_args = same_dims_1
-                                break          
-                f.close()
-                
-    # Add cell generator templates
-    concrete_cell_cycle_classes = []
-    for eachClass in classes_to_be_wrapped.classes:
-        if eachClass.full_path is not None and "/cell_based/src/cell/cycle" in eachClass.full_path:
-            if "Abstract" not in eachClass.name and eachClass.name[len(eachClass.name)-14:]=="CellCycleModel":
-                concrete_cell_cycle_classes.append(eachClass.name)
-    
-    if class_dict["CellsGenerator"].template_args is None:
-        class_dict["CellsGenerator"].template_args = []
-        for eachCycleModel in concrete_cell_cycle_classes:
-              class_dict["CellsGenerator"].template_args.append([eachCycleModel, 2])   
-              class_dict["CellsGenerator"].template_args.append([eachCycleModel, 3])  
-    
-    with open(args[2]+"class_data.p", 'wb') as fp:
-        pickle.dump(classes_to_be_wrapped.classes, fp)
-        
-    return classes_to_be_wrapped.classes
+    """
+    This class manages generation of the header collection file for
+    parsing by CastXML
+    """
 
-def generate_hpp_file(args):
-    
-    classes = generate_class_data(args)
-    
-    file_path = args[2] + "/wrapper_header_collection.hpp"
-    hpp_file = open(file_path, 'w')
-    
-    # Add the includes
-    hpp_file.write("#ifndef " + package_name + "HEADERS_HPP_ \n")
-    hpp_file.write("#define " + package_name + "HEADERS_HPP_ \n")
-    hpp_file.write("\n// Includes \n")
-    
-    # Start with STL components
-    hpp_file.write("#include <vector>\n")
-    hpp_file.write("#include <set>\n")
-    hpp_file.write("#include <map>\n")
-    
-    # Now Chaste includes
-    for eachClass in classes:
-        if eachClass.needs_include_file:
-            hpp_file.write("#include " + '"' + eachClass.name + '.hpp"' + "\n")
-        
-    # Add the instantiations
-    hpp_file.write("\n// Instantiate Template Classes \n")
-    for eachClass in classes:
-        if not eachClass.needs_header_file_instantiation():
-            continue
-        for eachClassTemplateName in eachClass.get_full_names():
-            hpp_file.write("template class " + eachClassTemplateName + ";\n")   
-            
-    # Add typdefs for nice naming
-    hpp_file.write("\n// Typedef for nicer naming in Py++ \n")
-    hpp_file.write("namespace pyplusplus{ \n")
-    hpp_file.write("namespace aliases{ \n")
-    for eachClass in classes:
-        if not eachClass.needs_header_file_typdef():
-            continue
-        
-        short_names = eachClass.get_short_names()
-        for idx, eachClassTemplateName in enumerate(eachClass.get_full_names()):
-            hpp_file.write("typedef " + eachClassTemplateName + " " + 
-                           short_names[idx] + ";\n")
-            
-            if eachClass.include_vec_ptr_self:
-                hpp_file.write("typedef " + eachClassTemplateName + "* " + 
-                               short_names[idx] + "Ptr;\n")    
-                hpp_file.write("typedef boost::shared_ptr<" + eachClassTemplateName + " > SharedPtr" + 
-                               short_names[idx] + ";\n")   
-                hpp_file.write("typedef std::vector<" + short_names[idx] + "Ptr> " + 
-                               "Vector" + short_names[idx] + "Ptr;\n")   
-                hpp_file.write("typedef std::vector<SharedPtr" + short_names[idx] + "> " + 
-                               "VectorSharedPtr" + short_names[idx] + ";\n") 
-                
-            if  eachClass.include_ptr_self and not eachClass.include_vec_ptr_self: 
-                hpp_file.write("typedef boost::shared_ptr<" + eachClassTemplateName + " > SharedPtr" + 
-                               short_names[idx] + ";\n")  
-            if eachClass.include_raw_ptr_self and not eachClass.include_vec_ptr_self:
-                hpp_file.write("typedef " + eachClassTemplateName + "* " + 
-                               short_names[idx] + "Ptr;\n")                                 
-        
-    hpp_file.write("    }\n")
-    hpp_file.write("}\n")
-    
-    ## Add some special includes for Boost and PETSc
-    hpp_file.write("\n// Need to specifically instantiate PETSc Vec and Mat \n")
-    hpp_file.write("typedef boost::filesystem::path boost_filesystem_path;\n")
-    hpp_file.write("\n inline int Instantiation()\n{\nreturn sizeof(Mat) + sizeof(Vec);\n}\n")
-    hpp_file.write("\n inline Mat GetPetscMatForWrapper()\n{\nMat A;\nPetscTools::SetupMat(A, 3, 3, 3);\nreturn A;\n}\n")
-    
-    hpp_file.write("#endif // " + package_name + "HEADERS_HPP_\n")
+    def __init__(self, source_root, wrapper_root, class_info_collection):
 
-if __name__=="__main__":
-    
-    #fake_path = ["","/home/grogan/Chaste", "/home/grogan/"]
-    generate_hpp_file(sys.argv)
-    #generate_hpp_file(fake_path)
+        self.source_root = source_root
+        self.wrapper_root = wrapper_root
+        self.class_info_collection = class_info_collection
+        self.header_file_name = "wrapper_header_collection.hpp"
+        self.header_string = ""
+        self.package_name = "PYCHASTE"
+        self.add_common_stl = True
+        self.use_vec_pointer_typedefs = False
+
+    def add_vec_pointer_typedefs(self, class_info, short_name, full_name):
+
+        # Nice names for vectors of pointers
+        if class_info.include_vec_ptr_self:
+            raw_prefix = "typedef " + full_name + "* "
+            shared_prefix = "typedef std::shared_ptr<"
+            vector_prefix = "typedef std::vector<"
+            vec_shared_prefix = "typedef std::vector<SharedPtr"
+            self.header_string += raw_prefix + short_name + "Ptr;\n"
+            self.header_string += shared_prefix + full_name
+            self.header_string += " > SharedPtr" + short_name + ";\n"
+            self.header_string += vector_prefix + short_name + "Ptr> "
+            self.header_string += "Vector" + short_name + "Ptr;\n"
+            self.header_string += vec_shared_prefix + short_name + "> "
+            self.header_string += "VectorSharedPtr" + short_name + ";\n"
+
+        add_ptr_self = class_info.include_ptr_self
+        no_add_vec_ptr_self = not class_info.include_vec_ptr_self
+        if add_ptr_self and not no_add_vec_ptr_self:
+            self.header_string += "typedef std::shared_ptr<" + full_name
+            self.header_string += " > SharedPtr" + short_name + ";\n"
+
+        if class_info.include_raw_ptr_self and no_add_vec_ptr_self:
+            self.header_string += "typedef " + full_name + "* "
+            self.header_string += short_name + "Ptr;\n"
+
+    def add_custom_header_code(self):
+
+        # Add some special includes for Boost and PETSc
+        self.header_string += "\n// Need to specifically instantiate PETSc Vec and Mat \n"
+        #self.header_string += "typedef boost::filesystem::path boost_filesystem_path;\n"
+        self.header_string += "\n inline int Instantiation()\n{\nreturn sizeof(Mat) + sizeof(Vec);\n}\n"
+        self.header_string += "\n inline Mat GetPetscMatForWrapper()\n{\nMat A;\nPetscTools::SetupMat(A, 3, 3, 3);\nreturn A;\n}\n"
+
+    def generate_hpp_file(self):
+
+        class_info_helper = ClassInfoHelper(self.source_root,
+                                            self.wrapper_root,
+                                            self.class_info_collection)
+        class_info_helper.generate_class_info()
+
+        # Add the includes
+        self.header_string = ""
+        self.header_string += "#ifndef " + self.package_name + "HEADERS_HPP_\n"
+        self.header_string += "#define " + self.package_name + "HEADERS_HPP_\n"
+        self.header_string += "\n// Includes \n"
+
+        # Start with STL components
+        if self.add_common_stl:
+            self.header_string += "#include <vector>\n"
+            self.header_string += "#include <set>\n"
+            self.header_string += "#include <map>\n"
+
+        # Now our own includes
+        for eachClass in self.class_info_collection:
+            if eachClass.needs_include_file:
+                self.header_string += '#include "' + eachClass.name + '.hpp"\n'
+
+        # Add the template instantiations
+        self.header_string += "\n// Instantiate Template Classes \n"
+        for eachClass in self.class_info_collection:
+            if not eachClass.needs_header_file_instantiation():
+                continue
+            prefix = "template class "
+            for eachTemplateName in eachClass.get_full_names():
+                self.header_string += prefix + eachTemplateName + ";\n"
+
+        # Add typdefs for nice naming
+        self.header_string += "\n// Typedef for nicer naming\n"
+        self.header_string += "namespace pyplusplus{ \n"
+        self.header_string += "namespace aliases{ \n"
+        for eachClass in self.class_info_collection:
+            if not eachClass.needs_header_file_typdef():
+                continue
+
+            short_names = eachClass.get_short_names()
+            full_names = eachClass.get_full_names()
+            for idx, eachTemplateName in enumerate(full_names):
+                short_name = short_names[idx]
+                typdef_prefix = "typedef " + eachTemplateName + " "
+                self.header_string += typdef_prefix + short_name + ";\n"
+
+                if self.use_vec_pointer_typedefs:
+                    self.add_vec_pointer_typedefs(eachClass, short_name,
+                                                  eachTemplateName)
+
+        self.header_string += "    }\n"
+        self.header_string += "}\n"
+
+        self.add_custom_header_code()
+        self.header_string += "#endif // " + self.package_name + "HEADERS_HPP_\n"
+
+        file_path = self.wrapper_root + "/" + self.header_file_name
+
+        hpp_file = open(file_path, 'w')
+        hpp_file.write(self.header_string)
+        hpp_file.close()
+
+
+if __name__ == "__main__":
+
+    # fake_path = ["","/home/grogan/Chaste", "/home/grogan/"]
+    import classes_to_be_wrapped
+    class_info_collection = classes_to_be_wrapped.classes
+
+    writer = CastXmlHeaderGenerator(sys.argv[1], sys.argv[2],
+                                    class_info_collection)
+    writer.generate_hpp_file()

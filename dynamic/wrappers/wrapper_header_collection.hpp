@@ -1,5 +1,5 @@
-#ifndef PYCHASTEHEADERS_HPP_ 
-#define PYCHASTEHEADERS_HPP_ 
+#ifndef PYCHASTEHEADERS_HPP_
+#define PYCHASTEHEADERS_HPP_
 
 // Includes 
 #include <vector>
@@ -124,10 +124,6 @@
 #include "SimpleTargetAreaModifier.hpp"
 #include "VtkSceneModifier.hpp"
 #include "AbstractCellBasedSimulationModifier.hpp"
-#include "Hello.hpp"
-#include "VtkScene.hpp"
-#include "AbstractPyChasteActorGenerator.hpp"
-#include "CellPopulationPyChasteActorGenerator.hpp"
 
 // Instantiate Template Classes 
 template class AbstractNonlinearEllipticPde<2 >;
@@ -264,30 +260,10 @@ template class VtkSceneModifier<2 >;
 template class VtkSceneModifier<3 >;
 template class AbstractCellBasedSimulationModifier<2,2 >;
 template class AbstractCellBasedSimulationModifier<3,3 >;
-template class VtkScene<2 >;
-template class VtkScene<3 >;
-template class AbstractPyChasteActorGenerator<2 >;
-template class AbstractPyChasteActorGenerator<3 >;
-template class CellPopulationPyChasteActorGenerator<2 >;
-template class CellPopulationPyChasteActorGenerator<3 >;
 
-// Typedef for nicer naming in Py++ 
+// Typedef for nicer naming
 namespace pyplusplus{ 
 namespace aliases{ 
-typedef std::map<std::string,std::string > MapString_String;
-typedef std::set<unsigned > SetUnsigned;
-typedef std::vector<double > VectorDouble;
-typedef std::vector<unsigned > VectorUnsigned;
-typedef std::vector<bool > VectorBool;
-typedef std::vector<std::string > VectorString;
-typedef std::vector<c_vector<double,3> > VectorCVectorDouble3;
-typedef std::vector<c_vector<double,2> > VectorCVectorDouble2;
-typedef std::vector<c_vector<unsigned,5> > VectorCVectorUnsigned5;
-typedef std::vector<std::set<unsigned int> > VectorSetUnsigned;
-typedef std::vector<std::vector<unsigned int> > VectorVectorUnsigned;
-typedef c_vector<double,2 > CVectorDouble_2;
-typedef c_vector<double,3 > CVectorDouble_3;
-typedef c_vector<unsigned,5 > CVectorUnsigned_5;
 typedef AbstractNonlinearEllipticPde<2 > AbstractNonlinearEllipticPde2;
 typedef AbstractNonlinearEllipticPde<3 > AbstractNonlinearEllipticPde3;
 typedef AbstractBoundaryCondition<2 > AbstractBoundaryCondition2;
@@ -299,25 +275,9 @@ typedef ChastePoint<3 > ChastePoint3;
 typedef NodeAttributes<2 > NodeAttributes2;
 typedef NodeAttributes<3 > NodeAttributes3;
 typedef Node<2 > Node2;
-typedef Node<2 >* Node2Ptr;
-typedef boost::shared_ptr<Node<2 > > SharedPtrNode2;
-typedef std::vector<Node2Ptr> VectorNode2Ptr;
-typedef std::vector<SharedPtrNode2> VectorSharedPtrNode2;
 typedef Node<3 > Node3;
-typedef Node<3 >* Node3Ptr;
-typedef boost::shared_ptr<Node<3 > > SharedPtrNode3;
-typedef std::vector<Node3Ptr> VectorNode3Ptr;
-typedef std::vector<SharedPtrNode3> VectorSharedPtrNode3;
 typedef Element<2,2 > Element2_2;
-typedef Element<2,2 >* Element2_2Ptr;
-typedef boost::shared_ptr<Element<2,2 > > SharedPtrElement2_2;
-typedef std::vector<Element2_2Ptr> VectorElement2_2Ptr;
-typedef std::vector<SharedPtrElement2_2> VectorSharedPtrElement2_2;
 typedef Element<3,3 > Element3_3;
-typedef Element<3,3 >* Element3_3Ptr;
-typedef boost::shared_ptr<Element<3,3 > > SharedPtrElement3_3;
-typedef std::vector<Element3_3Ptr> VectorElement3_3Ptr;
-typedef std::vector<SharedPtrElement3_3> VectorSharedPtrElement3_3;
 typedef NodesOnlyMesh<2 > NodesOnlyMesh2;
 typedef NodesOnlyMesh<3 > NodesOnlyMesh3;
 typedef MutableMesh<2,2 > MutableMesh2_2;
@@ -327,15 +287,7 @@ typedef PottsMesh<3 > PottsMesh3;
 typedef SharedPottsMeshGenerator<2 > PottsMeshGenerator2;
 typedef SharedPottsMeshGenerator<3 > PottsMeshGenerator3;
 typedef PottsElement<2 > PottsElement2;
-typedef PottsElement<2 >* PottsElement2Ptr;
-typedef boost::shared_ptr<PottsElement<2 > > SharedPtrPottsElement2;
-typedef std::vector<PottsElement2Ptr> VectorPottsElement2Ptr;
-typedef std::vector<SharedPtrPottsElement2> VectorSharedPtrPottsElement2;
 typedef PottsElement<3 > PottsElement3;
-typedef PottsElement<3 >* PottsElement3Ptr;
-typedef boost::shared_ptr<PottsElement<3 > > SharedPtrPottsElement3;
-typedef std::vector<PottsElement3Ptr> VectorPottsElement3Ptr;
-typedef std::vector<SharedPtrPottsElement3> VectorSharedPtrPottsElement3;
 typedef TetrahedralMesh<2,2 > TetrahedralMesh2_2;
 typedef TetrahedralMesh<3,3 > TetrahedralMesh3_3;
 typedef AbstractTetrahedralMesh<2,2 > AbstractTetrahedralMesh2_2;
@@ -346,18 +298,6 @@ typedef VertexMesh<2,2 > VertexMesh2_2;
 typedef VertexMesh<3,3 > VertexMesh3_3;
 typedef MutableVertexMesh<2,2 > MutableVertexMesh2_2;
 typedef MutableVertexMesh<3,3 > MutableVertexMesh3_3;
-typedef std::pair<Node3Ptr, Node3Ptr > PairNode3PtrNode3Ptr;
-typedef std::pair<Node2Ptr, Node2Ptr > PairNode2PtrNode2Ptr;
-typedef std::vector<PairNode3PtrNode3Ptr > VectorPairNode3PtrNode3Ptr;
-typedef std::vector<PairNode2PtrNode2Ptr > VectorPairNode2PtrNode2Ptr;
-typedef std::vector<VertexElement<1,2>* > VectorVertexElement12Ptr;
-typedef std::vector<VertexElement<2,2>* > VectorVertexElement22Ptr;
-typedef std::vector<VertexElement<2,3>* > VectorVertexElement23Ptr;
-typedef std::vector<VertexElement<3,3>* > VectorVertexElement33Ptr;
-typedef std::set<CellPtr > SetCellPtr;
-typedef std::map<Node2Ptr, c_vector<double, 2>  > MapNode2PtrCVectorDouble2;
-typedef std::map<Node3Ptr, c_vector<double, 3>  > MapNode3PtrCVectorDouble3;
-typedef std::map<CellPtr, unsigned > MapCellPtrUnsigned;
 typedef AbstractCellBasedSimulation<2,2 > AbstractCellBasedSimulation2_2;
 typedef AbstractCellBasedSimulation<3,3 > AbstractCellBasedSimulation3_3;
 typedef OnLatticeSimulation<2 > OnLatticeSimulation2;
@@ -403,15 +343,7 @@ typedef PlaneBasedCellKiller<3 > PlaneBasedCellKiller3;
 typedef ApoptoticCellKiller<2 > ApoptoticCellKiller2;
 typedef ApoptoticCellKiller<3 > ApoptoticCellKiller3;
 typedef AbstractForce<2,2 > AbstractForce2_2;
-typedef AbstractForce<2,2 >* AbstractForce2_2Ptr;
-typedef boost::shared_ptr<AbstractForce<2,2 > > SharedPtrAbstractForce2_2;
-typedef std::vector<AbstractForce2_2Ptr> VectorAbstractForce2_2Ptr;
-typedef std::vector<SharedPtrAbstractForce2_2> VectorSharedPtrAbstractForce2_2;
 typedef AbstractForce<3,3 > AbstractForce3_3;
-typedef AbstractForce<3,3 >* AbstractForce3_3Ptr;
-typedef boost::shared_ptr<AbstractForce<3,3 > > SharedPtrAbstractForce3_3;
-typedef std::vector<AbstractForce3_3Ptr> VectorAbstractForce3_3Ptr;
-typedef std::vector<SharedPtrAbstractForce3_3> VectorSharedPtrAbstractForce3_3;
 typedef AbstractTwoBodyInteractionForce<2,2 > AbstractTwoBodyInteractionForce2_2;
 typedef AbstractTwoBodyInteractionForce<3,3 > AbstractTwoBodyInteractionForce3_3;
 typedef GeneralisedLinearSpringForce<2,2 > GeneralisedLinearSpringForce2_2;
@@ -423,15 +355,7 @@ typedef AbstractVertexBasedDivisionRule<3 > AbstractVertexBasedDivisionRule3;
 typedef AbstractCaUpdateRule<2 > AbstractCaUpdateRule2;
 typedef AbstractCaUpdateRule<3 > AbstractCaUpdateRule3;
 typedef AbstractUpdateRule<2 > AbstractUpdateRule2;
-typedef AbstractUpdateRule<2 >* AbstractUpdateRule2Ptr;
-typedef boost::shared_ptr<AbstractUpdateRule<2 > > SharedPtrAbstractUpdateRule2;
-typedef std::vector<AbstractUpdateRule2Ptr> VectorAbstractUpdateRule2Ptr;
-typedef std::vector<SharedPtrAbstractUpdateRule2> VectorSharedPtrAbstractUpdateRule2;
 typedef AbstractUpdateRule<3 > AbstractUpdateRule3;
-typedef AbstractUpdateRule<3 >* AbstractUpdateRule3Ptr;
-typedef boost::shared_ptr<AbstractUpdateRule<3 > > SharedPtrAbstractUpdateRule3;
-typedef std::vector<AbstractUpdateRule3Ptr> VectorAbstractUpdateRule3Ptr;
-typedef std::vector<SharedPtrAbstractUpdateRule3> VectorSharedPtrAbstractUpdateRule3;
 typedef DiffusionCaUpdateRule<2 > DiffusionCaUpdateRule2;
 typedef DiffusionCaUpdateRule<3 > DiffusionCaUpdateRule3;
 typedef AbstractPottsUpdateRule<2 > AbstractPottsUpdateRule2;
@@ -465,10 +389,6 @@ typedef AbstractGrowingDomainPdeModifier<3 > AbstractGrowingDomainPdeModifier3;
 typedef EllipticGrowingDomainPdeModifier<2 > EllipticGrowingDomainPdeModifier2;
 typedef EllipticGrowingDomainPdeModifier<3 > EllipticGrowingDomainPdeModifier3;
 typedef Cell Cell;
-typedef Cell* CellPtr;
-typedef boost::shared_ptr<Cell > SharedPtrCell;
-typedef std::vector<CellPtr> VectorCellPtr;
-typedef std::vector<SharedPtrCell> VectorSharedPtrCell;
 typedef CellsGenerator<UniformCellCycleModel,2 > CellsGeneratorUniformCellCycleModel_2;
 typedef CellsGenerator<UniformCellCycleModel,3 > CellsGeneratorUniformCellCycleModel_3;
 typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,2 > CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
@@ -478,10 +398,6 @@ typedef CellsGenerator<UniformG1GenerationalCellCycleModel,3 > CellsGeneratorUni
 typedef CellsGenerator<NoCellCycleModel,2 > CellsGeneratorNoCellCycleModel_2;
 typedef CellsGenerator<NoCellCycleModel,3 > CellsGeneratorNoCellCycleModel_3;
 typedef AbstractCellProperty AbstractCellProperty;
-typedef AbstractCellProperty* AbstractCellPropertyPtr;
-typedef boost::shared_ptr<AbstractCellProperty > SharedPtrAbstractCellProperty;
-typedef std::vector<AbstractCellPropertyPtr> VectorAbstractCellPropertyPtr;
-typedef std::vector<SharedPtrAbstractCellProperty> VectorSharedPtrAbstractCellProperty;
 typedef AbstractTargetAreaModifier<2 > AbstractTargetAreaModifier2;
 typedef AbstractTargetAreaModifier<3 > AbstractTargetAreaModifier3;
 typedef SimpleTargetAreaModifier<2 > SimpleTargetAreaModifier2;
@@ -490,17 +406,10 @@ typedef VtkSceneModifier<2 > VtkSceneModifier2;
 typedef VtkSceneModifier<3 > VtkSceneModifier3;
 typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
 typedef AbstractCellBasedSimulationModifier<3,3 > AbstractCellBasedSimulationModifier3_3;
-typedef VtkScene<2 > VtkScene2;
-typedef VtkScene<3 > VtkScene3;
-typedef AbstractPyChasteActorGenerator<2 > AbstractPyChasteActorGenerator2;
-typedef AbstractPyChasteActorGenerator<3 > AbstractPyChasteActorGenerator3;
-typedef CellPopulationPyChasteActorGenerator<2 > CellPopulationPyChasteActorGenerator2;
-typedef CellPopulationPyChasteActorGenerator<3 > CellPopulationPyChasteActorGenerator3;
     }
 }
 
 // Need to specifically instantiate PETSc Vec and Mat 
-typedef boost::filesystem::path boost_filesystem_path;
 
  inline int Instantiation()
 {

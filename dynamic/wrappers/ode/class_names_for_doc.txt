@@ -1,9 +1,0 @@
-.. autoclass:: chaste.ode.AbstractOdeSystemInformation
-	:members:
-
-.. autoclass:: chaste.ode.AbstractPythonOdeSystemInformation
-	:members:
-
-.. autoclass:: chaste.ode.AbstractOdeSystem
-	:members:
-
