@@ -141,12 +141,7 @@
 #include "OffLatticeSimulation2_2.pypp.hpp"
 #include "OffLatticeSimulation3_3.pypp.hpp"
 
-#include "SmartPointers.hpp"
-
 namespace py = pybind11;
-
-
-PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
 {

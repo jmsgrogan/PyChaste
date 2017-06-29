@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef MeshBasedCellPopulationWithGhostNodes2_hpp__pyplusplus_wrapper
 #define MeshBasedCellPopulationWithGhostNodes2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_MeshBasedCellPopulationWithGhostNodes2_class(py::module &m);
 #endif // MeshBasedCellPopulationWithGhostNodes2_hpp__pyplusplus_wrapper

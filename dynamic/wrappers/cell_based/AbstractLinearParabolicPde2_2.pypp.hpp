@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef AbstractLinearParabolicPde2_2_hpp__pyplusplus_wrapper
 #define AbstractLinearParabolicPde2_2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_AbstractLinearParabolicPde2_2_class(py::module &m);
 #endif // AbstractLinearParabolicPde2_2_hpp__pyplusplus_wrapper

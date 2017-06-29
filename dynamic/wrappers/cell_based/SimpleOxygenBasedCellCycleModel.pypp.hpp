@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef SimpleOxygenBasedCellCycleModel_hpp__pyplusplus_wrapper
 #define SimpleOxygenBasedCellCycleModel_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_SimpleOxygenBasedCellCycleModel_class(py::module &m);
 #endif // SimpleOxygenBasedCellCycleModel_hpp__pyplusplus_wrapper

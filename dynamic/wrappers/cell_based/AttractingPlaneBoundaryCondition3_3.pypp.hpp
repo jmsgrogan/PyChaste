@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef AttractingPlaneBoundaryCondition3_3_hpp__pyplusplus_wrapper
 #define AttractingPlaneBoundaryCondition3_3_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_AttractingPlaneBoundaryCondition3_3_class(py::module &m);
 #endif // AttractingPlaneBoundaryCondition3_3_hpp__pyplusplus_wrapper

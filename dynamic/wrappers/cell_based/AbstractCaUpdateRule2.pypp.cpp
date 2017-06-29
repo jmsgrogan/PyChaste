@@ -4,39 +4,42 @@
 #include "AbstractCaUpdateRule2.pypp.hpp"
 
 namespace py = pybind11;
-
 typedef AbstractCaUpdateRule<2 > AbstractCaUpdateRule2;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractCaUpdateRule2_Overloads : public AbstractCaUpdateRule2{
     public:
     using AbstractCaUpdateRule2::AbstractCaUpdateRule;
-
-        double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<2> & rCellPopulation, double dt, double deltaX, ::CellPtr cell)override {
+    double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<2> & rCellPopulation, double dt, double deltaX, ::CellPtr cell) override {
         PYBIND11_OVERLOAD_PURE(
-        double,
-        AbstractCaUpdateRule2,
-        EvaluateProbability,
-        currentNodeIndex, 
-        targetNodeIndex, 
-        rCellPopulation, 
-        dt, 
-        deltaX, 
-        cell        
-        );
-        }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
+            double,
+            AbstractCaUpdateRule2,
+            EvaluateProbability,
+            currentNodeIndex, 
+targetNodeIndex, 
+rCellPopulation, 
+dt, 
+deltaX, 
+cell);
+    }
+    void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
         PYBIND11_OVERLOAD(
-        void,
-        AbstractCaUpdateRule2,
-        OutputUpdateRuleParameters,
-        rParamsFile        
-        );
-        }
+            void,
+            AbstractCaUpdateRule2,
+            OutputUpdateRuleParameters,
+            rParamsFile);
+    }
 
 };
 void register_AbstractCaUpdateRule2_class(py::module &m){
-    py::class_<AbstractCaUpdateRule2, AbstractCaUpdateRule2_Overloads, std::shared_ptr<AbstractCaUpdateRule2 >  >(m, "AbstractCaUpdateRule2")
-        .def("EvaluateProbability", (double (AbstractCaUpdateRule2::*)(unsigned int, unsigned int, ::CaBasedCellPopulation<2> &, double, double, ::CellPtr)) &AbstractCaUpdateRule2::EvaluateProbability, "" , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"), py::arg("dt"), py::arg("deltaX"), py::arg("cell"))
-        .def("OutputUpdateRuleParameters", (void (AbstractCaUpdateRule2::*)(::out_stream &)) &AbstractCaUpdateRule2::OutputUpdateRuleParameters, "" , py::arg("rParamsFile"))
+py::class_<AbstractCaUpdateRule2 , AbstractCaUpdateRule2_Overloads , boost::shared_ptr<AbstractCaUpdateRule2 >   >(m, "AbstractCaUpdateRule2")
+        .def(
+            "EvaluateProbability", 
+            (double(AbstractCaUpdateRule2::*)(unsigned int, unsigned int, ::CaBasedCellPopulation<2> &, double, double, ::CellPtr)) &AbstractCaUpdateRule2::EvaluateProbability, 
+            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"), py::arg("dt"), py::arg("deltaX"), py::arg("cell"))
+        .def(
+            "OutputUpdateRuleParameters", 
+            (void(AbstractCaUpdateRule2::*)(::out_stream &)) &AbstractCaUpdateRule2::OutputUpdateRuleParameters, 
+            " " , py::arg("rParamsFile"))
     ;
 }

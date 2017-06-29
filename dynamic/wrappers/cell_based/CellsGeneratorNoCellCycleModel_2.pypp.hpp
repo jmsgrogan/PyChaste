@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef CellsGeneratorNoCellCycleModel_2_hpp__pyplusplus_wrapper
 #define CellsGeneratorNoCellCycleModel_2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_CellsGeneratorNoCellCycleModel_2_class(py::module &m);
 #endif // CellsGeneratorNoCellCycleModel_2_hpp__pyplusplus_wrapper

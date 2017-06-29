@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef EllipticGrowingDomainPdeModifier3_hpp__pyplusplus_wrapper
 #define EllipticGrowingDomainPdeModifier3_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_EllipticGrowingDomainPdeModifier3_class(py::module &m);
 #endif // EllipticGrowingDomainPdeModifier3_hpp__pyplusplus_wrapper

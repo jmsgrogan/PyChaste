@@ -4,12 +4,15 @@
 #include "CellLabel.pypp.hpp"
 
 namespace py = pybind11;
-
 typedef CellLabel CellLabel;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_CellLabel_class(py::module &m){
-    py::class_<CellLabel, std::shared_ptr<CellLabel > , AbstractCellProperty  >(m, "CellLabel")
+py::class_<CellLabel  , boost::shared_ptr<CellLabel >  , AbstractCellProperty  >(m, "CellLabel")
         .def(py::init<unsigned int >())
-        .def("GetColour", (unsigned int (CellLabel::*)() const ) &CellLabel::GetColour, "" )
+        .def(
+            "GetColour", 
+            (unsigned int(CellLabel::*)() const ) &CellLabel::GetColour, 
+            " " )
     ;
 }

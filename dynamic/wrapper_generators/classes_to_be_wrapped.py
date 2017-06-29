@@ -227,5 +227,5 @@ visualization_classes = [CppClassInfo('VtkScene'),
                          CppClassInfo('AbstractPyChasteActorGenerator'),
                          CppClassInfo('CellPopulationPyChasteActorGenerator'), ]
 
-classes = core_classes  + ode_classes + pde_classes + mesh_classes
+classes = core_classes + ode_classes + pde_classes + mesh_classes
 classes += cell_based_classes + tutorial_classes + visualization_classes

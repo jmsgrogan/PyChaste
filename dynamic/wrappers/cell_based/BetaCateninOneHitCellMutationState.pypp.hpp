@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef BetaCateninOneHitCellMutationState_hpp__pyplusplus_wrapper
 #define BetaCateninOneHitCellMutationState_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_BetaCateninOneHitCellMutationState_class(py::module &m);
 #endif // BetaCateninOneHitCellMutationState_hpp__pyplusplus_wrapper

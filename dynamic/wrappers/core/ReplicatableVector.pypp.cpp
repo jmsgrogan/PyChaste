@@ -4,15 +4,24 @@
 #include "ReplicatableVector.pypp.hpp"
 
 namespace py = pybind11;
-
 typedef ReplicatableVector ReplicatableVector;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_ReplicatableVector_class(py::module &m){
-    py::class_<ReplicatableVector, std::shared_ptr<ReplicatableVector >  >(m, "ReplicatableVector")
+py::class_<ReplicatableVector  , boost::shared_ptr<ReplicatableVector >   >(m, "ReplicatableVector")
         .def(py::init< >())
         .def(py::init<unsigned int >())
-        .def("GetSize", (unsigned int (ReplicatableVector::*)()) &ReplicatableVector::GetSize, "" )
-        .def("Resize", (void (ReplicatableVector::*)(unsigned int)) &ReplicatableVector::Resize, "" , py::arg("size"))
-        .def("Replicate", (void (ReplicatableVector::*)(unsigned int, unsigned int)) &ReplicatableVector::Replicate, "" , py::arg("lo"), py::arg("hi"))
+        .def(
+            "GetSize", 
+            (unsigned int(ReplicatableVector::*)()) &ReplicatableVector::GetSize, 
+            " " )
+        .def(
+            "Resize", 
+            (void(ReplicatableVector::*)(unsigned int)) &ReplicatableVector::Resize, 
+            " " , py::arg("size"))
+        .def(
+            "Replicate", 
+            (void(ReplicatableVector::*)(unsigned int, unsigned int)) &ReplicatableVector::Replicate, 
+            " " , py::arg("lo"), py::arg("hi"))
     ;
 }

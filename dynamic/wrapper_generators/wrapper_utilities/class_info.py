@@ -70,6 +70,7 @@ class CppClassInfo():
         self.include_vec_ptr_self = include_vec_ptr_self
         self.include_ptr_self = include_ptr_self
         self.include_raw_ptr_self = include_raw_ptr_self
+        self.include_in_this_module = True
         if constructor_arg_type_excludes is None:
             self.constructor_arg_type_excludes = []
         else:

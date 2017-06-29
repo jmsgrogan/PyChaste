@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef AbstractCellProliferativeType_hpp__pyplusplus_wrapper
 #define AbstractCellProliferativeType_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_AbstractCellProliferativeType_class(py::module &m);
 #endif // AbstractCellProliferativeType_hpp__pyplusplus_wrapper

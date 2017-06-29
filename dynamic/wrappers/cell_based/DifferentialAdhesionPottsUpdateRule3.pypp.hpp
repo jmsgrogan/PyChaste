@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef DifferentialAdhesionPottsUpdateRule3_hpp__pyplusplus_wrapper
 #define DifferentialAdhesionPottsUpdateRule3_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_DifferentialAdhesionPottsUpdateRule3_class(py::module &m);
 #endif // DifferentialAdhesionPottsUpdateRule3_hpp__pyplusplus_wrapper

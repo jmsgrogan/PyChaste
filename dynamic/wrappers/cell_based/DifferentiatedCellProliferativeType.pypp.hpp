@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef DifferentiatedCellProliferativeType_hpp__pyplusplus_wrapper
 #define DifferentiatedCellProliferativeType_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_DifferentiatedCellProliferativeType_class(py::module &m);
 #endif // DifferentiatedCellProliferativeType_hpp__pyplusplus_wrapper

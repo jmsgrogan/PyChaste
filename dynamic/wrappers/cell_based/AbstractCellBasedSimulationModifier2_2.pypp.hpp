@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper
 #define AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_AbstractCellBasedSimulationModifier2_2_class(py::module &m);
 #endif // AbstractCellBasedSimulationModifier2_2_hpp__pyplusplus_wrapper

@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef AbstractCentreBasedCellPopulation2_2_hpp__pyplusplus_wrapper
 #define AbstractCentreBasedCellPopulation2_2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_AbstractCentreBasedCellPopulation2_2_class(py::module &m);
 #endif // AbstractCentreBasedCellPopulation2_2_hpp__pyplusplus_wrapper

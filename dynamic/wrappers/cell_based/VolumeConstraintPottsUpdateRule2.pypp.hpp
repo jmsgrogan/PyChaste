@@ -1,6 +1,5 @@
-namespace py = pybind11;
-
 #ifndef VolumeConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper
 #define VolumeConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper
+namespace py = pybind11;
 void register_VolumeConstraintPottsUpdateRule2_class(py::module &m);
 #endif // VolumeConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper
