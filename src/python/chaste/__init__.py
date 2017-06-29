@@ -36,12 +36,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os, sys
 
-import warnings
-
-# At the moment there are many harmless duplicate registration warnings from boost python. Ignore them until a suitable
-# way to avoid duplicate registration during wrapper building is found.
-warnings.filterwarnings("ignore")
-
 from _chaste_project_PyChaste_preload import *
 import chaste.core
  

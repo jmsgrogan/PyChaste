@@ -57,6 +57,10 @@ class PyBind11ClassWriter():
             if eachArg.decl_string.replace(" ", "") in self.exclusion_args:
                 return
 
+            for eachExclude in self.class_info.constructor_arg_type_excludes:
+                if eachExclude in eachArg.decl_string:
+                    return
+
         for eachArg in ctor_decl.argument_types:
             if "iterator" in eachArg.decl_string.lower():
                 return

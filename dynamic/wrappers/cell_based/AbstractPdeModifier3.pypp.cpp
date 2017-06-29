@@ -63,7 +63,6 @@ void register_AbstractPdeModifier3_class(py::module &m){
         .def("rGetDependentVariableName", (::std::string & (AbstractPdeModifier3::*)()) &AbstractPdeModifier3::rGetDependentVariableName, "" )
         .def("HasAveragedSourcePde", (bool (AbstractPdeModifier3::*)()) &AbstractPdeModifier3::HasAveragedSourcePde, "" )
         .def("SetUpSourceTermsForAveragedSourcePde", (void (AbstractPdeModifier3::*)(::TetrahedralMesh<3, 3> *, ::std::map<boost::shared_ptr<Cell>, unsigned int, std::less<boost::shared_ptr<Cell> >, std::allocator<std::pair<const boost::shared_ptr<Cell>, unsigned int> > > *)) &AbstractPdeModifier3::SetUpSourceTermsForAveragedSourcePde, "" , py::arg("pMesh"), py::arg("pCellPdeElementMap") = nullptr)
-        .def("GetFeMesh", (::TetrahedralMesh<3, 3> * (AbstractPdeModifier3::*)() const ) &AbstractPdeModifier3::GetFeMesh, "" )
         .def("SetupSolve", (void (AbstractPdeModifier3::*)(::AbstractCellPopulation<3, 3> &, ::std::string)) &AbstractPdeModifier3::SetupSolve, "" , py::arg("rCellPopulation"), py::arg("outputDirectory"))
         .def("UpdateAtEndOfTimeStep", (void (AbstractPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &AbstractPdeModifier3::UpdateAtEndOfTimeStep, "" , py::arg("rCellPopulation"))
         .def("UpdateAtEndOfOutputTimeStep", (void (AbstractPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &AbstractPdeModifier3::UpdateAtEndOfOutputTimeStep, "" , py::arg("rCellPopulation"))

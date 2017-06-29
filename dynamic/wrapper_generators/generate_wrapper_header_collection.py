@@ -114,7 +114,7 @@ class CastXmlHeaderGenerator():
 
         # Now our own includes
         for eachClass in self.class_info_collection:
-            if eachClass.needs_include_file:
+            if eachClass.full_path is not None:
                 self.header_string += '#include "' + eachClass.name + '.hpp"\n'
 
         # Add the template instantiations

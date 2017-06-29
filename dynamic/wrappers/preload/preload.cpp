@@ -50,7 +50,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkTextProperty.h>
 #include "UblasIncludes.hpp"
 #include "Exception.hpp"
-#include "PythonObjectConverters.hpp"
+//#include "PythonObjectConverters.hpp"
 
 namespace py = pybind11;
 
@@ -149,7 +149,7 @@ namespace pybind11 { namespace detail {
   };
 }} // namespace pybind11::detail
 
-PYBIND11_VTK_TYPECASTER(vtkPolyData)
+//PYBIND11_VTK_TYPECASTER(vtkPolyData)
 
 class simple
 {

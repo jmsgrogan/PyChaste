@@ -34,12 +34,6 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import warnings
-
-# At the moment there are many harmless duplicate registration warnings from boost python. Ignore them until a suitable
-# way to avoid duplicate registration during wrapper building is found.
-#warnings.filterwarnings("ignore")
-
 import chaste
 from chaste.cell_based._chaste_project_PyChaste_cell_based import *
 from fortests import *

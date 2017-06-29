@@ -113,8 +113,6 @@ void register_VertexMesh3_3_class(py::module &m){
     py::class_<VertexMesh3_3, VertexMesh3_3_Overloads, std::shared_ptr<VertexMesh3_3 >  >(m, "VertexMesh3_3")
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> >, ::std::vector<VertexElement<3, 3> *, std::allocator<VertexElement<3, 3> *> > >())
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> >, ::std::vector<VertexElement<2, 3> *, std::allocator<VertexElement<2, 3> *> >, ::std::vector<VertexElement<3, 3> *, std::allocator<VertexElement<3, 3> *> > >())
-        .def(py::init<::TetrahedralMesh<2, 2> &, bool >())
-        .def(py::init<::TetrahedralMesh<3, 3> & >())
         .def(py::init< >())
         .def("GetElementIteratorBegin", (::VertexMesh<3, 3>::VertexElementIterator (VertexMesh3_3::*)(bool)) &VertexMesh3_3::GetElementIteratorBegin, "" , py::arg("skipDeletedElements") = true)
         .def("GetElementIteratorEnd", (::VertexMesh<3, 3>::VertexElementIterator (VertexMesh3_3::*)()) &VertexMesh3_3::GetElementIteratorEnd, "" )

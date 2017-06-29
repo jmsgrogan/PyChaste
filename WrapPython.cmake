@@ -71,6 +71,10 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers)
 
 set (CMAKE_CXX_STANDARD 11)
+if(CMAKE_COMPILER_IS_GNUCXX)
+        # https://svn.boost.org/trac/boost/ticket/9240
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fext-numeric-literals")
+endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/pybind11/include)
 
 set(PYBIND11_PYTHON_VERSION 2.7)

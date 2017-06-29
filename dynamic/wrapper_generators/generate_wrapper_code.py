@@ -43,6 +43,7 @@ except:
    import pickle
 import ntpath
 from pygccxml import parser, declarations
+import pygccxml.declarations.dependencies
 import wrapper_utilities.writers
 
 chaste_license = """
@@ -151,6 +152,16 @@ class PyBind11WrapperGenerator():
                                  eachModule + ".main.cpp", "w")
             main_cpp_file.write('#include <pybind11/pybind11.h>\n')
             for eachClass in self.class_info_collection:
+                
+                decl_found = True
+                for fullName in eachClass.get_full_names():
+                    if len(self.source_ns.classes(fullName, allow_empty=True)) == 0:
+                        decl_found = False
+                        break
+
+                if not decl_found:
+                    continue
+                
                 if not eachClass.include_file_only and eachClass.component == eachModule:
                     short_class_names = eachClass.get_short_names()
                     for idx, eachName in enumerate(short_class_names):
@@ -165,6 +176,15 @@ class PyBind11WrapperGenerator():
             class_list = self.class_info_collection
             for eachClass in class_list:
 
+                decl_found = True
+                for fullName in eachClass.get_full_names():
+                    if len(self.source_ns.classes(fullName, allow_empty=True)) == 0:
+                        decl_found = False
+                        break
+
+                if not decl_found:
+                    continue
+
                 if eachClass.include_file_only:
                     continue
 
@@ -177,6 +197,12 @@ class PyBind11WrapperGenerator():
                 short_class_names = eachClass.get_short_names()
                 for idx, fullName in enumerate(full_class_names):
                     class_decl = self.source_ns.class_(fullName)
+
+#                     print "Class: ", eachClass.name,
+#                     print "Deps:"
+#                     for eachDep in declarations.dependencies.get_dependencies_from_decl(class_decl):
+#                         print eachDep.declaration.name
+                    class_decl.location.file_name
                     class_writer.class_decls.append(class_decl)
 
                     short_name = short_class_names[idx]

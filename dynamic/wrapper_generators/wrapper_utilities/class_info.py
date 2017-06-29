@@ -51,7 +51,8 @@ class CppClassInfo():
                  declaration_code=None,
                  needs_instantiation=True, name_override=None,
                  include_vec_ptr_self=False,
-                 include_ptr_self=False, include_raw_ptr_self=False):
+                 include_ptr_self=False, include_raw_ptr_self=False,
+                 constructor_arg_type_excludes=None):
 
         self.name = name
         self.component = component
@@ -69,6 +70,10 @@ class CppClassInfo():
         self.include_vec_ptr_self = include_vec_ptr_self
         self.include_ptr_self = include_ptr_self
         self.include_raw_ptr_self = include_raw_ptr_self
+        if constructor_arg_type_excludes is None:
+            self.constructor_arg_type_excludes = []
+        else:
+            self.constructor_arg_type_excludes = constructor_arg_type_excludes
         self.name_replacements = {"double": "Double",
                                   "unsigned int": "Unsigned",
                                   "Unsigned int": "Unsigned",
