@@ -36,16 +36,12 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 This scipt automatically generates Python bindings using a rule based approach
 """
 import sys
-sys.setrecursionlimit(3000) # Avoid: RuntimeError: maximum recursion depth exceeded in cmp
 import os
 try:
    import cPickle as pickle
 except:
    import pickle
 import ntpath
-from pyplusplus import module_builder
-from pyplusplus.module_builder import call_policies, file_cache_t
-from pyplusplus import messages
 from pygccxml import parser, declarations
 import wrapper_utilities.writers
 
@@ -89,17 +85,19 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 class PyBind11WrapperGenerator():
 
-    def __init__(self, wrapper_root, header_collection,
-                 castxml_binary, module_name, includes,
+    def __init__(self, source_root, wrapper_root,
+                 header_collection, castxml_binary, module_name, includes,
                  class_info_collection):
 
         self.license = chaste_license
+        self.source_root = source_root
         self.wrapper_root = wrapper_root
         self.header_collection = header_collection
         self.castxml_binary = castxml_binary
         self.module_name = module_name
         self.includes = includes
         self.global_ns = None
+        self.source_ns = None
         self.wrapper_header_name = "wrapper_header_collection.hpp"
         self.class_info_collection = class_info_collection
         self.module_prefix = "_chaste_project_PyChaste_"
@@ -116,11 +114,25 @@ class PyBind11WrapperGenerator():
                                                                     cflags="-std=c++11",
                                                                     include_paths=self.includes)
 
+        print "INFO: Parsing Code"
         decls = parser.parse([self.wrapper_root + "/" +
-                              self.wrapper_header_name], xml_generator_config)
+                              self.wrapper_header_name], xml_generator_config,
+                             compilation_mode=parser.COMPILATION_MODE.ALL_AT_ONCE)
 
         # Get access to the global namespace
         self.global_ns = declarations.get_global_namespace(decls)
+
+        # Clean decls to only include those for which file locations exist
+        print "INFO: Cleaning Decls"
+        query = declarations.custom_matcher_t(lambda decl: decl.location is not None)
+        decls_loc_not_none = self.global_ns.decls(function=query)
+
+        # Identify decls in our source tree
+        source_decls = [decl for decl in decls_loc_not_none if self.source_root in decl.location.file_name]
+        self.source_ns = declarations.namespace_t("source", source_decls)
+
+        print "INFO: Optimizing Decls"
+        self.source_ns.init_optimizer()
 
     def generate_wrappers(self):
 
@@ -164,7 +176,7 @@ class PyBind11WrapperGenerator():
                 full_class_names = eachClass.get_full_names()
                 short_class_names = eachClass.get_short_names()
                 for idx, fullName in enumerate(full_class_names):
-                    class_decl = self.global_ns.class_(fullName)
+                    class_decl = self.source_ns.class_(fullName)
                     class_writer.class_decls.append(class_decl)
 
                     short_name = short_class_names[idx]
@@ -177,16 +189,19 @@ class PyBind11WrapperGenerator():
 
 if __name__ == "__main__":
 
-    work_dir = sys.argv[1]
-    header_collection = sys.argv[2]
-    castxml_binary = sys.argv[3]
-    module_name = sys.argv[4]
-    includes = sys.argv[5:]
+    source_root = sys.argv[1]
+    wrapper_root = sys.argv[2]
+    header_collection = sys.argv[3]
+    castxml_binary = sys.argv[4]
+    module_name = sys.argv[5]
+    includes = sys.argv[6:]
 
-    with open(work_dir + "/dynamic/wrappers/class_data.p", 'rb') as fp:
+    with open(wrapper_root + "/class_data.p", 'rb') as fp:
             class_info_collection = pickle.load(fp)
 
-    wrapper_generator = PyBind11WrapperGenerator(work_dir+"/dynamic/wrappers/", header_collection,
+    wrapper_generator = PyBind11WrapperGenerator(source_root,
+                                                 wrapper_root,
+                                                 header_collection,
                                                  castxml_binary, module_name,
                                                  includes,
                                                  class_info_collection)

@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef UniformCellCycleModel UniformCellCycleModel;
+typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
+
 class UniformCellCycleModel_Overloads : public UniformCellCycleModel{
     public:
     using UniformCellCycleModel::UniformCellCycleModel;
 
-        void SetCellCycleDuration() override {
+        void SetCellCycleDuration()override {
         PYBIND11_OVERLOAD(
         void,
         UniformCellCycleModel,
@@ -18,15 +20,15 @@ class UniformCellCycleModel_Overloads : public UniformCellCycleModel{
         
         );
         }
-        ::AbstractCellCycleModel * CreateCellCycleModel() override {
+        ::AbstractCellCycleModel * CreateCellCycleModel()override {
         PYBIND11_OVERLOAD(
-        ::AbstractCellCycleModel *,
+        _AbstractCellCycleModelPtr,
         UniformCellCycleModel,
         CreateCellCycleModel,
         
         );
         }
-        double GetAverageTransitCellCycleTime() override {
+        double GetAverageTransitCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         UniformCellCycleModel,
@@ -34,7 +36,7 @@ class UniformCellCycleModel_Overloads : public UniformCellCycleModel{
         
         );
         }
-        double GetAverageStemCellCycleTime() override {
+        double GetAverageStemCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         UniformCellCycleModel,
@@ -42,7 +44,7 @@ class UniformCellCycleModel_Overloads : public UniformCellCycleModel{
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         UniformCellCycleModel,

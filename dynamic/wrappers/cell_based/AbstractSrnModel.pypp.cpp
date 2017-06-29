@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AbstractSrnModel AbstractSrnModel;
+typedef ::AbstractSrnModel * _AbstractSrnModelPtr;
+
 class AbstractSrnModel_Overloads : public AbstractSrnModel{
     public:
     using AbstractSrnModel::AbstractSrnModel;
 
-        void Initialise() override {
+        void Initialise()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSrnModel,
@@ -18,7 +20,7 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
         
         );
         }
-        void InitialiseDaughterCell() override {
+        void InitialiseDaughterCell()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSrnModel,
@@ -26,7 +28,7 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
         
         );
         }
-        void SimulateToCurrentTime() override {
+        void SimulateToCurrentTime()override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractSrnModel,
@@ -34,7 +36,7 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
         
         );
         }
-        void ResetForDivision() override {
+        void ResetForDivision()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSrnModel,
@@ -42,15 +44,15 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
         
         );
         }
-        ::AbstractSrnModel * CreateSrnModel() override {
+        ::AbstractSrnModel * CreateSrnModel()override {
         PYBIND11_OVERLOAD_PURE(
-        ::AbstractSrnModel *,
+        _AbstractSrnModelPtr,
         AbstractSrnModel,
         CreateSrnModel,
         
         );
         }
-        void OutputSrnModelParameters(::out_stream & rParamsFile) override {
+        void OutputSrnModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSrnModel,
@@ -67,7 +69,7 @@ void register_AbstractSrnModel_class(py::module &m){
         .def("InitialiseDaughterCell", (void (AbstractSrnModel::*)()) &AbstractSrnModel::InitialiseDaughterCell, "" )
         .def("GetCell", (::CellPtr (AbstractSrnModel::*)()) &AbstractSrnModel::GetCell, "" )
         .def("SetSimulatedToTime", (void (AbstractSrnModel::*)(double)) &AbstractSrnModel::SetSimulatedToTime, "" , py::arg("simulatedToTime"))
-        .def("GetSimulatedToTime", (double (AbstractSrnModel::*)()) &AbstractSrnModel::GetSimulatedToTime, "" )
+        .def("GetSimulatedToTime", (double (AbstractSrnModel::*)() const ) &AbstractSrnModel::GetSimulatedToTime, "" )
         .def("SimulateToCurrentTime", (void (AbstractSrnModel::*)()) &AbstractSrnModel::SimulateToCurrentTime, "" )
         .def("ResetForDivision", (void (AbstractSrnModel::*)()) &AbstractSrnModel::ResetForDivision, "" )
         .def("CreateSrnModel", (::AbstractSrnModel * (AbstractSrnModel::*)()) &AbstractSrnModel::CreateSrnModel, "" )

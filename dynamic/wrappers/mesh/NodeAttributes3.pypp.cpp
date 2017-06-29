@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef NodeAttributes<3 > NodeAttributes3;
+
 void register_NodeAttributes3_class(py::module &m){
     py::class_<NodeAttributes3, std::shared_ptr<NodeAttributes3 >  >(m, "NodeAttributes3")
         .def(py::init< >())

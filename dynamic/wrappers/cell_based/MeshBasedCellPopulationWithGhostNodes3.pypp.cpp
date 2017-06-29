@@ -6,27 +6,31 @@
 namespace py = pybind11;
 
 typedef MeshBasedCellPopulationWithGhostNodes<3 > MeshBasedCellPopulationWithGhostNodes3;
+typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::CellPtr _CellPtr;
+
 class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPopulationWithGhostNodes3{
     public:
-    using MeshBasedCellPopulationWithGhostNodes3::MeshBasedCellPopulationWithGhostNodes<3>;
+    using MeshBasedCellPopulationWithGhostNodes3::MeshBasedCellPopulationWithGhostNodes;
 
-        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier() override {
+        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier()override {
         PYBIND11_OVERLOAD(
-        ::TetrahedralMesh<3, 3> *,
+        _TetrahedralMesh3_3Ptr,
         MeshBasedCellPopulationWithGhostNodes3,
         GetTetrahedralMeshForPdeModifier,
         
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         MeshBasedCellPopulationWithGhostNodes3,
         GetNeighbouringLocationIndices,
         pCell        
         );
         }
-        bool IsGhostNode(unsigned int index) override {
+        bool IsGhostNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
         bool,
         MeshBasedCellPopulationWithGhostNodes3,
@@ -34,7 +38,7 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
         index        
         );
         }
-        void UpdateGhostNodesAfterReMesh(::NodeMap & rMap) override {
+        void UpdateGhostNodesAfterReMesh(::NodeMap & rMap)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulationWithGhostNodes3,
@@ -42,16 +46,16 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
         rMap        
         );
         }
-        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell) override {
+        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         MeshBasedCellPopulationWithGhostNodes3,
         AddCell,
         pNewCell, 
         pParentCell        
         );
         }
-        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler) override {
+        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulationWithGhostNodes3,
@@ -59,7 +63,7 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
         rOutputFileHandler        
         );
         }
-        void WriteVtkResultsToFile(::std::string const & rDirectory) override {
+        void WriteVtkResultsToFile(::std::string const & rDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulationWithGhostNodes3,
@@ -67,7 +71,7 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
         rDirectory        
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulationWithGhostNodes3,
@@ -75,19 +79,11 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
         rParamsFile        
         );
         }
-        void AcceptCellWritersAcrossPopulation() override {
+        void AcceptCellWritersAcrossPopulation()override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulationWithGhostNodes3,
         AcceptCellWritersAcrossPopulation,
-        
-        );
-        }
-        void Validate() override {
-        PYBIND11_OVERLOAD(
-        void,
-        MeshBasedCellPopulationWithGhostNodes3,
-        Validate,
         
         );
         }

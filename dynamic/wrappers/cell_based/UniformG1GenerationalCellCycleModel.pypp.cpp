@@ -6,19 +6,21 @@
 namespace py = pybind11;
 
 typedef UniformG1GenerationalCellCycleModel UniformG1GenerationalCellCycleModel;
+typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
+
 class UniformG1GenerationalCellCycleModel_Overloads : public UniformG1GenerationalCellCycleModel{
     public:
     using UniformG1GenerationalCellCycleModel::UniformG1GenerationalCellCycleModel;
 
-        ::AbstractCellCycleModel * CreateCellCycleModel() override {
+        ::AbstractCellCycleModel * CreateCellCycleModel()override {
         PYBIND11_OVERLOAD(
-        ::AbstractCellCycleModel *,
+        _AbstractCellCycleModelPtr,
         UniformG1GenerationalCellCycleModel,
         CreateCellCycleModel,
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         UniformG1GenerationalCellCycleModel,
@@ -26,7 +28,7 @@ class UniformG1GenerationalCellCycleModel_Overloads : public UniformG1Generation
         rParamsFile        
         );
         }
-        void SetG1Duration() override {
+        void SetG1Duration()override {
         PYBIND11_OVERLOAD(
         void,
         UniformG1GenerationalCellCycleModel,

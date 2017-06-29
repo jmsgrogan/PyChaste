@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,3 > CellsGeneratorSimpleOxygenBasedCellCycleModel_3;
+
 void register_CellsGeneratorSimpleOxygenBasedCellCycleModel_3_class(py::module &m){
     py::class_<CellsGeneratorSimpleOxygenBasedCellCycleModel_3, std::shared_ptr<CellsGeneratorSimpleOxygenBasedCellCycleModel_3 >  >(m, "CellsGeneratorSimpleOxygenBasedCellCycleModel_3")
         .def("GenerateBasic", (void (CellsGeneratorSimpleOxygenBasedCellCycleModel_3::*)(::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, unsigned int, ::std::vector<unsigned int, std::allocator<unsigned int> > const, ::boost::shared_ptr<AbstractCellProperty>)) &CellsGeneratorSimpleOxygenBasedCellCycleModel_3::GenerateBasic, "" , py::arg("rCells"), py::arg("numCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("pCellProliferativeType") = boost::shared_ptr<AbstractCellProperty>())

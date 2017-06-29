@@ -37,14 +37,9 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <memory>
 #include <fstream>
 #include <string>
-#include "CheckpointArchiveTypes.hpp"
-#include <boost/python.hpp>
-#include <boost/python/module.hpp>
-#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-#include <boost/python/suite/indexing/map_indexing_suite.hpp>
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
-#include <numpy/ndarrayobject.h>
-#define _BACKWARD_BACKWARD_WARNING_H 1 //Cut out the vtk deprecated warning for now (gcc4.3)
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <pybind11/numpy.h>
 #include <vtkSmartPointer.h>
 #include <vtkImageData.h>
 #include <vtkPolyData.h>
@@ -55,98 +50,175 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vtkTextProperty.h>
 #include "UblasIncludes.hpp"
 #include "Exception.hpp"
-//#include "ChastePoint.hpp"
 #include "PythonObjectConverters.hpp"
-#include "Node.hpp"
 
-namespace bp = boost::python;
+namespace py = pybind11;
 
 /**
  *  This is the preload Chaste module. It contains functionality that should be loaded/registered when the Chaste Python
  *  package is first imported. This includes a collection of C++-Python converters.
  */
 
-// Helper for wrapping Chaste Exceptions
-PyObject *pChasteExceptionType = NULL;
+namespace pybind11 { namespace detail {
+  template <typename T> struct type_caster<c_vector<T, 2> >
+  {
+    public:
 
-void ExceptionToPython(Exception const &rChasteException)
+      typedef c_vector<T, 2> CVec;
+      PYBIND11_TYPE_CASTER(CVec, _("CVector_2"));
+
+      // Conversion part 1 (Python -> C++)
+      bool load(py::handle src, bool convert)
+      {
+        if (!convert && !py::array_t<T>::check_(src))
+        {
+            return false;
+        }
+
+        auto buf = py::array_t<T, py::array::c_style | py::array::forcecast>::ensure(src);
+        if (!buf)
+        {
+            return false;
+        }
+        if (buf.ndim() != 1  or buf.shape()[0] != 2 )
+        {
+            return false;
+        }
+        CVec vec;
+        for ( int i=0 ; i<2 ; i++ )
+        {
+            vec[i] = buf.data()[i];
+        }
+        value = vec;
+        return true;
+      }
+
+      //Conversion part 2 (C++ -> Python)
+      static py::handle cast(const c_vector<T, 2>& src, py::return_value_policy policy, py::handle parent)
+      {
+        std::vector<size_t> shape (1, 2);
+        std::vector<size_t> strides(1, sizeof(T));
+        double* data = src.size() ? const_cast<double *>(&src[0]) : static_cast<double *>(NULL);
+        py::array a(std::move(shape), std::move(strides), data);
+        return a.release();
+      }
+  };
+
+  template <typename T> struct type_caster<c_vector<T, 3> >
+  {
+    public:
+
+      typedef c_vector<T, 3> CVec;
+      PYBIND11_TYPE_CASTER(CVec, _("CVector_3"));
+
+      // Conversion part 1 (Python -> C++)
+      bool load(py::handle src, bool convert)
+      {
+        if (!convert && !py::array_t<T>::check_(src))
+        {
+            return false;
+        }
+
+        auto buf = py::array_t<T, py::array::c_style | py::array::forcecast>::ensure(src);
+        if (!buf)
+        {
+            return false;
+        }
+        if (buf.ndim() != 1  or buf.shape()[0] != 3 )
+        {
+            return false;
+        }
+        CVec vec;
+        for ( int i=0 ; i<3 ; i++ )
+        {
+            vec[i] = buf.data()[i];
+        }
+        value = vec;
+        return true;
+      }
+
+      //Conversion part 2 (C++ -> Python)
+      static py::handle cast(const c_vector<T, 3>& src, py::return_value_policy policy, py::handle parent)
+      {
+        std::vector<size_t> shape (1, 3);
+        std::vector<size_t> strides(1, sizeof(T));
+        double* data = src.size() ? const_cast<double *>(&src[0]) : static_cast<double *>(NULL);
+        py::array a(std::move(shape), std::move(strides), data);
+        return a.release();
+      }
+  };
+}} // namespace pybind11::detail
+
+PYBIND11_VTK_TYPECASTER(vtkPolyData)
+
+class simple
 {
-  assert(pChasteExceptionType != NULL);
-  boost::python::object pythonExceptionInstance(rChasteException);
-  PyErr_SetObject(pChasteExceptionType, pythonExceptionInstance.ptr());
-}
+    private:
 
+    vtkSmartPointer<vtkPolyData> mpoly;
+
+    public:
+
+    simple() :
+        mpoly(vtkSmartPointer<vtkPolyData>::New())
+    {
+
+    }
+
+    vtkSmartPointer<vtkPolyData> get_poly()
+    {
+        return mpoly;
+    }
+
+    void set_poly(vtkSmartPointer<vtkPolyData> poly)
+    {
+        mpoly = poly;
+        std::cout << mpoly->GetNumberOfPoints() << std::endl;
+    }
+};
 
 // Make the module
-BOOST_PYTHON_MODULE(_chaste_project_PyChaste_preload)
+PYBIND11_MODULE(_chaste_project_PyChaste_preload, m)
 {
-    // Import numpy arrays for use in converters
-    import_array();
-    numeric::array::set_module_and_type("numpy", "ndarray");
 
-    // Manage exceptions
-    bp::class_<Exception> myCPPExceptionClass("ChasteException", init<std::string, std::string, unsigned>());
-    myCPPExceptionClass.add_property("GetMessage", &Exception::GetMessage);
-    myCPPExceptionClass.add_property("GetShortMessage", &Exception::GetShortMessage);
+    // Register Exception
+    py::register_exception_translator([](std::exception_ptr p) {
+        try {
+            if (p) std::rethrow_exception(p);
+//        } catch (const Exception &e) {
+//            exc(e.GetShortMessage());
+        } catch (const Exception &e) {
+            PyErr_SetString(PyExc_RuntimeError, e.GetMessage().c_str());
+        }
+    });
 
-    pChasteExceptionType = myCPPExceptionClass.ptr();
-    bp::register_exception_translator<Exception>(&ExceptionToPython);
 
-    // To Python converters
-    bp::to_python_converter<vtkSmartPointer<vtkScalarBarActor>, VtkSmartPointerToPython<vtkScalarBarActor> >();
-    bp::to_python_converter<vtkSmartPointer<vtkColorTransferFunction>, VtkSmartPointerToPython<vtkColorTransferFunction> >();
-    bp::to_python_converter<vtkSmartPointer<vtkRenderer>, VtkSmartPointerToPython<vtkRenderer> >();
-    bp::to_python_converter<vtkSmartPointer<vtkUnsignedCharArray>, VtkSmartPointerToPython<vtkUnsignedCharArray> >();
-    bp::to_python_converter<vtkSmartPointer<vtkImageData>, VtkSmartPointerToPython<vtkImageData> >();
-    bp::to_python_converter<vtkSmartPointer<vtkPolyData>, VtkSmartPointerToPython<vtkPolyData> >();
-    bp::to_python_converter<c_vector<double, 2>, CVectorToNumpyArray<c_vector<double, 2> > >();
-    bp::to_python_converter<c_vector<double, 3>, CVectorToNumpyArray<c_vector<double, 3> > >();
-    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 3ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 3ul> > >();
-    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 2ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 2ul> > >();
-    bp::to_python_converter<c_vector<double, 6>, CVectorToNumpyArray<c_vector<double, 6> > >();
-    bp::to_python_converter<std::vector<double>, StdVectorToNumpyArray<std::vector<double> > >();
+    py::class_<simple>(m, "simple")
+        .def(py::init<>())
+        .def("get_poly", &simple::get_poly)
+        .def("set_poly", &simple::set_poly);
 
-    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkImageData>());
-    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkPoints>());
-    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkImageData> >());
-    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPolyData> >());
-    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPoints> >());
 
-    bp::class_<std::basic_ofstream<char, std::char_traits<char> >, std::auto_ptr<std::basic_ofstream<char, std::char_traits<char> > >, boost::noncopyable > ("StdOutputFileStream", bp::no_init);
+//    // To Python converters
+//    bp::to_python_converter<vtkSmartPointer<vtkScalarBarActor>, VtkSmartPointerToPython<vtkScalarBarActor> >();
+//    bp::to_python_converter<vtkSmartPointer<vtkColorTransferFunction>, VtkSmartPointerToPython<vtkColorTransferFunction> >();
+//    bp::to_python_converter<vtkSmartPointer<vtkRenderer>, VtkSmartPointerToPython<vtkRenderer> >();
+//    bp::to_python_converter<vtkSmartPointer<vtkUnsignedCharArray>, VtkSmartPointerToPython<vtkUnsignedCharArray> >();
+//    bp::to_python_converter<vtkSmartPointer<vtkImageData>, VtkSmartPointerToPython<vtkImageData> >();
+//    bp::to_python_converter<vtkSmartPointer<vtkPolyData>, VtkSmartPointerToPython<vtkPolyData> >();
+//    bp::to_python_converter<c_vector<double, 2>, CVectorToNumpyArray<c_vector<double, 2> > >();
+//    bp::to_python_converter<c_vector<double, 3>, CVectorToNumpyArray<c_vector<double, 3> > >();
+//    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 3ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 3ul> > >();
+//    bp::to_python_converter<boost::numeric::ublas::c_vector<double, 2ul>, CVectorToNumpyArray<boost::numeric::ublas::c_vector<double, 2ul> > >();
+//    bp::to_python_converter<c_vector<double, 6>, CVectorToNumpyArray<c_vector<double, 6> > >();
+//    bp::to_python_converter<std::vector<double>, StdVectorToNumpyArray<std::vector<double> > >();
+//
+//    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkImageData>());
+//    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkPoints>());
+//    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkImageData> >());
+//    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPolyData> >());
+//    bp::converter::registry::insert(&ExtractVtkWrappedPointer, type_id<vtkSmartPointer<vtkPoints> >());
 
-    bp::class_<std::pair<double, double> > ("DblPair")
-        .def_readwrite("first", &std::pair<double, double>::first)
-        .def_readwrite("second", &std::pair<double, double>::second)
-    ;
-
-    bp::class_<std::map<unsigned, double> >("UnsignedDoubleMap")
-        .def(map_indexing_suite<std::map<unsigned, double> >())
-    ;
-
-    // From Python converters
-    TupleToCVector()
-        .from_python<2>()
-        .from_python<3>()
-        ;
-
-    NumpyArrayToCVector()
-        .from_python<2>()
-        .from_python<3>()
-        ;
-
-    NumpyArrayToCVectorUnsigned()
-        .from_python<2>()
-        .from_python<3>()
-        ;
-
-    // Iterators
-    PythonIterableToStl()
-      .from_python<std::vector<double> >()
-      .from_python<std::vector<std::vector<double> > >()
-      .from_python<std::vector<unsigned> >()
-      .from_python<std::vector<boost::shared_ptr<Node<3> > > >() // Support lists of nodes
-      .from_python<std::vector<boost::shared_ptr<Node<2> > > >()
-      .from_python<std::vector<unsigned> >()
-      .from_python<std::vector<c_vector<double, 3> > >()
-      ;
+//    bp::class_<std::basic_ofstream<char, std::char_traits<char> >, std::auto_ptr<std::basic_ofstream<char, std::char_traits<char> > >, boost::noncopyable > ("StdOutputFileStream", bp::no_init);
+//
 }

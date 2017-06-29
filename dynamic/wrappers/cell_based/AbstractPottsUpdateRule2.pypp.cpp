@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractPottsUpdateRule<2 > AbstractPottsUpdateRule2;
+
 class AbstractPottsUpdateRule2_Overloads : public AbstractPottsUpdateRule2{
     public:
-    using AbstractPottsUpdateRule2::AbstractPottsUpdateRule<2>;
+    using AbstractPottsUpdateRule2::AbstractPottsUpdateRule;
 
-        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation) override {
+        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractPottsUpdateRule2,
@@ -20,7 +21,7 @@ class AbstractPottsUpdateRule2_Overloads : public AbstractPottsUpdateRule2{
         rCellPopulation        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPottsUpdateRule2,

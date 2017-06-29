@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractCaUpdateRule<2 > AbstractCaUpdateRule2;
+
 class AbstractCaUpdateRule2_Overloads : public AbstractCaUpdateRule2{
     public:
-    using AbstractCaUpdateRule2::AbstractCaUpdateRule<2>;
+    using AbstractCaUpdateRule2::AbstractCaUpdateRule;
 
-        double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<2> & rCellPopulation, double dt, double deltaX, ::CellPtr cell) override {
+        double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<2> & rCellPopulation, double dt, double deltaX, ::CellPtr cell)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractCaUpdateRule2,
@@ -23,7 +24,7 @@ class AbstractCaUpdateRule2_Overloads : public AbstractCaUpdateRule2{
         cell        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCaUpdateRule2,

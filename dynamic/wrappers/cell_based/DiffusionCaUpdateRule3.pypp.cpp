@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef DiffusionCaUpdateRule<3 > DiffusionCaUpdateRule3;
+
 class DiffusionCaUpdateRule3_Overloads : public DiffusionCaUpdateRule3{
     public:
-    using DiffusionCaUpdateRule3::DiffusionCaUpdateRule<3>;
+    using DiffusionCaUpdateRule3::DiffusionCaUpdateRule;
 
-        double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<3> & rCellPopulation, double dt, double deltaX, ::CellPtr cell) override {
+        double EvaluateProbability(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CaBasedCellPopulation<3> & rCellPopulation, double dt, double deltaX, ::CellPtr cell)override {
         PYBIND11_OVERLOAD(
         double,
         DiffusionCaUpdateRule3,
@@ -23,7 +24,7 @@ class DiffusionCaUpdateRule3_Overloads : public DiffusionCaUpdateRule3{
         cell        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         DiffusionCaUpdateRule3,

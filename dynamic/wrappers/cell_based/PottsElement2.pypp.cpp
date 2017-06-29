@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef PottsElement<2 > PottsElement2;
+
 void register_PottsElement2_class(py::module &m){
     py::class_<PottsElement2, std::shared_ptr<PottsElement2 >  >(m, "PottsElement2")
         .def(py::init<unsigned int, ::std::vector<Node<2> *, std::allocator<Node<2> *> > const & >())

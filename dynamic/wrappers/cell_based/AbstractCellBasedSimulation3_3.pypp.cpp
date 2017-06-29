@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AbstractCellBasedSimulation<3,3 > AbstractCellBasedSimulation3_3;
+typedef unsigned int unsignedint;
+
 class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulation3_3{
     public:
-    using AbstractCellBasedSimulation3_3::AbstractCellBasedSimulation<3, 3>;
+    using AbstractCellBasedSimulation3_3::AbstractCellBasedSimulation;
 
-        void OutputSimulationParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulation3_3,
@@ -18,7 +20,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         rParamsFile        
         );
         }
-        void WriteVisualizerSetupFile() override {
+        void WriteVisualizerSetupFile()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellBasedSimulation3_3,
@@ -26,15 +28,15 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         
         );
         }
-        unsigned int DoCellBirth() override {
+        unsigned int DoCellBirth()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         AbstractCellBasedSimulation3_3,
         DoCellBirth,
         
         );
         }
-        void SetupSolve() override {
+        void SetupSolve()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellBasedSimulation3_3,
@@ -42,7 +44,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         
         );
         }
-        bool StoppingEventHasOccurred() override {
+        bool StoppingEventHasOccurred()override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractCellBasedSimulation3_3,
@@ -50,7 +52,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         
         );
         }
-        void UpdateCellPopulation() override {
+        void UpdateCellPopulation()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellBasedSimulation3_3,
@@ -58,7 +60,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         
         );
         }
-        void UpdateCellLocationsAndTopology() override {
+        void UpdateCellLocationsAndTopology()override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulation3_3,
@@ -66,7 +68,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
         
         );
         }
-        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile) override {
+        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulation3_3,
@@ -95,7 +97,7 @@ void register_AbstractCellBasedSimulation3_3_class(py::module &m){
         .def("AddSimulationModifier", (void (AbstractCellBasedSimulation3_3::*)(::boost::shared_ptr<AbstractCellBasedSimulationModifier<3, 3> >)) &AbstractCellBasedSimulation3_3::AddSimulationModifier, "" , py::arg("pSimulationModifier"))
         .def("Solve", (void (AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::Solve, "" )
         .def("rGetCellPopulation", (::AbstractCellPopulation<3, 3> & (AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::rGetCellPopulation, "" )
-        .def("rGetCellPopulation", (::AbstractCellPopulation<3, 3> const & (AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::rGetCellPopulation, "" )
+        .def("rGetCellPopulation", (::AbstractCellPopulation<3, 3> const & (AbstractCellBasedSimulation3_3::*)() const ) &AbstractCellBasedSimulation3_3::rGetCellPopulation, "" )
         .def("GetOutputDivisionLocations", (bool (AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetOutputDivisionLocations, "" )
         .def("SetOutputDivisionLocations", (void (AbstractCellBasedSimulation3_3::*)(bool)) &AbstractCellBasedSimulation3_3::SetOutputDivisionLocations, "" , py::arg("outputDivisionLocations"))
         .def("GetOutputCellVelocities", (bool (AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetOutputCellVelocities, "" )

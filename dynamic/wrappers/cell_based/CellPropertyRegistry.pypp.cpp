@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef CellPropertyRegistry CellPropertyRegistry;
+
 void register_CellPropertyRegistry_class(py::module &m){
     py::class_<CellPropertyRegistry, std::shared_ptr<CellPropertyRegistry >  >(m, "CellPropertyRegistry")
         .def_static("Instance", (::CellPropertyRegistry * (*)()) &CellPropertyRegistry::Instance, "" )

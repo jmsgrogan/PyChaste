@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef PdeSimulationTime PdeSimulationTime;
+
 void register_PdeSimulationTime_class(py::module &m){
     py::class_<PdeSimulationTime, std::shared_ptr<PdeSimulationTime >  >(m, "PdeSimulationTime")
         .def_static("SetTime", (void (*)(double)) &PdeSimulationTime::SetTime, "" , py::arg("time"))

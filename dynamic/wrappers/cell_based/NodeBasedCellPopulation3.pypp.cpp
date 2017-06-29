@@ -6,11 +6,21 @@
 namespace py = pybind11;
 
 typedef NodeBasedCellPopulation<3 > NodeBasedCellPopulation3;
+typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
+typedef unsigned int unsignedint;
+typedef ::CellPtr _CellPtr;
+typedef ::Node<3> * _Node3Ptr;
+typedef unsigned int unsignedint;
+typedef ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::CellPtr _CellPtr;
+typedef unsigned int unsignedint;
+
 class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
     public:
-    using NodeBasedCellPopulation3::NodeBasedCellPopulation<3>;
+    using NodeBasedCellPopulation3::NodeBasedCellPopulation;
 
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> & rNewLocation) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> & rNewLocation)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -19,47 +29,47 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         rNewLocation        
         );
         }
-        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier() override {
+        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier()override {
         PYBIND11_OVERLOAD(
-        ::TetrahedralMesh<3, 3> *,
+        _TetrahedralMesh3_3Ptr,
         NodeBasedCellPopulation3,
         GetTetrahedralMeshForPdeModifier,
         
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodeBasedCellPopulation3,
         GetNumNodes,
         
         );
         }
-        ::CellPtr GetCellUsingLocationIndex(unsigned int index) override {
+        ::CellPtr GetCellUsingLocationIndex(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         NodeBasedCellPopulation3,
         GetCellUsingLocationIndex,
         index        
         );
         }
-        ::Node<3> * GetNode(unsigned int index) override {
+        ::Node<3> * GetNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::Node<3> *,
+        _Node3Ptr,
         NodeBasedCellPopulation3,
         GetNode,
         index        
         );
         }
-        unsigned int RemoveDeadCells() override {
+        unsigned int RemoveDeadCells()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodeBasedCellPopulation3,
         RemoveDeadCells,
         
         );
         }
-        void Update(bool hasHadBirthsOrDeaths) override {
+        void Update(bool hasHadBirthsOrDeaths)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -67,15 +77,15 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         hasHadBirthsOrDeaths        
         );
         }
-        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & rGetNodePairs() override {
+        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & rGetNodePairs()override {
         PYBIND11_OVERLOAD(
-        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > &,
+        _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef,
         NodeBasedCellPopulation3,
         rGetNodePairs,
         
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -83,7 +93,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         rParamsFile        
         );
         }
-        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> > pPopulationWriter) override {
+        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> > pPopulationWriter)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -91,7 +101,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         pPopulationWriter        
         );
         }
-        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> > pPopulationCountWriter) override {
+        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> > pPopulationCountWriter)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -99,7 +109,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         pPopulationCountWriter        
         );
         }
-        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<3, 3> > pCellWriter, ::CellPtr pCell) override {
+        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<3, 3> > pCellWriter, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -108,7 +118,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         pCell        
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension)override {
         PYBIND11_OVERLOAD(
         double,
         NodeBasedCellPopulation3,
@@ -116,24 +126,24 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         rDimension        
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         NodeBasedCellPopulation3,
         GetNeighbouringNodeIndices,
         index        
         );
         }
-        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell) override {
+        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         NodeBasedCellPopulation3,
         AddCell,
         pNewCell, 
         pParentCell        
         );
         }
-        double GetVolumeOfCell(::CellPtr pCell) override {
+        double GetVolumeOfCell(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         NodeBasedCellPopulation3,
@@ -141,7 +151,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         pCell        
         );
         }
-        void UpdateCellProcessLocation() override {
+        void UpdateCellProcessLocation()override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -149,7 +159,7 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         
         );
         }
-        void UpdateParticlesAfterReMesh(::NodeMap & rMap) override {
+        void UpdateParticlesAfterReMesh(::NodeMap & rMap)override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
@@ -157,28 +167,12 @@ class NodeBasedCellPopulation3_Overloads : public NodeBasedCellPopulation3{
         rMap        
         );
         }
-        void Validate() override {
+        void Validate()override {
         PYBIND11_OVERLOAD(
         void,
         NodeBasedCellPopulation3,
         Validate,
         
-        );
-        }
-        unsigned int AddNode(::Node<3> * pNewNode) override {
-        PYBIND11_OVERLOAD(
-        unsigned int,
-        NodeBasedCellPopulation3,
-        AddNode,
-        pNewNode        
-        );
-        }
-        void WriteVtkResultsToFile(::std::string const & rDirectory) override {
-        PYBIND11_OVERLOAD(
-        void,
-        NodeBasedCellPopulation3,
-        WriteVtkResultsToFile,
-        rDirectory        
         );
         }
 

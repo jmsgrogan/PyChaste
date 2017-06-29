@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AdhesionPottsUpdateRule<3 > AdhesionPottsUpdateRule3;
+
 class AdhesionPottsUpdateRule3_Overloads : public AdhesionPottsUpdateRule3{
     public:
-    using AdhesionPottsUpdateRule3::AdhesionPottsUpdateRule<3>;
+    using AdhesionPottsUpdateRule3::AdhesionPottsUpdateRule;
 
-        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<3> & rCellPopulation) override {
+        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         double,
         AdhesionPottsUpdateRule3,
@@ -20,7 +21,7 @@ class AdhesionPottsUpdateRule3_Overloads : public AdhesionPottsUpdateRule3{
         rCellPopulation        
         );
         }
-        double GetCellCellAdhesionEnergy(::CellPtr pCellA, ::CellPtr pCellB) override {
+        double GetCellCellAdhesionEnergy(::CellPtr pCellA, ::CellPtr pCellB)override {
         PYBIND11_OVERLOAD(
         double,
         AdhesionPottsUpdateRule3,
@@ -29,7 +30,7 @@ class AdhesionPottsUpdateRule3_Overloads : public AdhesionPottsUpdateRule3{
         pCellB        
         );
         }
-        double GetCellBoundaryAdhesionEnergy(::CellPtr pCell) override {
+        double GetCellBoundaryAdhesionEnergy(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         AdhesionPottsUpdateRule3,
@@ -37,7 +38,7 @@ class AdhesionPottsUpdateRule3_Overloads : public AdhesionPottsUpdateRule3{
         pCell        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AdhesionPottsUpdateRule3,

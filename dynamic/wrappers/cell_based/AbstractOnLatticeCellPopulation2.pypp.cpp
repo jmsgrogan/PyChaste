@@ -6,11 +6,14 @@
 namespace py = pybind11;
 
 typedef AbstractOnLatticeCellPopulation<2 > AbstractOnLatticeCellPopulation2;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const _std_vectorboost_shared_ptrAbstractUpdateRule2_std_allocatorboost_shared_ptrAbstractUpdateRule2;
+
 class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellPopulation2{
     public:
-    using AbstractOnLatticeCellPopulation2::AbstractOnLatticeCellPopulation<2>;
+    using AbstractOnLatticeCellPopulation2::AbstractOnLatticeCellPopulation;
 
-        void UpdateCellLocations(double dt) override {
+        void UpdateCellLocations(double dt)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractOnLatticeCellPopulation2,
@@ -18,7 +21,7 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         dt        
         );
         }
-        void SetNode(unsigned int index, ::ChastePoint<2> & rNewLocation) override {
+        void SetNode(unsigned int index, ::ChastePoint<2> & rNewLocation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractOnLatticeCellPopulation2,
@@ -27,15 +30,15 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         rNewLocation        
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         AbstractOnLatticeCellPopulation2,
         GetNeighbouringNodeIndices,
         index        
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractOnLatticeCellPopulation2,
@@ -43,7 +46,7 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         rParamsFile        
         );
         }
-        double GetDefaultTimeStep() override {
+        double GetDefaultTimeStep()override {
         PYBIND11_OVERLOAD(
         double,
         AbstractOnLatticeCellPopulation2,
@@ -51,7 +54,7 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         
         );
         }
-        void AddUpdateRule(::boost::shared_ptr<AbstractUpdateRule<2> > pUpdateRule) override {
+        void AddUpdateRule(::boost::shared_ptr<AbstractUpdateRule<2> > pUpdateRule)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractOnLatticeCellPopulation2,
@@ -59,7 +62,7 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         pUpdateRule        
         );
         }
-        void RemoveAllUpdateRules() override {
+        void RemoveAllUpdateRules()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractOnLatticeCellPopulation2,
@@ -67,9 +70,9 @@ class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellP
         
         );
         }
-        ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const GetUpdateRuleCollection() override {
+        ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const GetUpdateRuleCollection() const override {
         PYBIND11_OVERLOAD(
-        ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const,
+        _std_vectorboost_shared_ptrAbstractUpdateRule2_std_allocatorboost_shared_ptrAbstractUpdateRule2,
         AbstractOnLatticeCellPopulation2,
         GetUpdateRuleCollection,
         
@@ -90,6 +93,6 @@ void register_AbstractOnLatticeCellPopulation2_class(py::module &m){
         .def("GetDefaultTimeStep", (double (AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::GetDefaultTimeStep, "" )
         .def("AddUpdateRule", (void (AbstractOnLatticeCellPopulation2::*)(::boost::shared_ptr<AbstractUpdateRule<2> >)) &AbstractOnLatticeCellPopulation2::AddUpdateRule, "" , py::arg("pUpdateRule"))
         .def("RemoveAllUpdateRules", (void (AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::RemoveAllUpdateRules, "" )
-        .def("GetUpdateRuleCollection", (::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const (AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::GetUpdateRuleCollection, "" )
+        .def("GetUpdateRuleCollection", (::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const (AbstractOnLatticeCellPopulation2::*)() const ) &AbstractOnLatticeCellPopulation2::GetUpdateRuleCollection, "" )
     ;
 }

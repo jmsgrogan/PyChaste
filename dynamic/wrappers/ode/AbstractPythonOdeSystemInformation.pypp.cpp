@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractPythonOdeSystemInformation AbstractPythonOdeSystemInformation;
+
 class AbstractPythonOdeSystemInformation_Overloads : public AbstractPythonOdeSystemInformation{
     public:
     using AbstractPythonOdeSystemInformation::AbstractPythonOdeSystemInformation;
 
-        void Initialise() override {
+        void Initialise()override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractPythonOdeSystemInformation,

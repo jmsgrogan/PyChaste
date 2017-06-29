@@ -6,19 +6,21 @@
 namespace py = pybind11;
 
 typedef AbstractOffLatticeCellPopulation<3,3 > AbstractOffLatticeCellPopulation3_3;
+typedef unsigned int unsignedint;
+
 class AbstractOffLatticeCellPopulation3_3_Overloads : public AbstractOffLatticeCellPopulation3_3{
     public:
-    using AbstractOffLatticeCellPopulation3_3::AbstractOffLatticeCellPopulation<3, 3>;
+    using AbstractOffLatticeCellPopulation3_3::AbstractOffLatticeCellPopulation;
 
-        unsigned int AddNode(::Node<3> * pNewNode) override {
+        unsigned int AddNode(::Node<3> * pNewNode)override {
         PYBIND11_OVERLOAD_PURE(
-        unsigned int,
+        unsignedint,
         AbstractOffLatticeCellPopulation3_3,
         AddNode,
         pNewNode        
         );
         }
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> & rNewLocation) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> & rNewLocation)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractOffLatticeCellPopulation3_3,
@@ -27,7 +29,7 @@ class AbstractOffLatticeCellPopulation3_3_Overloads : public AbstractOffLatticeC
         rNewLocation        
         );
         }
-        void UpdateNodeLocations(double dt) override {
+        void UpdateNodeLocations(double dt)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractOffLatticeCellPopulation3_3,
@@ -35,7 +37,7 @@ class AbstractOffLatticeCellPopulation3_3_Overloads : public AbstractOffLatticeC
         dt        
         );
         }
-        void CheckForStepSizeException(unsigned int nodeIndex, ::boost::numeric::ublas::c_vector<double, 3> & rDisplacement, double dt) override {
+        void CheckForStepSizeException(unsigned int nodeIndex, ::boost::numeric::ublas::c_vector<double, 3> & rDisplacement, double dt)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractOffLatticeCellPopulation3_3,
@@ -45,7 +47,7 @@ class AbstractOffLatticeCellPopulation3_3_Overloads : public AbstractOffLatticeC
         dt        
         );
         }
-        double GetDampingConstant(unsigned int nodeIndex) override {
+        double GetDampingConstant(unsigned int nodeIndex)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractOffLatticeCellPopulation3_3,
@@ -53,7 +55,7 @@ class AbstractOffLatticeCellPopulation3_3_Overloads : public AbstractOffLatticeC
         nodeIndex        
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractOffLatticeCellPopulation3_3,

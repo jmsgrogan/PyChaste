@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractOdeSystem AbstractOdeSystem;
+
 class AbstractOdeSystem_Overloads : public AbstractOdeSystem{
     public:
     using AbstractOdeSystem::AbstractOdeSystem;
 
-        void EvaluateYDerivatives(double time, ::std::vector<double, std::allocator<double> > const & rY, ::std::vector<double, std::allocator<double> > & rDY) override {
+        void EvaluateYDerivatives(double time, ::std::vector<double, std::allocator<double> > const & rY, ::std::vector<double, std::allocator<double> > & rDY)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractOdeSystem,
@@ -20,7 +21,7 @@ class AbstractOdeSystem_Overloads : public AbstractOdeSystem{
         rDY        
         );
         }
-        bool CalculateStoppingEvent(double time, ::std::vector<double, std::allocator<double> > const & rY) override {
+        bool CalculateStoppingEvent(double time, ::std::vector<double, std::allocator<double> > const & rY)override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractOdeSystem,
@@ -29,7 +30,7 @@ class AbstractOdeSystem_Overloads : public AbstractOdeSystem{
         rY        
         );
         }
-        double CalculateRootFunction(double time, ::std::vector<double, std::allocator<double> > const & rY) override {
+        double CalculateRootFunction(double time, ::std::vector<double, std::allocator<double> > const & rY)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractOdeSystem,
@@ -46,6 +47,6 @@ void register_AbstractOdeSystem_class(py::module &m){
         .def("CalculateStoppingEvent", (bool (AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &)) &AbstractOdeSystem::CalculateStoppingEvent, "" , py::arg("time"), py::arg("rY"))
         .def("CalculateRootFunction", (double (AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &)) &AbstractOdeSystem::CalculateRootFunction, "" , py::arg("time"), py::arg("rY"))
         .def("GetUseAnalyticJacobian", (bool (AbstractOdeSystem::*)()) &AbstractOdeSystem::GetUseAnalyticJacobian, "" )
-        .def("rGetConstStateVariables", (::std::vector<double, std::allocator<double> > const & (AbstractOdeSystem::*)()) &AbstractOdeSystem::rGetConstStateVariables, "" )
+        .def("rGetConstStateVariables", (::std::vector<double, std::allocator<double> > const & (AbstractOdeSystem::*)() const ) &AbstractOdeSystem::rGetConstStateVariables, "" )
     ;
 }

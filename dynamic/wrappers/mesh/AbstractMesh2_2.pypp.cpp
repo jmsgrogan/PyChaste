@@ -6,35 +6,44 @@
 namespace py = pybind11;
 
 typedef AbstractMesh<2,2 > AbstractMesh2_2;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef ::Node<2> * _Node2Ptr;
+typedef ::DistributedVectorFactory * _DistributedVectorFactoryPtr;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef ::ChasteCuboid<2> _ChasteCuboid2;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
     public:
-    using AbstractMesh2_2::AbstractMesh<2, 2>;
+    using AbstractMesh2_2::AbstractMesh;
 
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         AbstractMesh2_2,
         GetNumNodes,
         
         );
         }
-        unsigned int GetNumAllNodes() override {
+        unsigned int GetNumAllNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         AbstractMesh2_2,
         GetNumAllNodes,
         
         );
         }
-        ::Node<2> * GetNodeOrHaloNode(unsigned int index) override {
+        ::Node<2> * GetNodeOrHaloNode(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        ::Node<2> *,
+        _Node2Ptr,
         AbstractMesh2_2,
         GetNodeOrHaloNode,
         index        
         );
         }
-        void ReadNodesPerProcessorFile(::std::string const & rNodesPerProcessorFile) override {
+        void ReadNodesPerProcessorFile(::std::string const & rNodesPerProcessorFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -42,15 +51,15 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         rNodesPerProcessorFile        
         );
         }
-        ::DistributedVectorFactory * GetDistributedVectorFactory() override {
+        ::DistributedVectorFactory * GetDistributedVectorFactory()override {
         PYBIND11_OVERLOAD(
-        ::DistributedVectorFactory *,
+        _DistributedVectorFactoryPtr,
         AbstractMesh2_2,
         GetDistributedVectorFactory,
         
         );
         }
-        void SetDistributedVectorFactory(::DistributedVectorFactory * pFactory) override {
+        void SetDistributedVectorFactory(::DistributedVectorFactory * pFactory)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -58,7 +67,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         pFactory        
         );
         }
-        void PermuteNodes() override {
+        void PermuteNodes()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -66,16 +75,16 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         
         );
         }
-        ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocationA, ::boost::numeric::ublas::c_vector<double, 2> const & rLocationB) override {
+        ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocationA, ::boost::numeric::ublas::c_vector<double, 2> const & rLocationB)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 2>,
+        _boost_numeric_ublas_c_vectordouble_2,
         AbstractMesh2_2,
         GetVectorFromAtoB,
         rLocationA, 
         rLocationB        
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension) const override {
         PYBIND11_OVERLOAD(
         double,
         AbstractMesh2_2,
@@ -83,23 +92,23 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         rDimension        
         );
         }
-        ::ChasteCuboid<2> CalculateBoundingBox() override {
+        ::ChasteCuboid<2> CalculateBoundingBox() const override {
         PYBIND11_OVERLOAD(
-        ::ChasteCuboid<2>,
+        _ChasteCuboid2,
         AbstractMesh2_2,
         CalculateBoundingBox,
         
         );
         }
-        unsigned int GetNearestNodeIndex(::ChastePoint<2> const & rTestPoint) override {
+        unsigned int GetNearestNodeIndex(::ChastePoint<2> const & rTestPoint)override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         AbstractMesh2_2,
         GetNearestNodeIndex,
         rTestPoint        
         );
         }
-        void Scale(double const xFactor, double const yFactor, double const zFactor) override {
+        void Scale(double const xFactor, double const yFactor, double const zFactor)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -109,7 +118,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         zFactor        
         );
         }
-        void Translate(::boost::numeric::ublas::c_vector<double, 2> const & rDisplacement) override {
+        void Translate(::boost::numeric::ublas::c_vector<double, 2> const & rDisplacement)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -117,7 +126,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         rDisplacement        
         );
         }
-        void Rotate(::boost::numeric::ublas::c_matrix<double, 2, 2> rotationMatrix) override {
+        void Rotate(::boost::numeric::ublas::c_matrix<double, 2, 2> rotationMatrix)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -125,7 +134,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         rotationMatrix        
         );
         }
-        void RefreshMesh() override {
+        void RefreshMesh()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
@@ -133,20 +142,12 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
         
         );
         }
-        void SetElementOwnerships() override {
+        void SetElementOwnerships()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractMesh2_2,
         SetElementOwnerships,
         
-        );
-        }
-        unsigned int SolveNodeMapping(unsigned int index) override {
-        PYBIND11_OVERLOAD_PURE(
-        unsigned int,
-        AbstractMesh2_2,
-        SolveNodeMapping,
-        index        
         );
         }
 
@@ -155,26 +156,26 @@ void register_AbstractMesh2_2_class(py::module &m){
     py::class_<AbstractMesh2_2, AbstractMesh2_2_Overloads, std::shared_ptr<AbstractMesh2_2 >  >(m, "AbstractMesh2_2")
         .def("GetNodeIteratorBegin", (::AbstractMesh<2, 2>::NodeIterator (AbstractMesh2_2::*)(bool)) &AbstractMesh2_2::GetNodeIteratorBegin, "" , py::arg("skipDeletedNodes") = true)
         .def("GetNodeIteratorEnd", (::AbstractMesh<2, 2>::NodeIterator (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetNodeIteratorEnd, "" )
-        .def("GetNumNodes", (unsigned int (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetNumNodes, "" )
-        .def("GetNumBoundaryNodes", (unsigned int (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetNumBoundaryNodes, "" )
-        .def("GetNumAllNodes", (unsigned int (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetNumAllNodes, "" )
-        .def("GetNumNodeAttributes", (unsigned int (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetNumNodeAttributes, "" )
-        .def("GetNode", (::Node<2> * (AbstractMesh2_2::*)(unsigned int)) &AbstractMesh2_2::GetNode, "" , py::arg("index"))
-        .def("GetNodeOrHaloNode", (::Node<2> * (AbstractMesh2_2::*)(unsigned int)) &AbstractMesh2_2::GetNodeOrHaloNode, "" , py::arg("index"))
-        .def("GetNodeFromPrePermutationIndex", (::Node<2> * (AbstractMesh2_2::*)(unsigned int)) &AbstractMesh2_2::GetNodeFromPrePermutationIndex, "" , py::arg("index"))
+        .def("GetNumNodes", (unsigned int (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetNumNodes, "" )
+        .def("GetNumBoundaryNodes", (unsigned int (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetNumBoundaryNodes, "" )
+        .def("GetNumAllNodes", (unsigned int (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetNumAllNodes, "" )
+        .def("GetNumNodeAttributes", (unsigned int (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetNumNodeAttributes, "" )
+        .def("GetNode", (::Node<2> * (AbstractMesh2_2::*)(unsigned int) const ) &AbstractMesh2_2::GetNode, "" , py::arg("index"))
+        .def("GetNodeOrHaloNode", (::Node<2> * (AbstractMesh2_2::*)(unsigned int) const ) &AbstractMesh2_2::GetNodeOrHaloNode, "" , py::arg("index"))
+        .def("GetNodeFromPrePermutationIndex", (::Node<2> * (AbstractMesh2_2::*)(unsigned int) const ) &AbstractMesh2_2::GetNodeFromPrePermutationIndex, "" , py::arg("index"))
         .def("ReadNodesPerProcessorFile", (void (AbstractMesh2_2::*)(::std::string const &)) &AbstractMesh2_2::ReadNodesPerProcessorFile, "" , py::arg("rNodesPerProcessorFile"))
         .def("GetDistributedVectorFactory", (::DistributedVectorFactory * (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetDistributedVectorFactory, "" )
         .def("SetDistributedVectorFactory", (void (AbstractMesh2_2::*)(::DistributedVectorFactory *)) &AbstractMesh2_2::SetDistributedVectorFactory, "" , py::arg("pFactory"))
         .def("PermuteNodes", (void (AbstractMesh2_2::*)()) &AbstractMesh2_2::PermuteNodes, "" )
-        .def("GetBoundaryNodeIteratorBegin", (::AbstractMesh<2, 2>::BoundaryNodeIterator (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetBoundaryNodeIteratorBegin, "" )
-        .def("GetBoundaryNodeIteratorEnd", (::AbstractMesh<2, 2>::BoundaryNodeIterator (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetBoundaryNodeIteratorEnd, "" )
-        .def("GetMeshFileBaseName", (::std::string (AbstractMesh2_2::*)()) &AbstractMesh2_2::GetMeshFileBaseName, "" )
-        .def("IsMeshOnDisk", (bool (AbstractMesh2_2::*)()) &AbstractMesh2_2::IsMeshOnDisk, "" )
-        .def("rGetNodePermutation", (::std::vector<unsigned int, std::allocator<unsigned int> > const & (AbstractMesh2_2::*)()) &AbstractMesh2_2::rGetNodePermutation, "" )
+        .def("GetBoundaryNodeIteratorBegin", (::AbstractMesh<2, 2>::BoundaryNodeIterator (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetBoundaryNodeIteratorBegin, "" )
+        .def("GetBoundaryNodeIteratorEnd", (::AbstractMesh<2, 2>::BoundaryNodeIterator (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetBoundaryNodeIteratorEnd, "" )
+        .def("GetMeshFileBaseName", (::std::string (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::GetMeshFileBaseName, "" )
+        .def("IsMeshOnDisk", (bool (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::IsMeshOnDisk, "" )
+        .def("rGetNodePermutation", (::std::vector<unsigned int, std::allocator<unsigned int> > const & (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::rGetNodePermutation, "" )
         .def("GetVectorFromAtoB", (::boost::numeric::ublas::c_vector<double, 2> (AbstractMesh2_2::*)(::boost::numeric::ublas::c_vector<double, 2> const &, ::boost::numeric::ublas::c_vector<double, 2> const &)) &AbstractMesh2_2::GetVectorFromAtoB, "" , py::arg("rLocationA"), py::arg("rLocationB"))
         .def("GetDistanceBetweenNodes", (double (AbstractMesh2_2::*)(unsigned int, unsigned int)) &AbstractMesh2_2::GetDistanceBetweenNodes, "" , py::arg("indexA"), py::arg("indexB"))
-        .def("GetWidth", (double (AbstractMesh2_2::*)(unsigned int const &)) &AbstractMesh2_2::GetWidth, "" , py::arg("rDimension"))
-        .def("CalculateBoundingBox", (::ChasteCuboid<2> (AbstractMesh2_2::*)()) &AbstractMesh2_2::CalculateBoundingBox, "" )
+        .def("GetWidth", (double (AbstractMesh2_2::*)(unsigned int const &) const ) &AbstractMesh2_2::GetWidth, "" , py::arg("rDimension"))
+        .def("CalculateBoundingBox", (::ChasteCuboid<2> (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::CalculateBoundingBox, "" )
         .def("GetNearestNodeIndex", (unsigned int (AbstractMesh2_2::*)(::ChastePoint<2> const &)) &AbstractMesh2_2::GetNearestNodeIndex, "" , py::arg("rTestPoint"))
         .def("Scale", (void (AbstractMesh2_2::*)(double const, double const, double const)) &AbstractMesh2_2::Scale, "" , py::arg("xFactor") = 1., py::arg("yFactor") = 1., py::arg("zFactor") = 1.)
         .def("Translate", (void (AbstractMesh2_2::*)(::boost::numeric::ublas::c_vector<double, 2> const &)) &AbstractMesh2_2::Translate, "" , py::arg("rDisplacement"))
@@ -186,8 +187,8 @@ void register_AbstractMesh2_2_class(py::module &m){
         .def("RotateZ", (void (AbstractMesh2_2::*)(double const)) &AbstractMesh2_2::RotateZ, "" , py::arg("theta"))
         .def("Rotate", (void (AbstractMesh2_2::*)(double)) &AbstractMesh2_2::Rotate, "" , py::arg("theta"))
         .def("RefreshMesh", (void (AbstractMesh2_2::*)()) &AbstractMesh2_2::RefreshMesh, "" )
-        .def("IsMeshChanging", (bool (AbstractMesh2_2::*)()) &AbstractMesh2_2::IsMeshChanging, "" )
-        .def("CalculateMaximumContainingElementsPerProcess", (unsigned int (AbstractMesh2_2::*)()) &AbstractMesh2_2::CalculateMaximumContainingElementsPerProcess, "" )
+        .def("IsMeshChanging", (bool (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::IsMeshChanging, "" )
+        .def("CalculateMaximumContainingElementsPerProcess", (unsigned int (AbstractMesh2_2::*)() const ) &AbstractMesh2_2::CalculateMaximumContainingElementsPerProcess, "" )
         .def("SetMeshHasChangedSinceLoading", (void (AbstractMesh2_2::*)()) &AbstractMesh2_2::SetMeshHasChangedSinceLoading, "" )
     ;
 }

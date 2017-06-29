@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractPhaseBasedCellCycleModel AbstractPhaseBasedCellCycleModel;
+
 class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCellCycleModel{
     public:
     using AbstractPhaseBasedCellCycleModel::AbstractPhaseBasedCellCycleModel;
 
-        bool ReadyToDivide() override {
+        bool ReadyToDivide()override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractPhaseBasedCellCycleModel,
@@ -18,7 +19,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        void ResetForDivision() override {
+        void ResetForDivision()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPhaseBasedCellCycleModel,
@@ -26,7 +27,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        void UpdateCellCyclePhase() override {
+        void UpdateCellCyclePhase()override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractPhaseBasedCellCycleModel,
@@ -34,7 +35,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        double GetG1Duration() override {
+        double GetG1Duration() const override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -42,7 +43,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        double GetSDuration() override {
+        double GetSDuration() const override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -50,7 +51,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        double GetG2Duration() override {
+        double GetG2Duration() const override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -58,7 +59,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        double GetMDuration() override {
+        double GetMDuration() const override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -66,7 +67,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        void SetStemCellG1Duration(double stemCellG1Duration) override {
+        void SetStemCellG1Duration(double stemCellG1Duration)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPhaseBasedCellCycleModel,
@@ -74,7 +75,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         stemCellG1Duration        
         );
         }
-        void SetTransitCellG1Duration(double transitCellG1Duration) override {
+        void SetTransitCellG1Duration(double transitCellG1Duration)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPhaseBasedCellCycleModel,
@@ -82,7 +83,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         transitCellG1Duration        
         );
         }
-        double GetAverageTransitCellCycleTime() override {
+        double GetAverageTransitCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -90,7 +91,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        double GetAverageStemCellCycleTime() override {
+        double GetAverageStemCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         AbstractPhaseBasedCellCycleModel,
@@ -98,7 +99,7 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractPhaseBasedCellCycleModel,
@@ -113,14 +114,14 @@ void register_AbstractPhaseBasedCellCycleModel_class(py::module &m){
         .def("ReadyToDivide", (bool (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::ReadyToDivide, "" )
         .def("ResetForDivision", (void (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::ResetForDivision, "" )
         .def("UpdateCellCyclePhase", (void (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::UpdateCellCyclePhase, "" )
-        .def("GetCurrentCellCyclePhase", (::CellCyclePhase (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetCurrentCellCyclePhase, "" )
-        .def("GetG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetG1Duration, "" )
-        .def("GetStemCellG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetStemCellG1Duration, "" )
-        .def("GetTransitCellG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetTransitCellG1Duration, "" )
-        .def("GetSG2MDuration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetSG2MDuration, "" )
-        .def("GetSDuration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetSDuration, "" )
-        .def("GetG2Duration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetG2Duration, "" )
-        .def("GetMDuration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetMDuration, "" )
+        .def("GetCurrentCellCyclePhase", (::CellCyclePhase (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetCurrentCellCyclePhase, "" )
+        .def("GetG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetG1Duration, "" )
+        .def("GetStemCellG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetStemCellG1Duration, "" )
+        .def("GetTransitCellG1Duration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetTransitCellG1Duration, "" )
+        .def("GetSG2MDuration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetSG2MDuration, "" )
+        .def("GetSDuration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetSDuration, "" )
+        .def("GetG2Duration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetG2Duration, "" )
+        .def("GetMDuration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetMDuration, "" )
         .def("SetStemCellG1Duration", (void (AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetStemCellG1Duration, "" , py::arg("stemCellG1Duration"))
         .def("SetTransitCellG1Duration", (void (AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetTransitCellG1Duration, "" , py::arg("transitCellG1Duration"))
         .def("SetSDuration", (void (AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetSDuration, "" , py::arg("sDuration"))
@@ -128,7 +129,7 @@ void register_AbstractPhaseBasedCellCycleModel_class(py::module &m){
         .def("SetMDuration", (void (AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetMDuration, "" , py::arg("mDuration"))
         .def("GetAverageTransitCellCycleTime", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetAverageTransitCellCycleTime, "" )
         .def("GetAverageStemCellCycleTime", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetAverageStemCellCycleTime, "" )
-        .def("GetMinimumGapDuration", (double (AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetMinimumGapDuration, "" )
+        .def("GetMinimumGapDuration", (double (AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetMinimumGapDuration, "" )
         .def("SetMinimumGapDuration", (void (AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetMinimumGapDuration, "" , py::arg("minimumGapDuration"))
         .def("OutputCellCycleModelParameters", (void (AbstractPhaseBasedCellCycleModel::*)(::out_stream &)) &AbstractPhaseBasedCellCycleModel::OutputCellCycleModelParameters, "" , py::arg("rParamsFile"))
     ;

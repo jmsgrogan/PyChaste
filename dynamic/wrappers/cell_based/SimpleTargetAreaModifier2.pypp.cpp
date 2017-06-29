@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef SimpleTargetAreaModifier<2 > SimpleTargetAreaModifier2;
+
 class SimpleTargetAreaModifier2_Overloads : public SimpleTargetAreaModifier2{
     public:
-    using SimpleTargetAreaModifier2::SimpleTargetAreaModifier<2>;
+    using SimpleTargetAreaModifier2::SimpleTargetAreaModifier;
 
-        void UpdateTargetAreaOfCell(::CellPtr const pCell) override {
+        void UpdateTargetAreaOfCell(::CellPtr const pCell)override {
         PYBIND11_OVERLOAD(
         void,
         SimpleTargetAreaModifier2,
@@ -18,7 +19,7 @@ class SimpleTargetAreaModifier2_Overloads : public SimpleTargetAreaModifier2{
         pCell        
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         SimpleTargetAreaModifier2,

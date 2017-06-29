@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef SurfaceAreaConstraintPottsUpdateRule<2 > SurfaceAreaConstraintPottsUpdateRule2;
+
 class SurfaceAreaConstraintPottsUpdateRule2_Overloads : public SurfaceAreaConstraintPottsUpdateRule2{
     public:
-    using SurfaceAreaConstraintPottsUpdateRule2::SurfaceAreaConstraintPottsUpdateRule<2>;
+    using SurfaceAreaConstraintPottsUpdateRule2::SurfaceAreaConstraintPottsUpdateRule;
 
-        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation) override {
+        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         double,
         SurfaceAreaConstraintPottsUpdateRule2,
@@ -20,7 +21,7 @@ class SurfaceAreaConstraintPottsUpdateRule2_Overloads : public SurfaceAreaConstr
         rCellPopulation        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         SurfaceAreaConstraintPottsUpdateRule2,
@@ -36,7 +37,7 @@ void register_SurfaceAreaConstraintPottsUpdateRule2_class(py::module &m){
         .def("EvaluateHamiltonianContribution", (double (SurfaceAreaConstraintPottsUpdateRule2::*)(unsigned int, unsigned int, ::PottsBasedCellPopulation<2> &)) &SurfaceAreaConstraintPottsUpdateRule2::EvaluateHamiltonianContribution, "" , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"))
         .def("GetDeformationEnergyParameter", (double (SurfaceAreaConstraintPottsUpdateRule2::*)()) &SurfaceAreaConstraintPottsUpdateRule2::GetDeformationEnergyParameter, "" )
         .def("SetDeformationEnergyParameter", (void (SurfaceAreaConstraintPottsUpdateRule2::*)(double)) &SurfaceAreaConstraintPottsUpdateRule2::SetDeformationEnergyParameter, "" , py::arg("deformationEnergyParameter"))
-        .def("GetMatureCellTargetSurfaceArea", (double (SurfaceAreaConstraintPottsUpdateRule2::*)()) &SurfaceAreaConstraintPottsUpdateRule2::GetMatureCellTargetSurfaceArea, "" )
+        .def("GetMatureCellTargetSurfaceArea", (double (SurfaceAreaConstraintPottsUpdateRule2::*)() const ) &SurfaceAreaConstraintPottsUpdateRule2::GetMatureCellTargetSurfaceArea, "" )
         .def("SetMatureCellTargetSurfaceArea", (void (SurfaceAreaConstraintPottsUpdateRule2::*)(double)) &SurfaceAreaConstraintPottsUpdateRule2::SetMatureCellTargetSurfaceArea, "" , py::arg("matureCellTargetSurfaceArea"))
         .def("OutputUpdateRuleParameters", (void (SurfaceAreaConstraintPottsUpdateRule2::*)(::out_stream &)) &SurfaceAreaConstraintPottsUpdateRule2::OutputUpdateRuleParameters, "" , py::arg("rParamsFile"))
     ;

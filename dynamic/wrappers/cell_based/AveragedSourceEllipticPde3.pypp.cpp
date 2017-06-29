@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AveragedSourceEllipticPde<3 > AveragedSourceEllipticPde3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+
 class AveragedSourceEllipticPde3_Overloads : public AveragedSourceEllipticPde3{
     public:
-    using AveragedSourceEllipticPde3::AveragedSourceEllipticPde<3>;
+    using AveragedSourceEllipticPde3::AveragedSourceEllipticPde;
 
-        void SetupSourceTerms(::TetrahedralMesh<3, 3> & rCoarseMesh, ::std::map<boost::shared_ptr<Cell>, unsigned int, std::less<boost::shared_ptr<Cell> >, std::allocator<std::pair<const boost::shared_ptr<Cell>, unsigned int> > > * pCellPdeElementMap) override {
+        void SetupSourceTerms(::TetrahedralMesh<3, 3> & rCoarseMesh, ::std::map<boost::shared_ptr<Cell>, unsigned int, std::less<boost::shared_ptr<Cell> >, std::allocator<std::pair<const boost::shared_ptr<Cell>, unsigned int> > > * pCellPdeElementMap)override {
         PYBIND11_OVERLOAD(
         void,
         AveragedSourceEllipticPde3,
@@ -19,7 +21,7 @@ class AveragedSourceEllipticPde3_Overloads : public AveragedSourceEllipticPde3{
         pCellPdeElementMap        
         );
         }
-        double ComputeConstantInUSourceTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement) override {
+        double ComputeConstantInUSourceTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement)override {
         PYBIND11_OVERLOAD(
         double,
         AveragedSourceEllipticPde3,
@@ -28,7 +30,7 @@ class AveragedSourceEllipticPde3_Overloads : public AveragedSourceEllipticPde3{
         pElement        
         );
         }
-        double ComputeLinearInUCoeffInSourceTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement) override {
+        double ComputeLinearInUCoeffInSourceTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement)override {
         PYBIND11_OVERLOAD(
         double,
         AveragedSourceEllipticPde3,
@@ -37,9 +39,9 @@ class AveragedSourceEllipticPde3_Overloads : public AveragedSourceEllipticPde3{
         pElement        
         );
         }
-        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX) override {
+        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_matrix<double, 3, 3>,
+        _boost_numeric_ublas_c_matrixdouble_3_3,
         AveragedSourceEllipticPde3,
         ComputeDiffusionTerm,
         rX        
@@ -50,8 +52,8 @@ class AveragedSourceEllipticPde3_Overloads : public AveragedSourceEllipticPde3{
 void register_AveragedSourceEllipticPde3_class(py::module &m){
     py::class_<AveragedSourceEllipticPde3, AveragedSourceEllipticPde3_Overloads, std::shared_ptr<AveragedSourceEllipticPde3 >  >(m, "AveragedSourceEllipticPde3")
         .def(py::init<::AbstractCellPopulation<3, 3> &, double, double >())
-        .def("rGetCellPopulation", (::AbstractCellPopulation<3, 3> const & (AveragedSourceEllipticPde3::*)()) &AveragedSourceEllipticPde3::rGetCellPopulation, "" )
-        .def("GetCoefficient", (double (AveragedSourceEllipticPde3::*)()) &AveragedSourceEllipticPde3::GetCoefficient, "" )
+        .def("rGetCellPopulation", (::AbstractCellPopulation<3, 3> const & (AveragedSourceEllipticPde3::*)() const ) &AveragedSourceEllipticPde3::rGetCellPopulation, "" )
+        .def("GetCoefficient", (double (AveragedSourceEllipticPde3::*)() const ) &AveragedSourceEllipticPde3::GetCoefficient, "" )
         .def("SetupSourceTerms", (void (AveragedSourceEllipticPde3::*)(::TetrahedralMesh<3, 3> &, ::std::map<boost::shared_ptr<Cell>, unsigned int, std::less<boost::shared_ptr<Cell> >, std::allocator<std::pair<const boost::shared_ptr<Cell>, unsigned int> > > *)) &AveragedSourceEllipticPde3::SetupSourceTerms, "" , py::arg("rCoarseMesh"), py::arg("pCellPdeElementMap") = nullptr)
         .def("ComputeConstantInUSourceTerm", (double (AveragedSourceEllipticPde3::*)(::ChastePoint<3> const &, ::Element<3, 3> *)) &AveragedSourceEllipticPde3::ComputeConstantInUSourceTerm, "" , py::arg("rX"), py::arg("pElement"))
         .def("ComputeLinearInUCoeffInSourceTerm", (double (AveragedSourceEllipticPde3::*)(::ChastePoint<3> const &, ::Element<3, 3> *)) &AveragedSourceEllipticPde3::ComputeLinearInUCoeffInSourceTerm, "" , py::arg("rX"), py::arg("pElement"))

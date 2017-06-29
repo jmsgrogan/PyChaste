@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractUpdateRule<3 > AbstractUpdateRule3;
+
 class AbstractUpdateRule3_Overloads : public AbstractUpdateRule3{
     public:
-    using AbstractUpdateRule3::AbstractUpdateRule<3>;
+    using AbstractUpdateRule3::AbstractUpdateRule;
 
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractUpdateRule3,

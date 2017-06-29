@@ -33,70 +33,17 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-#include <boost/python.hpp>
-#include <string>
-#include <boost/python/module.hpp>
-#include <boost/python/suite/indexing/vector_indexing_suite.hpp>
-#include <boost/python/stl_iterator.hpp>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 #include "Hello.hpp"
 
-using namespace boost::python;
+namespace py = pybind11;
 
-/* Python Iterables to C++
- */
-struct PythonIterableToStl
-{
-  template <typename Container>
-  PythonIterableToStl&
-  from_python()
-  {
-    boost::python::converter::registry::push_back(
-      &PythonIterableToStl::convertible,
-      &PythonIterableToStl::construct<Container>,
-      boost::python::type_id<Container>());
-
-    // Support chaining.
-    return *this;
-  }
-
-  // Check if PyObject is iterable.
-  static void* convertible(PyObject* object)
-  {
-    return PyObject_GetIter(object) ? object : NULL;
-  }
-
-  template <typename Container>
-  static void construct(PyObject* object, boost::python::converter::rvalue_from_python_stage1_data* data)
-  {
-    namespace python = boost::python;
-    python::handle<> handle(python::borrowed(object));
-
-    typedef python::converter::rvalue_from_python_storage<Container> storage_type;
-    void* storage = reinterpret_cast<storage_type*>(data)->storage.bytes;
-    typedef python::stl_input_iterator<typename Container::value_type>iterator;
-
-    new (storage) Container(
-      iterator(python::object(handle)), // begin
-      iterator());                      // end
-    data->convertible = storage;
-  }
-};
-
-// Make the python module
-BOOST_PYTHON_MODULE(_chaste_project_PyChaste_tutorial_manual)
-{
-    class_<std::vector<double> > ("VecDouble")
-         .def(vector_indexing_suite<std::vector<double> >())
-    ;
-
-    class_<Hello>("HelloManual", init<const std::string&>())
+PYBIND11_MODULE(_chaste_project_PyChaste_tutorial_manual, m) {
+    py::class_<Hello>(m, "HelloManual")
+        .def(py::init<const std::string &>())
         .def("GetMessage", &Hello::GetMessage)
         .def("SetVector", &Hello::SetVector)
         .def("GetVector", &Hello::GetVector)
-        .def("Complain", &Hello::Complain)
-    ;
-
-    PythonIterableToStl()
-      .from_python<std::vector<double> >()
-      ;
+        .def("Complain", &Hello::Complain);
 }

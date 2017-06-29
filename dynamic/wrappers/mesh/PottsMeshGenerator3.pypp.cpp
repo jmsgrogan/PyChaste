@@ -6,13 +6,15 @@
 namespace py = pybind11;
 
 typedef SharedPottsMeshGenerator<3 > PottsMeshGenerator3;
+typedef ::boost::shared_ptr<PottsMesh<3> > _boost_shared_ptrPottsMesh3;
+
 class PottsMeshGenerator3_Overloads : public PottsMeshGenerator3{
     public:
-    using PottsMeshGenerator3::SharedPottsMeshGenerator<3>;
+    using PottsMeshGenerator3::SharedPottsMeshGenerator;
 
-        ::boost::shared_ptr<PottsMesh<3> > GetMesh() override {
+        ::boost::shared_ptr<PottsMesh<3> > GetMesh()override {
         PYBIND11_OVERLOAD(
-        ::boost::shared_ptr<PottsMesh<3> >,
+        _boost_shared_ptrPottsMesh3,
         PottsMeshGenerator3,
         GetMesh,
         

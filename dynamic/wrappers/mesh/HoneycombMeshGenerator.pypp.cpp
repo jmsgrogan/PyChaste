@@ -6,13 +6,15 @@
 namespace py = pybind11;
 
 typedef SharedHoneycombMeshGenerator HoneycombMeshGenerator;
+typedef ::boost::shared_ptr<MutableMesh<2, 2> > _boost_shared_ptrMutableMesh2_2;
+
 class HoneycombMeshGenerator_Overloads : public HoneycombMeshGenerator{
     public:
     using HoneycombMeshGenerator::SharedHoneycombMeshGenerator;
 
-        ::boost::shared_ptr<MutableMesh<2, 2> > GetMesh() override {
+        ::boost::shared_ptr<MutableMesh<2, 2> > GetMesh()override {
         PYBIND11_OVERLOAD(
-        ::boost::shared_ptr<MutableMesh<2, 2> >,
+        _boost_shared_ptrMutableMesh2_2,
         HoneycombMeshGenerator,
         GetMesh,
         

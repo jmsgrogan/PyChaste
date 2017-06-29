@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef NagaiHondaForce<2 > NagaiHondaForce2;
+
 class NagaiHondaForce2_Overloads : public NagaiHondaForce2{
     public:
-    using NagaiHondaForce2::NagaiHondaForce<2>;
+    using NagaiHondaForce2::NagaiHondaForce;
 
-        void AddForceContribution(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void AddForceContribution(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         NagaiHondaForce2,
@@ -18,7 +19,7 @@ class NagaiHondaForce2_Overloads : public NagaiHondaForce2{
         rCellPopulation        
         );
         }
-        double GetAdhesionParameter(::Node<2> * pNodeA, ::Node<2> * pNodeB, ::VertexBasedCellPopulation<2> & rVertexCellPopulation) override {
+        double GetAdhesionParameter(::Node<2> * pNodeA, ::Node<2> * pNodeB, ::VertexBasedCellPopulation<2> & rVertexCellPopulation)override {
         PYBIND11_OVERLOAD(
         double,
         NagaiHondaForce2,
@@ -28,7 +29,7 @@ class NagaiHondaForce2_Overloads : public NagaiHondaForce2{
         rVertexCellPopulation        
         );
         }
-        void OutputForceParameters(::out_stream & rParamsFile) override {
+        void OutputForceParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         NagaiHondaForce2,

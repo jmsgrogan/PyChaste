@@ -40,4 +40,4 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from _chaste_project_PyChaste_tutorial import *
-from _chaste_project_PyChaste_hello_manual import *
+from _chaste_project_PyChaste_tutorial_manual import *

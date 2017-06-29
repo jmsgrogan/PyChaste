@@ -6,35 +6,40 @@
 namespace py = pybind11;
 
 typedef PottsMesh<2 > PottsMesh2;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef unsigned int unsignedint;
+
 class PottsMesh2_Overloads : public PottsMesh2{
     public:
-    using PottsMesh2::PottsMesh<2>;
+    using PottsMesh2::PottsMesh;
 
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         PottsMesh2,
         GetNumNodes,
         
         );
         }
-        unsigned int GetNumElements() override {
+        unsigned int GetNumElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         PottsMesh2,
         GetNumElements,
         
         );
         }
-        ::boost::numeric::ublas::c_vector<double, 2> GetCentroidOfElement(unsigned int index) override {
+        ::boost::numeric::ublas::c_vector<double, 2> GetCentroidOfElement(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 2>,
+        _boost_numeric_ublas_c_vectordouble_2,
         PottsMesh2,
         GetCentroidOfElement,
         index        
         );
         }
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         PottsMesh2,
@@ -42,7 +47,7 @@ class PottsMesh2_Overloads : public PottsMesh2{
         
         );
         }
-        double GetVolumeOfElement(unsigned int index) override {
+        double GetVolumeOfElement(unsigned int index)override {
         PYBIND11_OVERLOAD(
         double,
         PottsMesh2,
@@ -50,7 +55,7 @@ class PottsMesh2_Overloads : public PottsMesh2{
         index        
         );
         }
-        double GetSurfaceAreaOfElement(unsigned int index) override {
+        double GetSurfaceAreaOfElement(unsigned int index)override {
         PYBIND11_OVERLOAD(
         double,
         PottsMesh2,
@@ -58,9 +63,9 @@ class PottsMesh2_Overloads : public PottsMesh2{
         index        
         );
         }
-        unsigned int SolveNodeMapping(unsigned int index) override {
+        unsigned int SolveNodeMapping(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         PottsMesh2,
         SolveNodeMapping,
         index        
@@ -70,15 +75,14 @@ class PottsMesh2_Overloads : public PottsMesh2{
 };
 void register_PottsMesh2_class(py::module &m){
     py::class_<PottsMesh2, PottsMesh2_Overloads, std::shared_ptr<PottsMesh2 >  >(m, "PottsMesh2")
-        .def(py::init<::PottsMesh<2> &, ::std::vector<PottsElement<2> *, std::allocator<PottsElement<2> *> >::iterator, bool >())
         .def(py::init<::std::vector<Node<2> *, std::allocator<Node<2> *> >, ::std::vector<PottsElement<2> *, std::allocator<PottsElement<2> *> >, ::std::vector<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >, std::allocator<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > > >, ::std::vector<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >, std::allocator<std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > > > >())
         .def(py::init< >())
         .def("GetElementIteratorBegin", (::PottsMesh<2>::PottsElementIterator (PottsMesh2::*)(bool)) &PottsMesh2::GetElementIteratorBegin, "" , py::arg("skipDeletedElements") = true)
         .def("GetElementIteratorEnd", (::PottsMesh<2>::PottsElementIterator (PottsMesh2::*)()) &PottsMesh2::GetElementIteratorEnd, "" )
-        .def("GetNumNodes", (unsigned int (PottsMesh2::*)()) &PottsMesh2::GetNumNodes, "" )
-        .def("GetNumElements", (unsigned int (PottsMesh2::*)()) &PottsMesh2::GetNumElements, "" )
-        .def("GetNumAllElements", (unsigned int (PottsMesh2::*)()) &PottsMesh2::GetNumAllElements, "" )
-        .def("GetElement", (::PottsElement<2> * (PottsMesh2::*)(unsigned int)) &PottsMesh2::GetElement, "" , py::arg("index"))
+        .def("GetNumNodes", (unsigned int (PottsMesh2::*)() const ) &PottsMesh2::GetNumNodes, "" )
+        .def("GetNumElements", (unsigned int (PottsMesh2::*)() const ) &PottsMesh2::GetNumElements, "" )
+        .def("GetNumAllElements", (unsigned int (PottsMesh2::*)() const ) &PottsMesh2::GetNumAllElements, "" )
+        .def("GetElement", (::PottsElement<2> * (PottsMesh2::*)(unsigned int) const ) &PottsMesh2::GetElement, "" , py::arg("index"))
         .def("GetCentroidOfElement", (::boost::numeric::ublas::c_vector<double, 2> (PottsMesh2::*)(unsigned int)) &PottsMesh2::GetCentroidOfElement, "" , py::arg("index"))
         .def("ConstructFromMeshReader", (void (PottsMesh2::*)(::AbstractMeshReader<2, 2> &)) &PottsMesh2::ConstructFromMeshReader, "" , py::arg("rMeshReader"))
         .def("Clear", (void (PottsMesh2::*)()) &PottsMesh2::Clear, "" )

@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef OnLatticeSimulation<3 > OnLatticeSimulation3;
+
 class OnLatticeSimulation3_Overloads : public OnLatticeSimulation3{
     public:
-    using OnLatticeSimulation3::OnLatticeSimulation<3>;
+    using OnLatticeSimulation3::OnLatticeSimulation;
 
-        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile) override {
+        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         OnLatticeSimulation3,
@@ -18,7 +19,7 @@ class OnLatticeSimulation3_Overloads : public OnLatticeSimulation3{
         rParamsFile        
         );
         }
-        void OutputSimulationParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         OnLatticeSimulation3,
@@ -26,7 +27,7 @@ class OnLatticeSimulation3_Overloads : public OnLatticeSimulation3{
         rParamsFile        
         );
         }
-        void UpdateCellPopulation() override {
+        void UpdateCellPopulation()override {
         PYBIND11_OVERLOAD(
         void,
         OnLatticeSimulation3,
@@ -34,7 +35,7 @@ class OnLatticeSimulation3_Overloads : public OnLatticeSimulation3{
         
         );
         }
-        void UpdateCellLocationsAndTopology() override {
+        void UpdateCellLocationsAndTopology()override {
         PYBIND11_OVERLOAD(
         void,
         OnLatticeSimulation3,

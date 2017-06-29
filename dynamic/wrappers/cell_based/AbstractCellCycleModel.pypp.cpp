@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AbstractCellCycleModel AbstractCellCycleModel;
+typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
+
 class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
     public:
     using AbstractCellCycleModel::AbstractCellCycleModel;
 
-        void Initialise() override {
+        void Initialise()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellCycleModel,
@@ -18,7 +20,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        void InitialiseDaughterCell() override {
+        void InitialiseDaughterCell()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellCycleModel,
@@ -26,7 +28,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        void SetBirthTime(double birthTime) override {
+        void SetBirthTime(double birthTime)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellCycleModel,
@@ -34,7 +36,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         birthTime        
         );
         }
-        bool ReadyToDivide() override {
+        bool ReadyToDivide()override {
         PYBIND11_OVERLOAD_PURE(
         bool,
         AbstractCellCycleModel,
@@ -42,7 +44,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        void ResetForDivision() override {
+        void ResetForDivision()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellCycleModel,
@@ -50,15 +52,15 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        ::AbstractCellCycleModel * CreateCellCycleModel() override {
+        ::AbstractCellCycleModel * CreateCellCycleModel()override {
         PYBIND11_OVERLOAD_PURE(
-        ::AbstractCellCycleModel *,
+        _AbstractCellCycleModelPtr,
         AbstractCellCycleModel,
         CreateCellCycleModel,
         
         );
         }
-        bool CanCellTerminallyDifferentiate() override {
+        bool CanCellTerminallyDifferentiate()override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractCellCycleModel,
@@ -66,7 +68,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        double GetAverageTransitCellCycleTime() override {
+        double GetAverageTransitCellCycleTime()override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractCellCycleModel,
@@ -74,7 +76,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        double GetAverageStemCellCycleTime() override {
+        double GetAverageStemCellCycleTime()override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractCellCycleModel,
@@ -82,7 +84,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellCycleModel,
@@ -100,8 +102,8 @@ void register_AbstractCellCycleModel_class(py::module &m){
         .def("GetCell", (::CellPtr (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetCell, "" )
         .def("SetBirthTime", (void (AbstractCellCycleModel::*)(double)) &AbstractCellCycleModel::SetBirthTime, "" , py::arg("birthTime"))
         .def("SetDimension", (void (AbstractCellCycleModel::*)(unsigned int)) &AbstractCellCycleModel::SetDimension, "" , py::arg("dimension"))
-        .def("GetDimension", (unsigned int (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetDimension, "" )
-        .def("GetBirthTime", (double (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetBirthTime, "" )
+        .def("GetDimension", (unsigned int (AbstractCellCycleModel::*)() const ) &AbstractCellCycleModel::GetDimension, "" )
+        .def("GetBirthTime", (double (AbstractCellCycleModel::*)() const ) &AbstractCellCycleModel::GetBirthTime, "" )
         .def("GetAge", (double (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetAge, "" )
         .def("ReadyToDivide", (bool (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::ReadyToDivide, "" )
         .def("ResetForDivision", (void (AbstractCellCycleModel::*)()) &AbstractCellCycleModel::ResetForDivision, "" )

@@ -1,3 +1,0 @@
-.. autoclass:: chaste.tutorial.Hello
-	:members:
-

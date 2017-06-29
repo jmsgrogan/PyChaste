@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef ChasteBuildInfo ChasteBuildInfo;
+
 void register_ChasteBuildInfo_class(py::module &m){
     py::class_<ChasteBuildInfo, std::shared_ptr<ChasteBuildInfo >  >(m, "ChasteBuildInfo")
         .def_static("GetLicenceText", (::std::string (*)()) &ChasteBuildInfo::GetLicenceText, "" )

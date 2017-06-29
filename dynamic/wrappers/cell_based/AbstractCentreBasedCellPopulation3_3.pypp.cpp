@@ -6,19 +6,24 @@
 namespace py = pybind11;
 
 typedef AbstractCentreBasedCellPopulation<3,3 > AbstractCentreBasedCellPopulation3_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::CellPtr _CellPtr;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef;
+
 class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBasedCellPopulation3_3{
     public:
-    using AbstractCentreBasedCellPopulation3_3::AbstractCentreBasedCellPopulation<3, 3>;
+    using AbstractCentreBasedCellPopulation3_3::AbstractCentreBasedCellPopulation;
 
-        ::boost::numeric::ublas::c_vector<double, 3> GetLocationOfCellCentre(::CellPtr pCell) override {
+        ::boost::numeric::ublas::c_vector<double, 3> GetLocationOfCellCentre(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 3>,
+        _boost_numeric_ublas_c_vectordouble_3,
         AbstractCentreBasedCellPopulation3_3,
         GetLocationOfCellCentre,
         pCell        
         );
         }
-        double GetCellDataItemAtPdeNode(unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies, double dirichletBoundaryValue) override {
+        double GetCellDataItemAtPdeNode(unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies, double dirichletBoundaryValue)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractCentreBasedCellPopulation3_3,
@@ -29,16 +34,16 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         dirichletBoundaryValue        
         );
         }
-        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell) override {
+        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         AbstractCentreBasedCellPopulation3_3,
         AddCell,
         pNewCell, 
         pParentCell        
         );
         }
-        bool IsCellAssociatedWithADeletedLocation(::CellPtr pCell) override {
+        bool IsCellAssociatedWithADeletedLocation(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractCentreBasedCellPopulation3_3,
@@ -46,15 +51,15 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         pCell        
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         AbstractCentreBasedCellPopulation3_3,
         GetNeighbouringLocationIndices,
         pCell        
         );
         }
-        void CheckForStepSizeException(unsigned int nodeIndex, ::boost::numeric::ublas::c_vector<double, 3> & rDisplacement, double dt) override {
+        void CheckForStepSizeException(unsigned int nodeIndex, ::boost::numeric::ublas::c_vector<double, 3> & rDisplacement, double dt)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCentreBasedCellPopulation3_3,
@@ -64,7 +69,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         dt        
         );
         }
-        double GetDampingConstant(unsigned int nodeIndex) override {
+        double GetDampingConstant(unsigned int nodeIndex)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractCentreBasedCellPopulation3_3,
@@ -72,7 +77,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         nodeIndex        
         );
         }
-        bool IsGhostNode(unsigned int index) override {
+        bool IsGhostNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractCentreBasedCellPopulation3_3,
@@ -80,7 +85,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         index        
         );
         }
-        bool IsParticle(unsigned int index) override {
+        bool IsParticle(unsigned int index)override {
         PYBIND11_OVERLOAD(
         bool,
         AbstractCentreBasedCellPopulation3_3,
@@ -88,15 +93,15 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         index        
         );
         }
-        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & rGetNodePairs() override {
+        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & rGetNodePairs()override {
         PYBIND11_OVERLOAD_PURE(
-        ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > &,
+        _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef,
         AbstractCentreBasedCellPopulation3_3,
         rGetNodePairs,
         
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCentreBasedCellPopulation3_3,
@@ -104,7 +109,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         rParamsFile        
         );
         }
-        double GetDefaultTimeStep() override {
+        double GetDefaultTimeStep()override {
         PYBIND11_OVERLOAD(
         double,
         AbstractCentreBasedCellPopulation3_3,
@@ -112,7 +117,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         
         );
         }
-        void WriteVtkResultsToFile(::std::string const & rDirectory) override {
+        void WriteVtkResultsToFile(::std::string const & rDirectory)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCentreBasedCellPopulation3_3,
@@ -120,7 +125,7 @@ class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBase
         rDirectory        
         );
         }
-        void AcceptCellWritersAcrossPopulation() override {
+        void AcceptCellWritersAcrossPopulation()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCentreBasedCellPopulation3_3,
@@ -137,8 +142,6 @@ void register_AbstractCentreBasedCellPopulation3_3_class(py::module &m){
         .def("AddCell", (::CellPtr (AbstractCentreBasedCellPopulation3_3::*)(::CellPtr, ::CellPtr)) &AbstractCentreBasedCellPopulation3_3::AddCell, "" , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ))
         .def("CreateCellPair", (::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> > (AbstractCentreBasedCellPopulation3_3::*)(::CellPtr, ::CellPtr)) &AbstractCentreBasedCellPopulation3_3::CreateCellPair, "" , py::arg("pCell1"), py::arg("pCell2"))
         .def("IsMarkedSpring", (bool (AbstractCentreBasedCellPopulation3_3::*)(::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> > const &)) &AbstractCentreBasedCellPopulation3_3::IsMarkedSpring, "" , py::arg("rCellPair"))
-        .def("MarkSpring", (void (AbstractCentreBasedCellPopulation3_3::*)(::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> > &)) &AbstractCentreBasedCellPopulation3_3::MarkSpring, "" , py::arg("rCellPair"))
-        .def("UnmarkSpring", (void (AbstractCentreBasedCellPopulation3_3::*)(::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> > &)) &AbstractCentreBasedCellPopulation3_3::UnmarkSpring, "" , py::arg("rCellPair"))
         .def("IsCellAssociatedWithADeletedLocation", (bool (AbstractCentreBasedCellPopulation3_3::*)(::CellPtr)) &AbstractCentreBasedCellPopulation3_3::IsCellAssociatedWithADeletedLocation, "" , py::arg("pCell"))
         .def("GetNeighbouringLocationIndices", (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > (AbstractCentreBasedCellPopulation3_3::*)(::CellPtr)) &AbstractCentreBasedCellPopulation3_3::GetNeighbouringLocationIndices, "" , py::arg("pCell"))
         .def("CheckForStepSizeException", (void (AbstractCentreBasedCellPopulation3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double)) &AbstractCentreBasedCellPopulation3_3::CheckForStepSizeException, "" , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt"))

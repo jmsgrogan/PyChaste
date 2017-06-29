@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef EllipticGrowingDomainPdeModifier<2 > EllipticGrowingDomainPdeModifier2;
+typedef ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > _std_shared_ptrBoundaryConditionsContainer2_2_1;
+
 class EllipticGrowingDomainPdeModifier2_Overloads : public EllipticGrowingDomainPdeModifier2{
     public:
-    using EllipticGrowingDomainPdeModifier2::EllipticGrowingDomainPdeModifier<2>;
+    using EllipticGrowingDomainPdeModifier2::EllipticGrowingDomainPdeModifier;
 
-        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         EllipticGrowingDomainPdeModifier2,
@@ -18,7 +20,7 @@ class EllipticGrowingDomainPdeModifier2_Overloads : public EllipticGrowingDomain
         rCellPopulation        
         );
         }
-        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory) override {
+        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         EllipticGrowingDomainPdeModifier2,
@@ -27,15 +29,15 @@ class EllipticGrowingDomainPdeModifier2_Overloads : public EllipticGrowingDomain
         outputDirectory        
         );
         }
-        ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > ConstructBoundaryConditionsContainer() override {
+        ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > ConstructBoundaryConditionsContainer()override {
         PYBIND11_OVERLOAD(
-        ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> >,
+        _std_shared_ptrBoundaryConditionsContainer2_2_1,
         EllipticGrowingDomainPdeModifier2,
         ConstructBoundaryConditionsContainer,
         
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         EllipticGrowingDomainPdeModifier2,

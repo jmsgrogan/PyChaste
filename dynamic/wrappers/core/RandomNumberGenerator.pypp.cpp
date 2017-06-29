@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef RandomNumberGenerator RandomNumberGenerator;
+
 void register_RandomNumberGenerator_class(py::module &m){
     py::class_<RandomNumberGenerator, std::shared_ptr<RandomNumberGenerator >  >(m, "RandomNumberGenerator")
         .def("StandardNormalRandomDeviate", (double (RandomNumberGenerator::*)()) &RandomNumberGenerator::StandardNormalRandomDeviate, "" )

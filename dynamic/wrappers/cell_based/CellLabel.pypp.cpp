@@ -6,9 +6,10 @@
 namespace py = pybind11;
 
 typedef CellLabel CellLabel;
+
 void register_CellLabel_class(py::module &m){
     py::class_<CellLabel, std::shared_ptr<CellLabel > , AbstractCellProperty  >(m, "CellLabel")
         .def(py::init<unsigned int >())
-        .def("GetColour", (unsigned int (CellLabel::*)()) &CellLabel::GetColour, "" )
+        .def("GetColour", (unsigned int (CellLabel::*)() const ) &CellLabel::GetColour, "" )
     ;
 }

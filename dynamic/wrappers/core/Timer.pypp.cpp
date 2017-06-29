@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef Timer Timer;
+
 void register_Timer_class(py::module &m){
     py::class_<Timer, std::shared_ptr<Timer >  >(m, "Timer")
         .def_static("Reset", (void (*)()) &Timer::Reset, "" )

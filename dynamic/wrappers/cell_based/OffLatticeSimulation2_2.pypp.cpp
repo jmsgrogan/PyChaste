@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef OffLatticeSimulation<2,2 > OffLatticeSimulation2_2;
+
 class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
     public:
-    using OffLatticeSimulation2_2::OffLatticeSimulation<2, 2>;
+    using OffLatticeSimulation2_2::OffLatticeSimulation;
 
-        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile) override {
+        void OutputAdditionalSimulationSetup(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         OffLatticeSimulation2_2,
@@ -18,7 +19,7 @@ class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
         rParamsFile        
         );
         }
-        void OutputSimulationParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         OffLatticeSimulation2_2,
@@ -26,7 +27,7 @@ class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
         rParamsFile        
         );
         }
-        void UpdateCellLocationsAndTopology() override {
+        void UpdateCellLocationsAndTopology()override {
         PYBIND11_OVERLOAD(
         void,
         OffLatticeSimulation2_2,
@@ -34,7 +35,7 @@ class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
         
         );
         }
-        void SetupSolve() override {
+        void SetupSolve()override {
         PYBIND11_OVERLOAD(
         void,
         OffLatticeSimulation2_2,
@@ -42,7 +43,7 @@ class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
         
         );
         }
-        void WriteVisualizerSetupFile() override {
+        void WriteVisualizerSetupFile()override {
         PYBIND11_OVERLOAD(
         void,
         OffLatticeSimulation2_2,
@@ -60,9 +61,9 @@ void register_OffLatticeSimulation2_2_class(py::module &m){
         .def("AddCellPopulationBoundaryCondition", (void (OffLatticeSimulation2_2::*)(::boost::shared_ptr<AbstractCellPopulationBoundaryCondition<2, 2> >)) &OffLatticeSimulation2_2::AddCellPopulationBoundaryCondition, "" , py::arg("pBoundaryCondition"))
         .def("RemoveAllCellPopulationBoundaryConditions", (void (OffLatticeSimulation2_2::*)()) &OffLatticeSimulation2_2::RemoveAllCellPopulationBoundaryConditions, "" )
         .def("SetNumericalMethod", (void (OffLatticeSimulation2_2::*)(::boost::shared_ptr<AbstractNumericalMethod<2, 2> >)) &OffLatticeSimulation2_2::SetNumericalMethod, "" , py::arg("pNumericalMethod"))
-        .def("GetNumericalMethod", (::boost::shared_ptr<AbstractNumericalMethod<2, 2> > const (OffLatticeSimulation2_2::*)()) &OffLatticeSimulation2_2::GetNumericalMethod, "" )
+        .def("GetNumericalMethod", (::boost::shared_ptr<AbstractNumericalMethod<2, 2> > const (OffLatticeSimulation2_2::*)() const ) &OffLatticeSimulation2_2::GetNumericalMethod, "" )
         .def("OutputAdditionalSimulationSetup", (void (OffLatticeSimulation2_2::*)(::out_stream &)) &OffLatticeSimulation2_2::OutputAdditionalSimulationSetup, "" , py::arg("rParamsFile"))
         .def("OutputSimulationParameters", (void (OffLatticeSimulation2_2::*)(::out_stream &)) &OffLatticeSimulation2_2::OutputSimulationParameters, "" , py::arg("rParamsFile"))
-        .def("rGetForceCollection", (::std::vector<boost::shared_ptr<AbstractForce<2, 2> >, std::allocator<boost::shared_ptr<AbstractForce<2, 2> > > > const & (OffLatticeSimulation2_2::*)()) &OffLatticeSimulation2_2::rGetForceCollection, "" )
+        .def("rGetForceCollection", (::std::vector<boost::shared_ptr<AbstractForce<2, 2> >, std::allocator<boost::shared_ptr<AbstractForce<2, 2> > > > const & (OffLatticeSimulation2_2::*)() const ) &OffLatticeSimulation2_2::rGetForceCollection, "" )
     ;
 }

@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef Element<2,2 > Element2_2;
+
 class Element2_2_Overloads : public Element2_2{
     public:
-    using Element2_2::Element<2, 2>;
+    using Element2_2::Element;
 
-        void RegisterWithNodes() override {
+        void RegisterWithNodes()override {
         PYBIND11_OVERLOAD(
         void,
         Element2_2,
@@ -18,7 +19,7 @@ class Element2_2_Overloads : public Element2_2{
         
         );
         }
-        void MarkAsDeleted() override {
+        void MarkAsDeleted()override {
         PYBIND11_OVERLOAD(
         void,
         Element2_2,
@@ -26,7 +27,7 @@ class Element2_2_Overloads : public Element2_2{
         
         );
         }
-        void UpdateNode(unsigned int const & rIndex, ::Node<2> * pNode) override {
+        void UpdateNode(unsigned int const & rIndex, ::Node<2> * pNode)override {
         PYBIND11_OVERLOAD(
         void,
         Element2_2,

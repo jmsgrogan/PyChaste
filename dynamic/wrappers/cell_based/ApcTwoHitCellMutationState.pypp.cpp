@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef ApcTwoHitCellMutationState ApcTwoHitCellMutationState;
+
 void register_ApcTwoHitCellMutationState_class(py::module &m){
     py::class_<ApcTwoHitCellMutationState, std::shared_ptr<ApcTwoHitCellMutationState > , AbstractCellMutationState  >(m, "ApcTwoHitCellMutationState")
         .def(py::init< >())

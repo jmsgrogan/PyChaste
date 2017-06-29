@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef WildTypeCellMutationState WildTypeCellMutationState;
+
 void register_WildTypeCellMutationState_class(py::module &m){
     py::class_<WildTypeCellMutationState, std::shared_ptr<WildTypeCellMutationState > , AbstractCellMutationState  >(m, "WildTypeCellMutationState")
         .def(py::init< >())

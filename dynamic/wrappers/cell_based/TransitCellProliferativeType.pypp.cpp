@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef TransitCellProliferativeType TransitCellProliferativeType;
+
 void register_TransitCellProliferativeType_class(py::module &m){
     py::class_<TransitCellProliferativeType, std::shared_ptr<TransitCellProliferativeType > , AbstractCellProliferativeType  >(m, "TransitCellProliferativeType")
         .def(py::init< >())

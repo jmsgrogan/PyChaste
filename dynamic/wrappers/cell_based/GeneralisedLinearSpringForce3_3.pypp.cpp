@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef GeneralisedLinearSpringForce<3,3 > GeneralisedLinearSpringForce3_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+
 class GeneralisedLinearSpringForce3_3_Overloads : public GeneralisedLinearSpringForce3_3{
     public:
-    using GeneralisedLinearSpringForce3_3::GeneralisedLinearSpringForce<3, 3>;
+    using GeneralisedLinearSpringForce3_3::GeneralisedLinearSpringForce;
 
-        double VariableSpringConstantMultiplicationFactor(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation, bool isCloserThanRestLength) override {
+        double VariableSpringConstantMultiplicationFactor(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation, bool isCloserThanRestLength)override {
         PYBIND11_OVERLOAD(
         double,
         GeneralisedLinearSpringForce3_3,
@@ -21,9 +23,9 @@ class GeneralisedLinearSpringForce3_3_Overloads : public GeneralisedLinearSpring
         isCloserThanRestLength        
         );
         }
-        ::boost::numeric::ublas::c_vector<double, 3> CalculateForceBetweenNodes(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        ::boost::numeric::ublas::c_vector<double, 3> CalculateForceBetweenNodes(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 3>,
+        _boost_numeric_ublas_c_vectordouble_3,
         GeneralisedLinearSpringForce3_3,
         CalculateForceBetweenNodes,
         nodeAGlobalIndex, 
@@ -31,7 +33,7 @@ class GeneralisedLinearSpringForce3_3_Overloads : public GeneralisedLinearSpring
         rCellPopulation        
         );
         }
-        void OutputForceParameters(::out_stream & rParamsFile) override {
+        void OutputForceParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         GeneralisedLinearSpringForce3_3,

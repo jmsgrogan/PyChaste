@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef VoronoiDataWriter<3,3 > VoronoiDataWriter3_3;
+
 class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
     public:
-    using VoronoiDataWriter3_3::VoronoiDataWriter<3, 3>;
+    using VoronoiDataWriter3_3::VoronoiDataWriter;
 
-        void Visit(::MeshBasedCellPopulation<3, 3> * pCellPopulation) override {
+        void Visit(::MeshBasedCellPopulation<3, 3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VoronoiDataWriter3_3,
@@ -18,7 +19,7 @@ class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
         pCellPopulation        
         );
         }
-        void Visit(::CaBasedCellPopulation<3> * pCellPopulation) override {
+        void Visit(::CaBasedCellPopulation<3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VoronoiDataWriter3_3,
@@ -26,7 +27,7 @@ class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
         pCellPopulation        
         );
         }
-        void Visit(::NodeBasedCellPopulation<3> * pCellPopulation) override {
+        void Visit(::NodeBasedCellPopulation<3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VoronoiDataWriter3_3,
@@ -34,7 +35,7 @@ class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
         pCellPopulation        
         );
         }
-        void Visit(::PottsBasedCellPopulation<3> * pCellPopulation) override {
+        void Visit(::PottsBasedCellPopulation<3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VoronoiDataWriter3_3,
@@ -42,7 +43,7 @@ class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
         pCellPopulation        
         );
         }
-        void Visit(::VertexBasedCellPopulation<3> * pCellPopulation) override {
+        void Visit(::VertexBasedCellPopulation<3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VoronoiDataWriter3_3,

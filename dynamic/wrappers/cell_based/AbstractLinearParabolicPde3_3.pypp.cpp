@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+
 class AbstractLinearParabolicPde3_3_Overloads : public AbstractLinearParabolicPde3_3{
     public:
-    using AbstractLinearParabolicPde3_3::AbstractLinearParabolicPde<3, 3>;
+    using AbstractLinearParabolicPde3_3::AbstractLinearParabolicPde;
 
-        double ComputeDuDtCoefficientFunction(::ChastePoint<3> const & rX) override {
+        double ComputeDuDtCoefficientFunction(::ChastePoint<3> const & rX)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractLinearParabolicPde3_3,
@@ -18,7 +20,7 @@ class AbstractLinearParabolicPde3_3_Overloads : public AbstractLinearParabolicPd
         rX        
         );
         }
-        double ComputeSourceTerm(::ChastePoint<3> const & rX, double u, ::Element<3, 3> * pElement) override {
+        double ComputeSourceTerm(::ChastePoint<3> const & rX, double u, ::Element<3, 3> * pElement)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractLinearParabolicPde3_3,
@@ -28,7 +30,7 @@ class AbstractLinearParabolicPde3_3_Overloads : public AbstractLinearParabolicPd
         pElement        
         );
         }
-        double ComputeSourceTermAtNode(::Node<3> const & rNode, double u) override {
+        double ComputeSourceTermAtNode(::Node<3> const & rNode, double u)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractLinearParabolicPde3_3,
@@ -37,9 +39,9 @@ class AbstractLinearParabolicPde3_3_Overloads : public AbstractLinearParabolicPd
         u        
         );
         }
-        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement) override {
+        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement)override {
         PYBIND11_OVERLOAD_PURE(
-        ::boost::numeric::ublas::c_matrix<double, 3, 3>,
+        _boost_numeric_ublas_c_matrixdouble_3_3,
         AbstractLinearParabolicPde3_3,
         ComputeDiffusionTerm,
         rX, 

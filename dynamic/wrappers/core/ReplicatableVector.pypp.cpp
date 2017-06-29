@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef ReplicatableVector ReplicatableVector;
+
 void register_ReplicatableVector_class(py::module &m){
     py::class_<ReplicatableVector, std::shared_ptr<ReplicatableVector >  >(m, "ReplicatableVector")
         .def(py::init< >())

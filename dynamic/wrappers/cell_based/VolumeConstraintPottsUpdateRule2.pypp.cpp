@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef VolumeConstraintPottsUpdateRule<2 > VolumeConstraintPottsUpdateRule2;
+
 class VolumeConstraintPottsUpdateRule2_Overloads : public VolumeConstraintPottsUpdateRule2{
     public:
-    using VolumeConstraintPottsUpdateRule2::VolumeConstraintPottsUpdateRule<2>;
+    using VolumeConstraintPottsUpdateRule2::VolumeConstraintPottsUpdateRule;
 
-        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation) override {
+        double EvaluateHamiltonianContribution(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::PottsBasedCellPopulation<2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         double,
         VolumeConstraintPottsUpdateRule2,
@@ -20,7 +21,7 @@ class VolumeConstraintPottsUpdateRule2_Overloads : public VolumeConstraintPottsU
         rCellPopulation        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         VolumeConstraintPottsUpdateRule2,
@@ -36,7 +37,7 @@ void register_VolumeConstraintPottsUpdateRule2_class(py::module &m){
         .def("EvaluateHamiltonianContribution", (double (VolumeConstraintPottsUpdateRule2::*)(unsigned int, unsigned int, ::PottsBasedCellPopulation<2> &)) &VolumeConstraintPottsUpdateRule2::EvaluateHamiltonianContribution, "" , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"))
         .def("GetDeformationEnergyParameter", (double (VolumeConstraintPottsUpdateRule2::*)()) &VolumeConstraintPottsUpdateRule2::GetDeformationEnergyParameter, "" )
         .def("SetDeformationEnergyParameter", (void (VolumeConstraintPottsUpdateRule2::*)(double)) &VolumeConstraintPottsUpdateRule2::SetDeformationEnergyParameter, "" , py::arg("deformationEnergyParameter"))
-        .def("GetMatureCellTargetVolume", (double (VolumeConstraintPottsUpdateRule2::*)()) &VolumeConstraintPottsUpdateRule2::GetMatureCellTargetVolume, "" )
+        .def("GetMatureCellTargetVolume", (double (VolumeConstraintPottsUpdateRule2::*)() const ) &VolumeConstraintPottsUpdateRule2::GetMatureCellTargetVolume, "" )
         .def("SetMatureCellTargetVolume", (void (VolumeConstraintPottsUpdateRule2::*)(double)) &VolumeConstraintPottsUpdateRule2::SetMatureCellTargetVolume, "" , py::arg("matureCellTargetVolume"))
         .def("OutputUpdateRuleParameters", (void (VolumeConstraintPottsUpdateRule2::*)(::out_stream &)) &VolumeConstraintPottsUpdateRule2::OutputUpdateRuleParameters, "" , py::arg("rParamsFile"))
     ;

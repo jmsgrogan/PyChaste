@@ -6,11 +6,17 @@
 namespace py = pybind11;
 
 typedef NodesOnlyMesh<3 > NodesOnlyMesh3;
+typedef unsigned int unsignedint;
+typedef ::Node<3> * _Node3Ptr;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
     public:
-    using NodesOnlyMesh3::NodesOnlyMesh<3>;
+    using NodesOnlyMesh3::NodesOnlyMesh;
 
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -18,39 +24,39 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         
         );
         }
-        unsigned int SolveNodeMapping(unsigned int index) override {
+        unsigned int SolveNodeMapping(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodesOnlyMesh3,
         SolveNodeMapping,
         index        
         );
         }
-        ::Node<3> * GetNodeOrHaloNode(unsigned int index) override {
+        ::Node<3> * GetNodeOrHaloNode(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        ::Node<3> *,
+        _Node3Ptr,
         NodesOnlyMesh3,
         GetNodeOrHaloNode,
         index        
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodesOnlyMesh3,
         GetNumNodes,
         
         );
         }
-        unsigned int GetMaximumNodeIndex() override {
+        unsigned int GetMaximumNodeIndex()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodesOnlyMesh3,
         GetMaximumNodeIndex,
         
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension) const override {
         PYBIND11_OVERLOAD(
         double,
         NodesOnlyMesh3,
@@ -58,7 +64,7 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         rDimension        
         );
         }
-        void ReMesh(::NodeMap & rMap) override {
+        void ReMesh(::NodeMap & rMap)override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -66,7 +72,7 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         rMap        
         );
         }
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> point, bool concreteMove) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<3> point, bool concreteMove)override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -76,15 +82,15 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         concreteMove        
         );
         }
-        unsigned int AddNode(::Node<3> * pNewNode) override {
+        unsigned int AddNode(::Node<3> * pNewNode)override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         NodesOnlyMesh3,
         AddNode,
         pNewNode        
         );
         }
-        void DeleteNode(unsigned int index) override {
+        void DeleteNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -92,7 +98,7 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         index        
         );
         }
-        void ConstructFromMeshReader(::AbstractMeshReader<3, 3> & rMeshReader) override {
+        void ConstructFromMeshReader(::AbstractMeshReader<3, 3> & rMeshReader)override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -100,7 +106,7 @@ class NodesOnlyMesh3_Overloads : public NodesOnlyMesh3{
         rMeshReader        
         );
         }
-        void SetUpBoxCollection(double cutOffLength, ::boost::numeric::ublas::c_vector<double, 6> domainSize, int numLocalRows, bool isPeriodic) override {
+        void SetUpBoxCollection(double cutOffLength, ::boost::numeric::ublas::c_vector<double, 6> domainSize, int numLocalRows, bool isPeriodic)override {
         PYBIND11_OVERLOAD(
         void,
         NodesOnlyMesh3,
@@ -121,14 +127,14 @@ void register_NodesOnlyMesh3_class(py::module &m){
         .def("ConstructNodesWithoutMesh", (void (NodesOnlyMesh3::*)(::AbstractMesh<3, 3> const &, double)) &NodesOnlyMesh3::ConstructNodesWithoutMesh, "" , py::arg("rGeneratingMesh"), py::arg("maxInteractionDistance"))
         .def("rGetInitiallyOwnedNodes", (::std::vector<bool, std::allocator<bool> > & (NodesOnlyMesh3::*)()) &NodesOnlyMesh3::rGetInitiallyOwnedNodes, "" )
         .def("Clear", (void (NodesOnlyMesh3::*)()) &NodesOnlyMesh3::Clear, "" )
-        .def("SolveNodeMapping", (unsigned int (NodesOnlyMesh3::*)(unsigned int)) &NodesOnlyMesh3::SolveNodeMapping, "" , py::arg("index"))
-        .def("GetNodeOrHaloNode", (::Node<3> * (NodesOnlyMesh3::*)(unsigned int)) &NodesOnlyMesh3::GetNodeOrHaloNode, "" , py::arg("index"))
+        .def("SolveNodeMapping", (unsigned int (NodesOnlyMesh3::*)(unsigned int) const ) &NodesOnlyMesh3::SolveNodeMapping, "" , py::arg("index"))
+        .def("GetNodeOrHaloNode", (::Node<3> * (NodesOnlyMesh3::*)(unsigned int) const ) &NodesOnlyMesh3::GetNodeOrHaloNode, "" , py::arg("index"))
         .def("IsOwned", (bool (NodesOnlyMesh3::*)(::boost::numeric::ublas::c_vector<double, 3> &)) &NodesOnlyMesh3::IsOwned, "" , py::arg("location"))
-        .def("GetNumNodes", (unsigned int (NodesOnlyMesh3::*)()) &NodesOnlyMesh3::GetNumNodes, "" )
+        .def("GetNumNodes", (unsigned int (NodesOnlyMesh3::*)() const ) &NodesOnlyMesh3::GetNumNodes, "" )
         .def("GetMaximumNodeIndex", (unsigned int (NodesOnlyMesh3::*)()) &NodesOnlyMesh3::GetMaximumNodeIndex, "" )
         .def("SetMaximumInteractionDistance", (void (NodesOnlyMesh3::*)(double)) &NodesOnlyMesh3::SetMaximumInteractionDistance, "" , py::arg("maxDistance"))
         .def("GetMaximumInteractionDistance", (double (NodesOnlyMesh3::*)()) &NodesOnlyMesh3::GetMaximumInteractionDistance, "" )
-        .def("GetWidth", (double (NodesOnlyMesh3::*)(unsigned int const &)) &NodesOnlyMesh3::GetWidth, "" , py::arg("rDimension"))
+        .def("GetWidth", (double (NodesOnlyMesh3::*)(unsigned int const &) const ) &NodesOnlyMesh3::GetWidth, "" , py::arg("rDimension"))
         .def("SetCalculateNodeNeighbours", (void (NodesOnlyMesh3::*)(bool)) &NodesOnlyMesh3::SetCalculateNodeNeighbours, "" , py::arg("calculateNodeNeighbours"))
         .def("CalculateInteriorNodePairs", (void (NodesOnlyMesh3::*)(::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > &)) &NodesOnlyMesh3::CalculateInteriorNodePairs, "" , py::arg("rNodePairs"))
         .def("CalculateBoundaryNodePairs", (void (NodesOnlyMesh3::*)(::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > &)) &NodesOnlyMesh3::CalculateBoundaryNodePairs, "" , py::arg("rNodePairs"))

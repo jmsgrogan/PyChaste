@@ -6,27 +6,36 @@
 namespace py = pybind11;
 
 typedef MeshBasedCellPopulation<2,2 > MeshBasedCellPopulation2_2;
+typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh2_2Ptr;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef ::CellPtr _CellPtr;
+typedef ::Node<2> * _Node2Ptr;
+typedef unsigned int unsignedint;
+typedef ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & _std_vectorstd_pairNode2Ptr_Node2Ptr_std_allocatorstd_pairNode2Ptr_Node2PtrRef;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+
 class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
     public:
-    using MeshBasedCellPopulation2_2::MeshBasedCellPopulation<2, 2>;
+    using MeshBasedCellPopulation2_2::MeshBasedCellPopulation;
 
-        ::TetrahedralMesh<2, 2> * GetTetrahedralMeshForPdeModifier() override {
+        ::TetrahedralMesh<2, 2> * GetTetrahedralMeshForPdeModifier()override {
         PYBIND11_OVERLOAD(
-        ::TetrahedralMesh<2, 2> *,
+        _TetrahedralMesh2_2Ptr,
         MeshBasedCellPopulation2_2,
         GetTetrahedralMeshForPdeModifier,
         
         );
         }
-        unsigned int AddNode(::Node<2> * pNewNode) override {
+        unsigned int AddNode(::Node<2> * pNewNode)override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MeshBasedCellPopulation2_2,
         AddNode,
         pNewNode        
         );
         }
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> & rNewLocation) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> & rNewLocation)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -35,7 +44,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rNewLocation        
         );
         }
-        double GetDampingConstant(unsigned int nodeIndex) override {
+        double GetDampingConstant(unsigned int nodeIndex)override {
         PYBIND11_OVERLOAD(
         double,
         MeshBasedCellPopulation2_2,
@@ -43,7 +52,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         nodeIndex        
         );
         }
-        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler) override {
+        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -51,24 +60,24 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rOutputFileHandler        
         );
         }
-        unsigned int RemoveDeadCells() override {
+        unsigned int RemoveDeadCells()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MeshBasedCellPopulation2_2,
         RemoveDeadCells,
         
         );
         }
-        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell) override {
+        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         MeshBasedCellPopulation2_2,
         AddCell,
         pNewCell, 
         pParentCell        
         );
         }
-        void WriteResultsToFiles(::std::string const & rDirectory) override {
+        void WriteResultsToFiles(::std::string const & rDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -76,7 +85,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rDirectory        
         );
         }
-        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<2, 2> > pPopulationWriter) override {
+        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<2, 2> > pPopulationWriter)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -84,7 +93,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         pPopulationWriter        
         );
         }
-        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<2, 2> > pPopulationCountWriter) override {
+        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<2, 2> > pPopulationCountWriter)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -92,7 +101,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         pPopulationCountWriter        
         );
         }
-        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<2, 2> > pCellWriter, ::CellPtr pCell) override {
+        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<2, 2> > pCellWriter, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -101,7 +110,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         pCell        
         );
         }
-        void Update(bool hasHadBirthsOrDeaths) override {
+        void Update(bool hasHadBirthsOrDeaths)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -109,23 +118,23 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         hasHadBirthsOrDeaths        
         );
         }
-        ::Node<2> * GetNode(unsigned int index) override {
+        ::Node<2> * GetNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::Node<2> *,
+        _Node2Ptr,
         MeshBasedCellPopulation2_2,
         GetNode,
         index        
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MeshBasedCellPopulation2_2,
         GetNumNodes,
         
         );
         }
-        void WriteVtkResultsToFile(::std::string const & rDirectory) override {
+        void WriteVtkResultsToFile(::std::string const & rDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -133,7 +142,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rDirectory        
         );
         }
-        double GetVolumeOfCell(::CellPtr pCell) override {
+        double GetVolumeOfCell(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         MeshBasedCellPopulation2_2,
@@ -141,7 +150,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         pCell        
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension)override {
         PYBIND11_OVERLOAD(
         double,
         MeshBasedCellPopulation2_2,
@@ -149,7 +158,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rDimension        
         );
         }
-        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile) override {
+        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -157,15 +166,15 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         pVizSetupFile        
         );
         }
-        ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & rGetNodePairs() override {
+        ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & rGetNodePairs()override {
         PYBIND11_OVERLOAD(
-        ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > &,
+        _std_vectorstd_pairNode2Ptr_Node2Ptr_std_allocatorstd_pairNode2Ptr_Node2PtrRef,
         MeshBasedCellPopulation2_2,
         rGetNodePairs,
         
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -173,15 +182,15 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rParamsFile        
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         MeshBasedCellPopulation2_2,
         GetNeighbouringNodeIndices,
         index        
         );
         }
-        void UpdateGhostNodesAfterReMesh(::NodeMap & rMap) override {
+        void UpdateGhostNodesAfterReMesh(::NodeMap & rMap)override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -189,7 +198,7 @@ class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
         rMap        
         );
         }
-        void Validate() override {
+        void Validate()override {
         PYBIND11_OVERLOAD(
         void,
         MeshBasedCellPopulation2_2,
@@ -203,7 +212,6 @@ void register_MeshBasedCellPopulation2_2_class(py::module &m){
     py::class_<MeshBasedCellPopulation2_2, MeshBasedCellPopulation2_2_Overloads, std::shared_ptr<MeshBasedCellPopulation2_2 >  >(m, "MeshBasedCellPopulation2_2")
         .def(py::init<::MutableMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, bool >())
         .def(py::init<::MutableMesh<2, 2> & >())
-        .def(py::init<::MeshBasedCellPopulation<2, 2> &, ::TetrahedralMesh<2, 2>::EdgeIterator >())
         .def("GetTetrahedralMeshForPdeModifier", (::TetrahedralMesh<2, 2> * (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::GetTetrahedralMeshForPdeModifier, "" )
         .def("UseAreaBasedDampingConstant", (bool (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::UseAreaBasedDampingConstant, "" )
         .def("AddNode", (unsigned int (MeshBasedCellPopulation2_2::*)(::Node<2> *)) &MeshBasedCellPopulation2_2::AddNode, "" , py::arg("pNewNode"))
@@ -231,10 +239,6 @@ void register_MeshBasedCellPopulation2_2_class(py::module &m){
         .def("GetVoronoiEdgeLength", (double (MeshBasedCellPopulation2_2::*)(unsigned int, unsigned int)) &MeshBasedCellPopulation2_2::GetVoronoiEdgeLength, "" , py::arg("index1"), py::arg("index2"))
         .def("GetWidth", (double (MeshBasedCellPopulation2_2::*)(unsigned int const &)) &MeshBasedCellPopulation2_2::GetWidth, "" , py::arg("rDimension"))
         .def("WriteDataToVisualizerSetupFile", (void (MeshBasedCellPopulation2_2::*)(::out_stream &)) &MeshBasedCellPopulation2_2::WriteDataToVisualizerSetupFile, "" , py::arg("pVizSetupFile"))
-        .def("GetNodeA", (::Node<2> * (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::GetNodeA, "" )
-        .def("GetNodeB", (::Node<2> * (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::GetNodeB, "" )
-        .def("GetCellA", (::CellPtr (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::GetCellA, "" )
-        .def("GetCellB", (::CellPtr (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::GetCellB, "" )
         .def("SpringsBegin", (::MeshBasedCellPopulation<2, 2>::SpringIterator (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::SpringsBegin, "" )
         .def("SpringsEnd", (::MeshBasedCellPopulation<2, 2>::SpringIterator (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::SpringsEnd, "" )
         .def("CheckCellPointers", (void (MeshBasedCellPopulation2_2::*)()) &MeshBasedCellPopulation2_2::CheckCellPointers, "" )

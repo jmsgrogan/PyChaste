@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractCellBasedSimulationModifier<3,3 > AbstractCellBasedSimulationModifier3_3;
+
 class AbstractCellBasedSimulationModifier3_3_Overloads : public AbstractCellBasedSimulationModifier3_3{
     public:
-    using AbstractCellBasedSimulationModifier3_3::AbstractCellBasedSimulationModifier<3, 3>;
+    using AbstractCellBasedSimulationModifier3_3::AbstractCellBasedSimulationModifier;
 
-        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulationModifier3_3,
@@ -18,7 +19,7 @@ class AbstractCellBasedSimulationModifier3_3_Overloads : public AbstractCellBase
         rCellPopulation        
         );
         }
-        void UpdateAtEndOfOutputTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        void UpdateAtEndOfOutputTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellBasedSimulationModifier3_3,
@@ -26,7 +27,7 @@ class AbstractCellBasedSimulationModifier3_3_Overloads : public AbstractCellBase
         rCellPopulation        
         );
         }
-        void SetupSolve(::AbstractCellPopulation<3, 3> & rCellPopulation, ::std::string outputDirectory) override {
+        void SetupSolve(::AbstractCellPopulation<3, 3> & rCellPopulation, ::std::string outputDirectory)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulationModifier3_3,
@@ -35,7 +36,7 @@ class AbstractCellBasedSimulationModifier3_3_Overloads : public AbstractCellBase
         outputDirectory        
         );
         }
-        void UpdateAtEndOfSolve(::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        void UpdateAtEndOfSolve(::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractCellBasedSimulationModifier3_3,
@@ -43,7 +44,7 @@ class AbstractCellBasedSimulationModifier3_3_Overloads : public AbstractCellBase
         rCellPopulation        
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractCellBasedSimulationModifier3_3,

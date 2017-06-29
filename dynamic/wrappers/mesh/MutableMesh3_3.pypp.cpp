@@ -6,11 +6,16 @@
 namespace py = pybind11;
 
 typedef MutableMesh<3,3 > MutableMesh3_3;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class MutableMesh3_3_Overloads : public MutableMesh3_3{
     public:
-    using MutableMesh3_3::MutableMesh<3, 3>;
+    using MutableMesh3_3::MutableMesh;
 
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh3_3,
@@ -18,39 +23,39 @@ class MutableMesh3_3_Overloads : public MutableMesh3_3{
         
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh3_3,
         GetNumNodes,
         
         );
         }
-        unsigned int GetNumElements() override {
+        unsigned int GetNumElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh3_3,
         GetNumElements,
         
         );
         }
-        unsigned int GetNumBoundaryElements() override {
+        unsigned int GetNumBoundaryElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh3_3,
         GetNumBoundaryElements,
         
         );
         }
-        unsigned int AddNode(::Node<3> * pNewNode) override {
+        unsigned int AddNode(::Node<3> * pNewNode)override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh3_3,
         AddNode,
         pNewNode        
         );
         }
-        void SetNode(unsigned int index, ::ChastePoint<3> point, bool concreteMove) override {
+        void SetNode(unsigned int index, ::ChastePoint<3> point, bool concreteMove)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh3_3,
@@ -60,7 +65,7 @@ class MutableMesh3_3_Overloads : public MutableMesh3_3{
         concreteMove        
         );
         }
-        void DeleteNode(unsigned int index) override {
+        void DeleteNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh3_3,
@@ -68,7 +73,7 @@ class MutableMesh3_3_Overloads : public MutableMesh3_3{
         index        
         );
         }
-        void DeleteElement(unsigned int index) override {
+        void DeleteElement(unsigned int index)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh3_3,
@@ -76,7 +81,7 @@ class MutableMesh3_3_Overloads : public MutableMesh3_3{
         index        
         );
         }
-        void ReMesh(::NodeMap & map) override {
+        void ReMesh(::NodeMap & map)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh3_3,
@@ -91,9 +96,9 @@ void register_MutableMesh3_3_class(py::module &m){
         .def(py::init< >())
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> > >())
         .def("Clear", (void (MutableMesh3_3::*)()) &MutableMesh3_3::Clear, "" )
-        .def("GetNumNodes", (unsigned int (MutableMesh3_3::*)()) &MutableMesh3_3::GetNumNodes, "" )
-        .def("GetNumElements", (unsigned int (MutableMesh3_3::*)()) &MutableMesh3_3::GetNumElements, "" )
-        .def("GetNumBoundaryElements", (unsigned int (MutableMesh3_3::*)()) &MutableMesh3_3::GetNumBoundaryElements, "" )
+        .def("GetNumNodes", (unsigned int (MutableMesh3_3::*)() const ) &MutableMesh3_3::GetNumNodes, "" )
+        .def("GetNumElements", (unsigned int (MutableMesh3_3::*)() const ) &MutableMesh3_3::GetNumElements, "" )
+        .def("GetNumBoundaryElements", (unsigned int (MutableMesh3_3::*)() const ) &MutableMesh3_3::GetNumBoundaryElements, "" )
         .def("AddNode", (unsigned int (MutableMesh3_3::*)(::Node<3> *)) &MutableMesh3_3::AddNode, "" , py::arg("pNewNode"))
         .def("AddElement", (unsigned int (MutableMesh3_3::*)(::Element<3, 3> *)) &MutableMesh3_3::AddElement, "" , py::arg("pNewElement"))
         .def("SetNode", (void (MutableMesh3_3::*)(unsigned int, ::ChastePoint<3>, bool)) &MutableMesh3_3::SetNode, "" , py::arg("index"), py::arg("point"), py::arg("concreteMove") = true)

@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef VtkSceneModifier<2 > VtkSceneModifier2;
+
 class VtkSceneModifier2_Overloads : public VtkSceneModifier2{
     public:
-    using VtkSceneModifier2::VtkSceneModifier<2>;
+    using VtkSceneModifier2::VtkSceneModifier;
 
-        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         VtkSceneModifier2,
@@ -18,7 +19,7 @@ class VtkSceneModifier2_Overloads : public VtkSceneModifier2{
         rCellPopulation        
         );
         }
-        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory) override {
+        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         VtkSceneModifier2,
@@ -27,7 +28,7 @@ class VtkSceneModifier2_Overloads : public VtkSceneModifier2{
         outputDirectory        
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         VtkSceneModifier2,

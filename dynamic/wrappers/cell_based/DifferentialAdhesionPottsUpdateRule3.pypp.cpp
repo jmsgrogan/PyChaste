@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef DifferentialAdhesionPottsUpdateRule<3 > DifferentialAdhesionPottsUpdateRule3;
+
 class DifferentialAdhesionPottsUpdateRule3_Overloads : public DifferentialAdhesionPottsUpdateRule3{
     public:
-    using DifferentialAdhesionPottsUpdateRule3::DifferentialAdhesionPottsUpdateRule<3>;
+    using DifferentialAdhesionPottsUpdateRule3::DifferentialAdhesionPottsUpdateRule;
 
-        double GetCellCellAdhesionEnergy(::CellPtr pCellA, ::CellPtr pCellB) override {
+        double GetCellCellAdhesionEnergy(::CellPtr pCellA, ::CellPtr pCellB)override {
         PYBIND11_OVERLOAD(
         double,
         DifferentialAdhesionPottsUpdateRule3,
@@ -19,7 +20,7 @@ class DifferentialAdhesionPottsUpdateRule3_Overloads : public DifferentialAdhesi
         pCellB        
         );
         }
-        double GetCellBoundaryAdhesionEnergy(::CellPtr pCell) override {
+        double GetCellBoundaryAdhesionEnergy(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         DifferentialAdhesionPottsUpdateRule3,
@@ -27,7 +28,7 @@ class DifferentialAdhesionPottsUpdateRule3_Overloads : public DifferentialAdhesi
         pCell        
         );
         }
-        void OutputUpdateRuleParameters(::out_stream & rParamsFile) override {
+        void OutputUpdateRuleParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         DifferentialAdhesionPottsUpdateRule3,

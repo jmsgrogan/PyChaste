@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef ApoptoticCellKiller<2 > ApoptoticCellKiller2;
+
 class ApoptoticCellKiller2_Overloads : public ApoptoticCellKiller2{
     public:
-    using ApoptoticCellKiller2::ApoptoticCellKiller<2>;
+    using ApoptoticCellKiller2::ApoptoticCellKiller;
 
-        void CheckAndLabelCellsForApoptosisOrDeath() override {
+        void CheckAndLabelCellsForApoptosisOrDeath()override {
         PYBIND11_OVERLOAD(
         void,
         ApoptoticCellKiller2,
@@ -18,7 +19,7 @@ class ApoptoticCellKiller2_Overloads : public ApoptoticCellKiller2{
         
         );
         }
-        void OutputCellKillerParameters(::out_stream & rParamsFile) override {
+        void OutputCellKillerParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         ApoptoticCellKiller2,

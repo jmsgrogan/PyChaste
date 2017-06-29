@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef ProgressReporter ProgressReporter;
+
 void register_ProgressReporter_class(py::module &m){
     py::class_<ProgressReporter, std::shared_ptr<ProgressReporter >  >(m, "ProgressReporter")
         .def(py::init<::std::string, double, double >())

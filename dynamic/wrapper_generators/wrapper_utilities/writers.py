@@ -50,12 +50,19 @@ class PyBind11ClassWriter():
         cpp_file.write(self.cpp_string)
         cpp_file.close()
 
-    def write_constructor(self, ctor_decl):
+    def write_constructor(self, class_decl, ctor_decl):
 
         # Check for exclusions
         for eachArg in ctor_decl.argument_types:
             if eachArg.decl_string.replace(" ", "") in self.exclusion_args:
                 return
+
+        for eachArg in ctor_decl.argument_types:
+            if "iterator" in eachArg.decl_string.lower():
+                return
+
+        if ctor_decl.parent != class_decl:
+            return
 
         if ctor_decl.is_artificial:
             return
@@ -68,6 +75,12 @@ class PyBind11ClassWriter():
             if idx < num_arg_types-1:
                 self.cpp_string += ", "
         self.cpp_string += ' >(''))\n'
+        
+    def tidy_name(self, name):
+        
+        name = name.replace(", ", "_").replace("<", "").replace(">", "").replace("::", "_")
+        name = name.replace("*", "Ptr").replace("&", "Ref").replace("const", "").replace(" ", "")
+        return name
 
     def write_hpp(self, class_short_name):
 
@@ -79,13 +92,19 @@ class PyBind11ClassWriter():
         self.hpp_string += '_class(py::module &m);\n'
         self.hpp_string += "#endif // " + class_short_name + line_end
 
-    def write_method(self, method_decl, class_short_name):
+    def write_method(self, class_decl, method_decl, class_short_name):
 
         method_name = method_decl.name
         return_type = method_decl.return_type.decl_string
 
         # Check for exclusions
         if return_type.replace(" ", "") in self.exclusion_args:
+            return
+
+        if method_decl.parent != class_decl:
+            return
+        
+        if method_decl.access_type == "private":
             return
 
         for eachArg in method_decl.argument_types:
@@ -113,7 +132,12 @@ class PyBind11ClassWriter():
             self.cpp_string += eachArg.decl_string
             if idx < num_arg_types-1:
                 self.cpp_string += ", "
-        self.cpp_string += ')) &' + class_short_name + '::'
+        self.cpp_string += ')'
+
+        if method_decl.has_const:
+            self.cpp_string += ' const '
+
+        self.cpp_string += ') &' + class_short_name + '::'
         self.cpp_string += method_name + ', "" '
 
         # Add individual arguments, include names and default values
@@ -141,27 +165,37 @@ class PyBind11ClassWriter():
     def write_cpp_virtual_overides(self, class_decl, short_class_name):
 
         # Identify any methods needing over-rides, i.e. any that are virtual
-        #  here or in a parent.
+        # here or in a parent.
         methods_needing_override = []
+        return_types = []
         for eachMemberFunction in class_decl.member_functions(allow_empty=True):
             is_pure_virtual = eachMemberFunction.virtuality == "pure virtual"
             is_virtual = eachMemberFunction.virtuality == "virtual"
             if is_pure_virtual or is_virtual:
                 methods_needing_override.append(eachMemberFunction)
+                return_types.append(eachMemberFunction.return_type.decl_string)
             if is_pure_virtual:
                 self.is_abstract = True
 
+        for eachReturnString in return_types:
+            if eachReturnString != self.tidy_name(eachReturnString):
+                self.cpp_string += "typedef " + eachReturnString + " "
+                self.cpp_string += self.tidy_name(eachReturnString) + ";\n"
+
+        self.cpp_string += "\n"
         if(len(methods_needing_override) > 0):
             self.cpp_string += "class " + short_class_name + "_Overloads : public "
             self.cpp_string += short_class_name + "{\n"
             self.cpp_string += self.indent_1 + "public:\n" + self.indent_1 + "using "
-            self.cpp_string += short_class_name + "::" + class_decl.name +";\n\n"
+            self.cpp_string += short_class_name + "::" + self.class_info.name +";\n\n"
 
             for eachMethod in methods_needing_override:
-
                 overload_string = "PYBIND11_OVERLOAD"
                 if eachMethod.virtuality == "pure virtual":
                     overload_string += "_PURE"
+                    
+                if eachMethod.access_type == "private":
+                    continue
 
                 self.cpp_string += self.indent_2 + eachMethod.return_type.decl_string + " " + eachMethod.name
                 self.cpp_string += "("
@@ -172,9 +206,14 @@ class PyBind11ClassWriter():
                     self.cpp_string += eachArg.decl_string + " " + args[idx].name
                     if idx < num_arg_types-1:
                         self.cpp_string += ", "
-                self.cpp_string += ") override {\n"
+                self.cpp_string += ")"
+
+                if eachMethod.has_const:
+                    self.cpp_string += " const "
+
+                self.cpp_string += "override {\n"
                 self.cpp_string += self.indent_2 + overload_string + "(\n"
-                self.cpp_string += self.indent_2 + eachMethod.return_type.decl_string + ",\n"
+                self.cpp_string += self.indent_2 + self.tidy_name(eachMethod.return_type.decl_string) + ",\n"
                 self.cpp_string += self.indent_2 + short_class_name + ",\n"
                 self.cpp_string += self.indent_2 + eachMethod.name + ",\n"
                 for idx, eachArg in enumerate(eachMethod.argument_types):
@@ -218,17 +257,17 @@ class PyBind11ClassWriter():
 
             # Add base classes if needed
             for eachBase in class_decl.bases:
-                if eachBase.related_class.name in self.exposed_class_full_names:
+                if eachBase.related_class.name in self.exposed_class_full_names and not eachBase.access_type == "private":
                     self.cpp_string += ', ' + eachBase.related_class.name + " "
 
             self.cpp_string += ' >(m, "' + short_name + '")\n'
 
             # Add constructors
-            if not self.is_abstract:
+            if not self.is_abstract and not class_decl.is_abstract:
                 query = declarations.access_type_matcher_t('public')
                 for eachConstructor in class_decl.constructors(function=query,
                                                                allow_empty=True):
-                    self.write_constructor(eachConstructor)
+                    self.write_constructor(class_decl, eachConstructor)
 
             # Add public member functions
             query = declarations.access_type_matcher_t('public')
@@ -239,7 +278,7 @@ class PyBind11ClassWriter():
                     exlcuded = (eachMemberFunction.name in
                                 self.class_info.excluded_methods)
                 if not exlcuded:
-                    self.write_method(eachMemberFunction, short_name)
+                    self.write_method(class_decl, eachMemberFunction, short_name)
 
             # Close the class definition
             self.cpp_string += self.indent_1 + ';\n'

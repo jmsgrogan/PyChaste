@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractTargetAreaModifier<3 > AbstractTargetAreaModifier3;
+
 class AbstractTargetAreaModifier3_Overloads : public AbstractTargetAreaModifier3{
     public:
-    using AbstractTargetAreaModifier3::AbstractTargetAreaModifier<3>;
+    using AbstractTargetAreaModifier3::AbstractTargetAreaModifier;
 
-        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTargetAreaModifier3,
@@ -18,7 +19,7 @@ class AbstractTargetAreaModifier3_Overloads : public AbstractTargetAreaModifier3
         rCellPopulation        
         );
         }
-        void SetupSolve(::AbstractCellPopulation<3, 3> & rCellPopulation, ::std::string outputDirectory) override {
+        void SetupSolve(::AbstractCellPopulation<3, 3> & rCellPopulation, ::std::string outputDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTargetAreaModifier3,
@@ -27,7 +28,7 @@ class AbstractTargetAreaModifier3_Overloads : public AbstractTargetAreaModifier3
         outputDirectory        
         );
         }
-        void UpdateTargetAreaOfCell(::CellPtr const pCell) override {
+        void UpdateTargetAreaOfCell(::CellPtr const pCell)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractTargetAreaModifier3,
@@ -35,7 +36,7 @@ class AbstractTargetAreaModifier3_Overloads : public AbstractTargetAreaModifier3
         pCell        
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTargetAreaModifier3,

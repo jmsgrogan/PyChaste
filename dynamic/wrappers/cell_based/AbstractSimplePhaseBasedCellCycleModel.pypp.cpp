@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractSimplePhaseBasedCellCycleModel AbstractSimplePhaseBasedCellCycleModel;
+
 class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePhaseBasedCellCycleModel{
     public:
     using AbstractSimplePhaseBasedCellCycleModel::AbstractSimplePhaseBasedCellCycleModel;
 
-        void ResetForDivision() override {
+        void ResetForDivision()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -18,7 +19,7 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
         
         );
         }
-        void UpdateCellCyclePhase() override {
+        void UpdateCellCyclePhase()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -26,7 +27,7 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
         
         );
         }
-        void InitialiseDaughterCell() override {
+        void InitialiseDaughterCell()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -34,7 +35,7 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
         
         );
         }
-        void Initialise() override {
+        void Initialise()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -42,7 +43,7 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -50,7 +51,7 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
         rParamsFile        
         );
         }
-        void SetG1Duration() override {
+        void SetG1Duration()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimplePhaseBasedCellCycleModel,
@@ -62,7 +63,6 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
 };
 void register_AbstractSimplePhaseBasedCellCycleModel_class(py::module &m){
     py::class_<AbstractSimplePhaseBasedCellCycleModel, AbstractSimplePhaseBasedCellCycleModel_Overloads, std::shared_ptr<AbstractSimplePhaseBasedCellCycleModel > , AbstractPhaseBasedCellCycleModel  >(m, "AbstractSimplePhaseBasedCellCycleModel")
-        .def(py::init< >())
         .def("ResetForDivision", (void (AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::ResetForDivision, "" )
         .def("UpdateCellCyclePhase", (void (AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::UpdateCellCyclePhase, "" )
         .def("InitialiseDaughterCell", (void (AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::InitialiseDaughterCell, "" )

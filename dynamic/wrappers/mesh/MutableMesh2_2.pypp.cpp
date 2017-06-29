@@ -6,11 +6,16 @@
 namespace py = pybind11;
 
 typedef MutableMesh<2,2 > MutableMesh2_2;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class MutableMesh2_2_Overloads : public MutableMesh2_2{
     public:
-    using MutableMesh2_2::MutableMesh<2, 2>;
+    using MutableMesh2_2::MutableMesh;
 
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh2_2,
@@ -18,39 +23,39 @@ class MutableMesh2_2_Overloads : public MutableMesh2_2{
         
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh2_2,
         GetNumNodes,
         
         );
         }
-        unsigned int GetNumElements() override {
+        unsigned int GetNumElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh2_2,
         GetNumElements,
         
         );
         }
-        unsigned int GetNumBoundaryElements() override {
+        unsigned int GetNumBoundaryElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh2_2,
         GetNumBoundaryElements,
         
         );
         }
-        unsigned int AddNode(::Node<2> * pNewNode) override {
+        unsigned int AddNode(::Node<2> * pNewNode)override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableMesh2_2,
         AddNode,
         pNewNode        
         );
         }
-        void SetNode(unsigned int index, ::ChastePoint<2> point, bool concreteMove) override {
+        void SetNode(unsigned int index, ::ChastePoint<2> point, bool concreteMove)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh2_2,
@@ -60,7 +65,7 @@ class MutableMesh2_2_Overloads : public MutableMesh2_2{
         concreteMove        
         );
         }
-        void DeleteNode(unsigned int index) override {
+        void DeleteNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh2_2,
@@ -68,7 +73,7 @@ class MutableMesh2_2_Overloads : public MutableMesh2_2{
         index        
         );
         }
-        void DeleteElement(unsigned int index) override {
+        void DeleteElement(unsigned int index)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh2_2,
@@ -76,7 +81,7 @@ class MutableMesh2_2_Overloads : public MutableMesh2_2{
         index        
         );
         }
-        void ReMesh(::NodeMap & map) override {
+        void ReMesh(::NodeMap & map)override {
         PYBIND11_OVERLOAD(
         void,
         MutableMesh2_2,
@@ -91,9 +96,9 @@ void register_MutableMesh2_2_class(py::module &m){
         .def(py::init< >())
         .def(py::init<::std::vector<Node<2> *, std::allocator<Node<2> *> > >())
         .def("Clear", (void (MutableMesh2_2::*)()) &MutableMesh2_2::Clear, "" )
-        .def("GetNumNodes", (unsigned int (MutableMesh2_2::*)()) &MutableMesh2_2::GetNumNodes, "" )
-        .def("GetNumElements", (unsigned int (MutableMesh2_2::*)()) &MutableMesh2_2::GetNumElements, "" )
-        .def("GetNumBoundaryElements", (unsigned int (MutableMesh2_2::*)()) &MutableMesh2_2::GetNumBoundaryElements, "" )
+        .def("GetNumNodes", (unsigned int (MutableMesh2_2::*)() const ) &MutableMesh2_2::GetNumNodes, "" )
+        .def("GetNumElements", (unsigned int (MutableMesh2_2::*)() const ) &MutableMesh2_2::GetNumElements, "" )
+        .def("GetNumBoundaryElements", (unsigned int (MutableMesh2_2::*)() const ) &MutableMesh2_2::GetNumBoundaryElements, "" )
         .def("AddNode", (unsigned int (MutableMesh2_2::*)(::Node<2> *)) &MutableMesh2_2::AddNode, "" , py::arg("pNewNode"))
         .def("AddElement", (unsigned int (MutableMesh2_2::*)(::Element<2, 2> *)) &MutableMesh2_2::AddElement, "" , py::arg("pNewElement"))
         .def("SetNode", (void (MutableMesh2_2::*)(unsigned int, ::ChastePoint<2>, bool)) &MutableMesh2_2::SetNode, "" , py::arg("index"), py::arg("point"), py::arg("concreteMove") = true)

@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AttractingPlaneBoundaryCondition<2,2 > AttractingPlaneBoundaryCondition2_2;
+
 class AttractingPlaneBoundaryCondition2_2_Overloads : public AttractingPlaneBoundaryCondition2_2{
     public:
-    using AttractingPlaneBoundaryCondition2_2::AttractingPlaneBoundaryCondition<2, 2>;
+    using AttractingPlaneBoundaryCondition2_2::AttractingPlaneBoundaryCondition;
 
-        void ImposeBoundaryCondition(::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const & rOldLocations) override {
+        void ImposeBoundaryCondition(::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const & rOldLocations)override {
         PYBIND11_OVERLOAD(
         void,
         AttractingPlaneBoundaryCondition2_2,
@@ -18,7 +19,7 @@ class AttractingPlaneBoundaryCondition2_2_Overloads : public AttractingPlaneBoun
         rOldLocations        
         );
         }
-        bool VerifyBoundaryCondition() override {
+        bool VerifyBoundaryCondition()override {
         PYBIND11_OVERLOAD(
         bool,
         AttractingPlaneBoundaryCondition2_2,
@@ -26,7 +27,7 @@ class AttractingPlaneBoundaryCondition2_2_Overloads : public AttractingPlaneBoun
         
         );
         }
-        void OutputCellPopulationBoundaryConditionParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationBoundaryConditionParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AttractingPlaneBoundaryCondition2_2,
@@ -39,8 +40,8 @@ class AttractingPlaneBoundaryCondition2_2_Overloads : public AttractingPlaneBoun
 void register_AttractingPlaneBoundaryCondition2_2_class(py::module &m){
     py::class_<AttractingPlaneBoundaryCondition2_2, AttractingPlaneBoundaryCondition2_2_Overloads, std::shared_ptr<AttractingPlaneBoundaryCondition2_2 >  >(m, "AttractingPlaneBoundaryCondition2_2")
         .def(py::init<::AbstractCellPopulation<2, 2> *, ::boost::numeric::ublas::c_vector<double, 2>, ::boost::numeric::ublas::c_vector<double, 2> >())
-        .def("rGetPointOnPlane", (::boost::numeric::ublas::c_vector<double, 2> const & (AttractingPlaneBoundaryCondition2_2::*)()) &AttractingPlaneBoundaryCondition2_2::rGetPointOnPlane, "" )
-        .def("rGetNormalToPlane", (::boost::numeric::ublas::c_vector<double, 2> const & (AttractingPlaneBoundaryCondition2_2::*)()) &AttractingPlaneBoundaryCondition2_2::rGetNormalToPlane, "" )
+        .def("rGetPointOnPlane", (::boost::numeric::ublas::c_vector<double, 2> const & (AttractingPlaneBoundaryCondition2_2::*)() const ) &AttractingPlaneBoundaryCondition2_2::rGetPointOnPlane, "" )
+        .def("rGetNormalToPlane", (::boost::numeric::ublas::c_vector<double, 2> const & (AttractingPlaneBoundaryCondition2_2::*)() const ) &AttractingPlaneBoundaryCondition2_2::rGetNormalToPlane, "" )
         .def("SetUseJiggledNodesOnPlane", (void (AttractingPlaneBoundaryCondition2_2::*)(bool)) &AttractingPlaneBoundaryCondition2_2::SetUseJiggledNodesOnPlane, "" , py::arg("useJiggledNodesOnPlane"))
         .def("GetUseJiggledNodesOnPlane", (bool (AttractingPlaneBoundaryCondition2_2::*)()) &AttractingPlaneBoundaryCondition2_2::GetUseJiggledNodesOnPlane, "" )
         .def("ImposeBoundaryCondition", (void (AttractingPlaneBoundaryCondition2_2::*)(::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const &)) &AttractingPlaneBoundaryCondition2_2::ImposeBoundaryCondition, "" , py::arg("rOldLocations"))

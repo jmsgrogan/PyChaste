@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractGrowingDomainPdeModifier<2 > AbstractGrowingDomainPdeModifier2;
+
 class AbstractGrowingDomainPdeModifier2_Overloads : public AbstractGrowingDomainPdeModifier2{
     public:
-    using AbstractGrowingDomainPdeModifier2::AbstractGrowingDomainPdeModifier<2>;
+    using AbstractGrowingDomainPdeModifier2::AbstractGrowingDomainPdeModifier;
 
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractGrowingDomainPdeModifier2,

@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef NoCellCycleModel NoCellCycleModel;
+typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
+
 class NoCellCycleModel_Overloads : public NoCellCycleModel{
     public:
     using NoCellCycleModel::NoCellCycleModel;
 
-        bool ReadyToDivide() override {
+        bool ReadyToDivide()override {
         PYBIND11_OVERLOAD(
         bool,
         NoCellCycleModel,
@@ -18,15 +20,15 @@ class NoCellCycleModel_Overloads : public NoCellCycleModel{
         
         );
         }
-        ::AbstractCellCycleModel * CreateCellCycleModel() override {
+        ::AbstractCellCycleModel * CreateCellCycleModel()override {
         PYBIND11_OVERLOAD(
-        ::AbstractCellCycleModel *,
+        _AbstractCellCycleModelPtr,
         NoCellCycleModel,
         CreateCellCycleModel,
         
         );
         }
-        double GetAverageTransitCellCycleTime() override {
+        double GetAverageTransitCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         NoCellCycleModel,
@@ -34,7 +36,7 @@ class NoCellCycleModel_Overloads : public NoCellCycleModel{
         
         );
         }
-        double GetAverageStemCellCycleTime() override {
+        double GetAverageStemCellCycleTime()override {
         PYBIND11_OVERLOAD(
         double,
         NoCellCycleModel,
@@ -42,7 +44,7 @@ class NoCellCycleModel_Overloads : public NoCellCycleModel{
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         NoCellCycleModel,

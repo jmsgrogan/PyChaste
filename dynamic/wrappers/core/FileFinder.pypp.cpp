@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef FileFinder FileFinder;
+
 class FileFinder_Overloads : public FileFinder{
     public:
     using FileFinder::FileFinder;
 
-        void SetPath(::std::string const & rPath, ::RelativeTo::Value relativeTo) override {
+        void SetPath(::std::string const & rPath, ::RelativeTo::Value relativeTo)override {
         PYBIND11_OVERLOAD(
         void,
         FileFinder,
@@ -19,7 +20,7 @@ class FileFinder_Overloads : public FileFinder{
         relativeTo        
         );
         }
-        void SetPath(::std::string const & rLeafName, ::FileFinder const & rParentOrSibling) override {
+        void SetPath(::std::string const & rLeafName, ::FileFinder const & rParentOrSibling)override {
         PYBIND11_OVERLOAD(
         void,
         FileFinder,
@@ -38,22 +39,22 @@ void register_FileFinder_class(py::module &m){
         .def(py::init<::boost::filesystem::path const & >())
         .def("SetPath", (void (FileFinder::*)(::std::string const &, ::RelativeTo::Value)) &FileFinder::SetPath, "" , py::arg("rPath"), py::arg("relativeTo"))
         .def("SetPath", (void (FileFinder::*)(::std::string const &, ::FileFinder const &)) &FileFinder::SetPath, "" , py::arg("rLeafName"), py::arg("rParentOrSibling"))
-        .def("IsPathSet", (bool (FileFinder::*)()) &FileFinder::IsPathSet, "" )
-        .def("Exists", (bool (FileFinder::*)()) &FileFinder::Exists, "" )
-        .def("IsFile", (bool (FileFinder::*)()) &FileFinder::IsFile, "" )
-        .def("IsDir", (bool (FileFinder::*)()) &FileFinder::IsDir, "" )
-        .def("IsEmpty", (bool (FileFinder::*)()) &FileFinder::IsEmpty, "" )
-        .def("GetAbsolutePath", (::std::string (FileFinder::*)()) &FileFinder::GetAbsolutePath, "" )
-        .def("IsNewerThan", (bool (FileFinder::*)(::FileFinder const &)) &FileFinder::IsNewerThan, "" , py::arg("rOtherEntity"))
-        .def("GetLeafName", (::std::string (FileFinder::*)()) &FileFinder::GetLeafName, "" )
-        .def("GetLeafNameNoExtension", (::std::string (FileFinder::*)()) &FileFinder::GetLeafNameNoExtension, "" )
-        .def("GetExtension", (::std::string (FileFinder::*)()) &FileFinder::GetExtension, "" )
-        .def("GetParent", (::FileFinder (FileFinder::*)()) &FileFinder::GetParent, "" )
-        .def("GetRelativePath", (::std::string (FileFinder::*)(::FileFinder const &)) &FileFinder::GetRelativePath, "" , py::arg("rBasePath"))
-        .def("CopyTo", (::FileFinder (FileFinder::*)(::FileFinder const &)) &FileFinder::CopyTo, "" , py::arg("rDest"))
-        .def("Remove", (void (FileFinder::*)()) &FileFinder::Remove, "" )
-        .def("DangerousRemove", (void (FileFinder::*)()) &FileFinder::DangerousRemove, "" )
-        .def("FindMatches", (::std::vector<FileFinder, std::allocator<FileFinder> > (FileFinder::*)(::std::string const &)) &FileFinder::FindMatches, "" , py::arg("rPattern"))
+        .def("IsPathSet", (bool (FileFinder::*)() const ) &FileFinder::IsPathSet, "" )
+        .def("Exists", (bool (FileFinder::*)() const ) &FileFinder::Exists, "" )
+        .def("IsFile", (bool (FileFinder::*)() const ) &FileFinder::IsFile, "" )
+        .def("IsDir", (bool (FileFinder::*)() const ) &FileFinder::IsDir, "" )
+        .def("IsEmpty", (bool (FileFinder::*)() const ) &FileFinder::IsEmpty, "" )
+        .def("GetAbsolutePath", (::std::string (FileFinder::*)() const ) &FileFinder::GetAbsolutePath, "" )
+        .def("IsNewerThan", (bool (FileFinder::*)(::FileFinder const &) const ) &FileFinder::IsNewerThan, "" , py::arg("rOtherEntity"))
+        .def("GetLeafName", (::std::string (FileFinder::*)() const ) &FileFinder::GetLeafName, "" )
+        .def("GetLeafNameNoExtension", (::std::string (FileFinder::*)() const ) &FileFinder::GetLeafNameNoExtension, "" )
+        .def("GetExtension", (::std::string (FileFinder::*)() const ) &FileFinder::GetExtension, "" )
+        .def("GetParent", (::FileFinder (FileFinder::*)() const ) &FileFinder::GetParent, "" )
+        .def("GetRelativePath", (::std::string (FileFinder::*)(::FileFinder const &) const ) &FileFinder::GetRelativePath, "" , py::arg("rBasePath"))
+        .def("CopyTo", (::FileFinder (FileFinder::*)(::FileFinder const &) const ) &FileFinder::CopyTo, "" , py::arg("rDest"))
+        .def("Remove", (void (FileFinder::*)() const ) &FileFinder::Remove, "" )
+        .def("DangerousRemove", (void (FileFinder::*)() const ) &FileFinder::DangerousRemove, "" )
+        .def("FindMatches", (::std::vector<FileFinder, std::allocator<FileFinder> > (FileFinder::*)(::std::string const &) const ) &FileFinder::FindMatches, "" , py::arg("rPattern"))
         .def_static("IsAbsolutePath", (bool (*)(::std::string const &)) &FileFinder::IsAbsolutePath, "" , py::arg("rPath"))
         .def_static("ReplaceSpacesWithUnderscores", (void (*)(::std::string &)) &FileFinder::ReplaceSpacesWithUnderscores, "" , py::arg("rPath"))
         .def_static("ReplaceUnderscoresWithSpaces", (void (*)(::std::string &)) &FileFinder::ReplaceUnderscoresWithSpaces, "" , py::arg("rPath"))

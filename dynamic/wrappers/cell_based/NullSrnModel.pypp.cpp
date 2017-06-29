@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef NullSrnModel NullSrnModel;
+typedef ::AbstractSrnModel * _AbstractSrnModelPtr;
+
 class NullSrnModel_Overloads : public NullSrnModel{
     public:
     using NullSrnModel::NullSrnModel;
 
-        void SimulateToCurrentTime() override {
+        void SimulateToCurrentTime()override {
         PYBIND11_OVERLOAD(
         void,
         NullSrnModel,
@@ -18,9 +20,9 @@ class NullSrnModel_Overloads : public NullSrnModel{
         
         );
         }
-        ::AbstractSrnModel * CreateSrnModel() override {
+        ::AbstractSrnModel * CreateSrnModel()override {
         PYBIND11_OVERLOAD(
-        ::AbstractSrnModel *,
+        _AbstractSrnModelPtr,
         NullSrnModel,
         CreateSrnModel,
         

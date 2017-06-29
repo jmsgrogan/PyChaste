@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractPdeModifier<2 > AbstractPdeModifier2;
+
 class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
     public:
-    using AbstractPdeModifier2::AbstractPdeModifier<2>;
+    using AbstractPdeModifier2::AbstractPdeModifier;
 
-        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory) override {
+        void SetupSolve(::AbstractCellPopulation<2, 2> & rCellPopulation, ::std::string outputDirectory)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPdeModifier2,
@@ -19,7 +20,7 @@ class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
         outputDirectory        
         );
         }
-        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void UpdateAtEndOfTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractPdeModifier2,
@@ -27,7 +28,7 @@ class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
         rCellPopulation        
         );
         }
-        void UpdateAtEndOfOutputTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void UpdateAtEndOfOutputTimeStep(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPdeModifier2,
@@ -35,7 +36,7 @@ class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
         rCellPopulation        
         );
         }
-        void UpdateAtEndOfSolve(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void UpdateAtEndOfSolve(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPdeModifier2,
@@ -43,7 +44,7 @@ class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
         rCellPopulation        
         );
         }
-        void OutputSimulationModifierParameters(::out_stream & rParamsFile) override {
+        void OutputSimulationModifierParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractPdeModifier2,
@@ -62,7 +63,7 @@ void register_AbstractPdeModifier2_class(py::module &m){
         .def("rGetDependentVariableName", (::std::string & (AbstractPdeModifier2::*)()) &AbstractPdeModifier2::rGetDependentVariableName, "" )
         .def("HasAveragedSourcePde", (bool (AbstractPdeModifier2::*)()) &AbstractPdeModifier2::HasAveragedSourcePde, "" )
         .def("SetUpSourceTermsForAveragedSourcePde", (void (AbstractPdeModifier2::*)(::TetrahedralMesh<2, 2> *, ::std::map<boost::shared_ptr<Cell>, unsigned int, std::less<boost::shared_ptr<Cell> >, std::allocator<std::pair<const boost::shared_ptr<Cell>, unsigned int> > > *)) &AbstractPdeModifier2::SetUpSourceTermsForAveragedSourcePde, "" , py::arg("pMesh"), py::arg("pCellPdeElementMap") = nullptr)
-        .def("GetFeMesh", (::TetrahedralMesh<2, 2> * (AbstractPdeModifier2::*)()) &AbstractPdeModifier2::GetFeMesh, "" )
+        .def("GetFeMesh", (::TetrahedralMesh<2, 2> * (AbstractPdeModifier2::*)() const ) &AbstractPdeModifier2::GetFeMesh, "" )
         .def("SetupSolve", (void (AbstractPdeModifier2::*)(::AbstractCellPopulation<2, 2> &, ::std::string)) &AbstractPdeModifier2::SetupSolve, "" , py::arg("rCellPopulation"), py::arg("outputDirectory"))
         .def("UpdateAtEndOfTimeStep", (void (AbstractPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractPdeModifier2::UpdateAtEndOfTimeStep, "" , py::arg("rCellPopulation"))
         .def("UpdateAtEndOfOutputTimeStep", (void (AbstractPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractPdeModifier2::UpdateAtEndOfOutputTimeStep, "" , py::arg("rCellPopulation"))

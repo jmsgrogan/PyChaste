@@ -10,8 +10,7 @@ specify the class name.
 from wrapper_utilities.class_info import CppClassInfo
 
 # CORE
-global_checkpointing_classes = [CppClassInfo('Identifiable',
-                                             include_file_only=True), ]
+global_checkpointing_classes = [CppClassInfo('Identifiable'), ]
 
 global_parallel_classes = [
     CppClassInfo('PetscTools', excluded_methods=["GetWorld"],
@@ -32,17 +31,7 @@ global_classes = [
     CppClassInfo('SmartPointers', include_file_only=True),
     CppClassInfo('TimeStepper'),
     CppClassInfo('Version', include_file_only=True),
-    CppClassInfo('ChasteBuildInfo', component="core",
-                 needs_include_file=False,
-                 pointer_return_methods=[["GetBuildInformation", ""],
-                                         ["GetBuildTime", ""],
-                                         ["GetBuilderUnameInfo", ""],
-                                         ["GetCompilerFlags", ""],
-                                         ["GetCompilerType", ""],
-                                         ["GetCompilerVersion", ""],
-                                         ["GetCurrentTime", ""],
-                                         ["GetRootDir", ""],
-                                         ["GetXsdVersion", ""]],), ]
+    CppClassInfo('ChasteBuildInfo', component="core", needs_include_file=False,), ]
 
 global_classes += global_checkpointing_classes + global_parallel_classes
 global_classes += global_timing_classes
@@ -194,7 +183,9 @@ cell_based_population_boundary_conditions_classes = [
 cell_based_population_classes = [
                       CppClassInfo('AbstractCellPopulation', excluded_methods=["rGetCells"]),
                       CppClassInfo('AbstractOnLatticeCellPopulation'),
-                      CppClassInfo('AbstractCentreBasedCellPopulation', excluded_methods=["GetNodeCorrespondingToCell"]),
+                      CppClassInfo('AbstractCentreBasedCellPopulation', excluded_methods=["GetNodeCorrespondingToCell",
+                                                                                          "MarkSpring",
+                                                                                          "UnmarkSpring"]),
                       CppClassInfo('AbstractOffLatticeCellPopulation'),
                       CppClassInfo('CaBasedCellPopulation', excluded_methods=["rGetMesh", "GetTetrahedralMeshForPdeModifier"
                                                   "GetNodeCorrespondingToCell", "rGetAvailableSpaces"]),
@@ -264,4 +255,4 @@ extra_classes = [
                           skip_wrapping=True, needs_include_file=False, needs_instantiation = False)]
 
 # This final list will be pulled in by the autowrapper code by name...i.e. don't change the name.
-classes = core_classes + ode_classes + pde_classes + mesh_classes + cell_based_classes
+classes = core_classes  + ode_classes + pde_classes + mesh_classes + cell_based_classes + tutorial_classes + visualization_classes

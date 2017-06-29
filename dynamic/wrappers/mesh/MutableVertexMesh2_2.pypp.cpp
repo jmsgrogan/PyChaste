@@ -6,11 +6,14 @@
 namespace py = pybind11;
 
 typedef MutableVertexMesh<2,2 > MutableVertexMesh2_2;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class MutableVertexMesh2_2_Overloads : public MutableVertexMesh2_2{
     public:
-    using MutableVertexMesh2_2::MutableVertexMesh<2, 2>;
+    using MutableVertexMesh2_2::MutableVertexMesh;
 
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> point) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> point)override {
         PYBIND11_OVERLOAD(
         void,
         MutableVertexMesh2_2,
@@ -19,23 +22,23 @@ class MutableVertexMesh2_2_Overloads : public MutableVertexMesh2_2{
         point        
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableVertexMesh2_2,
         GetNumNodes,
         
         );
         }
-        unsigned int GetNumElements() override {
+        unsigned int GetNumElements() const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         MutableVertexMesh2_2,
         GetNumElements,
         
         );
         }
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         MutableVertexMesh2_2,
@@ -43,7 +46,7 @@ class MutableVertexMesh2_2_Overloads : public MutableVertexMesh2_2{
         
         );
         }
-        void ReMesh(::VertexElementMap & rElementMap) override {
+        void ReMesh(::VertexElementMap & rElementMap)override {
         PYBIND11_OVERLOAD(
         void,
         MutableVertexMesh2_2,
@@ -51,7 +54,7 @@ class MutableVertexMesh2_2_Overloads : public MutableVertexMesh2_2{
         rElementMap        
         );
         }
-        void IdentifySwapType(::Node<2> * pNodeA, ::Node<2> * pNodeB) override {
+        void IdentifySwapType(::Node<2> * pNodeA, ::Node<2> * pNodeB)override {
         PYBIND11_OVERLOAD(
         void,
         MutableVertexMesh2_2,
@@ -60,7 +63,7 @@ class MutableVertexMesh2_2_Overloads : public MutableVertexMesh2_2{
         pNodeB        
         );
         }
-        void HandleHighOrderJunctions(::Node<2> * pNodeA, ::Node<2> * pNodeB) override {
+        void HandleHighOrderJunctions(::Node<2> * pNodeA, ::Node<2> * pNodeB)override {
         PYBIND11_OVERLOAD(
         void,
         MutableVertexMesh2_2,
@@ -83,15 +86,15 @@ void register_MutableVertexMesh2_2_class(py::module &m){
         .def("SetRosetteResolutionProbabilityPerTimestep", (void (MutableVertexMesh2_2::*)(double)) &MutableVertexMesh2_2::SetRosetteResolutionProbabilityPerTimestep, "" , py::arg("rosetteResolutionProbabilityPerTimestep"))
         .def("SetNode", (void (MutableVertexMesh2_2::*)(unsigned int, ::ChastePoint<2>)) &MutableVertexMesh2_2::SetNode, "" , py::arg("nodeIndex"), py::arg("point"))
         .def("SetCheckForInternalIntersections", (void (MutableVertexMesh2_2::*)(bool)) &MutableVertexMesh2_2::SetCheckForInternalIntersections, "" , py::arg("checkForInternalIntersections"))
-        .def("GetCellRearrangementThreshold", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetCellRearrangementThreshold, "" )
-        .def("GetT2Threshold", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetT2Threshold, "" )
-        .def("GetCellRearrangementRatio", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetCellRearrangementRatio, "" )
-        .def("GetProtorosetteFormationProbability", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetProtorosetteFormationProbability, "" )
-        .def("GetProtorosetteResolutionProbabilityPerTimestep", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetProtorosetteResolutionProbabilityPerTimestep, "" )
-        .def("GetRosetteResolutionProbabilityPerTimestep", (double (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetRosetteResolutionProbabilityPerTimestep, "" )
-        .def("GetNumNodes", (unsigned int (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetNumNodes, "" )
-        .def("GetNumElements", (unsigned int (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetNumElements, "" )
-        .def("GetCheckForInternalIntersections", (bool (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetCheckForInternalIntersections, "" )
+        .def("GetCellRearrangementThreshold", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetCellRearrangementThreshold, "" )
+        .def("GetT2Threshold", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetT2Threshold, "" )
+        .def("GetCellRearrangementRatio", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetCellRearrangementRatio, "" )
+        .def("GetProtorosetteFormationProbability", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetProtorosetteFormationProbability, "" )
+        .def("GetProtorosetteResolutionProbabilityPerTimestep", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetProtorosetteResolutionProbabilityPerTimestep, "" )
+        .def("GetRosetteResolutionProbabilityPerTimestep", (double (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetRosetteResolutionProbabilityPerTimestep, "" )
+        .def("GetNumNodes", (unsigned int (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetNumNodes, "" )
+        .def("GetNumElements", (unsigned int (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetNumElements, "" )
+        .def("GetCheckForInternalIntersections", (bool (MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetCheckForInternalIntersections, "" )
         .def("GetLocationsOfT1Swaps", (::std::vector<boost::numeric::ublas::c_vector<double, 2>, std::allocator<boost::numeric::ublas::c_vector<double, 2> > > (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetLocationsOfT1Swaps, "" )
         .def("GetLastT2SwapLocation", (::boost::numeric::ublas::c_vector<double, 2> (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetLastT2SwapLocation, "" )
         .def("GetLocationsOfT3Swaps", (::std::vector<boost::numeric::ublas::c_vector<double, 2>, std::allocator<boost::numeric::ublas::c_vector<double, 2> > > (MutableVertexMesh2_2::*)()) &MutableVertexMesh2_2::GetLocationsOfT3Swaps, "" )

@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef CellLabelWriter<3,3 > CellLabelWriter3_3;
+
 class CellLabelWriter3_3_Overloads : public CellLabelWriter3_3{
     public:
-    using CellLabelWriter3_3::CellLabelWriter<3, 3>;
+    using CellLabelWriter3_3::CellLabelWriter;
 
-        double GetCellDataForVtkOutput(::CellPtr pCell, ::AbstractCellPopulation<3, 3> * pCellPopulation) override {
+        double GetCellDataForVtkOutput(::CellPtr pCell, ::AbstractCellPopulation<3, 3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         double,
         CellLabelWriter3_3,
@@ -19,7 +20,7 @@ class CellLabelWriter3_3_Overloads : public CellLabelWriter3_3{
         pCellPopulation        
         );
         }
-        void VisitCell(::CellPtr pCell, ::AbstractCellPopulation<3, 3> * pCellPopulation) override {
+        void VisitCell(::CellPtr pCell, ::AbstractCellPopulation<3, 3> * pCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         CellLabelWriter3_3,

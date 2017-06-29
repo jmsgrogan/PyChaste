@@ -6,11 +6,13 @@
 namespace py = pybind11;
 
 typedef AbstractLinearEllipticPde<2,2 > AbstractLinearEllipticPde2_2;
+typedef ::boost::numeric::ublas::c_matrix<double, 2, 2> _boost_numeric_ublas_c_matrixdouble_2_2;
+
 class AbstractLinearEllipticPde2_2_Overloads : public AbstractLinearEllipticPde2_2{
     public:
-    using AbstractLinearEllipticPde2_2::AbstractLinearEllipticPde<2, 2>;
+    using AbstractLinearEllipticPde2_2::AbstractLinearEllipticPde;
 
-        double ComputeConstantInUSourceTerm(::ChastePoint<2> const & rX, ::Element<2, 2> * pElement) override {
+        double ComputeConstantInUSourceTerm(::ChastePoint<2> const & rX, ::Element<2, 2> * pElement)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractLinearEllipticPde2_2,
@@ -19,7 +21,7 @@ class AbstractLinearEllipticPde2_2_Overloads : public AbstractLinearEllipticPde2
         pElement        
         );
         }
-        double ComputeLinearInUCoeffInSourceTerm(::ChastePoint<2> const & rX, ::Element<2, 2> * pElement) override {
+        double ComputeLinearInUCoeffInSourceTerm(::ChastePoint<2> const & rX, ::Element<2, 2> * pElement)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractLinearEllipticPde2_2,
@@ -28,15 +30,15 @@ class AbstractLinearEllipticPde2_2_Overloads : public AbstractLinearEllipticPde2
         pElement        
         );
         }
-        ::boost::numeric::ublas::c_matrix<double, 2, 2> ComputeDiffusionTerm(::ChastePoint<2> const & rX) override {
+        ::boost::numeric::ublas::c_matrix<double, 2, 2> ComputeDiffusionTerm(::ChastePoint<2> const & rX)override {
         PYBIND11_OVERLOAD_PURE(
-        ::boost::numeric::ublas::c_matrix<double, 2, 2>,
+        _boost_numeric_ublas_c_matrixdouble_2_2,
         AbstractLinearEllipticPde2_2,
         ComputeDiffusionTerm,
         rX        
         );
         }
-        double ComputeConstantInUSourceTermAtNode(::Node<2> const & rNode) override {
+        double ComputeConstantInUSourceTermAtNode(::Node<2> const & rNode)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractLinearEllipticPde2_2,
@@ -44,7 +46,7 @@ class AbstractLinearEllipticPde2_2_Overloads : public AbstractLinearEllipticPde2
         rNode        
         );
         }
-        double ComputeLinearInUCoeffInSourceTermAtNode(::Node<2> const & rNode) override {
+        double ComputeLinearInUCoeffInSourceTermAtNode(::Node<2> const & rNode)override {
         PYBIND11_OVERLOAD(
         double,
         AbstractLinearEllipticPde2_2,

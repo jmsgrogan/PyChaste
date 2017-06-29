@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractSimpleGenerationalCellCycleModel AbstractSimpleGenerationalCellCycleModel;
+
 class AbstractSimpleGenerationalCellCycleModel_Overloads : public AbstractSimpleGenerationalCellCycleModel{
     public:
     using AbstractSimpleGenerationalCellCycleModel::AbstractSimpleGenerationalCellCycleModel;
 
-        void ResetForDivision() override {
+        void ResetForDivision()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimpleGenerationalCellCycleModel,
@@ -18,7 +19,7 @@ class AbstractSimpleGenerationalCellCycleModel_Overloads : public AbstractSimple
         
         );
         }
-        void InitialiseDaughterCell() override {
+        void InitialiseDaughterCell()override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimpleGenerationalCellCycleModel,
@@ -26,7 +27,7 @@ class AbstractSimpleGenerationalCellCycleModel_Overloads : public AbstractSimple
         
         );
         }
-        void OutputCellCycleModelParameters(::out_stream & rParamsFile) override {
+        void OutputCellCycleModelParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractSimpleGenerationalCellCycleModel,
@@ -38,13 +39,12 @@ class AbstractSimpleGenerationalCellCycleModel_Overloads : public AbstractSimple
 };
 void register_AbstractSimpleGenerationalCellCycleModel_class(py::module &m){
     py::class_<AbstractSimpleGenerationalCellCycleModel, AbstractSimpleGenerationalCellCycleModel_Overloads, std::shared_ptr<AbstractSimpleGenerationalCellCycleModel > , AbstractSimplePhaseBasedCellCycleModel  >(m, "AbstractSimpleGenerationalCellCycleModel")
-        .def(py::init< >())
         .def("ResetForDivision", (void (AbstractSimpleGenerationalCellCycleModel::*)()) &AbstractSimpleGenerationalCellCycleModel::ResetForDivision, "" )
         .def("InitialiseDaughterCell", (void (AbstractSimpleGenerationalCellCycleModel::*)()) &AbstractSimpleGenerationalCellCycleModel::InitialiseDaughterCell, "" )
         .def("SetGeneration", (void (AbstractSimpleGenerationalCellCycleModel::*)(unsigned int)) &AbstractSimpleGenerationalCellCycleModel::SetGeneration, "" , py::arg("generation"))
-        .def("GetGeneration", (unsigned int (AbstractSimpleGenerationalCellCycleModel::*)()) &AbstractSimpleGenerationalCellCycleModel::GetGeneration, "" )
+        .def("GetGeneration", (unsigned int (AbstractSimpleGenerationalCellCycleModel::*)() const ) &AbstractSimpleGenerationalCellCycleModel::GetGeneration, "" )
         .def("SetMaxTransitGenerations", (void (AbstractSimpleGenerationalCellCycleModel::*)(unsigned int)) &AbstractSimpleGenerationalCellCycleModel::SetMaxTransitGenerations, "" , py::arg("maxTransitGenerations"))
-        .def("GetMaxTransitGenerations", (unsigned int (AbstractSimpleGenerationalCellCycleModel::*)()) &AbstractSimpleGenerationalCellCycleModel::GetMaxTransitGenerations, "" )
+        .def("GetMaxTransitGenerations", (unsigned int (AbstractSimpleGenerationalCellCycleModel::*)() const ) &AbstractSimpleGenerationalCellCycleModel::GetMaxTransitGenerations, "" )
         .def("OutputCellCycleModelParameters", (void (AbstractSimpleGenerationalCellCycleModel::*)(::out_stream &)) &AbstractSimpleGenerationalCellCycleModel::OutputCellCycleModelParameters, "" , py::arg("rParamsFile"))
     ;
 }

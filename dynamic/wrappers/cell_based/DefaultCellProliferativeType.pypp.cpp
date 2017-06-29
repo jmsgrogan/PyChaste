@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef DefaultCellProliferativeType DefaultCellProliferativeType;
+
 void register_DefaultCellProliferativeType_class(py::module &m){
     py::class_<DefaultCellProliferativeType, std::shared_ptr<DefaultCellProliferativeType > , AbstractCellProliferativeType  >(m, "DefaultCellProliferativeType")
         .def(py::init< >())

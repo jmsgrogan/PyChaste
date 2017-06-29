@@ -6,11 +6,20 @@
 namespace py = pybind11;
 
 typedef CaBasedCellPopulation<3 > CaBasedCellPopulation3;
+typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
+typedef ::Node<3> * _Node3Ptr;
+typedef unsigned int unsignedint;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::CellPtr _CellPtr;
+typedef unsigned int unsignedint;
+typedef ::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const _std_vectorboost_shared_ptrAbstractUpdateRule3_std_allocatorboost_shared_ptrAbstractUpdateRule3;
+
 class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
     public:
-    using CaBasedCellPopulation3::CaBasedCellPopulation<3>;
+    using CaBasedCellPopulation3::CaBasedCellPopulation;
 
-        bool IsSiteAvailable(unsigned int index, ::CellPtr pCell) override {
+        bool IsSiteAvailable(unsigned int index, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         bool,
         CaBasedCellPopulation3,
@@ -19,47 +28,47 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier() override {
+        ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier()override {
         PYBIND11_OVERLOAD(
-        ::TetrahedralMesh<3, 3> *,
+        _TetrahedralMesh3_3Ptr,
         CaBasedCellPopulation3,
         GetTetrahedralMeshForPdeModifier,
         
         );
         }
-        ::Node<3> * GetNode(unsigned int index) override {
+        ::Node<3> * GetNode(unsigned int index)override {
         PYBIND11_OVERLOAD(
-        ::Node<3> *,
+        _Node3Ptr,
         CaBasedCellPopulation3,
         GetNode,
         index        
         );
         }
-        unsigned int GetNumNodes() override {
+        unsigned int GetNumNodes()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         CaBasedCellPopulation3,
         GetNumNodes,
         
         );
         }
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
+        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
-        ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >,
+        _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
         CaBasedCellPopulation3,
         GetNeighbouringLocationIndices,
         pCell        
         );
         }
-        ::boost::numeric::ublas::c_vector<double, 3> GetLocationOfCellCentre(::CellPtr pCell) override {
+        ::boost::numeric::ublas::c_vector<double, 3> GetLocationOfCellCentre(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 3>,
+        _boost_numeric_ublas_c_vectordouble_3,
         CaBasedCellPopulation3,
         GetLocationOfCellCentre,
         pCell        
         );
         }
-        void AddCellUsingLocationIndex(unsigned int index, ::CellPtr pCell) override {
+        void AddCellUsingLocationIndex(unsigned int index, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -68,7 +77,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        void RemoveCellUsingLocationIndex(unsigned int index, ::CellPtr pCell) override {
+        void RemoveCellUsingLocationIndex(unsigned int index, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -77,16 +86,16 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell) override {
+        ::CellPtr AddCell(::CellPtr pNewCell, ::CellPtr pParentCell)override {
         PYBIND11_OVERLOAD(
-        ::CellPtr,
+        _CellPtr,
         CaBasedCellPopulation3,
         AddCell,
         pNewCell, 
         pParentCell        
         );
         }
-        double EvaluateDivisionPropensity(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CellPtr pCell) override {
+        double EvaluateDivisionPropensity(unsigned int currentNodeIndex, unsigned int targetNodeIndex, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         CaBasedCellPopulation3,
@@ -96,15 +105,15 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        unsigned int RemoveDeadCells() override {
+        unsigned int RemoveDeadCells()override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         CaBasedCellPopulation3,
         RemoveDeadCells,
         
         );
         }
-        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler) override {
+        void OpenWritersFiles(::OutputFileHandler & rOutputFileHandler)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -112,7 +121,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         rOutputFileHandler        
         );
         }
-        void UpdateCellLocations(double dt) override {
+        void UpdateCellLocations(double dt)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -120,7 +129,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         dt        
         );
         }
-        bool IsCellAssociatedWithADeletedLocation(::CellPtr pCell) override {
+        bool IsCellAssociatedWithADeletedLocation(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         bool,
         CaBasedCellPopulation3,
@@ -128,7 +137,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        void Update(bool hasHadBirthsOrDeaths) override {
+        void Update(bool hasHadBirthsOrDeaths)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -136,7 +145,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         hasHadBirthsOrDeaths        
         );
         }
-        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> > pPopulationWriter) override {
+        void AcceptPopulationWriter(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> > pPopulationWriter)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -144,7 +153,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pPopulationWriter        
         );
         }
-        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> > pPopulationCountWriter) override {
+        void AcceptPopulationCountWriter(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> > pPopulationCountWriter)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -152,7 +161,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pPopulationCountWriter        
         );
         }
-        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<3, 3> > pCellWriter, ::CellPtr pCell) override {
+        void AcceptCellWriter(::boost::shared_ptr<AbstractCellWriter<3, 3> > pCellWriter, ::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -161,7 +170,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        double GetVolumeOfCell(::CellPtr pCell) override {
+        double GetVolumeOfCell(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         double,
         CaBasedCellPopulation3,
@@ -169,7 +178,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension)override {
         PYBIND11_OVERLOAD(
         double,
         CaBasedCellPopulation3,
@@ -177,7 +186,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         rDimension        
         );
         }
-        void RemoveAllUpdateRules() override {
+        void RemoveAllUpdateRules()override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -185,7 +194,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         
         );
         }
-        void OutputCellPopulationParameters(::out_stream & rParamsFile) override {
+        void OutputCellPopulationParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -193,7 +202,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         rParamsFile        
         );
         }
-        bool IsRoomToDivide(::CellPtr pCell) override {
+        bool IsRoomToDivide(::CellPtr pCell)override {
         PYBIND11_OVERLOAD(
         bool,
         CaBasedCellPopulation3,
@@ -201,7 +210,7 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pCell        
         );
         }
-        void AddUpdateRule(::boost::shared_ptr<AbstractUpdateRule<3> > pUpdateRule) override {
+        void AddUpdateRule(::boost::shared_ptr<AbstractUpdateRule<3> > pUpdateRule)override {
         PYBIND11_OVERLOAD(
         void,
         CaBasedCellPopulation3,
@@ -209,15 +218,15 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         pUpdateRule        
         );
         }
-        ::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const GetUpdateRuleCollection() override {
+        ::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const GetUpdateRuleCollection() const override {
         PYBIND11_OVERLOAD(
-        ::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const,
+        _std_vectorboost_shared_ptrAbstractUpdateRule3_std_allocatorboost_shared_ptrAbstractUpdateRule3,
         CaBasedCellPopulation3,
         GetUpdateRuleCollection,
         
         );
         }
-        double GetCellDataItemAtPdeNode(unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies, double dirichletBoundaryValue) override {
+        double GetCellDataItemAtPdeNode(unsigned int pdeNodeIndex, ::std::string & rVariableName, bool dirichletBoundaryConditionApplies, double dirichletBoundaryValue)override {
         PYBIND11_OVERLOAD(
         double,
         CaBasedCellPopulation3,
@@ -228,28 +237,12 @@ class CaBasedCellPopulation3_Overloads : public CaBasedCellPopulation3{
         dirichletBoundaryValue        
         );
         }
-        bool IsPdeNodeAssociatedWithNonApoptoticCell(unsigned int pdeNodeIndex) override {
+        bool IsPdeNodeAssociatedWithNonApoptoticCell(unsigned int pdeNodeIndex)override {
         PYBIND11_OVERLOAD(
         bool,
         CaBasedCellPopulation3,
         IsPdeNodeAssociatedWithNonApoptoticCell,
         pdeNodeIndex        
-        );
-        }
-        void Validate() override {
-        PYBIND11_OVERLOAD(
-        void,
-        CaBasedCellPopulation3,
-        Validate,
-        
-        );
-        }
-        void WriteVtkResultsToFile(::std::string const & rDirectory) override {
-        PYBIND11_OVERLOAD(
-        void,
-        CaBasedCellPopulation3,
-        WriteVtkResultsToFile,
-        rDirectory        
         );
         }
 
@@ -285,7 +278,7 @@ void register_CaBasedCellPopulation3_class(py::module &m){
         .def("GetCaBasedDivisionRule", (::boost::shared_ptr<AbstractCaBasedDivisionRule<3> > (CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::GetCaBasedDivisionRule, "" )
         .def("SetCaBasedDivisionRule", (void (CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractCaBasedDivisionRule<3> >)) &CaBasedCellPopulation3::SetCaBasedDivisionRule, "" , py::arg("pCaBasedDivisionRule"))
         .def("AddUpdateRule", (void (CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractUpdateRule<3> >)) &CaBasedCellPopulation3::AddUpdateRule, "" , py::arg("pUpdateRule"))
-        .def("GetUpdateRuleCollection", (::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const (CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::GetUpdateRuleCollection, "" )
+        .def("GetUpdateRuleCollection", (::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const (CaBasedCellPopulation3::*)() const ) &CaBasedCellPopulation3::GetUpdateRuleCollection, "" )
         .def("GetCellDataItemAtPdeNode", (double (CaBasedCellPopulation3::*)(unsigned int, ::std::string &, bool, double)) &CaBasedCellPopulation3::GetCellDataItemAtPdeNode, "" , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
         .def("IsPdeNodeAssociatedWithNonApoptoticCell", (bool (CaBasedCellPopulation3::*)(unsigned int)) &CaBasedCellPopulation3::IsPdeNodeAssociatedWithNonApoptoticCell, "" , py::arg("pdeNodeIndex"))
     ;

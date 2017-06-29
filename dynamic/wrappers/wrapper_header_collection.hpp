@@ -124,6 +124,10 @@
 #include "SimpleTargetAreaModifier.hpp"
 #include "VtkSceneModifier.hpp"
 #include "AbstractCellBasedSimulationModifier.hpp"
+#include "Hello.hpp"
+#include "VtkScene.hpp"
+#include "AbstractPyChasteActorGenerator.hpp"
+#include "CellPopulationPyChasteActorGenerator.hpp"
 
 // Instantiate Template Classes 
 template class AbstractNonlinearEllipticPde<2 >;
@@ -260,6 +264,12 @@ template class VtkSceneModifier<2 >;
 template class VtkSceneModifier<3 >;
 template class AbstractCellBasedSimulationModifier<2,2 >;
 template class AbstractCellBasedSimulationModifier<3,3 >;
+template class VtkScene<2 >;
+template class VtkScene<3 >;
+template class AbstractPyChasteActorGenerator<2 >;
+template class AbstractPyChasteActorGenerator<3 >;
+template class CellPopulationPyChasteActorGenerator<2 >;
+template class CellPopulationPyChasteActorGenerator<3 >;
 
 // Typedef for nicer naming
 namespace pyplusplus{ 
@@ -406,6 +416,12 @@ typedef VtkSceneModifier<2 > VtkSceneModifier2;
 typedef VtkSceneModifier<3 > VtkSceneModifier3;
 typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
 typedef AbstractCellBasedSimulationModifier<3,3 > AbstractCellBasedSimulationModifier3_3;
+typedef VtkScene<2 > VtkScene2;
+typedef VtkScene<3 > VtkScene3;
+typedef AbstractPyChasteActorGenerator<2 > AbstractPyChasteActorGenerator2;
+typedef AbstractPyChasteActorGenerator<3 > AbstractPyChasteActorGenerator3;
+typedef CellPopulationPyChasteActorGenerator<2 > CellPopulationPyChasteActorGenerator2;
+typedef CellPopulationPyChasteActorGenerator<3 > CellPopulationPyChasteActorGenerator3;
     }
 }
 

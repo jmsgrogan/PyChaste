@@ -6,11 +6,15 @@
 namespace py = pybind11;
 
 typedef TetrahedralMesh<3,3 > TetrahedralMesh3_3;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+typedef unsigned int unsignedint;
+
 class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
     public:
-    using TetrahedralMesh3_3::TetrahedralMesh<3, 3>;
+    using TetrahedralMesh3_3::TetrahedralMesh;
 
-        void ConstructFromMeshReader(::AbstractMeshReader<3, 3> & rMeshReader) override {
+        void ConstructFromMeshReader(::AbstractMeshReader<3, 3> & rMeshReader)override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -18,7 +22,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rMeshReader        
         );
         }
-        void ReadNodesPerProcessorFile(::std::string const & rNodesPerProcessorFile) override {
+        void ReadNodesPerProcessorFile(::std::string const & rNodesPerProcessorFile)override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -26,7 +30,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rNodesPerProcessorFile        
         );
         }
-        void RefreshMesh() override {
+        void RefreshMesh()override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -34,7 +38,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         
         );
         }
-        void PermuteNodes() override {
+        void PermuteNodes()override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -42,7 +46,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         
         );
         }
-        void Clear() override {
+        void Clear()override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -50,7 +54,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         
         );
         }
-        void RefreshJacobianCachedData() override {
+        void RefreshJacobianCachedData()override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -58,7 +62,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         
         );
         }
-        void GetJacobianForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rJacobian, double & rJacobianDeterminant) override {
+        void GetJacobianForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rJacobian, double & rJacobianDeterminant) const override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -68,7 +72,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rJacobianDeterminant        
         );
         }
-        void GetInverseJacobianForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rJacobian, double & rJacobianDeterminant, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rInverseJacobian) override {
+        void GetInverseJacobianForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rJacobian, double & rJacobianDeterminant, ::boost::numeric::ublas::c_matrix<double, 3, 3> & rInverseJacobian) const override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -79,7 +83,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rInverseJacobian        
         );
         }
-        void GetWeightedDirectionForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_vector<double, 3> & rWeightedDirection, double & rJacobianDeterminant) override {
+        void GetWeightedDirectionForElement(unsigned int elementIndex, ::boost::numeric::ublas::c_vector<double, 3> & rWeightedDirection, double & rJacobianDeterminant) const override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -89,7 +93,7 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rJacobianDeterminant        
         );
         }
-        void GetWeightedDirectionForBoundaryElement(unsigned int elementIndex, ::boost::numeric::ublas::c_vector<double, 3> & rWeightedDirection, double & rJacobianDeterminant) override {
+        void GetWeightedDirectionForBoundaryElement(unsigned int elementIndex, ::boost::numeric::ublas::c_vector<double, 3> & rWeightedDirection, double & rJacobianDeterminant) const override {
         PYBIND11_OVERLOAD(
         void,
         TetrahedralMesh3_3,
@@ -99,25 +103,25 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
         rJacobianDeterminant        
         );
         }
-        unsigned int SolveNodeMapping(unsigned int index) override {
+        unsigned int SolveNodeMapping(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         TetrahedralMesh3_3,
         SolveNodeMapping,
         index        
         );
         }
-        unsigned int SolveElementMapping(unsigned int index) override {
+        unsigned int SolveElementMapping(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         TetrahedralMesh3_3,
         SolveElementMapping,
         index        
         );
         }
-        unsigned int SolveBoundaryElementMapping(unsigned int index) override {
+        unsigned int SolveBoundaryElementMapping(unsigned int index) const override {
         PYBIND11_OVERLOAD(
-        unsigned int,
+        unsignedint,
         TetrahedralMesh3_3,
         SolveBoundaryElementMapping,
         index        
@@ -128,7 +132,6 @@ class TetrahedralMesh3_3_Overloads : public TetrahedralMesh3_3{
 void register_TetrahedralMesh3_3_class(py::module &m){
     py::class_<TetrahedralMesh3_3, TetrahedralMesh3_3_Overloads, std::shared_ptr<TetrahedralMesh3_3 >  >(m, "TetrahedralMesh3_3")
         .def(py::init< >())
-        .def(py::init<::TetrahedralMesh<3, 3> &, unsigned int >())
         .def("ConstructFromMeshReader", (void (TetrahedralMesh3_3::*)(::AbstractMeshReader<3, 3> &)) &TetrahedralMesh3_3::ConstructFromMeshReader, "" , py::arg("rMeshReader"))
         .def("ReadNodesPerProcessorFile", (void (TetrahedralMesh3_3::*)(::std::string const &)) &TetrahedralMesh3_3::ReadNodesPerProcessorFile, "" , py::arg("rNodesPerProcessorFile"))
         .def("CheckIsConforming", (bool (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::CheckIsConforming, "" )
@@ -143,12 +146,10 @@ void register_TetrahedralMesh3_3_class(py::module &m){
         .def("Clear", (void (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::Clear, "" )
         .def("GetAngleBetweenNodes", (double (TetrahedralMesh3_3::*)(unsigned int, unsigned int)) &TetrahedralMesh3_3::GetAngleBetweenNodes, "" , py::arg("indexA"), py::arg("indexB"))
         .def("RefreshJacobianCachedData", (void (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::RefreshJacobianCachedData, "" )
-        .def("GetJacobianForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_matrix<double, 3, 3> &, double &)) &TetrahedralMesh3_3::GetJacobianForElement, "" , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"))
-        .def("GetInverseJacobianForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_matrix<double, 3, 3> &, double &, ::boost::numeric::ublas::c_matrix<double, 3, 3> &)) &TetrahedralMesh3_3::GetInverseJacobianForElement, "" , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"), py::arg("rInverseJacobian"))
-        .def("GetWeightedDirectionForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double &)) &TetrahedralMesh3_3::GetWeightedDirectionForElement, "" , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant"))
-        .def("GetWeightedDirectionForBoundaryElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double &)) &TetrahedralMesh3_3::GetWeightedDirectionForBoundaryElement, "" , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant"))
-        .def("GetNodeA", (::Node<3> * (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::GetNodeA, "" )
-        .def("GetNodeB", (::Node<3> * (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::GetNodeB, "" )
+        .def("GetJacobianForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_matrix<double, 3, 3> &, double &) const ) &TetrahedralMesh3_3::GetJacobianForElement, "" , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"))
+        .def("GetInverseJacobianForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_matrix<double, 3, 3> &, double &, ::boost::numeric::ublas::c_matrix<double, 3, 3> &) const ) &TetrahedralMesh3_3::GetInverseJacobianForElement, "" , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"), py::arg("rInverseJacobian"))
+        .def("GetWeightedDirectionForElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double &) const ) &TetrahedralMesh3_3::GetWeightedDirectionForElement, "" , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant"))
+        .def("GetWeightedDirectionForBoundaryElement", (void (TetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double &) const ) &TetrahedralMesh3_3::GetWeightedDirectionForBoundaryElement, "" , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant"))
         .def("EdgesBegin", (::TetrahedralMesh<3, 3>::EdgeIterator (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::EdgesBegin, "" )
         .def("EdgesEnd", (::TetrahedralMesh<3, 3>::EdgeIterator (TetrahedralMesh3_3::*)()) &TetrahedralMesh3_3::EdgesEnd, "" )
     ;

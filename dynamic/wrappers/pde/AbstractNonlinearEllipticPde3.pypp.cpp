@@ -6,11 +6,14 @@
 namespace py = pybind11;
 
 typedef AbstractNonlinearEllipticPde<3 > AbstractNonlinearEllipticPde3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+
 class AbstractNonlinearEllipticPde3_Overloads : public AbstractNonlinearEllipticPde3{
     public:
-    using AbstractNonlinearEllipticPde3::AbstractNonlinearEllipticPde<3>;
+    using AbstractNonlinearEllipticPde3::AbstractNonlinearEllipticPde;
 
-        double ComputeLinearSourceTerm(::ChastePoint<3> const & rX) override {
+        double ComputeLinearSourceTerm(::ChastePoint<3> const & rX)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractNonlinearEllipticPde3,
@@ -18,7 +21,7 @@ class AbstractNonlinearEllipticPde3_Overloads : public AbstractNonlinearElliptic
         rX        
         );
         }
-        double ComputeNonlinearSourceTerm(::ChastePoint<3> const & rX, double u) override {
+        double ComputeNonlinearSourceTerm(::ChastePoint<3> const & rX, double u)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractNonlinearEllipticPde3,
@@ -27,25 +30,25 @@ class AbstractNonlinearEllipticPde3_Overloads : public AbstractNonlinearElliptic
         u        
         );
         }
-        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, double u) override {
+        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, double u)override {
         PYBIND11_OVERLOAD_PURE(
-        ::boost::numeric::ublas::c_matrix<double, 3, 3>,
+        _boost_numeric_ublas_c_matrixdouble_3_3,
         AbstractNonlinearEllipticPde3,
         ComputeDiffusionTerm,
         rX, 
         u        
         );
         }
-        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTermPrime(::ChastePoint<3> const & rX, double u) override {
+        ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTermPrime(::ChastePoint<3> const & rX, double u)override {
         PYBIND11_OVERLOAD_PURE(
-        ::boost::numeric::ublas::c_matrix<double, 3, 3>,
+        _boost_numeric_ublas_c_matrixdouble_3_3,
         AbstractNonlinearEllipticPde3,
         ComputeDiffusionTermPrime,
         rX, 
         u        
         );
         }
-        double ComputeNonlinearSourceTermPrime(::ChastePoint<3> const & rX, double u) override {
+        double ComputeNonlinearSourceTermPrime(::ChastePoint<3> const & rX, double u)override {
         PYBIND11_OVERLOAD_PURE(
         double,
         AbstractNonlinearEllipticPde3,

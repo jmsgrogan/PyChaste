@@ -6,11 +6,12 @@
 namespace py = pybind11;
 
 typedef AbstractForce<2,2 > AbstractForce2_2;
+
 class AbstractForce2_2_Overloads : public AbstractForce2_2{
     public:
-    using AbstractForce2_2::AbstractForce<2, 2>;
+    using AbstractForce2_2::AbstractForce;
 
-        void AddForceContribution(::AbstractCellPopulation<2, 2> & rCellPopulation) override {
+        void AddForceContribution(::AbstractCellPopulation<2, 2> & rCellPopulation)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractForce2_2,
@@ -18,7 +19,7 @@ class AbstractForce2_2_Overloads : public AbstractForce2_2{
         rCellPopulation        
         );
         }
-        void OutputForceParameters(::out_stream & rParamsFile) override {
+        void OutputForceParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD_PURE(
         void,
         AbstractForce2_2,
@@ -26,7 +27,7 @@ class AbstractForce2_2_Overloads : public AbstractForce2_2{
         rParamsFile        
         );
         }
-        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile) override {
+        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractForce2_2,

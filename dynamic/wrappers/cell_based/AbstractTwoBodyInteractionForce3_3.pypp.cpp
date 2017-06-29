@@ -6,13 +6,15 @@
 namespace py = pybind11;
 
 typedef AbstractTwoBodyInteractionForce<3,3 > AbstractTwoBodyInteractionForce3_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+
 class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInteractionForce3_3{
     public:
-    using AbstractTwoBodyInteractionForce3_3::AbstractTwoBodyInteractionForce<3, 3>;
+    using AbstractTwoBodyInteractionForce3_3::AbstractTwoBodyInteractionForce;
 
-        ::boost::numeric::ublas::c_vector<double, 3> CalculateForceBetweenNodes(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        ::boost::numeric::ublas::c_vector<double, 3> CalculateForceBetweenNodes(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD_PURE(
-        ::boost::numeric::ublas::c_vector<double, 3>,
+        _boost_numeric_ublas_c_vectordouble_3,
         AbstractTwoBodyInteractionForce3_3,
         CalculateForceBetweenNodes,
         nodeAGlobalIndex, 
@@ -20,7 +22,7 @@ class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInter
         rCellPopulation        
         );
         }
-        void AddForceContribution(::AbstractCellPopulation<3, 3> & rCellPopulation) override {
+        void AddForceContribution(::AbstractCellPopulation<3, 3> & rCellPopulation)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTwoBodyInteractionForce3_3,
@@ -28,7 +30,7 @@ class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInter
         rCellPopulation        
         );
         }
-        void OutputForceParameters(::out_stream & rParamsFile) override {
+        void OutputForceParameters(::out_stream & rParamsFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTwoBodyInteractionForce3_3,
@@ -36,7 +38,7 @@ class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInter
         rParamsFile        
         );
         }
-        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile) override {
+        void WriteDataToVisualizerSetupFile(::out_stream & pVizSetupFile)override {
         PYBIND11_OVERLOAD(
         void,
         AbstractTwoBodyInteractionForce3_3,

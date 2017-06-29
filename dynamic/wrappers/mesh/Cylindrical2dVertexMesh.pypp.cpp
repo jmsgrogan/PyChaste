@@ -6,20 +6,22 @@
 namespace py = pybind11;
 
 typedef Cylindrical2dVertexMesh Cylindrical2dVertexMesh;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+
 class Cylindrical2dVertexMesh_Overloads : public Cylindrical2dVertexMesh{
     public:
     using Cylindrical2dVertexMesh::Cylindrical2dVertexMesh;
 
-        ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocation1, ::boost::numeric::ublas::c_vector<double, 2> const & rLocation2) override {
+        ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocation1, ::boost::numeric::ublas::c_vector<double, 2> const & rLocation2)override {
         PYBIND11_OVERLOAD(
-        ::boost::numeric::ublas::c_vector<double, 2>,
+        _boost_numeric_ublas_c_vectordouble_2,
         Cylindrical2dVertexMesh,
         GetVectorFromAtoB,
         rLocation1, 
         rLocation2        
         );
         }
-        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> point) override {
+        void SetNode(unsigned int nodeIndex, ::ChastePoint<2> point)override {
         PYBIND11_OVERLOAD(
         void,
         Cylindrical2dVertexMesh,
@@ -28,7 +30,7 @@ class Cylindrical2dVertexMesh_Overloads : public Cylindrical2dVertexMesh{
         point        
         );
         }
-        double GetWidth(unsigned int const & rDimension) override {
+        double GetWidth(unsigned int const & rDimension) const override {
         PYBIND11_OVERLOAD(
         double,
         Cylindrical2dVertexMesh,
@@ -36,7 +38,7 @@ class Cylindrical2dVertexMesh_Overloads : public Cylindrical2dVertexMesh{
         rDimension        
         );
         }
-        void Scale(double const xScale, double const yScale, double const zScale) override {
+        void Scale(double const xScale, double const yScale, double const zScale)override {
         PYBIND11_OVERLOAD(
         void,
         Cylindrical2dVertexMesh,
@@ -54,7 +56,7 @@ void register_Cylindrical2dVertexMesh_class(py::module &m){
         .def(py::init<::Cylindrical2dMesh & >())
         .def("GetVectorFromAtoB", (::boost::numeric::ublas::c_vector<double, 2> (Cylindrical2dVertexMesh::*)(::boost::numeric::ublas::c_vector<double, 2> const &, ::boost::numeric::ublas::c_vector<double, 2> const &)) &Cylindrical2dVertexMesh::GetVectorFromAtoB, "" , py::arg("rLocation1"), py::arg("rLocation2"))
         .def("SetNode", (void (Cylindrical2dVertexMesh::*)(unsigned int, ::ChastePoint<2>)) &Cylindrical2dVertexMesh::SetNode, "" , py::arg("nodeIndex"), py::arg("point"))
-        .def("GetWidth", (double (Cylindrical2dVertexMesh::*)(unsigned int const &)) &Cylindrical2dVertexMesh::GetWidth, "" , py::arg("rDimension"))
+        .def("GetWidth", (double (Cylindrical2dVertexMesh::*)(unsigned int const &) const ) &Cylindrical2dVertexMesh::GetWidth, "" , py::arg("rDimension"))
         .def("AddNode", (unsigned int (Cylindrical2dVertexMesh::*)(::Node<2> *)) &Cylindrical2dVertexMesh::AddNode, "" , py::arg("pNewNode"))
         .def("Scale", (void (Cylindrical2dVertexMesh::*)(double const, double const, double const)) &Cylindrical2dVertexMesh::Scale, "" , py::arg("xScale") = 1., py::arg("yScale") = 1., py::arg("zScale") = 1.)
         .def("GetMeshForVtk", (::MutableVertexMesh<2, 2> * (Cylindrical2dVertexMesh::*)()) &Cylindrical2dVertexMesh::GetMeshForVtk, "" )

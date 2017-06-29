@@ -6,6 +6,7 @@
 namespace py = pybind11;
 
 typedef PetscTools PetscTools;
+
 void register_PetscTools_class(py::module &m){
     py::class_<PetscTools, std::shared_ptr<PetscTools >  >(m, "PetscTools")
         .def_static("ResetCache", (void (*)()) &PetscTools::ResetCache, "" )
