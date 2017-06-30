@@ -39,9 +39,8 @@ class TestTimer(unittest.TestCase):
     
     def test_start_stop(self):
         
-        timer = chaste.core.Timer()
-        timer.Reset()
-        timer.Print("This Happened At: ")
+        chaste.core.Timer.Reset()
+        chaste.core.Timer.Print("This Happened At: ")
 
 if __name__ == '__main__':
     unittest.main()
