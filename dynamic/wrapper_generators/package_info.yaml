@@ -1,0 +1,267 @@
+name: chaste_project_PyChaste
+global_includes:
+  - <set>
+  - <vector>
+  - <string>
+  - <map>
+  - SmartPointers.hpp
+  - UblasIncludes.hpp
+global_calldef_excludes:
+  - ::Vec
+  - ::Mat
+smart_ptr_type: boost::shared_ptr
+common_include_file: OFF
+global_template_substitutions:
+  - signature: <unsigned ELEMENT_DIM, unsigned SPACE_DIM>
+    replacement: [[2, 2], [3, 3]]
+  - signature: <unsigned DIM, unsigned DIM>
+    replacement: [[2, 2], [3, 3]]
+  - signature: <unsigned ELEMENT_DIM, unsigned SPACE_DIM=ELEMENT_DIM>
+    replacement: [[2, 2], [3, 3]]
+  - signature: <unsigned SPACE_DIM>
+    replacement: [[2], [3]]
+  - signature: <unsigned DIM>
+    replacement: [[2], [3]]    
+    
+modules:
+- name: core
+  source_locations:
+  - global/src
+  - io/src
+  - linalg/src
+  classes:
+  - name: Identifiable
+  - name: PetscTools
+    excluded_methods: 
+    - GetWorld # MPI not wrapped here
+    excluded_variables: 
+    - MASTER_RANK # MPI not wrapped here
+  - name: ReplicatableVector
+  - name: Timer
+  - name: RelativeTo
+    source_file: FileFinder.hpp
+  - name: FileFinder
+    extra_includes:
+    - BoostFilesystem.hpp
+  - name: OutputFileHandler
+    extra_includes:
+    - FileFinder.hpp # forward decl
+    excluded_methods: 
+    - OpenOutputFile # std io not wrapped
+  - name: ProgressReporter
+  - name: RandomNumberGenerator
+  - name: TimeStepper
+  - name: ChasteBuildInfo
+    source_file: Version.hpp
+- name: ode
+  source_locations:
+  - ode/src
+  classes:
+  - name: AbstractOdeSystemInformation
+  - name: AbstractPythonOdeSystemInformation
+  - name: AbstractOdeSystem
+- name: pde
+  source_locations:
+  - pde/src
+  classes:
+  - name: AbstractLinearPde
+  - name: AbstractLinearParabolicPde
+  - name: AbstractLinearEllipticPde
+  - name: AbstractNonlinearEllipticPde
+  - name: AbstractBoundaryCondition
+  - name: ConstBoundaryCondition
+  - name: PdeSimulationTime
+- name: mesh
+  source_locations:
+  - mesh/src
+  classes:
+  - name: ChastePoint
+  - name: NodeAttributes
+  - name: Node
+  - name: Element
+    excluded_methods: 
+    - CalculateCircumsphereVolume #  method not found!
+  - name: NodesOnlyMesh
+  - name: MutableMesh
+    excluded_methods: 
+    - SplitLongEdges # can't work with vec<c_vec>
+    - RescaleMeshFromBoundaryNode  # method not found!
+  - name: PottsMesh
+  - name: SharedPottsMeshGenerator
+    name_override: PottsMeshGenerator
+  - name: PottsElement
+  - name: TetrahedralMesh
+    excluded_methods: 
+    - FreeTriangulateIo
+    - InitialiseTriangulateIo
+  - name: AbstractTetrahedralMesh
+  - name: AbstractMesh
+  - name: VertexMesh
+    excluded_methods: 
+    - GetFace # dont have mixed dim elements
+    constructor_arg_type_excludes: 
+    - 'TetrahedralMesh<3, 3>'
+    - 'TetrahedralMesh<2, 2>'
+  - name: MutableVertexMesh
+  - name: Cylindrical2dVertexMesh
+  - name: SharedHoneycombMeshGenerator
+    name_override: HoneycombMeshGenerator
+  - name: SharedHoneycombVertexMeshGenerator
+    name_override: HoneycombVertexMeshGenerator
+  - name: SharedCylindricalHoneycombVertexMeshGenerator
+    name_override: CylindricalHoneycombVertexMeshGenerator
+- name: cell_based
+  source_locations:
+  - cell_based/src
+  classes:
+  - name: AbstractCellCycleModel
+  - name: AbstractPhaseBasedCellCycleModel
+  - name: AbstractSimpleCellCycleModel
+  - name: AbstractSimplePhaseBasedCellCycleModel
+  - name: AbstractSimpleGenerationalCellCycleModel
+  - name: UniformCellCycleModel
+  - name: SimpleOxygenBasedCellCycleModel
+  - name: UniformG1GenerationalCellCycleModel
+  - name: NoCellCycleModel
+  - name: AbstractCellProperty
+    excluded_methods: 
+    - IsType  # exclude templated method
+  - name: CellPropertyCollection
+    excluded_methods: 
+    - GetCellPropertyRegistry
+  - name: AbstractCellProliferativeType
+  - name: StemCellProliferativeType
+  - name: DefaultCellProliferativeType
+  - name: TransitCellProliferativeType
+  - name: DifferentiatedCellProliferativeType
+  - name: AbstractCellMutationState
+  - name: ApcOneHitCellMutationState
+  - name: ApcTwoHitCellMutationState
+  - name: BetaCateninOneHitCellMutationState
+  - name: WildTypeCellMutationState
+  - name: ApoptoticCellProperty
+  - name: CellData
+  - name: CellLabel
+  - name: CellAncestor
+  - name: CellId
+  - name: CellPropertyRegistry
+    excluded_methods: 
+    - rGetAllCellProperties
+    - TakeOwnership
+    - Get
+  - name: AbstractSrnModel
+  - name: NullSrnModel
+  - name: Cell
+    excluded_methods: 
+    - rGetCellPropertyCollection
+    - GetSrnModel
+#  - name: CellsGenerator
+  - name: CellwiseSourceEllipticPde
+  - name: AveragedSourceEllipticPde
+  - name: CellwiseSourceParabolicPde
+  - name: AbstractPdeModifier
+    excluded_methods: 
+    - GetSolution
+    - GetFeMesh
+  - name: AbstractGrowingDomainPdeModifier
+  - name: EllipticGrowingDomainPdeModifier
+    excluded_methods: 
+    - ConstructBoundaryConditionsContainer
+  - name: VoronoiDataWriter 
+    extra_includes:
+    - VertexBasedCellPopulation.hpp
+    - MeshBasedCellPopulation.hpp
+    - PottsBasedCellPopulation.hpp
+    - NodeBasedCellPopulation.hpp
+    - CaBasedCellPopulation.hpp
+  - name: CellLabelWriter
+    extra_includes:
+    - AbstractCellPopulation.hpp
+  - name: AbstractCaUpdateRule 
+  - name: AbstractUpdateRule
+  - name: DiffusionCaUpdateRule 
+  - name: AbstractPottsUpdateRule
+  - name: VolumeConstraintPottsUpdateRule 
+  - name: SurfaceAreaConstraintPottsUpdateRule
+  - name: DifferentialAdhesionPottsUpdateRule 
+  - name: AdhesionPottsUpdateRule
+  - name: AbstractVertexBasedDivisionRule
+  - name: AbstractForce 
+  - name: AbstractTwoBodyInteractionForce
+  - name: GeneralisedLinearSpringForce 
+  - name: NagaiHondaForce
+  - name: AbstractCellKiller 
+  - name: PlaneBasedCellKiller
+  - name: ApoptoticCellKiller
+  - name: AbstractCellPopulationBoundaryCondition 
+  - name: PlaneBoundaryCondition
+  - name: AttractingPlaneBoundaryCondition
+  - name: SphereGeometryBoundaryCondition
+  - name: AbstractCellPopulation
+    excluded_methods: 
+    - rGetCells
+    extra_includes:
+    - AbstractCellBasedSimulation.hpp       
+  - name: AbstractOnLatticeCellPopulation
+  - name: AbstractCentreBasedCellPopulation
+    excluded_methods: 
+    - GetNodeCorrespondingToCell
+    - MarkSpring
+    - UnmarkSpring
+  - name: AbstractOffLatticeCellPopulation
+  - name: CaBasedCellPopulation
+    excluded_methods: 
+    - rGetMesh
+    - GetTetrahedralMeshForPdeModifier
+    - GetNodeCorrespondingToCell
+    - rGetAvailableSpaces 
+  - name: MeshBasedCellPopulation
+    excluded_methods: 
+    - GetVoronoiTessellation
+    - rGetNodePairs
+    - GetTetrahedralMeshForPdeModifier
+    - rGetMesh   
+  - name: MeshBasedCellPopulationWithGhostNodes
+  - name: VertexBasedCellPopulation
+    excluded_methods: 
+    - GetElementCorrespondingToCell
+    - GetElement
+    - GetTetrahedralMeshForPdeModifier
+    - rGetMesh
+    extra_includes:
+    - AbstractCellBasedSimulation.hpp   
+  - name: PottsBasedCellPopulation
+    excluded_methods: 
+    - GetElementCorrespondingToCell
+    - GetElement
+    - GetTetrahedralMeshForPdeModifier
+    - rGetMesh   
+    - GetElementTessellation   
+    - GetMutableMesh   
+  - name: NodeBasedCellPopulation
+    excluded_methods: 
+    - rGetNodePairs
+    - GetTetrahedralMeshForPdeModifier
+    - rGetMesh   
+  - name: AbstractTargetAreaModifier 
+  - name: SimpleTargetAreaModifier
+  - name: VtkSceneModifier
+  - name: AbstractCellBasedSimulationModifier
+  - name: AbstractCellBasedSimulation
+    excluded_methods: 
+    - GetSimulationModifiers  
+  - name: SimulationTime 
+  - name: OnLatticeSimulation 
+  - name: OffLatticeSimulation
+- name: tutorial
+  source_locations:
+  - projects/PyChaste/tutorial/src
+  classes:
+  - name: Hello  
+- name: visualization
+  source_locations:
+  - projects/PyChaste/visualization/src
+  classes:
+  - name: VtkScene    
+  - name: AbstractPyChasteActorGenerator
+  - name: CellPopulationPyChasteActorGenerator

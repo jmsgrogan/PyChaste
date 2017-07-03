@@ -1,0 +1,36 @@
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <set>
+#include <vector>
+#include <string>
+#include <map>
+#include "SmartPointers.hpp"
+#include "UblasIncludes.hpp"
+#include "AbstractBoundaryCondition.hpp"
+
+#include "AbstractBoundaryCondition2.cppwg.hpp"
+
+namespace py = pybind11;
+typedef AbstractBoundaryCondition<2 > AbstractBoundaryCondition2;
+;
+
+class AbstractBoundaryCondition2_Overloads : public AbstractBoundaryCondition2{
+    public:
+    using AbstractBoundaryCondition2::AbstractBoundaryCondition;
+    double GetValue(::ChastePoint<2> const & rX) const  override {
+        PYBIND11_OVERLOAD_PURE(
+            double,
+            AbstractBoundaryCondition2,
+            GetValue,
+            rX);
+    }
+
+};
+void register_AbstractBoundaryCondition2_class(py::module &m){
+py::class_<AbstractBoundaryCondition2 , AbstractBoundaryCondition2_Overloads   >(m, "AbstractBoundaryCondition2")
+        .def(
+            "GetValue", 
+            (double(AbstractBoundaryCondition2::*)(::ChastePoint<2> const &) const ) &AbstractBoundaryCondition2::GetValue, 
+            " " , py::arg("rX"))
+    ;
+}

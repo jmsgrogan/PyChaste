@@ -1,0 +1,79 @@
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <set>
+#include <vector>
+#include <string>
+#include <map>
+#include "SmartPointers.hpp"
+#include "UblasIncludes.hpp"
+#include "CellwiseSourceParabolicPde.hpp"
+
+#include "CellwiseSourceParabolicPde2.cppwg.hpp"
+
+namespace py = pybind11;
+typedef CellwiseSourceParabolicPde<2 > CellwiseSourceParabolicPde2;
+;
+typedef ::boost::numeric::ublas::c_matrix<double, 2, 2> _boost_numeric_ublas_c_matrixdouble_2_2;
+
+class CellwiseSourceParabolicPde2_Overloads : public CellwiseSourceParabolicPde2{
+    public:
+    using CellwiseSourceParabolicPde2::CellwiseSourceParabolicPde;
+    double ComputeDuDtCoefficientFunction(::ChastePoint<2> const & rX) override {
+        PYBIND11_OVERLOAD(
+            double,
+            CellwiseSourceParabolicPde2,
+            ComputeDuDtCoefficientFunction,
+            rX);
+    }
+    double ComputeSourceTerm(::ChastePoint<2> const & rX, double u, ::Element<2, 2> * pElement) override {
+        PYBIND11_OVERLOAD(
+            double,
+            CellwiseSourceParabolicPde2,
+            ComputeSourceTerm,
+            rX, 
+u, 
+pElement);
+    }
+    double ComputeSourceTermAtNode(::Node<2> const & rNode, double u) override {
+        PYBIND11_OVERLOAD(
+            double,
+            CellwiseSourceParabolicPde2,
+            ComputeSourceTermAtNode,
+            rNode, 
+u);
+    }
+    ::boost::numeric::ublas::c_matrix<double, 2, 2> ComputeDiffusionTerm(::ChastePoint<2> const & rX, ::Element<2, 2> * pElement) override {
+        PYBIND11_OVERLOAD(
+            _boost_numeric_ublas_c_matrixdouble_2_2,
+            CellwiseSourceParabolicPde2,
+            ComputeDiffusionTerm,
+            rX, 
+pElement);
+    }
+
+};
+void register_CellwiseSourceParabolicPde2_class(py::module &m){
+py::class_<CellwiseSourceParabolicPde2 , CellwiseSourceParabolicPde2_Overloads   >(m, "CellwiseSourceParabolicPde2")
+        .def(py::init<::AbstractCellPopulation<2, 2> &, double, double, double >(), py::arg("rCellPopulation"), py::arg("duDtCoefficient") = 1., py::arg("diffusionCoefficient") = 1., py::arg("sourceCoefficient") = 0.)
+        .def(
+            "rGetCellPopulation", 
+            (::AbstractCellPopulation<2, 2> const &(CellwiseSourceParabolicPde2::*)() const ) &CellwiseSourceParabolicPde2::rGetCellPopulation, 
+            " " )
+        .def(
+            "ComputeDuDtCoefficientFunction", 
+            (double(CellwiseSourceParabolicPde2::*)(::ChastePoint<2> const &)) &CellwiseSourceParabolicPde2::ComputeDuDtCoefficientFunction, 
+            " " , py::arg("rX"))
+        .def(
+            "ComputeSourceTerm", 
+            (double(CellwiseSourceParabolicPde2::*)(::ChastePoint<2> const &, double, ::Element<2, 2> *)) &CellwiseSourceParabolicPde2::ComputeSourceTerm, 
+            " " , py::arg("rX"), py::arg("u"), py::arg("pElement") = __null)
+        .def(
+            "ComputeSourceTermAtNode", 
+            (double(CellwiseSourceParabolicPde2::*)(::Node<2> const &, double)) &CellwiseSourceParabolicPde2::ComputeSourceTermAtNode, 
+            " " , py::arg("rNode"), py::arg("u"))
+        .def(
+            "ComputeDiffusionTerm", 
+            (::boost::numeric::ublas::c_matrix<double, 2, 2>(CellwiseSourceParabolicPde2::*)(::ChastePoint<2> const &, ::Element<2, 2> *)) &CellwiseSourceParabolicPde2::ComputeDiffusionTerm, 
+            " " , py::arg("rX"), py::arg("pElement") = __null)
+    ;
+}

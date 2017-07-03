@@ -1,26 +1,24 @@
-#ifndef PYCHASTEHEADERS_HPP_
-#define PYCHASTEHEADERS_HPP_
+#ifndef chaste_project_PyChaste_HEADERS_HPP_
+#define chaste_project_PyChaste_HEADERS_HPP_
 
-// Includes 
-#include <vector>
-#include <set>
-#include <map>
+// Includes
 #include "Identifiable.hpp"
 #include "PetscTools.hpp"
 #include "ReplicatableVector.hpp"
 #include "Timer.hpp"
-#include "BoostFilesystem.hpp"
+#include "FileFinder.hpp"
 #include "FileFinder.hpp"
 #include "OutputFileHandler.hpp"
 #include "ProgressReporter.hpp"
 #include "RandomNumberGenerator.hpp"
-#include "SmartPointers.hpp"
 #include "TimeStepper.hpp"
 #include "Version.hpp"
-#include "UblasIncludes.hpp"
 #include "AbstractOdeSystemInformation.hpp"
 #include "AbstractPythonOdeSystemInformation.hpp"
 #include "AbstractOdeSystem.hpp"
+#include "AbstractLinearPde.hpp"
+#include "AbstractLinearParabolicPde.hpp"
+#include "AbstractLinearEllipticPde.hpp"
 #include "AbstractNonlinearEllipticPde.hpp"
 #include "AbstractBoundaryCondition.hpp"
 #include "ConstBoundaryCondition.hpp"
@@ -73,13 +71,8 @@
 #include "AbstractSrnModel.hpp"
 #include "NullSrnModel.hpp"
 #include "Cell.hpp"
-#include "CellsGenerator.hpp"
-#include "AbstractLinearPde.hpp"
-#include "AbstractLinearParabolicPde.hpp"
-#include "AbstractLinearEllipticPde.hpp"
 #include "CellwiseSourceEllipticPde.hpp"
 #include "AveragedSourceEllipticPde.hpp"
-#include "AveragedSourceParabolicPde.hpp"
 #include "CellwiseSourceParabolicPde.hpp"
 #include "AbstractPdeModifier.hpp"
 #include "AbstractGrowingDomainPdeModifier.hpp"
@@ -130,6 +123,12 @@
 #include "CellPopulationPyChasteActorGenerator.hpp"
 
 // Instantiate Template Classes 
+template class AbstractLinearPde<2,2 >;
+template class AbstractLinearPde<3,3 >;
+template class AbstractLinearParabolicPde<2,2 >;
+template class AbstractLinearParabolicPde<3,3 >;
+template class AbstractLinearEllipticPde<2,2 >;
+template class AbstractLinearEllipticPde<3,3 >;
 template class AbstractNonlinearEllipticPde<2 >;
 template class AbstractNonlinearEllipticPde<3 >;
 template class AbstractBoundaryCondition<2 >;
@@ -164,20 +163,10 @@ template class VertexMesh<2,2 >;
 template class VertexMesh<3,3 >;
 template class MutableVertexMesh<2,2 >;
 template class MutableVertexMesh<3,3 >;
-template class CellsGenerator<UniformCellCycleModel,2 >;
-template class CellsGenerator<UniformCellCycleModel,3 >;
-template class CellsGenerator<SimpleOxygenBasedCellCycleModel,2 >;
-template class CellsGenerator<SimpleOxygenBasedCellCycleModel,3 >;
-template class CellsGenerator<UniformG1GenerationalCellCycleModel,2 >;
-template class CellsGenerator<UniformG1GenerationalCellCycleModel,3 >;
-template class CellsGenerator<NoCellCycleModel,2 >;
-template class CellsGenerator<NoCellCycleModel,3 >;
 template class CellwiseSourceEllipticPde<2 >;
 template class CellwiseSourceEllipticPde<3 >;
 template class AveragedSourceEllipticPde<2 >;
 template class AveragedSourceEllipticPde<3 >;
-template class AveragedSourceParabolicPde<2 >;
-template class AveragedSourceParabolicPde<3 >;
 template class CellwiseSourceParabolicPde<2 >;
 template class CellwiseSourceParabolicPde<3 >;
 template class AbstractPdeModifier<2 >;
@@ -272,8 +261,13 @@ template class CellPopulationPyChasteActorGenerator<2 >;
 template class CellPopulationPyChasteActorGenerator<3 >;
 
 // Typedef for nicer naming
-namespace pyplusplus{ 
-namespace aliases{ 
+namespace cppwg{ 
+typedef AbstractLinearPde<2,2 > AbstractLinearPde2_2;
+typedef AbstractLinearPde<3,3 > AbstractLinearPde3_3;
+typedef AbstractLinearParabolicPde<2,2 > AbstractLinearParabolicPde2_2;
+typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
+typedef AbstractLinearEllipticPde<2,2 > AbstractLinearEllipticPde2_2;
+typedef AbstractLinearEllipticPde<3,3 > AbstractLinearEllipticPde3_3;
 typedef AbstractNonlinearEllipticPde<2 > AbstractNonlinearEllipticPde2;
 typedef AbstractNonlinearEllipticPde<3 > AbstractNonlinearEllipticPde3;
 typedef AbstractBoundaryCondition<2 > AbstractBoundaryCondition2;
@@ -308,26 +302,10 @@ typedef VertexMesh<2,2 > VertexMesh2_2;
 typedef VertexMesh<3,3 > VertexMesh3_3;
 typedef MutableVertexMesh<2,2 > MutableVertexMesh2_2;
 typedef MutableVertexMesh<3,3 > MutableVertexMesh3_3;
-typedef CellsGenerator<UniformCellCycleModel,2 > CellsGeneratorUniformCellCycleModel_2;
-typedef CellsGenerator<UniformCellCycleModel,3 > CellsGeneratorUniformCellCycleModel_3;
-typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,2 > CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
-typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,3 > CellsGeneratorSimpleOxygenBasedCellCycleModel_3;
-typedef CellsGenerator<UniformG1GenerationalCellCycleModel,2 > CellsGeneratorUniformG1GenerationalCellCycleModel_2;
-typedef CellsGenerator<UniformG1GenerationalCellCycleModel,3 > CellsGeneratorUniformG1GenerationalCellCycleModel_3;
-typedef CellsGenerator<NoCellCycleModel,2 > CellsGeneratorNoCellCycleModel_2;
-typedef CellsGenerator<NoCellCycleModel,3 > CellsGeneratorNoCellCycleModel_3;
-typedef AbstractLinearPde<2,2 > AbstractLinearPde2_2;
-typedef AbstractLinearPde<3,3 > AbstractLinearPde3_3;
-typedef AbstractLinearParabolicPde<2,2 > AbstractLinearParabolicPde2_2;
-typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
-typedef AbstractLinearEllipticPde<2,2 > AbstractLinearEllipticPde2_2;
-typedef AbstractLinearEllipticPde<3,3 > AbstractLinearEllipticPde3_3;
 typedef CellwiseSourceEllipticPde<2 > CellwiseSourceEllipticPde2;
 typedef CellwiseSourceEllipticPde<3 > CellwiseSourceEllipticPde3;
 typedef AveragedSourceEllipticPde<2 > AveragedSourceEllipticPde2;
 typedef AveragedSourceEllipticPde<3 > AveragedSourceEllipticPde3;
-typedef AveragedSourceParabolicPde<2 > AveragedSourceParabolicPde2;
-typedef AveragedSourceParabolicPde<3 > AveragedSourceParabolicPde3;
 typedef CellwiseSourceParabolicPde<2 > CellwiseSourceParabolicPde2;
 typedef CellwiseSourceParabolicPde<3 > CellwiseSourceParabolicPde3;
 typedef AbstractPdeModifier<2 > AbstractPdeModifier2;
@@ -420,20 +398,6 @@ typedef AbstractPyChasteActorGenerator<2 > AbstractPyChasteActorGenerator2;
 typedef AbstractPyChasteActorGenerator<3 > AbstractPyChasteActorGenerator3;
 typedef CellPopulationPyChasteActorGenerator<2 > CellPopulationPyChasteActorGenerator2;
 typedef CellPopulationPyChasteActorGenerator<3 > CellPopulationPyChasteActorGenerator3;
-    }
 }
 
-// Need to specifically instantiate PETSc Vec and Mat 
-
- inline int Instantiation()
-{
-return sizeof(Mat) + sizeof(Vec);
-}
-
- inline Mat GetPetscMatForWrapper()
-{
-Mat A;
-PetscTools::SetupMat(A, 3, 3, 3);
-return A;
-}
-#endif // PYCHASTEHEADERS_HPP_
+#endif // chaste_project_PyChaste_HEADERS_HPP_

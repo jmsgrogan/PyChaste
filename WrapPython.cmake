@@ -90,12 +90,12 @@ set (PYCHASTE_PYTHON_MODULE_LOCATIONS "")
 
 # Add each module to be built to this list. 
 # Modules with auto wrapping
-#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES core)
-#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/core)
-#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES ode)
-#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/ode)
-#list (APPEND PYCHASTE_PYTHON_AUTO_MODULES pde)
-#list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/pde)
+list (APPEND PYCHASTE_PYTHON_AUTO_MODULES core)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/core)
+list (APPEND PYCHASTE_PYTHON_AUTO_MODULES ode)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/ode)
+list (APPEND PYCHASTE_PYTHON_AUTO_MODULES pde)
+list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/pde)
 list (APPEND PYCHASTE_PYTHON_AUTO_MODULES mesh)
 list (APPEND PYCHASTE_PYTHON_MODULE_LOCATIONS ${CMAKE_CURRENT_BINARY_DIR}/python/chaste/mesh)
 list (APPEND PYCHASTE_PYTHON_AUTO_MODULES cell_based)
@@ -117,47 +117,16 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/python/ DESTINATION ${CMAKE_CURRENT_BI
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test/python/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/test/)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/doc/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/python/doc/)
 
-# Loop through each module that uses auto wrapper code generation and make the wrapper code
+# Target to generate bindings
 add_custom_target(project_PyChaste_Python_Bindings)
-SET(arguments ${CMAKE_SOURCE_DIR})
-LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/)
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_header_collection.py ${arguments})
-
-list(LENGTH PYCHASTE_PYTHON_AUTO_MODULES len1_auto)
-math(EXPR len2_auto "${len1_auto} - 1")
-foreach(val RANGE ${len2_auto})
-    list(GET PYCHASTE_PYTHON_AUTO_MODULES ${val} python_module)
-    file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/${python_module})
-    
-    # Convenience targets to allow individual bindings to be regenerated. 
-    SET(arguments ${CMAKE_SOURCE_DIR}/)
-    LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/)
-    LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/wrapper_header_collection.hpp)
-    LIST(APPEND arguments ${CASTXML_EXE_LOC})
-    LIST(APPEND arguments ${python_module})
-    LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
-    LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
-    LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
-    add_custom_target(project_PyChaste_Python_Bindings_${python_module})
-    add_custom_command(TARGET project_PyChaste_Python_Bindings_${python_module} COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_code.py ${arguments})
-endforeach()
-
-# Target to generate all bindings
 SET(arguments ${CMAKE_SOURCE_DIR}/)
 LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/)
-LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers/wrapper_header_collection.hpp)
+LIST(APPEND arguments ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/package_info.yaml)
 LIST(APPEND arguments ${CASTXML_EXE_LOC})
-LIST(APPEND arguments "All")
 LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate_wrapper_code.py ${arguments})
-
-IF(CMAKE_BUILD_TYPE MATCHES DEBUG)
-set(BOOST_PYTHON_LIB_ALL ${Boost_PYTHON_LIBRARY_DEBUG})
-ELSE()
-set(BOOST_PYTHON_LIB_ALL ${Boost_PYTHON_LIBRARY_RELEASE})
-ENDIF()
+add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate.py ${arguments})
 
 # Loop through each module and create the shared library targets
 list(LENGTH PYCHASTE_PYTHON_MODULES len1)
