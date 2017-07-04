@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef NullSrnModel NullSrnModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::AbstractSrnModel * _AbstractSrnModelPtr;
 
 class NullSrnModel_Overloads : public NullSrnModel{
@@ -35,15 +35,15 @@ class NullSrnModel_Overloads : public NullSrnModel{
 
 };
 void register_NullSrnModel_class(py::module &m){
-py::class_<NullSrnModel , NullSrnModel_Overloads  , AbstractSrnModel  >(m, "NullSrnModel")
+py::class_<NullSrnModel , NullSrnModel_Overloads , boost::shared_ptr<NullSrnModel >  , AbstractSrnModel  >(m, "NullSrnModel")
         .def(py::init< >())
         .def(
             "SimulateToCurrentTime", 
             (void(NullSrnModel::*)()) &NullSrnModel::SimulateToCurrentTime, 
-            " " )
+            " "  )
         .def(
             "CreateSrnModel", 
             (::AbstractSrnModel *(NullSrnModel::*)()) &NullSrnModel::CreateSrnModel, 
-            " " )
+            " "  , py::return_value_policy::reference)
     ;
 }

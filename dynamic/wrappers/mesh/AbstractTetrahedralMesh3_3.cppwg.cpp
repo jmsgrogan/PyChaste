@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractTetrahedralMesh<3,3 > AbstractTetrahedralMesh3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
@@ -165,138 +165,138 @@ depth);
 
 };
 void register_AbstractTetrahedralMesh3_3_class(py::module &m){
-py::class_<AbstractTetrahedralMesh3_3 , AbstractTetrahedralMesh3_3_Overloads   >(m, "AbstractTetrahedralMesh3_3")
+py::class_<AbstractTetrahedralMesh3_3 , AbstractTetrahedralMesh3_3_Overloads , boost::shared_ptr<AbstractTetrahedralMesh3_3 >   >(m, "AbstractTetrahedralMesh3_3")
         .def(
             "GetElementIteratorBegin", 
             (::AbstractTetrahedralMesh<3, 3>::ElementIterator(AbstractTetrahedralMesh3_3::*)(bool)) &AbstractTetrahedralMesh3_3::GetElementIteratorBegin, 
-            " " , py::arg("skipDeletedElements") = true)
+            " " , py::arg("skipDeletedElements") = true )
         .def(
             "GetElementIteratorEnd", 
             (::AbstractTetrahedralMesh<3, 3>::ElementIterator(AbstractTetrahedralMesh3_3::*)()) &AbstractTetrahedralMesh3_3::GetElementIteratorEnd, 
-            " " )
+            " "  )
         .def(
             "GetNumElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumElements, 
-            " " )
+            " "  )
         .def(
             "GetNumLocalElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumLocalElements, 
-            " " )
+            " "  )
         .def(
             "GetNumBoundaryElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumBoundaryElements, 
-            " " )
+            " "  )
         .def(
             "GetNumLocalBoundaryElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumLocalBoundaryElements, 
-            " " )
+            " "  )
         .def(
             "GetNumAllElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumAllElements, 
-            " " )
+            " "  )
         .def(
             "GetNumAllBoundaryElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumAllBoundaryElements, 
-            " " )
+            " "  )
         .def(
             "GetNumCableElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumCableElements, 
-            " " )
+            " "  )
         .def(
             "GetNumVertices", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetNumVertices, 
-            " " )
+            " "  )
         .def(
             "GetMaximumNodeIndex", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)()) &AbstractTetrahedralMesh3_3::GetMaximumNodeIndex, 
-            " " )
+            " "  )
         .def(
             "GetElement", 
             (::Element<3, 3> *(AbstractTetrahedralMesh3_3::*)(unsigned int) const ) &AbstractTetrahedralMesh3_3::GetElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetBoundaryElement", 
             (::BoundaryElement<2, 3> *(AbstractTetrahedralMesh3_3::*)(unsigned int) const ) &AbstractTetrahedralMesh3_3::GetBoundaryElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "ConstructFromMeshReader", 
             (void(AbstractTetrahedralMesh3_3::*)(::AbstractMeshReader<3, 3> &)) &AbstractTetrahedralMesh3_3::ConstructFromMeshReader, 
-            " " , py::arg("rMeshReader"))
+            " " , py::arg("rMeshReader") )
         .def(
             "ConstructFromMesh", 
             (void(AbstractTetrahedralMesh3_3::*)(::AbstractTetrahedralMesh<3, 3> &)) &AbstractTetrahedralMesh3_3::ConstructFromMesh, 
-            " " , py::arg("rOtherMesh"))
+            " " , py::arg("rOtherMesh") )
         .def(
             "GetBoundaryElementIteratorBegin", 
             (::AbstractTetrahedralMesh<3, 3>::BoundaryElementIterator(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetBoundaryElementIteratorBegin, 
-            " " )
+            " "  )
         .def(
             "GetBoundaryElementIteratorEnd", 
             (::AbstractTetrahedralMesh<3, 3>::BoundaryElementIterator(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::GetBoundaryElementIteratorEnd, 
-            " " )
+            " "  )
         .def(
             "GetInverseJacobianForElement", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_matrix<double, 3, 3> &, double &, ::boost::numeric::ublas::c_matrix<double, 3, 3> &) const ) &AbstractTetrahedralMesh3_3::GetInverseJacobianForElement, 
-            " " , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"), py::arg("rInverseJacobian"))
+            " " , py::arg("elementIndex"), py::arg("rJacobian"), py::arg("rJacobianDeterminant"), py::arg("rInverseJacobian") )
         .def(
             "GetWeightedDirectionForBoundaryElement", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 3> &, double &) const ) &AbstractTetrahedralMesh3_3::GetWeightedDirectionForBoundaryElement, 
-            " " , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant"))
+            " " , py::arg("elementIndex"), py::arg("rWeightedDirection"), py::arg("rJacobianDeterminant") )
         .def(
             "CheckOutwardNormals", 
             (void(AbstractTetrahedralMesh3_3::*)()) &AbstractTetrahedralMesh3_3::CheckOutwardNormals, 
-            " " )
+            " "  )
         .def(
             "ConstructLinearMesh", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int)) &AbstractTetrahedralMesh3_3::ConstructLinearMesh, 
-            " " , py::arg("width"))
+            " " , py::arg("width") )
         .def(
             "ConstructRectangularMesh", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int, unsigned int, bool)) &AbstractTetrahedralMesh3_3::ConstructRectangularMesh, 
-            " " , py::arg("width"), py::arg("height"), py::arg("stagger") = true)
+            " " , py::arg("width"), py::arg("height"), py::arg("stagger") = true )
         .def(
             "ConstructCuboid", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int, unsigned int, unsigned int)) &AbstractTetrahedralMesh3_3::ConstructCuboid, 
-            " " , py::arg("width"), py::arg("height"), py::arg("depth"))
+            " " , py::arg("width"), py::arg("height"), py::arg("depth") )
         .def(
             "ConstructRegularSlabMesh", 
             (void(AbstractTetrahedralMesh3_3::*)(double, double, double, double)) &AbstractTetrahedralMesh3_3::ConstructRegularSlabMesh, 
-            " " , py::arg("spaceStep"), py::arg("width"), py::arg("height") = 0, py::arg("depth") = 0)
+            " " , py::arg("spaceStep"), py::arg("width"), py::arg("height") = 0, py::arg("depth") = 0 )
         .def(
             "ConstructRegularSlabMeshWithDimensionSplit", 
             (void(AbstractTetrahedralMesh3_3::*)(unsigned int, double, double, double, double)) &AbstractTetrahedralMesh3_3::ConstructRegularSlabMeshWithDimensionSplit, 
-            " " , py::arg("dimension"), py::arg("spaceStep"), py::arg("width"), py::arg("height") = 0, py::arg("depth") = 0)
+            " " , py::arg("dimension"), py::arg("spaceStep"), py::arg("width"), py::arg("height") = 0, py::arg("depth") = 0 )
         .def(
             "CalculateDesignatedOwnershipOfBoundaryElement", 
             (bool(AbstractTetrahedralMesh3_3::*)(unsigned int)) &AbstractTetrahedralMesh3_3::CalculateDesignatedOwnershipOfBoundaryElement, 
-            " " , py::arg("faceIndex"))
+            " " , py::arg("faceIndex") )
         .def(
             "CalculateDesignatedOwnershipOfElement", 
             (bool(AbstractTetrahedralMesh3_3::*)(unsigned int)) &AbstractTetrahedralMesh3_3::CalculateDesignatedOwnershipOfElement, 
-            " " , py::arg("elementIndex"))
+            " " , py::arg("elementIndex") )
         .def(
             "CalculateMaximumNodeConnectivityPerProcess", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)() const ) &AbstractTetrahedralMesh3_3::CalculateMaximumNodeConnectivityPerProcess, 
-            " " )
+            " "  )
         .def(
             "GetHaloNodeIndices", 
             (void(AbstractTetrahedralMesh3_3::*)(::std::vector<unsigned int, std::allocator<unsigned int> > &) const ) &AbstractTetrahedralMesh3_3::GetHaloNodeIndices, 
-            " " , py::arg("rHaloIndices"))
+            " " , py::arg("rHaloIndices") )
         .def(
             "CalculateNodeExchange", 
             (void(AbstractTetrahedralMesh3_3::*)(::std::vector<std::vector<unsigned int, std::allocator<unsigned int> >, std::allocator<std::vector<unsigned int, std::allocator<unsigned int> > > > &, ::std::vector<std::vector<unsigned int, std::allocator<unsigned int> >, std::allocator<std::vector<unsigned int, std::allocator<unsigned int> > > > &)) &AbstractTetrahedralMesh3_3::CalculateNodeExchange, 
-            " " , py::arg("rNodesToSendPerProcess"), py::arg("rNodesToReceivePerProcess"))
+            " " , py::arg("rNodesToSendPerProcess"), py::arg("rNodesToReceivePerProcess") )
         .def(
             "CalculateMinMaxEdgeLengths", 
             (::boost::numeric::ublas::c_vector<double, 2>(AbstractTetrahedralMesh3_3::*)()) &AbstractTetrahedralMesh3_3::CalculateMinMaxEdgeLengths, 
-            " " )
+            " "  )
         .def(
             "GetContainingElementIndex", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)(::ChastePoint<3> const &, bool, ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >, bool)) &AbstractTetrahedralMesh3_3::GetContainingElementIndex, 
-            " " , py::arg("rTestPoint"), py::arg("strict") = false, py::arg("testElements") = std::set<unsigned int>(), py::arg("onlyTryWithTestElements") = false)
+            " " , py::arg("rTestPoint"), py::arg("strict") = false, py::arg("testElements") = std::set<unsigned int>(), py::arg("onlyTryWithTestElements") = false )
         .def(
             "GetNearestElementIndexFromTestElements", 
             (unsigned int(AbstractTetrahedralMesh3_3::*)(::ChastePoint<3> const &, ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >)) &AbstractTetrahedralMesh3_3::GetNearestElementIndexFromTestElements, 
-            " " , py::arg("rTestPoint"), py::arg("testElements"))
+            " " , py::arg("rTestPoint"), py::arg("testElements") )
     ;
 }

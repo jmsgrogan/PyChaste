@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef OffLatticeSimulation<2,2 > OffLatticeSimulation2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
     public:
@@ -55,43 +55,43 @@ class OffLatticeSimulation2_2_Overloads : public OffLatticeSimulation2_2{
 
 };
 void register_OffLatticeSimulation2_2_class(py::module &m){
-py::class_<OffLatticeSimulation2_2 , OffLatticeSimulation2_2_Overloads   >(m, "OffLatticeSimulation2_2")
+py::class_<OffLatticeSimulation2_2 , OffLatticeSimulation2_2_Overloads , boost::shared_ptr<OffLatticeSimulation2_2 >   >(m, "OffLatticeSimulation2_2")
         .def(py::init<::AbstractCellPopulation<2, 2> &, bool, bool >(), py::arg("rCellPopulation"), py::arg("deleteCellPopulationInDestructor") = false, py::arg("initialiseCells") = true)
         .def(
             "AddForce", 
             (void(OffLatticeSimulation2_2::*)(::boost::shared_ptr<AbstractForce<2, 2> >)) &OffLatticeSimulation2_2::AddForce, 
-            " " , py::arg("pForce"))
+            " " , py::arg("pForce") )
         .def(
             "RemoveAllForces", 
             (void(OffLatticeSimulation2_2::*)()) &OffLatticeSimulation2_2::RemoveAllForces, 
-            " " )
+            " "  )
         .def(
             "AddCellPopulationBoundaryCondition", 
             (void(OffLatticeSimulation2_2::*)(::boost::shared_ptr<AbstractCellPopulationBoundaryCondition<2, 2> >)) &OffLatticeSimulation2_2::AddCellPopulationBoundaryCondition, 
-            " " , py::arg("pBoundaryCondition"))
+            " " , py::arg("pBoundaryCondition") )
         .def(
             "RemoveAllCellPopulationBoundaryConditions", 
             (void(OffLatticeSimulation2_2::*)()) &OffLatticeSimulation2_2::RemoveAllCellPopulationBoundaryConditions, 
-            " " )
+            " "  )
         .def(
             "SetNumericalMethod", 
             (void(OffLatticeSimulation2_2::*)(::boost::shared_ptr<AbstractNumericalMethod<2, 2> >)) &OffLatticeSimulation2_2::SetNumericalMethod, 
-            " " , py::arg("pNumericalMethod"))
+            " " , py::arg("pNumericalMethod") )
         .def(
             "GetNumericalMethod", 
             (::boost::shared_ptr<AbstractNumericalMethod<2, 2> > const(OffLatticeSimulation2_2::*)() const ) &OffLatticeSimulation2_2::GetNumericalMethod, 
-            " " )
+            " "  )
         .def(
             "OutputAdditionalSimulationSetup", 
             (void(OffLatticeSimulation2_2::*)(::out_stream &)) &OffLatticeSimulation2_2::OutputAdditionalSimulationSetup, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputSimulationParameters", 
             (void(OffLatticeSimulation2_2::*)(::out_stream &)) &OffLatticeSimulation2_2::OutputSimulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "rGetForceCollection", 
             (::std::vector<boost::shared_ptr<AbstractForce<2, 2> >, std::allocator<boost::shared_ptr<AbstractForce<2, 2> > > > const &(OffLatticeSimulation2_2::*)() const ) &OffLatticeSimulation2_2::rGetForceCollection, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
     ;
 }

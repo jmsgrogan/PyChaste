@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractCentreBasedCellPopulation<2,2 > AbstractCentreBasedCellPopulation2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
 typedef ::CellPtr _CellPtr;
 typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
@@ -128,78 +128,78 @@ dt);
 
 };
 void register_AbstractCentreBasedCellPopulation2_2_class(py::module &m){
-py::class_<AbstractCentreBasedCellPopulation2_2 , AbstractCentreBasedCellPopulation2_2_Overloads   >(m, "AbstractCentreBasedCellPopulation2_2")
+py::class_<AbstractCentreBasedCellPopulation2_2 , AbstractCentreBasedCellPopulation2_2_Overloads , boost::shared_ptr<AbstractCentreBasedCellPopulation2_2 >   >(m, "AbstractCentreBasedCellPopulation2_2")
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 2>(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr)) &AbstractCentreBasedCellPopulation2_2::GetLocationOfCellCentre, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(AbstractCentreBasedCellPopulation2_2::*)(unsigned int, ::std::string &, bool, double)) &AbstractCentreBasedCellPopulation2_2::GetCellDataItemAtPdeNode, 
-            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
+            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
         .def(
             "AddCell", 
             (::CellPtr(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr, ::CellPtr)) &AbstractCentreBasedCellPopulation2_2::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ))
+            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ) )
         .def(
             "CreateCellPair", 
             (::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> >(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr, ::CellPtr)) &AbstractCentreBasedCellPopulation2_2::CreateCellPair, 
-            " " , py::arg("pCell1"), py::arg("pCell2"))
+            " " , py::arg("pCell1"), py::arg("pCell2") )
         .def(
             "IsMarkedSpring", 
             (bool(AbstractCentreBasedCellPopulation2_2::*)(::std::pair<boost::shared_ptr<Cell>, boost::shared_ptr<Cell> > const &)) &AbstractCentreBasedCellPopulation2_2::IsMarkedSpring, 
-            " " , py::arg("rCellPair"))
+            " " , py::arg("rCellPair") )
         .def(
             "IsCellAssociatedWithADeletedLocation", 
             (bool(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr)) &AbstractCentreBasedCellPopulation2_2::IsCellAssociatedWithADeletedLocation, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetNeighbouringLocationIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr)) &AbstractCentreBasedCellPopulation2_2::GetNeighbouringLocationIndices, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "CheckForStepSizeException", 
             (void(AbstractCentreBasedCellPopulation2_2::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 2> &, double)) &AbstractCentreBasedCellPopulation2_2::CheckForStepSizeException, 
-            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt"))
+            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt") )
         .def(
             "GetDampingConstant", 
             (double(AbstractCentreBasedCellPopulation2_2::*)(unsigned int)) &AbstractCentreBasedCellPopulation2_2::GetDampingConstant, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "IsGhostNode", 
             (bool(AbstractCentreBasedCellPopulation2_2::*)(unsigned int)) &AbstractCentreBasedCellPopulation2_2::IsGhostNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "IsParticle", 
             (bool(AbstractCentreBasedCellPopulation2_2::*)(unsigned int)) &AbstractCentreBasedCellPopulation2_2::IsParticle, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "rGetNodePairs", 
             (::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > &(AbstractCentreBasedCellPopulation2_2::*)()) &AbstractCentreBasedCellPopulation2_2::rGetNodePairs, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "GetMeinekeDivisionSeparation", 
             (double(AbstractCentreBasedCellPopulation2_2::*)()) &AbstractCentreBasedCellPopulation2_2::GetMeinekeDivisionSeparation, 
-            " " )
+            " "  )
         .def(
             "SetMeinekeDivisionSeparation", 
             (void(AbstractCentreBasedCellPopulation2_2::*)(double)) &AbstractCentreBasedCellPopulation2_2::SetMeinekeDivisionSeparation, 
-            " " , py::arg("divisionSeparation"))
+            " " , py::arg("divisionSeparation") )
         .def(
             "GetCentreBasedDivisionRule", 
             (::boost::shared_ptr<AbstractCentreBasedDivisionRule<2, 2> >(AbstractCentreBasedCellPopulation2_2::*)()) &AbstractCentreBasedCellPopulation2_2::GetCentreBasedDivisionRule, 
-            " " )
+            " "  )
         .def(
             "SetCentreBasedDivisionRule", 
             (void(AbstractCentreBasedCellPopulation2_2::*)(::boost::shared_ptr<AbstractCentreBasedDivisionRule<2, 2> >)) &AbstractCentreBasedCellPopulation2_2::SetCentreBasedDivisionRule, 
-            " " , py::arg("pCentreBasedDivisionRule"))
+            " " , py::arg("pCentreBasedDivisionRule") )
         .def(
             "OutputCellPopulationParameters", 
             (void(AbstractCentreBasedCellPopulation2_2::*)(::out_stream &)) &AbstractCentreBasedCellPopulation2_2::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "GetDefaultTimeStep", 
             (double(AbstractCentreBasedCellPopulation2_2::*)()) &AbstractCentreBasedCellPopulation2_2::GetDefaultTimeStep, 
-            " " )
+            " "  )
     ;
 }

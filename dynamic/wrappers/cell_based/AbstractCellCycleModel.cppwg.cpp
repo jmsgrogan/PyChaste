@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractCellCycleModel AbstractCellCycleModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
 
 class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
@@ -91,74 +91,74 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
 
 };
 void register_AbstractCellCycleModel_class(py::module &m){
-py::class_<AbstractCellCycleModel , AbstractCellCycleModel_Overloads   >(m, "AbstractCellCycleModel")
+py::class_<AbstractCellCycleModel , AbstractCellCycleModel_Overloads , boost::shared_ptr<AbstractCellCycleModel >   >(m, "AbstractCellCycleModel")
         .def(
             "SetCell", 
             (void(AbstractCellCycleModel::*)(::CellPtr)) &AbstractCellCycleModel::SetCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "Initialise", 
             (void(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::Initialise, 
-            " " )
+            " "  )
         .def(
             "InitialiseDaughterCell", 
             (void(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::InitialiseDaughterCell, 
-            " " )
+            " "  )
         .def(
             "GetCell", 
             (::CellPtr(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetCell, 
-            " " )
+            " "  )
         .def(
             "SetBirthTime", 
             (void(AbstractCellCycleModel::*)(double)) &AbstractCellCycleModel::SetBirthTime, 
-            " " , py::arg("birthTime"))
+            " " , py::arg("birthTime") )
         .def(
             "SetDimension", 
             (void(AbstractCellCycleModel::*)(unsigned int)) &AbstractCellCycleModel::SetDimension, 
-            " " , py::arg("dimension"))
+            " " , py::arg("dimension") )
         .def(
             "GetDimension", 
             (unsigned int(AbstractCellCycleModel::*)() const ) &AbstractCellCycleModel::GetDimension, 
-            " " )
+            " "  )
         .def(
             "GetBirthTime", 
             (double(AbstractCellCycleModel::*)() const ) &AbstractCellCycleModel::GetBirthTime, 
-            " " )
+            " "  )
         .def(
             "GetAge", 
             (double(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetAge, 
-            " " )
+            " "  )
         .def(
             "ReadyToDivide", 
             (bool(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::ReadyToDivide, 
-            " " )
+            " "  )
         .def(
             "ResetForDivision", 
             (void(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::ResetForDivision, 
-            " " )
+            " "  )
         .def(
             "CreateCellCycleModel", 
             (::AbstractCellCycleModel *(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::CreateCellCycleModel, 
-            " " )
+            " "  , py::return_value_policy::reference)
         .def(
             "CanCellTerminallyDifferentiate", 
             (bool(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::CanCellTerminallyDifferentiate, 
-            " " )
+            " "  )
         .def(
             "GetAverageTransitCellCycleTime", 
             (double(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetAverageTransitCellCycleTime, 
-            " " )
+            " "  )
         .def(
             "GetAverageStemCellCycleTime", 
             (double(AbstractCellCycleModel::*)()) &AbstractCellCycleModel::GetAverageStemCellCycleTime, 
-            " " )
+            " "  )
         .def(
             "OutputCellCycleModelInfo", 
             (void(AbstractCellCycleModel::*)(::out_stream &)) &AbstractCellCycleModel::OutputCellCycleModelInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputCellCycleModelParameters", 
             (void(AbstractCellCycleModel::*)(::out_stream &)) &AbstractCellCycleModel::OutputCellCycleModelParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

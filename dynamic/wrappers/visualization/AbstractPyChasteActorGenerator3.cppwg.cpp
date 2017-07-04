@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractPyChasteActorGenerator<3 > AbstractPyChasteActorGenerator3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractPyChasteActorGenerator3_Overloads : public AbstractPyChasteActorGenerator3{
     public:
@@ -27,66 +27,66 @@ class AbstractPyChasteActorGenerator3_Overloads : public AbstractPyChasteActorGe
 
 };
 void register_AbstractPyChasteActorGenerator3_class(py::module &m){
-py::class_<AbstractPyChasteActorGenerator3 , AbstractPyChasteActorGenerator3_Overloads   >(m, "AbstractPyChasteActorGenerator3")
+py::class_<AbstractPyChasteActorGenerator3 , AbstractPyChasteActorGenerator3_Overloads , boost::shared_ptr<AbstractPyChasteActorGenerator3 >   >(m, "AbstractPyChasteActorGenerator3")
         .def(
             "GetColorTransferFunction", 
             (::vtkSmartPointer<vtkColorTransferFunction>(AbstractPyChasteActorGenerator3::*)()) &AbstractPyChasteActorGenerator3::GetColorTransferFunction, 
-            " " )
+            " "  )
         .def(
             "GetDiscreteColorTransferFunction", 
             (::vtkSmartPointer<vtkColorTransferFunction>(AbstractPyChasteActorGenerator3::*)()) &AbstractPyChasteActorGenerator3::GetDiscreteColorTransferFunction, 
-            " " )
+            " "  )
         .def(
             "GetScaleBar", 
             (::vtkSmartPointer<vtkScalarBarActor>(AbstractPyChasteActorGenerator3::*)()) &AbstractPyChasteActorGenerator3::GetScaleBar, 
-            " " )
+            " "  )
         .def(
             "AddActor", 
             (void(AbstractPyChasteActorGenerator3::*)(::vtkSmartPointer<vtkRenderer>)) &AbstractPyChasteActorGenerator3::AddActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "SetShowEdges", 
             (void(AbstractPyChasteActorGenerator3::*)(bool)) &AbstractPyChasteActorGenerator3::SetShowEdges, 
-            " " , py::arg("show"))
+            " " , py::arg("show") )
         .def(
             "SetShowPoints", 
             (void(AbstractPyChasteActorGenerator3::*)(bool)) &AbstractPyChasteActorGenerator3::SetShowPoints, 
-            " " , py::arg("show"))
+            " " , py::arg("show") )
         .def(
             "SetShowVolume", 
             (void(AbstractPyChasteActorGenerator3::*)(bool)) &AbstractPyChasteActorGenerator3::SetShowVolume, 
-            " " , py::arg("show"))
+            " " , py::arg("show") )
         .def(
             "SetEdgeColor", 
             (void(AbstractPyChasteActorGenerator3::*)(::boost::numeric::ublas::c_vector<double, 3> const &)) &AbstractPyChasteActorGenerator3::SetEdgeColor, 
-            " " , py::arg("rColor"))
+            " " , py::arg("rColor") )
         .def(
             "SetPointColor", 
             (void(AbstractPyChasteActorGenerator3::*)(::boost::numeric::ublas::c_vector<double, 3> const &)) &AbstractPyChasteActorGenerator3::SetPointColor, 
-            " " , py::arg("rColor"))
+            " " , py::arg("rColor") )
         .def(
             "SetVolumeColor", 
             (void(AbstractPyChasteActorGenerator3::*)(::boost::numeric::ublas::c_vector<double, 3> const &)) &AbstractPyChasteActorGenerator3::SetVolumeColor, 
-            " " , py::arg("rColor"))
+            " " , py::arg("rColor") )
         .def(
             "SetVolumeOpacity", 
             (void(AbstractPyChasteActorGenerator3::*)(double)) &AbstractPyChasteActorGenerator3::SetVolumeOpacity, 
-            " " , py::arg("opacity"))
+            " " , py::arg("opacity") )
         .def(
             "SetPointSize", 
             (void(AbstractPyChasteActorGenerator3::*)(double)) &AbstractPyChasteActorGenerator3::SetPointSize, 
-            " " , py::arg("size"))
+            " " , py::arg("size") )
         .def(
             "SetEdgeSize", 
             (void(AbstractPyChasteActorGenerator3::*)(double)) &AbstractPyChasteActorGenerator3::SetEdgeSize, 
-            " " , py::arg("size"))
+            " " , py::arg("size") )
         .def(
             "SetDataLabel", 
             (void(AbstractPyChasteActorGenerator3::*)(::std::string const &)) &AbstractPyChasteActorGenerator3::SetDataLabel, 
-            " " , py::arg("rLabel"))
+            " " , py::arg("rLabel") )
         .def(
             "SetShowScaleBar", 
             (void(AbstractPyChasteActorGenerator3::*)(double)) &AbstractPyChasteActorGenerator3::SetShowScaleBar, 
-            " " , py::arg("show"))
+            " " , py::arg("show") )
     ;
 }

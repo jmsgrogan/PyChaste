@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractSimplePhaseBasedCellCycleModel AbstractSimplePhaseBasedCellCycleModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePhaseBasedCellCycleModel{
     public:
@@ -62,26 +62,26 @@ class AbstractSimplePhaseBasedCellCycleModel_Overloads : public AbstractSimplePh
 
 };
 void register_AbstractSimplePhaseBasedCellCycleModel_class(py::module &m){
-py::class_<AbstractSimplePhaseBasedCellCycleModel , AbstractSimplePhaseBasedCellCycleModel_Overloads  , AbstractPhaseBasedCellCycleModel  >(m, "AbstractSimplePhaseBasedCellCycleModel")
+py::class_<AbstractSimplePhaseBasedCellCycleModel , AbstractSimplePhaseBasedCellCycleModel_Overloads , boost::shared_ptr<AbstractSimplePhaseBasedCellCycleModel >  , AbstractPhaseBasedCellCycleModel  >(m, "AbstractSimplePhaseBasedCellCycleModel")
         .def(
             "ResetForDivision", 
             (void(AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::ResetForDivision, 
-            " " )
+            " "  )
         .def(
             "UpdateCellCyclePhase", 
             (void(AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::UpdateCellCyclePhase, 
-            " " )
+            " "  )
         .def(
             "InitialiseDaughterCell", 
             (void(AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::InitialiseDaughterCell, 
-            " " )
+            " "  )
         .def(
             "Initialise", 
             (void(AbstractSimplePhaseBasedCellCycleModel::*)()) &AbstractSimplePhaseBasedCellCycleModel::Initialise, 
-            " " )
+            " "  )
         .def(
             "OutputCellCycleModelParameters", 
             (void(AbstractSimplePhaseBasedCellCycleModel::*)(::out_stream &)) &AbstractSimplePhaseBasedCellCycleModel::OutputCellCycleModelParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

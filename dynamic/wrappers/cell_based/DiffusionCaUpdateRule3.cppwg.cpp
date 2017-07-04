@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef DiffusionCaUpdateRule<3 > DiffusionCaUpdateRule3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class DiffusionCaUpdateRule3_Overloads : public DiffusionCaUpdateRule3{
     public:
@@ -39,23 +39,23 @@ cell);
 
 };
 void register_DiffusionCaUpdateRule3_class(py::module &m){
-py::class_<DiffusionCaUpdateRule3 , DiffusionCaUpdateRule3_Overloads   >(m, "DiffusionCaUpdateRule3")
+py::class_<DiffusionCaUpdateRule3 , DiffusionCaUpdateRule3_Overloads , boost::shared_ptr<DiffusionCaUpdateRule3 >   >(m, "DiffusionCaUpdateRule3")
         .def(py::init< >())
         .def(
             "EvaluateProbability", 
             (double(DiffusionCaUpdateRule3::*)(unsigned int, unsigned int, ::CaBasedCellPopulation<3> &, double, double, ::CellPtr)) &DiffusionCaUpdateRule3::EvaluateProbability, 
-            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"), py::arg("dt"), py::arg("deltaX"), py::arg("cell"))
+            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"), py::arg("dt"), py::arg("deltaX"), py::arg("cell") )
         .def(
             "GetDiffusionParameter", 
             (double(DiffusionCaUpdateRule3::*)()) &DiffusionCaUpdateRule3::GetDiffusionParameter, 
-            " " )
+            " "  )
         .def(
             "SetDiffusionParameter", 
             (void(DiffusionCaUpdateRule3::*)(double)) &DiffusionCaUpdateRule3::SetDiffusionParameter, 
-            " " , py::arg("diffusionParameter"))
+            " " , py::arg("diffusionParameter") )
         .def(
             "OutputUpdateRuleParameters", 
             (void(DiffusionCaUpdateRule3::*)(::out_stream &)) &DiffusionCaUpdateRule3::OutputUpdateRuleParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

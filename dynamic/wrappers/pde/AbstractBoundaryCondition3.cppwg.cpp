@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractBoundaryCondition<3 > AbstractBoundaryCondition3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractBoundaryCondition3_Overloads : public AbstractBoundaryCondition3{
     public:
@@ -27,10 +27,10 @@ class AbstractBoundaryCondition3_Overloads : public AbstractBoundaryCondition3{
 
 };
 void register_AbstractBoundaryCondition3_class(py::module &m){
-py::class_<AbstractBoundaryCondition3 , AbstractBoundaryCondition3_Overloads   >(m, "AbstractBoundaryCondition3")
+py::class_<AbstractBoundaryCondition3 , AbstractBoundaryCondition3_Overloads , boost::shared_ptr<AbstractBoundaryCondition3 >   >(m, "AbstractBoundaryCondition3")
         .def(
             "GetValue", 
             (double(AbstractBoundaryCondition3::*)(::ChastePoint<3> const &) const ) &AbstractBoundaryCondition3::GetValue, 
-            " " , py::arg("rX"))
+            " " , py::arg("rX") )
     ;
 }

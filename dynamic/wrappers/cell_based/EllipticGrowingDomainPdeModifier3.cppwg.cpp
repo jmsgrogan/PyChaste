@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef EllipticGrowingDomainPdeModifier<3 > EllipticGrowingDomainPdeModifier3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::std::shared_ptr<BoundaryConditionsContainer<3, 3, 1> > _std_shared_ptrBoundaryConditionsContainer3_3_1;
 
 class EllipticGrowingDomainPdeModifier3_Overloads : public EllipticGrowingDomainPdeModifier3{
@@ -50,18 +50,18 @@ outputDirectory);
 
 };
 void register_EllipticGrowingDomainPdeModifier3_class(py::module &m){
-py::class_<EllipticGrowingDomainPdeModifier3 , EllipticGrowingDomainPdeModifier3_Overloads   >(m, "EllipticGrowingDomainPdeModifier3")
+py::class_<EllipticGrowingDomainPdeModifier3 , EllipticGrowingDomainPdeModifier3_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier3 >   >(m, "EllipticGrowingDomainPdeModifier3")
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(EllipticGrowingDomainPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &EllipticGrowingDomainPdeModifier3::UpdateAtEndOfTimeStep, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "SetupSolve", 
             (void(EllipticGrowingDomainPdeModifier3::*)(::AbstractCellPopulation<3, 3> &, ::std::string)) &EllipticGrowingDomainPdeModifier3::SetupSolve, 
-            " " , py::arg("rCellPopulation"), py::arg("outputDirectory"))
+            " " , py::arg("rCellPopulation"), py::arg("outputDirectory") )
         .def(
             "OutputSimulationModifierParameters", 
             (void(EllipticGrowingDomainPdeModifier3::*)(::out_stream &)) &EllipticGrowingDomainPdeModifier3::OutputSimulationModifierParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

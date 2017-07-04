@@ -6,14 +6,14 @@
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "AbstractCellPopulation.hpp"
 #include "AbstractCellBasedSimulation.hpp"
+#include "AbstractCellPopulation.hpp"
 
 #include "AbstractCellPopulation3_3.cppwg.hpp"
 
 namespace py = pybind11;
 typedef AbstractCellPopulation<3,3 > AbstractCellPopulation3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
 typedef unsigned int unsignedint;
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
@@ -269,238 +269,238 @@ pCell);
 
 };
 void register_AbstractCellPopulation3_3_class(py::module &m){
-py::class_<AbstractCellPopulation3_3 , AbstractCellPopulation3_3_Overloads   >(m, "AbstractCellPopulation3_3")
+py::class_<AbstractCellPopulation3_3 , AbstractCellPopulation3_3_Overloads , boost::shared_ptr<AbstractCellPopulation3_3 >   >(m, "AbstractCellPopulation3_3")
         .def(
             "InitialiseCells", 
             (void(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::InitialiseCells, 
-            " " )
+            " "  )
         .def(
             "SetDataOnAllCells", 
             (void(AbstractCellPopulation3_3::*)(::std::string const &, double)) &AbstractCellPopulation3_3::SetDataOnAllCells, 
-            " " , py::arg("rDataName"), py::arg("dataValue"))
+            " " , py::arg("rDataName"), py::arg("dataValue") )
         .def(
             "rGetMesh", 
             (::AbstractMesh<3, 3> &(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::rGetMesh, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "GetTetrahedralMeshForPdeModifier", 
             (::TetrahedralMesh<3, 3> *(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetTetrahedralMeshForPdeModifier, 
-            " " )
+            " "  , py::return_value_policy::reference)
         .def(
             "IsPdeNodeAssociatedWithNonApoptoticCell", 
             (bool(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::IsPdeNodeAssociatedWithNonApoptoticCell, 
-            " " , py::arg("pdeNodeIndex"))
+            " " , py::arg("pdeNodeIndex") )
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(AbstractCellPopulation3_3::*)(unsigned int, ::std::string &, bool, double)) &AbstractCellPopulation3_3::GetCellDataItemAtPdeNode, 
-            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
+            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
         .def(
             "GetNumNodes", 
             (unsigned int(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 3>(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::GetLocationOfCellCentre, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetNode", 
             (::Node<3> *(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "SetNode", 
             (void(AbstractCellPopulation3_3::*)(unsigned int, ::ChastePoint<3> &)) &AbstractCellPopulation3_3::SetNode, 
-            " " , py::arg("nodeIndex"), py::arg("rNewLocation"))
+            " " , py::arg("nodeIndex"), py::arg("rNewLocation") )
         .def(
             "IsCellAssociatedWithADeletedLocation", 
             (bool(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::IsCellAssociatedWithADeletedLocation, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "WriteDataToVisualizerSetupFile", 
             (void(AbstractCellPopulation3_3::*)(::out_stream &)) &AbstractCellPopulation3_3::WriteDataToVisualizerSetupFile, 
-            " " , py::arg("pVizSetupFile"))
+            " " , py::arg("pVizSetupFile") )
         .def(
             "AddCell", 
             (::CellPtr(AbstractCellPopulation3_3::*)(::CellPtr, ::CellPtr)) &AbstractCellPopulation3_3::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell") = nullptr)
+            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ) )
         .def(
             "GetDefaultTimeStep", 
             (double(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetDefaultTimeStep, 
-            " " )
+            " "  )
         .def(
             "RemoveDeadCells", 
             (unsigned int(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::RemoveDeadCells, 
-            " " )
+            " "  )
         .def(
             "Update", 
             (void(AbstractCellPopulation3_3::*)(bool)) &AbstractCellPopulation3_3::Update, 
-            " " , py::arg("hasHadBirthsOrDeaths") = true)
+            " " , py::arg("hasHadBirthsOrDeaths") = true )
         .def(
             "GetCellMutationStateCount", 
             (::std::vector<unsigned int, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCellMutationStateCount, 
-            " " )
+            " "  )
         .def(
             "GetCellProliferativeTypeCount", 
             (::std::vector<unsigned int, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCellProliferativeTypeCount, 
-            " " )
+            " "  )
         .def(
             "GetCellCyclePhaseCount", 
             (::std::vector<unsigned int, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCellCyclePhaseCount, 
-            " " )
+            " "  )
         .def(
             "GetNumRealCells", 
             (unsigned int(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetNumRealCells, 
-            " " )
+            " "  )
         .def(
             "GetNumAllCells", 
             (unsigned int(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetNumAllCells, 
-            " " )
+            " "  )
         .def(
             "SetCellAncestorsToLocationIndices", 
             (void(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::SetCellAncestorsToLocationIndices, 
-            " " )
+            " "  )
         .def(
             "GetCellAncestors", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCellAncestors, 
-            " " )
+            " "  )
         .def(
             "GetCellUsingLocationIndex", 
             (::CellPtr(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::GetCellUsingLocationIndex, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetCellsUsingLocationIndex", 
             (::std::set<boost::shared_ptr<Cell>, std::less<boost::shared_ptr<Cell> >, std::allocator<boost::shared_ptr<Cell> > >(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::GetCellsUsingLocationIndex, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "IsCellAttachedToLocationIndex", 
             (bool(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::IsCellAttachedToLocationIndex, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "SetCellUsingLocationIndex", 
             (void(AbstractCellPopulation3_3::*)(unsigned int, ::CellPtr)) &AbstractCellPopulation3_3::SetCellUsingLocationIndex, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "AddCellUsingLocationIndex", 
             (void(AbstractCellPopulation3_3::*)(unsigned int, ::CellPtr)) &AbstractCellPopulation3_3::AddCellUsingLocationIndex, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "RemoveCellUsingLocationIndex", 
             (void(AbstractCellPopulation3_3::*)(unsigned int, ::CellPtr)) &AbstractCellPopulation3_3::RemoveCellUsingLocationIndex, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "MoveCellInLocationMap", 
             (void(AbstractCellPopulation3_3::*)(::CellPtr, unsigned int, unsigned int)) &AbstractCellPopulation3_3::MoveCellInLocationMap, 
-            " " , py::arg("pCell"), py::arg("old_index"), py::arg("new_index"))
+            " " , py::arg("pCell"), py::arg("old_index"), py::arg("new_index") )
         .def(
             "GetLocationIndexUsingCell", 
             (unsigned int(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::GetLocationIndexUsingCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetCellPropertyRegistry", 
             (::boost::shared_ptr<CellPropertyRegistry>(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCellPropertyRegistry, 
-            " " )
+            " "  )
         .def(
             "SetDefaultCellMutationStateAndProliferativeTypeOrdering", 
             (void(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::SetDefaultCellMutationStateAndProliferativeTypeOrdering, 
-            " " )
+            " "  )
         .def(
             "GetWidth", 
             (double(AbstractCellPopulation3_3::*)(unsigned int const &)) &AbstractCellPopulation3_3::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "GetVolumeOfCell", 
             (double(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::GetVolumeOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetNeighbouringNodeIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)(unsigned int)) &AbstractCellPopulation3_3::GetNeighbouringNodeIndices, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetNeighbouringLocationIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::GetNeighbouringLocationIndices, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetCentroidOfCellPopulation", 
             (::boost::numeric::ublas::c_vector<double, 3>(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetCentroidOfCellPopulation, 
-            " " )
+            " "  )
         .def(
             "UpdateCellProcessLocation", 
             (void(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::UpdateCellProcessLocation, 
-            " " )
+            " "  )
         .def(
             "OpenWritersFiles", 
             (void(AbstractCellPopulation3_3::*)(::OutputFileHandler &)) &AbstractCellPopulation3_3::OpenWritersFiles, 
-            " " , py::arg("rOutputFileHandler"))
+            " " , py::arg("rOutputFileHandler") )
         .def(
             "CloseWritersFiles", 
             (void(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::CloseWritersFiles, 
-            " " )
+            " "  )
         .def(
             "WriteResultsToFiles", 
             (void(AbstractCellPopulation3_3::*)(::std::string const &)) &AbstractCellPopulation3_3::WriteResultsToFiles, 
-            " " , py::arg("rDirectory"))
+            " " , py::arg("rDirectory") )
         .def(
             "AcceptPopulationWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> >)) &AbstractCellPopulation3_3::AcceptPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AcceptPopulationCountWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> >)) &AbstractCellPopulation3_3::AcceptPopulationCountWriter, 
-            " " , py::arg("pPopulationCountWriter"))
+            " " , py::arg("pPopulationCountWriter") )
         .def(
             "AcceptCellWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellWriter<3, 3> >, ::CellPtr)) &AbstractCellPopulation3_3::AcceptCellWriter, 
-            " " , py::arg("pCellWriter"), py::arg("pCell"))
+            " " , py::arg("pCellWriter"), py::arg("pCell") )
         .def(
             "OutputCellPopulationInfo", 
             (void(AbstractCellPopulation3_3::*)(::out_stream &)) &AbstractCellPopulation3_3::OutputCellPopulationInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputCellPopulationParameters", 
             (void(AbstractCellPopulation3_3::*)(::out_stream &)) &AbstractCellPopulation3_3::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "SimulationSetupHook", 
             (void(AbstractCellPopulation3_3::*)(::AbstractCellBasedSimulation<3, 3> *)) &AbstractCellPopulation3_3::SimulationSetupHook, 
-            " " , py::arg("pSimulation"))
+            " " , py::arg("pSimulation") )
         .def(
             "GetOutputResultsForChasteVisualizer", 
             (bool(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetOutputResultsForChasteVisualizer, 
-            " " )
+            " "  )
         .def(
             "AddPopulationWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> >)) &AbstractCellPopulation3_3::AddPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AddCellWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellWriter<3, 3> >)) &AbstractCellPopulation3_3::AddCellWriter, 
-            " " , py::arg("pCellWriter"))
+            " " , py::arg("pCellWriter") )
         .def(
             "AddCellPopulationCountWriter", 
             (void(AbstractCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> >)) &AbstractCellPopulation3_3::AddCellPopulationCountWriter, 
-            " " , py::arg("pCellPopulationCountWriter"))
+            " " , py::arg("pCellPopulationCountWriter") )
         .def(
             "SetOutputResultsForChasteVisualizer", 
             (void(AbstractCellPopulation3_3::*)(bool)) &AbstractCellPopulation3_3::SetOutputResultsForChasteVisualizer, 
-            " " , py::arg("outputResultsForChasteVisualizer"))
+            " " , py::arg("outputResultsForChasteVisualizer") )
         .def(
             "GetSizeOfCellPopulation", 
             (::boost::numeric::ublas::c_vector<double, 3>(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::GetSizeOfCellPopulation, 
-            " " )
+            " "  )
         .def(
             "IsRoomToDivide", 
             (bool(AbstractCellPopulation3_3::*)(::CellPtr)) &AbstractCellPopulation3_3::IsRoomToDivide, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "CreateOrderedPair", 
             (::std::pair<unsigned int, unsigned int>(AbstractCellPopulation3_3::*)(unsigned int, unsigned int)) &AbstractCellPopulation3_3::CreateOrderedPair, 
-            " " , py::arg("index1"), py::arg("index2"))
+            " " , py::arg("index1"), py::arg("index2") )
         .def(
             "Begin", 
             (::AbstractCellPopulation<3, 3>::Iterator(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::Begin, 
-            " " )
+            " "  )
         .def(
             "End", 
             (::AbstractCellPopulation<3, 3>::Iterator(AbstractCellPopulation3_3::*)()) &AbstractCellPopulation3_3::End, 
-            " " )
+            " "  )
     ;
 }

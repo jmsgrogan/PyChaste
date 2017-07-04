@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AdhesionPottsUpdateRule<3 > AdhesionPottsUpdateRule3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AdhesionPottsUpdateRule3_Overloads : public AdhesionPottsUpdateRule3{
     public:
@@ -51,39 +51,39 @@ pCellB);
 
 };
 void register_AdhesionPottsUpdateRule3_class(py::module &m){
-py::class_<AdhesionPottsUpdateRule3 , AdhesionPottsUpdateRule3_Overloads   >(m, "AdhesionPottsUpdateRule3")
+py::class_<AdhesionPottsUpdateRule3 , AdhesionPottsUpdateRule3_Overloads , boost::shared_ptr<AdhesionPottsUpdateRule3 >   >(m, "AdhesionPottsUpdateRule3")
         .def(py::init< >())
         .def(
             "EvaluateHamiltonianContribution", 
             (double(AdhesionPottsUpdateRule3::*)(unsigned int, unsigned int, ::PottsBasedCellPopulation<3> &)) &AdhesionPottsUpdateRule3::EvaluateHamiltonianContribution, 
-            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"))
+            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation") )
         .def(
             "GetCellCellAdhesionEnergy", 
             (double(AdhesionPottsUpdateRule3::*)(::CellPtr, ::CellPtr)) &AdhesionPottsUpdateRule3::GetCellCellAdhesionEnergy, 
-            " " , py::arg("pCellA"), py::arg("pCellB"))
+            " " , py::arg("pCellA"), py::arg("pCellB") )
         .def(
             "GetCellBoundaryAdhesionEnergy", 
             (double(AdhesionPottsUpdateRule3::*)(::CellPtr)) &AdhesionPottsUpdateRule3::GetCellBoundaryAdhesionEnergy, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetCellCellAdhesionEnergyParameter", 
             (double(AdhesionPottsUpdateRule3::*)()) &AdhesionPottsUpdateRule3::GetCellCellAdhesionEnergyParameter, 
-            " " )
+            " "  )
         .def(
             "GetCellBoundaryAdhesionEnergyParameter", 
             (double(AdhesionPottsUpdateRule3::*)()) &AdhesionPottsUpdateRule3::GetCellBoundaryAdhesionEnergyParameter, 
-            " " )
+            " "  )
         .def(
             "SetCellCellAdhesionEnergyParameter", 
             (void(AdhesionPottsUpdateRule3::*)(double)) &AdhesionPottsUpdateRule3::SetCellCellAdhesionEnergyParameter, 
-            " " , py::arg("cellCellAdhesionEnergyEnergyParameter"))
+            " " , py::arg("cellCellAdhesionEnergyEnergyParameter") )
         .def(
             "SetCellBoundaryAdhesionEnergyParameter", 
             (void(AdhesionPottsUpdateRule3::*)(double)) &AdhesionPottsUpdateRule3::SetCellBoundaryAdhesionEnergyParameter, 
-            " " , py::arg("cellBoundaryAdhesionEnergyParameter"))
+            " " , py::arg("cellBoundaryAdhesionEnergyParameter") )
         .def(
             "OutputUpdateRuleParameters", 
             (void(AdhesionPottsUpdateRule3::*)(::out_stream &)) &AdhesionPottsUpdateRule3::OutputUpdateRuleParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

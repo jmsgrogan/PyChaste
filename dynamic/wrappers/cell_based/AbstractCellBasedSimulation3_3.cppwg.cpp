@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractCellBasedSimulation<3,3 > AbstractCellBasedSimulation3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 
 class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulation3_3{
@@ -77,98 +77,98 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
 
 };
 void register_AbstractCellBasedSimulation3_3_class(py::module &m){
-py::class_<AbstractCellBasedSimulation3_3 , AbstractCellBasedSimulation3_3_Overloads   >(m, "AbstractCellBasedSimulation3_3")
+py::class_<AbstractCellBasedSimulation3_3 , AbstractCellBasedSimulation3_3_Overloads , boost::shared_ptr<AbstractCellBasedSimulation3_3 >   >(m, "AbstractCellBasedSimulation3_3")
         .def(
             "GetNodeLocation", 
             (::std::vector<double, std::allocator<double> >(AbstractCellBasedSimulation3_3::*)(unsigned int const &)) &AbstractCellBasedSimulation3_3::GetNodeLocation, 
-            " " , py::arg("rNodeIndex"))
+            " " , py::arg("rNodeIndex") )
         .def(
             "GetDt", 
             (double(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetDt, 
-            " " )
+            " "  )
         .def(
             "GetNumBirths", 
             (unsigned int(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetNumBirths, 
-            " " )
+            " "  )
         .def(
             "GetNumDeaths", 
             (unsigned int(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetNumDeaths, 
-            " " )
+            " "  )
         .def(
             "GetOutputDirectory", 
             (::std::string(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetOutputDirectory, 
-            " " )
+            " "  )
         .def(
             "SetDt", 
             (void(AbstractCellBasedSimulation3_3::*)(double)) &AbstractCellBasedSimulation3_3::SetDt, 
-            " " , py::arg("dt"))
+            " " , py::arg("dt") )
         .def(
             "SetEndTime", 
             (void(AbstractCellBasedSimulation3_3::*)(double)) &AbstractCellBasedSimulation3_3::SetEndTime, 
-            " " , py::arg("endTime"))
+            " " , py::arg("endTime") )
         .def(
             "SetOutputDirectory", 
             (void(AbstractCellBasedSimulation3_3::*)(::std::string)) &AbstractCellBasedSimulation3_3::SetOutputDirectory, 
-            " " , py::arg("outputDirectory"))
+            " " , py::arg("outputDirectory") )
         .def(
             "SetSamplingTimestepMultiple", 
             (void(AbstractCellBasedSimulation3_3::*)(unsigned int)) &AbstractCellBasedSimulation3_3::SetSamplingTimestepMultiple, 
-            " " , py::arg("samplingTimestepMultiple"))
+            " " , py::arg("samplingTimestepMultiple") )
         .def(
             "SetNoBirth", 
             (void(AbstractCellBasedSimulation3_3::*)(bool)) &AbstractCellBasedSimulation3_3::SetNoBirth, 
-            " " , py::arg("noBirth"))
+            " " , py::arg("noBirth") )
         .def(
             "SetUpdateCellPopulationRule", 
             (void(AbstractCellBasedSimulation3_3::*)(bool)) &AbstractCellBasedSimulation3_3::SetUpdateCellPopulationRule, 
-            " " , py::arg("updateCellPopulation"))
+            " " , py::arg("updateCellPopulation") )
         .def(
             "GetUpdateCellPopulationRule", 
             (bool(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetUpdateCellPopulationRule, 
-            " " )
+            " "  )
         .def(
             "AddCellKiller", 
             (void(AbstractCellBasedSimulation3_3::*)(::boost::shared_ptr<AbstractCellKiller<3> >)) &AbstractCellBasedSimulation3_3::AddCellKiller, 
-            " " , py::arg("pCellKiller"))
+            " " , py::arg("pCellKiller") )
         .def(
             "RemoveAllCellKillers", 
             (void(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::RemoveAllCellKillers, 
-            " " )
+            " "  )
         .def(
             "AddSimulationModifier", 
             (void(AbstractCellBasedSimulation3_3::*)(::boost::shared_ptr<AbstractCellBasedSimulationModifier<3, 3> >)) &AbstractCellBasedSimulation3_3::AddSimulationModifier, 
-            " " , py::arg("pSimulationModifier"))
+            " " , py::arg("pSimulationModifier") )
         .def(
             "Solve", 
             (void(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::Solve, 
-            " " )
+            " "  )
         .def(
             "rGetCellPopulation", 
             (::AbstractCellPopulation<3, 3> &(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::rGetCellPopulation, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "rGetCellPopulation", 
             (::AbstractCellPopulation<3, 3> const &(AbstractCellBasedSimulation3_3::*)() const ) &AbstractCellBasedSimulation3_3::rGetCellPopulation, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "GetOutputDivisionLocations", 
             (bool(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetOutputDivisionLocations, 
-            " " )
+            " "  )
         .def(
             "SetOutputDivisionLocations", 
             (void(AbstractCellBasedSimulation3_3::*)(bool)) &AbstractCellBasedSimulation3_3::SetOutputDivisionLocations, 
-            " " , py::arg("outputDivisionLocations"))
+            " " , py::arg("outputDivisionLocations") )
         .def(
             "GetOutputCellVelocities", 
             (bool(AbstractCellBasedSimulation3_3::*)()) &AbstractCellBasedSimulation3_3::GetOutputCellVelocities, 
-            " " )
+            " "  )
         .def(
             "SetOutputCellVelocities", 
             (void(AbstractCellBasedSimulation3_3::*)(bool)) &AbstractCellBasedSimulation3_3::SetOutputCellVelocities, 
-            " " , py::arg("outputCellVelocities"))
+            " " , py::arg("outputCellVelocities") )
         .def(
             "OutputSimulationParameters", 
             (void(AbstractCellBasedSimulation3_3::*)(::out_stream &)) &AbstractCellBasedSimulation3_3::OutputSimulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

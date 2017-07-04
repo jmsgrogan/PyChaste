@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef SimpleTargetAreaModifier<3 > SimpleTargetAreaModifier3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class SimpleTargetAreaModifier3_Overloads : public SimpleTargetAreaModifier3{
     public:
@@ -34,23 +34,23 @@ class SimpleTargetAreaModifier3_Overloads : public SimpleTargetAreaModifier3{
 
 };
 void register_SimpleTargetAreaModifier3_class(py::module &m){
-py::class_<SimpleTargetAreaModifier3 , SimpleTargetAreaModifier3_Overloads   >(m, "SimpleTargetAreaModifier3")
+py::class_<SimpleTargetAreaModifier3 , SimpleTargetAreaModifier3_Overloads , boost::shared_ptr<SimpleTargetAreaModifier3 >   >(m, "SimpleTargetAreaModifier3")
         .def(py::init< >())
         .def(
             "UpdateTargetAreaOfCell", 
             (void(SimpleTargetAreaModifier3::*)(::CellPtr const)) &SimpleTargetAreaModifier3::UpdateTargetAreaOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetGrowthDuration", 
             (double(SimpleTargetAreaModifier3::*)()) &SimpleTargetAreaModifier3::GetGrowthDuration, 
-            " " )
+            " "  )
         .def(
             "SetGrowthDuration", 
             (void(SimpleTargetAreaModifier3::*)(double)) &SimpleTargetAreaModifier3::SetGrowthDuration, 
-            " " , py::arg("growthDuration"))
+            " " , py::arg("growthDuration") )
         .def(
             "OutputSimulationModifierParameters", 
             (void(SimpleTargetAreaModifier3::*)(::out_stream &)) &SimpleTargetAreaModifier3::OutputSimulationModifierParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractOnLatticeCellPopulation<2 > AbstractOnLatticeCellPopulation2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
 typedef ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const _std_vectorboost_shared_ptrAbstractUpdateRule2_std_allocatorboost_shared_ptrAbstractUpdateRule2;
 
@@ -79,54 +79,54 @@ rNewLocation);
 
 };
 void register_AbstractOnLatticeCellPopulation2_class(py::module &m){
-py::class_<AbstractOnLatticeCellPopulation2 , AbstractOnLatticeCellPopulation2_Overloads   >(m, "AbstractOnLatticeCellPopulation2")
+py::class_<AbstractOnLatticeCellPopulation2 , AbstractOnLatticeCellPopulation2_Overloads , boost::shared_ptr<AbstractOnLatticeCellPopulation2 >   >(m, "AbstractOnLatticeCellPopulation2")
         .def(
             "UpdateCellLocations", 
             (void(AbstractOnLatticeCellPopulation2::*)(double)) &AbstractOnLatticeCellPopulation2::UpdateCellLocations, 
-            " " , py::arg("dt"))
+            " " , py::arg("dt") )
         .def(
             "GetUpdateNodesInRandomOrder", 
             (bool(AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::GetUpdateNodesInRandomOrder, 
-            " " )
+            " "  )
         .def(
             "SetUpdateNodesInRandomOrder", 
             (void(AbstractOnLatticeCellPopulation2::*)(bool)) &AbstractOnLatticeCellPopulation2::SetUpdateNodesInRandomOrder, 
-            " " , py::arg("updateNodesInRandomOrder"))
+            " " , py::arg("updateNodesInRandomOrder") )
         .def(
             "SetIterateRandomlyOverUpdateRuleCollection", 
             (void(AbstractOnLatticeCellPopulation2::*)(bool)) &AbstractOnLatticeCellPopulation2::SetIterateRandomlyOverUpdateRuleCollection, 
-            " " , py::arg("iterateRandomly"))
+            " " , py::arg("iterateRandomly") )
         .def(
             "GetIterateRandomlyOverUpdateRuleCollection", 
             (bool(AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::GetIterateRandomlyOverUpdateRuleCollection, 
-            " " )
+            " "  )
         .def(
             "SetNode", 
             (void(AbstractOnLatticeCellPopulation2::*)(unsigned int, ::ChastePoint<2> &)) &AbstractOnLatticeCellPopulation2::SetNode, 
-            " " , py::arg("index"), py::arg("rNewLocation"))
+            " " , py::arg("index"), py::arg("rNewLocation") )
         .def(
             "GetNeighbouringNodeIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(AbstractOnLatticeCellPopulation2::*)(unsigned int)) &AbstractOnLatticeCellPopulation2::GetNeighbouringNodeIndices, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "OutputCellPopulationParameters", 
             (void(AbstractOnLatticeCellPopulation2::*)(::out_stream &)) &AbstractOnLatticeCellPopulation2::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "GetDefaultTimeStep", 
             (double(AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::GetDefaultTimeStep, 
-            " " )
+            " "  )
         .def(
             "AddUpdateRule", 
             (void(AbstractOnLatticeCellPopulation2::*)(::boost::shared_ptr<AbstractUpdateRule<2> >)) &AbstractOnLatticeCellPopulation2::AddUpdateRule, 
-            " " , py::arg("pUpdateRule"))
+            " " , py::arg("pUpdateRule") )
         .def(
             "RemoveAllUpdateRules", 
             (void(AbstractOnLatticeCellPopulation2::*)()) &AbstractOnLatticeCellPopulation2::RemoveAllUpdateRules, 
-            " " )
+            " "  )
         .def(
             "GetUpdateRuleCollection", 
             (::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const(AbstractOnLatticeCellPopulation2::*)() const ) &AbstractOnLatticeCellPopulation2::GetUpdateRuleCollection, 
-            " " )
+            " "  )
     ;
 }

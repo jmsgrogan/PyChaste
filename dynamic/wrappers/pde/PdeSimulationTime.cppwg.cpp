@@ -12,33 +12,33 @@
 
 namespace py = pybind11;
 typedef PdeSimulationTime PdeSimulationTime;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_PdeSimulationTime_class(py::module &m){
-py::class_<PdeSimulationTime    >(m, "PdeSimulationTime")
+py::class_<PdeSimulationTime  , boost::shared_ptr<PdeSimulationTime >   >(m, "PdeSimulationTime")
         .def_static(
             "SetTime", 
             (void(*)(double)) &PdeSimulationTime::SetTime, 
-            " " , py::arg("time"))
+            " " , py::arg("time") )
         .def_static(
             "GetTime", 
             (double(*)()) &PdeSimulationTime::GetTime, 
-            " " )
+            " "  )
         .def_static(
             "SetPdeTimeStepAndNextTime", 
             (void(*)(double, double)) &PdeSimulationTime::SetPdeTimeStepAndNextTime, 
-            " " , py::arg("timestep"), py::arg("next_time"))
+            " " , py::arg("timestep"), py::arg("next_time") )
         .def_static(
             "GetPdeTimeStep", 
             (double(*)()) &PdeSimulationTime::GetPdeTimeStep, 
-            " " )
+            " "  )
         .def_static(
             "GetNextTime", 
             (double(*)()) &PdeSimulationTime::GetNextTime, 
-            " " )
+            " "  )
         .def_static(
             "GetPdeTimeStepInverse", 
             (double(*)()) &PdeSimulationTime::GetPdeTimeStepInverse, 
-            " " )
+            " "  )
     ;
 }

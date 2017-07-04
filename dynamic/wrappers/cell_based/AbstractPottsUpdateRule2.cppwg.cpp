@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractPottsUpdateRule<2 > AbstractPottsUpdateRule2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractPottsUpdateRule2_Overloads : public AbstractPottsUpdateRule2{
     public:
@@ -36,14 +36,14 @@ rCellPopulation);
 
 };
 void register_AbstractPottsUpdateRule2_class(py::module &m){
-py::class_<AbstractPottsUpdateRule2 , AbstractPottsUpdateRule2_Overloads   >(m, "AbstractPottsUpdateRule2")
+py::class_<AbstractPottsUpdateRule2 , AbstractPottsUpdateRule2_Overloads , boost::shared_ptr<AbstractPottsUpdateRule2 >   >(m, "AbstractPottsUpdateRule2")
         .def(
             "EvaluateHamiltonianContribution", 
             (double(AbstractPottsUpdateRule2::*)(unsigned int, unsigned int, ::PottsBasedCellPopulation<2> &)) &AbstractPottsUpdateRule2::EvaluateHamiltonianContribution, 
-            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation"))
+            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("rCellPopulation") )
         .def(
             "OutputUpdateRuleParameters", 
             (void(AbstractPottsUpdateRule2::*)(::out_stream &)) &AbstractPottsUpdateRule2::OutputUpdateRuleParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

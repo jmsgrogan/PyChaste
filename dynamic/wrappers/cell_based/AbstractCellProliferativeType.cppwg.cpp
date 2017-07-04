@@ -12,14 +12,14 @@
 
 namespace py = pybind11;
 typedef AbstractCellProliferativeType AbstractCellProliferativeType;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_AbstractCellProliferativeType_class(py::module &m){
-py::class_<AbstractCellProliferativeType   , AbstractCellProperty  >(m, "AbstractCellProliferativeType")
+py::class_<AbstractCellProliferativeType  , boost::shared_ptr<AbstractCellProliferativeType >  , AbstractCellProperty  >(m, "AbstractCellProliferativeType")
         .def(py::init<unsigned int >(), py::arg("colour"))
         .def(
             "GetColour", 
             (unsigned int(AbstractCellProliferativeType::*)() const ) &AbstractCellProliferativeType::GetColour, 
-            " " )
+            " "  )
     ;
 }

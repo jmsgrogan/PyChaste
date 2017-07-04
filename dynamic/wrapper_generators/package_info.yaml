@@ -21,7 +21,9 @@ global_template_substitutions:
   - signature: <unsigned SPACE_DIM>
     replacement: [[2], [3]]
   - signature: <unsigned DIM>
-    replacement: [[2], [3]]    
+    replacement: [[2], [3]]
+global_pointer_call_policy: reference
+global_reference_call_policy: reference_internal
     
 modules:
 - name: core
@@ -230,6 +232,7 @@ modules:
     - rGetMesh
     extra_includes:
     - AbstractCellBasedSimulation.hpp   
+    - AbstractVertexBasedDivisionRule.hpp
   - name: PottsBasedCellPopulation
     excluded_methods: 
     - GetElementCorrespondingToCell

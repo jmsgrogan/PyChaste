@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractPythonOdeSystemInformation AbstractPythonOdeSystemInformation;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractPythonOdeSystemInformation_Overloads : public AbstractPythonOdeSystemInformation{
     public:
@@ -27,18 +27,18 @@ class AbstractPythonOdeSystemInformation_Overloads : public AbstractPythonOdeSys
 
 };
 void register_AbstractPythonOdeSystemInformation_class(py::module &m){
-py::class_<AbstractPythonOdeSystemInformation , AbstractPythonOdeSystemInformation_Overloads  , AbstractOdeSystemInformation  >(m, "AbstractPythonOdeSystemInformation")
+py::class_<AbstractPythonOdeSystemInformation , AbstractPythonOdeSystemInformation_Overloads , boost::shared_ptr<AbstractPythonOdeSystemInformation >  , AbstractOdeSystemInformation  >(m, "AbstractPythonOdeSystemInformation")
         .def(
             "AddVariableName", 
             (void(AbstractPythonOdeSystemInformation::*)(::std::string const &)) &AbstractPythonOdeSystemInformation::AddVariableName, 
-            " " , py::arg("rName"))
+            " " , py::arg("rName") )
         .def(
             "AddVariableUnit", 
             (void(AbstractPythonOdeSystemInformation::*)(::std::string const &)) &AbstractPythonOdeSystemInformation::AddVariableUnit, 
-            " " , py::arg("rUnit"))
+            " " , py::arg("rUnit") )
         .def(
             "SetIsInitialised", 
             (void(AbstractPythonOdeSystemInformation::*)(bool)) &AbstractPythonOdeSystemInformation::SetIsInitialised, 
-            " " , py::arg("isInitialized") = true)
+            " " , py::arg("isInitialized") = true )
     ;
 }

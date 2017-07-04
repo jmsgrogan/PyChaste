@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef PlaneBoundaryCondition<3,3 > PlaneBoundaryCondition3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class PlaneBoundaryCondition3_3_Overloads : public PlaneBoundaryCondition3_3{
     public:
@@ -41,35 +41,35 @@ class PlaneBoundaryCondition3_3_Overloads : public PlaneBoundaryCondition3_3{
 
 };
 void register_PlaneBoundaryCondition3_3_class(py::module &m){
-py::class_<PlaneBoundaryCondition3_3 , PlaneBoundaryCondition3_3_Overloads   >(m, "PlaneBoundaryCondition3_3")
+py::class_<PlaneBoundaryCondition3_3 , PlaneBoundaryCondition3_3_Overloads , boost::shared_ptr<PlaneBoundaryCondition3_3 >   >(m, "PlaneBoundaryCondition3_3")
         .def(py::init<::AbstractCellPopulation<3, 3> *, ::boost::numeric::ublas::c_vector<double, 3>, ::boost::numeric::ublas::c_vector<double, 3> >(), py::arg("pCellPopulation"), py::arg("point"), py::arg("normal"))
         .def(
             "rGetPointOnPlane", 
             (::boost::numeric::ublas::c_vector<double, 3> const &(PlaneBoundaryCondition3_3::*)() const ) &PlaneBoundaryCondition3_3::rGetPointOnPlane, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "rGetNormalToPlane", 
             (::boost::numeric::ublas::c_vector<double, 3> const &(PlaneBoundaryCondition3_3::*)() const ) &PlaneBoundaryCondition3_3::rGetNormalToPlane, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "SetUseJiggledNodesOnPlane", 
             (void(PlaneBoundaryCondition3_3::*)(bool)) &PlaneBoundaryCondition3_3::SetUseJiggledNodesOnPlane, 
-            " " , py::arg("useJiggledNodesOnPlane"))
+            " " , py::arg("useJiggledNodesOnPlane") )
         .def(
             "GetUseJiggledNodesOnPlane", 
             (bool(PlaneBoundaryCondition3_3::*)()) &PlaneBoundaryCondition3_3::GetUseJiggledNodesOnPlane, 
-            " " )
+            " "  )
         .def(
             "ImposeBoundaryCondition", 
             (void(PlaneBoundaryCondition3_3::*)(::std::map<Node<3> *, boost::numeric::ublas::c_vector<double, 3>, std::less<Node<3> *>, std::allocator<std::pair<Node<3> *const, boost::numeric::ublas::c_vector<double, 3> > > > const &)) &PlaneBoundaryCondition3_3::ImposeBoundaryCondition, 
-            " " , py::arg("rOldLocations"))
+            " " , py::arg("rOldLocations") )
         .def(
             "VerifyBoundaryCondition", 
             (bool(PlaneBoundaryCondition3_3::*)()) &PlaneBoundaryCondition3_3::VerifyBoundaryCondition, 
-            " " )
+            " "  )
         .def(
             "OutputCellPopulationBoundaryConditionParameters", 
             (void(PlaneBoundaryCondition3_3::*)(::out_stream &)) &PlaneBoundaryCondition3_3::OutputCellPopulationBoundaryConditionParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

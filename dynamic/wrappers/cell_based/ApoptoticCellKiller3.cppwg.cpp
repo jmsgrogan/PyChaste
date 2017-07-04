@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef ApoptoticCellKiller<3 > ApoptoticCellKiller3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class ApoptoticCellKiller3_Overloads : public ApoptoticCellKiller3{
     public:
@@ -34,19 +34,19 @@ class ApoptoticCellKiller3_Overloads : public ApoptoticCellKiller3{
 
 };
 void register_ApoptoticCellKiller3_class(py::module &m){
-py::class_<ApoptoticCellKiller3 , ApoptoticCellKiller3_Overloads   >(m, "ApoptoticCellKiller3")
+py::class_<ApoptoticCellKiller3 , ApoptoticCellKiller3_Overloads , boost::shared_ptr<ApoptoticCellKiller3 >   >(m, "ApoptoticCellKiller3")
         .def(py::init<::AbstractCellPopulation<3, 3> * >(), py::arg("pCellPopulation"))
         .def(
             "CheckAndLabelSingleCellForApoptosis", 
             (void(ApoptoticCellKiller3::*)(::CellPtr)) &ApoptoticCellKiller3::CheckAndLabelSingleCellForApoptosis, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "CheckAndLabelCellsForApoptosisOrDeath", 
             (void(ApoptoticCellKiller3::*)()) &ApoptoticCellKiller3::CheckAndLabelCellsForApoptosisOrDeath, 
-            " " )
+            " "  )
         .def(
             "OutputCellKillerParameters", 
             (void(ApoptoticCellKiller3::*)(::out_stream &)) &ApoptoticCellKiller3::OutputCellKillerParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

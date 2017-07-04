@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef MeshBasedCellPopulation<3,3 > MeshBasedCellPopulation3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
@@ -192,164 +192,164 @@ pCell);
 
 };
 void register_MeshBasedCellPopulation3_3_class(py::module &m){
-py::class_<MeshBasedCellPopulation3_3 , MeshBasedCellPopulation3_3_Overloads   >(m, "MeshBasedCellPopulation3_3")
+py::class_<MeshBasedCellPopulation3_3 , MeshBasedCellPopulation3_3_Overloads , boost::shared_ptr<MeshBasedCellPopulation3_3 >   >(m, "MeshBasedCellPopulation3_3")
         .def(py::init<::MutableMesh<3, 3> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, bool >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("deleteMesh") = false, py::arg("validate") = true)
         .def(py::init<::MutableMesh<3, 3> & >(), py::arg("rMesh"))
         .def(
             "UseAreaBasedDampingConstant", 
             (bool(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::UseAreaBasedDampingConstant, 
-            " " )
+            " "  )
         .def(
             "AddNode", 
             (unsigned int(MeshBasedCellPopulation3_3::*)(::Node<3> *)) &MeshBasedCellPopulation3_3::AddNode, 
-            " " , py::arg("pNewNode"))
+            " " , py::arg("pNewNode") )
         .def(
             "SetNode", 
             (void(MeshBasedCellPopulation3_3::*)(unsigned int, ::ChastePoint<3> &)) &MeshBasedCellPopulation3_3::SetNode, 
-            " " , py::arg("nodeIndex"), py::arg("rNewLocation"))
+            " " , py::arg("nodeIndex"), py::arg("rNewLocation") )
         .def(
             "GetDampingConstant", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int)) &MeshBasedCellPopulation3_3::GetDampingConstant, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "SetAreaBasedDampingConstant", 
             (void(MeshBasedCellPopulation3_3::*)(bool)) &MeshBasedCellPopulation3_3::SetAreaBasedDampingConstant, 
-            " " , py::arg("useAreaBasedDampingConstant"))
+            " " , py::arg("useAreaBasedDampingConstant") )
         .def(
             "OpenWritersFiles", 
             (void(MeshBasedCellPopulation3_3::*)(::OutputFileHandler &)) &MeshBasedCellPopulation3_3::OpenWritersFiles, 
-            " " , py::arg("rOutputFileHandler"))
+            " " , py::arg("rOutputFileHandler") )
         .def(
             "RemoveDeadCells", 
             (unsigned int(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::RemoveDeadCells, 
-            " " )
+            " "  )
         .def(
             "AddCell", 
             (::CellPtr(MeshBasedCellPopulation3_3::*)(::CellPtr, ::CellPtr)) &MeshBasedCellPopulation3_3::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell"))
+            " " , py::arg("pNewCell"), py::arg("pParentCell") )
         .def(
             "WriteResultsToFiles", 
             (void(MeshBasedCellPopulation3_3::*)(::std::string const &)) &MeshBasedCellPopulation3_3::WriteResultsToFiles, 
-            " " , py::arg("rDirectory"))
+            " " , py::arg("rDirectory") )
         .def(
             "AcceptPopulationWriter", 
             (void(MeshBasedCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> >)) &MeshBasedCellPopulation3_3::AcceptPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AcceptPopulationCountWriter", 
             (void(MeshBasedCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> >)) &MeshBasedCellPopulation3_3::AcceptPopulationCountWriter, 
-            " " , py::arg("pPopulationCountWriter"))
+            " " , py::arg("pPopulationCountWriter") )
         .def(
             "AcceptCellWriter", 
             (void(MeshBasedCellPopulation3_3::*)(::boost::shared_ptr<AbstractCellWriter<3, 3> >, ::CellPtr)) &MeshBasedCellPopulation3_3::AcceptCellWriter, 
-            " " , py::arg("pCellWriter"), py::arg("pCell"))
+            " " , py::arg("pCellWriter"), py::arg("pCell") )
         .def(
             "Update", 
             (void(MeshBasedCellPopulation3_3::*)(bool)) &MeshBasedCellPopulation3_3::Update, 
-            " " , py::arg("hasHadBirthsOrDeaths") = true)
+            " " , py::arg("hasHadBirthsOrDeaths") = true )
         .def(
             "TessellateIfNeeded", 
             (void(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::TessellateIfNeeded, 
-            " " )
+            " "  )
         .def(
             "DivideLongSprings", 
             (void(MeshBasedCellPopulation3_3::*)(double)) &MeshBasedCellPopulation3_3::DivideLongSprings, 
-            " " , py::arg("springDivisionThreshold"))
+            " " , py::arg("springDivisionThreshold") )
         .def(
             "GetNode", 
             (::Node<3> *(MeshBasedCellPopulation3_3::*)(unsigned int)) &MeshBasedCellPopulation3_3::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNumNodes", 
             (unsigned int(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "WriteVtkResultsToFile", 
             (void(MeshBasedCellPopulation3_3::*)(::std::string const &)) &MeshBasedCellPopulation3_3::WriteVtkResultsToFile, 
-            " " , py::arg("rDirectory"))
+            " " , py::arg("rDirectory") )
         .def(
             "GetVolumeOfCell", 
             (double(MeshBasedCellPopulation3_3::*)(::CellPtr)) &MeshBasedCellPopulation3_3::GetVolumeOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "CreateVoronoiTessellation", 
             (void(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::CreateVoronoiTessellation, 
-            " " )
+            " "  )
         .def(
             "GetVolumeOfVoronoiElement", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int)) &MeshBasedCellPopulation3_3::GetVolumeOfVoronoiElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetSurfaceAreaOfVoronoiElement", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int)) &MeshBasedCellPopulation3_3::GetSurfaceAreaOfVoronoiElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetVoronoiEdgeLength", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int, unsigned int)) &MeshBasedCellPopulation3_3::GetVoronoiEdgeLength, 
-            " " , py::arg("index1"), py::arg("index2"))
+            " " , py::arg("index1"), py::arg("index2") )
         .def(
             "GetWidth", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int const &)) &MeshBasedCellPopulation3_3::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "WriteDataToVisualizerSetupFile", 
             (void(MeshBasedCellPopulation3_3::*)(::out_stream &)) &MeshBasedCellPopulation3_3::WriteDataToVisualizerSetupFile, 
-            " " , py::arg("pVizSetupFile"))
+            " " , py::arg("pVizSetupFile") )
         .def(
             "SpringsBegin", 
             (::MeshBasedCellPopulation<3, 3>::SpringIterator(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::SpringsBegin, 
-            " " )
+            " "  )
         .def(
             "SpringsEnd", 
             (::MeshBasedCellPopulation<3, 3>::SpringIterator(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::SpringsEnd, 
-            " " )
+            " "  )
         .def(
             "CheckCellPointers", 
             (void(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::CheckCellPointers, 
-            " " )
+            " "  )
         .def(
             "GetAreaBasedDampingConstantParameter", 
             (double(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::GetAreaBasedDampingConstantParameter, 
-            " " )
+            " "  )
         .def(
             "SetAreaBasedDampingConstantParameter", 
             (void(MeshBasedCellPopulation3_3::*)(double)) &MeshBasedCellPopulation3_3::SetAreaBasedDampingConstantParameter, 
-            " " , py::arg("areaBasedDampingConstantParameter"))
+            " " , py::arg("areaBasedDampingConstantParameter") )
         .def(
             "OutputCellPopulationParameters", 
             (void(MeshBasedCellPopulation3_3::*)(::out_stream &)) &MeshBasedCellPopulation3_3::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "SetWriteVtkAsPoints", 
             (void(MeshBasedCellPopulation3_3::*)(bool)) &MeshBasedCellPopulation3_3::SetWriteVtkAsPoints, 
-            " " , py::arg("writeVtkAsPoints"))
+            " " , py::arg("writeVtkAsPoints") )
         .def(
             "GetWriteVtkAsPoints", 
             (bool(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::GetWriteVtkAsPoints, 
-            " " )
+            " "  )
         .def(
             "SetOutputMeshInVtk", 
             (void(MeshBasedCellPopulation3_3::*)(bool)) &MeshBasedCellPopulation3_3::SetOutputMeshInVtk, 
-            " " , py::arg("outputMeshInVtk"))
+            " " , py::arg("outputMeshInVtk") )
         .def(
             "GetOutputMeshInVtk", 
             (bool(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::GetOutputMeshInVtk, 
-            " " )
+            " "  )
         .def(
             "GetNeighbouringNodeIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(MeshBasedCellPopulation3_3::*)(unsigned int)) &MeshBasedCellPopulation3_3::GetNeighbouringNodeIndices, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "CalculateRestLengths", 
             (void(MeshBasedCellPopulation3_3::*)()) &MeshBasedCellPopulation3_3::CalculateRestLengths, 
-            " " )
+            " "  )
         .def(
             "GetRestLength", 
             (double(MeshBasedCellPopulation3_3::*)(unsigned int, unsigned int)) &MeshBasedCellPopulation3_3::GetRestLength, 
-            " " , py::arg("indexA"), py::arg("indexB"))
+            " " , py::arg("indexA"), py::arg("indexB") )
         .def(
             "SetRestLength", 
             (void(MeshBasedCellPopulation3_3::*)(unsigned int, unsigned int, double)) &MeshBasedCellPopulation3_3::SetRestLength, 
-            " " , py::arg("indexA"), py::arg("indexB"), py::arg("restLength"))
+            " " , py::arg("indexA"), py::arg("indexB"), py::arg("restLength") )
     ;
 }

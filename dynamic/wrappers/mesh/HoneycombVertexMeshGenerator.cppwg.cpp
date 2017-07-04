@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef SharedHoneycombVertexMeshGenerator HoneycombVertexMeshGenerator;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::shared_ptr<MutableVertexMesh<2, 2> > _boost_shared_ptrMutableVertexMesh2_2;
 
 class HoneycombVertexMeshGenerator_Overloads : public HoneycombVertexMeshGenerator{
@@ -28,12 +28,12 @@ class HoneycombVertexMeshGenerator_Overloads : public HoneycombVertexMeshGenerat
 
 };
 void register_HoneycombVertexMeshGenerator_class(py::module &m){
-py::class_<HoneycombVertexMeshGenerator , HoneycombVertexMeshGenerator_Overloads   >(m, "HoneycombVertexMeshGenerator")
+py::class_<HoneycombVertexMeshGenerator , HoneycombVertexMeshGenerator_Overloads , boost::shared_ptr<HoneycombVertexMeshGenerator >   >(m, "HoneycombVertexMeshGenerator")
         .def(py::init<unsigned int, unsigned int, bool, double, double, double >(), py::arg("numElementsAcross"), py::arg("numElementsUp"), py::arg("isFlatBottom") = false, py::arg("cellRearrangementThreshold") = 0.01, py::arg("t2Threshold") = 0.001, py::arg("elementArea") = 0.5 * sqrt(3.))
         .def(py::init< >())
         .def(
             "GetMesh", 
             (::boost::shared_ptr<MutableVertexMesh<2, 2> >(HoneycombVertexMeshGenerator::*)()) &HoneycombVertexMeshGenerator::GetMesh, 
-            " " )
+            " "  )
     ;
 }

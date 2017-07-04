@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef CellPopulationPyChasteActorGenerator<2 > CellPopulationPyChasteActorGenerator2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class CellPopulationPyChasteActorGenerator2_Overloads : public CellPopulationPyChasteActorGenerator2{
     public:
@@ -27,71 +27,71 @@ class CellPopulationPyChasteActorGenerator2_Overloads : public CellPopulationPyC
 
 };
 void register_CellPopulationPyChasteActorGenerator2_class(py::module &m){
-py::class_<CellPopulationPyChasteActorGenerator2 , CellPopulationPyChasteActorGenerator2_Overloads   >(m, "CellPopulationPyChasteActorGenerator2")
+py::class_<CellPopulationPyChasteActorGenerator2 , CellPopulationPyChasteActorGenerator2_Overloads , boost::shared_ptr<CellPopulationPyChasteActorGenerator2 >   >(m, "CellPopulationPyChasteActorGenerator2")
         .def(py::init< >())
         .def(
             "AddActor", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::vtkSmartPointer<vtkRenderer>)) &CellPopulationPyChasteActorGenerator2::AddActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "AddMeshBasedCellPopulationActor", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::vtkSmartPointer<vtkRenderer>)) &CellPopulationPyChasteActorGenerator2::AddMeshBasedCellPopulationActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "AddVertexBasedCellPopulationActor", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::vtkSmartPointer<vtkRenderer>)) &CellPopulationPyChasteActorGenerator2::AddVertexBasedCellPopulationActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "AddCaBasedCellPopulationActor", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::vtkSmartPointer<vtkRenderer>)) &CellPopulationPyChasteActorGenerator2::AddCaBasedCellPopulationActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "AddPottsBasedCellPopulationActor", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::vtkSmartPointer<vtkRenderer>)) &CellPopulationPyChasteActorGenerator2::AddPottsBasedCellPopulationActor, 
-            " " , py::arg("pRenderer"))
+            " " , py::arg("pRenderer") )
         .def(
             "SetCellPopulation", 
             (void(CellPopulationPyChasteActorGenerator2::*)(::boost::shared_ptr<AbstractCellPopulation<2, 2> >)) &CellPopulationPyChasteActorGenerator2::SetCellPopulation, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
         .def(
             "SetShowVoronoiMeshEdges", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetShowVoronoiMeshEdges, 
-            " " , py::arg("showEdges"))
+            " " , py::arg("showEdges") )
         .def(
             "SetShowMutableMeshEdges", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetShowMutableMeshEdges, 
-            " " , py::arg("showEdges"))
+            " " , py::arg("showEdges") )
         .def(
             "SetShowPottsMeshEdges", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetShowPottsMeshEdges, 
-            " " , py::arg("showEdges"))
+            " " , py::arg("showEdges") )
         .def(
             "SetShowPottsMeshOutlines", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetShowPottsMeshOutlines, 
-            " " , py::arg("showOutlines"))
+            " " , py::arg("showOutlines") )
         .def(
             "SetColorByCellType", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetColorByCellType, 
-            " " , py::arg("colorByCellType"))
+            " " , py::arg("colorByCellType") )
         .def(
             "SetColorByCellMutationState", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetColorByCellMutationState, 
-            " " , py::arg("colorByCellMutationState"))
+            " " , py::arg("colorByCellMutationState") )
         .def(
             "SetColorByCellLabel", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetColorByCellLabel, 
-            " " , py::arg("colorByCellLabel"))
+            " " , py::arg("colorByCellLabel") )
         .def(
             "SetColorByUserDefined", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetColorByUserDefined, 
-            " " , py::arg("colorByCellUserDefined"))
+            " " , py::arg("colorByCellUserDefined") )
         .def(
             "SetColorByCellData", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetColorByCellData, 
-            " " , py::arg("colorByCellData"))
+            " " , py::arg("colorByCellData") )
         .def(
             "SetShowCellCentres", 
             (void(CellPopulationPyChasteActorGenerator2::*)(bool)) &CellPopulationPyChasteActorGenerator2::SetShowCellCentres, 
-            " " , py::arg("showCentres"))
+            " " , py::arg("showCentres") )
     ;
 }

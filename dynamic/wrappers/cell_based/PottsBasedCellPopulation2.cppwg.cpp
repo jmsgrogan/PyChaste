@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef PottsBasedCellPopulation<2 > PottsBasedCellPopulation2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh2_2Ptr;
 typedef ::Node<2> * _Node2Ptr;
 typedef unsigned int unsignedint;
@@ -172,112 +172,112 @@ dirichletBoundaryValue);
 
 };
 void register_PottsBasedCellPopulation2_class(py::module &m){
-py::class_<PottsBasedCellPopulation2 , PottsBasedCellPopulation2_Overloads   >(m, "PottsBasedCellPopulation2")
+py::class_<PottsBasedCellPopulation2 , PottsBasedCellPopulation2_Overloads , boost::shared_ptr<PottsBasedCellPopulation2 >   >(m, "PottsBasedCellPopulation2")
         .def(py::init<::PottsMesh<2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, bool, bool, ::std::vector<unsigned int, std::allocator<unsigned int> > const >(), py::arg("rMesh"), py::arg("rCells"), py::arg("deleteMesh") = false, py::arg("validate") = true, py::arg("locationIndices") = std::vector<unsigned int>())
         .def(py::init<::PottsMesh<2> & >(), py::arg("rMesh"))
         .def(
             "GetNumElements", 
             (unsigned int(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::GetNumElements, 
-            " " )
+            " "  )
         .def(
             "GetNode", 
             (::Node<2> *(PottsBasedCellPopulation2::*)(unsigned int)) &PottsBasedCellPopulation2::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNumNodes", 
             (unsigned int(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetNeighbouringLocationIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(PottsBasedCellPopulation2::*)(::CellPtr)) &PottsBasedCellPopulation2::GetNeighbouringLocationIndices, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 2>(PottsBasedCellPopulation2::*)(::CellPtr)) &PottsBasedCellPopulation2::GetLocationOfCellCentre, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "AddCell", 
             (::CellPtr(PottsBasedCellPopulation2::*)(::CellPtr, ::CellPtr)) &PottsBasedCellPopulation2::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ))
+            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ) )
         .def(
             "RemoveDeadCells", 
             (unsigned int(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::RemoveDeadCells, 
-            " " )
+            " "  )
         .def(
             "UpdateCellLocations", 
             (void(PottsBasedCellPopulation2::*)(double)) &PottsBasedCellPopulation2::UpdateCellLocations, 
-            " " , py::arg("dt"))
+            " " , py::arg("dt") )
         .def(
             "IsCellAssociatedWithADeletedLocation", 
             (bool(PottsBasedCellPopulation2::*)(::CellPtr)) &PottsBasedCellPopulation2::IsCellAssociatedWithADeletedLocation, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "Update", 
             (void(PottsBasedCellPopulation2::*)(bool)) &PottsBasedCellPopulation2::Update, 
-            " " , py::arg("hasHadBirthsOrDeaths") = true)
+            " " , py::arg("hasHadBirthsOrDeaths") = true )
         .def(
             "OpenWritersFiles", 
             (void(PottsBasedCellPopulation2::*)(::OutputFileHandler &)) &PottsBasedCellPopulation2::OpenWritersFiles, 
-            " " , py::arg("rOutputFileHandler"))
+            " " , py::arg("rOutputFileHandler") )
         .def(
             "WriteResultsToFiles", 
             (void(PottsBasedCellPopulation2::*)(::std::string const &)) &PottsBasedCellPopulation2::WriteResultsToFiles, 
-            " " , py::arg("rDirectory"))
+            " " , py::arg("rDirectory") )
         .def(
             "AcceptPopulationWriter", 
             (void(PottsBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellPopulationWriter<2, 2> >)) &PottsBasedCellPopulation2::AcceptPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AcceptPopulationCountWriter", 
             (void(PottsBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<2, 2> >)) &PottsBasedCellPopulation2::AcceptPopulationCountWriter, 
-            " " , py::arg("pPopulationCountWriter"))
+            " " , py::arg("pPopulationCountWriter") )
         .def(
             "AcceptCellWriter", 
             (void(PottsBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellWriter<2, 2> >, ::CellPtr)) &PottsBasedCellPopulation2::AcceptCellWriter, 
-            " " , py::arg("pCellWriter"), py::arg("pCell"))
+            " " , py::arg("pCellWriter"), py::arg("pCell") )
         .def(
             "GetVolumeOfCell", 
             (double(PottsBasedCellPopulation2::*)(::CellPtr)) &PottsBasedCellPopulation2::GetVolumeOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetWidth", 
             (double(PottsBasedCellPopulation2::*)(unsigned int const &)) &PottsBasedCellPopulation2::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "OutputCellPopulationParameters", 
             (void(PottsBasedCellPopulation2::*)(::out_stream &)) &PottsBasedCellPopulation2::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "SetTemperature", 
             (void(PottsBasedCellPopulation2::*)(double)) &PottsBasedCellPopulation2::SetTemperature, 
-            " " , py::arg("temperature"))
+            " " , py::arg("temperature") )
         .def(
             "GetTemperature", 
             (double(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::GetTemperature, 
-            " " )
+            " "  )
         .def(
             "SetNumSweepsPerTimestep", 
             (void(PottsBasedCellPopulation2::*)(unsigned int)) &PottsBasedCellPopulation2::SetNumSweepsPerTimestep, 
-            " " , py::arg("numSweepsPerTimestep"))
+            " " , py::arg("numSweepsPerTimestep") )
         .def(
             "GetNumSweepsPerTimestep", 
             (unsigned int(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::GetNumSweepsPerTimestep, 
-            " " )
+            " "  )
         .def(
             "CreateElementTessellation", 
             (void(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::CreateElementTessellation, 
-            " " )
+            " "  )
         .def(
             "CreateMutableMesh", 
             (void(PottsBasedCellPopulation2::*)()) &PottsBasedCellPopulation2::CreateMutableMesh, 
-            " " )
+            " "  )
         .def(
             "AddUpdateRule", 
             (void(PottsBasedCellPopulation2::*)(::boost::shared_ptr<AbstractUpdateRule<2> >)) &PottsBasedCellPopulation2::AddUpdateRule, 
-            " " , py::arg("pUpdateRule"))
+            " " , py::arg("pUpdateRule") )
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(PottsBasedCellPopulation2::*)(unsigned int, ::std::string &, bool, double)) &PottsBasedCellPopulation2::GetCellDataItemAtPdeNode, 
-            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
+            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
     ;
 }

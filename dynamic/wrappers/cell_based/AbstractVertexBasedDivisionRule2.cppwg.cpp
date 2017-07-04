@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractVertexBasedDivisionRule<2 > AbstractVertexBasedDivisionRule2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
 
 class AbstractVertexBasedDivisionRule2_Overloads : public AbstractVertexBasedDivisionRule2{
@@ -36,14 +36,14 @@ rCellPopulation);
 
 };
 void register_AbstractVertexBasedDivisionRule2_class(py::module &m){
-py::class_<AbstractVertexBasedDivisionRule2 , AbstractVertexBasedDivisionRule2_Overloads   >(m, "AbstractVertexBasedDivisionRule2")
+py::class_<AbstractVertexBasedDivisionRule2 , AbstractVertexBasedDivisionRule2_Overloads , boost::shared_ptr<AbstractVertexBasedDivisionRule2 >   >(m, "AbstractVertexBasedDivisionRule2")
         .def(
             "CalculateCellDivisionVector", 
             (::boost::numeric::ublas::c_vector<double, 2>(AbstractVertexBasedDivisionRule2::*)(::CellPtr, ::VertexBasedCellPopulation<2> &)) &AbstractVertexBasedDivisionRule2::CalculateCellDivisionVector, 
-            " " , py::arg("pParentCell"), py::arg("rCellPopulation"))
+            " " , py::arg("pParentCell"), py::arg("rCellPopulation") )
         .def(
             "OutputCellVertexBasedDivisionRuleInfo", 
             (void(AbstractVertexBasedDivisionRule2::*)(::out_stream &)) &AbstractVertexBasedDivisionRule2::OutputCellVertexBasedDivisionRuleInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

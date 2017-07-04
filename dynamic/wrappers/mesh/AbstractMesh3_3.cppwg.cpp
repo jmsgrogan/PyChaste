@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractMesh<3,3 > AbstractMesh3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef ::Node<3> * _Node3Ptr;
@@ -143,150 +143,150 @@ zFactor);
 
 };
 void register_AbstractMesh3_3_class(py::module &m){
-py::class_<AbstractMesh3_3 , AbstractMesh3_3_Overloads   >(m, "AbstractMesh3_3")
+py::class_<AbstractMesh3_3 , AbstractMesh3_3_Overloads , boost::shared_ptr<AbstractMesh3_3 >   >(m, "AbstractMesh3_3")
         .def(
             "GetNodeIteratorBegin", 
             (::AbstractMesh<3, 3>::NodeIterator(AbstractMesh3_3::*)(bool)) &AbstractMesh3_3::GetNodeIteratorBegin, 
-            " " , py::arg("skipDeletedNodes") = true)
+            " " , py::arg("skipDeletedNodes") = true )
         .def(
             "GetNodeIteratorEnd", 
             (::AbstractMesh<3, 3>::NodeIterator(AbstractMesh3_3::*)()) &AbstractMesh3_3::GetNodeIteratorEnd, 
-            " " )
+            " "  )
         .def(
             "GetNumNodes", 
             (unsigned int(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetNumBoundaryNodes", 
             (unsigned int(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetNumBoundaryNodes, 
-            " " )
+            " "  )
         .def(
             "GetNumAllNodes", 
             (unsigned int(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetNumAllNodes, 
-            " " )
+            " "  )
         .def(
             "GetNumNodeAttributes", 
             (unsigned int(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetNumNodeAttributes, 
-            " " )
+            " "  )
         .def(
             "GetNode", 
             (::Node<3> *(AbstractMesh3_3::*)(unsigned int) const ) &AbstractMesh3_3::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNodeOrHaloNode", 
             (::Node<3> *(AbstractMesh3_3::*)(unsigned int) const ) &AbstractMesh3_3::GetNodeOrHaloNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNodeFromPrePermutationIndex", 
             (::Node<3> *(AbstractMesh3_3::*)(unsigned int) const ) &AbstractMesh3_3::GetNodeFromPrePermutationIndex, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "ReadNodesPerProcessorFile", 
             (void(AbstractMesh3_3::*)(::std::string const &)) &AbstractMesh3_3::ReadNodesPerProcessorFile, 
-            " " , py::arg("rNodesPerProcessorFile"))
+            " " , py::arg("rNodesPerProcessorFile") )
         .def(
             "GetDistributedVectorFactory", 
             (::DistributedVectorFactory *(AbstractMesh3_3::*)()) &AbstractMesh3_3::GetDistributedVectorFactory, 
-            " " )
+            " "  , py::return_value_policy::reference)
         .def(
             "SetDistributedVectorFactory", 
             (void(AbstractMesh3_3::*)(::DistributedVectorFactory *)) &AbstractMesh3_3::SetDistributedVectorFactory, 
-            " " , py::arg("pFactory"))
+            " " , py::arg("pFactory") )
         .def(
             "PermuteNodes", 
             (void(AbstractMesh3_3::*)()) &AbstractMesh3_3::PermuteNodes, 
-            " " )
+            " "  )
         .def(
             "GetBoundaryNodeIteratorBegin", 
             (::AbstractMesh<3, 3>::BoundaryNodeIterator(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetBoundaryNodeIteratorBegin, 
-            " " )
+            " "  )
         .def(
             "GetBoundaryNodeIteratorEnd", 
             (::AbstractMesh<3, 3>::BoundaryNodeIterator(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetBoundaryNodeIteratorEnd, 
-            " " )
+            " "  )
         .def(
             "GetMeshFileBaseName", 
             (::std::string(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::GetMeshFileBaseName, 
-            " " )
+            " "  )
         .def(
             "IsMeshOnDisk", 
             (bool(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::IsMeshOnDisk, 
-            " " )
+            " "  )
         .def(
             "rGetNodePermutation", 
             (::std::vector<unsigned int, std::allocator<unsigned int> > const &(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::rGetNodePermutation, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "GetVectorFromAtoB", 
             (::boost::numeric::ublas::c_vector<double, 3>(AbstractMesh3_3::*)(::boost::numeric::ublas::c_vector<double, 3> const &, ::boost::numeric::ublas::c_vector<double, 3> const &)) &AbstractMesh3_3::GetVectorFromAtoB, 
-            " " , py::arg("rLocationA"), py::arg("rLocationB"))
+            " " , py::arg("rLocationA"), py::arg("rLocationB") )
         .def(
             "GetDistanceBetweenNodes", 
             (double(AbstractMesh3_3::*)(unsigned int, unsigned int)) &AbstractMesh3_3::GetDistanceBetweenNodes, 
-            " " , py::arg("indexA"), py::arg("indexB"))
+            " " , py::arg("indexA"), py::arg("indexB") )
         .def(
             "GetWidth", 
             (double(AbstractMesh3_3::*)(unsigned int const &) const ) &AbstractMesh3_3::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "CalculateBoundingBox", 
             (::ChasteCuboid<3>(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::CalculateBoundingBox, 
-            " " )
+            " "  )
         .def(
             "GetNearestNodeIndex", 
             (unsigned int(AbstractMesh3_3::*)(::ChastePoint<3> const &)) &AbstractMesh3_3::GetNearestNodeIndex, 
-            " " , py::arg("rTestPoint"))
+            " " , py::arg("rTestPoint") )
         .def(
             "Scale", 
             (void(AbstractMesh3_3::*)(double const, double const, double const)) &AbstractMesh3_3::Scale, 
-            " " , py::arg("xFactor") = 1., py::arg("yFactor") = 1., py::arg("zFactor") = 1.)
+            " " , py::arg("xFactor") = 1., py::arg("yFactor") = 1., py::arg("zFactor") = 1. )
         .def(
             "Translate", 
             (void(AbstractMesh3_3::*)(::boost::numeric::ublas::c_vector<double, 3> const &)) &AbstractMesh3_3::Translate, 
-            " " , py::arg("rDisplacement"))
+            " " , py::arg("rDisplacement") )
         .def(
             "Translate", 
             (void(AbstractMesh3_3::*)(double const, double const, double const)) &AbstractMesh3_3::Translate, 
-            " " , py::arg("xMovement") = 0., py::arg("yMovement") = 0., py::arg("zMovement") = 0.)
+            " " , py::arg("xMovement") = 0., py::arg("yMovement") = 0., py::arg("zMovement") = 0. )
         .def(
             "Rotate", 
             (void(AbstractMesh3_3::*)(::boost::numeric::ublas::c_matrix<double, 3, 3>)) &AbstractMesh3_3::Rotate, 
-            " " , py::arg("rotationMatrix"))
+            " " , py::arg("rotationMatrix") )
         .def(
             "Rotate", 
             (void(AbstractMesh3_3::*)(::boost::numeric::ublas::c_vector<double, 3>, double)) &AbstractMesh3_3::Rotate, 
-            " " , py::arg("axis"), py::arg("angle"))
+            " " , py::arg("axis"), py::arg("angle") )
         .def(
             "RotateX", 
             (void(AbstractMesh3_3::*)(double const)) &AbstractMesh3_3::RotateX, 
-            " " , py::arg("theta"))
+            " " , py::arg("theta") )
         .def(
             "RotateY", 
             (void(AbstractMesh3_3::*)(double const)) &AbstractMesh3_3::RotateY, 
-            " " , py::arg("theta"))
+            " " , py::arg("theta") )
         .def(
             "RotateZ", 
             (void(AbstractMesh3_3::*)(double const)) &AbstractMesh3_3::RotateZ, 
-            " " , py::arg("theta"))
+            " " , py::arg("theta") )
         .def(
             "Rotate", 
             (void(AbstractMesh3_3::*)(double)) &AbstractMesh3_3::Rotate, 
-            " " , py::arg("theta"))
+            " " , py::arg("theta") )
         .def(
             "RefreshMesh", 
             (void(AbstractMesh3_3::*)()) &AbstractMesh3_3::RefreshMesh, 
-            " " )
+            " "  )
         .def(
             "IsMeshChanging", 
             (bool(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::IsMeshChanging, 
-            " " )
+            " "  )
         .def(
             "CalculateMaximumContainingElementsPerProcess", 
             (unsigned int(AbstractMesh3_3::*)() const ) &AbstractMesh3_3::CalculateMaximumContainingElementsPerProcess, 
-            " " )
+            " "  )
         .def(
             "SetMeshHasChangedSinceLoading", 
             (void(AbstractMesh3_3::*)()) &AbstractMesh3_3::SetMeshHasChangedSinceLoading, 
-            " " )
+            " "  )
     ;
 }

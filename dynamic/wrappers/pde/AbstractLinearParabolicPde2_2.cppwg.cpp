@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractLinearParabolicPde<2,2 > AbstractLinearParabolicPde2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_matrix<double, 2, 2> _boost_numeric_ublas_c_matrixdouble_2_2;
 
 class AbstractLinearParabolicPde2_2_Overloads : public AbstractLinearParabolicPde2_2{
@@ -53,22 +53,22 @@ pElement);
 
 };
 void register_AbstractLinearParabolicPde2_2_class(py::module &m){
-py::class_<AbstractLinearParabolicPde2_2 , AbstractLinearParabolicPde2_2_Overloads   >(m, "AbstractLinearParabolicPde2_2")
+py::class_<AbstractLinearParabolicPde2_2 , AbstractLinearParabolicPde2_2_Overloads , boost::shared_ptr<AbstractLinearParabolicPde2_2 >   >(m, "AbstractLinearParabolicPde2_2")
         .def(
             "ComputeDuDtCoefficientFunction", 
             (double(AbstractLinearParabolicPde2_2::*)(::ChastePoint<2> const &)) &AbstractLinearParabolicPde2_2::ComputeDuDtCoefficientFunction, 
-            " " , py::arg("rX"))
+            " " , py::arg("rX") )
         .def(
             "ComputeSourceTerm", 
             (double(AbstractLinearParabolicPde2_2::*)(::ChastePoint<2> const &, double, ::Element<2, 2> *)) &AbstractLinearParabolicPde2_2::ComputeSourceTerm, 
-            " " , py::arg("rX"), py::arg("u"), py::arg("pElement") = nullptr)
+            " " , py::arg("rX"), py::arg("u"), py::arg("pElement") = nullptr )
         .def(
             "ComputeSourceTermAtNode", 
             (double(AbstractLinearParabolicPde2_2::*)(::Node<2> const &, double)) &AbstractLinearParabolicPde2_2::ComputeSourceTermAtNode, 
-            " " , py::arg("rNode"), py::arg("u"))
+            " " , py::arg("rNode"), py::arg("u") )
         .def(
             "ComputeDiffusionTerm", 
             (::boost::numeric::ublas::c_matrix<double, 2, 2>(AbstractLinearParabolicPde2_2::*)(::ChastePoint<2> const &, ::Element<2, 2> *)) &AbstractLinearParabolicPde2_2::ComputeDiffusionTerm, 
-            " " , py::arg("rX"), py::arg("pElement") = __null)
+            " " , py::arg("rX"), py::arg("pElement") = __null )
     ;
 }

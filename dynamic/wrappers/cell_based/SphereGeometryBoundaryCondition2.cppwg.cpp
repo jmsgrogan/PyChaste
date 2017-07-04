@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef SphereGeometryBoundaryCondition<2 > SphereGeometryBoundaryCondition2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class SphereGeometryBoundaryCondition2_Overloads : public SphereGeometryBoundaryCondition2{
     public:
@@ -41,27 +41,27 @@ class SphereGeometryBoundaryCondition2_Overloads : public SphereGeometryBoundary
 
 };
 void register_SphereGeometryBoundaryCondition2_class(py::module &m){
-py::class_<SphereGeometryBoundaryCondition2 , SphereGeometryBoundaryCondition2_Overloads   >(m, "SphereGeometryBoundaryCondition2")
+py::class_<SphereGeometryBoundaryCondition2 , SphereGeometryBoundaryCondition2_Overloads , boost::shared_ptr<SphereGeometryBoundaryCondition2 >   >(m, "SphereGeometryBoundaryCondition2")
         .def(py::init<::AbstractCellPopulation<2, 2> *, ::boost::numeric::ublas::c_vector<double, 2>, double, double >(), py::arg("pCellPopulation"), py::arg("centre"), py::arg("radius"), py::arg("distance") = 1.0000000000000001E-5)
         .def(
             "rGetCentreOfSphere", 
             (::boost::numeric::ublas::c_vector<double, 2> const &(SphereGeometryBoundaryCondition2::*)() const ) &SphereGeometryBoundaryCondition2::rGetCentreOfSphere, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "GetRadiusOfSphere", 
             (double(SphereGeometryBoundaryCondition2::*)() const ) &SphereGeometryBoundaryCondition2::GetRadiusOfSphere, 
-            " " )
+            " "  )
         .def(
             "ImposeBoundaryCondition", 
             (void(SphereGeometryBoundaryCondition2::*)(::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const &)) &SphereGeometryBoundaryCondition2::ImposeBoundaryCondition, 
-            " " , py::arg("rOldLocations"))
+            " " , py::arg("rOldLocations") )
         .def(
             "VerifyBoundaryCondition", 
             (bool(SphereGeometryBoundaryCondition2::*)()) &SphereGeometryBoundaryCondition2::VerifyBoundaryCondition, 
-            " " )
+            " "  )
         .def(
             "OutputCellPopulationBoundaryConditionParameters", 
             (void(SphereGeometryBoundaryCondition2::*)(::out_stream &)) &SphereGeometryBoundaryCondition2::OutputCellPopulationBoundaryConditionParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

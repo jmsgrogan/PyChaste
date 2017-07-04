@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef VertexMesh<2,2 > VertexMesh2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
@@ -105,125 +105,125 @@ rLocationB);
 
 };
 void register_VertexMesh2_2_class(py::module &m){
-py::class_<VertexMesh2_2 , VertexMesh2_2_Overloads   >(m, "VertexMesh2_2")
+py::class_<VertexMesh2_2 , VertexMesh2_2_Overloads , boost::shared_ptr<VertexMesh2_2 >   >(m, "VertexMesh2_2")
         .def(py::init<::std::vector<Node<2> *, std::allocator<Node<2> *> >, ::std::vector<VertexElement<2, 2> *, std::allocator<VertexElement<2, 2> *> > >(), py::arg("nodes"), py::arg("vertexElements"))
         .def(py::init<::std::vector<Node<2> *, std::allocator<Node<2> *> >, ::std::vector<VertexElement<1, 2> *, std::allocator<VertexElement<1, 2> *> >, ::std::vector<VertexElement<2, 2> *, std::allocator<VertexElement<2, 2> *> > >(), py::arg("nodes"), py::arg("faces"), py::arg("vertexElements"))
         .def(py::init< >())
         .def(
             "GetElementIteratorBegin", 
             (::VertexMesh<2, 2>::VertexElementIterator(VertexMesh2_2::*)(bool)) &VertexMesh2_2::GetElementIteratorBegin, 
-            " " , py::arg("skipDeletedElements") = true)
+            " " , py::arg("skipDeletedElements") = true )
         .def(
             "GetElementIteratorEnd", 
             (::VertexMesh<2, 2>::VertexElementIterator(VertexMesh2_2::*)()) &VertexMesh2_2::GetElementIteratorEnd, 
-            " " )
+            " "  )
         .def(
             "GetNumNodes", 
             (unsigned int(VertexMesh2_2::*)() const ) &VertexMesh2_2::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetNumElements", 
             (unsigned int(VertexMesh2_2::*)() const ) &VertexMesh2_2::GetNumElements, 
-            " " )
+            " "  )
         .def(
             "GetNumAllElements", 
             (unsigned int(VertexMesh2_2::*)() const ) &VertexMesh2_2::GetNumAllElements, 
-            " " )
+            " "  )
         .def(
             "GetNumFaces", 
             (unsigned int(VertexMesh2_2::*)() const ) &VertexMesh2_2::GetNumFaces, 
-            " " )
+            " "  )
         .def(
             "GetElement", 
             (::VertexElement<2, 2> *(VertexMesh2_2::*)(unsigned int) const ) &VertexMesh2_2::GetElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetCentroidOfElement", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetCentroidOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "ConstructFromMeshReader", 
             (void(VertexMesh2_2::*)(::AbstractMeshReader<2, 2> &)) &VertexMesh2_2::ConstructFromMeshReader, 
-            " " , py::arg("rMeshReader"))
+            " " , py::arg("rMeshReader") )
         .def(
             "Clear", 
             (void(VertexMesh2_2::*)()) &VertexMesh2_2::Clear, 
-            " " )
+            " "  )
         .def(
             "GetDelaunayNodeIndexCorrespondingToVoronoiElementIndex", 
             (unsigned int(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetDelaunayNodeIndexCorrespondingToVoronoiElementIndex, 
-            " " , py::arg("elementIndex"))
+            " " , py::arg("elementIndex") )
         .def(
             "GetVoronoiElementIndexCorrespondingToDelaunayNodeIndex", 
             (unsigned int(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetVoronoiElementIndexCorrespondingToDelaunayNodeIndex, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "GetRosetteRankOfElement", 
             (unsigned int(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetRosetteRankOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetVectorFromAtoB", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(::boost::numeric::ublas::c_vector<double, 2> const &, ::boost::numeric::ublas::c_vector<double, 2> const &)) &VertexMesh2_2::GetVectorFromAtoB, 
-            " " , py::arg("rLocationA"), py::arg("rLocationB"))
+            " " , py::arg("rLocationA"), py::arg("rLocationB") )
         .def(
             "GetVolumeOfElement", 
             (double(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetVolumeOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetSurfaceAreaOfElement", 
             (double(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetSurfaceAreaOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetAreaGradientOfElementAtNode", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(::VertexElement<2, 2> *, unsigned int)) &VertexMesh2_2::GetAreaGradientOfElementAtNode, 
-            " " , py::arg("pElement"), py::arg("localIndex"))
+            " " , py::arg("pElement"), py::arg("localIndex") )
         .def(
             "GetPreviousEdgeGradientOfElementAtNode", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(::VertexElement<2, 2> *, unsigned int)) &VertexMesh2_2::GetPreviousEdgeGradientOfElementAtNode, 
-            " " , py::arg("pElement"), py::arg("localIndex"))
+            " " , py::arg("pElement"), py::arg("localIndex") )
         .def(
             "GetNextEdgeGradientOfElementAtNode", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(::VertexElement<2, 2> *, unsigned int)) &VertexMesh2_2::GetNextEdgeGradientOfElementAtNode, 
-            " " , py::arg("pElement"), py::arg("localIndex"))
+            " " , py::arg("pElement"), py::arg("localIndex") )
         .def(
             "GetPerimeterGradientOfElementAtNode", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(::VertexElement<2, 2> *, unsigned int)) &VertexMesh2_2::GetPerimeterGradientOfElementAtNode, 
-            " " , py::arg("pElement"), py::arg("localIndex"))
+            " " , py::arg("pElement"), py::arg("localIndex") )
         .def(
             "CalculateMomentsOfElement", 
             (::boost::numeric::ublas::c_vector<double, 3>(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::CalculateMomentsOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetEdgeLength", 
             (double(VertexMesh2_2::*)(unsigned int, unsigned int)) &VertexMesh2_2::GetEdgeLength, 
-            " " , py::arg("elementIndex1"), py::arg("elementIndex2"))
+            " " , py::arg("elementIndex1"), py::arg("elementIndex2") )
         .def(
             "GetElongationShapeFactorOfElement", 
             (double(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetElongationShapeFactorOfElement, 
-            " " , py::arg("elementIndex"))
+            " " , py::arg("elementIndex") )
         .def(
             "CalculateUnitNormalToFaceWithArea", 
             (double(VertexMesh2_2::*)(::VertexElement<1, 2> *, ::boost::numeric::ublas::c_vector<double, 2> &)) &VertexMesh2_2::CalculateUnitNormalToFaceWithArea, 
-            " " , py::arg("pFace"), py::arg("rNormal"))
+            " " , py::arg("pFace"), py::arg("rNormal") )
         .def(
             "CalculateAreaOfFace", 
             (double(VertexMesh2_2::*)(::VertexElement<1, 2> *)) &VertexMesh2_2::CalculateAreaOfFace, 
-            " " , py::arg("pFace"))
+            " " , py::arg("pFace") )
         .def(
             "GetShortAxisOfElement", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetShortAxisOfElement, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "GetNeighbouringNodeIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetNeighbouringNodeIndices, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "GetNeighbouringNodeNotAlsoInElement", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexMesh2_2::*)(unsigned int, unsigned int)) &VertexMesh2_2::GetNeighbouringNodeNotAlsoInElement, 
-            " " , py::arg("nodeIndex"), py::arg("elemIndex"))
+            " " , py::arg("nodeIndex"), py::arg("elemIndex") )
         .def(
             "GetNeighbouringElementIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexMesh2_2::*)(unsigned int)) &VertexMesh2_2::GetNeighbouringElementIndices, 
-            " " , py::arg("elementIndex"))
+            " " , py::arg("elementIndex") )
     ;
 }

@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef GeneralisedLinearSpringForce<2,2 > GeneralisedLinearSpringForce2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
 
 class GeneralisedLinearSpringForce2_2_Overloads : public GeneralisedLinearSpringForce2_2{
@@ -47,43 +47,43 @@ rCellPopulation);
 
 };
 void register_GeneralisedLinearSpringForce2_2_class(py::module &m){
-py::class_<GeneralisedLinearSpringForce2_2 , GeneralisedLinearSpringForce2_2_Overloads   >(m, "GeneralisedLinearSpringForce2_2")
+py::class_<GeneralisedLinearSpringForce2_2 , GeneralisedLinearSpringForce2_2_Overloads , boost::shared_ptr<GeneralisedLinearSpringForce2_2 >   >(m, "GeneralisedLinearSpringForce2_2")
         .def(py::init< >())
         .def(
             "VariableSpringConstantMultiplicationFactor", 
             (double(GeneralisedLinearSpringForce2_2::*)(unsigned int, unsigned int, ::AbstractCellPopulation<2, 2> &, bool)) &GeneralisedLinearSpringForce2_2::VariableSpringConstantMultiplicationFactor, 
-            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation"), py::arg("isCloserThanRestLength"))
+            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation"), py::arg("isCloserThanRestLength") )
         .def(
             "CalculateForceBetweenNodes", 
             (::boost::numeric::ublas::c_vector<double, 2>(GeneralisedLinearSpringForce2_2::*)(unsigned int, unsigned int, ::AbstractCellPopulation<2, 2> &)) &GeneralisedLinearSpringForce2_2::CalculateForceBetweenNodes, 
-            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation"))
+            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation") )
         .def(
             "GetMeinekeSpringStiffness", 
             (double(GeneralisedLinearSpringForce2_2::*)()) &GeneralisedLinearSpringForce2_2::GetMeinekeSpringStiffness, 
-            " " )
+            " "  )
         .def(
             "GetMeinekeDivisionRestingSpringLength", 
             (double(GeneralisedLinearSpringForce2_2::*)()) &GeneralisedLinearSpringForce2_2::GetMeinekeDivisionRestingSpringLength, 
-            " " )
+            " "  )
         .def(
             "GetMeinekeSpringGrowthDuration", 
             (double(GeneralisedLinearSpringForce2_2::*)()) &GeneralisedLinearSpringForce2_2::GetMeinekeSpringGrowthDuration, 
-            " " )
+            " "  )
         .def(
             "SetMeinekeSpringStiffness", 
             (void(GeneralisedLinearSpringForce2_2::*)(double)) &GeneralisedLinearSpringForce2_2::SetMeinekeSpringStiffness, 
-            " " , py::arg("springStiffness"))
+            " " , py::arg("springStiffness") )
         .def(
             "SetMeinekeDivisionRestingSpringLength", 
             (void(GeneralisedLinearSpringForce2_2::*)(double)) &GeneralisedLinearSpringForce2_2::SetMeinekeDivisionRestingSpringLength, 
-            " " , py::arg("divisionRestingSpringLength"))
+            " " , py::arg("divisionRestingSpringLength") )
         .def(
             "SetMeinekeSpringGrowthDuration", 
             (void(GeneralisedLinearSpringForce2_2::*)(double)) &GeneralisedLinearSpringForce2_2::SetMeinekeSpringGrowthDuration, 
-            " " , py::arg("springGrowthDuration"))
+            " " , py::arg("springGrowthDuration") )
         .def(
             "OutputForceParameters", 
             (void(GeneralisedLinearSpringForce2_2::*)(::out_stream &)) &GeneralisedLinearSpringForce2_2::OutputForceParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

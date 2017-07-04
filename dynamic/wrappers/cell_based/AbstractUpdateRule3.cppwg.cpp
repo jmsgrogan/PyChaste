@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractUpdateRule<3 > AbstractUpdateRule3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractUpdateRule3_Overloads : public AbstractUpdateRule3{
     public:
@@ -27,14 +27,14 @@ class AbstractUpdateRule3_Overloads : public AbstractUpdateRule3{
 
 };
 void register_AbstractUpdateRule3_class(py::module &m){
-py::class_<AbstractUpdateRule3 , AbstractUpdateRule3_Overloads   >(m, "AbstractUpdateRule3")
+py::class_<AbstractUpdateRule3 , AbstractUpdateRule3_Overloads , boost::shared_ptr<AbstractUpdateRule3 >   >(m, "AbstractUpdateRule3")
         .def(
             "OutputUpdateRuleInfo", 
             (void(AbstractUpdateRule3::*)(::out_stream &)) &AbstractUpdateRule3::OutputUpdateRuleInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputUpdateRuleParameters", 
             (void(AbstractUpdateRule3::*)(::out_stream &)) &AbstractUpdateRule3::OutputUpdateRuleParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

@@ -6,18 +6,18 @@
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "VoronoiDataWriter.hpp"
 #include "VertexBasedCellPopulation.hpp"
 #include "MeshBasedCellPopulation.hpp"
 #include "PottsBasedCellPopulation.hpp"
 #include "NodeBasedCellPopulation.hpp"
 #include "CaBasedCellPopulation.hpp"
+#include "VoronoiDataWriter.hpp"
 
 #include "VoronoiDataWriter3_3.cppwg.hpp"
 
 namespace py = pybind11;
 typedef VoronoiDataWriter<3,3 > VoronoiDataWriter3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
     public:
@@ -60,27 +60,27 @@ class VoronoiDataWriter3_3_Overloads : public VoronoiDataWriter3_3{
 
 };
 void register_VoronoiDataWriter3_3_class(py::module &m){
-py::class_<VoronoiDataWriter3_3 , VoronoiDataWriter3_3_Overloads   >(m, "VoronoiDataWriter3_3")
+py::class_<VoronoiDataWriter3_3 , VoronoiDataWriter3_3_Overloads , boost::shared_ptr<VoronoiDataWriter3_3 >   >(m, "VoronoiDataWriter3_3")
         .def(py::init< >())
         .def(
             "Visit", 
             (void(VoronoiDataWriter3_3::*)(::MeshBasedCellPopulation<3, 3> *)) &VoronoiDataWriter3_3::Visit, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
         .def(
             "Visit", 
             (void(VoronoiDataWriter3_3::*)(::CaBasedCellPopulation<3> *)) &VoronoiDataWriter3_3::Visit, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
         .def(
             "Visit", 
             (void(VoronoiDataWriter3_3::*)(::NodeBasedCellPopulation<3> *)) &VoronoiDataWriter3_3::Visit, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
         .def(
             "Visit", 
             (void(VoronoiDataWriter3_3::*)(::PottsBasedCellPopulation<3> *)) &VoronoiDataWriter3_3::Visit, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
         .def(
             "Visit", 
             (void(VoronoiDataWriter3_3::*)(::VertexBasedCellPopulation<3> *)) &VoronoiDataWriter3_3::Visit, 
-            " " , py::arg("pCellPopulation"))
+            " " , py::arg("pCellPopulation") )
     ;
 }

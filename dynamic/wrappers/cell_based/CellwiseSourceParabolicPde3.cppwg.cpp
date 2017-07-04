@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef CellwiseSourceParabolicPde<3 > CellwiseSourceParabolicPde3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
 
 class CellwiseSourceParabolicPde3_Overloads : public CellwiseSourceParabolicPde3{
@@ -53,27 +53,27 @@ pElement);
 
 };
 void register_CellwiseSourceParabolicPde3_class(py::module &m){
-py::class_<CellwiseSourceParabolicPde3 , CellwiseSourceParabolicPde3_Overloads   >(m, "CellwiseSourceParabolicPde3")
+py::class_<CellwiseSourceParabolicPde3 , CellwiseSourceParabolicPde3_Overloads , boost::shared_ptr<CellwiseSourceParabolicPde3 >   >(m, "CellwiseSourceParabolicPde3")
         .def(py::init<::AbstractCellPopulation<3, 3> &, double, double, double >(), py::arg("rCellPopulation"), py::arg("duDtCoefficient") = 1., py::arg("diffusionCoefficient") = 1., py::arg("sourceCoefficient") = 0.)
         .def(
             "rGetCellPopulation", 
             (::AbstractCellPopulation<3, 3> const &(CellwiseSourceParabolicPde3::*)() const ) &CellwiseSourceParabolicPde3::rGetCellPopulation, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "ComputeDuDtCoefficientFunction", 
             (double(CellwiseSourceParabolicPde3::*)(::ChastePoint<3> const &)) &CellwiseSourceParabolicPde3::ComputeDuDtCoefficientFunction, 
-            " " , py::arg("rX"))
+            " " , py::arg("rX") )
         .def(
             "ComputeSourceTerm", 
             (double(CellwiseSourceParabolicPde3::*)(::ChastePoint<3> const &, double, ::Element<3, 3> *)) &CellwiseSourceParabolicPde3::ComputeSourceTerm, 
-            " " , py::arg("rX"), py::arg("u"), py::arg("pElement") = __null)
+            " " , py::arg("rX"), py::arg("u"), py::arg("pElement") = __null )
         .def(
             "ComputeSourceTermAtNode", 
             (double(CellwiseSourceParabolicPde3::*)(::Node<3> const &, double)) &CellwiseSourceParabolicPde3::ComputeSourceTermAtNode, 
-            " " , py::arg("rNode"), py::arg("u"))
+            " " , py::arg("rNode"), py::arg("u") )
         .def(
             "ComputeDiffusionTerm", 
             (::boost::numeric::ublas::c_matrix<double, 3, 3>(CellwiseSourceParabolicPde3::*)(::ChastePoint<3> const &, ::Element<3, 3> *)) &CellwiseSourceParabolicPde3::ComputeDiffusionTerm, 
-            " " , py::arg("rX"), py::arg("pElement") = __null)
+            " " , py::arg("rX"), py::arg("pElement") = __null )
     ;
 }

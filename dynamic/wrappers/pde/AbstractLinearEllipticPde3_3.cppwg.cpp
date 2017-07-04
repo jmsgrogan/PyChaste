@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractLinearEllipticPde<3,3 > AbstractLinearEllipticPde3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
 
 class AbstractLinearEllipticPde3_3_Overloads : public AbstractLinearEllipticPde3_3{
@@ -58,26 +58,26 @@ pElement);
 
 };
 void register_AbstractLinearEllipticPde3_3_class(py::module &m){
-py::class_<AbstractLinearEllipticPde3_3 , AbstractLinearEllipticPde3_3_Overloads   >(m, "AbstractLinearEllipticPde3_3")
+py::class_<AbstractLinearEllipticPde3_3 , AbstractLinearEllipticPde3_3_Overloads , boost::shared_ptr<AbstractLinearEllipticPde3_3 >   >(m, "AbstractLinearEllipticPde3_3")
         .def(
             "ComputeConstantInUSourceTerm", 
             (double(AbstractLinearEllipticPde3_3::*)(::ChastePoint<3> const &, ::Element<3, 3> *)) &AbstractLinearEllipticPde3_3::ComputeConstantInUSourceTerm, 
-            " " , py::arg("rX"), py::arg("pElement"))
+            " " , py::arg("rX"), py::arg("pElement") )
         .def(
             "ComputeLinearInUCoeffInSourceTerm", 
             (double(AbstractLinearEllipticPde3_3::*)(::ChastePoint<3> const &, ::Element<3, 3> *)) &AbstractLinearEllipticPde3_3::ComputeLinearInUCoeffInSourceTerm, 
-            " " , py::arg("rX"), py::arg("pElement"))
+            " " , py::arg("rX"), py::arg("pElement") )
         .def(
             "ComputeDiffusionTerm", 
             (::boost::numeric::ublas::c_matrix<double, 3, 3>(AbstractLinearEllipticPde3_3::*)(::ChastePoint<3> const &)) &AbstractLinearEllipticPde3_3::ComputeDiffusionTerm, 
-            " " , py::arg("rX"))
+            " " , py::arg("rX") )
         .def(
             "ComputeConstantInUSourceTermAtNode", 
             (double(AbstractLinearEllipticPde3_3::*)(::Node<3> const &)) &AbstractLinearEllipticPde3_3::ComputeConstantInUSourceTermAtNode, 
-            " " , py::arg("rNode"))
+            " " , py::arg("rNode") )
         .def(
             "ComputeLinearInUCoeffInSourceTermAtNode", 
             (double(AbstractLinearEllipticPde3_3::*)(::Node<3> const &)) &AbstractLinearEllipticPde3_3::ComputeLinearInUCoeffInSourceTermAtNode, 
-            " " , py::arg("rNode"))
+            " " , py::arg("rNode") )
     ;
 }

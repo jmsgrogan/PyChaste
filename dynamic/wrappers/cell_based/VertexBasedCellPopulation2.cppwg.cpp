@@ -6,14 +6,15 @@
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "VertexBasedCellPopulation.hpp"
 #include "AbstractCellBasedSimulation.hpp"
+#include "AbstractVertexBasedDivisionRule.hpp"
+#include "VertexBasedCellPopulation.hpp"
 
 #include "VertexBasedCellPopulation2.cppwg.hpp"
 
 namespace py = pybind11;
 typedef VertexBasedCellPopulation<2 > VertexBasedCellPopulation2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
 typedef ::Node<2> * _Node2Ptr;
@@ -220,152 +221,152 @@ dirichletBoundaryValue);
 
 };
 void register_VertexBasedCellPopulation2_class(py::module &m){
-py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads   >(m, "VertexBasedCellPopulation2")
+py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads , boost::shared_ptr<VertexBasedCellPopulation2 >   >(m, "VertexBasedCellPopulation2")
         .def(py::init<::MutableVertexMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, bool, bool, ::std::vector<unsigned int, std::allocator<unsigned int> > const >(), py::arg("rMesh"), py::arg("rCells"), py::arg("deleteMesh") = false, py::arg("validate") = true, py::arg("locationIndices") = std::vector<unsigned int>())
         .def(py::init<::MutableVertexMesh<2, 2> & >(), py::arg("rMesh"))
         .def(
             "GetDampingConstant", 
             (double(VertexBasedCellPopulation2::*)(unsigned int)) &VertexBasedCellPopulation2::GetDampingConstant, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "GetNumElements", 
             (unsigned int(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetNumElements, 
-            " " )
+            " "  )
         .def(
             "GetNumNodes", 
             (unsigned int(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 2>(VertexBasedCellPopulation2::*)(::CellPtr)) &VertexBasedCellPopulation2::GetLocationOfCellCentre, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetNode", 
             (::Node<2> *(VertexBasedCellPopulation2::*)(unsigned int)) &VertexBasedCellPopulation2::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNeighbouringLocationIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexBasedCellPopulation2::*)(::CellPtr)) &VertexBasedCellPopulation2::GetNeighbouringLocationIndices, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "AddNode", 
             (unsigned int(VertexBasedCellPopulation2::*)(::Node<2> *)) &VertexBasedCellPopulation2::AddNode, 
-            " " , py::arg("pNewNode"))
+            " " , py::arg("pNewNode") )
         .def(
             "CheckForStepSizeException", 
             (void(VertexBasedCellPopulation2::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 2> &, double)) &VertexBasedCellPopulation2::CheckForStepSizeException, 
-            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt"))
+            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt") )
         .def(
             "SetNode", 
             (void(VertexBasedCellPopulation2::*)(unsigned int, ::ChastePoint<2> &)) &VertexBasedCellPopulation2::SetNode, 
-            " " , py::arg("index"), py::arg("rNewLocation"))
+            " " , py::arg("index"), py::arg("rNewLocation") )
         .def(
             "AddCell", 
             (::CellPtr(VertexBasedCellPopulation2::*)(::CellPtr, ::CellPtr)) &VertexBasedCellPopulation2::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ))
+            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ) )
         .def(
             "RemoveDeadCells", 
             (unsigned int(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::RemoveDeadCells, 
-            " " )
+            " "  )
         .def(
             "IsCellAssociatedWithADeletedLocation", 
             (bool(VertexBasedCellPopulation2::*)(::CellPtr)) &VertexBasedCellPopulation2::IsCellAssociatedWithADeletedLocation, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "Update", 
             (void(VertexBasedCellPopulation2::*)(bool)) &VertexBasedCellPopulation2::Update, 
-            " " , py::arg("hasHadBirthsOrDeaths") = true)
+            " " , py::arg("hasHadBirthsOrDeaths") = true )
         .def(
             "OpenWritersFiles", 
             (void(VertexBasedCellPopulation2::*)(::OutputFileHandler &)) &VertexBasedCellPopulation2::OpenWritersFiles, 
-            " " , py::arg("rOutputFileHandler"))
+            " " , py::arg("rOutputFileHandler") )
         .def(
             "AcceptPopulationWriter", 
             (void(VertexBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellPopulationWriter<2, 2> >)) &VertexBasedCellPopulation2::AcceptPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AcceptPopulationCountWriter", 
             (void(VertexBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<2, 2> >)) &VertexBasedCellPopulation2::AcceptPopulationCountWriter, 
-            " " , py::arg("pPopulationCountWriter"))
+            " " , py::arg("pPopulationCountWriter") )
         .def(
             "AcceptCellWriter", 
             (void(VertexBasedCellPopulation2::*)(::boost::shared_ptr<AbstractCellWriter<2, 2> >, ::CellPtr)) &VertexBasedCellPopulation2::AcceptCellWriter, 
-            " " , py::arg("pCellWriter"), py::arg("pCell"))
+            " " , py::arg("pCellWriter"), py::arg("pCell") )
         .def(
             "GetRosetteRankOfCell", 
             (unsigned int(VertexBasedCellPopulation2::*)(::CellPtr)) &VertexBasedCellPopulation2::GetRosetteRankOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetVolumeOfCell", 
             (double(VertexBasedCellPopulation2::*)(::CellPtr)) &VertexBasedCellPopulation2::GetVolumeOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetLocationsOfT2Swaps", 
             (::std::vector<boost::numeric::ublas::c_vector<double, 2>, std::allocator<boost::numeric::ublas::c_vector<double, 2> > >(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetLocationsOfT2Swaps, 
-            " " )
+            " "  )
         .def(
             "GetCellIdsOfT2Swaps", 
             (::std::vector<unsigned int, std::allocator<unsigned int> >(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetCellIdsOfT2Swaps, 
-            " " )
+            " "  )
         .def(
             "AddLocationOfT2Swap", 
             (void(VertexBasedCellPopulation2::*)(::boost::numeric::ublas::c_vector<double, 2>)) &VertexBasedCellPopulation2::AddLocationOfT2Swap, 
-            " " , py::arg("locationOfT2Swap"))
+            " " , py::arg("locationOfT2Swap") )
         .def(
             "AddCellIdOfT2Swap", 
             (void(VertexBasedCellPopulation2::*)(unsigned int)) &VertexBasedCellPopulation2::AddCellIdOfT2Swap, 
-            " " , py::arg("idOfT2Swap"))
+            " " , py::arg("idOfT2Swap") )
         .def(
             "ClearLocationsAndCellIdsOfT2Swaps", 
             (void(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::ClearLocationsAndCellIdsOfT2Swaps, 
-            " " )
+            " "  )
         .def(
             "GetOutputCellRearrangementLocations", 
             (bool(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetOutputCellRearrangementLocations, 
-            " " )
+            " "  )
         .def(
             "SetOutputCellRearrangementLocations", 
             (void(VertexBasedCellPopulation2::*)(bool)) &VertexBasedCellPopulation2::SetOutputCellRearrangementLocations, 
-            " " , py::arg("outputCellRearrangementLocations"))
+            " " , py::arg("outputCellRearrangementLocations") )
         .def(
             "OutputCellPopulationParameters", 
             (void(VertexBasedCellPopulation2::*)(::out_stream &)) &VertexBasedCellPopulation2::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "GetWidth", 
             (double(VertexBasedCellPopulation2::*)(unsigned int const &)) &VertexBasedCellPopulation2::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "GetNeighbouringNodeIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexBasedCellPopulation2::*)(unsigned int)) &VertexBasedCellPopulation2::GetNeighbouringNodeIndices, 
-            " " , py::arg("index"))
+            " " , py::arg("index") )
         .def(
             "IsPdeNodeAssociatedWithNonApoptoticCell", 
             (bool(VertexBasedCellPopulation2::*)(unsigned int)) &VertexBasedCellPopulation2::IsPdeNodeAssociatedWithNonApoptoticCell, 
-            " " , py::arg("pdeNodeIndex"))
+            " " , py::arg("pdeNodeIndex") )
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(VertexBasedCellPopulation2::*)(unsigned int, ::std::string &, bool, double)) &VertexBasedCellPopulation2::GetCellDataItemAtPdeNode, 
-            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
+            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
         .def(
             "GetVertexBasedDivisionRule", 
             (::boost::shared_ptr<AbstractVertexBasedDivisionRule<2> >(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetVertexBasedDivisionRule, 
-            " " )
+            " "  )
         .def(
             "SetVertexBasedDivisionRule", 
             (void(VertexBasedCellPopulation2::*)(::boost::shared_ptr<AbstractVertexBasedDivisionRule<2> >)) &VertexBasedCellPopulation2::SetVertexBasedDivisionRule, 
-            " " , py::arg("pVertexBasedDivisionRule"))
+            " " , py::arg("pVertexBasedDivisionRule") )
         .def(
             "GetDefaultTimeStep", 
             (double(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetDefaultTimeStep, 
-            " " )
+            " "  )
         .def(
             "WriteDataToVisualizerSetupFile", 
             (void(VertexBasedCellPopulation2::*)(::out_stream &)) &VertexBasedCellPopulation2::WriteDataToVisualizerSetupFile, 
-            " " , py::arg("pVizSetupFile"))
+            " " , py::arg("pVizSetupFile") )
         .def(
             "SimulationSetupHook", 
             (void(VertexBasedCellPopulation2::*)(::AbstractCellBasedSimulation<2, 2> *)) &VertexBasedCellPopulation2::SimulationSetupHook, 
-            " " , py::arg("pSimulation"))
+            " " , py::arg("pSimulation") )
     ;
 }

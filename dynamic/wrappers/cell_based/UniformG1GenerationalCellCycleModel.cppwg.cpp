@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef UniformG1GenerationalCellCycleModel UniformG1GenerationalCellCycleModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::AbstractCellCycleModel * _AbstractCellCycleModelPtr;
 
 class UniformG1GenerationalCellCycleModel_Overloads : public UniformG1GenerationalCellCycleModel{
@@ -42,15 +42,15 @@ class UniformG1GenerationalCellCycleModel_Overloads : public UniformG1Generation
 
 };
 void register_UniformG1GenerationalCellCycleModel_class(py::module &m){
-py::class_<UniformG1GenerationalCellCycleModel , UniformG1GenerationalCellCycleModel_Overloads  , AbstractSimpleGenerationalCellCycleModel  >(m, "UniformG1GenerationalCellCycleModel")
+py::class_<UniformG1GenerationalCellCycleModel , UniformG1GenerationalCellCycleModel_Overloads , boost::shared_ptr<UniformG1GenerationalCellCycleModel >  , AbstractSimpleGenerationalCellCycleModel  >(m, "UniformG1GenerationalCellCycleModel")
         .def(py::init< >())
         .def(
             "CreateCellCycleModel", 
             (::AbstractCellCycleModel *(UniformG1GenerationalCellCycleModel::*)()) &UniformG1GenerationalCellCycleModel::CreateCellCycleModel, 
-            " " )
+            " "  , py::return_value_policy::reference)
         .def(
             "OutputCellCycleModelParameters", 
             (void(UniformG1GenerationalCellCycleModel::*)(::out_stream &)) &UniformG1GenerationalCellCycleModel::OutputCellCycleModelParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

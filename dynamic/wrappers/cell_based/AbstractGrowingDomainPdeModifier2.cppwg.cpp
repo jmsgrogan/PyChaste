@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractGrowingDomainPdeModifier<2 > AbstractGrowingDomainPdeModifier2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractGrowingDomainPdeModifier2_Overloads : public AbstractGrowingDomainPdeModifier2{
     public:
@@ -27,18 +27,18 @@ class AbstractGrowingDomainPdeModifier2_Overloads : public AbstractGrowingDomain
 
 };
 void register_AbstractGrowingDomainPdeModifier2_class(py::module &m){
-py::class_<AbstractGrowingDomainPdeModifier2 , AbstractGrowingDomainPdeModifier2_Overloads   >(m, "AbstractGrowingDomainPdeModifier2")
+py::class_<AbstractGrowingDomainPdeModifier2 , AbstractGrowingDomainPdeModifier2_Overloads , boost::shared_ptr<AbstractGrowingDomainPdeModifier2 >   >(m, "AbstractGrowingDomainPdeModifier2")
         .def(
             "GenerateFeMesh", 
             (void(AbstractGrowingDomainPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractGrowingDomainPdeModifier2::GenerateFeMesh, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "UpdateCellData", 
             (void(AbstractGrowingDomainPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractGrowingDomainPdeModifier2::UpdateCellData, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "OutputSimulationModifierParameters", 
             (void(AbstractGrowingDomainPdeModifier2::*)(::out_stream &)) &AbstractGrowingDomainPdeModifier2::OutputSimulationModifierParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

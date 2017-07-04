@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractForce<2,2 > AbstractForce2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractForce2_2_Overloads : public AbstractForce2_2{
     public:
@@ -41,22 +41,22 @@ class AbstractForce2_2_Overloads : public AbstractForce2_2{
 
 };
 void register_AbstractForce2_2_class(py::module &m){
-py::class_<AbstractForce2_2 , AbstractForce2_2_Overloads   >(m, "AbstractForce2_2")
+py::class_<AbstractForce2_2 , AbstractForce2_2_Overloads , boost::shared_ptr<AbstractForce2_2 >   >(m, "AbstractForce2_2")
         .def(
             "AddForceContribution", 
             (void(AbstractForce2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractForce2_2::AddForceContribution, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "OutputForceInfo", 
             (void(AbstractForce2_2::*)(::out_stream &)) &AbstractForce2_2::OutputForceInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputForceParameters", 
             (void(AbstractForce2_2::*)(::out_stream &)) &AbstractForce2_2::OutputForceParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "WriteDataToVisualizerSetupFile", 
             (void(AbstractForce2_2::*)(::out_stream &)) &AbstractForce2_2::WriteDataToVisualizerSetupFile, 
-            " " , py::arg("pVizSetupFile"))
+            " " , py::arg("pVizSetupFile") )
     ;
 }

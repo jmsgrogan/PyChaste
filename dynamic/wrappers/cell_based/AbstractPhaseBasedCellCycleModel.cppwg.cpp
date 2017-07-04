@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractPhaseBasedCellCycleModel AbstractPhaseBasedCellCycleModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCellCycleModel{
     public:
@@ -104,90 +104,90 @@ class AbstractPhaseBasedCellCycleModel_Overloads : public AbstractPhaseBasedCell
 
 };
 void register_AbstractPhaseBasedCellCycleModel_class(py::module &m){
-py::class_<AbstractPhaseBasedCellCycleModel , AbstractPhaseBasedCellCycleModel_Overloads  , AbstractCellCycleModel  >(m, "AbstractPhaseBasedCellCycleModel")
+py::class_<AbstractPhaseBasedCellCycleModel , AbstractPhaseBasedCellCycleModel_Overloads , boost::shared_ptr<AbstractPhaseBasedCellCycleModel >  , AbstractCellCycleModel  >(m, "AbstractPhaseBasedCellCycleModel")
         .def(
             "ReadyToDivide", 
             (bool(AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::ReadyToDivide, 
-            " " )
+            " "  )
         .def(
             "ResetForDivision", 
             (void(AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::ResetForDivision, 
-            " " )
+            " "  )
         .def(
             "UpdateCellCyclePhase", 
             (void(AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::UpdateCellCyclePhase, 
-            " " )
+            " "  )
         .def(
             "GetCurrentCellCyclePhase", 
             (::CellCyclePhase(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetCurrentCellCyclePhase, 
-            " " )
+            " "  )
         .def(
             "GetG1Duration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetG1Duration, 
-            " " )
+            " "  )
         .def(
             "GetStemCellG1Duration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetStemCellG1Duration, 
-            " " )
+            " "  )
         .def(
             "GetTransitCellG1Duration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetTransitCellG1Duration, 
-            " " )
+            " "  )
         .def(
             "GetSG2MDuration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetSG2MDuration, 
-            " " )
+            " "  )
         .def(
             "GetSDuration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetSDuration, 
-            " " )
+            " "  )
         .def(
             "GetG2Duration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetG2Duration, 
-            " " )
+            " "  )
         .def(
             "GetMDuration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetMDuration, 
-            " " )
+            " "  )
         .def(
             "SetStemCellG1Duration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetStemCellG1Duration, 
-            " " , py::arg("stemCellG1Duration"))
+            " " , py::arg("stemCellG1Duration") )
         .def(
             "SetTransitCellG1Duration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetTransitCellG1Duration, 
-            " " , py::arg("transitCellG1Duration"))
+            " " , py::arg("transitCellG1Duration") )
         .def(
             "SetSDuration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetSDuration, 
-            " " , py::arg("sDuration"))
+            " " , py::arg("sDuration") )
         .def(
             "SetG2Duration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetG2Duration, 
-            " " , py::arg("g2Duration"))
+            " " , py::arg("g2Duration") )
         .def(
             "SetMDuration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetMDuration, 
-            " " , py::arg("mDuration"))
+            " " , py::arg("mDuration") )
         .def(
             "GetAverageTransitCellCycleTime", 
             (double(AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetAverageTransitCellCycleTime, 
-            " " )
+            " "  )
         .def(
             "GetAverageStemCellCycleTime", 
             (double(AbstractPhaseBasedCellCycleModel::*)()) &AbstractPhaseBasedCellCycleModel::GetAverageStemCellCycleTime, 
-            " " )
+            " "  )
         .def(
             "GetMinimumGapDuration", 
             (double(AbstractPhaseBasedCellCycleModel::*)() const ) &AbstractPhaseBasedCellCycleModel::GetMinimumGapDuration, 
-            " " )
+            " "  )
         .def(
             "SetMinimumGapDuration", 
             (void(AbstractPhaseBasedCellCycleModel::*)(double)) &AbstractPhaseBasedCellCycleModel::SetMinimumGapDuration, 
-            " " , py::arg("minimumGapDuration"))
+            " " , py::arg("minimumGapDuration") )
         .def(
             "OutputCellCycleModelParameters", 
             (void(AbstractPhaseBasedCellCycleModel::*)(::out_stream &)) &AbstractPhaseBasedCellCycleModel::OutputCellCycleModelParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

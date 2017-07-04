@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef CaBasedCellPopulation<3 > CaBasedCellPopulation3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
 typedef ::Node<3> * _Node3Ptr;
 typedef unsigned int unsignedint;
@@ -227,120 +227,120 @@ dirichletBoundaryValue);
 
 };
 void register_CaBasedCellPopulation3_class(py::module &m){
-py::class_<CaBasedCellPopulation3 , CaBasedCellPopulation3_Overloads   >(m, "CaBasedCellPopulation3")
+py::class_<CaBasedCellPopulation3 , CaBasedCellPopulation3_Overloads , boost::shared_ptr<CaBasedCellPopulation3 >   >(m, "CaBasedCellPopulation3")
         .def(py::init<::PottsMesh<3> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, unsigned int, bool, bool >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices"), py::arg("latticeCarryingCapacity") = 1U, py::arg("deleteMesh") = false, py::arg("validate") = false)
         .def(py::init<::PottsMesh<3> & >(), py::arg("rMesh"))
         .def(
             "IsSiteAvailable", 
             (bool(CaBasedCellPopulation3::*)(unsigned int, ::CellPtr)) &CaBasedCellPopulation3::IsSiteAvailable, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "GetNode", 
             (::Node<3> *(CaBasedCellPopulation3::*)(unsigned int)) &CaBasedCellPopulation3::GetNode, 
-            " " , py::arg("index"))
+            " " , py::arg("index") , py::return_value_policy::reference)
         .def(
             "GetNumNodes", 
             (unsigned int(CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::GetNumNodes, 
-            " " )
+            " "  )
         .def(
             "GetNeighbouringLocationIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(CaBasedCellPopulation3::*)(::CellPtr)) &CaBasedCellPopulation3::GetNeighbouringLocationIndices, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 3>(CaBasedCellPopulation3::*)(::CellPtr)) &CaBasedCellPopulation3::GetLocationOfCellCentre, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "AddCellUsingLocationIndex", 
             (void(CaBasedCellPopulation3::*)(unsigned int, ::CellPtr)) &CaBasedCellPopulation3::AddCellUsingLocationIndex, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "RemoveCellUsingLocationIndex", 
             (void(CaBasedCellPopulation3::*)(unsigned int, ::CellPtr)) &CaBasedCellPopulation3::RemoveCellUsingLocationIndex, 
-            " " , py::arg("index"), py::arg("pCell"))
+            " " , py::arg("index"), py::arg("pCell") )
         .def(
             "AddCell", 
             (::CellPtr(CaBasedCellPopulation3::*)(::CellPtr, ::CellPtr)) &CaBasedCellPopulation3::AddCell, 
-            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ))
+            " " , py::arg("pNewCell"), py::arg("pParentCell") = ::CellPtr( ) )
         .def(
             "EvaluateDivisionPropensity", 
             (double(CaBasedCellPopulation3::*)(unsigned int, unsigned int, ::CellPtr)) &CaBasedCellPopulation3::EvaluateDivisionPropensity, 
-            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("pCell"))
+            " " , py::arg("currentNodeIndex"), py::arg("targetNodeIndex"), py::arg("pCell") )
         .def(
             "RemoveDeadCells", 
             (unsigned int(CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::RemoveDeadCells, 
-            " " )
+            " "  )
         .def(
             "OpenWritersFiles", 
             (void(CaBasedCellPopulation3::*)(::OutputFileHandler &)) &CaBasedCellPopulation3::OpenWritersFiles, 
-            " " , py::arg("rOutputFileHandler"))
+            " " , py::arg("rOutputFileHandler") )
         .def(
             "UpdateCellLocations", 
             (void(CaBasedCellPopulation3::*)(double)) &CaBasedCellPopulation3::UpdateCellLocations, 
-            " " , py::arg("dt"))
+            " " , py::arg("dt") )
         .def(
             "IsCellAssociatedWithADeletedLocation", 
             (bool(CaBasedCellPopulation3::*)(::CellPtr)) &CaBasedCellPopulation3::IsCellAssociatedWithADeletedLocation, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "Update", 
             (void(CaBasedCellPopulation3::*)(bool)) &CaBasedCellPopulation3::Update, 
-            " " , py::arg("hasHadBirthsOrDeaths") = true)
+            " " , py::arg("hasHadBirthsOrDeaths") = true )
         .def(
             "AcceptPopulationWriter", 
             (void(CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractCellPopulationWriter<3, 3> >)) &CaBasedCellPopulation3::AcceptPopulationWriter, 
-            " " , py::arg("pPopulationWriter"))
+            " " , py::arg("pPopulationWriter") )
         .def(
             "AcceptPopulationCountWriter", 
             (void(CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractCellPopulationCountWriter<3, 3> >)) &CaBasedCellPopulation3::AcceptPopulationCountWriter, 
-            " " , py::arg("pPopulationCountWriter"))
+            " " , py::arg("pPopulationCountWriter") )
         .def(
             "AcceptCellWriter", 
             (void(CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractCellWriter<3, 3> >, ::CellPtr)) &CaBasedCellPopulation3::AcceptCellWriter, 
-            " " , py::arg("pCellWriter"), py::arg("pCell"))
+            " " , py::arg("pCellWriter"), py::arg("pCell") )
         .def(
             "GetVolumeOfCell", 
             (double(CaBasedCellPopulation3::*)(::CellPtr)) &CaBasedCellPopulation3::GetVolumeOfCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetWidth", 
             (double(CaBasedCellPopulation3::*)(unsigned int const &)) &CaBasedCellPopulation3::GetWidth, 
-            " " , py::arg("rDimension"))
+            " " , py::arg("rDimension") )
         .def(
             "RemoveAllUpdateRules", 
             (void(CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::RemoveAllUpdateRules, 
-            " " )
+            " "  )
         .def(
             "OutputCellPopulationParameters", 
             (void(CaBasedCellPopulation3::*)(::out_stream &)) &CaBasedCellPopulation3::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "IsRoomToDivide", 
             (bool(CaBasedCellPopulation3::*)(::CellPtr)) &CaBasedCellPopulation3::IsRoomToDivide, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "GetCaBasedDivisionRule", 
             (::boost::shared_ptr<AbstractCaBasedDivisionRule<3> >(CaBasedCellPopulation3::*)()) &CaBasedCellPopulation3::GetCaBasedDivisionRule, 
-            " " )
+            " "  )
         .def(
             "SetCaBasedDivisionRule", 
             (void(CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractCaBasedDivisionRule<3> >)) &CaBasedCellPopulation3::SetCaBasedDivisionRule, 
-            " " , py::arg("pCaBasedDivisionRule"))
+            " " , py::arg("pCaBasedDivisionRule") )
         .def(
             "AddUpdateRule", 
             (void(CaBasedCellPopulation3::*)(::boost::shared_ptr<AbstractUpdateRule<3> >)) &CaBasedCellPopulation3::AddUpdateRule, 
-            " " , py::arg("pUpdateRule"))
+            " " , py::arg("pUpdateRule") )
         .def(
             "GetUpdateRuleCollection", 
             (::std::vector<boost::shared_ptr<AbstractUpdateRule<3> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<3> > > > const(CaBasedCellPopulation3::*)() const ) &CaBasedCellPopulation3::GetUpdateRuleCollection, 
-            " " )
+            " "  )
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(CaBasedCellPopulation3::*)(unsigned int, ::std::string &, bool, double)) &CaBasedCellPopulation3::GetCellDataItemAtPdeNode, 
-            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0.)
+            " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
         .def(
             "IsPdeNodeAssociatedWithNonApoptoticCell", 
             (bool(CaBasedCellPopulation3::*)(unsigned int)) &CaBasedCellPopulation3::IsPdeNodeAssociatedWithNonApoptoticCell, 
-            " " , py::arg("pdeNodeIndex"))
+            " " , py::arg("pdeNodeIndex") )
     ;
 }

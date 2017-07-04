@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef PlaneBasedCellKiller<2 > PlaneBasedCellKiller2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class PlaneBasedCellKiller2_Overloads : public PlaneBasedCellKiller2{
     public:
@@ -34,23 +34,23 @@ class PlaneBasedCellKiller2_Overloads : public PlaneBasedCellKiller2{
 
 };
 void register_PlaneBasedCellKiller2_class(py::module &m){
-py::class_<PlaneBasedCellKiller2 , PlaneBasedCellKiller2_Overloads   >(m, "PlaneBasedCellKiller2")
+py::class_<PlaneBasedCellKiller2 , PlaneBasedCellKiller2_Overloads , boost::shared_ptr<PlaneBasedCellKiller2 >   >(m, "PlaneBasedCellKiller2")
         .def(py::init<::AbstractCellPopulation<2, 2> *, ::boost::numeric::ublas::c_vector<double, 2>, ::boost::numeric::ublas::c_vector<double, 2> >(), py::arg("pCellPopulation"), py::arg("point"), py::arg("normal"))
         .def(
             "rGetPointOnPlane", 
             (::boost::numeric::ublas::c_vector<double, 2> const &(PlaneBasedCellKiller2::*)() const ) &PlaneBasedCellKiller2::rGetPointOnPlane, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "rGetNormalToPlane", 
             (::boost::numeric::ublas::c_vector<double, 2> const &(PlaneBasedCellKiller2::*)() const ) &PlaneBasedCellKiller2::rGetNormalToPlane, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
         .def(
             "CheckAndLabelCellsForApoptosisOrDeath", 
             (void(PlaneBasedCellKiller2::*)()) &PlaneBasedCellKiller2::CheckAndLabelCellsForApoptosisOrDeath, 
-            " " )
+            " "  )
         .def(
             "OutputCellKillerParameters", 
             (void(PlaneBasedCellKiller2::*)(::out_stream &)) &PlaneBasedCellKiller2::OutputCellKillerParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractOffLatticeCellPopulation<2,2 > AbstractOffLatticeCellPopulation2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 
 class AbstractOffLatticeCellPopulation2_2_Overloads : public AbstractOffLatticeCellPopulation2_2{
@@ -66,54 +66,54 @@ dt);
 
 };
 void register_AbstractOffLatticeCellPopulation2_2_class(py::module &m){
-py::class_<AbstractOffLatticeCellPopulation2_2 , AbstractOffLatticeCellPopulation2_2_Overloads   >(m, "AbstractOffLatticeCellPopulation2_2")
+py::class_<AbstractOffLatticeCellPopulation2_2 , AbstractOffLatticeCellPopulation2_2_Overloads , boost::shared_ptr<AbstractOffLatticeCellPopulation2_2 >   >(m, "AbstractOffLatticeCellPopulation2_2")
         .def(
             "AddNode", 
             (unsigned int(AbstractOffLatticeCellPopulation2_2::*)(::Node<2> *)) &AbstractOffLatticeCellPopulation2_2::AddNode, 
-            " " , py::arg("pNewNode"))
+            " " , py::arg("pNewNode") )
         .def(
             "SetNode", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(unsigned int, ::ChastePoint<2> &)) &AbstractOffLatticeCellPopulation2_2::SetNode, 
-            " " , py::arg("nodeIndex"), py::arg("rNewLocation"))
+            " " , py::arg("nodeIndex"), py::arg("rNewLocation") )
         .def(
             "UpdateNodeLocations", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(double)) &AbstractOffLatticeCellPopulation2_2::UpdateNodeLocations, 
-            " " , py::arg("dt"))
+            " " , py::arg("dt") )
         .def(
             "CheckForStepSizeException", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(unsigned int, ::boost::numeric::ublas::c_vector<double, 2> &, double)) &AbstractOffLatticeCellPopulation2_2::CheckForStepSizeException, 
-            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt"))
+            " " , py::arg("nodeIndex"), py::arg("rDisplacement"), py::arg("dt") )
         .def(
             "GetDampingConstant", 
             (double(AbstractOffLatticeCellPopulation2_2::*)(unsigned int)) &AbstractOffLatticeCellPopulation2_2::GetDampingConstant, 
-            " " , py::arg("nodeIndex"))
+            " " , py::arg("nodeIndex") )
         .def(
             "SetDampingConstantNormal", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(double)) &AbstractOffLatticeCellPopulation2_2::SetDampingConstantNormal, 
-            " " , py::arg("dampingConstantNormal"))
+            " " , py::arg("dampingConstantNormal") )
         .def(
             "SetDampingConstantMutant", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(double)) &AbstractOffLatticeCellPopulation2_2::SetDampingConstantMutant, 
-            " " , py::arg("dampingConstantMutant"))
+            " " , py::arg("dampingConstantMutant") )
         .def(
             "SetAbsoluteMovementThreshold", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(double)) &AbstractOffLatticeCellPopulation2_2::SetAbsoluteMovementThreshold, 
-            " " , py::arg("absoluteMovementThreshold"))
+            " " , py::arg("absoluteMovementThreshold") )
         .def(
             "GetAbsoluteMovementThreshold", 
             (double(AbstractOffLatticeCellPopulation2_2::*)()) &AbstractOffLatticeCellPopulation2_2::GetAbsoluteMovementThreshold, 
-            " " )
+            " "  )
         .def(
             "GetDampingConstantNormal", 
             (double(AbstractOffLatticeCellPopulation2_2::*)()) &AbstractOffLatticeCellPopulation2_2::GetDampingConstantNormal, 
-            " " )
+            " "  )
         .def(
             "GetDampingConstantMutant", 
             (double(AbstractOffLatticeCellPopulation2_2::*)()) &AbstractOffLatticeCellPopulation2_2::GetDampingConstantMutant, 
-            " " )
+            " "  )
         .def(
             "OutputCellPopulationParameters", 
             (void(AbstractOffLatticeCellPopulation2_2::*)(::out_stream &)) &AbstractOffLatticeCellPopulation2_2::OutputCellPopulationParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

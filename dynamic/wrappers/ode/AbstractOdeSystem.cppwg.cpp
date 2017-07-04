@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractOdeSystem AbstractOdeSystem;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractOdeSystem_Overloads : public AbstractOdeSystem{
     public:
@@ -45,26 +45,26 @@ rY);
 
 };
 void register_AbstractOdeSystem_class(py::module &m){
-py::class_<AbstractOdeSystem , AbstractOdeSystem_Overloads   >(m, "AbstractOdeSystem")
+py::class_<AbstractOdeSystem , AbstractOdeSystem_Overloads , boost::shared_ptr<AbstractOdeSystem >   >(m, "AbstractOdeSystem")
         .def(
             "EvaluateYDerivatives", 
             (void(AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &, ::std::vector<double, std::allocator<double> > &)) &AbstractOdeSystem::EvaluateYDerivatives, 
-            " " , py::arg("time"), py::arg("rY"), py::arg("rDY"))
+            " " , py::arg("time"), py::arg("rY"), py::arg("rDY") )
         .def(
             "CalculateStoppingEvent", 
             (bool(AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &)) &AbstractOdeSystem::CalculateStoppingEvent, 
-            " " , py::arg("time"), py::arg("rY"))
+            " " , py::arg("time"), py::arg("rY") )
         .def(
             "CalculateRootFunction", 
             (double(AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &)) &AbstractOdeSystem::CalculateRootFunction, 
-            " " , py::arg("time"), py::arg("rY"))
+            " " , py::arg("time"), py::arg("rY") )
         .def(
             "GetUseAnalyticJacobian", 
             (bool(AbstractOdeSystem::*)()) &AbstractOdeSystem::GetUseAnalyticJacobian, 
-            " " )
+            " "  )
         .def(
             "rGetConstStateVariables", 
             (::std::vector<double, std::allocator<double> > const &(AbstractOdeSystem::*)() const ) &AbstractOdeSystem::rGetConstStateVariables, 
-            " " )
+            " "  , py::return_value_policy::reference_internal)
     ;
 }

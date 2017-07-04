@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractSrnModel AbstractSrnModel;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::AbstractSrnModel * _AbstractSrnModelPtr;
 
 class AbstractSrnModel_Overloads : public AbstractSrnModel{
@@ -63,50 +63,50 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
 
 };
 void register_AbstractSrnModel_class(py::module &m){
-py::class_<AbstractSrnModel , AbstractSrnModel_Overloads   >(m, "AbstractSrnModel")
+py::class_<AbstractSrnModel , AbstractSrnModel_Overloads , boost::shared_ptr<AbstractSrnModel >   >(m, "AbstractSrnModel")
         .def(
             "SetCell", 
             (void(AbstractSrnModel::*)(::CellPtr)) &AbstractSrnModel::SetCell, 
-            " " , py::arg("pCell"))
+            " " , py::arg("pCell") )
         .def(
             "Initialise", 
             (void(AbstractSrnModel::*)()) &AbstractSrnModel::Initialise, 
-            " " )
+            " "  )
         .def(
             "InitialiseDaughterCell", 
             (void(AbstractSrnModel::*)()) &AbstractSrnModel::InitialiseDaughterCell, 
-            " " )
+            " "  )
         .def(
             "GetCell", 
             (::CellPtr(AbstractSrnModel::*)()) &AbstractSrnModel::GetCell, 
-            " " )
+            " "  )
         .def(
             "SetSimulatedToTime", 
             (void(AbstractSrnModel::*)(double)) &AbstractSrnModel::SetSimulatedToTime, 
-            " " , py::arg("simulatedToTime"))
+            " " , py::arg("simulatedToTime") )
         .def(
             "GetSimulatedToTime", 
             (double(AbstractSrnModel::*)() const ) &AbstractSrnModel::GetSimulatedToTime, 
-            " " )
+            " "  )
         .def(
             "SimulateToCurrentTime", 
             (void(AbstractSrnModel::*)()) &AbstractSrnModel::SimulateToCurrentTime, 
-            " " )
+            " "  )
         .def(
             "ResetForDivision", 
             (void(AbstractSrnModel::*)()) &AbstractSrnModel::ResetForDivision, 
-            " " )
+            " "  )
         .def(
             "CreateSrnModel", 
             (::AbstractSrnModel *(AbstractSrnModel::*)()) &AbstractSrnModel::CreateSrnModel, 
-            " " )
+            " "  , py::return_value_policy::reference)
         .def(
             "OutputSrnModelInfo", 
             (void(AbstractSrnModel::*)(::out_stream &)) &AbstractSrnModel::OutputSrnModelInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputSrnModelParameters", 
             (void(AbstractSrnModel::*)(::out_stream &)) &AbstractSrnModel::OutputSrnModelParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }

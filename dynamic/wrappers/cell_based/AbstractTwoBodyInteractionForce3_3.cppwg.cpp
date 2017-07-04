@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractTwoBodyInteractionForce<3,3 > AbstractTwoBodyInteractionForce3_3;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
 
 class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInteractionForce3_3{
@@ -51,34 +51,34 @@ rCellPopulation);
 
 };
 void register_AbstractTwoBodyInteractionForce3_3_class(py::module &m){
-py::class_<AbstractTwoBodyInteractionForce3_3 , AbstractTwoBodyInteractionForce3_3_Overloads   >(m, "AbstractTwoBodyInteractionForce3_3")
+py::class_<AbstractTwoBodyInteractionForce3_3 , AbstractTwoBodyInteractionForce3_3_Overloads , boost::shared_ptr<AbstractTwoBodyInteractionForce3_3 >   >(m, "AbstractTwoBodyInteractionForce3_3")
         .def(
             "GetUseCutOffLength", 
             (bool(AbstractTwoBodyInteractionForce3_3::*)()) &AbstractTwoBodyInteractionForce3_3::GetUseCutOffLength, 
-            " " )
+            " "  )
         .def(
             "SetCutOffLength", 
             (void(AbstractTwoBodyInteractionForce3_3::*)(double)) &AbstractTwoBodyInteractionForce3_3::SetCutOffLength, 
-            " " , py::arg("cutOffLength"))
+            " " , py::arg("cutOffLength") )
         .def(
             "GetCutOffLength", 
             (double(AbstractTwoBodyInteractionForce3_3::*)()) &AbstractTwoBodyInteractionForce3_3::GetCutOffLength, 
-            " " )
+            " "  )
         .def(
             "CalculateForceBetweenNodes", 
             (::boost::numeric::ublas::c_vector<double, 3>(AbstractTwoBodyInteractionForce3_3::*)(unsigned int, unsigned int, ::AbstractCellPopulation<3, 3> &)) &AbstractTwoBodyInteractionForce3_3::CalculateForceBetweenNodes, 
-            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation"))
+            " " , py::arg("nodeAGlobalIndex"), py::arg("nodeBGlobalIndex"), py::arg("rCellPopulation") )
         .def(
             "AddForceContribution", 
             (void(AbstractTwoBodyInteractionForce3_3::*)(::AbstractCellPopulation<3, 3> &)) &AbstractTwoBodyInteractionForce3_3::AddForceContribution, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "OutputForceParameters", 
             (void(AbstractTwoBodyInteractionForce3_3::*)(::out_stream &)) &AbstractTwoBodyInteractionForce3_3::OutputForceParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "WriteDataToVisualizerSetupFile", 
             (void(AbstractTwoBodyInteractionForce3_3::*)(::out_stream &)) &AbstractTwoBodyInteractionForce3_3::WriteDataToVisualizerSetupFile, 
-            " " , py::arg("pVizSetupFile"))
+            " " , py::arg("pVizSetupFile") )
     ;
 }

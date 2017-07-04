@@ -12,7 +12,7 @@
 
 namespace py = pybind11;
 typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
-;
+PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 class AbstractCellBasedSimulationModifier2_2_Overloads : public AbstractCellBasedSimulationModifier2_2{
     public:
@@ -56,30 +56,30 @@ outputDirectory);
 
 };
 void register_AbstractCellBasedSimulationModifier2_2_class(py::module &m){
-py::class_<AbstractCellBasedSimulationModifier2_2 , AbstractCellBasedSimulationModifier2_2_Overloads   >(m, "AbstractCellBasedSimulationModifier2_2")
+py::class_<AbstractCellBasedSimulationModifier2_2 , AbstractCellBasedSimulationModifier2_2_Overloads , boost::shared_ptr<AbstractCellBasedSimulationModifier2_2 >   >(m, "AbstractCellBasedSimulationModifier2_2")
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractCellBasedSimulationModifier2_2::UpdateAtEndOfTimeStep, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "UpdateAtEndOfOutputTimeStep", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractCellBasedSimulationModifier2_2::UpdateAtEndOfOutputTimeStep, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "SetupSolve", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::AbstractCellPopulation<2, 2> &, ::std::string)) &AbstractCellBasedSimulationModifier2_2::SetupSolve, 
-            " " , py::arg("rCellPopulation"), py::arg("outputDirectory"))
+            " " , py::arg("rCellPopulation"), py::arg("outputDirectory") )
         .def(
             "UpdateAtEndOfSolve", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractCellBasedSimulationModifier2_2::UpdateAtEndOfSolve, 
-            " " , py::arg("rCellPopulation"))
+            " " , py::arg("rCellPopulation") )
         .def(
             "OutputSimulationModifierInfo", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::out_stream &)) &AbstractCellBasedSimulationModifier2_2::OutputSimulationModifierInfo, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
         .def(
             "OutputSimulationModifierParameters", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::out_stream &)) &AbstractCellBasedSimulationModifier2_2::OutputSimulationModifierParameters, 
-            " " , py::arg("rParamsFile"))
+            " " , py::arg("rParamsFile") )
     ;
 }
