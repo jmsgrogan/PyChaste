@@ -40,6 +40,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
+#define _BACKWARD_BACKWARD_WARNING_H 1 //Cut out the vtk deprecated warning
 #include <vtkSmartPointer.h>
 #include <vtkImageData.h>
 #include <vtkPolyData.h>
