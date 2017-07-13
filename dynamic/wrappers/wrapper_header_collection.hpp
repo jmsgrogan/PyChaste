@@ -71,6 +71,7 @@
 #include "AbstractSrnModel.hpp"
 #include "NullSrnModel.hpp"
 #include "Cell.hpp"
+#include "CellsGenerator.hpp"
 #include "CellwiseSourceEllipticPde.hpp"
 #include "AveragedSourceEllipticPde.hpp"
 #include "CellwiseSourceParabolicPde.hpp"
@@ -163,6 +164,12 @@ template class VertexMesh<2,2 >;
 template class VertexMesh<3,3 >;
 template class MutableVertexMesh<2,2 >;
 template class MutableVertexMesh<3,3 >;
+template class CellsGenerator<UniformCellCycleModel,2 >;
+template class CellsGenerator<UniformCellCycleModel,3 >;
+template class CellsGenerator<SimpleOxygenBasedCellCycleModel,2 >;
+template class CellsGenerator<SimpleOxygenBasedCellCycleModel,3 >;
+template class CellsGenerator<UniformG1GenerationalCellCycleModel,2 >;
+template class CellsGenerator<UniformG1GenerationalCellCycleModel,3 >;
 template class CellwiseSourceEllipticPde<2 >;
 template class CellwiseSourceEllipticPde<3 >;
 template class AveragedSourceEllipticPde<2 >;
@@ -302,6 +309,12 @@ typedef VertexMesh<2,2 > VertexMesh2_2;
 typedef VertexMesh<3,3 > VertexMesh3_3;
 typedef MutableVertexMesh<2,2 > MutableVertexMesh2_2;
 typedef MutableVertexMesh<3,3 > MutableVertexMesh3_3;
+typedef CellsGenerator<UniformCellCycleModel,2 > CellsGeneratorUniformCellCycleModel_2;
+typedef CellsGenerator<UniformCellCycleModel,3 > CellsGeneratorUniformCellCycleModel_3;
+typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,2 > CellsGeneratorSimpleOxygenBasedCellCycleModel_2;
+typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,3 > CellsGeneratorSimpleOxygenBasedCellCycleModel_3;
+typedef CellsGenerator<UniformG1GenerationalCellCycleModel,2 > CellsGeneratorUniformG1GenerationalCellCycleModel_2;
+typedef CellsGenerator<UniformG1GenerationalCellCycleModel,3 > CellsGeneratorUniformG1GenerationalCellCycleModel_3;
 typedef CellwiseSourceEllipticPde<2 > CellwiseSourceEllipticPde2;
 typedef CellwiseSourceEllipticPde<3 > CellwiseSourceEllipticPde3;
 typedef AveragedSourceEllipticPde<2 > AveragedSourceEllipticPde2;

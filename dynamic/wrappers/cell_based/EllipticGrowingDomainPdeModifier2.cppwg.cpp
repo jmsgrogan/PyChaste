@@ -13,7 +13,7 @@
 namespace py = pybind11;
 typedef EllipticGrowingDomainPdeModifier<2 > EllipticGrowingDomainPdeModifier2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > _std_shared_ptrBoundaryConditionsContainer2_2_1;
+typedef ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > _std_shared_ptr_lt_BoundaryConditionsContainer_lt_2_2_1_gt__gt_;
 
 class EllipticGrowingDomainPdeModifier2_Overloads : public EllipticGrowingDomainPdeModifier2{
     public:
@@ -35,7 +35,7 @@ outputDirectory);
     }
     ::std::shared_ptr<BoundaryConditionsContainer<2, 2, 1> > ConstructBoundaryConditionsContainer() override {
         PYBIND11_OVERLOAD(
-            _std_shared_ptrBoundaryConditionsContainer2_2_1,
+            _std_shared_ptr_lt_BoundaryConditionsContainer_lt_2_2_1_gt__gt_,
             EllipticGrowingDomainPdeModifier2,
             ConstructBoundaryConditionsContainer,
             );

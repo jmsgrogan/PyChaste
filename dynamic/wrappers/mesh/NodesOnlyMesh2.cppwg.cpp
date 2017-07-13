@@ -14,7 +14,7 @@ namespace py = pybind11;
 typedef NodesOnlyMesh<2 > NodesOnlyMesh2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
-typedef ::Node<2> * _Node2Ptr;
+typedef ::Node<2> * _Node_lt_2_gt_Ptr;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
@@ -38,7 +38,7 @@ class NodesOnlyMesh2_Overloads : public NodesOnlyMesh2{
     }
     ::Node<2> * GetNodeOrHaloNode(unsigned int index) const  override {
         PYBIND11_OVERLOAD(
-            _Node2Ptr,
+            _Node_lt_2_gt_Ptr,
             NodesOnlyMesh2,
             GetNodeOrHaloNode,
             index);

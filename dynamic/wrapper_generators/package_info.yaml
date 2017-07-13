@@ -1,17 +1,17 @@
 name: chaste_project_PyChaste
-global_includes:
+source_includes:
   - <set>
   - <vector>
   - <string>
   - <map>
   - SmartPointers.hpp
   - UblasIncludes.hpp
-global_calldef_excludes:
+calldef_excludes:
   - ::Vec
   - ::Mat
 smart_ptr_type: boost::shared_ptr
 common_include_file: OFF
-global_template_substitutions:
+template_substitutions:
   - signature: <unsigned ELEMENT_DIM, unsigned SPACE_DIM>
     replacement: [[2, 2], [3, 3]]
   - signature: <unsigned DIM, unsigned DIM>
@@ -22,8 +22,8 @@ global_template_substitutions:
     replacement: [[2], [3]]
   - signature: <unsigned DIM>
     replacement: [[2], [3]]
-global_pointer_call_policy: reference
-global_reference_call_policy: reference_internal
+pointer_call_policy: reference
+reference_call_policy: reference_internal
     
 modules:
 - name: core
@@ -40,13 +40,13 @@ modules:
     - MASTER_RANK # MPI not wrapped here
   - name: ReplicatableVector
   - name: Timer
-  - name: RelativeTo
+  - name: RelativeTo # enum
     source_file: FileFinder.hpp
   - name: FileFinder
-    extra_includes:
+    source_includes:
     - BoostFilesystem.hpp
   - name: OutputFileHandler
-    extra_includes:
+    source_includes:
     - FileFinder.hpp # forward decl
     excluded_methods: 
     - OpenOutputFile # std io not wrapped
@@ -78,6 +78,9 @@ modules:
   - mesh/src
   classes:
   - name: ChastePoint
+    return_type_excludes:
+    - ::boost::numeric::ublas::c_vector<double, 2> & # problem with non const ref
+    - ::boost::numeric::ublas::c_vector<double, 3> &
   - name: NodeAttributes
   - name: Node
   - name: Element
@@ -102,8 +105,8 @@ modules:
     excluded_methods: 
     - GetFace # dont have mixed dim elements
     constructor_arg_type_excludes: 
-    - 'TetrahedralMesh<3, 3>'
-    - 'TetrahedralMesh<2, 2>'
+    - TetrahedralMesh<3, 3>
+    - TetrahedralMesh<2, 2>
   - name: MutableVertexMesh
   - name: Cylindrical2dVertexMesh
   - name: SharedHoneycombMeshGenerator
@@ -157,7 +160,20 @@ modules:
     excluded_methods: 
     - rGetCellPropertyCollection
     - GetSrnModel
-#  - name: CellsGenerator
+  - name: CellsGenerator
+    template_substitutions:
+      - signature: <class CELL_CYCLE_MODEL, unsigned DIM>
+        replacement: 
+        - [UniformCellCycleModel, 2]
+        - [UniformCellCycleModel, 3]
+        - [SimpleOxygenBasedCellCycleModel, 2]
+        - [SimpleOxygenBasedCellCycleModel, 3]
+        - [UniformG1GenerationalCellCycleModel, 2]
+        - [UniformG1GenerationalCellCycleModel, 3]
+    source_includes:
+    - UniformCellCycleModel.hpp
+    - SimpleOxygenBasedCellCycleModel.hpp
+    - UniformG1GenerationalCellCycleModel.hpp
   - name: CellwiseSourceEllipticPde
   - name: AveragedSourceEllipticPde
   - name: CellwiseSourceParabolicPde
@@ -170,14 +186,14 @@ modules:
     excluded_methods: 
     - ConstructBoundaryConditionsContainer
   - name: VoronoiDataWriter 
-    extra_includes:
+    source_includes:
     - VertexBasedCellPopulation.hpp
     - MeshBasedCellPopulation.hpp
     - PottsBasedCellPopulation.hpp
     - NodeBasedCellPopulation.hpp
     - CaBasedCellPopulation.hpp
   - name: CellLabelWriter
-    extra_includes:
+    source_includes:
     - AbstractCellPopulation.hpp
   - name: AbstractCaUpdateRule 
   - name: AbstractUpdateRule
@@ -202,7 +218,7 @@ modules:
   - name: AbstractCellPopulation
     excluded_methods: 
     - rGetCells
-    extra_includes:
+    source_includes:
     - AbstractCellBasedSimulation.hpp       
   - name: AbstractOnLatticeCellPopulation
   - name: AbstractCentreBasedCellPopulation
@@ -230,7 +246,7 @@ modules:
     - GetElement
     - GetTetrahedralMeshForPdeModifier
     - rGetMesh
-    extra_includes:
+    source_includes:
     - AbstractCellBasedSimulation.hpp   
     - AbstractVertexBasedDivisionRule.hpp
   - name: PottsBasedCellPopulation

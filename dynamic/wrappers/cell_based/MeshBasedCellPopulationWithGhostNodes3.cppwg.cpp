@@ -13,8 +13,8 @@
 namespace py = pybind11;
 typedef MeshBasedCellPopulationWithGhostNodes<3 > MeshBasedCellPopulationWithGhostNodes3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh3_3Ptr;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh_lt_3_3_gt_Ptr;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
 typedef ::CellPtr _CellPtr;
 
 class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPopulationWithGhostNodes3{
@@ -22,14 +22,14 @@ class MeshBasedCellPopulationWithGhostNodes3_Overloads : public MeshBasedCellPop
     using MeshBasedCellPopulationWithGhostNodes3::MeshBasedCellPopulationWithGhostNodes;
     ::TetrahedralMesh<3, 3> * GetTetrahedralMeshForPdeModifier() override {
         PYBIND11_OVERLOAD(
-            _TetrahedralMesh3_3Ptr,
+            _TetrahedralMesh_lt_3_3_gt_Ptr,
             MeshBasedCellPopulationWithGhostNodes3,
             GetTetrahedralMeshForPdeModifier,
             );
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             MeshBasedCellPopulationWithGhostNodes3,
             GetNeighbouringLocationIndices,
             pCell);

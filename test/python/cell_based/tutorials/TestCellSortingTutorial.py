@@ -70,7 +70,7 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## Having created a mesh, we now create some cells. To do this, we the `CellsGenerator` helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
+        cells = []
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)

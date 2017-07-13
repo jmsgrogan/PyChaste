@@ -13,14 +13,14 @@
 namespace py = pybind11;
 typedef Cylindrical2dVertexMesh Cylindrical2dVertexMesh;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
 
 class Cylindrical2dVertexMesh_Overloads : public Cylindrical2dVertexMesh{
     public:
     using Cylindrical2dVertexMesh::Cylindrical2dVertexMesh;
     ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocation1, ::boost::numeric::ublas::c_vector<double, 2> const & rLocation2) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             Cylindrical2dVertexMesh,
             GetVectorFromAtoB,
             rLocation1, 

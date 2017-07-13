@@ -15,7 +15,7 @@ typedef PottsMesh<2 > PottsMesh2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
 typedef unsigned int unsignedint;
 
 class PottsMesh2_Overloads : public PottsMesh2{
@@ -37,7 +37,7 @@ class PottsMesh2_Overloads : public PottsMesh2{
     }
     ::boost::numeric::ublas::c_vector<double, 2> GetCentroidOfElement(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             PottsMesh2,
             GetCentroidOfElement,
             index);

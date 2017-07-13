@@ -13,14 +13,14 @@
 namespace py = pybind11;
 typedef SharedPottsMeshGenerator<3 > PottsMeshGenerator3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::shared_ptr<PottsMesh<3> > _boost_shared_ptrPottsMesh3;
+typedef ::boost::shared_ptr<PottsMesh<3> > _boost_shared_ptr_lt_PottsMesh_lt_3_gt__gt_;
 
 class PottsMeshGenerator3_Overloads : public PottsMeshGenerator3{
     public:
     using PottsMeshGenerator3::SharedPottsMeshGenerator;
     ::boost::shared_ptr<PottsMesh<3> > GetMesh() override {
         PYBIND11_OVERLOAD(
-            _boost_shared_ptrPottsMesh3,
+            _boost_shared_ptr_lt_PottsMesh_lt_3_gt__gt_,
             PottsMeshGenerator3,
             GetMesh,
             );

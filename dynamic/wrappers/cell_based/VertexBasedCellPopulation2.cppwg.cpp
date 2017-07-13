@@ -1,13 +1,13 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "AbstractCellBasedSimulation.hpp"
+#include "AbstractVertexBasedDivisionRule.hpp"
 #include <set>
 #include <vector>
 #include <string>
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "AbstractCellBasedSimulation.hpp"
-#include "AbstractVertexBasedDivisionRule.hpp"
 #include "VertexBasedCellPopulation.hpp"
 
 #include "VertexBasedCellPopulation2.cppwg.hpp"
@@ -16,14 +16,14 @@ namespace py = pybind11;
 typedef VertexBasedCellPopulation<2 > VertexBasedCellPopulation2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
-typedef ::Node<2> * _Node2Ptr;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
+typedef ::Node<2> * _Node_lt_2_gt_Ptr;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
 typedef unsigned int unsignedint;
 typedef ::CellPtr _CellPtr;
 typedef unsigned int unsignedint;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
-typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh2_2Ptr;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
+typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh_lt_2_2_gt_Ptr;
 
 class VertexBasedCellPopulation2_Overloads : public VertexBasedCellPopulation2{
     public:
@@ -44,21 +44,21 @@ class VertexBasedCellPopulation2_Overloads : public VertexBasedCellPopulation2{
     }
     ::boost::numeric::ublas::c_vector<double, 2> GetLocationOfCellCentre(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             VertexBasedCellPopulation2,
             GetLocationOfCellCentre,
             pCell);
     }
     ::Node<2> * GetNode(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _Node2Ptr,
+            _Node_lt_2_gt_Ptr,
             VertexBasedCellPopulation2,
             GetNode,
             index);
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             VertexBasedCellPopulation2,
             GetNeighbouringLocationIndices,
             pCell);
@@ -168,14 +168,14 @@ pCell);
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             VertexBasedCellPopulation2,
             GetNeighbouringNodeIndices,
             index);
     }
     ::TetrahedralMesh<2, 2> * GetTetrahedralMeshForPdeModifier() override {
         PYBIND11_OVERLOAD(
-            _TetrahedralMesh2_2Ptr,
+            _TetrahedralMesh_lt_2_2_gt_Ptr,
             VertexBasedCellPopulation2,
             GetTetrahedralMeshForPdeModifier,
             );

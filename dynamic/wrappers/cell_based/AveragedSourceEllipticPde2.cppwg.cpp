@@ -13,7 +13,7 @@
 namespace py = pybind11;
 typedef AveragedSourceEllipticPde<2 > AveragedSourceEllipticPde2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_matrix<double, 2, 2> _boost_numeric_ublas_c_matrixdouble_2_2;
+typedef ::boost::numeric::ublas::c_matrix<double, 2, 2> _boost_numeric_ublas_c_matrix_lt_double_2_2_gt_;
 
 class AveragedSourceEllipticPde2_Overloads : public AveragedSourceEllipticPde2{
     public:
@@ -44,7 +44,7 @@ pElement);
     }
     ::boost::numeric::ublas::c_matrix<double, 2, 2> ComputeDiffusionTerm(::ChastePoint<2> const & rX) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_matrixdouble_2_2,
+            _boost_numeric_ublas_c_matrix_lt_double_2_2_gt_,
             AveragedSourceEllipticPde2,
             ComputeDiffusionTerm,
             rX);

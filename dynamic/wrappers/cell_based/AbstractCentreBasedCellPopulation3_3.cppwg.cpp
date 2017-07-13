@@ -13,17 +13,17 @@
 namespace py = pybind11;
 typedef AbstractCentreBasedCellPopulation<3,3 > AbstractCentreBasedCellPopulation3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 typedef ::CellPtr _CellPtr;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
-typedef ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
+typedef ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & _std_vector_lt_std_pair_lt_Node_lt_3_gt_Ptr_Node_lt_3_gt_Ptr_gt__std_allocator_lt_std_pair_lt_Node_lt_3_gt_Ptr_Node_lt_3_gt_Ptr_gt__gt__gt_Ref;
 
 class AbstractCentreBasedCellPopulation3_3_Overloads : public AbstractCentreBasedCellPopulation3_3{
     public:
     using AbstractCentreBasedCellPopulation3_3::AbstractCentreBasedCellPopulation;
     ::boost::numeric::ublas::c_vector<double, 3> GetLocationOfCellCentre(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             AbstractCentreBasedCellPopulation3_3,
             GetLocationOfCellCentre,
             pCell);
@@ -55,7 +55,7 @@ pParentCell);
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             AbstractCentreBasedCellPopulation3_3,
             GetNeighbouringLocationIndices,
             pCell);
@@ -92,7 +92,7 @@ dt);
     }
     ::std::vector<std::pair<Node<3> *, Node<3> *>, std::allocator<std::pair<Node<3> *, Node<3> *> > > & rGetNodePairs() override {
         PYBIND11_OVERLOAD_PURE(
-            _std_vectorstd_pairNode3Ptr_Node3Ptr_std_allocatorstd_pairNode3Ptr_Node3PtrRef,
+            _std_vector_lt_std_pair_lt_Node_lt_3_gt_Ptr_Node_lt_3_gt_Ptr_gt__std_allocator_lt_std_pair_lt_Node_lt_3_gt_Ptr_Node_lt_3_gt_Ptr_gt__gt__gt_Ref,
             AbstractCentreBasedCellPopulation3_3,
             rGetNodePairs,
             );

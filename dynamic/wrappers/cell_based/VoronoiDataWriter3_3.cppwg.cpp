@@ -1,16 +1,16 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "VertexBasedCellPopulation.hpp"
+#include "MeshBasedCellPopulation.hpp"
+#include "PottsBasedCellPopulation.hpp"
+#include "NodeBasedCellPopulation.hpp"
+#include "CaBasedCellPopulation.hpp"
 #include <set>
 #include <vector>
 #include <string>
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "VertexBasedCellPopulation.hpp"
-#include "MeshBasedCellPopulation.hpp"
-#include "PottsBasedCellPopulation.hpp"
-#include "NodeBasedCellPopulation.hpp"
-#include "CaBasedCellPopulation.hpp"
 #include "VoronoiDataWriter.hpp"
 
 #include "VoronoiDataWriter3_3.cppwg.hpp"

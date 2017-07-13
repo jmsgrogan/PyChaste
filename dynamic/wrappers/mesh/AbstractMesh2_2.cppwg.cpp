@@ -15,10 +15,10 @@ typedef AbstractMesh<2,2 > AbstractMesh2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
-typedef ::Node<2> * _Node2Ptr;
+typedef ::Node<2> * _Node_lt_2_gt_Ptr;
 typedef ::DistributedVectorFactory * _DistributedVectorFactoryPtr;
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
-typedef ::ChasteCuboid<2> _ChasteCuboid2;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
+typedef ::ChasteCuboid<2> _ChasteCuboid_lt_2_gt_;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 
@@ -41,7 +41,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
     }
     ::Node<2> * GetNodeOrHaloNode(unsigned int index) const  override {
         PYBIND11_OVERLOAD(
-            _Node2Ptr,
+            _Node_lt_2_gt_Ptr,
             AbstractMesh2_2,
             GetNodeOrHaloNode,
             index);
@@ -76,7 +76,7 @@ class AbstractMesh2_2_Overloads : public AbstractMesh2_2{
     }
     ::boost::numeric::ublas::c_vector<double, 2> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 2> const & rLocationA, ::boost::numeric::ublas::c_vector<double, 2> const & rLocationB) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             AbstractMesh2_2,
             GetVectorFromAtoB,
             rLocationA, 
@@ -91,7 +91,7 @@ rLocationB);
     }
     ::ChasteCuboid<2> CalculateBoundingBox() const  override {
         PYBIND11_OVERLOAD(
-            _ChasteCuboid2,
+            _ChasteCuboid_lt_2_gt_,
             AbstractMesh2_2,
             CalculateBoundingBox,
             );

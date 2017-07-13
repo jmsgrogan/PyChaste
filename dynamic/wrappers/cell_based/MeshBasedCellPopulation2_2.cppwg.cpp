@@ -13,21 +13,21 @@
 namespace py = pybind11;
 typedef MeshBasedCellPopulation<2,2 > MeshBasedCellPopulation2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh2_2Ptr;
+typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh_lt_2_2_gt_Ptr;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef ::CellPtr _CellPtr;
-typedef ::Node<2> * _Node2Ptr;
+typedef ::Node<2> * _Node_lt_2_gt_Ptr;
 typedef unsigned int unsignedint;
-typedef ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & _std_vectorstd_pairNode2Ptr_Node2Ptr_std_allocatorstd_pairNode2Ptr_Node2PtrRef;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
+typedef ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & _std_vector_lt_std_pair_lt_Node_lt_2_gt_Ptr_Node_lt_2_gt_Ptr_gt__std_allocator_lt_std_pair_lt_Node_lt_2_gt_Ptr_Node_lt_2_gt_Ptr_gt__gt__gt_Ref;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
 
 class MeshBasedCellPopulation2_2_Overloads : public MeshBasedCellPopulation2_2{
     public:
     using MeshBasedCellPopulation2_2::MeshBasedCellPopulation;
     ::TetrahedralMesh<2, 2> * GetTetrahedralMeshForPdeModifier() override {
         PYBIND11_OVERLOAD(
-            _TetrahedralMesh2_2Ptr,
+            _TetrahedralMesh_lt_2_2_gt_Ptr,
             MeshBasedCellPopulation2_2,
             GetTetrahedralMeshForPdeModifier,
             );
@@ -114,7 +114,7 @@ pCell);
     }
     ::Node<2> * GetNode(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _Node2Ptr,
+            _Node_lt_2_gt_Ptr,
             MeshBasedCellPopulation2_2,
             GetNode,
             index);
@@ -156,7 +156,7 @@ pCell);
     }
     ::std::vector<std::pair<Node<2> *, Node<2> *>, std::allocator<std::pair<Node<2> *, Node<2> *> > > & rGetNodePairs() override {
         PYBIND11_OVERLOAD(
-            _std_vectorstd_pairNode2Ptr_Node2Ptr_std_allocatorstd_pairNode2Ptr_Node2PtrRef,
+            _std_vector_lt_std_pair_lt_Node_lt_2_gt_Ptr_Node_lt_2_gt_Ptr_gt__std_allocator_lt_std_pair_lt_Node_lt_2_gt_Ptr_Node_lt_2_gt_Ptr_gt__gt__gt_Ref,
             MeshBasedCellPopulation2_2,
             rGetNodePairs,
             );
@@ -170,7 +170,7 @@ pCell);
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             MeshBasedCellPopulation2_2,
             GetNeighbouringNodeIndices,
             index);

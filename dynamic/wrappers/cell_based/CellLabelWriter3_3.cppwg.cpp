@@ -1,12 +1,12 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "AbstractCellPopulation.hpp"
 #include <set>
 #include <vector>
 #include <string>
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "AbstractCellPopulation.hpp"
 #include "CellLabelWriter.hpp"
 
 #include "CellLabelWriter3_3.cppwg.hpp"

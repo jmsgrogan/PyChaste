@@ -13,7 +13,7 @@
 namespace py = pybind11;
 typedef AbstractLinearParabolicPde<3,3 > AbstractLinearParabolicPde3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrix_lt_double_3_3_gt_;
 
 class AbstractLinearParabolicPde3_3_Overloads : public AbstractLinearParabolicPde3_3{
     public:
@@ -44,7 +44,7 @@ u);
     }
     ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement) override {
         PYBIND11_OVERLOAD_PURE(
-            _boost_numeric_ublas_c_matrixdouble_3_3,
+            _boost_numeric_ublas_c_matrix_lt_double_3_3_gt_,
             AbstractLinearParabolicPde3_3,
             ComputeDiffusionTerm,
             rX, 

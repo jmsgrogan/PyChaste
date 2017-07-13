@@ -89,7 +89,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## simulations, for example whether they will proliferate. We just want our cells to migrate in this example, so
         ## we set a DifferentiatedCellProliferativeType. 
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
+        cells = []
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         
         ## We are not interested in cell cycling so we specialize the generator to NoCellCycleModel.

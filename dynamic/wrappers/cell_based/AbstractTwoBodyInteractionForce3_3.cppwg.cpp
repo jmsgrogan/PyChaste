@@ -13,14 +13,14 @@
 namespace py = pybind11;
 typedef AbstractTwoBodyInteractionForce<3,3 > AbstractTwoBodyInteractionForce3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 
 class AbstractTwoBodyInteractionForce3_3_Overloads : public AbstractTwoBodyInteractionForce3_3{
     public:
     using AbstractTwoBodyInteractionForce3_3::AbstractTwoBodyInteractionForce;
     ::boost::numeric::ublas::c_vector<double, 3> CalculateForceBetweenNodes(unsigned int nodeAGlobalIndex, unsigned int nodeBGlobalIndex, ::AbstractCellPopulation<3, 3> & rCellPopulation) override {
         PYBIND11_OVERLOAD_PURE(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             AbstractTwoBodyInteractionForce3_3,
             CalculateForceBetweenNodes,
             nodeAGlobalIndex, 

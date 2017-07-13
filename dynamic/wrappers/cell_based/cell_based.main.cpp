@@ -29,6 +29,12 @@
 #include "AbstractSrnModel.cppwg.hpp"
 #include "NullSrnModel.cppwg.hpp"
 #include "Cell.cppwg.hpp"
+#include "CellsGeneratorUniformCellCycleModel_2.cppwg.hpp"
+#include "CellsGeneratorUniformCellCycleModel_3.cppwg.hpp"
+#include "CellsGeneratorSimpleOxygenBasedCellCycleModel_2.cppwg.hpp"
+#include "CellsGeneratorSimpleOxygenBasedCellCycleModel_3.cppwg.hpp"
+#include "CellsGeneratorUniformG1GenerationalCellCycleModel_2.cppwg.hpp"
+#include "CellsGeneratorUniformG1GenerationalCellCycleModel_3.cppwg.hpp"
 #include "CellwiseSourceEllipticPde2.cppwg.hpp"
 #include "CellwiseSourceEllipticPde3.cppwg.hpp"
 #include "AveragedSourceEllipticPde2.cppwg.hpp"
@@ -155,6 +161,12 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_AbstractSrnModel_class(m);
     register_NullSrnModel_class(m);
     register_Cell_class(m);
+    register_CellsGeneratorUniformCellCycleModel_2_class(m);
+    register_CellsGeneratorUniformCellCycleModel_3_class(m);
+    register_CellsGeneratorSimpleOxygenBasedCellCycleModel_2_class(m);
+    register_CellsGeneratorSimpleOxygenBasedCellCycleModel_3_class(m);
+    register_CellsGeneratorUniformG1GenerationalCellCycleModel_2_class(m);
+    register_CellsGeneratorUniformG1GenerationalCellCycleModel_3_class(m);
     register_CellwiseSourceEllipticPde2_class(m);
     register_CellwiseSourceEllipticPde3_class(m);
     register_AveragedSourceEllipticPde2_class(m);

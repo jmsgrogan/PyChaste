@@ -73,7 +73,7 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## The second argument represents the size of that the vector cells should become - one cell for each element. 
         ## Third argument makes all cells proliferate.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
+        cells = []
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cell_generator.GenerateBasic(cells, mesh.GetNumElements())
           

@@ -13,8 +13,8 @@
 namespace py = pybind11;
 typedef AbstractOnLatticeCellPopulation<2 > AbstractOnLatticeCellPopulation2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
-typedef ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const _std_vectorboost_shared_ptrAbstractUpdateRule2_std_allocatorboost_shared_ptrAbstractUpdateRule2;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
+typedef ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const _std_vector_lt_boost_shared_ptr_lt_AbstractUpdateRule_lt_2_gt__gt__std_allocator_lt_boost_shared_ptr_lt_AbstractUpdateRule_lt_2_gt__gt__gt__gt_const;
 
 class AbstractOnLatticeCellPopulation2_Overloads : public AbstractOnLatticeCellPopulation2{
     public:
@@ -36,7 +36,7 @@ rNewLocation);
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringNodeIndices(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             AbstractOnLatticeCellPopulation2,
             GetNeighbouringNodeIndices,
             index);
@@ -71,7 +71,7 @@ rNewLocation);
     }
     ::std::vector<boost::shared_ptr<AbstractUpdateRule<2> >, std::allocator<boost::shared_ptr<AbstractUpdateRule<2> > > > const GetUpdateRuleCollection() const  override {
         PYBIND11_OVERLOAD(
-            _std_vectorboost_shared_ptrAbstractUpdateRule2_std_allocatorboost_shared_ptrAbstractUpdateRule2,
+            _std_vector_lt_boost_shared_ptr_lt_AbstractUpdateRule_lt_2_gt__gt__std_allocator_lt_boost_shared_ptr_lt_AbstractUpdateRule_lt_2_gt__gt__gt__gt_const,
             AbstractOnLatticeCellPopulation2,
             GetUpdateRuleCollection,
             );

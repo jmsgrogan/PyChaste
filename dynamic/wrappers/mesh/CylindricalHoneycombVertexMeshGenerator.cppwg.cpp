@@ -13,14 +13,14 @@
 namespace py = pybind11;
 typedef SharedCylindricalHoneycombVertexMeshGenerator CylindricalHoneycombVertexMeshGenerator;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::shared_ptr<MutableVertexMesh<2, 2> > _boost_shared_ptrMutableVertexMesh2_2;
+typedef ::boost::shared_ptr<MutableVertexMesh<2, 2> > _boost_shared_ptr_lt_MutableVertexMesh_lt_2_2_gt__gt_;
 
 class CylindricalHoneycombVertexMeshGenerator_Overloads : public CylindricalHoneycombVertexMeshGenerator{
     public:
     using CylindricalHoneycombVertexMeshGenerator::SharedCylindricalHoneycombVertexMeshGenerator;
     ::boost::shared_ptr<MutableVertexMesh<2, 2> > GetMesh() override {
         PYBIND11_OVERLOAD(
-            _boost_shared_ptrMutableVertexMesh2_2,
+            _boost_shared_ptr_lt_MutableVertexMesh_lt_2_2_gt__gt_,
             CylindricalHoneycombVertexMeshGenerator,
             GetMesh,
             );

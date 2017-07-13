@@ -16,9 +16,9 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 typedef unsigned int unsignedint;
 
 class VertexMesh3_3_Overloads : public VertexMesh3_3{
@@ -47,7 +47,7 @@ class VertexMesh3_3_Overloads : public VertexMesh3_3{
     }
     ::boost::numeric::ublas::c_vector<double, 3> GetCentroidOfElement(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             VertexMesh3_3,
             GetCentroidOfElement,
             index);
@@ -61,7 +61,7 @@ class VertexMesh3_3_Overloads : public VertexMesh3_3{
     }
     ::boost::numeric::ublas::c_vector<double, 3> GetVectorFromAtoB(::boost::numeric::ublas::c_vector<double, 3> const & rLocationA, ::boost::numeric::ublas::c_vector<double, 3> const & rLocationB) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             VertexMesh3_3,
             GetVectorFromAtoB,
             rLocationA, 
@@ -83,7 +83,7 @@ rLocationB);
     }
     ::boost::numeric::ublas::c_vector<double, 3> CalculateMomentsOfElement(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             VertexMesh3_3,
             CalculateMomentsOfElement,
             index);
@@ -108,6 +108,8 @@ void register_VertexMesh3_3_class(py::module &m){
 py::class_<VertexMesh3_3 , VertexMesh3_3_Overloads , boost::shared_ptr<VertexMesh3_3 >   >(m, "VertexMesh3_3")
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> >, ::std::vector<VertexElement<3, 3> *, std::allocator<VertexElement<3, 3> *> > >(), py::arg("nodes"), py::arg("vertexElements"))
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> >, ::std::vector<VertexElement<2, 3> *, std::allocator<VertexElement<2, 3> *> >, ::std::vector<VertexElement<3, 3> *, std::allocator<VertexElement<3, 3> *> > >(), py::arg("nodes"), py::arg("faces"), py::arg("vertexElements"))
+        //.def(py::init<::TetrahedralMesh<2, 2> &, bool >(), py::arg("rMesh"), py::arg("isPeriodic") = false)
+        .def(py::init<::TetrahedralMesh<3, 3> & >(), py::arg("rMesh"))
         .def(py::init< >())
         .def(
             "GetElementIteratorBegin", 

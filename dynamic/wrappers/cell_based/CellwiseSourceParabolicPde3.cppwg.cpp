@@ -13,7 +13,7 @@
 namespace py = pybind11;
 typedef CellwiseSourceParabolicPde<3 > CellwiseSourceParabolicPde3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrixdouble_3_3;
+typedef ::boost::numeric::ublas::c_matrix<double, 3, 3> _boost_numeric_ublas_c_matrix_lt_double_3_3_gt_;
 
 class CellwiseSourceParabolicPde3_Overloads : public CellwiseSourceParabolicPde3{
     public:
@@ -44,7 +44,7 @@ u);
     }
     ::boost::numeric::ublas::c_matrix<double, 3, 3> ComputeDiffusionTerm(::ChastePoint<3> const & rX, ::Element<3, 3> * pElement) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_matrixdouble_3_3,
+            _boost_numeric_ublas_c_matrix_lt_double_3_3_gt_,
             CellwiseSourceParabolicPde3,
             ComputeDiffusionTerm,
             rX, 

@@ -13,11 +13,11 @@
 namespace py = pybind11;
 typedef PottsBasedCellPopulation<2 > PottsBasedCellPopulation2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh2_2Ptr;
-typedef ::Node<2> * _Node2Ptr;
+typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh_lt_2_2_gt_Ptr;
+typedef ::Node<2> * _Node_lt_2_gt_Ptr;
 typedef unsigned int unsignedint;
-typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint;
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
 typedef ::CellPtr _CellPtr;
 typedef unsigned int unsignedint;
 
@@ -26,14 +26,14 @@ class PottsBasedCellPopulation2_Overloads : public PottsBasedCellPopulation2{
     using PottsBasedCellPopulation2::PottsBasedCellPopulation;
     ::TetrahedralMesh<2, 2> * GetTetrahedralMeshForPdeModifier() override {
         PYBIND11_OVERLOAD(
-            _TetrahedralMesh2_2Ptr,
+            _TetrahedralMesh_lt_2_2_gt_Ptr,
             PottsBasedCellPopulation2,
             GetTetrahedralMeshForPdeModifier,
             );
     }
     ::Node<2> * GetNode(unsigned int index) override {
         PYBIND11_OVERLOAD(
-            _Node2Ptr,
+            _Node_lt_2_gt_Ptr,
             PottsBasedCellPopulation2,
             GetNode,
             index);
@@ -47,14 +47,14 @@ class PottsBasedCellPopulation2_Overloads : public PottsBasedCellPopulation2{
     }
     ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > GetNeighbouringLocationIndices(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _std_setunsignedint_std_lessunsignedint_std_allocatorunsignedint,
+            _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_,
             PottsBasedCellPopulation2,
             GetNeighbouringLocationIndices,
             pCell);
     }
     ::boost::numeric::ublas::c_vector<double, 2> GetLocationOfCellCentre(::CellPtr pCell) override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             PottsBasedCellPopulation2,
             GetLocationOfCellCentre,
             pCell);

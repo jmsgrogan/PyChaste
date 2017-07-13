@@ -13,14 +13,14 @@
 namespace py = pybind11;
 typedef AbstractVertexBasedDivisionRule<3 > AbstractVertexBasedDivisionRule3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vectordouble_3;
+typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 
 class AbstractVertexBasedDivisionRule3_Overloads : public AbstractVertexBasedDivisionRule3{
     public:
     using AbstractVertexBasedDivisionRule3::AbstractVertexBasedDivisionRule;
     ::boost::numeric::ublas::c_vector<double, 3> CalculateCellDivisionVector(::CellPtr pParentCell, ::VertexBasedCellPopulation<3> & rCellPopulation) override {
         PYBIND11_OVERLOAD_PURE(
-            _boost_numeric_ublas_c_vectordouble_3,
+            _boost_numeric_ublas_c_vector_lt_double_3_gt_,
             AbstractVertexBasedDivisionRule3,
             CalculateCellDivisionVector,
             pParentCell, 

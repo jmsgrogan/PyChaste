@@ -1,12 +1,12 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "BoostFilesystem.hpp"
 #include <set>
 #include <vector>
 #include <string>
 #include <map>
 #include "SmartPointers.hpp"
 #include "UblasIncludes.hpp"
-#include "BoostFilesystem.hpp"
 #include "FileFinder.hpp"
 
 #include "FileFinder.cppwg.hpp"

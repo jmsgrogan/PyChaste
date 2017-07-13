@@ -20,7 +20,7 @@ typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
-typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vectordouble_2;
+typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
 typedef unsigned int unsignedint;
 typedef unsigned int unsignedint;
 
@@ -150,7 +150,7 @@ depth);
     }
     ::boost::numeric::ublas::c_vector<double, 2> CalculateMinMaxEdgeLengths() override {
         PYBIND11_OVERLOAD(
-            _boost_numeric_ublas_c_vectordouble_2,
+            _boost_numeric_ublas_c_vector_lt_double_2_gt_,
             AbstractTetrahedralMesh3_3,
             CalculateMinMaxEdgeLengths,
             );
