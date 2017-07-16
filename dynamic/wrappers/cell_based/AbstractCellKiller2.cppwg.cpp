@@ -35,6 +35,7 @@ class AbstractCellKiller2_Overloads : public AbstractCellKiller2{
 };
 void register_AbstractCellKiller2_class(py::module &m){
 py::class_<AbstractCellKiller2 , AbstractCellKiller2_Overloads , boost::shared_ptr<AbstractCellKiller2 >   >(m, "AbstractCellKiller2")
+        .def(py::init<::AbstractCellPopulation<2, 2> * >(), py::arg("pCellPopulation"))
         .def(
             "CheckAndLabelCellsForApoptosisOrDeath", 
             (void(AbstractCellKiller2::*)()) &AbstractCellKiller2::CheckAndLabelCellsForApoptosisOrDeath, 

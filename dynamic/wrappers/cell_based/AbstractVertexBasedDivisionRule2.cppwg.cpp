@@ -37,6 +37,7 @@ rCellPopulation);
 };
 void register_AbstractVertexBasedDivisionRule2_class(py::module &m){
 py::class_<AbstractVertexBasedDivisionRule2 , AbstractVertexBasedDivisionRule2_Overloads , boost::shared_ptr<AbstractVertexBasedDivisionRule2 >   >(m, "AbstractVertexBasedDivisionRule2")
+        .def(py::init< >())
         .def(
             "CalculateCellDivisionVector", 
             (::boost::numeric::ublas::c_vector<double, 2>(AbstractVertexBasedDivisionRule2::*)(::CellPtr, ::VertexBasedCellPopulation<2> &)) &AbstractVertexBasedDivisionRule2::CalculateCellDivisionVector, 

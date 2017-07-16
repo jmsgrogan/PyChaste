@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_Identifiable_class(py::module &m){
 py::class_<Identifiable  , boost::shared_ptr<Identifiable >   >(m, "Identifiable")
+        .def(py::init< >())
         .def(
             "GetIdentifier", 
             (::std::string(Identifiable::*)() const ) &Identifiable::GetIdentifier, 

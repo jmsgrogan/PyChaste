@@ -42,6 +42,7 @@ class AbstractCellPopulationBoundaryCondition2_2_Overloads : public AbstractCell
 };
 void register_AbstractCellPopulationBoundaryCondition2_2_class(py::module &m){
 py::class_<AbstractCellPopulationBoundaryCondition2_2 , AbstractCellPopulationBoundaryCondition2_2_Overloads , boost::shared_ptr<AbstractCellPopulationBoundaryCondition2_2 >   >(m, "AbstractCellPopulationBoundaryCondition2_2")
+        .def(py::init<::AbstractCellPopulation<2, 2> * >(), py::arg("pCellPopulation"))
         .def(
             "ImposeBoundaryCondition", 
             (void(AbstractCellPopulationBoundaryCondition2_2::*)(::std::map<Node<2> *, boost::numeric::ublas::c_vector<double, 2>, std::less<Node<2> *>, std::allocator<std::pair<Node<2> *const, boost::numeric::ublas::c_vector<double, 2> > > > const &)) &AbstractCellPopulationBoundaryCondition2_2::ImposeBoundaryCondition, 

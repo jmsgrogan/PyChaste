@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_CellData_class(py::module &m){
 py::class_<CellData  , boost::shared_ptr<CellData >  , AbstractCellProperty  >(m, "CellData")
+        .def(py::init< >())
         .def(
             "SetItem", 
             (void(CellData::*)(::std::string const &, double)) &CellData::SetItem, 

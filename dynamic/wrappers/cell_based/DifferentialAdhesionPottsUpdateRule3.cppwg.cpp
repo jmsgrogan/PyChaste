@@ -42,7 +42,7 @@ pCellB);
 
 };
 void register_DifferentialAdhesionPottsUpdateRule3_class(py::module &m){
-py::class_<DifferentialAdhesionPottsUpdateRule3 , DifferentialAdhesionPottsUpdateRule3_Overloads , boost::shared_ptr<DifferentialAdhesionPottsUpdateRule3 >   >(m, "DifferentialAdhesionPottsUpdateRule3")
+py::class_<DifferentialAdhesionPottsUpdateRule3 , DifferentialAdhesionPottsUpdateRule3_Overloads , boost::shared_ptr<DifferentialAdhesionPottsUpdateRule3 >  , AdhesionPottsUpdateRule<3>  >(m, "DifferentialAdhesionPottsUpdateRule3")
         .def(py::init< >())
         .def(
             "GetCellCellAdhesionEnergy", 

@@ -42,6 +42,7 @@ class AbstractForce2_2_Overloads : public AbstractForce2_2{
 };
 void register_AbstractForce2_2_class(py::module &m){
 py::class_<AbstractForce2_2 , AbstractForce2_2_Overloads , boost::shared_ptr<AbstractForce2_2 >   >(m, "AbstractForce2_2")
+        .def(py::init< >())
         .def(
             "AddForceContribution", 
             (void(AbstractForce2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractForce2_2::AddForceContribution, 

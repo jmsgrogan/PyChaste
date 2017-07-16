@@ -73,9 +73,8 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## The second argument represents the size of that the vector cells should become - one cell for each element. 
         ## Third argument makes all cells proliferate.
         
-        cells = []
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasic(cells, mesh.GetNumElements())
+        cells = cell_generator.GenerateBasic(mesh.GetNumElements())
           
         ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. 
         ## In general, this class associates a collection of cells with a mesh. For this test, because we have a PottsMesh, 
@@ -176,10 +175,9 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## Having created a mesh, we now create a VectorSharedPtrCells. To do this, we the CellsGenerator helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), differentiated_type)
         
         ## Before we make a CellPopulation we make a cell label and then assign this label to some randomly chosen cells.
         
@@ -255,10 +253,9 @@ class TestRunningPottsBasedSimulationsTutorial(chaste.cell_based.AbstractCellBas
         ## Having created a mesh, we now create a VectorSharedPtrCells. To do this, we the CellsGenerator helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), differentiated_type)
         
         ## As for the 2D case before we make a CellPopulation we make a pointer to a cell label and then assign this label to some randomly chosen cells.
         

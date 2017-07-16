@@ -29,6 +29,8 @@
 #include "AbstractSrnModel.cppwg.hpp"
 #include "NullSrnModel.cppwg.hpp"
 #include "Cell.cppwg.hpp"
+#include "CellsGeneratorNoCellCycleModel_2.cppwg.hpp"
+#include "CellsGeneratorNoCellCycleModel_3.cppwg.hpp"
 #include "CellsGeneratorUniformCellCycleModel_2.cppwg.hpp"
 #include "CellsGeneratorUniformCellCycleModel_3.cppwg.hpp"
 #include "CellsGeneratorSimpleOxygenBasedCellCycleModel_2.cppwg.hpp"
@@ -41,6 +43,8 @@
 #include "AveragedSourceEllipticPde3.cppwg.hpp"
 #include "CellwiseSourceParabolicPde2.cppwg.hpp"
 #include "CellwiseSourceParabolicPde3.cppwg.hpp"
+#include "AbstractCellBasedSimulationModifier2_2.cppwg.hpp"
+#include "AbstractCellBasedSimulationModifier3_3.cppwg.hpp"
 #include "AbstractPdeModifier2.cppwg.hpp"
 #include "AbstractPdeModifier3.cppwg.hpp"
 #include "AbstractGrowingDomainPdeModifier2.cppwg.hpp"
@@ -51,10 +55,10 @@
 #include "VoronoiDataWriter3_3.cppwg.hpp"
 #include "CellLabelWriter2_2.cppwg.hpp"
 #include "CellLabelWriter3_3.cppwg.hpp"
-#include "AbstractCaUpdateRule2.cppwg.hpp"
-#include "AbstractCaUpdateRule3.cppwg.hpp"
 #include "AbstractUpdateRule2.cppwg.hpp"
 #include "AbstractUpdateRule3.cppwg.hpp"
+#include "AbstractCaUpdateRule2.cppwg.hpp"
+#include "AbstractCaUpdateRule3.cppwg.hpp"
 #include "DiffusionCaUpdateRule2.cppwg.hpp"
 #include "DiffusionCaUpdateRule3.cppwg.hpp"
 #include "AbstractPottsUpdateRule2.cppwg.hpp"
@@ -63,10 +67,10 @@
 #include "VolumeConstraintPottsUpdateRule3.cppwg.hpp"
 #include "SurfaceAreaConstraintPottsUpdateRule2.cppwg.hpp"
 #include "SurfaceAreaConstraintPottsUpdateRule3.cppwg.hpp"
-#include "DifferentialAdhesionPottsUpdateRule2.cppwg.hpp"
-#include "DifferentialAdhesionPottsUpdateRule3.cppwg.hpp"
 #include "AdhesionPottsUpdateRule2.cppwg.hpp"
 #include "AdhesionPottsUpdateRule3.cppwg.hpp"
+#include "DifferentialAdhesionPottsUpdateRule2.cppwg.hpp"
+#include "DifferentialAdhesionPottsUpdateRule3.cppwg.hpp"
 #include "AbstractVertexBasedDivisionRule2.cppwg.hpp"
 #include "AbstractVertexBasedDivisionRule3.cppwg.hpp"
 #include "AbstractForce2_2.cppwg.hpp"
@@ -93,12 +97,12 @@
 #include "SphereGeometryBoundaryCondition3.cppwg.hpp"
 #include "AbstractCellPopulation2_2.cppwg.hpp"
 #include "AbstractCellPopulation3_3.cppwg.hpp"
-#include "AbstractOnLatticeCellPopulation2.cppwg.hpp"
-#include "AbstractOnLatticeCellPopulation3.cppwg.hpp"
-#include "AbstractCentreBasedCellPopulation2_2.cppwg.hpp"
-#include "AbstractCentreBasedCellPopulation3_3.cppwg.hpp"
 #include "AbstractOffLatticeCellPopulation2_2.cppwg.hpp"
 #include "AbstractOffLatticeCellPopulation3_3.cppwg.hpp"
+#include "AbstractCentreBasedCellPopulation2_2.cppwg.hpp"
+#include "AbstractCentreBasedCellPopulation3_3.cppwg.hpp"
+#include "AbstractOnLatticeCellPopulation2.cppwg.hpp"
+#include "AbstractOnLatticeCellPopulation3.cppwg.hpp"
 #include "CaBasedCellPopulation2.cppwg.hpp"
 #include "CaBasedCellPopulation3.cppwg.hpp"
 #include "MeshBasedCellPopulation2_2.cppwg.hpp"
@@ -117,8 +121,6 @@
 #include "SimpleTargetAreaModifier3.cppwg.hpp"
 #include "VtkSceneModifier2.cppwg.hpp"
 #include "VtkSceneModifier3.cppwg.hpp"
-#include "AbstractCellBasedSimulationModifier2_2.cppwg.hpp"
-#include "AbstractCellBasedSimulationModifier3_3.cppwg.hpp"
 #include "AbstractCellBasedSimulation2_2.cppwg.hpp"
 #include "AbstractCellBasedSimulation3_3.cppwg.hpp"
 #include "SimulationTime.cppwg.hpp"
@@ -126,6 +128,8 @@
 #include "OnLatticeSimulation3.cppwg.hpp"
 #include "OffLatticeSimulation2_2.cppwg.hpp"
 #include "OffLatticeSimulation3_3.cppwg.hpp"
+#include "PythonSimulationModifier2.cppwg.hpp"
+#include "PythonSimulationModifier3.cppwg.hpp"
 
 namespace py = pybind11;
 
@@ -161,6 +165,8 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_AbstractSrnModel_class(m);
     register_NullSrnModel_class(m);
     register_Cell_class(m);
+    register_CellsGeneratorNoCellCycleModel_2_class(m);
+    register_CellsGeneratorNoCellCycleModel_3_class(m);
     register_CellsGeneratorUniformCellCycleModel_2_class(m);
     register_CellsGeneratorUniformCellCycleModel_3_class(m);
     register_CellsGeneratorSimpleOxygenBasedCellCycleModel_2_class(m);
@@ -173,6 +179,8 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_AveragedSourceEllipticPde3_class(m);
     register_CellwiseSourceParabolicPde2_class(m);
     register_CellwiseSourceParabolicPde3_class(m);
+    register_AbstractCellBasedSimulationModifier2_2_class(m);
+    register_AbstractCellBasedSimulationModifier3_3_class(m);
     register_AbstractPdeModifier2_class(m);
     register_AbstractPdeModifier3_class(m);
     register_AbstractGrowingDomainPdeModifier2_class(m);
@@ -183,10 +191,10 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_VoronoiDataWriter3_3_class(m);
     register_CellLabelWriter2_2_class(m);
     register_CellLabelWriter3_3_class(m);
-    register_AbstractCaUpdateRule2_class(m);
-    register_AbstractCaUpdateRule3_class(m);
     register_AbstractUpdateRule2_class(m);
     register_AbstractUpdateRule3_class(m);
+    register_AbstractCaUpdateRule2_class(m);
+    register_AbstractCaUpdateRule3_class(m);
     register_DiffusionCaUpdateRule2_class(m);
     register_DiffusionCaUpdateRule3_class(m);
     register_AbstractPottsUpdateRule2_class(m);
@@ -195,10 +203,10 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_VolumeConstraintPottsUpdateRule3_class(m);
     register_SurfaceAreaConstraintPottsUpdateRule2_class(m);
     register_SurfaceAreaConstraintPottsUpdateRule3_class(m);
-    register_DifferentialAdhesionPottsUpdateRule2_class(m);
-    register_DifferentialAdhesionPottsUpdateRule3_class(m);
     register_AdhesionPottsUpdateRule2_class(m);
     register_AdhesionPottsUpdateRule3_class(m);
+    register_DifferentialAdhesionPottsUpdateRule2_class(m);
+    register_DifferentialAdhesionPottsUpdateRule3_class(m);
     register_AbstractVertexBasedDivisionRule2_class(m);
     register_AbstractVertexBasedDivisionRule3_class(m);
     register_AbstractForce2_2_class(m);
@@ -225,12 +233,12 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_SphereGeometryBoundaryCondition3_class(m);
     register_AbstractCellPopulation2_2_class(m);
     register_AbstractCellPopulation3_3_class(m);
-    register_AbstractOnLatticeCellPopulation2_class(m);
-    register_AbstractOnLatticeCellPopulation3_class(m);
-    register_AbstractCentreBasedCellPopulation2_2_class(m);
-    register_AbstractCentreBasedCellPopulation3_3_class(m);
     register_AbstractOffLatticeCellPopulation2_2_class(m);
     register_AbstractOffLatticeCellPopulation3_3_class(m);
+    register_AbstractCentreBasedCellPopulation2_2_class(m);
+    register_AbstractCentreBasedCellPopulation3_3_class(m);
+    register_AbstractOnLatticeCellPopulation2_class(m);
+    register_AbstractOnLatticeCellPopulation3_class(m);
     register_CaBasedCellPopulation2_class(m);
     register_CaBasedCellPopulation3_class(m);
     register_MeshBasedCellPopulation2_2_class(m);
@@ -249,8 +257,6 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_SimpleTargetAreaModifier3_class(m);
     register_VtkSceneModifier2_class(m);
     register_VtkSceneModifier3_class(m);
-    register_AbstractCellBasedSimulationModifier2_2_class(m);
-    register_AbstractCellBasedSimulationModifier3_3_class(m);
     register_AbstractCellBasedSimulation2_2_class(m);
     register_AbstractCellBasedSimulation3_3_class(m);
     register_SimulationTime_class(m);
@@ -258,4 +264,6 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_OnLatticeSimulation3_class(m);
     register_OffLatticeSimulation2_2_class(m);
     register_OffLatticeSimulation3_3_class(m);
+    register_PythonSimulationModifier2_class(m);
+    register_PythonSimulationModifier3_class(m);
 }

@@ -64,6 +64,7 @@ class AbstractSrnModel_Overloads : public AbstractSrnModel{
 };
 void register_AbstractSrnModel_class(py::module &m){
 py::class_<AbstractSrnModel , AbstractSrnModel_Overloads , boost::shared_ptr<AbstractSrnModel >   >(m, "AbstractSrnModel")
+        .def(py::init< >())
         .def(
             "SetCell", 
             (void(AbstractSrnModel::*)(::CellPtr)) &AbstractSrnModel::SetCell, 

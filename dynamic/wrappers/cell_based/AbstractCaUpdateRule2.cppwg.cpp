@@ -39,7 +39,7 @@ cell);
 
 };
 void register_AbstractCaUpdateRule2_class(py::module &m){
-py::class_<AbstractCaUpdateRule2 , AbstractCaUpdateRule2_Overloads , boost::shared_ptr<AbstractCaUpdateRule2 >   >(m, "AbstractCaUpdateRule2")
+py::class_<AbstractCaUpdateRule2 , AbstractCaUpdateRule2_Overloads , boost::shared_ptr<AbstractCaUpdateRule2 >  , AbstractUpdateRule<2>  >(m, "AbstractCaUpdateRule2")
         .def(
             "EvaluateProbability", 
             (double(AbstractCaUpdateRule2::*)(unsigned int, unsigned int, ::CaBasedCellPopulation<2> &, double, double, ::CellPtr)) &AbstractCaUpdateRule2::EvaluateProbability, 

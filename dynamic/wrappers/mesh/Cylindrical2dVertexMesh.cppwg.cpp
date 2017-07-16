@@ -53,7 +53,7 @@ zScale);
 
 };
 void register_Cylindrical2dVertexMesh_class(py::module &m){
-py::class_<Cylindrical2dVertexMesh , Cylindrical2dVertexMesh_Overloads , boost::shared_ptr<Cylindrical2dVertexMesh >   >(m, "Cylindrical2dVertexMesh")
+py::class_<Cylindrical2dVertexMesh , Cylindrical2dVertexMesh_Overloads , boost::shared_ptr<Cylindrical2dVertexMesh >  , MutableVertexMesh<2, 2>  >(m, "Cylindrical2dVertexMesh")
         .def(py::init<double, ::std::vector<Node<2> *, std::allocator<Node<2> *> >, ::std::vector<VertexElement<2, 2> *, std::allocator<VertexElement<2, 2> *> >, double, double >(), py::arg("width"), py::arg("nodes"), py::arg("vertexElements"), py::arg("cellRearrangementThreshold") = 0.01, py::arg("t2Threshold") = 0.001)
         .def(py::init<::Cylindrical2dMesh & >(), py::arg("rMesh"))
         .def(

@@ -47,7 +47,7 @@ rCellPopulation);
 
 };
 void register_GeneralisedLinearSpringForce3_3_class(py::module &m){
-py::class_<GeneralisedLinearSpringForce3_3 , GeneralisedLinearSpringForce3_3_Overloads , boost::shared_ptr<GeneralisedLinearSpringForce3_3 >   >(m, "GeneralisedLinearSpringForce3_3")
+py::class_<GeneralisedLinearSpringForce3_3 , GeneralisedLinearSpringForce3_3_Overloads , boost::shared_ptr<GeneralisedLinearSpringForce3_3 >  , AbstractTwoBodyInteractionForce<3, 3>  >(m, "GeneralisedLinearSpringForce3_3")
         .def(py::init< >())
         .def(
             "VariableSpringConstantMultiplicationFactor", 

@@ -42,7 +42,7 @@ outputDirectory);
 
 };
 void register_VtkSceneModifier2_class(py::module &m){
-py::class_<VtkSceneModifier2 , VtkSceneModifier2_Overloads , boost::shared_ptr<VtkSceneModifier2 >   >(m, "VtkSceneModifier2")
+py::class_<VtkSceneModifier2 , VtkSceneModifier2_Overloads , boost::shared_ptr<VtkSceneModifier2 >  , AbstractCellBasedSimulationModifier<2, 2>  >(m, "VtkSceneModifier2")
         .def(py::init< >())
         .def(
             "GetVtkScene", 

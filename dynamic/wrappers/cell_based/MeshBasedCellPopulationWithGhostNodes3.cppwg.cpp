@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -87,7 +89,7 @@ pParentCell);
 
 };
 void register_MeshBasedCellPopulationWithGhostNodes3_class(py::module &m){
-py::class_<MeshBasedCellPopulationWithGhostNodes3 , MeshBasedCellPopulationWithGhostNodes3_Overloads , boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes3 >   >(m, "MeshBasedCellPopulationWithGhostNodes3")
+py::class_<MeshBasedCellPopulationWithGhostNodes3 , MeshBasedCellPopulationWithGhostNodes3_Overloads , boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes3 >  , MeshBasedCellPopulation<3, 3>  >(m, "MeshBasedCellPopulationWithGhostNodes3")
         .def(py::init<::MutableMesh<3, 3> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, double >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("deleteMesh") = false, py::arg("ghostSpringStiffness") = 15.)
         .def(py::init<::MutableMesh<3, 3> &, double >(), py::arg("rMesh"), py::arg("ghostSpringStiffness") = 15.)
         .def(
@@ -138,5 +140,7 @@ py::class_<MeshBasedCellPopulationWithGhostNodes3 , MeshBasedCellPopulationWithG
             "OutputCellPopulationParameters", 
             (void(MeshBasedCellPopulationWithGhostNodes3::*)(::out_stream &)) &MeshBasedCellPopulationWithGhostNodes3::OutputCellPopulationParameters, 
             " " , py::arg("rParamsFile") )
+        .def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulationWithGhostNodes3::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &MeshBasedCellPopulationWithGhostNodes3::AddCellWriter<CellLabelWriter>)
     ;
 }

@@ -49,7 +49,7 @@ outputDirectory);
 
 };
 void register_AbstractTargetAreaModifier2_class(py::module &m){
-py::class_<AbstractTargetAreaModifier2 , AbstractTargetAreaModifier2_Overloads , boost::shared_ptr<AbstractTargetAreaModifier2 >   >(m, "AbstractTargetAreaModifier2")
+py::class_<AbstractTargetAreaModifier2 , AbstractTargetAreaModifier2_Overloads , boost::shared_ptr<AbstractTargetAreaModifier2 >  , AbstractCellBasedSimulationModifier<2, 2>  >(m, "AbstractTargetAreaModifier2")
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(AbstractTargetAreaModifier2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractTargetAreaModifier2::UpdateAtEndOfTimeStep, 

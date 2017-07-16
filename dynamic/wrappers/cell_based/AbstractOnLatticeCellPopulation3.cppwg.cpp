@@ -79,7 +79,7 @@ rNewLocation);
 
 };
 void register_AbstractOnLatticeCellPopulation3_class(py::module &m){
-py::class_<AbstractOnLatticeCellPopulation3 , AbstractOnLatticeCellPopulation3_Overloads , boost::shared_ptr<AbstractOnLatticeCellPopulation3 >   >(m, "AbstractOnLatticeCellPopulation3")
+py::class_<AbstractOnLatticeCellPopulation3 , AbstractOnLatticeCellPopulation3_Overloads , boost::shared_ptr<AbstractOnLatticeCellPopulation3 >  , AbstractCellPopulation<3, 3>  >(m, "AbstractOnLatticeCellPopulation3")
         .def(
             "UpdateCellLocations", 
             (void(AbstractOnLatticeCellPopulation3::*)(double)) &AbstractOnLatticeCellPopulation3::UpdateCellLocations, 

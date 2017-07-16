@@ -114,7 +114,7 @@ isPeriodic);
 
 };
 void register_NodesOnlyMesh2_class(py::module &m){
-py::class_<NodesOnlyMesh2 , NodesOnlyMesh2_Overloads , boost::shared_ptr<NodesOnlyMesh2 >   >(m, "NodesOnlyMesh2")
+py::class_<NodesOnlyMesh2 , NodesOnlyMesh2_Overloads , boost::shared_ptr<NodesOnlyMesh2 >  , MutableMesh<2, 2>  >(m, "NodesOnlyMesh2")
         .def(py::init< >())
         .def(
             "ConstructNodesWithoutMesh", 

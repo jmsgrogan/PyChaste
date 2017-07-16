@@ -28,6 +28,7 @@ class AbstractOdeSystemInformation_Overloads : public AbstractOdeSystemInformati
 };
 void register_AbstractOdeSystemInformation_class(py::module &m){
 py::class_<AbstractOdeSystemInformation , AbstractOdeSystemInformation_Overloads , boost::shared_ptr<AbstractOdeSystemInformation >   >(m, "AbstractOdeSystemInformation")
+        .def(py::init< >())
         .def(
             "GetSystemName", 
             (::std::string(AbstractOdeSystemInformation::*)() const ) &AbstractOdeSystemInformation::GetSystemName, 

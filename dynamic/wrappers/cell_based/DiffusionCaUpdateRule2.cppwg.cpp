@@ -39,7 +39,7 @@ cell);
 
 };
 void register_DiffusionCaUpdateRule2_class(py::module &m){
-py::class_<DiffusionCaUpdateRule2 , DiffusionCaUpdateRule2_Overloads , boost::shared_ptr<DiffusionCaUpdateRule2 >   >(m, "DiffusionCaUpdateRule2")
+py::class_<DiffusionCaUpdateRule2 , DiffusionCaUpdateRule2_Overloads , boost::shared_ptr<DiffusionCaUpdateRule2 >  , AbstractCaUpdateRule<2>  >(m, "DiffusionCaUpdateRule2")
         .def(py::init< >())
         .def(
             "EvaluateProbability", 

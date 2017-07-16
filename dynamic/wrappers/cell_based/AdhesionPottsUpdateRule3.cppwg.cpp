@@ -51,7 +51,7 @@ pCellB);
 
 };
 void register_AdhesionPottsUpdateRule3_class(py::module &m){
-py::class_<AdhesionPottsUpdateRule3 , AdhesionPottsUpdateRule3_Overloads , boost::shared_ptr<AdhesionPottsUpdateRule3 >   >(m, "AdhesionPottsUpdateRule3")
+py::class_<AdhesionPottsUpdateRule3 , AdhesionPottsUpdateRule3_Overloads , boost::shared_ptr<AdhesionPottsUpdateRule3 >  , AbstractPottsUpdateRule<3>  >(m, "AdhesionPottsUpdateRule3")
         .def(py::init< >())
         .def(
             "EvaluateHamiltonianContribution", 

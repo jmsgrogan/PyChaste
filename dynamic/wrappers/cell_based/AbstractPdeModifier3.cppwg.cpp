@@ -56,7 +56,7 @@ outputDirectory);
 
 };
 void register_AbstractPdeModifier3_class(py::module &m){
-py::class_<AbstractPdeModifier3 , AbstractPdeModifier3_Overloads , boost::shared_ptr<AbstractPdeModifier3 >   >(m, "AbstractPdeModifier3")
+py::class_<AbstractPdeModifier3 , AbstractPdeModifier3_Overloads , boost::shared_ptr<AbstractPdeModifier3 >  , AbstractCellBasedSimulationModifier<3, 3>  >(m, "AbstractPdeModifier3")
         .def(
             "GetPde", 
             (::boost::shared_ptr<AbstractLinearPde<3, 3> >(AbstractPdeModifier3::*)()) &AbstractPdeModifier3::GetPde, 

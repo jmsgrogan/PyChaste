@@ -27,7 +27,7 @@ class CellPopulationPyChasteActorGenerator3_Overloads : public CellPopulationPyC
 
 };
 void register_CellPopulationPyChasteActorGenerator3_class(py::module &m){
-py::class_<CellPopulationPyChasteActorGenerator3 , CellPopulationPyChasteActorGenerator3_Overloads , boost::shared_ptr<CellPopulationPyChasteActorGenerator3 >   >(m, "CellPopulationPyChasteActorGenerator3")
+py::class_<CellPopulationPyChasteActorGenerator3 , CellPopulationPyChasteActorGenerator3_Overloads , boost::shared_ptr<CellPopulationPyChasteActorGenerator3 >  , AbstractPyChasteActorGenerator<3>  >(m, "CellPopulationPyChasteActorGenerator3")
         .def(py::init< >())
         .def(
             "AddActor", 

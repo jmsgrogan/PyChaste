@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_PetscTools_class(py::module &m){
 py::class_<PetscTools  , boost::shared_ptr<PetscTools >   >(m, "PetscTools")
+        .def(py::init< >())
         .def_static(
             "ResetCache", 
             (void(*)()) &PetscTools::ResetCache, 

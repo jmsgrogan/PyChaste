@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -227,7 +229,7 @@ dirichletBoundaryValue);
 
 };
 void register_CaBasedCellPopulation2_class(py::module &m){
-py::class_<CaBasedCellPopulation2 , CaBasedCellPopulation2_Overloads , boost::shared_ptr<CaBasedCellPopulation2 >   >(m, "CaBasedCellPopulation2")
+py::class_<CaBasedCellPopulation2 , CaBasedCellPopulation2_Overloads , boost::shared_ptr<CaBasedCellPopulation2 >  , AbstractOnLatticeCellPopulation<2>  >(m, "CaBasedCellPopulation2")
         .def(py::init<::PottsMesh<2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, unsigned int, bool, bool >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices"), py::arg("latticeCarryingCapacity") = 1U, py::arg("deleteMesh") = false, py::arg("validate") = false)
         .def(py::init<::PottsMesh<2> & >(), py::arg("rMesh"))
         .def(
@@ -342,5 +344,7 @@ py::class_<CaBasedCellPopulation2 , CaBasedCellPopulation2_Overloads , boost::sh
             "IsPdeNodeAssociatedWithNonApoptoticCell", 
             (bool(CaBasedCellPopulation2::*)(unsigned int)) &CaBasedCellPopulation2::IsPdeNodeAssociatedWithNonApoptoticCell, 
             " " , py::arg("pdeNodeIndex") )
+        .def("AddPopulationWriterVoronoiDataWriter", &CaBasedCellPopulation2::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &CaBasedCellPopulation2::AddCellWriter<CellLabelWriter>)
     ;
 }

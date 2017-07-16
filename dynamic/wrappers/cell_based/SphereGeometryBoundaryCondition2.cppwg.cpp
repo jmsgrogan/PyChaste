@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -13,6 +14,8 @@
 namespace py = pybind11;
 typedef SphereGeometryBoundaryCondition<2 > SphereGeometryBoundaryCondition2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_CVECTOR_TYPECASTER3();
+PYBIND11_CVECTOR_TYPECASTER2();
 
 class SphereGeometryBoundaryCondition2_Overloads : public SphereGeometryBoundaryCondition2{
     public:
@@ -41,7 +44,7 @@ class SphereGeometryBoundaryCondition2_Overloads : public SphereGeometryBoundary
 
 };
 void register_SphereGeometryBoundaryCondition2_class(py::module &m){
-py::class_<SphereGeometryBoundaryCondition2 , SphereGeometryBoundaryCondition2_Overloads , boost::shared_ptr<SphereGeometryBoundaryCondition2 >   >(m, "SphereGeometryBoundaryCondition2")
+py::class_<SphereGeometryBoundaryCondition2 , SphereGeometryBoundaryCondition2_Overloads , boost::shared_ptr<SphereGeometryBoundaryCondition2 >  , AbstractCellPopulationBoundaryCondition<2, 2>  >(m, "SphereGeometryBoundaryCondition2")
         .def(py::init<::AbstractCellPopulation<2, 2> *, ::boost::numeric::ublas::c_vector<double, 2>, double, double >(), py::arg("pCellPopulation"), py::arg("centre"), py::arg("radius"), py::arg("distance") = 1.0000000000000001E-5)
         .def(
             "rGetCentreOfSphere", 

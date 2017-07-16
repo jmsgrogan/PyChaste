@@ -28,6 +28,7 @@ class AbstractBoundaryCondition3_Overloads : public AbstractBoundaryCondition3{
 };
 void register_AbstractBoundaryCondition3_class(py::module &m){
 py::class_<AbstractBoundaryCondition3 , AbstractBoundaryCondition3_Overloads , boost::shared_ptr<AbstractBoundaryCondition3 >   >(m, "AbstractBoundaryCondition3")
+        .def(py::init< >())
         .def(
             "GetValue", 
             (double(AbstractBoundaryCondition3::*)(::ChastePoint<3> const &) const ) &AbstractBoundaryCondition3::GetValue, 

@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -172,7 +174,7 @@ dirichletBoundaryValue);
 
 };
 void register_PottsBasedCellPopulation2_class(py::module &m){
-py::class_<PottsBasedCellPopulation2 , PottsBasedCellPopulation2_Overloads , boost::shared_ptr<PottsBasedCellPopulation2 >   >(m, "PottsBasedCellPopulation2")
+py::class_<PottsBasedCellPopulation2 , PottsBasedCellPopulation2_Overloads , boost::shared_ptr<PottsBasedCellPopulation2 >  , AbstractOnLatticeCellPopulation<2>  >(m, "PottsBasedCellPopulation2")
         .def(py::init<::PottsMesh<2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, bool, bool, ::std::vector<unsigned int, std::allocator<unsigned int> > const >(), py::arg("rMesh"), py::arg("rCells"), py::arg("deleteMesh") = false, py::arg("validate") = true, py::arg("locationIndices") = std::vector<unsigned int>())
         .def(py::init<::PottsMesh<2> & >(), py::arg("rMesh"))
         .def(
@@ -279,5 +281,7 @@ py::class_<PottsBasedCellPopulation2 , PottsBasedCellPopulation2_Overloads , boo
             "GetCellDataItemAtPdeNode", 
             (double(PottsBasedCellPopulation2::*)(unsigned int, ::std::string &, bool, double)) &PottsBasedCellPopulation2::GetCellDataItemAtPdeNode, 
             " " , py::arg("pdeNodeIndex"), py::arg("rVariableName"), py::arg("dirichletBoundaryConditionApplies") = false, py::arg("dirichletBoundaryValue") = 0. )
+        .def("AddPopulationWriterVoronoiDataWriter", &PottsBasedCellPopulation2::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &PottsBasedCellPopulation2::AddCellWriter<CellLabelWriter>)
     ;
 }

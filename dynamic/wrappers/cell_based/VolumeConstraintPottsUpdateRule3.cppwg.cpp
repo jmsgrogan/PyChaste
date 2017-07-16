@@ -36,7 +36,7 @@ rCellPopulation);
 
 };
 void register_VolumeConstraintPottsUpdateRule3_class(py::module &m){
-py::class_<VolumeConstraintPottsUpdateRule3 , VolumeConstraintPottsUpdateRule3_Overloads , boost::shared_ptr<VolumeConstraintPottsUpdateRule3 >   >(m, "VolumeConstraintPottsUpdateRule3")
+py::class_<VolumeConstraintPottsUpdateRule3 , VolumeConstraintPottsUpdateRule3_Overloads , boost::shared_ptr<VolumeConstraintPottsUpdateRule3 >  , AbstractPottsUpdateRule<3>  >(m, "VolumeConstraintPottsUpdateRule3")
         .def(py::init< >())
         .def(
             "EvaluateHamiltonianContribution", 

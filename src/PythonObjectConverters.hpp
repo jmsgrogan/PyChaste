@@ -36,10 +36,96 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef PYTHONOBJECTCONVERTERS_HPP_
 #define PYTHONOBJECTCONVERTERS_HPP_
 
+#include <pybind11/stl.h>
+#include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 //#include <vtkSmartPointer.h>
 
 namespace py = pybind11;
+
+#define PYBIND11_CVECTOR_TYPECASTER3()                                  \
+namespace pybind11 { namespace detail {                                 \
+  template <typename T> struct type_caster<c_vector<T, 3> >             \
+  {                                                                     \
+    public:                                                             \
+      typedef c_vector<T, 3> CVec;                                      \
+      PYBIND11_TYPE_CASTER(CVec, _("CVector_3"));                       \
+      bool load(py::handle src, bool convert)                           \
+      {                                                                 \
+        if (!convert && !py::array_t<T>::check_(src))                   \
+        {                                                               \
+            return false;                                               \
+        }                                                               \
+        auto buf = py::array_t<T, py::array::c_style |                  \
+                py::array::forcecast>::ensure(src);                     \
+        if (!buf){return false;}                                        \
+        if (buf.ndim() != 1  or buf.shape()[0] != 3 )                   \
+        {                                                               \
+            return false;                                               \
+        }                                                               \
+        CVec vec;                                                       \
+        for ( int i=0 ; i<3 ; i++ )                                     \
+        {                                                               \
+            vec[i] = buf.data()[i];                                     \
+        }                                                               \
+        value = vec;                                                    \
+        return true;                                                    \
+      }                                                                 \
+      static py::handle cast(const c_vector<T, 3>& src,                 \
+              py::return_value_policy policy, py::handle parent)        \
+      {                                                                 \
+        std::vector<size_t> shape (1, 3);                               \
+        std::vector<size_t> strides(1, sizeof(T));                      \
+        double* data = src.size() ?                                     \
+                const_cast<double *>(&src[0]) :                         \
+                static_cast<double *>(NULL);                            \
+        py::array a(std::move(shape), std::move(strides), data);        \
+        return a.release();                                             \
+      }                                                                 \
+  };                                                                    \
+}}                                                                      \
+
+#define PYBIND11_CVECTOR_TYPECASTER2()                                  \
+namespace pybind11 { namespace detail {                                 \
+  template <typename T> struct type_caster<c_vector<T, 2> >             \
+  {                                                                     \
+    public:                                                             \
+      typedef c_vector<T, 2> CVec;                                      \
+      PYBIND11_TYPE_CASTER(CVec, _("CVector_2"));                       \
+      bool load(py::handle src, bool convert)                           \
+      {                                                                 \
+        if (!convert && !py::array_t<T>::check_(src))                   \
+        {                                                               \
+            return false;                                               \
+        }                                                               \
+        auto buf = py::array_t<T, py::array::c_style |                  \
+                py::array::forcecast>::ensure(src);                     \
+        if (!buf){return false;}                                        \
+        if (buf.ndim() != 1  or buf.shape()[0] != 2 )                   \
+        {                                                               \
+            return false;                                               \
+        }                                                               \
+        CVec vec;                                                       \
+        for ( int i=0 ; i<2 ; i++ )                                     \
+        {                                                               \
+            vec[i] = buf.data()[i];                                     \
+        }                                                               \
+        value = vec;                                                    \
+        return true;                                                    \
+      }                                                                 \
+      static py::handle cast(const c_vector<T, 2>& src,                 \
+              py::return_value_policy policy, py::handle parent)        \
+      {                                                                 \
+        std::vector<size_t> shape (1, 2);                               \
+        std::vector<size_t> strides(1, sizeof(T));                      \
+        double* data = src.size() ?                                     \
+                const_cast<double *>(&src[0]) :                         \
+                static_cast<double *>(NULL);                            \
+        py::array a(std::move(shape), std::move(strides), data);        \
+        return a.release();                                             \
+      }                                                                 \
+  };                                                                    \
+}}
 
 /**
  *  VTK Conversion, from SMTK Source with copyright
@@ -52,7 +138,7 @@ namespace py = pybind11;
 //  the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
 //  PURPOSE.  See the above copyright notice for more information.
 //=========================================================================
- */
+*/
 
 #include <vtkObjectBase.h>
 #include <vtkPythonUtil.h>
@@ -71,26 +157,24 @@ operator VTK_OBJ &() { return *value; }                                 \
 template <typename _T> using cast_op_type =                             \
   pybind11::detail::cast_op_type<_T>;                                   \
 bool load(handle src, bool) {                                           \
-    VTK_OBJ* raw = dynamic_cast< VTK_OBJ *>(                            \
+    value = dynamic_cast< VTK_OBJ *>(                                   \
     vtkPythonUtil::GetPointerFromObject(src.ptr(), #VTK_OBJ));          \
-  if (!raw) {                                                           \
+  if (!value) {                                                         \
     PyErr_Clear();                                                      \
     throw reference_cast_error();                                       \
   }                                                                     \
-  vtkSmartPointer<VTK_OBJ> smart;                                       \
-  smart.TakeReference(raw);                                             \
-  value = smart;                                                        \
   return value != nullptr;                                              \
 }                                                                       \
 static handle cast(const vtkSmartPointer<VTK_OBJ>& src,                 \
         return_value_policy, handle) {                                  \
-  return vtkPythonUtil::GetObjectFromPointer((&src)->GetPointer());     \
+  return vtkPythonUtil::GetObjectFromPointer(                           \
+const_cast< VTK_OBJ *>(src.GetPointer()));                             \
 }                                                                       \
 };                                                                      \
 }}
 
 
-///**
+// **
 // *  Convert VTK pointers to Python VTK objects, templated over vtk object type
 // *  Source: http://www.vtk.org/Wiki/Example_from_and_to_python_converters
 // */

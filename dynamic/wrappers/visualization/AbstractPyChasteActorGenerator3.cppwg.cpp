@@ -28,6 +28,7 @@ class AbstractPyChasteActorGenerator3_Overloads : public AbstractPyChasteActorGe
 };
 void register_AbstractPyChasteActorGenerator3_class(py::module &m){
 py::class_<AbstractPyChasteActorGenerator3 , AbstractPyChasteActorGenerator3_Overloads , boost::shared_ptr<AbstractPyChasteActorGenerator3 >   >(m, "AbstractPyChasteActorGenerator3")
+        .def(py::init< >())
         .def(
             "GetColorTransferFunction", 
             (::vtkSmartPointer<vtkColorTransferFunction>(AbstractPyChasteActorGenerator3::*)()) &AbstractPyChasteActorGenerator3::GetColorTransferFunction, 

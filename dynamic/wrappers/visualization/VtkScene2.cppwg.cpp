@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -13,6 +14,8 @@
 namespace py = pybind11;
 typedef VtkScene<2 > VtkScene2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_VTK_TYPECASTER(vtkRenderer);
+PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);
 
 class VtkScene2_Overloads : public VtkScene2{
     public:

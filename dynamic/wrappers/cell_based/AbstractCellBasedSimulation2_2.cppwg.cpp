@@ -78,6 +78,7 @@ class AbstractCellBasedSimulation2_2_Overloads : public AbstractCellBasedSimulat
 };
 void register_AbstractCellBasedSimulation2_2_class(py::module &m){
 py::class_<AbstractCellBasedSimulation2_2 , AbstractCellBasedSimulation2_2_Overloads , boost::shared_ptr<AbstractCellBasedSimulation2_2 >   >(m, "AbstractCellBasedSimulation2_2")
+        .def(py::init<::AbstractCellPopulation<2, 2> &, bool, bool >(), py::arg("rCellPopulation"), py::arg("deleteCellPopulationInDestructor") = false, py::arg("initialiseCells") = true)
         .def(
             "GetNodeLocation", 
             (::std::vector<double, std::allocator<double> >(AbstractCellBasedSimulation2_2::*)(unsigned int const &)) &AbstractCellBasedSimulation2_2::GetNodeLocation, 

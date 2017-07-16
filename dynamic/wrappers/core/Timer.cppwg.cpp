@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_Timer_class(py::module &m){
 py::class_<Timer  , boost::shared_ptr<Timer >   >(m, "Timer")
+        .def(py::init< >())
         .def_static(
             "Reset", 
             (void(*)()) &Timer::Reset, 

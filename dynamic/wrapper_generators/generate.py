@@ -46,8 +46,6 @@ if __name__ == "__main__":
     package_info_path = sys.argv[3]
     castxml_binary = sys.argv[4]
     includes = sys.argv[5:]
-    
-    print castxml_binary
 
     generator = CppWrapperGenerator(source_root,
                                     includes,

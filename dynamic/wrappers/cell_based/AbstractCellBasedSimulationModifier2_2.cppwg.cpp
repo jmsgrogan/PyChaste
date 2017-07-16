@@ -57,6 +57,7 @@ outputDirectory);
 };
 void register_AbstractCellBasedSimulationModifier2_2_class(py::module &m){
 py::class_<AbstractCellBasedSimulationModifier2_2 , AbstractCellBasedSimulationModifier2_2_Overloads , boost::shared_ptr<AbstractCellBasedSimulationModifier2_2 >   >(m, "AbstractCellBasedSimulationModifier2_2")
+        .def(py::init< >())
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(AbstractCellBasedSimulationModifier2_2::*)(::AbstractCellPopulation<2, 2> &)) &AbstractCellBasedSimulationModifier2_2::UpdateAtEndOfTimeStep, 

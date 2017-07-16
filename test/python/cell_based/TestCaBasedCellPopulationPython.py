@@ -37,18 +37,19 @@ import chaste.cell_based
 import chaste.visualization
 chaste.init()
 
+
 class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
-    
+     
     def test_construct(self):
-        
+
         file_handler = chaste.core.OutputFileHandler("Python/TestCaBasedPopulationPython")
         generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 10, 0, 0)
         mesh = generator.GetMesh()
-
+ 
         location_indices = range(5)
-        cells = []
+ 
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
-        cell_generator.GenerateBasic(cells, len(location_indices))
+        cells = cell_generator.GenerateBasic(len(location_indices))
         cell_population = chaste.cell_based.CaBasedCellPopulation3(mesh, cells, location_indices)
 
         scene = chaste.visualization.VtkScene3()
@@ -57,17 +58,16 @@ class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath()+"/cell_population")
         scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True);
         scene.GetCellPopulationActorGenerator().SetVolumeOpacity(1.0);
-
         scene_modifier = chaste.cell_based.VtkSceneModifier3()
         scene_modifier.SetVtkScene(scene)
-
         scene.Start()
+        
         simulator = chaste.cell_based.OnLatticeSimulation3(cell_population)
         simulator.SetOutputDirectory("Python/TestCaBasedPopulationPython")
         simulator.SetDt(10.0)
         simulator.SetEndTime(300.0)
         simulator.AddSimulationModifier(scene_modifier)
         simulator.Solve()
-
+ 
 if __name__ == '__main__':
     unittest.main()

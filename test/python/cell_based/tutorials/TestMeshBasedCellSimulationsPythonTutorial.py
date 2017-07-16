@@ -74,10 +74,10 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## The second argument represents the size of that the list of cells should become - one cell for each node, 
         ## the third argument specifies the proliferative type of the cell.
         
-        cells = []
+
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a mesh. For this test, because we have a `MutableMesh`, 
@@ -159,10 +159,9 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## This time the second argument is different and is the number of real nodes in the mesh. 
         ## As before all cells have `TransitCellProliferativeType`.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, len(location_indices), transit_type)
+        cells = cell_generator.GenerateBasicRandom(len(location_indices), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a set of elements or a mesh. 

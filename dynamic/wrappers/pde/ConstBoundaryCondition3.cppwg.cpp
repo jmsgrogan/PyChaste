@@ -27,7 +27,7 @@ class ConstBoundaryCondition3_Overloads : public ConstBoundaryCondition3{
 
 };
 void register_ConstBoundaryCondition3_class(py::module &m){
-py::class_<ConstBoundaryCondition3 , ConstBoundaryCondition3_Overloads , boost::shared_ptr<ConstBoundaryCondition3 >   >(m, "ConstBoundaryCondition3")
+py::class_<ConstBoundaryCondition3 , ConstBoundaryCondition3_Overloads , boost::shared_ptr<ConstBoundaryCondition3 >  , AbstractBoundaryCondition<3>  >(m, "ConstBoundaryCondition3")
         .def(py::init<double const >(), py::arg("value"))
         .def(
             "GetValue", 

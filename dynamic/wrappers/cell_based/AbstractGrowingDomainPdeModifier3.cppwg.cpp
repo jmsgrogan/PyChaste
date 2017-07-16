@@ -27,7 +27,7 @@ class AbstractGrowingDomainPdeModifier3_Overloads : public AbstractGrowingDomain
 
 };
 void register_AbstractGrowingDomainPdeModifier3_class(py::module &m){
-py::class_<AbstractGrowingDomainPdeModifier3 , AbstractGrowingDomainPdeModifier3_Overloads , boost::shared_ptr<AbstractGrowingDomainPdeModifier3 >   >(m, "AbstractGrowingDomainPdeModifier3")
+py::class_<AbstractGrowingDomainPdeModifier3 , AbstractGrowingDomainPdeModifier3_Overloads , boost::shared_ptr<AbstractGrowingDomainPdeModifier3 >  , AbstractPdeModifier<3>  >(m, "AbstractGrowingDomainPdeModifier3")
         .def(
             "GenerateFeMesh", 
             (void(AbstractGrowingDomainPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &AbstractGrowingDomainPdeModifier3::GenerateFeMesh, 

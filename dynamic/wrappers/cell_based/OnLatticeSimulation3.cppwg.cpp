@@ -48,7 +48,7 @@ class OnLatticeSimulation3_Overloads : public OnLatticeSimulation3{
 
 };
 void register_OnLatticeSimulation3_class(py::module &m){
-py::class_<OnLatticeSimulation3 , OnLatticeSimulation3_Overloads , boost::shared_ptr<OnLatticeSimulation3 >   >(m, "OnLatticeSimulation3")
+py::class_<OnLatticeSimulation3 , OnLatticeSimulation3_Overloads , boost::shared_ptr<OnLatticeSimulation3 >  , AbstractCellBasedSimulation<3, 3>  >(m, "OnLatticeSimulation3")
         .def(py::init<::AbstractCellPopulation<3, 3> &, bool, bool >(), py::arg("rCellPopulation"), py::arg("deleteCellPopulationInDestructor") = false, py::arg("initialiseCells") = true)
         .def(
             "AddUpdateRule", 

@@ -22,3 +22,4 @@ python/cell_based/tutorials/TestScratchAssayTutorial.py
 python/cell_based/tutorials/TestTensileTestTutorial.py
 python/cell_based/tutorials/TestCellSortingTutorial.py
 python/cell_based/tutorials/TestSpheroidTutorial.py
+python/visualziation/TestVisualization.py

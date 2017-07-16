@@ -89,7 +89,7 @@ concreteMove);
 
 };
 void register_MutableMesh3_3_class(py::module &m){
-py::class_<MutableMesh3_3 , MutableMesh3_3_Overloads , boost::shared_ptr<MutableMesh3_3 >   >(m, "MutableMesh3_3")
+py::class_<MutableMesh3_3 , MutableMesh3_3_Overloads , boost::shared_ptr<MutableMesh3_3 >  , TetrahedralMesh<3, 3>  >(m, "MutableMesh3_3")
         .def(py::init< >())
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> > >(), py::arg("nodes"))
         .def(

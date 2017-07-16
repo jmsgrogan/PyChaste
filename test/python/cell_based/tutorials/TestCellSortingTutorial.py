@@ -70,10 +70,9 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## Having created a mesh, we now create some cells. To do this, we the `CellsGenerator` helper class, 
         ## as before but this time the third argument is set to make all cells non-proliferative.
         
-        cells = []
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), differentiated_type)
         
         ## Before we make a CellPopulation we make a cell label and then assign this label to some randomly chosen cells.
         
@@ -123,7 +122,7 @@ class TestCellSortingTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         differential_adhesion_update_rule.SetLabelledCellCellAdhesionEnergyParameter(0.11)
         differential_adhesion_update_rule.SetCellCellAdhesionEnergyParameter(0.02)
         differential_adhesion_update_rule.SetLabelledCellBoundaryAdhesionEnergyParameter(0.16)
-        differential_adhesion_update_rule.SetCellBoundaryAdhesionEnergyParameter(0.16)       
+        differential_adhesion_update_rule.SetCellBoundaryAdhesionEnergyParameter(0.16)
         simulator.AddUpdateRule(differential_adhesion_update_rule)
         
         ## Set up plotting

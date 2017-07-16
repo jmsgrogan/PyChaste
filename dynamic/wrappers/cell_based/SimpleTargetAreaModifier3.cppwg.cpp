@@ -34,7 +34,7 @@ class SimpleTargetAreaModifier3_Overloads : public SimpleTargetAreaModifier3{
 
 };
 void register_SimpleTargetAreaModifier3_class(py::module &m){
-py::class_<SimpleTargetAreaModifier3 , SimpleTargetAreaModifier3_Overloads , boost::shared_ptr<SimpleTargetAreaModifier3 >   >(m, "SimpleTargetAreaModifier3")
+py::class_<SimpleTargetAreaModifier3 , SimpleTargetAreaModifier3_Overloads , boost::shared_ptr<SimpleTargetAreaModifier3 >  , AbstractTargetAreaModifier<3>  >(m, "SimpleTargetAreaModifier3")
         .def(py::init< >())
         .def(
             "UpdateTargetAreaOfCell", 

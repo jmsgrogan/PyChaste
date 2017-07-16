@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>TestVertexBasedCellSimulationsPythonTutorial</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>TestVertexBasedCellSimulationsPythonTutorial</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11699,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11722,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11746,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11758,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Jupyter notebook specific imports </span>
@@ -11772,21 +11796,20 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize vertex-based simulations.
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize vertex-based simulations.
 Full details of the mechanical model proposed by T. Nagai and H. Honda ("A dynamic cell model for the formation of epithelial tissues",
 Philosophical Magazine Part B 81:699-719).</p>
-<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#182;</a></h2>
+<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#194;&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># Plotting</span>
@@ -11803,12 +11826,11 @@ Philosophical Magazine Part B 81:699-719).</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-1---A-basic-vertex-based-simulation">Test 1 - A basic vertex-based simulation<a class="anchor-link" href="#Test-1---A-basic-vertex-based-simulation">&#182;</a></h2><p>In the first test, we run a simple vertex-based simulation, in which we create a monolayer of cells,
+<h2 id="Test-1---A-basic-vertex-based-simulation">Test 1 - A basic vertex-based simulation<a class="anchor-link" href="#Test-1---A-basic-vertex-based-simulation">&#194;&#182;</a></h2><p>In the first test, we run a simple vertex-based simulation, in which we create a monolayer of cells,
 using a mutable vertex mesh. Each cell is assigned a stochastic cell-cycle model.</p>
 
 </div>
@@ -11816,7 +11838,7 @@ using a mutable vertex mesh. Each cell is assigned a stochastic cell-cycle model
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -11828,8 +11850,7 @@ using a mutable vertex mesh. Each cell is assigned a stochastic cell-cycle model
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11842,7 +11863,7 @@ define the size of the mesh - we have chosen a mesh that is 2 elements (i.e. cel
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">OutputFileHandler</span><span class="p">(</span><span class="s2">&quot;Python/TestVertexBasedCellSimulationsTutorial&quot;</span><span class="p">)</span>
@@ -11855,8 +11876,7 @@ define the size of the mesh - we have chosen a mesh that is 2 elements (i.e. cel
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11871,13 +11891,12 @@ the third argument specifies the proliferative type of the cell.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformG1GenerationalCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11885,8 +11904,7 @@ the third argument specifies the proliferative type of the cell.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11899,7 +11917,7 @@ we use a particular type of cell population called a VertexBasedCellPopulation.<
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VertexBasedCellPopulation2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -11910,8 +11928,7 @@ we use a particular type of cell population called a VertexBasedCellPopulation.<
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11922,7 +11939,7 @@ we use a particular type of cell population called a VertexBasedCellPopulation.<
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">VtkScene2</span><span class="p">()</span>
@@ -11935,101 +11952,8 @@ we use a particular type of cell population called a VertexBasedCellPopulation.<
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
-
-
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,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
-s2VdVb/zg1Ucli2pynJYtgxWEWoJ1mX/xZZUhdq7WVIVpKJgFXuMWtZVDdgjW1IVp7pgFRtmy2DV
-kg2zpVaJKg1W8Wa2pKpJ79/pkapcVQfrsnaxJVXNWzdqSVW62oNVvDRqqVU/lmfLKwttyAhW8TRb
-UtWnp9kyWDUjKVjF3C+Jj+K+NFZbfiouDkayvGBdFpzOxC+K9zkYzYsMVjF3OnO/IjbhYDQsOFjF
-9Xq93W7ljKZ/LWzIwWhSfLCAfnx69gBALQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFY
-QAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzB
-AmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmII
-FhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBD
-sIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAY
-ggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXE
-ECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwghmABMQQLiCFYQAzBAmIIFhBDsIAYggXEECwg
-hmABMQQLiCFYQAzBAmIIFhDjf17JzZdMKpSJAAAAAElFTkSuQmCC
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12040,7 +11964,7 @@ hmABMQQLiCFYQAzBAmIIFhDjf17JzZdMKpSJAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OffLatticeSimulation2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12053,8 +11977,7 @@ hmABMQQLiCFYQAzBAmIIFhDjf17JzZdMKpSJAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12068,7 +11991,7 @@ will cause the simulator to print results every 6 minutes (i.e. 0.1 hours).</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">SetSamplingTimestepMultiple</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
@@ -12079,8 +12002,7 @@ will cause the simulator to print results every 6 minutes (i.e. 0.1 hours).</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12095,7 +12017,7 @@ if you try to use an incompatible class then you will receive a warning.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">NagaiHondaForce2</span><span class="p">()</span>
@@ -12107,8 +12029,7 @@ if you try to use an incompatible class then you will receive a warning.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12122,7 +12043,7 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">growth_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">SimpleTargetAreaModifier2</span><span class="p">()</span>
@@ -12134,8 +12055,7 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12146,7 +12066,7 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">JupyterSceneModifier2</span><span class="p">(</span><span class="n">nb_manager</span><span class="p">)</span>
@@ -12160,8 +12080,7 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12172,7 +12091,7 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
@@ -12184,85 +12103,8 @@ to the simulation, which inherits from AbstractTargetAreaModifier.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12274,7 +12116,7 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Tear down the test </span>
@@ -12286,12 +12128,11 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-2---introducing-periodicity,-boundaries-and-cell-killers">Test 2 - introducing periodicity, boundaries and cell killers<a class="anchor-link" href="#Test-2---introducing-periodicity,-boundaries-and-cell-killers">&#182;</a></h2><p>In the second test, we run a simple vertex-based simulation, in which we create a monolayer of cells in a periodic geometry,
+<h2 id="Test-2---introducing-periodicity,-boundaries-and-cell-killers">Test 2 - introducing periodicity, boundaries and cell killers<a class="anchor-link" href="#Test-2---introducing-periodicity,-boundaries-and-cell-killers">&#194;&#182;</a></h2><p>In the second test, we run a simple vertex-based simulation, in which we create a monolayer of cells in a periodic geometry,
 using a cylindrical vertex mesh. We also include a fixed boundary which cells can't pass through and a cell killer which removes
 cells once they leave a region. As before each cell is assigned a stochastic cell-cycle model.</p>
 
@@ -12300,7 +12141,7 @@ cells once they leave a region. As before each cell is assigned a stochastic cel
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -12312,8 +12153,7 @@ cells once they leave a region. As before each cell is assigned a stochastic cel
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12327,7 +12167,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">CylindricalHoneycombVertexMeshGenerator</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -12339,8 +12179,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12351,13 +12190,12 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformG1GenerationalCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12365,8 +12203,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12377,7 +12214,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VertexBasedCellPopulation2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -12388,8 +12225,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12400,7 +12236,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OffLatticeSimulation2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12414,8 +12250,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12426,7 +12261,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">NagaiHondaForce2</span><span class="p">()</span>
@@ -12438,8 +12273,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12450,7 +12284,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">growth_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">SimpleTargetAreaModifier2</span><span class="p">()</span>
@@ -12462,8 +12296,7 @@ Here the first and second arguments define the size of the mesh - we have chosen
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12479,11 +12312,11 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="n">normal</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12491,8 +12324,7 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12503,11 +12335,16 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">PlaneBoundaryCondition2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">bc</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">PlaneBoundaryCondition2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">chaste</span><span class="o">.</span><span class="n">ChasteException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">e</span><span class="o">.</span><span class="n">GetMessage</span>
+<span class="nb">print</span> <span class="s2">&quot;alive1&quot;</span>
 <span class="n">simulator</span><span class="o">.</span><span class="n">AddCellPopulationBoundaryCondition</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;alive2&quot;</span>
 </pre></div>
 
 </div>
@@ -12515,8 +12352,7 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12530,11 +12366,11 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="n">normal</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12542,8 +12378,7 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12554,11 +12389,13 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">killer</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">PlaneBasedCellKiller2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;alive3&quot;</span>
 <span class="n">simulator</span><span class="o">.</span><span class="n">AddCellKiller</span><span class="p">(</span><span class="n">killer</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s2">&quot;alive4&quot;</span>
 </pre></div>
 
 </div>
@@ -12566,8 +12403,7 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12578,10 +12414,11 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">Solve</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;alive&quot;</span>
+<span class="n">simulator</span><span class="o">.</span><span class="n">Solve</span><span class="p">();</span>
 </pre></div>
 
 </div>
@@ -12589,8 +12426,7 @@ The first step is to define a point on the plane boundary and a normal to the pl
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12617,4 +12453,8 @@ If different simulation input parameters are being explored the lines should be 
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>

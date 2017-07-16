@@ -165,7 +165,7 @@ depth);
 
 };
 void register_AbstractTetrahedralMesh3_3_class(py::module &m){
-py::class_<AbstractTetrahedralMesh3_3 , AbstractTetrahedralMesh3_3_Overloads , boost::shared_ptr<AbstractTetrahedralMesh3_3 >   >(m, "AbstractTetrahedralMesh3_3")
+py::class_<AbstractTetrahedralMesh3_3 , AbstractTetrahedralMesh3_3_Overloads , boost::shared_ptr<AbstractTetrahedralMesh3_3 >  , AbstractMesh<3, 3>  >(m, "AbstractTetrahedralMesh3_3")
         .def(
             "GetElementIteratorBegin", 
             (::AbstractTetrahedralMesh<3, 3>::ElementIterator(AbstractTetrahedralMesh3_3::*)(bool)) &AbstractTetrahedralMesh3_3::GetElementIteratorBegin, 

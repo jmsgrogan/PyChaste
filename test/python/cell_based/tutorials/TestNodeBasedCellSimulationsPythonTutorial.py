@@ -81,10 +81,9 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## The second argument represents the size of that the vector cells should become - one cell for each node, 
         ## the third argument specifies the proliferative type of the cell.
         
-        cells = []
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a mesh. For this test, 
@@ -160,10 +159,9 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## Having created a mesh, we now create a std::vector of CellPtrs. 
         ## As before, we do this with the CellsGenerator helper class (this time with dimension 3).
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a mesh. For this test, 
@@ -233,10 +231,9 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         
         mesh.ConstructNodesWithoutMesh(nodes, 1.5)
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_3()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumNodes(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(), transit_type)
         cell_population = chaste.cell_based.NodeBasedCellPopulation3(mesh, cells)
 
         ## We can set up a `VtkScene` to do a quick visualization of the population before running the analysis.
@@ -262,7 +259,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## for details, if you try to use an incompatible class then you will receive a warning.
         ## First we set the centre (0,0,1) and radius of the sphere (1).
         
-        centre = (0.0, 0.0, 1.0)
+        centre = np.array([0.0, 0.0, 1.0])
         radius = 5.0
         boundary_condition = chaste.cell_based.SphereGeometryBoundaryCondition3(cell_population, centre, radius)
         simulator.AddCellPopulationBoundaryCondition(boundary_condition)

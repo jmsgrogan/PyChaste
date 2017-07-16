@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -13,6 +14,8 @@
 namespace py = pybind11;
 typedef ChastePoint<3 > ChastePoint3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_CVECTOR_TYPECASTER3();
+PYBIND11_CVECTOR_TYPECASTER2();
 
 void register_ChastePoint3_class(py::module &m){
 py::class_<ChastePoint3  , boost::shared_ptr<ChastePoint3 >   >(m, "ChastePoint3")

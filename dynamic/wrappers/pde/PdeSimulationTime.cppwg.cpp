@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_PdeSimulationTime_class(py::module &m){
 py::class_<PdeSimulationTime  , boost::shared_ptr<PdeSimulationTime >   >(m, "PdeSimulationTime")
+        .def(py::init< >())
         .def_static(
             "SetTime", 
             (void(*)(double)) &PdeSimulationTime::SetTime, 

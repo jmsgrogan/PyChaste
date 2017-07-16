@@ -66,7 +66,7 @@ dt);
 
 };
 void register_AbstractOffLatticeCellPopulation2_2_class(py::module &m){
-py::class_<AbstractOffLatticeCellPopulation2_2 , AbstractOffLatticeCellPopulation2_2_Overloads , boost::shared_ptr<AbstractOffLatticeCellPopulation2_2 >   >(m, "AbstractOffLatticeCellPopulation2_2")
+py::class_<AbstractOffLatticeCellPopulation2_2 , AbstractOffLatticeCellPopulation2_2_Overloads , boost::shared_ptr<AbstractOffLatticeCellPopulation2_2 >  , AbstractCellPopulation<2, 2>  >(m, "AbstractOffLatticeCellPopulation2_2")
         .def(
             "AddNode", 
             (unsigned int(AbstractOffLatticeCellPopulation2_2::*)(::Node<2> *)) &AbstractOffLatticeCellPopulation2_2::AddNode, 

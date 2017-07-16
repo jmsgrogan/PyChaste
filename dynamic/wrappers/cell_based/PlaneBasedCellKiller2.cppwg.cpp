@@ -34,7 +34,7 @@ class PlaneBasedCellKiller2_Overloads : public PlaneBasedCellKiller2{
 
 };
 void register_PlaneBasedCellKiller2_class(py::module &m){
-py::class_<PlaneBasedCellKiller2 , PlaneBasedCellKiller2_Overloads , boost::shared_ptr<PlaneBasedCellKiller2 >   >(m, "PlaneBasedCellKiller2")
+py::class_<PlaneBasedCellKiller2 , PlaneBasedCellKiller2_Overloads , boost::shared_ptr<PlaneBasedCellKiller2 >  , AbstractCellKiller<2>  >(m, "PlaneBasedCellKiller2")
         .def(py::init<::AbstractCellPopulation<2, 2> *, ::boost::numeric::ublas::c_vector<double, 2>, ::boost::numeric::ublas::c_vector<double, 2> >(), py::arg("pCellPopulation"), py::arg("point"), py::arg("normal"))
         .def(
             "rGetPointOnPlane", 

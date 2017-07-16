@@ -105,7 +105,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         num_grid_points = num_points_in_x*num_points_in_y
         top_location_indices = range(num_grid_points-1, num_grid_points - 
                                      num_cell_layers*num_points_in_x-1, -1)
-        cell_generator.GenerateGivenLocationIndices(cells, 
+        cells = cell_generator.GenerateGivenLocationIndices(
                                                     bottom_location_indices + top_location_indices, 
                                                     differentiated_type)            
             
@@ -156,7 +156,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## Usually we would define such a class in a different module and import it, it is placed
         ## here for the purposes of the tutorial. 
         
-        class PlottingModifier(chaste.cell_based.AbstractCellBasedSimulationModifier2_2):
+        class PlottingModifier(chaste.cell_based.PythonSimulationModifier2):
             
             """ Class for real time plotting of cell numbers using Matplotlib
             """
@@ -191,7 +191,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                             if cell_population.IsCellAttachedToLocationIndex(jdx + 
                                                                              idx*num_points_in_x):
                                 counter +=1
-                        num_cells.append(counter)   
+                        num_cells.append(counter)
                         
                     self.fig.ax.plot(y_locations, num_cells, color='black')
                     self.fig.canvas.draw()
@@ -204,13 +204,6 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                 """
                  
                 cell_population.Update()
-                
-            def OutputSimulationModifierParameters(self, rParamsFile):
-                
-                """ This needs to be explicitly over-ridden as the C++ method is pure virtual.
-                """
-                 
-                pass
 
         plotting_modifier = PlottingModifier(num_points_in_x, num_points_in_y)
         simulator.AddSimulationModifier(plotting_modifier)
@@ -221,7 +214,7 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         scene.Start()
         plt.ion()
         plt.show()
-        simulator.Solve();
+        simulator.Solve()
         
         # JUPYTER_TEARDOWN 
 

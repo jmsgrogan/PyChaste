@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>TestMeshBasedCellSimulationsPythonTutorial</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>TestMeshBasedCellSimulationsPythonTutorial</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11699,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11722,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11746,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11758,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Jupyter notebook specific imports </span>
@@ -11772,20 +11796,19 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize mesh-based simulations.
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize mesh-based simulations.
 Full details of the mathematical model can be found in van Leeuwen et al. (2009) [doi:10.1111/j.1365-2184.2009.00627.x].</p>
-<h2 id="Imports-and-Setup">Imports and Setup<a class="anchor-link" href="#Imports-and-Setup">&#182;</a></h2>
+<h2 id="Imports-and-Setup">Imports and Setup<a class="anchor-link" href="#Imports-and-Setup">&#194;&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># Plotting</span>
@@ -11802,12 +11825,11 @@ Full details of the mathematical model can be found in van Leeuwen et al. (2009)
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-1---a-basic-mesh-based-simulation">Test 1 - a basic mesh-based simulation<a class="anchor-link" href="#Test-1---a-basic-mesh-based-simulation">&#182;</a></h2><p>In the first test, we run a simple mesh-based simulation,
+<h2 id="Test-1---a-basic-mesh-based-simulation">Test 1 - a basic mesh-based simulation<a class="anchor-link" href="#Test-1---a-basic-mesh-based-simulation">&#194;&#182;</a></h2><p>In the first test, we run a simple mesh-based simulation,
 in which we create a monolayer of cells, using a mutable mesh. Each cell is assigned a stochastic cell-cycle model.</p>
 
 </div>
@@ -11815,7 +11837,7 @@ in which we create a monolayer of cells, using a mutable mesh. Each cell is assi
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -11827,8 +11849,7 @@ in which we create a monolayer of cells, using a mutable mesh. Each cell is assi
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11841,7 +11862,7 @@ we have chosen a mesh that is 4 nodes (i.e. cells) wide, and 4 nodes high.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">OutputFileHandler</span><span class="p">(</span><span class="s2">&quot;Python/TestMeshBasedCellSimulationsTutorial&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
@@ -11854,8 +11875,7 @@ we have chosen a mesh that is 4 nodes (i.e. cells) wide, and 4 nodes high.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11872,13 +11892,12 @@ the third argument specifies the proliferative type of the cell.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumNodes</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumNodes</span><span class="p">(),</span> <span class="n">transit_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11886,8 +11905,7 @@ the third argument specifies the proliferative type of the cell.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11900,7 +11918,7 @@ we use a particular type of cell population called a <code>MeshBasedCellPopulati
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">MeshBasedCellPopulation2_2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -11911,8 +11929,7 @@ we use a particular type of cell population called a <code>MeshBasedCellPopulati
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11924,7 +11941,7 @@ generate the required .vtu files.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span><span class="o">.</span><span class="n">AddPopulationWriterVoronoiDataWriter</span><span class="p">()</span>
@@ -11935,8 +11952,7 @@ generate the required .vtu files.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11947,7 +11963,7 @@ generate the required .vtu files.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">VtkScene2</span><span class="p">()</span>
@@ -11960,106 +11976,8 @@ generate the required .vtu files.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
-
-
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,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
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12070,7 +11988,7 @@ AmIIFhBDsIAYggXEECwghmABMQQLiPH/Qeo6UhbG8woAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OffLatticeSimulation2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12083,8 +12001,7 @@ AmIIFhBDsIAYggXEECwghmABMQQLiPH/Qeo6UhbG8woAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12097,7 +12014,7 @@ this method will cause the simulator to print results every 6 minutes (or 0.1 ho
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">SetSamplingTimestepMultiple</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
@@ -12108,8 +12025,7 @@ this method will cause the simulator to print results every 6 minutes (or 0.1 ho
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12123,7 +12039,7 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">GeneralisedLinearSpringForce2_2</span><span class="p">()</span>
@@ -12135,8 +12051,7 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12147,7 +12062,7 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">JupyterSceneModifier2</span><span class="p">(</span><span class="n">nb_manager</span><span class="p">)</span>
@@ -12161,8 +12076,7 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12173,7 +12087,7 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
@@ -12187,122 +12101,13 @@ see the specific class documentation for details. If you try to use an incompati
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEsCAIAAABi1XKVAAAT2ElEQVR4Xu3dTYhe13nA8fNKbbWt
-SLWo7I0HisDyYjxGRhCJgCZIduWFw9RxHFwX2wlDsV0l441x1hFZxJE/JILq1IbYyA1FSQp1Y5uO
-SFACjk1lBeyANzIFdURJjRYli4TIbxdnfHK47/04997z9Zz7/xHM6NWNFGLpr+c5732vZvP5XAGA
-BDu6LgCAXBAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAs
-AGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwA
-YhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABi
-ECwAYhAsAGIQLABiECwAYhAsAGL8SdcFgE+z2az29fl8Xvs6YCNYCGgxT+dXX6q8srb5yLPnfzyb
-zWgWOvGrBN5U8rTYpia6WV9bu1cxaqEVExYGWsyTe6FqPXv+x+rTH5ZsoRYTFpwMnp4c6SFLf82o
-hSZMWKiqPXjyXqgWjFpoQrCwzXQqZptamGzRLBjchwU1m81ms9n8d9+f/+77XdeGcn71Jb0JVug3
-EJtuhsDUMGFN1/bOlbRTLtgQYTBvT46ZVhY7Ndv1UNp90D56r/W1tXv5FTtlTFgTYkaqrgvzpTdE
-xag1VQSrfC0jVW7Or760tnZv+5DFhjhlBKtYgjo1AO8hThP/vgs0ePX74V//oeuSGDpPsmzcZTop
-TFjlGDlSJT9xH4YNcVIIlngjO5Uhl5OsCjbEiSBYgg1e/UrFe4jFI1jylDdSLRowZGlsiGUjWGIE
-7ZTQA6wmbIil4rOEAtif9QtRqzw1fbrQHZ9DLA8TVr6CjlS22a6HlFJrm4+UNGRpbIiFIVjZidYp
-9WmqPrjtBaXU/vef6Lo8gb/68784vnqo9rvcT7jYEIvBv8KMRH7Xb7brIZ0qY//7T+QzZK1tPvL6
-5s/br+nbMu4ylY4JK72YI5VmD1a2D257Yb+oxbClaC0tY0OUiwkrpcgjlWpOlS2HOctlvBrMtIxf
-/OIwYaURP1WqbgesJW7O6kun8PjqIUYtcbitIQH9++TyW+/Mdj2k/9P13xhL/ywutTLWNh/puiSU
-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
-Wn1RqzIwYYnn92DLZQ1sku16yKFVMZiwJGkasnzd7K4Hq2G10vScldWoRa1KQrCwre8a2CSr9ZBa
-FYaVUJgQ9zeMWQOb5LAeUqvyEKypC1ErLeG7hxyxl4qVUB6PbxeOP7Rq5+uG+F53jVKrghGs6fJ1
-aNVu/JFWr/8utSobK6FII0+ywq2BTeKshxxaFY8Ja3JCr4FNfK2HTajVFBAsqYadZMVZA5uMXw+b
-UKuJIFglcNwN09bK8N4sajUdnGEJZp9kPfXMi9968qtNV8Y/tGrn8UiLWk0KwSpfJoNVxbXRj9Pi
-DcEJYiWUrfMkK89aGYPXQ2o1TUxYxcptDWwyYD1kDZysGf/iCzCbzZRS9hmWlFrZmtbDz9y4bn+T
-Wk0ZK2GBUt1pNVLtelh5hVpNHCthaTI/tGrXvh5SK7ASFkJvhUraGljLbpb5+3KoFRTBKoYJlhc5
-VE8faZmVkF+oUAQLLvzWcAB+lUIjWADE4F1CAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABi
-ECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQ
-LABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAs
-AGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABiECwAYhAsAGIQLABi/D/tkrstktKclQAAAABJ
-RU5ErkJggg==
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Full results can be visualized in Paraview from the <code>file_handler.GetOutputDirectoryFullPath()</code> directory.</p>
-<h2 id="Test-2----a-basic-mesh-based-simulation-with-ghost-nodes">Test 2 -  a basic mesh-based simulation with ghost nodes<a class="anchor-link" href="#Test-2----a-basic-mesh-based-simulation-with-ghost-nodes">&#182;</a></h2><p>In the second test, we run a simple mesh-based simulation with ghost nodes, in which we create a monolayer of cells, using a mutable mesh.
+<h2 id="Test-2----a-basic-mesh-based-simulation-with-ghost-nodes">Test 2 -  a basic mesh-based simulation with ghost nodes<a class="anchor-link" href="#Test-2----a-basic-mesh-based-simulation-with-ghost-nodes">&#194;&#182;</a></h2><p>In the second test, we run a simple mesh-based simulation with ghost nodes, in which we create a monolayer of cells, using a mutable mesh.
 Each cell is assigned a stochastic cell-cycle model.</p>
 
 </div>
@@ -12310,7 +12115,7 @@ Each cell is assigned a stochastic cell-cycle model.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -12322,8 +12127,7 @@ Each cell is assigned a stochastic cell-cycle model.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12336,7 +12140,7 @@ and 2 nodes high. The third argument specifies the number of layers of ghost nod
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">OutputFileHandler</span><span class="p">(</span><span class="s2">&quot;Python/TestMeshBasedCellPopulationWithGhostNodes&quot;</span><span class="p">)</span>
@@ -12349,8 +12153,7 @@ and 2 nodes high. The third argument specifies the number of layers of ghost nod
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12362,7 +12165,7 @@ indices of the real nodes in the mesh. This will be passed in to the cell popula
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">location_indices</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">GetCellLocationIndices</span><span class="p">()</span>
@@ -12373,8 +12176,7 @@ indices of the real nodes in the mesh. This will be passed in to the cell popula
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12387,13 +12189,12 @@ As before all cells have <code>TransitCellProliferativeType</code>.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transit_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">TransitCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">location_indices</span><span class="p">),</span> <span class="n">transit_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">location_indices</span><span class="p">),</span> <span class="n">transit_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12401,8 +12202,7 @@ As before all cells have <code>TransitCellProliferativeType</code>.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12417,7 +12217,7 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">MeshBasedCellPopulationWithGhostNodes2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">location_indices</span><span class="p">)</span>
@@ -12428,8 +12228,7 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12440,7 +12239,7 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span><span class="o">.</span><span class="n">AddPopulationWriterVoronoiDataWriter</span><span class="p">()</span>
@@ -12451,8 +12250,7 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12463,7 +12261,7 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">VtkScene2</span><span class="p">()</span>
@@ -12476,158 +12274,8 @@ and should be the same length as the vector of cell pointers.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
-
-
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,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
-vXy2Wk2VdzJqzahVUglW5rPVcKo8/5DYaqo8v49vOFXGL7ZS07UyftqalKpMKVgppTfeeOP//ufB
-C6lVlpt1CbXKcrMuoVbmlrffdwmpMrlZM2qVFv5GqgBQE8ECIINgAZBBsADIIFgAZBAsADIIFgAZ
-BAuADIIFQAbBAiCDYAGQQbAAyCBYAGQQLAAyCBYAGQQLgAyCBUAGwQIgg2ABkEGwAMggWABkECwA
-MggWABkEC4AMggVABsECIINgAZBBsADIIFgAZBAsADIIFgAZBAuADIIFQAbBAiCDYAGQQbAAyCBY
-AGQQLAAyCBYAGQQLgAyCBUAGwQIgg2ABkEGwAMggWABkHO77xvNj90TxzNc/bdePPfujgTub8ei9
-n7PrX/722YE72/DRD95r13/7xzMDd7bhlrff5z8e//69Mze24/COL9r18Xg8f2M/jWD5VL1+x9X3
-vHItXzecLUvVX9/7zXf+6Wv2favZslT95rYnUkofeu3h/LHhbFmtnvrs0w/9+P583XCzLFVXv/TD
-lNK1J+/JHydlSyBYVqvX77jqv281Wz5V/nvLVnvNOqlVZs1KzWXLp8p/32q2/FSVa5XNaFboYJ1L
-lbFmpSay5R8AT2plGstWb6q8xkatc6nyGsvWyWDVNSlbQYM1miqvjVHr3GDVq4FsjabKayBbfl01
-UKvMmpWUszWaKq8wWxGDNalWRjdbk1JldJvlN+sltTK62SoZrLp0R61JqTLWrHQ+W7GCNS9Vnla2
-5qXKk8vWpMGqS26xNS9Vnla2zq2ryg2PWlGCtTxVRmKxVbKuKieRrYWp8iRGreWp8iSyNW+w6nUu
-W/sH6+SVhYE7J4k8ai0frLoiv/qwYqq8yNlat1ZZ5GatmCqvm62dg7XiYNUrWra2SJUXbdSava4q
-Fy1bW6TKi5atjVJlThZbuwVr61R5EbK1daq8INnaaLDqCrLY2jpVXoRsLV9XlbNs7RCsmqky+zar
-Zq3Mjtmqlipvx1Fr0isLa9n31YetB6te156855Cv6mRro3VVufrZ2iVVpv5ia5dUefWzVXOw6qo/
-au2SKnPwHzbN1i6DVa862do3VV6dUavCuqpcnWztmyqvTrb2TVV2yOv3w2HDUStOqsymrz6s+8rC
-WjbN1u6DVdemzYqTKm/TbEWoVbJg3fiwdrYCpsrbYtSKM1j1Wj1bAVPlrZ6tXdZV5bZYbAVJVXbo
-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
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12638,7 +12286,7 @@ AMggWABkECwAMv4ftSIj1clLYLAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OffLatticeSimulation2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12652,8 +12300,7 @@ AMggWABkECwAMv4ftSIj1clLYLAAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12664,7 +12311,7 @@ AMggWABkECwAMv4ftSIj1clLYLAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">JupyterSceneModifier2</span><span class="p">(</span><span class="n">nb_manager</span><span class="p">)</span>
@@ -12678,8 +12325,7 @@ AMggWABkECwAMv4ftSIj1clLYLAAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12691,7 +12337,7 @@ This force law ensures that ghost nodes don't exert forces on real nodes but rea
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">GeneralisedLinearSpringForce2_2</span><span class="p">()</span>
@@ -12703,8 +12349,7 @@ This force law ensures that ghost nodes don't exert forces on real nodes but rea
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12715,7 +12360,7 @@ This force law ensures that ghost nodes don't exert forces on real nodes but rea
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
@@ -12726,163 +12371,8 @@ This force law ensures that ghost nodes don't exert forces on real nodes but rea
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12894,7 +12384,7 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Tear down the test </span>
@@ -12906,8 +12396,7 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12919,4 +12408,8 @@ If different simulation input parameters are being explored the lines should be 
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>

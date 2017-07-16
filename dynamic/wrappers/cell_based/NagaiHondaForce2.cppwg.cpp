@@ -43,7 +43,7 @@ rVertexCellPopulation);
 
 };
 void register_NagaiHondaForce2_class(py::module &m){
-py::class_<NagaiHondaForce2 , NagaiHondaForce2_Overloads , boost::shared_ptr<NagaiHondaForce2 >   >(m, "NagaiHondaForce2")
+py::class_<NagaiHondaForce2 , NagaiHondaForce2_Overloads , boost::shared_ptr<NagaiHondaForce2 >  , AbstractForce<2, 2>  >(m, "NagaiHondaForce2")
         .def(py::init< >())
         .def(
             "AddForceContribution", 

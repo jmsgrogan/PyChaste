@@ -78,6 +78,7 @@ class AbstractCellBasedSimulation3_3_Overloads : public AbstractCellBasedSimulat
 };
 void register_AbstractCellBasedSimulation3_3_class(py::module &m){
 py::class_<AbstractCellBasedSimulation3_3 , AbstractCellBasedSimulation3_3_Overloads , boost::shared_ptr<AbstractCellBasedSimulation3_3 >   >(m, "AbstractCellBasedSimulation3_3")
+        .def(py::init<::AbstractCellPopulation<3, 3> &, bool, bool >(), py::arg("rCellPopulation"), py::arg("deleteCellPopulationInDestructor") = false, py::arg("initialiseCells") = true)
         .def(
             "GetNodeLocation", 
             (::std::vector<double, std::allocator<double> >(AbstractCellBasedSimulation3_3::*)(unsigned int const &)) &AbstractCellBasedSimulation3_3::GetNodeLocation, 

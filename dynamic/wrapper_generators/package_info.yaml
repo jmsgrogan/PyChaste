@@ -78,29 +78,31 @@ modules:
   - mesh/src
   classes:
   - name: ChastePoint
-    return_type_excludes:
-    - ::boost::numeric::ublas::c_vector<double, 2> & # problem with non const ref
-    - ::boost::numeric::ublas::c_vector<double, 3> &
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_CVECTOR_TYPECASTER3();
+    - PYBIND11_CVECTOR_TYPECASTER2();
   - name: NodeAttributes
   - name: Node
   - name: Element
     excluded_methods: 
     - CalculateCircumsphereVolume #  method not found!
-  - name: NodesOnlyMesh
-  - name: MutableMesh
-    excluded_methods: 
-    - SplitLongEdges # can't work with vec<c_vec>
-    - RescaleMeshFromBoundaryNode  # method not found!
-  - name: PottsMesh
-  - name: SharedPottsMeshGenerator
-    name_override: PottsMeshGenerator
-  - name: PottsElement
+  - name: AbstractMesh
+  - name: AbstractTetrahedralMesh
   - name: TetrahedralMesh
     excluded_methods: 
     - FreeTriangulateIo
     - InitialiseTriangulateIo
-  - name: AbstractTetrahedralMesh
-  - name: AbstractMesh
+  - name: MutableMesh
+    excluded_methods: 
+    - SplitLongEdges # can't work with vec<c_vec>
+    - RescaleMeshFromBoundaryNode  # method not found!
+  - name: NodesOnlyMesh
+  - name: PottsElement
+  - name: PottsMesh
+  - name: SharedPottsMeshGenerator
+    name_override: PottsMeshGenerator
   - name: VertexMesh
     excluded_methods: 
     - GetFace # dont have mixed dim elements
@@ -164,19 +166,24 @@ modules:
     template_substitutions:
       - signature: <class CELL_CYCLE_MODEL, unsigned DIM>
         replacement: 
+        - [NoCellCycleModel, 2]
+        - [NoCellCycleModel, 3]
         - [UniformCellCycleModel, 2]
         - [UniformCellCycleModel, 3]
         - [SimpleOxygenBasedCellCycleModel, 2]
         - [SimpleOxygenBasedCellCycleModel, 3]
         - [UniformG1GenerationalCellCycleModel, 2]
         - [UniformG1GenerationalCellCycleModel, 3]
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/CellsGenerator_custom.py
     source_includes:
+    - NoCellCycleModel.hpp
     - UniformCellCycleModel.hpp
     - SimpleOxygenBasedCellCycleModel.hpp
     - UniformG1GenerationalCellCycleModel.hpp
   - name: CellwiseSourceEllipticPde
   - name: AveragedSourceEllipticPde
   - name: CellwiseSourceParabolicPde
+  - name: AbstractCellBasedSimulationModifier  
   - name: AbstractPdeModifier
     excluded_methods: 
     - GetSolution
@@ -195,14 +202,14 @@ modules:
   - name: CellLabelWriter
     source_includes:
     - AbstractCellPopulation.hpp
+  - name: AbstractUpdateRule    
   - name: AbstractCaUpdateRule 
-  - name: AbstractUpdateRule
   - name: DiffusionCaUpdateRule 
   - name: AbstractPottsUpdateRule
   - name: VolumeConstraintPottsUpdateRule 
   - name: SurfaceAreaConstraintPottsUpdateRule
-  - name: DifferentialAdhesionPottsUpdateRule 
   - name: AdhesionPottsUpdateRule
+  - name: DifferentialAdhesionPottsUpdateRule 
   - name: AbstractVertexBasedDivisionRule
   - name: AbstractForce 
   - name: AbstractTwoBodyInteractionForce
@@ -213,42 +220,75 @@ modules:
   - name: ApoptoticCellKiller
   - name: AbstractCellPopulationBoundaryCondition 
   - name: PlaneBoundaryCondition
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_CVECTOR_TYPECASTER3();
+    - PYBIND11_CVECTOR_TYPECASTER2();
   - name: AttractingPlaneBoundaryCondition
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_CVECTOR_TYPECASTER3();
+    - PYBIND11_CVECTOR_TYPECASTER2();
   - name: SphereGeometryBoundaryCondition
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_CVECTOR_TYPECASTER3();
+    - PYBIND11_CVECTOR_TYPECASTER2();
   - name: AbstractCellPopulation
     excluded_methods: 
     - rGetCells
     source_includes:
-    - AbstractCellBasedSimulation.hpp       
+    - AbstractCellBasedSimulation.hpp  
+  - name: AbstractOffLatticeCellPopulation
+  - name: AbstractCentreBasedCellPopulation  
+    excluded_methods: 
+    - MarkSpring
+    - UnmarkSpring       
   - name: AbstractOnLatticeCellPopulation
-  - name: AbstractCentreBasedCellPopulation
     excluded_methods: 
     - GetNodeCorrespondingToCell
     - MarkSpring
     - UnmarkSpring
-  - name: AbstractOffLatticeCellPopulation
   - name: CaBasedCellPopulation
     excluded_methods: 
     - rGetMesh
     - GetTetrahedralMeshForPdeModifier
     - GetNodeCorrespondingToCell
     - rGetAvailableSpaces 
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py
+    source_includes:
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp 
   - name: MeshBasedCellPopulation
     excluded_methods: 
     - GetVoronoiTessellation
     - rGetNodePairs
     - GetTetrahedralMeshForPdeModifier
-    - rGetMesh   
+    - rGetMesh
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py 
+    source_includes:
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp   
   - name: MeshBasedCellPopulationWithGhostNodes
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py
+    source_includes:
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp 
   - name: VertexBasedCellPopulation
     excluded_methods: 
     - GetElementCorrespondingToCell
     - GetElement
     - GetTetrahedralMeshForPdeModifier
     - rGetMesh
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py
     source_includes:
     - AbstractCellBasedSimulation.hpp   
     - AbstractVertexBasedDivisionRule.hpp
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp 
   - name: PottsBasedCellPopulation
     excluded_methods: 
     - GetElementCorrespondingToCell
@@ -256,22 +296,30 @@ modules:
     - GetTetrahedralMeshForPdeModifier
     - rGetMesh   
     - GetElementTessellation   
-    - GetMutableMesh   
+    - GetMutableMesh
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py  
+    source_includes:
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp  
   - name: NodeBasedCellPopulation
     excluded_methods: 
     - rGetNodePairs
     - GetTetrahedralMeshForPdeModifier
-    - rGetMesh   
+    - rGetMesh
+    custom_generator: CPPWG_SOURCEROOT/projects/PyChaste/dynamic/wrapper_generators/PopulationWriter_custom.py   
+    source_includes:
+    - CellLabelWriter.hpp 
+    - VoronoiDataWriter.hpp 
   - name: AbstractTargetAreaModifier 
   - name: SimpleTargetAreaModifier
   - name: VtkSceneModifier
-  - name: AbstractCellBasedSimulationModifier
   - name: AbstractCellBasedSimulation
     excluded_methods: 
     - GetSimulationModifiers  
   - name: SimulationTime 
   - name: OnLatticeSimulation 
   - name: OffLatticeSimulation
+  - name: PythonSimulationModifier
 - name: tutorial
   source_locations:
   - projects/PyChaste/tutorial/src
@@ -281,6 +329,11 @@ modules:
   source_locations:
   - projects/PyChaste/visualization/src
   classes:
-  - name: VtkScene    
+  - name: VtkScene
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_VTK_TYPECASTER(vtkRenderer);
+    - PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
   - name: AbstractPyChasteActorGenerator
   - name: CellPopulationPyChasteActorGenerator

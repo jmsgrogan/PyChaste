@@ -74,7 +74,7 @@ pNodeB);
 
 };
 void register_MutableVertexMesh3_3_class(py::module &m){
-py::class_<MutableVertexMesh3_3 , MutableVertexMesh3_3_Overloads , boost::shared_ptr<MutableVertexMesh3_3 >   >(m, "MutableVertexMesh3_3")
+py::class_<MutableVertexMesh3_3 , MutableVertexMesh3_3_Overloads , boost::shared_ptr<MutableVertexMesh3_3 >  , VertexMesh<3, 3>  >(m, "MutableVertexMesh3_3")
         .def(py::init<::std::vector<Node<3> *, std::allocator<Node<3> *> >, ::std::vector<VertexElement<3, 3> *, std::allocator<VertexElement<3, 3> *> >, double, double, double, double, double, double >(), py::arg("nodes"), py::arg("vertexElements"), py::arg("cellRearrangementThreshold") = 0.01, py::arg("t2Threshold") = 0.001, py::arg("cellRearrangementRatio") = 1.5, py::arg("protorosetteFormationProbability") = 0., py::arg("protorosetteResolutionProbabilityPerTimestep") = 0., py::arg("rosetteResolutionProbabilityPerTimestep") = 0.)
         .def(py::init< >())
         .def(

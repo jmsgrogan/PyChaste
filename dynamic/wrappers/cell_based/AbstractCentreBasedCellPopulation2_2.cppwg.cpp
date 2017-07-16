@@ -128,11 +128,15 @@ dt);
 
 };
 void register_AbstractCentreBasedCellPopulation2_2_class(py::module &m){
-py::class_<AbstractCentreBasedCellPopulation2_2 , AbstractCentreBasedCellPopulation2_2_Overloads , boost::shared_ptr<AbstractCentreBasedCellPopulation2_2 >   >(m, "AbstractCentreBasedCellPopulation2_2")
+py::class_<AbstractCentreBasedCellPopulation2_2 , AbstractCentreBasedCellPopulation2_2_Overloads , boost::shared_ptr<AbstractCentreBasedCellPopulation2_2 >  , AbstractOffLatticeCellPopulation<2, 2>  >(m, "AbstractCentreBasedCellPopulation2_2")
         .def(
             "GetLocationOfCellCentre", 
             (::boost::numeric::ublas::c_vector<double, 2>(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr)) &AbstractCentreBasedCellPopulation2_2::GetLocationOfCellCentre, 
             " " , py::arg("pCell") )
+        .def(
+            "GetNodeCorrespondingToCell", 
+            (::Node<2> *(AbstractCentreBasedCellPopulation2_2::*)(::CellPtr)) &AbstractCentreBasedCellPopulation2_2::GetNodeCorrespondingToCell, 
+            " " , py::arg("pCell") , py::return_value_policy::reference)
         .def(
             "GetCellDataItemAtPdeNode", 
             (double(AbstractCentreBasedCellPopulation2_2::*)(unsigned int, ::std::string &, bool, double)) &AbstractCentreBasedCellPopulation2_2::GetCellDataItemAtPdeNode, 

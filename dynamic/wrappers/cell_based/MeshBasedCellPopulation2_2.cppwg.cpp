@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -192,7 +194,7 @@ pCell);
 
 };
 void register_MeshBasedCellPopulation2_2_class(py::module &m){
-py::class_<MeshBasedCellPopulation2_2 , MeshBasedCellPopulation2_2_Overloads , boost::shared_ptr<MeshBasedCellPopulation2_2 >   >(m, "MeshBasedCellPopulation2_2")
+py::class_<MeshBasedCellPopulation2_2 , MeshBasedCellPopulation2_2_Overloads , boost::shared_ptr<MeshBasedCellPopulation2_2 >  , AbstractCentreBasedCellPopulation<2, 2>  >(m, "MeshBasedCellPopulation2_2")
         .def(py::init<::MutableMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, bool >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("deleteMesh") = false, py::arg("validate") = true)
         .def(py::init<::MutableMesh<2, 2> & >(), py::arg("rMesh"))
         .def(
@@ -351,5 +353,7 @@ py::class_<MeshBasedCellPopulation2_2 , MeshBasedCellPopulation2_2_Overloads , b
             "SetRestLength", 
             (void(MeshBasedCellPopulation2_2::*)(unsigned int, unsigned int, double)) &MeshBasedCellPopulation2_2::SetRestLength, 
             " " , py::arg("indexA"), py::arg("indexB"), py::arg("restLength") )
+        .def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulation2_2::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &MeshBasedCellPopulation2_2::AddCellWriter<CellLabelWriter>)
     ;
 }

@@ -51,7 +51,7 @@ rCellPopulation);
 
 };
 void register_AbstractTwoBodyInteractionForce2_2_class(py::module &m){
-py::class_<AbstractTwoBodyInteractionForce2_2 , AbstractTwoBodyInteractionForce2_2_Overloads , boost::shared_ptr<AbstractTwoBodyInteractionForce2_2 >   >(m, "AbstractTwoBodyInteractionForce2_2")
+py::class_<AbstractTwoBodyInteractionForce2_2 , AbstractTwoBodyInteractionForce2_2_Overloads , boost::shared_ptr<AbstractTwoBodyInteractionForce2_2 >  , AbstractForce<2, 2>  >(m, "AbstractTwoBodyInteractionForce2_2")
         .def(
             "GetUseCutOffLength", 
             (bool(AbstractTwoBodyInteractionForce2_2::*)()) &AbstractTwoBodyInteractionForce2_2::GetUseCutOffLength, 

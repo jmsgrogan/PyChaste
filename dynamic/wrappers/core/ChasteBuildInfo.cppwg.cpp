@@ -16,6 +16,7 @@ PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
 void register_ChasteBuildInfo_class(py::module &m){
 py::class_<ChasteBuildInfo  , boost::shared_ptr<ChasteBuildInfo >   >(m, "ChasteBuildInfo")
+        .def(py::init< >())
         .def_static(
             "GetLicenceText", 
             (::std::string(*)()) &ChasteBuildInfo::GetLicenceText, 

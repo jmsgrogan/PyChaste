@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>TestPottsBasedCellSimulationsPythonTutorial</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>TestPottsBasedCellSimulationsPythonTutorial</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11699,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11722,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11746,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11758,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Jupyter notebook specific imports </span>
@@ -11772,20 +11796,19 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize Potts-based simulations.
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1><p>In this tutorial we show how Chaste can be used to create, run and visualize Potts-based simulations.
 Full details of the mathematical model can be found in Graner, F. and Glazier, J. A. (1992).</p>
-<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#182;</a></h2>
+<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#194;&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># Plotting</span>
@@ -11802,12 +11825,11 @@ Full details of the mathematical model can be found in Graner, F. and Glazier, J
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-1---A-basic-node-based-simulation">Test 1 - A basic node-based simulation<a class="anchor-link" href="#Test-1---A-basic-node-based-simulation">&#182;</a></h2><p>In the first test, we run a simple Potts-based simulation, in which we create a monolayer of cells, using a Potts mesh.
+<h2 id="Test-1---A-basic-node-based-simulation">Test 1 - A basic node-based simulation<a class="anchor-link" href="#Test-1---A-basic-node-based-simulation">&#194;&#182;</a></h2><p>In the first test, we run a simple Potts-based simulation, in which we create a monolayer of cells, using a Potts mesh.
 Each cell is assigned a stochastic cell-cycle model.</p>
 
 </div>
@@ -11815,7 +11837,7 @@ Each cell is assigned a stochastic cell-cycle model.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -11827,8 +11849,7 @@ Each cell is assigned a stochastic cell-cycle model.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11843,7 +11864,7 @@ We have chosen a 2 by 2 block of elements, each consisting of 4 by 4 ( = 16) lat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">OutputFileHandler</span><span class="p">(</span><span class="s2">&quot;Python/TestPottsBasedCellSimulationsTutorial&quot;</span><span class="p">)</span>
@@ -11856,8 +11877,7 @@ We have chosen a 2 by 2 block of elements, each consisting of 4 by 4 ( = 16) lat
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11872,12 +11892,11 @@ Third argument makes all cells proliferate.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasic</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_2</span><span class="p">()</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasic</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -11885,8 +11904,7 @@ Third argument makes all cells proliferate.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11899,7 +11917,7 @@ we use a particular type of cell population called a PottsBasedCellPopulation.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">PottsBasedCellPopulation2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -11910,8 +11928,7 @@ we use a particular type of cell population called a PottsBasedCellPopulation.</
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11922,7 +11939,7 @@ we use a particular type of cell population called a PottsBasedCellPopulation.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span><span class="o">.</span><span class="n">SetTemperature</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -11933,8 +11950,7 @@ we use a particular type of cell population called a PottsBasedCellPopulation.</
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11946,7 +11962,7 @@ To use a different number of sweeps per timestep use the command.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span><span class="o">.</span><span class="n">SetNumSweepsPerTimestep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -11957,8 +11973,7 @@ To use a different number of sweeps per timestep use the command.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11969,7 +11984,7 @@ To use a different number of sweeps per timestep use the command.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">VtkScene2</span><span class="p">()</span>
@@ -11983,63 +11998,8 @@ To use a different number of sweeps per timestep use the command.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
-
-
-<div class="output_png output_subarea output_execute_result">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAJYCAIAAADDjiffAAAH/0lEQVR4Xu3awUlDURRF0fzwET82
-E9Aa7Mg+7MHiAg6TmSDPEh4PHGTDWuMz3tzB3cYYJ4CC82wA8CgEC8gQLCBDsIAMwQIyBAvIECwg
-Q7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzB
-AjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvI
-ECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOw
-gAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIy
-BAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvI2K6Xj9kGln2+j9kElrmw
-gAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgY//9vs02sOx+8zjK/3NhARmCBWQIFpAhWECGYAEZggVk
-CBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFY
-QIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZ
-ggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgW
-kCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECG
-YAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIF
-ZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAh
-WECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmAB
-GYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQI
-FpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhA
-hmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmC
-BWQIFpAhWECGYAEZggVkCBaQIVhAhmABGYIFZAgWkCFYQIZgARmCBWQIFpAhWECGYAEZggVkCBaQ
-sR9fb7MNLHv9eZlNYJkLC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQ
-LCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CA
-DMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIE
-C8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwg
-Q7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzB
-AjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvI
-ECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOw
-gAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIy
-BAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAs
-IEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAM
-wQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQL
-yBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CAjP38dMw2sOw4Pc8msMyFBWQIFpAhWECG
-YAEZggVkCBaQIVhAhmABGdsYY7YBeAguLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzB
-AjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvI
-ECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOw
-gAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIy
-BAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAs
-IEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CAjD+vSxYG6Q5yFwAAAABJRU5ErkJggg==
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12050,7 +12010,7 @@ IEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CAjD+vSxYG6Q5yFwAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OnLatticeSimulation2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12063,8 +12023,7 @@ IEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CAjD+vSxYG6Q5yFwAAAABJRU5ErkJggg==
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12077,7 +12036,7 @@ We also set the simulation to only output every 10 steps i.e. once per hour.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">SetDt</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -12089,8 +12048,7 @@ We also set the simulation to only output every 10 steps i.e. once per hour.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12104,7 +12062,7 @@ For a list of possible update rules see subclasses of AbstractPottsUpdateRule.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">volume_constraint_update_rule</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VolumeConstraintPottsUpdateRule2</span><span class="p">()</span>
@@ -12115,8 +12073,7 @@ For a list of possible update rules see subclasses of AbstractPottsUpdateRule.</
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12127,7 +12084,7 @@ For a list of possible update rules see subclasses of AbstractPottsUpdateRule.</
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">volume_constraint_update_rule</span><span class="o">.</span><span class="n">SetMatureCellTargetVolume</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
@@ -12138,8 +12095,7 @@ For a list of possible update rules see subclasses of AbstractPottsUpdateRule.</
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12151,7 +12107,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">volume_constraint_update_rule</span><span class="o">.</span><span class="n">SetDeformationEnergyParameter</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
@@ -12162,8 +12118,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12174,7 +12129,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">AddUpdateRule</span><span class="p">(</span><span class="n">volume_constraint_update_rule</span><span class="p">)</span>
@@ -12185,8 +12140,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12197,7 +12151,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">adhesion_update_rule</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">AdhesionPottsUpdateRule2</span><span class="p">()</span>
@@ -12209,8 +12163,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12221,7 +12174,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">JupyterSceneModifier2</span><span class="p">(</span><span class="n">nb_manager</span><span class="p">)</span>
@@ -12235,8 +12188,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12247,7 +12199,7 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
@@ -12258,85 +12210,8 @@ The larger the parameter the more cells will try to maintain target volume. Here
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12348,7 +12223,7 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Tear down the test </span>
@@ -12360,12 +12235,11 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-2---Cell-sorting">Test 2 - Cell sorting<a class="anchor-link" href="#Test-2---Cell-sorting">&#182;</a></h2><p>The next test generates a collection of cells, there are two types of cells, labelled ones and non labelled ones,
+<h2 id="Test-2---Cell-sorting">Test 2 - Cell sorting<a class="anchor-link" href="#Test-2---Cell-sorting">&#194;&#182;</a></h2><p>The next test generates a collection of cells, there are two types of cells, labelled ones and non labelled ones,
 there is differential adhesion between the cell types. For the parameters specified, the cells sort into separate types.</p>
 
 </div>
@@ -12373,7 +12247,7 @@ there is differential adhesion between the cell types. For the parameters specif
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -12385,8 +12259,7 @@ there is differential adhesion between the cell types. For the parameters specif
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12399,7 +12272,7 @@ We have chosen an 8 by 8 block of elements each consisting of 4 by 4 ( = 16) lat
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">PottsMeshGenerator2</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -12411,8 +12284,7 @@ We have chosen an 8 by 8 block of elements each consisting of 4 by 4 ( = 16) lat
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12424,13 +12296,12 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12438,8 +12309,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12450,7 +12320,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellLabel</span><span class="p">()</span>
@@ -12464,8 +12334,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12476,7 +12345,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">PottsBasedCellPopulation2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -12487,8 +12356,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12499,7 +12367,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span><span class="o">.</span><span class="n">AddCellWriterCellLabelWriter</span><span class="p">()</span>
@@ -12510,8 +12378,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12522,7 +12389,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OnLatticeSimulation2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -12536,8 +12403,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12551,7 +12417,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">volume_constraint_update_rule</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VolumeConstraintPottsUpdateRule2</span><span class="p">()</span>
@@ -12565,8 +12431,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12577,7 +12442,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">differential_adhesion_update_rule</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentialAdhesionPottsUpdateRule2</span><span class="p">()</span>
@@ -12594,8 +12459,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12606,7 +12470,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span><span class="o">.</span><span class="n">Solve</span><span class="p">()</span>
@@ -12617,8 +12481,7 @@ pass them to the OnLatticeSimulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12642,12 +12505,11 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-3---3D-Cell-Sorting">Test 3 - 3D Cell Sorting<a class="anchor-link" href="#Test-3---3D-Cell-Sorting">&#182;</a></h2><p>The next test extends the previous example to three dimensions.</p>
+<h2 id="Test-3---3D-Cell-Sorting">Test 3 - 3D Cell Sorting<a class="anchor-link" href="#Test-3---3D-Cell-Sorting">&#194;&#182;</a></h2><p>The next test extends the previous example to three dimensions.</p>
 
 </div>
 </div>
@@ -12666,8 +12528,7 @@ If different simulation input parameters are being explored the lines should be 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12695,8 +12556,7 @@ We have chosen an 4 by 4 by 4 ( = 64) block of elements each consisting of 2 by 
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12711,10 +12571,9 @@ as before but this time the third argument is set to make all cells non-prolifer
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformCellCycleModel_3</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12722,8 +12581,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12748,8 +12606,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12771,8 +12628,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12794,8 +12650,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12820,8 +12675,7 @@ as before but this time the third argument is set to make all cells non-prolifer
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12847,8 +12701,7 @@ Now set the target volume to be appropriate for this 3D simulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12876,8 +12729,7 @@ Now set the target volume to be appropriate for this 3D simulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12899,8 +12751,7 @@ Now set the target volume to be appropriate for this 3D simulation.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12927,4 +12778,8 @@ If different simulation input parameters are being explored the lines should be 
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>

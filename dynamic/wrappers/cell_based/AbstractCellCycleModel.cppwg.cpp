@@ -92,6 +92,7 @@ class AbstractCellCycleModel_Overloads : public AbstractCellCycleModel{
 };
 void register_AbstractCellCycleModel_class(py::module &m){
 py::class_<AbstractCellCycleModel , AbstractCellCycleModel_Overloads , boost::shared_ptr<AbstractCellCycleModel >   >(m, "AbstractCellCycleModel")
+        .def(py::init< >())
         .def(
             "SetCell", 
             (void(AbstractCellCycleModel::*)(::CellPtr)) &AbstractCellCycleModel::SetCell, 

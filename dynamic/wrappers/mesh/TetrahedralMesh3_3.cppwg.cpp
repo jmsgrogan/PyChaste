@@ -123,7 +123,7 @@ rJacobianDeterminant);
 
 };
 void register_TetrahedralMesh3_3_class(py::module &m){
-py::class_<TetrahedralMesh3_3 , TetrahedralMesh3_3_Overloads , boost::shared_ptr<TetrahedralMesh3_3 >   >(m, "TetrahedralMesh3_3")
+py::class_<TetrahedralMesh3_3 , TetrahedralMesh3_3_Overloads , boost::shared_ptr<TetrahedralMesh3_3 >  , AbstractTetrahedralMesh<3, 3>  >(m, "TetrahedralMesh3_3")
         .def(py::init< >())
         .def(
             "ConstructFromMeshReader", 

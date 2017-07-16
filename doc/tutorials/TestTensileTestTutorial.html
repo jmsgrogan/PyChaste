@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>TestTensileTestTutorial</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>TestTensileTestTutorial</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -13,8 +11,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1109,7 +1107,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2538,7 +2535,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3029,7 +3025,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8760,6 +8755,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8962,8 +8960,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8986,6 +8990,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9122,6 +9136,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9211,6 +9228,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9255,6 +9275,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9551,6 +9574,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9571,11 +9595,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11246,7 +11265,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11558,6 +11577,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11571,6 +11591,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11631,8 +11654,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11643,9 +11668,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11699,9 +11726,7 @@ body {
 div#notebook {
   overflow: visible;
   border-top: none;
-}
-
-@media print {
+}@media print {
   div.cell {
     display: block;
     page-break-inside: avoid;
@@ -11722,7 +11747,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -11746,8 +11771,7 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11758,7 +11782,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Jupyter notebook specific imports </span>
@@ -11772,25 +11796,24 @@ div#notebook {
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p>In this tutorial we will demonstrate a simulated tensile test on an epithelial sheet. This test
+<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#194;&#182;</a></h1><p>In this tutorial we will demonstrate a simulated tensile test on an epithelial sheet. This test
 demonstrates:</p>
 <ul>
 <li>Working with vertex based off lattice populations</li>
 <li>Applying boundary conditions</li>
 <li>Working with forces</li>
 </ul>
-<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#182;</a></h2>
+<h2 id="The-Test">The Test<a class="anchor-link" href="#The-Test">&#194;&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># Plotting</span>
@@ -11807,18 +11830,17 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Test-1---A-2d-test">Test 1 - A 2d test<a class="anchor-link" href="#Test-1---A-2d-test">&#182;</a></h2>
+<h2 id="Test-1---A-2d-test">Test 1 - A 2d test<a class="anchor-link" href="#Test-1---A-2d-test">&#194;&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set up the test </span>
@@ -11830,8 +11852,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11842,7 +11863,7 @@ demonstrates:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">HoneycombVertexMeshGenerator</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
@@ -11854,8 +11875,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11866,13 +11886,12 @@ demonstrates:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VectorSharedPtrCell</span><span class="p">()</span>
-<span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">differentiated_type</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">DifferentiatedCellProliferativeType</span><span class="p">()</span>
 <span class="n">cell_generator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">CellsGeneratorUniformG1GenerationalCellCycleModel_2</span><span class="p">()</span>
-<span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cell_generator</span><span class="o">.</span><span class="n">GenerateBasicRandom</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">GetNumElements</span><span class="p">(),</span> <span class="n">differentiated_type</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11880,8 +11899,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11892,7 +11910,7 @@ demonstrates:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cell_population</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">VertexBasedCellPopulation2</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">cells</span><span class="p">)</span>
@@ -11903,8 +11921,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11915,7 +11932,7 @@ demonstrates:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">simulator</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">OffLatticeSimulation2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">)</span>
@@ -11929,8 +11946,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11941,7 +11957,7 @@ demonstrates:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">force</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">NagaiHondaForce2</span><span class="p">()</span>
@@ -11953,8 +11969,7 @@ demonstrates:</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11968,7 +11983,7 @@ to the simulation, which inherits from <code>AbstractTargetAreaModifier</code>.<
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">growth_modifier</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">SimpleTargetAreaModifier2</span><span class="p">()</span>
@@ -11980,8 +11995,7 @@ to the simulation, which inherits from <code>AbstractTargetAreaModifier</code>.<
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -11993,15 +12007,15 @@ fixing lateral degress of freedom for simplicity, since we are using an over-dam
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="n">normal</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">])</span>
 <span class="n">bc</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">AttractingPlaneBoundaryCondition2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
 <span class="n">simulator</span><span class="o">.</span><span class="n">AddCellPopulationBoundaryCondition</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span>
-<span class="n">point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">13.3</span><span class="p">)</span>
-<span class="n">normal</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">13.3</span><span class="p">])</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
 <span class="n">bc2</span> <span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">AttractingPlaneBoundaryCondition2_2</span><span class="p">(</span><span class="n">cell_population</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">)</span>
 <span class="n">simulator</span><span class="o">.</span><span class="n">AddCellPopulationBoundaryCondition</span><span class="p">(</span><span class="n">bc2</span><span class="p">)</span>
 </pre></div>
@@ -12011,8 +12025,7 @@ fixing lateral degress of freedom for simplicity, since we are using an over-dam
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12025,7 +12038,7 @@ as the simulation progresses. As per earlier tutorials we make a new <code>Simul
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">BoundaryConditionModifier</span><span class="p">(</span><span class="n">chaste</span><span class="o">.</span><span class="n">cell_based</span><span class="o">.</span><span class="n">AbstractCellBasedSimulationModifier2_2</span><span class="p">):</span>
@@ -12035,7 +12048,7 @@ as the simulation progresses. As per earlier tutorials we make a new <code>Simul
         <span class="bp">self</span><span class="o">.</span><span class="n">boundary_condition</span> <span class="o">=</span> <span class="n">boundary_condition</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">original_location</span> <span class="o">=</span> <span class="n">boundary_condition</span><span class="o">.</span><span class="n">rGetPointOnPlane</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># cell lengths per time</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BoundaryConditionModifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BoundaryConditionModifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">UpdateAtEndOfTimeStep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cell_population</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Move the boundary upwards at the specified velocity</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -12060,8 +12073,7 @@ as the simulation progresses. As per earlier tutorials we make a new <code>Simul
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12073,7 +12085,7 @@ evovle in real time.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">=</span> <span class="n">chaste</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">VtkScene2</span><span class="p">()</span>
@@ -12090,8 +12102,7 @@ evovle in real time.</p>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -12102,7 +12113,7 @@ evovle in real time.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scene</span><span class="o">.</span><span class="n">Start</span><span class="p">()</span>
@@ -12115,156 +12126,12 @@ evovle in real time.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-nKRInwAAAABJRU5ErkJggg==
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
 </body>
+
+ 
+
+
 </html>

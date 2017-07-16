@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -13,6 +14,8 @@
 namespace py = pybind11;
 typedef PlaneBoundaryCondition<3,3 > PlaneBoundaryCondition3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_CVECTOR_TYPECASTER3();
+PYBIND11_CVECTOR_TYPECASTER2();
 
 class PlaneBoundaryCondition3_3_Overloads : public PlaneBoundaryCondition3_3{
     public:
@@ -41,7 +44,7 @@ class PlaneBoundaryCondition3_3_Overloads : public PlaneBoundaryCondition3_3{
 
 };
 void register_PlaneBoundaryCondition3_3_class(py::module &m){
-py::class_<PlaneBoundaryCondition3_3 , PlaneBoundaryCondition3_3_Overloads , boost::shared_ptr<PlaneBoundaryCondition3_3 >   >(m, "PlaneBoundaryCondition3_3")
+py::class_<PlaneBoundaryCondition3_3 , PlaneBoundaryCondition3_3_Overloads , boost::shared_ptr<PlaneBoundaryCondition3_3 >  , AbstractCellPopulationBoundaryCondition<3, 3>  >(m, "PlaneBoundaryCondition3_3")
         .def(py::init<::AbstractCellPopulation<3, 3> *, ::boost::numeric::ublas::c_vector<double, 3>, ::boost::numeric::ublas::c_vector<double, 3> >(), py::arg("pCellPopulation"), py::arg("point"), py::arg("normal"))
         .def(
             "rGetPointOnPlane", 

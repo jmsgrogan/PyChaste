@@ -53,7 +53,8 @@ pElement);
 
 };
 void register_AbstractLinearParabolicPde3_3_class(py::module &m){
-py::class_<AbstractLinearParabolicPde3_3 , AbstractLinearParabolicPde3_3_Overloads , boost::shared_ptr<AbstractLinearParabolicPde3_3 >   >(m, "AbstractLinearParabolicPde3_3")
+py::class_<AbstractLinearParabolicPde3_3 , AbstractLinearParabolicPde3_3_Overloads , boost::shared_ptr<AbstractLinearParabolicPde3_3 >  , AbstractLinearPde<3, 3>  >(m, "AbstractLinearParabolicPde3_3")
+        .def(py::init< >())
         .def(
             "ComputeDuDtCoefficientFunction", 
             (double(AbstractLinearParabolicPde3_3::*)(::ChastePoint<3> const &)) &AbstractLinearParabolicPde3_3::ComputeDuDtCoefficientFunction, 

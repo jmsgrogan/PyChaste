@@ -66,10 +66,9 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
           
         ## Now set up the cells, again we want to avoid proliferation.
         
-        cells = []
         differentiated_type = chaste.cell_based.DifferentiatedCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformG1GenerationalCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), differentiated_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), differentiated_type)
           
         ## Next, create the cell population 
         
@@ -98,12 +97,12 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## For our tensile test we will fix the bottom of the sheet and subject the top to an applied displacement. We neglect
         ## fixing lateral degress of freedom for simplicity, since we are using an over-damped mechanical model.
 
-        point = (0.0, 0.0)
-        normal = (0.0, -1.0)
+        point = np.array([0.0, 0.0])
+        normal = np.array([0.0, -1.0])
         bc = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc)
-        point = (0.0, 13.3)
-        normal = (0.0, 1.0)
+        point = np.array([0.0, 13.3])
+        normal = np.array([0.0, 1.0])
         bc2 = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc2)
         

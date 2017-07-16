@@ -36,7 +36,7 @@ rCellPopulation);
 
 };
 void register_AbstractPottsUpdateRule3_class(py::module &m){
-py::class_<AbstractPottsUpdateRule3 , AbstractPottsUpdateRule3_Overloads , boost::shared_ptr<AbstractPottsUpdateRule3 >   >(m, "AbstractPottsUpdateRule3")
+py::class_<AbstractPottsUpdateRule3 , AbstractPottsUpdateRule3_Overloads , boost::shared_ptr<AbstractPottsUpdateRule3 >  , AbstractUpdateRule<3>  >(m, "AbstractPottsUpdateRule3")
         .def(
             "EvaluateHamiltonianContribution", 
             (double(AbstractPottsUpdateRule3::*)(unsigned int, unsigned int, ::PottsBasedCellPopulation<3> &)) &AbstractPottsUpdateRule3::EvaluateHamiltonianContribution, 

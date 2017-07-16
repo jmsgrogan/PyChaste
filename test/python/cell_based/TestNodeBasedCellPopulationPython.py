@@ -38,45 +38,46 @@ import chaste.core
 import chaste.visualization
 chaste.init()
 
+
 class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
-    
+
     def test_construct(self):
 
-        file_handler = chaste.core.OutputFileHandler("Python/TestNodeBasedCellPopulation");
-         
+        file_handler = chaste.core.OutputFileHandler("Python/TestNodeBasedCellPopulation")
+
         mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 5, 0, 0)
         mesh = mesh_generator.GetMesh()
-          
+
         nodes_only_mesh = chaste.mesh.NodesOnlyMesh3()
         nodes_only_mesh.ConstructNodesWithoutMesh(mesh, 1.5)
-            
+
         # Make the cells
-        cells = chaste.cell_based.VectorSharedPtrCell()
-        proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cell_generator.GenerateBasic(cells, 500)
-            
+        cells = cell_generator.GenerateBasic(500)
+
         # Make the cell population
-        cell_population = chaste.cell_based.NodeBasedCellPopulation3(nodes_only_mesh, cells)
-         
+        cell_population = chaste.cell_based.NodeBasedCellPopulation3(nodes_only_mesh,
+                                                                     cells)
+
         # Set up the visualizer
         scene = chaste.visualization.VtkScene3()
-        scene.SetCellPopulation(cell_population);
-        scene.SetSaveAsAnimation(True);
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
-          
+        scene.SetCellPopulation(cell_population)
+        scene.SetSaveAsAnimation(True)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() +
+                                "/cell_population")
+
         modifier = chaste.cell_based.VtkSceneModifier3()
-        modifier.SetVtkScene(scene);
-  
+        modifier.SetVtkScene(scene)
+
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation3_3(cell_population)
-        simulator.SetOutputDirectory("Python/TestNodeBasedCellPopulation");
-        simulator.SetEndTime(4.0);
-        simulator.SetDt(1.0);
-        simulator.SetSamplingTimestepMultiple(1);
+        simulator.SetOutputDirectory("Python/TestNodeBasedCellPopulation")
+        simulator.SetEndTime(4.0)
+        simulator.SetDt(1.0)
+        simulator.SetSamplingTimestepMultiple(1)
         simulator.AddSimulationModifier(modifier)
-         
-        simulator.Solve();
+
+        simulator.Solve()
 
 
 if __name__ == '__main__':

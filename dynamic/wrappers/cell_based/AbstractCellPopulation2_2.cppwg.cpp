@@ -270,6 +270,7 @@ pCell);
 };
 void register_AbstractCellPopulation2_2_class(py::module &m){
 py::class_<AbstractCellPopulation2_2 , AbstractCellPopulation2_2_Overloads , boost::shared_ptr<AbstractCellPopulation2_2 >   >(m, "AbstractCellPopulation2_2")
+        .def(py::init<::AbstractMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>())
         .def(
             "InitialiseCells", 
             (void(AbstractCellPopulation2_2::*)()) &AbstractCellPopulation2_2::InitialiseCells, 

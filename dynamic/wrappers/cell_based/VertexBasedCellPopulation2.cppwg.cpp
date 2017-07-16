@@ -2,6 +2,8 @@
 #include <pybind11/stl.h>
 #include "AbstractCellBasedSimulation.hpp"
 #include "AbstractVertexBasedDivisionRule.hpp"
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -221,7 +223,7 @@ dirichletBoundaryValue);
 
 };
 void register_VertexBasedCellPopulation2_class(py::module &m){
-py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads , boost::shared_ptr<VertexBasedCellPopulation2 >   >(m, "VertexBasedCellPopulation2")
+py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads , boost::shared_ptr<VertexBasedCellPopulation2 >  , AbstractOffLatticeCellPopulation<2, 2>  >(m, "VertexBasedCellPopulation2")
         .def(py::init<::MutableVertexMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, bool, bool, ::std::vector<unsigned int, std::allocator<unsigned int> > const >(), py::arg("rMesh"), py::arg("rCells"), py::arg("deleteMesh") = false, py::arg("validate") = true, py::arg("locationIndices") = std::vector<unsigned int>())
         .def(py::init<::MutableVertexMesh<2, 2> & >(), py::arg("rMesh"))
         .def(
@@ -368,5 +370,7 @@ py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads , b
             "SimulationSetupHook", 
             (void(VertexBasedCellPopulation2::*)(::AbstractCellBasedSimulation<2, 2> *)) &VertexBasedCellPopulation2::SimulationSetupHook, 
             " " , py::arg("pSimulation") )
+        .def("AddPopulationWriterVoronoiDataWriter", &VertexBasedCellPopulation2::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &VertexBasedCellPopulation2::AddCellWriter<CellLabelWriter>)
     ;
 }

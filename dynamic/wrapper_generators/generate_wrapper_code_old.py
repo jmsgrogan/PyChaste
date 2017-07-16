@@ -16,7 +16,6 @@ from pyplusplus import messages
 from pygccxml import parser, declarations
 import wrapper_utilities.mesh_additions
 
-
 def add_autowrap_classes_to_builder(builder, component_name, classes):
     
     # Convience dict for call policies

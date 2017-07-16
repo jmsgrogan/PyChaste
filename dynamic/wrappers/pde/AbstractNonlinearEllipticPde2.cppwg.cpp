@@ -62,6 +62,7 @@ u);
 };
 void register_AbstractNonlinearEllipticPde2_class(py::module &m){
 py::class_<AbstractNonlinearEllipticPde2 , AbstractNonlinearEllipticPde2_Overloads , boost::shared_ptr<AbstractNonlinearEllipticPde2 >   >(m, "AbstractNonlinearEllipticPde2")
+        .def(py::init< >())
         .def(
             "ComputeLinearSourceTerm", 
             (double(AbstractNonlinearEllipticPde2::*)(::ChastePoint<2> const &)) &AbstractNonlinearEllipticPde2::ComputeLinearSourceTerm, 

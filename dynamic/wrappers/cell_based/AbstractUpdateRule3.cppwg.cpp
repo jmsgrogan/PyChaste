@@ -28,6 +28,7 @@ class AbstractUpdateRule3_Overloads : public AbstractUpdateRule3{
 };
 void register_AbstractUpdateRule3_class(py::module &m){
 py::class_<AbstractUpdateRule3 , AbstractUpdateRule3_Overloads , boost::shared_ptr<AbstractUpdateRule3 >   >(m, "AbstractUpdateRule3")
+        .def(py::init< >())
         .def(
             "OutputUpdateRuleInfo", 
             (void(AbstractUpdateRule3::*)(::out_stream &)) &AbstractUpdateRule3::OutputUpdateRuleInfo, 

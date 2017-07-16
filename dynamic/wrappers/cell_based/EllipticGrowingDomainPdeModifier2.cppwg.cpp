@@ -50,7 +50,7 @@ outputDirectory);
 
 };
 void register_EllipticGrowingDomainPdeModifier2_class(py::module &m){
-py::class_<EllipticGrowingDomainPdeModifier2 , EllipticGrowingDomainPdeModifier2_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier2 >   >(m, "EllipticGrowingDomainPdeModifier2")
+py::class_<EllipticGrowingDomainPdeModifier2 , EllipticGrowingDomainPdeModifier2_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier2 >  , AbstractGrowingDomainPdeModifier<2>  >(m, "EllipticGrowingDomainPdeModifier2")
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(EllipticGrowingDomainPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &EllipticGrowingDomainPdeModifier2::UpdateAtEndOfTimeStep, 

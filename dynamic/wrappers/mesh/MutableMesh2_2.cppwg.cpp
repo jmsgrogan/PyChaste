@@ -89,7 +89,7 @@ concreteMove);
 
 };
 void register_MutableMesh2_2_class(py::module &m){
-py::class_<MutableMesh2_2 , MutableMesh2_2_Overloads , boost::shared_ptr<MutableMesh2_2 >   >(m, "MutableMesh2_2")
+py::class_<MutableMesh2_2 , MutableMesh2_2_Overloads , boost::shared_ptr<MutableMesh2_2 >  , TetrahedralMesh<2, 2>  >(m, "MutableMesh2_2")
         .def(py::init< >())
         .def(py::init<::std::vector<Node<2> *, std::allocator<Node<2> *> > >(), py::arg("nodes"))
         .def(

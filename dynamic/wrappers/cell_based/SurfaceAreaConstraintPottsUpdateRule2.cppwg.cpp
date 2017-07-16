@@ -36,7 +36,7 @@ rCellPopulation);
 
 };
 void register_SurfaceAreaConstraintPottsUpdateRule2_class(py::module &m){
-py::class_<SurfaceAreaConstraintPottsUpdateRule2 , SurfaceAreaConstraintPottsUpdateRule2_Overloads , boost::shared_ptr<SurfaceAreaConstraintPottsUpdateRule2 >   >(m, "SurfaceAreaConstraintPottsUpdateRule2")
+py::class_<SurfaceAreaConstraintPottsUpdateRule2 , SurfaceAreaConstraintPottsUpdateRule2_Overloads , boost::shared_ptr<SurfaceAreaConstraintPottsUpdateRule2 >  , AbstractPottsUpdateRule<2>  >(m, "SurfaceAreaConstraintPottsUpdateRule2")
         .def(py::init< >())
         .def(
             "EvaluateHamiltonianContribution", 

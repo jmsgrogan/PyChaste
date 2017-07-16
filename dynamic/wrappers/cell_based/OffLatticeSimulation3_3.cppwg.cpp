@@ -55,7 +55,7 @@ class OffLatticeSimulation3_3_Overloads : public OffLatticeSimulation3_3{
 
 };
 void register_OffLatticeSimulation3_3_class(py::module &m){
-py::class_<OffLatticeSimulation3_3 , OffLatticeSimulation3_3_Overloads , boost::shared_ptr<OffLatticeSimulation3_3 >   >(m, "OffLatticeSimulation3_3")
+py::class_<OffLatticeSimulation3_3 , OffLatticeSimulation3_3_Overloads , boost::shared_ptr<OffLatticeSimulation3_3 >  , AbstractCellBasedSimulation<3, 3>  >(m, "OffLatticeSimulation3_3")
         .def(py::init<::AbstractCellPopulation<3, 3> &, bool, bool >(), py::arg("rCellPopulation"), py::arg("deleteCellPopulationInDestructor") = false, py::arg("initialiseCells") = true)
         .def(
             "AddForce", 

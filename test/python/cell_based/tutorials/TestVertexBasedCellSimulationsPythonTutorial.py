@@ -72,10 +72,9 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## The second argument represents the size of that the vector cells should become - one cell for each element, 
         ## the third argument specifies the proliferative type of the cell.
         
-        cells = []
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformG1GenerationalCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. 
         ## In general, this class associates a collection of cells with a mesh. For this test, because we have a MutableVertexMesh, 
@@ -160,10 +159,9 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
           
         ## Having created a mesh, we now create a VectorSharedPtrCells. This is exactly the same as the above test.
         
-        cells = chaste.cell_based.VectorSharedPtrCell()
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformG1GenerationalCellCycleModel_2()
-        cell_generator.GenerateBasicRandom(cells, mesh.GetNumElements(), transit_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(), transit_type)
           
         ## Now we have a mesh and a set of cells to go with it, we can create a CellPopulation. This is also the same as in the above test.
         
@@ -180,7 +178,7 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         
         force = chaste.cell_based.NagaiHondaForce2()
         simulator.AddForce(force)
-        
+
         ## We also make a pointer to the target area modifier and add it to the simulator.
         
         growth_modifier = chaste.cell_based.SimpleTargetAreaModifier2()
@@ -193,29 +191,38 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         ## for details, if you try to use an incompatible class then you will receive a warning.
         ## The first step is to define a point on the plane boundary and a normal to the plane.
         
-        point = (0.0, 0.0)
-        normal = (0.0, -1.0)
+        point = np.array([0.0, 0.0])
+        normal = np.array([0.0, -1.0])
         
         ## We can now make a PlaneBoundaryCondition (passing the point and normal to the plane) and pass it to the OffLatticeSimulation.
         
-        bc = chaste.cell_based.PlaneBoundaryCondition2_2(cell_population, point, normal)
+        try:
+            bc = chaste.cell_based.PlaneBoundaryCondition2_2(cell_population, point, normal)
+        except chaste.ChasteException as e:
+            print e.GetMessage
+                    
+        print "alive1"
         simulator.AddCellPopulationBoundaryCondition(bc)
+        print "alive2"
         
         ## We now create one or more CellKillers, which determine how cells are removed from the simulation. 
         ## For this test, we use a PlaneBasedCellKiller, and pass it to the OffLatticeSimulation. 
         ## For a list of possible cell killers see subclasses of AbstractCellKiller.
         ## The first step is to define a point on the plane boundary and a normal to the plane.
         
-        point = (0.0, 3.0)
-        normal = (0.0, 1.0)
+        point = np.array([0.0, 3.0])
+        normal = np.array([0.0, 1.0])
         
         ## Finally we now make a PlaneBasedCellKiller (passing the point and normal to the plane) and pass it to the OffLatticeSimulation.
         
         killer = chaste.cell_based.PlaneBasedCellKiller2(cell_population, point, normal)
+        print "alive3"
         simulator.AddCellKiller(killer)
+        print "alive4"
 
         ## To run the simulation, we call `Solve()`.
     
+        print "alive"
         simulator.Solve();
         
         ## The next two lines are for test purposes only and are not part of this tutorial. 
@@ -225,7 +232,8 @@ class TestRunningVertexBasedSimulationsTutorial(chaste.cell_based.AbstractCellBa
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 1.0, 6)
         
         # JUPYTER_TEARDOWN 
-        
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
     

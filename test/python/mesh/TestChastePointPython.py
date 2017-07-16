@@ -32,6 +32,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 import unittest
+import numpy as np
 import chaste
 chaste.init()
 import chaste.mesh
@@ -39,12 +40,17 @@ import chaste.mesh
 class TestChastePoint(unittest.TestCase):
     
     def test_construct(self):
-        
+
         chaste_point = chaste.mesh.ChastePoint3(1.0, 2.0, 3.0)
-        print chaste_point.rGetLocation()
         self.assertAlmostEqual(chaste_point.rGetLocation()[0], 1.0, 2)
         self.assertAlmostEqual(chaste_point.rGetLocation()[1], 2.0, 2)
         self.assertAlmostEqual(chaste_point.rGetLocation()[2], 3.0, 2)
+
+        point2 = chaste.mesh.ChastePoint3(np.array(4.0, 5.0, 6.0))
+        self.assertAlmostEqual(point2.rGetLocation()[0], 4.0, 2)
+        self.assertAlmostEqual(point2.rGetLocation()[1], 5.0, 2)
+        self.assertAlmostEqual(point2.rGetLocation()[2], 6.0, 2)
+
 
 if __name__ == '__main__':
     unittest.main()

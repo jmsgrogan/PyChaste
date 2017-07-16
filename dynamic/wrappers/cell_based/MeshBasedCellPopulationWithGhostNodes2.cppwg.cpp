@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -87,7 +89,7 @@ pParentCell);
 
 };
 void register_MeshBasedCellPopulationWithGhostNodes2_class(py::module &m){
-py::class_<MeshBasedCellPopulationWithGhostNodes2 , MeshBasedCellPopulationWithGhostNodes2_Overloads , boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes2 >   >(m, "MeshBasedCellPopulationWithGhostNodes2")
+py::class_<MeshBasedCellPopulationWithGhostNodes2 , MeshBasedCellPopulationWithGhostNodes2_Overloads , boost::shared_ptr<MeshBasedCellPopulationWithGhostNodes2 >  , MeshBasedCellPopulation<2, 2>  >(m, "MeshBasedCellPopulationWithGhostNodes2")
         .def(py::init<::MutableMesh<2, 2> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, double >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("deleteMesh") = false, py::arg("ghostSpringStiffness") = 15.)
         .def(py::init<::MutableMesh<2, 2> &, double >(), py::arg("rMesh"), py::arg("ghostSpringStiffness") = 15.)
         .def(
@@ -138,5 +140,7 @@ py::class_<MeshBasedCellPopulationWithGhostNodes2 , MeshBasedCellPopulationWithG
             "OutputCellPopulationParameters", 
             (void(MeshBasedCellPopulationWithGhostNodes2::*)(::out_stream &)) &MeshBasedCellPopulationWithGhostNodes2::OutputCellPopulationParameters, 
             " " , py::arg("rParamsFile") )
+        .def("AddPopulationWriterVoronoiDataWriter", &MeshBasedCellPopulationWithGhostNodes2::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &MeshBasedCellPopulationWithGhostNodes2::AddCellWriter<CellLabelWriter>)
     ;
 }

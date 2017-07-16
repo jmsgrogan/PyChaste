@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "CellLabelWriter.hpp"
+#include "VoronoiDataWriter.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -165,7 +167,7 @@ pParentCell);
 
 };
 void register_NodeBasedCellPopulation3_class(py::module &m){
-py::class_<NodeBasedCellPopulation3 , NodeBasedCellPopulation3_Overloads , boost::shared_ptr<NodeBasedCellPopulation3 >   >(m, "NodeBasedCellPopulation3")
+py::class_<NodeBasedCellPopulation3 , NodeBasedCellPopulation3_Overloads , boost::shared_ptr<NodeBasedCellPopulation3 >  , AbstractCentreBasedCellPopulation<3, 3>  >(m, "NodeBasedCellPopulation3")
         .def(py::init<::NodesOnlyMesh<3> &, ::std::vector<boost::shared_ptr<Cell>, std::allocator<boost::shared_ptr<Cell> > > &, ::std::vector<unsigned int, std::allocator<unsigned int> > const, bool, bool >(), py::arg("rMesh"), py::arg("rCells"), py::arg("locationIndices") = std::vector<unsigned int>(), py::arg("deleteMesh") = false, py::arg("validate") = true)
         .def(py::init<::NodesOnlyMesh<3> & >(), py::arg("rMesh"))
         .def(
@@ -280,5 +282,7 @@ py::class_<NodeBasedCellPopulation3 , NodeBasedCellPopulation3_Overloads , boost
             "UpdateCellProcessLocation", 
             (void(NodeBasedCellPopulation3::*)()) &NodeBasedCellPopulation3::UpdateCellProcessLocation, 
             " "  )
+        .def("AddPopulationWriterVoronoiDataWriter", &NodeBasedCellPopulation3::AddPopulationWriter<VoronoiDataWriter>)
+        .def("AddCellWriterCellLabelWriter", &NodeBasedCellPopulation3::AddCellWriter<CellLabelWriter>)
     ;
 }
