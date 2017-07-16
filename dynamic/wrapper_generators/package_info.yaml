@@ -130,6 +130,7 @@ modules:
   - name: SimpleOxygenBasedCellCycleModel
   - name: UniformG1GenerationalCellCycleModel
   - name: NoCellCycleModel
+  - name: AbstractCellCycleModelOdeSolver
   - name: AbstractCellProperty
     excluded_methods: 
     - IsType  # exclude templated method
