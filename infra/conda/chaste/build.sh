@@ -40,6 +40,7 @@ cmake .. \
 
 make chaste_project_PyChaste -j $CPU_COUNT
 make project_PyChaste_Python -j $CPU_COUNT
+make install -j $CPU_COUNT
 cd projects/PyChaste/python
 python setup.py install --prefix=$PREFIX
 cd $PREFIX/build

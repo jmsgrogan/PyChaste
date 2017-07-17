@@ -36,7 +36,7 @@ add_compile_options(-Wno-unused-local-typedefs)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
 
 # The Boost Python headers and shared library are needed, use CMake to find them.
-find_package(Boost COMPONENTS python REQUIRED)
+#find_package(Boost COMPONENTS python REQUIRED)
 
 # Python headers and shared library are also needed. The version needs to be the same
 # as that of the Python interpreter used to run package. e.g. Python 2.7.x.

@@ -6,42 +6,34 @@ source:
   path: /home/grogan/Software/Chaste
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   build:
     - python
     - xsd ==4.0.0
     - xerces-c ==3.1.4
-    - vtk ==7.0
-    - petsc ==3.7.5
+    - vtk
+    - petsc
     - boost
-    - lxml
-    - rdflib
     - setuptools
     - distribute
     - pip
     - numpy
     - petsc4py ==3.7
     - matplotlib
-    - curl
-    - blas 1.* openblas
 
   run:
     - python
     - xsd ==4.0.0
     - xerces-c ==3.1.4
-    - vtk ==7.0
-    - petsc ==3.7.5
-    - boost7.0
+    - vtk
+    - petsc
+    - boost
     - matplotlib
     - petsc4py ==3.7
     - jupyter
-    - lxml
-    - rdflib
     - numpy
-    - curl
-    - blas 1.* openblas
 
 about:
   home: http://www.cs.ox.ac.uk/chaste/

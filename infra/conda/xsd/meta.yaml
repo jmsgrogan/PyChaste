@@ -7,7 +7,7 @@ source:
   url: http://www.codesynthesis.com/download/xsd/4.0/linux-gnu/x86_64/xsd-4.0.0-x86_64-linux-gnu.tar.bz2
 
 build:
-  number: 1
+  number: 2
 
 about:
   home: http://www.codesynthesis.com/products/xsd/

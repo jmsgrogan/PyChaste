@@ -7,7 +7,7 @@ source:
   url: ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz
 
 build:
-    number: 5
+    number: 6
 
 about:
   home: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html

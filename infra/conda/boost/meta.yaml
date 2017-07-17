@@ -1,31 +1,21 @@
 package:
   name: boost
-  version: 1.59.0
+  version: 1.63.0
 
 source:
-  fn:  boost_1_59_0.tar.bz2
-  url: http://sourceforge.net/projects/boost/files/boost/1.59.0/boost_1_59_0.tar.bz2
+  fn:  boost_1_63_0.tar.bz2
+  url: http://sourceforge.net/projects/boost/files/boost/1.63.0/boost_1_63_0.tar.bz2
 
 build:
   features:
     - vc9               [win and py27]
     - vc10              [win and py34]
     - vc14              [win and py35]
-  number: 2
+  number: 0
 
 requirements:
   build:
     - python
-    - icu               [unix]
-    - bzip2             [unix]
-    - zlib
-
-  run:
-    # python dependency is here due to libboost-python library that depends on
-    # python version
-    - python
-    - icu               [unix]
-    - zlib
 
 about:
   home: http://www.boost.org/

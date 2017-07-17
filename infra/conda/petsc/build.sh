@@ -9,13 +9,16 @@ else
     SO=so
 fi
 
+export MPICH=https://www.mpich.org/static/downloads/3.2/mpich-3.2.tar.gz
+export HDF5=https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.16/src/hdf5-1.8.16.tar.bz2
+
 $PYTHON ./configure \
-  --with-fc=0 \
   --with-debugging=0 \
+  --download-mpich \
+  --download-hdf5=$HDF5 \
   --COPTFLAGS=-O3 \
   --CXXOPTFLAGS=-O3 \
   --LIBS=-Wl,-rpath,$PREFIX/lib \
-  --with-blas-lapack-lib=libopenblas${SHLIB_EXT} \
   --with-hwloc=0 \
   --with-ssl=0 \
   --with-x=0 \
@@ -36,35 +39,5 @@ done
 
 make
 make install
-
-rm -fr $PREFIX/bin
-rm -fr $PREFIX/share
-rm -fr $PREFIX/lib/lib$PKG_NAME.*.dylib.dSYM
-rm -f  $PREFIX/lib/$PKG_NAME/conf/files
-rm -f  $PREFIX/lib/$PKG_NAME/conf/*.py
-rm -f  $PREFIX/lib/$PKG_NAME/conf/*.log
-rm -f  $PREFIX/lib/$PKG_NAME/conf/RDict.db
-rm -f  $PREFIX/lib/$PKG_NAME/conf/*BuildInternal.cmake
-find   $PREFIX/include -name '*.html' -delete
-
-#export LIBRARY_PATH=$PREFIX/lib
-
-#./configure \
-#  --prefix=$PREFIX \
-#  --with-mpi-dir=$PREFIX \
-#  --download-suitesparse \
-#  --download-hypre \
-#  --download-mumps \
-#  --download-superlu_dist \
-#  --download-f2cblaslapack \
-#  --download-hdf5 \
-#  --download-parmetis \
-#  --download-metis \
-#  --download-sundials \
-#  --with-x=false \
-#  --with-clanguage=cxx \
-#  --with-shared-libraries
-#make
-#make install
 
 
