@@ -58,14 +58,14 @@ namespace pybind11 { namespace detail {                                 \
         {                                                               \
             return false;                                               \
         }                                                               \
-        auto buf = py::array_t<T, py::array::c_style |                  \
+        auto buf = py::array_t<double, py::array::c_style |             \
                 py::array::forcecast>::ensure(src);                     \
         if (!buf){return false;}                                        \
         if (buf.ndim() != 1  or buf.shape()[0] != 3 )                   \
         {                                                               \
             return false;                                               \
         }                                                               \
-        CVec vec;                                                       \
+        CVec3 vec;                                                      \
         for ( int i=0 ; i<3 ; i++ )                                     \
         {                                                               \
             vec[i] = buf.data()[i];                                     \
@@ -73,11 +73,11 @@ namespace pybind11 { namespace detail {                                 \
         value = vec;                                                    \
         return true;                                                    \
       }                                                                 \
-      static py::handle cast(const c_vector<T, 3>& src,                 \
+      static py::handle cast(const c_vector<double, 3>& src,            \
               py::return_value_policy policy, py::handle parent)        \
       {                                                                 \
         std::vector<size_t> shape (1, 3);                               \
-        std::vector<size_t> strides(1, sizeof(T));                      \
+        std::vector<size_t> strides(1, sizeof(double));                 \
         double* data = src.size() ?                                     \
                 const_cast<double *>(&src[0]) :                         \
                 static_cast<double *>(NULL);                            \
@@ -96,7 +96,6 @@ namespace pybind11 { namespace detail {                                 \
       PYBIND11_TYPE_CASTER(CVec2, _("CVector_2"));                      \
       bool load(py::handle src, bool convert)                           \
       {                                                                 \
-        std::cout << "started conv" << std::endl;                       \
         if (!convert && !py::array_t<double>::check_(src))              \
         {                                                               \
             return false;                                               \
@@ -108,16 +107,15 @@ namespace pybind11 { namespace detail {                                 \
         {                                                               \
             return false;                                               \
         }                                                               \
-        value.resize(2, false);                                         \
-        std::cout << value.size() << std::endl;                         \
+        CVec2 vec;                                                      \
         for ( int i=0 ; i<2 ; i++ )                                     \
         {                                                               \
-            std::cout << i << std::endl;                                \
-            value[i] = buf.data()[i];                                   \
+            vec[i] = buf.data()[i];                                     \
         }                                                               \
+        value = vec;                                                    \
         return true;                                                    \
       }                                                                 \
-      static py::handle cast(const c_vector<double, 2>& src,            \
+      static py::handle cast(const c_vector<double, 3>& src,            \
               py::return_value_policy policy, py::handle parent)        \
       {                                                                 \
         std::vector<size_t> shape (1, 2);                               \
@@ -129,7 +127,7 @@ namespace pybind11 { namespace detail {                                 \
         return a.release();                                             \
       }                                                                 \
   };                                                                    \
-}}
+}}                                                                      \
 
 /**
  *  VTK Conversion, from SMTK Source with copyright

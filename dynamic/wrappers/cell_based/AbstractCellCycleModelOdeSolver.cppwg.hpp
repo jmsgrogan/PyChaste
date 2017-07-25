@@ -1,0 +1,5 @@
+#ifndef AbstractCellCycleModelOdeSolver_hpp__pyplusplus_wrapper
+#define AbstractCellCycleModelOdeSolver_hpp__pyplusplus_wrapper
+namespace py = pybind11;
+void register_AbstractCellCycleModelOdeSolver_class(py::module &m);
+#endif // AbstractCellCycleModelOdeSolver_hpp__pyplusplus_wrapper
