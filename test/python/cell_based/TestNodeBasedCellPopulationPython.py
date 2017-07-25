@@ -34,7 +34,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import unittest
 import chaste.cell_based
 import chaste.mesh
-import chaste.core
 import chaste.visualization
 chaste.init()
 
@@ -45,7 +44,9 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
 
         file_handler = chaste.core.OutputFileHandler("Python/TestNodeBasedCellPopulation")
 
-        mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0, 10, 0, 0, 5, 0, 0)
+        mesh_generator = chaste.mesh.PottsMeshGenerator3(10, 0, 0,
+                                                         10, 0, 0,
+                                                         5, 0, 0)
         mesh = mesh_generator.GetMesh()
 
         nodes_only_mesh = chaste.mesh.NodesOnlyMesh3()

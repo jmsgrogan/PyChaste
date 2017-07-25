@@ -46,7 +46,8 @@ rY);
 };
 void register_AbstractOdeSystem_class(py::module &m){
 py::class_<AbstractOdeSystem , AbstractOdeSystem_Overloads , boost::shared_ptr<AbstractOdeSystem >   >(m, "AbstractOdeSystem")
-        .def(
+         .def(py::init<unsigned>())
+         .def(
             "EvaluateYDerivatives", 
             (void(AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &, ::std::vector<double, std::allocator<double> > &)) &AbstractOdeSystem::EvaluateYDerivatives, 
             " " , py::arg("time"), py::arg("rY"), py::arg("rDY") )

@@ -37,19 +37,27 @@ import chaste
 chaste.init()
 import chaste.mesh
 
+
 class TestChastePoint(unittest.TestCase):
-    
+
     def test_construct(self):
 
         chaste_point = chaste.mesh.ChastePoint3(1.0, 2.0, 3.0)
-        self.assertAlmostEqual(chaste_point.rGetLocation()[0], 1.0, 2)
-        self.assertAlmostEqual(chaste_point.rGetLocation()[1], 2.0, 2)
-        self.assertAlmostEqual(chaste_point.rGetLocation()[2], 3.0, 2)
+        loc = chaste_point.rGetLocation()
+        self.assertAlmostEqual(loc[0], 1.0, 2)
+        self.assertAlmostEqual(loc[1], 2.0, 2)
+        self.assertAlmostEqual(loc[2], 3.0, 2)
 
-        point2 = chaste.mesh.ChastePoint3(np.array(4.0, 5.0, 6.0))
-        self.assertAlmostEqual(point2.rGetLocation()[0], 4.0, 2)
-        self.assertAlmostEqual(point2.rGetLocation()[1], 5.0, 2)
-        self.assertAlmostEqual(point2.rGetLocation()[2], 6.0, 2)
+        point2 = chaste.mesh.ChastePoint3(np.array([4.0, 5.0, 6.0]))
+        loc = point2.rGetLocation()
+        self.assertAlmostEqual(loc[0], 4.0, 2)
+        self.assertAlmostEqual(loc[1], 5.0, 2)
+        self.assertAlmostEqual(loc[2], 6.0, 2)
+
+        point3 = chaste.mesh.ChastePoint2(np.array([4.0, 5.0]))
+        loc = point3.rGetLocation()
+        self.assertAlmostEqual(loc[0], 4.0, 2)
+        self.assertAlmostEqual(loc[1], 5.0, 2)
 
 
 if __name__ == '__main__':

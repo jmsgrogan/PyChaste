@@ -39,33 +39,34 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ##
 ## ## Imports and Setup
 
-import unittest # Python testing framework
-import matplotlib.pyplot as plt # Plotting
-import numpy as np # Matrix tools
-import chaste # The PyChaste module
-chaste.init() # Set up MPI
-import chaste.cell_based # Contains cell populations
-import chaste.mesh # Contains meshes
-import chaste.visualization # Visualization tools
+import unittest  # Python testing framework
+import matplotlib.pyplot as plt  # Plotting
+import numpy as np  # Matrix tools
+import chaste  # The PyChaste module
+chaste.init()  # Set up MPI
+import chaste.cell_based  # Contains cell populations
+import chaste.mesh  # Contains meshes
+import chaste.visualization  # Visualization tools
+
 
 class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
-    
+
     ## ## Test 1 - a basic mesh-based simulation
     ## In the first test, we run a simple mesh-based simulation, 
     ## in which we create a monolayer of cells, using a mutable mesh. Each cell is assigned a stochastic cell-cycle model.
-    
+
     def test_monolayer(self):
-        
-        # JUPYTER_SETUP 
-        
+
+        # JUPYTER_SETUP
+
         ## Next, we generate a mutable mesh. To create a `MutableMesh`, we can use the `HoneycombMeshGenerator`. 
         ## This generates a honeycomb-shaped mesh, in which all nodes are equidistant. Here the first and second arguments define the size of the mesh - 
         ## we have chosen a mesh that is 4 nodes (i.e. cells) wide, and 4 nodes high.
-        
-        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellSimulationsTutorial", True)
+
+        chaste.core.OutputFileHandler("Python/TestMeshBasedCellSimulationsTutorial")
         generator = chaste.mesh.HoneycombMeshGenerator(4, 4)
         mesh = generator.GetMesh()
-          
+
         ## Having created a mesh, we now create some cells. To do this, we use the `CellsGenerator` helper class, 
         ## which is specialized by the type of cell cycle model required (here `UniformCellCycleModel`) and the dimension. 
         ## For a list of possible cell cycle models see subclasses of `AbstractCellCycleModel`. 
@@ -73,25 +74,26 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         ## see specific class documentation for details. We create an empty vector of cells and pass this into the method along with the mesh. 
         ## The second argument represents the size of that the list of cells should become - one cell for each node, 
         ## the third argument specifies the proliferative type of the cell.
-        
 
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(), transit_type)
-          
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(),
+                                                   transit_type)
+
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a mesh. For this test, because we have a `MutableMesh`, 
         ## we use a particular type of cell population called a `MeshBasedCellPopulation`.
-        
-        cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh, cells)
-        
+
+        cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh,
+                                                                       cells)
+
         ## To view the results of this and the next test in Paraview it is necessary to explicitly 
         ## generate the required .vtu files. 
-        
+
         cell_population.AddPopulationWriterVoronoiDataWriter()
-        
+
         ## We can set up a `VtkScene` to do a quick visualization of the population before running the analysis.
-        
+
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         # JUPYTER_SHOW_FIRST
@@ -102,81 +104,84 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
         simulator.SetOutputDirectory("Python/TestMeshBasedCellSimulationsTutorial")
         simulator.SetEndTime(10.0)
-        
+
         ## For longer simulations, we may not want to output the results every time step. In this case we can use the following method, 
         ## to print results every 12 time steps instead. As the default time step used by the simulator is 30 seconds, 
         ## this method will cause the simulator to print results every 6 minutes (or 0.1 hours).
-        
+
         simulator.SetSamplingTimestepMultiple(12)
 
         ## We must now create one or more force laws, which determine the mechanics of the centres of each cell in a cell population. 
         ## For this test, we use one force law, based on the spring based model, and pass it to the `OffLatticeSimulation`. 
         ## For a list of possible forces see subclasses of `AbstractForce`. Note that some of these forces are not compatible with mesh-based simulations, 
         ## see the specific class documentation for details. If you try to use an incompatible class then you will receive a warning.
-        
+
         force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
-        
+
         ## Save snapshot images of the population during the simulation
-        
+
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(100)
         simulator.AddSimulationModifier(scene_modifier)
 
         ## To run the simulation, we call `Solve()`. We can again do a quick rendering of the population at the end of the simulation
-        
-        scene.Start() 
+
+        scene.Start()
         simulator.Solve()
         scene.End()
-        
-        # JUPYTER_TEARDOWN 
-        
+
+        # JUPYTER_TEARDOWN
+
         ## Full results can be visualized in Paraview from the `file_handler.GetOutputDirectoryFullPath()` directory.
-        
+
     ## ## Test 2 -  a basic mesh-based simulation with ghost nodes
     ## In the second test, we run a simple mesh-based simulation with ghost nodes, in which we create a monolayer of cells, using a mutable mesh. 
     ## Each cell is assigned a stochastic cell-cycle model.
-    
+
     def test_monolayer_with_ghost_nodes(self):
-        
-        # JUPYTER_SETUP 
-        
+
+        # JUPYTER_SETUP
+
         ## We start by generating a mutable mesh. To create a `MutableMesh`, we can use the `HoneycombMeshGenerator` as before. 
         ## Here the first and second arguments define the size of the mesh - we have chosen a mesh that is 2 nodes (i.e. cells) wide, 
         ## and 2 nodes high. The third argument specifies the number of layers of ghost nodes to make.
-        
-        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellPopulationWithGhostNodes")
+
+        chaste.core.OutputFileHandler("Python/TestMeshBasedCellPopulationWithGhostNodes")
         generator = chaste.mesh.HoneycombMeshGenerator(5, 5, 2)
         mesh = generator.GetMesh()
-        
+
         ## We only want to create cells to attach to real nodes, so we use the method `GetCellLocationIndices` to get the 
         ## indices of the real nodes in the mesh. This will be passed in to the cell population later on.
         
-        location_indices = generator.GetCellLocationIndices()
+        locs = generator.GetCellLocationIndices()
           
         ## Having created a mesh, we now create some cells. To do this, we use the `CellsGenerator` helper class again. 
         ## This time the second argument is different and is the number of real nodes in the mesh. 
         ## As before all cells have `TransitCellProliferativeType`.
-        
+
         transit_type = chaste.cell_based.TransitCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cells = cell_generator.GenerateBasicRandom(len(location_indices), transit_type)
-          
+        cells = cell_generator.GenerateBasicRandom(len(locs),
+                                                   transit_type)
+
         ## Now we have a mesh and a set of cells to go with it, we can create a `CellPopulation`. 
         ## In general, this class associates a collection of cells with a set of elements or a mesh. 
         ## For this test, because we have a `MutableMesh`, and ghost nodes we use a particular type of cell population called 
         ## a `MeshBasedCellPopulationWithGhostNodes`. The third argument of the constructor takes a vector of the indices of the real nodes 
         ## and should be the same length as the vector of cell pointers.
-        
-        cell_population = chaste.cell_based.MeshBasedCellPopulationWithGhostNodes2(mesh, cells, location_indices)
-        
+
+        cell_population = chaste.cell_based.MeshBasedCellPopulationWithGhostNodes2(mesh,
+                                                                                   cells,
+                                                                                   locs)
+
         ## Again Paraview output is explicitly requested.
-        
+
         cell_population.AddPopulationWriterVoronoiDataWriter()
-        
+
         ## We can set up a `VtkScene` to do a quick visualization of the population before running the analysis.
-        
+
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         scene.GetCellPopulationActorGenerator().SetShowVoronoiMeshEdges(True)
@@ -188,9 +193,9 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         simulator.SetOutputDirectory("Python/TestMeshBasedCellPopulationWithGhostNodes")
         simulator.SetEndTime(10.0)
         simulator.SetSamplingTimestepMultiple(12)
-        
+
         ## Save snapshot images of the population during the simulation
-        
+
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene_modifier.SetUpdateFrequency(300)
@@ -198,26 +203,26 @@ class TestRunningMeshBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
 
         ## Again we create a force law, and pass it to the `OffLatticeSimulation`. 
         ## This force law ensures that ghost nodes don't exert forces on real nodes but real nodes exert forces on ghost nodes.
-        
+
         force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
 
         ## To run the simulation, we call `Solve()`.
-    
+
         scene.Start()
         simulator.Solve()
 
         ## The next two lines are for test purposes only and are not part of this tutorial. 
         ## If different simulation input parameters are being explored the lines should be removed.
-        
+
         self.assertEqual(cell_population.GetNumRealCells(), 48)
         self.assertAlmostEqual(chaste.cell_based.SimulationTime.Instance().GetTime(), 10.0, 6)
-        
+
         # JUPYTER_TEARDOWN 
-        
+
         ## Full results can be visualized in Paraview from the `file_handler.GetOutputDirectoryFullPath()` directory.
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
-    
+
 #endif END_WIKI

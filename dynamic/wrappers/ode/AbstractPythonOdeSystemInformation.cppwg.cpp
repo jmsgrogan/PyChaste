@@ -28,7 +28,8 @@ class AbstractPythonOdeSystemInformation_Overloads : public AbstractPythonOdeSys
 };
 void register_AbstractPythonOdeSystemInformation_class(py::module &m){
 py::class_<AbstractPythonOdeSystemInformation , AbstractPythonOdeSystemInformation_Overloads , boost::shared_ptr<AbstractPythonOdeSystemInformation >  , AbstractOdeSystemInformation  >(m, "AbstractPythonOdeSystemInformation")
-        .def(
+         .def(py::init< >())
+         .def(
             "AddVariableName", 
             (void(AbstractPythonOdeSystemInformation::*)(::std::string const &)) &AbstractPythonOdeSystemInformation::AddVariableName, 
             " " , py::arg("rName") )

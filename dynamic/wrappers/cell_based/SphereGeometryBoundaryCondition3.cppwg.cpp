@@ -15,7 +15,7 @@ namespace py = pybind11;
 typedef SphereGeometryBoundaryCondition<3 > SphereGeometryBoundaryCondition3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 PYBIND11_CVECTOR_TYPECASTER3();
-PYBIND11_CVECTOR_TYPECASTER2();
+//PYBIND11_CVECTOR_TYPECASTER2();
 
 class SphereGeometryBoundaryCondition3_Overloads : public SphereGeometryBoundaryCondition3{
     public:

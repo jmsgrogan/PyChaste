@@ -130,8 +130,13 @@
 #include "OffLatticeSimulation3_3.cppwg.hpp"
 #include "PythonSimulationModifier2.cppwg.hpp"
 #include "PythonSimulationModifier3.cppwg.hpp"
+#include "UblasIncludes.hpp"
+#include "PythonObjectConverters.hpp"
 
 namespace py = pybind11;
+
+PYBIND11_CVECTOR_TYPECASTER3();
+PYBIND11_CVECTOR_TYPECASTER2();
 
 PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
 {

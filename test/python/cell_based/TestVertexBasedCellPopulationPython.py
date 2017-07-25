@@ -31,14 +31,12 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-import unittest # Python testing framework
-import matplotlib.pyplot as plt # Plotting
-import numpy as np # Matrix tools
-import chaste # The PyChaste module
-chaste.init() # Set up MPI
-import chaste.cell_based # Contains cell populations
-import chaste.mesh # Contains meshes
-import chaste.visualization # Visualization tools
+import unittest
+import chaste
+chaste.init()
+import chaste.mesh
+import chaste.cell_based
+import chaste.visualization
 
 
 class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
@@ -47,11 +45,11 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
 
         file_handler = chaste.core.OutputFileHandler("Python/TestVertexBasedCellPopulation")
 
-        ## Set up the mesh
+        # Set up the mesh
         mesh_generator = chaste.mesh.HoneycombVertexMeshGenerator(2, 2)
         mesh = mesh_generator.GetMesh()
 
-        ## Make the cells
+        # Make the cells
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cells = cell_generator.GenerateBasicRandom(mesh.GetNumElements(),
@@ -61,7 +59,7 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
         cell_population = chaste.cell_based.VertexBasedCellPopulation2(mesh,
                                                                        cells)
 
-#         # Set up the visualizer
+        # Set up the visualizer
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         scene.SetSaveAsAnimation(True)
@@ -84,10 +82,7 @@ class TestCell(chaste.cell_based.AbstractCellBasedTestSuite):
         simulator.AddSimulationModifier(modifier)
         simulator.AddSimulationModifier(target_area_modifier)
 
-        try:
-            simulator.Solve()
-        except chaste.ChasteException as e:
-            print e.GetMessage
+        simulator.Solve()
 
 
 if __name__ == '__main__':

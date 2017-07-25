@@ -32,9 +32,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
 import unittest
-import chaste.cell_based
 import chaste.mesh
-import chaste.core
+import chaste.cell_based
 import chaste.visualization
 chaste.init()
 
@@ -51,32 +50,33 @@ class TestMeshBasedPopulation(chaste.cell_based.AbstractCellBasedTestSuite):
         # Make the cells
         proliferative_type = chaste.cell_based.DefaultCellProliferativeType()
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cells = cell_generator.GenerateBasicRandom( mesh.GetNumNodes(),
-                                                    proliferative_type)
+        cells = cell_generator.GenerateBasicRandom(mesh.GetNumNodes(),
+                                                   proliferative_type)
 
         # Make the cell population
-        cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh, cells)
+        cell_population = chaste.cell_based.MeshBasedCellPopulation2_2(mesh,
+                                                                       cells)
         cell_population.AddPopulationWriterVoronoiDataWriter()
 
         # Set up the visualizer
         scene = chaste.visualization.VtkScene2()
-        scene.SetCellPopulation(cell_population);
-        scene.SetSaveAsAnimation(True);
-        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() + "/cell_population")
+        scene.SetCellPopulation(cell_population)
+        scene.SetSaveAsAnimation(True)
+        scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath() +
+                                "/cell_population")
 
         modifier = chaste.cell_based.VtkSceneModifier2()
         modifier.SetVtkScene(scene)
 
         # Set up the simulation
         simulator = chaste.cell_based.OffLatticeSimulation2_2(cell_population)
-        simulator.SetOutputDirectory("Python/TestMeshBasedCellPopulation");
-        simulator.SetEndTime(5.0);
-        simulator.SetSamplingTimestepMultiple(12);
+        simulator.SetOutputDirectory("Python/TestMeshBasedCellPopulation")
+        simulator.SetEndTime(5.0)
+        simulator.SetSamplingTimestepMultiple(12)
 
         force = chaste.cell_based.GeneralisedLinearSpringForce2_2()
         simulator.AddForce(force)
         simulator.AddSimulationModifier(modifier)
-
         simulator.Solve()
 
 

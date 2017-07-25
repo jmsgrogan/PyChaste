@@ -36,23 +36,25 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef PYTHONOBJECTCONVERTERS_HPP_
 #define PYTHONOBJECTCONVERTERS_HPP_
 
+#include <typeinfo>
 #include <pybind11/stl.h>
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
+#include "UblasIncludes.hpp"
 //#include <vtkSmartPointer.h>
 
 namespace py = pybind11;
 
 #define PYBIND11_CVECTOR_TYPECASTER3()                                  \
 namespace pybind11 { namespace detail {                                 \
-  template <typename T> struct type_caster<c_vector<T, 3> >             \
+  template <> struct type_caster<c_vector<double, 3> >                  \
   {                                                                     \
     public:                                                             \
-      typedef c_vector<T, 3> CVec;                                      \
-      PYBIND11_TYPE_CASTER(CVec, _("CVector_3"));                       \
+      typedef c_vector<double, 3> CVec3;                                \
+      PYBIND11_TYPE_CASTER(CVec3, _("CVector_3"));                      \
       bool load(py::handle src, bool convert)                           \
       {                                                                 \
-        if (!convert && !py::array_t<T>::check_(src))                   \
+        if (!convert && !py::array_t<double>::check_(src))              \
         {                                                               \
             return false;                                               \
         }                                                               \
@@ -87,37 +89,39 @@ namespace pybind11 { namespace detail {                                 \
 
 #define PYBIND11_CVECTOR_TYPECASTER2()                                  \
 namespace pybind11 { namespace detail {                                 \
-  template <typename T> struct type_caster<c_vector<T, 2> >             \
+  template <> struct type_caster<c_vector<double, 2> >                  \
   {                                                                     \
     public:                                                             \
-      typedef c_vector<T, 2> CVec;                                      \
-      PYBIND11_TYPE_CASTER(CVec, _("CVector_2"));                       \
+      typedef c_vector<double, 2> CVec2;                                \
+      PYBIND11_TYPE_CASTER(CVec2, _("CVector_2"));                      \
       bool load(py::handle src, bool convert)                           \
       {                                                                 \
-        if (!convert && !py::array_t<T>::check_(src))                   \
+        std::cout << "started conv" << std::endl;                       \
+        if (!convert && !py::array_t<double>::check_(src))              \
         {                                                               \
             return false;                                               \
         }                                                               \
-        auto buf = py::array_t<T, py::array::c_style |                  \
+        auto buf = py::array_t<double, py::array::c_style |             \
                 py::array::forcecast>::ensure(src);                     \
         if (!buf){return false;}                                        \
         if (buf.ndim() != 1  or buf.shape()[0] != 2 )                   \
         {                                                               \
             return false;                                               \
         }                                                               \
-        CVec vec;                                                       \
+        value.resize(2, false);                                         \
+        std::cout << value.size() << std::endl;                         \
         for ( int i=0 ; i<2 ; i++ )                                     \
         {                                                               \
-            vec[i] = buf.data()[i];                                     \
+            std::cout << i << std::endl;                                \
+            value[i] = buf.data()[i];                                   \
         }                                                               \
-        value = vec;                                                    \
         return true;                                                    \
       }                                                                 \
-      static py::handle cast(const c_vector<T, 2>& src,                 \
+      static py::handle cast(const c_vector<double, 2>& src,            \
               py::return_value_policy policy, py::handle parent)        \
       {                                                                 \
         std::vector<size_t> shape (1, 2);                               \
-        std::vector<size_t> strides(1, sizeof(T));                      \
+        std::vector<size_t> strides(1, sizeof(double));                 \
         double* data = src.size() ?                                     \
                 const_cast<double *>(&src[0]) :                         \
                 static_cast<double *>(NULL);                            \

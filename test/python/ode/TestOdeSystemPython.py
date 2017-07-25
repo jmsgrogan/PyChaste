@@ -40,7 +40,7 @@ class MyOdeSystem(chaste.ode.AbstractOdeSystem):
 
     def __init__(self, OdeSystemInfo):
         super(MyOdeSystem, self).__init__(1)
-        self.SetSystemInfo(OdeSystemInfo)
+        #self.SetSystemInfo(OdeSystemInfo)
 
     def EvaluateYDerivatives(self, time, rY, rDy):
         rDy[0] = rY[0]*rY[0] + time*time
