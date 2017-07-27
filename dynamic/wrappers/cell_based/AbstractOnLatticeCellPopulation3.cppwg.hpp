@@ -1,5 +1,6 @@
 #ifndef AbstractOnLatticeCellPopulation3_hpp__pyplusplus_wrapper
 #define AbstractOnLatticeCellPopulation3_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_AbstractOnLatticeCellPopulation3_class(py::module &m);
 #endif // AbstractOnLatticeCellPopulation3_hpp__pyplusplus_wrapper

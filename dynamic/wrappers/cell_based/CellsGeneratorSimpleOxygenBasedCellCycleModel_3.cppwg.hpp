@@ -1,5 +1,6 @@
 #ifndef CellsGeneratorSimpleOxygenBasedCellCycleModel_3_hpp__pyplusplus_wrapper
 #define CellsGeneratorSimpleOxygenBasedCellCycleModel_3_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_CellsGeneratorSimpleOxygenBasedCellCycleModel_3_class(py::module &m);
 #endif // CellsGeneratorSimpleOxygenBasedCellCycleModel_3_hpp__pyplusplus_wrapper

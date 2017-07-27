@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractOdeSystem.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractOdeSystem.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractOdeSystem AbstractOdeSystem;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
@@ -46,8 +49,7 @@ rY);
 };
 void register_AbstractOdeSystem_class(py::module &m){
 py::class_<AbstractOdeSystem , AbstractOdeSystem_Overloads , boost::shared_ptr<AbstractOdeSystem >   >(m, "AbstractOdeSystem")
-         .def(py::init<unsigned>())
-         .def(
+        .def(
             "EvaluateYDerivatives", 
             (void(AbstractOdeSystem::*)(double, ::std::vector<double, std::allocator<double> > const &, ::std::vector<double, std::allocator<double> > &)) &AbstractOdeSystem::EvaluateYDerivatives, 
             " " , py::arg("time"), py::arg("rY"), py::arg("rDY") )

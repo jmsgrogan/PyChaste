@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "SurfaceAreaConstraintPottsUpdateRule.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "SurfaceAreaConstraintPottsUpdateRule2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef SurfaceAreaConstraintPottsUpdateRule<2 > SurfaceAreaConstraintPottsUpdateRule2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

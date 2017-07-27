@@ -1,5 +1,6 @@
 #ifndef SurfaceAreaConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper
 #define SurfaceAreaConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_SurfaceAreaConstraintPottsUpdateRule2_class(py::module &m);
 #endif // SurfaceAreaConstraintPottsUpdateRule2_hpp__pyplusplus_wrapper

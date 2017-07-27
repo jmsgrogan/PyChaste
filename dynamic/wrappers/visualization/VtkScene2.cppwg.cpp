@@ -9,9 +9,12 @@
 #include "UblasIncludes.hpp"
 #include "VtkScene.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "VtkScene2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef VtkScene<2 > VtkScene2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 PYBIND11_VTK_TYPECASTER(vtkRenderer);

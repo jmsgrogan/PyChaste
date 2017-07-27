@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "PythonSimulationModifier.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "PythonSimulationModifier2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef PythonSimulationModifier<2 > PythonSimulationModifier2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

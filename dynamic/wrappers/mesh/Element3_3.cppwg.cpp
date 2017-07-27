@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "Element.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "Element3_3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef Element<3,3 > Element3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

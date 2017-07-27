@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractPythonOdeSystemInformation.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractPythonOdeSystemInformation.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractPythonOdeSystemInformation AbstractPythonOdeSystemInformation;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
@@ -28,8 +31,7 @@ class AbstractPythonOdeSystemInformation_Overloads : public AbstractPythonOdeSys
 };
 void register_AbstractPythonOdeSystemInformation_class(py::module &m){
 py::class_<AbstractPythonOdeSystemInformation , AbstractPythonOdeSystemInformation_Overloads , boost::shared_ptr<AbstractPythonOdeSystemInformation >  , AbstractOdeSystemInformation  >(m, "AbstractPythonOdeSystemInformation")
-         .def(py::init< >())
-         .def(
+        .def(
             "AddVariableName", 
             (void(AbstractPythonOdeSystemInformation::*)(::std::string const &)) &AbstractPythonOdeSystemInformation::AddVariableName, 
             " " , py::arg("rName") )

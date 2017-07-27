@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <petsc/private/vecimpl.h>
+#include <petsc/private/matimpl.h>
 #include <set>
 #include <vector>
 #include <string>
@@ -8,15 +10,21 @@
 #include "UblasIncludes.hpp"
 #include "ReplicatableVector.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "ReplicatableVector.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef ReplicatableVector ReplicatableVector;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_MAKE_OPAQUE(Vec);
+PYBIND11_MAKE_OPAQUE(Mat);
 
 void register_ReplicatableVector_class(py::module &m){
 py::class_<ReplicatableVector  , boost::shared_ptr<ReplicatableVector >   >(m, "ReplicatableVector")
         .def(py::init< >())
+        .def(py::init<::Vec >(), py::arg("vec"))
         .def(py::init<unsigned int >(), py::arg("size"))
         .def(
             "GetSize", 
@@ -30,5 +38,9 @@ py::class_<ReplicatableVector  , boost::shared_ptr<ReplicatableVector >   >(m, "
             "Replicate", 
             (void(ReplicatableVector::*)(unsigned int, unsigned int)) &ReplicatableVector::Replicate, 
             " " , py::arg("lo"), py::arg("hi") )
+        .def(
+            "ReplicatePetscVector", 
+            (void(ReplicatableVector::*)(::Vec)) &ReplicatableVector::ReplicatePetscVector, 
+            " " , py::arg("vec") )
     ;
 }

@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractCellBasedSimulationModifier.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractCellBasedSimulationModifier2_2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractCellBasedSimulationModifier<2,2 > AbstractCellBasedSimulationModifier2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

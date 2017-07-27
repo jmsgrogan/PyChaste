@@ -53,7 +53,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     ## In the first test, we run a simple node-based simulation, in which we create a monolayer of cells, 
     ## using a nodes only mesh. Each cell is assigned a uniform cell-cycle model.
 
-    def xtest_monolayer(self):
+    def test_monolayer(self):
 
         # JUPYTER_SETUP
 
@@ -137,7 +137,7 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
     ## In the second test we run a simple node-based simulation in 3D. This is very similar to the 2D test with the dimension changed from 2 to 3 and 
     ## instead of using a mesh generator we generate the nodes directly.
 
-    def xtest_spheroid(self):
+    def test_spheroid(self):
 
         # JUPYTER_SETUP
 
@@ -270,9 +270,8 @@ class TestRunningNodeBasedSimulationsTutorial(chaste.cell_based.AbstractCellBase
         centre = np.array([0.0, 0.0, 1.0])
         radius = 5.0
         point2 = chaste.mesh.ChastePoint3(centre)
-        loc = point2.rGetLocation()
         boundary_condition = chaste.cell_based.SphereGeometryBoundaryCondition3(cell_population,
-                                                                                centre,
+                                                                                point2.rGetLocation(),
                                                                                 radius)
         simulator.AddCellPopulationBoundaryCondition(boundary_condition)
 

@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "TransitCellProliferativeType.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "TransitCellProliferativeType.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef TransitCellProliferativeType TransitCellProliferativeType;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

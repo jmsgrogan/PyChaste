@@ -40,14 +40,13 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 template<unsigned ELEMENT_DIM, unsigned SPACE_DIM>
 AttractingPlaneBoundaryCondition<ELEMENT_DIM,SPACE_DIM>::AttractingPlaneBoundaryCondition(
         AbstractCellPopulation<ELEMENT_DIM,SPACE_DIM>* pCellPopulation,
-                                                    c_vector<double, SPACE_DIM> point)
-                                                    //c_vector<double, SPACE_DIM> normal)
+                                                    c_vector<double, SPACE_DIM> point,
+                                                    c_vector<double, SPACE_DIM> normal)
         : AbstractCellPopulationBoundaryCondition<ELEMENT_DIM,SPACE_DIM>(pCellPopulation),
-          mPointOnPlane(zero_vector<double>(SPACE_DIM)),
+          mPointOnPlane(normal),
           mUseJiggledNodesOnPlane(false),
           mAttractionThreshold(0.1)
 {
-    c_vector<double, SPACE_DIM> normal = unit_vector<double>(SPACE_DIM);
     assert(norm_2(normal) > 0.0);
     mNormalToPlane = normal/norm_2(normal);
 }

@@ -41,6 +41,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 #include "UblasIncludes.hpp"
+#include "UblasVectorInclude.hpp"
 //#include <vtkSmartPointer.h>
 
 namespace py = pybind11;
@@ -65,12 +66,11 @@ namespace pybind11 { namespace detail {                                 \
         {                                                               \
             return false;                                               \
         }                                                               \
-        CVec3 vec;                                                      \
-        for ( int i=0 ; i<3 ; i++ )                                     \
+        value.resize(3);                                                \
+        for ( int i=0; i<3; i++ )                                       \
         {                                                               \
-            vec[i] = buf.data()[i];                                     \
+            value[i] = buf.data()[i];                                   \
         }                                                               \
-        value = vec;                                                    \
         return true;                                                    \
       }                                                                 \
       static py::handle cast(const c_vector<double, 3>& src,            \
@@ -107,15 +107,14 @@ namespace pybind11 { namespace detail {                                 \
         {                                                               \
             return false;                                               \
         }                                                               \
-        CVec2 vec;                                                      \
-        for ( int i=0 ; i<2 ; i++ )                                     \
+        value.resize(2);                                                \
+        for ( int i=0; i<2; i++ )                                       \
         {                                                               \
-            vec[i] = buf.data()[i];                                     \
+            value[i] = buf.data()[i];                                   \
         }                                                               \
-        value = vec;                                                    \
         return true;                                                    \
       }                                                                 \
-      static py::handle cast(const c_vector<double, 3>& src,            \
+      static py::handle cast(const c_vector<double, 2>& src,            \
               py::return_value_policy policy, py::handle parent)        \
       {                                                                 \
         std::vector<size_t> shape (1, 2);                               \

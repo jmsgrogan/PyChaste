@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "SimulationTime.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "SimulationTime.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef SimulationTime SimulationTime;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

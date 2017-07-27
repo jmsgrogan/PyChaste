@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "TetrahedralMesh.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "TetrahedralMesh3_3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef TetrahedralMesh<3,3 > TetrahedralMesh3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;

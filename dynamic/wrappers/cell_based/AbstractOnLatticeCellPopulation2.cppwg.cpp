@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractOnLatticeCellPopulation.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractOnLatticeCellPopulation2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractOnLatticeCellPopulation<2 > AbstractOnLatticeCellPopulation2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > _std_set_lt_unsignedint_std_less_lt_unsignedint_gt__std_allocator_lt_unsignedint_gt__gt_;

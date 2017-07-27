@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <petsc/private/vecimpl.h>
+#include <petsc/private/matimpl.h>
 #include <set>
 #include <vector>
 #include <string>
@@ -8,11 +10,16 @@
 #include "UblasIncludes.hpp"
 #include "PetscTools.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "PetscTools.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef PetscTools PetscTools;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_MAKE_OPAQUE(Vec);
+PYBIND11_MAKE_OPAQUE(Mat);
 
 void register_PetscTools_class(py::module &m){
 py::class_<PetscTools  , boost::shared_ptr<PetscTools >   >(m, "PetscTools")
@@ -70,6 +77,18 @@ py::class_<PetscTools  , boost::shared_ptr<PetscTools >   >(m, "PetscTools")
             (void(*)(bool)) &PetscTools::IsolateProcesses, 
             " " , py::arg("isolate") = true )
         .def_static(
+            "CreateVec", 
+            (::Vec(*)(int, int, bool)) &PetscTools::CreateVec, 
+            " " , py::arg("size"), py::arg("localSize") = -1, py::arg("ignoreOffProcEntries") = true , py::return_value_policy::reference)
+        .def_static(
+            "CreateVec", 
+            (::Vec(*)(::std::vector<double, std::allocator<double> >)) &PetscTools::CreateVec, 
+            " " , py::arg("data") , py::return_value_policy::reference)
+        .def_static(
+            "CreateAndSetVec", 
+            (::Vec(*)(int, double)) &PetscTools::CreateAndSetVec, 
+            " " , py::arg("size"), py::arg("value") , py::return_value_policy::reference)
+        .def_static(
             "ReplicateBool", 
             (bool(*)(bool)) &PetscTools::ReplicateBool, 
             " " , py::arg("flag") )
@@ -77,6 +96,14 @@ py::class_<PetscTools  , boost::shared_ptr<PetscTools >   >(m, "PetscTools")
             "ReplicateException", 
             (void(*)(bool)) &PetscTools::ReplicateException, 
             " " , py::arg("flag") )
+        .def_static(
+            "DumpPetscObject", 
+            (void(*)(::Mat const &, ::std::string const &)) &PetscTools::DumpPetscObject, 
+            " " , py::arg("rMat"), py::arg("rOutputFileFullPath") )
+        .def_static(
+            "DumpPetscObject", 
+            (void(*)(::Vec const &, ::std::string const &)) &PetscTools::DumpPetscObject, 
+            " " , py::arg("rVec"), py::arg("rOutputFileFullPath") )
         .def_static(
             "HasParMetis", 
             (bool(*)()) &PetscTools::HasParMetis, 

@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractCellProperty.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractCellProperty.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractCellProperty AbstractCellProperty;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

@@ -12,9 +12,12 @@
 #include "UblasIncludes.hpp"
 #include "CellsGenerator.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "CellsGeneratorUniformCellCycleModel_2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef CellsGenerator<UniformCellCycleModel,2 > CellsGeneratorUniformCellCycleModel_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

@@ -101,9 +101,7 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 
         my_point = np.array([0.0, 0.0])
         normal = np.array([0.0, -1.0])
-        print "alive1"
-        bc = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, my_point)
-        print "alive2"
+        bc = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, my_point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc)
         point = np.array([0.0, 13.3])
         normal = np.array([0.0, 1.0])
@@ -116,7 +114,7 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## A more simple alternative is to modify the the position of the point describing our boundary plane in `bc2`
         ## as the simulation progresses. As per earlier tutorials we make a new `SimulationModifier` class to do this.
 
-        class BoundaryConditionModifier(chaste.cell_based.AbstractCellBasedSimulationModifier2_2):
+        class BoundaryConditionModifier(chaste.cell_based.PythonSimulationModifier2):
 
             """ Class for time varying boundary conditions
             """
@@ -143,13 +141,6 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
                 """
 
                 cell_population.Update()
-
-            def OutputSimulationModifierParameters(self, rParamsFile):
-
-                """ This needs to be explicitly over-ridden as the C++ method is pure virtual.
-                """
-
-                pass
 
         bc_modifier = BoundaryConditionModifier(bc2)
         simulator.AddSimulationModifier(bc_modifier)

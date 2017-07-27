@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "SharedPottsMeshGenerator.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "PottsMeshGenerator2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef SharedPottsMeshGenerator<2 > PottsMeshGenerator2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::shared_ptr<PottsMesh<2> > _boost_shared_ptr_lt_PottsMesh_lt_2_gt__gt_;

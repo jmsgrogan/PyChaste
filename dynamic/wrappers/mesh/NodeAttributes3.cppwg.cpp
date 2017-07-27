@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "NodeAttributes.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "NodeAttributes3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef NodeAttributes<3 > NodeAttributes3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

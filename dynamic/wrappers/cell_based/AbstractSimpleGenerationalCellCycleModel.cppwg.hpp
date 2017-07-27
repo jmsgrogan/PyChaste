@@ -1,5 +1,6 @@
 #ifndef AbstractSimpleGenerationalCellCycleModel_hpp__pyplusplus_wrapper
 #define AbstractSimpleGenerationalCellCycleModel_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_AbstractSimpleGenerationalCellCycleModel_class(py::module &m);
 #endif // AbstractSimpleGenerationalCellCycleModel_hpp__pyplusplus_wrapper

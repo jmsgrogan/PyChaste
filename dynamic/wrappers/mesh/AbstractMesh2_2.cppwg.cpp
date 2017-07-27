@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractMesh.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractMesh2_2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractMesh<2,2 > AbstractMesh2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;

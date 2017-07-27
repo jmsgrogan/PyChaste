@@ -1,5 +1,6 @@
 #ifndef SphereGeometryBoundaryCondition2_hpp__pyplusplus_wrapper
 #define SphereGeometryBoundaryCondition2_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_SphereGeometryBoundaryCondition2_class(py::module &m);
 #endif // SphereGeometryBoundaryCondition2_hpp__pyplusplus_wrapper

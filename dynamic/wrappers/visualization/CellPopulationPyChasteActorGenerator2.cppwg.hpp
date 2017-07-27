@@ -1,5 +1,6 @@
 #ifndef CellPopulationPyChasteActorGenerator2_hpp__pyplusplus_wrapper
 #define CellPopulationPyChasteActorGenerator2_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_CellPopulationPyChasteActorGenerator2_class(py::module &m);
 #endif // CellPopulationPyChasteActorGenerator2_hpp__pyplusplus_wrapper

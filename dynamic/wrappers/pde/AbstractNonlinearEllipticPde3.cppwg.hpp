@@ -1,5 +1,6 @@
 #ifndef AbstractNonlinearEllipticPde3_hpp__pyplusplus_wrapper
 #define AbstractNonlinearEllipticPde3_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_AbstractNonlinearEllipticPde3_class(py::module &m);
 #endif // AbstractNonlinearEllipticPde3_hpp__pyplusplus_wrapper

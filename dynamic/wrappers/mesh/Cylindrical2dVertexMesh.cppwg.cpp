@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "Cylindrical2dVertexMesh.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "Cylindrical2dVertexMesh.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef Cylindrical2dVertexMesh Cylindrical2dVertexMesh;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;

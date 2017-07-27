@@ -39,25 +39,24 @@ chaste.init()
 
 
 class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
-     
+
     def test_construct(self):
 
         file_handler = chaste.core.OutputFileHandler("Python/TestVisualization")
         generator = chaste.mesh.PottsMeshGenerator2(10, 0, 0, 10, 0, 0)
         mesh = generator.GetMesh()
- 
-        location_indices = range(5)
- 
+
+        locs = range(5)
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
-        cells = cell_generator.GenerateBasic(len(location_indices))
-        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh, cells, location_indices)
+        cells = cell_generator.GenerateBasic(len(locs))
+        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh,
+                                                                   cells,
+                                                                   locs)
 
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)
         scene.SetSaveAsImages(True)
         scene.SetOutputFilePath(file_handler.GetOutputDirectoryFullPath()+"/cell_population")
-        scene.GetCellPopulationActorGenerator().SetShowPottsMeshEdges(True);
-        scene.GetCellPopulationActorGenerator().SetVolumeOpacity(1.0);
         scene_modifier = chaste.cell_based.VtkSceneModifier2()
         scene_modifier.SetVtkScene(scene)
         scene.Start()

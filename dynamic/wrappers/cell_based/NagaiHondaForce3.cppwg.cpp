@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "NagaiHondaForce.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "NagaiHondaForce3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef NagaiHondaForce<3 > NagaiHondaForce3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

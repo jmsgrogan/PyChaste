@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "CellPropertyCollection.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "CellPropertyCollection.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef CellPropertyCollection CellPropertyCollection;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

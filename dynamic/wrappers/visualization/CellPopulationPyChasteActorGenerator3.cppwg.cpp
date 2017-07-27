@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "CellPopulationPyChasteActorGenerator.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "CellPopulationPyChasteActorGenerator3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef CellPopulationPyChasteActorGenerator<3 > CellPopulationPyChasteActorGenerator3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

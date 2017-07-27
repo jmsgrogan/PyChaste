@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "CellLabel.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "CellLabel.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef CellLabel CellLabel;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

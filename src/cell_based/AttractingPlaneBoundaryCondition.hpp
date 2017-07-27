@@ -99,8 +99,7 @@ public:
      * @param normal the outward-facing unit normal vector to the boundary plane
      */
     AttractingPlaneBoundaryCondition(AbstractCellPopulation<ELEMENT_DIM, SPACE_DIM>* pCellPopulation,
-            c_vector<double, SPACE_DIM> point);
-                           //c_vector<double, SPACE_DIM> normal);
+            c_vector<double, SPACE_DIM> point, c_vector<double, SPACE_DIM> normal);
 
     /**
      * @return #mPointOnPlane.
@@ -218,8 +217,7 @@ inline void load_construct_data(
     }
 
     // Invoke inplace constructor to initialise instance
-    //::new(t)AttractingPlaneBoundaryCondition<ELEMENT_DIM, SPACE_DIM>(p_cell_population, point, normal);
-    ::new(t)AttractingPlaneBoundaryCondition<ELEMENT_DIM, SPACE_DIM>(p_cell_population, point);
+    ::new(t)AttractingPlaneBoundaryCondition<ELEMENT_DIM, SPACE_DIM>(p_cell_population, point, normal);
 }
 }
 } // namespace ...

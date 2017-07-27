@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <petsc/private/vecimpl.h>
+#include <petsc/private/matimpl.h>
 #include <set>
 #include <vector>
 #include <string>
@@ -8,11 +10,16 @@
 #include "UblasIncludes.hpp"
 #include "AbstractPdeModifier.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractPdeModifier2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractPdeModifier<2 > AbstractPdeModifier2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_MAKE_OPAQUE(Vec);
+PYBIND11_MAKE_OPAQUE(Mat);
 
 class AbstractPdeModifier2_Overloads : public AbstractPdeModifier2{
     public:

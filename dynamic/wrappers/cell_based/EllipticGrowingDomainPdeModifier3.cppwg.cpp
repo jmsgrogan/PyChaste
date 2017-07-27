@@ -1,5 +1,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <petsc/private/vecimpl.h>
+#include <petsc/private/matimpl.h>
 #include <set>
 #include <vector>
 #include <string>
@@ -8,11 +10,16 @@
 #include "UblasIncludes.hpp"
 #include "EllipticGrowingDomainPdeModifier.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "EllipticGrowingDomainPdeModifier3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef EllipticGrowingDomainPdeModifier<3 > EllipticGrowingDomainPdeModifier3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_MAKE_OPAQUE(Vec);
+PYBIND11_MAKE_OPAQUE(Mat);
 typedef ::std::shared_ptr<BoundaryConditionsContainer<3, 3, 1> > _std_shared_ptr_lt_BoundaryConditionsContainer_lt_3_3_1_gt__gt_;
 
 class EllipticGrowingDomainPdeModifier3_Overloads : public EllipticGrowingDomainPdeModifier3{
@@ -51,6 +58,7 @@ outputDirectory);
 };
 void register_EllipticGrowingDomainPdeModifier3_class(py::module &m){
 py::class_<EllipticGrowingDomainPdeModifier3 , EllipticGrowingDomainPdeModifier3_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier3 >  , AbstractGrowingDomainPdeModifier<3>  >(m, "EllipticGrowingDomainPdeModifier3")
+        .def(py::init<::boost::shared_ptr<AbstractLinearPde<3, 3> >, ::boost::shared_ptr<AbstractBoundaryCondition<3> >, bool, ::Vec >(), py::arg("pPde") = boost::shared_ptr<AbstractLinearPde<3, 3> >(), py::arg("pBoundaryCondition") = boost::shared_ptr<AbstractBoundaryCondition<2> >(), py::arg("isNeumannBoundaryCondition") = true, py::arg("solution") = nullptr)
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(EllipticGrowingDomainPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &EllipticGrowingDomainPdeModifier3::UpdateAtEndOfTimeStep, 

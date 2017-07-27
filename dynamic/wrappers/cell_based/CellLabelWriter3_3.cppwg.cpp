@@ -9,9 +9,12 @@
 #include "UblasIncludes.hpp"
 #include "CellLabelWriter.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "CellLabelWriter3_3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef CellLabelWriter<3,3 > CellLabelWriter3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

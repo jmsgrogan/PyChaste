@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "AbstractLinearPde.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "AbstractLinearPde2_2.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef AbstractLinearPde<2,2 > AbstractLinearPde2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

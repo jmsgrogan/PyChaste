@@ -1,5 +1,6 @@
 #ifndef AbstractPyChasteActorGenerator2_hpp__pyplusplus_wrapper
 #define AbstractPyChasteActorGenerator2_hpp__pyplusplus_wrapper
+
 namespace py = pybind11;
 void register_AbstractPyChasteActorGenerator2_class(py::module &m);
 #endif // AbstractPyChasteActorGenerator2_hpp__pyplusplus_wrapper

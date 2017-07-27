@@ -8,9 +8,12 @@
 #include "UblasIncludes.hpp"
 #include "DifferentialAdhesionPottsUpdateRule.hpp"
 
+#include "PythonObjectConverters.hpp"
 #include "DifferentialAdhesionPottsUpdateRule3.cppwg.hpp"
 
 namespace py = pybind11;
+PYBIND11_CVECTOR_TYPECASTER2();
+PYBIND11_CVECTOR_TYPECASTER3();
 typedef DifferentialAdhesionPottsUpdateRule<3 > DifferentialAdhesionPottsUpdateRule3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

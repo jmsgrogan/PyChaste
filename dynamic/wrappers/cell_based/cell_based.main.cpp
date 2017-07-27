@@ -8,6 +8,7 @@
 #include "SimpleOxygenBasedCellCycleModel.cppwg.hpp"
 #include "UniformG1GenerationalCellCycleModel.cppwg.hpp"
 #include "NoCellCycleModel.cppwg.hpp"
+#include "AbstractCellCycleModelOdeSolver.cppwg.hpp"
 #include "AbstractCellProperty.cppwg.hpp"
 #include "CellPropertyCollection.cppwg.hpp"
 #include "AbstractCellProliferativeType.cppwg.hpp"
@@ -130,13 +131,8 @@
 #include "OffLatticeSimulation3_3.cppwg.hpp"
 #include "PythonSimulationModifier2.cppwg.hpp"
 #include "PythonSimulationModifier3.cppwg.hpp"
-#include "UblasIncludes.hpp"
-#include "PythonObjectConverters.hpp"
 
 namespace py = pybind11;
-
-PYBIND11_CVECTOR_TYPECASTER3();
-PYBIND11_CVECTOR_TYPECASTER2();
 
 PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
 {
@@ -149,6 +145,7 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_SimpleOxygenBasedCellCycleModel_class(m);
     register_UniformG1GenerationalCellCycleModel_class(m);
     register_NoCellCycleModel_class(m);
+    register_AbstractCellCycleModelOdeSolver_class(m);
     register_AbstractCellProperty_class(m);
     register_CellPropertyCollection_class(m);
     register_AbstractCellProliferativeType_class(m);
