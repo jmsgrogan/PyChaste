@@ -39,12 +39,15 @@ import os, sys
 from _chaste_project_PyChaste_preload import *
 import chaste.core
   
-def init(master_output_directory = os.getcwd()):
+def init(master_output_directory = os.getcwd(), comm=None):
     import petsc4py
       
     # If CHASTE_TEST_OUTPUT is not set give it a user specified value, or CWD if there is none
     if os.environ.get('CHASTE_TEST_OUTPUT') is None:
         os.environ["CHASTE_TEST_OUTPUT"] = master_output_directory
   
-    petsc4py.init(sys.argv)
+    if comm is None:
+        petsc4py.init(sys.argv)
+    else:
+        petsc4py.init(comm=comm)
     return chaste.core.OutputFileHandler("", False)
