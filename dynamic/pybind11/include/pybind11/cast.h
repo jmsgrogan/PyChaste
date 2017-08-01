@@ -1359,7 +1359,7 @@ protected:
         return false;
     }
 
-    static constexpr bool try_direct_conversions(handle) { return false; }
+    static constexpr bool try_direct_conversions(const handle&) { return false; }
 
 
     holder_type holder;
