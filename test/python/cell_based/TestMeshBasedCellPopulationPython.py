@@ -42,7 +42,7 @@ class TestMeshBasedPopulation(chaste.cell_based.AbstractCellBasedTestSuite):
 
     def test_construct(self):
 
-        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellPopulation");
+        file_handler = chaste.core.OutputFileHandler("Python/TestMeshBasedCellPopulation")
 
         mesh_generator = chaste.mesh.HoneycombMeshGenerator(2, 2)
         mesh = mesh_generator.GetMesh()
