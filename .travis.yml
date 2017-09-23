@@ -37,7 +37,7 @@ before_script:
   - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
   - gcc -v && g++ -v && cmake --version
-  - sudo mkdir $PETSC_DIR/petsc/private/
+  - sudo mkdir -p $PETSC_DIR/petsc/private/
   - sudo cp $PETSC_DIR/private/vecimpl.h $PETSC_DIR/petsc/private/vecimpl.h
   - sudo cp $PETSC_DIR/private/matimpl.h $PETSC_DIR/petsc/private/matimpl.h
   - pip install pygccxml==1.7.2 https://bitbucket.org/ompl/pyplusplus/get/1.6.tar.gz numpy matplotlib 

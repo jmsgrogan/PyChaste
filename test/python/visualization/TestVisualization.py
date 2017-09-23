@@ -49,9 +49,7 @@ class TestPottsMesh(chaste.cell_based.AbstractCellBasedTestSuite):
         locs = range(5)
         cell_generator = chaste.cell_based.CellsGeneratorUniformCellCycleModel_2()
         cells = cell_generator.GenerateBasic(len(locs))
-        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh,
-                                                                   cells,
-                                                                   locs)
+        cell_population = chaste.cell_based.CaBasedCellPopulation2(mesh, cells, locs)
 
         scene = chaste.visualization.VtkScene2()
         scene.SetCellPopulation(cell_population)

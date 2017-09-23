@@ -87,6 +87,7 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 
         for eachCell in cells:
             cell_cycle_model = eachCell.GetCellCycleModel()
+            eachCell.GetCellData().SetItem("oxygen", 30.0)
             cell_cycle_model.SetDimension(2)
             cell_cycle_model.SetStemCellG1Duration(4.0)
             cell_cycle_model.SetHypoxicConcentration(0.1)
@@ -132,9 +133,9 @@ class TestSpheroidTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
 
         ## Set up a pde modifier to solve the PDE at each simulation time step
 
-        pde_modifier = chaste.cell_based.EllipticGrowingDomainPdeModifier2(pde, bc, is_neumann_bc)
-        pde_modifier.SetDependentVariableName("oxygen")
-        simulator.AddSimulationModifier(pde_modifier)
+        #pde_modifier = chaste.cell_based.EllipticGrowingDomainPdeModifier2(pde, bc, is_neumann_bc)
+        #pde_modifier.SetDependentVariableName("oxygen")
+        #simulator.AddSimulationModifier(pde_modifier)
 
         ## As before, we set up a scene modifier for real-time visualization
 

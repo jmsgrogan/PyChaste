@@ -103,8 +103,8 @@ class TestTensileTestTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         normal = np.array([0.0, -1.0])
         bc = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population, my_point, normal)
         simulator.AddCellPopulationBoundaryCondition(bc)
-        point = np.array([0.0, 13.3])
-        normal = np.array([0.0, 1.0])
+        point = np.array([0.0, 15.5])
+        normal = np.array([0.0, -1.0])
         bc2 = chaste.cell_based.AttractingPlaneBoundaryCondition2_2(cell_population,
                                                                     point,
                                                                     normal)
