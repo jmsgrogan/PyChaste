@@ -41,7 +41,7 @@ before_script:
   - sudo mkdir -p $PETSC_DIR/$PETSC_ARCH/include/petsc/private/
   - sudo cp petsc-petsc-a071802d3efe/include/petsc-private/vecimpl.h $PETSC_DIR/$PETSC_ARCH/include/petsc/private/vecimpl.h
   - sudo cp petsc-petsc-a071802d3efe/include/petsc-private/matimpl.h $PETSC_DIR/$PETSC_ARCH/include/petsc/private/matimpl.h
-  - pip install numpy matplotlib 
+  - sudo pip install numpy matplotlib 
   - wget https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.4.tar.gz && tar -zxf petsc4py-3.4.tar.gz
   - cd petsc4py-3.4 && python setup.py build && python setup.py install && cd ..
   - "export DISPLAY=:99.0" # For GUI tests
