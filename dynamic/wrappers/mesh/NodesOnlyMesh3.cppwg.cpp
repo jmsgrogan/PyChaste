@@ -14,6 +14,8 @@
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
 PYBIND11_CVECTOR_TYPECASTER3();
+//PYBIND11_VTK_TYPECASTER(vtkRenderer);
+//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
 typedef NodesOnlyMesh<3 > NodesOnlyMesh3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;

@@ -18,6 +18,8 @@
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
 PYBIND11_CVECTOR_TYPECASTER3();
+//PYBIND11_VTK_TYPECASTER(vtkRenderer);
+//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
 typedef CellsGenerator<SimpleOxygenBasedCellCycleModel,3 > CellsGeneratorSimpleOxygenBasedCellCycleModel_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

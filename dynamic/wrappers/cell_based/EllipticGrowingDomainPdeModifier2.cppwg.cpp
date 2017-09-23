@@ -16,6 +16,8 @@
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
 PYBIND11_CVECTOR_TYPECASTER3();
+//PYBIND11_VTK_TYPECASTER(vtkRenderer);
+//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
 typedef EllipticGrowingDomainPdeModifier<2 > EllipticGrowingDomainPdeModifier2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 PYBIND11_MAKE_OPAQUE(Vec);
@@ -58,7 +60,7 @@ outputDirectory);
 };
 void register_EllipticGrowingDomainPdeModifier2_class(py::module &m){
 py::class_<EllipticGrowingDomainPdeModifier2 , EllipticGrowingDomainPdeModifier2_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier2 >  , AbstractGrowingDomainPdeModifier<2>  >(m, "EllipticGrowingDomainPdeModifier2")
-        .def(py::init<::boost::shared_ptr<AbstractLinearPde<2, 2> >, ::boost::shared_ptr<AbstractBoundaryCondition<2> >, bool, ::Vec >(), py::arg("pPde") = boost::shared_ptr<AbstractLinearPde<2, 2> >(), py::arg("pBoundaryCondition") = boost::shared_ptr<AbstractBoundaryCondition<2> >(), py::arg("isNeumannBoundaryCondition") = true, py::arg("solution") = nullptr)
+        .def(py::init<::boost::shared_ptr<AbstractLinearPde<2, 2> >, ::boost::shared_ptr<AbstractBoundaryCondition<2> >, bool, ::Vec >(), py::arg("pPde") = boost::shared_ptr<AbstractLinearPde<DIM, DIM> >(), py::arg("pBoundaryCondition") = boost::shared_ptr<AbstractBoundaryCondition<DIM> >(), py::arg("isNeumannBoundaryCondition") = true, py::arg("solution") = nullptr)
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(EllipticGrowingDomainPdeModifier2::*)(::AbstractCellPopulation<2, 2> &)) &EllipticGrowingDomainPdeModifier2::UpdateAtEndOfTimeStep, 

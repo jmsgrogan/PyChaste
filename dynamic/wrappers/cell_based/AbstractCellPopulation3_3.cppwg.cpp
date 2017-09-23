@@ -15,6 +15,8 @@
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
 PYBIND11_CVECTOR_TYPECASTER3();
+//PYBIND11_VTK_TYPECASTER(vtkRenderer);
+//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
 typedef AbstractCellPopulation<3,3 > AbstractCellPopulation3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh_lt_3_3_gt_Ptr;

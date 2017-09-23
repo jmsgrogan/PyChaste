@@ -1,5 +1,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -14,8 +15,12 @@
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
 PYBIND11_CVECTOR_TYPECASTER3();
+//PYBIND11_VTK_TYPECASTER(vtkRenderer);
+//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
 typedef CellPopulationPyChasteActorGenerator<3 > CellPopulationPyChasteActorGenerator3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
+PYBIND11_VTK_TYPECASTER(vtkRenderer);
+PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);
 
 class CellPopulationPyChasteActorGenerator3_Overloads : public CellPopulationPyChasteActorGenerator3{
     public:

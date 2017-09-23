@@ -43,6 +43,8 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "UblasIncludes.hpp"
 #include "UblasVectorInclude.hpp"
 //#include <vtkSmartPointer.h>
+//#include <vtkRenderer.h>
+//#include <vtkUnsignedCharArray.h>
 
 namespace py = pybind11;
 

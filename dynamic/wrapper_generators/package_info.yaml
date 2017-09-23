@@ -353,4 +353,14 @@ modules:
     - PYBIND11_VTK_TYPECASTER(vtkRenderer);
     - PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
   - name: AbstractPyChasteActorGenerator
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_VTK_TYPECASTER(vtkRenderer);
+    - PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
   - name: CellPopulationPyChasteActorGenerator
+    source_includes:
+    - PythonObjectConverters.hpp
+    prefix_code:
+    - PYBIND11_VTK_TYPECASTER(vtkRenderer);
+    - PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
