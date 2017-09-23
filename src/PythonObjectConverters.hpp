@@ -170,8 +170,10 @@ bool load(handle src, bool) {                                           \
 }                                                                       \
 static handle cast(const vtkSmartPointer<VTK_OBJ>& src,                 \
         return_value_policy, handle) {                                  \
-  return vtkPythonUtil::GetObjectFromPointer(                           \
-const_cast< VTK_OBJ *>(src.GetPointer()));                             \
+  PyObject* obj =                                                       \
+  vtkPythonUtil::GetObjectFromPointer(                                  \
+const_cast< VTK_OBJ *>(src.GetPointer()));                              \
+  return obj;                                                           \
 }                                                                       \
 };                                                                      \
 }}

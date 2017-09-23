@@ -13,9 +13,7 @@
 
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();
-//PYBIND11_VTK_TYPECASTER(vtkRenderer);
-//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
+PYBIND11_CVECTOR_TYPECASTER3();   
 typedef GeneralisedLinearSpringForce<3,3 > GeneralisedLinearSpringForce3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;

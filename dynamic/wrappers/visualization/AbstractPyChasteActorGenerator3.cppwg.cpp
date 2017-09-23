@@ -1,6 +1,5 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include "PythonObjectConverters.hpp"
 #include <set>
 #include <vector>
 #include <string>
@@ -14,13 +13,9 @@
 
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();
-//PYBIND11_VTK_TYPECASTER(vtkRenderer);
-//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
+PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractPyChasteActorGenerator<3 > AbstractPyChasteActorGenerator3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
-PYBIND11_VTK_TYPECASTER(vtkRenderer);
-PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);
 
 class AbstractPyChasteActorGenerator3_Overloads : public AbstractPyChasteActorGenerator3{
     public:

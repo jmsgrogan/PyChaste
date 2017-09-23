@@ -14,9 +14,7 @@
 
 namespace py = pybind11;
 PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();
-//PYBIND11_VTK_TYPECASTER(vtkRenderer);
-//PYBIND11_VTK_TYPECASTER(vtkUnsignedCharArray);   
+PYBIND11_CVECTOR_TYPECASTER3();   
 typedef CellLabelWriter<3,3 > CellLabelWriter3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
