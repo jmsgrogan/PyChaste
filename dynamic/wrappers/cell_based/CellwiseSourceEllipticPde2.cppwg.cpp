@@ -54,7 +54,7 @@ pElement);
 
 };
 void register_CellwiseSourceEllipticPde2_class(py::module &m){
-py::class_<CellwiseSourceEllipticPde2 , CellwiseSourceEllipticPde2_Overloads , boost::shared_ptr<CellwiseSourceEllipticPde2 > , AbstractLinearPde<2, 2>  >(m, "CellwiseSourceEllipticPde2")
+py::class_<CellwiseSourceEllipticPde2 , CellwiseSourceEllipticPde2_Overloads , boost::shared_ptr<CellwiseSourceEllipticPde2 >   >(m, "CellwiseSourceEllipticPde2")
         .def(py::init<::AbstractCellPopulation<2, 2> &, double >(), py::arg("rCellPopulation"), py::arg("sourceCoefficient") = 0.)
         .def(
             "rGetCellPopulation", 

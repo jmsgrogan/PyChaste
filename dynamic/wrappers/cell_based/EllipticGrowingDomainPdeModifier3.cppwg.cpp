@@ -58,7 +58,7 @@ outputDirectory);
 };
 void register_EllipticGrowingDomainPdeModifier3_class(py::module &m){
 py::class_<EllipticGrowingDomainPdeModifier3 , EllipticGrowingDomainPdeModifier3_Overloads , boost::shared_ptr<EllipticGrowingDomainPdeModifier3 >  , AbstractGrowingDomainPdeModifier<3>  >(m, "EllipticGrowingDomainPdeModifier3")
-        .def(py::init<::boost::shared_ptr<AbstractLinearPde<3, 3> >, ::boost::shared_ptr<AbstractBoundaryCondition<3> >, bool, ::Vec >(), py::arg("pPde") = boost::shared_ptr<AbstractLinearPde<3, 3> >(), py::arg("pBoundaryCondition") = boost::shared_ptr<AbstractBoundaryCondition<2> >(), py::arg("isNeumannBoundaryCondition") = true, py::arg("solution") = nullptr)
+        .def(py::init<::boost::shared_ptr<AbstractLinearPde<3, 3> >, ::boost::shared_ptr<AbstractBoundaryCondition<3> >, bool, ::Vec >(), py::arg("pPde") = boost::shared_ptr<AbstractLinearPde<3, 3> >(), py::arg("pBoundaryCondition") = boost::shared_ptr<AbstractBoundaryCondition<3> >(), py::arg("isNeumannBoundaryCondition") = true, py::arg("solution") = nullptr)
         .def(
             "UpdateAtEndOfTimeStep", 
             (void(EllipticGrowingDomainPdeModifier3::*)(::AbstractCellPopulation<3, 3> &)) &EllipticGrowingDomainPdeModifier3::UpdateAtEndOfTimeStep, 

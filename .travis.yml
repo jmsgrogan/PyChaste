@@ -37,6 +37,9 @@ before_script:
   - sudo ln -s /usr/bin/gcc-6 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-6 /usr/local/bin/g++
   - gcc -v && g++ -v && cmake --version
+  - sudo mkdir $PETSC_DIR/petsc/private/
+  - sudo cp $PETSC_DIR/private/vecimpl.h $PETSC_DIR/petsc/private/vecimpl.h
+  - sudo cp $PETSC_DIR/private/matimpl.h $PETSC_DIR/petsc/private/matimpl.h
   - pip install pygccxml==1.7.2 https://bitbucket.org/ompl/pyplusplus/get/1.6.tar.gz numpy matplotlib 
   - wget https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.4.tar.gz && tar -zxf petsc4py-3.4.tar.gz
   - cd petsc4py-3.4 && python setup.py build && python setup.py install && cd ..
@@ -73,7 +76,7 @@ script:
       cmake "${TRAVIS_BUILD_DIR}"/../chaste-source -DCASTXML_EXE_LOC="${TRAVIS_BUILD_DIR}"/../castxml/bin/castxml
     fi
     export PYTHONPATH=$PYTHONPATH:${TRAVIS_BUILD_DIR}/../chaste-build/projects/PyChaste/python/
-    cmake . && make project_PyChaste -j 2 && make project_PyChaste_Python -j 2 && ctest -L PyChaste -j 2
+    cmake . && make project_PyChaste -j 2 && make project_PyChaste_Python -j 2
 
 # # following: https://github.com/NLeSC/root-roofit-dev/blob/travis_make-optimize_deps/.travis.yml
 # Save the order of timestamps of the files so we can recreate it with touch in the next build.

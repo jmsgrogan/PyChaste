@@ -373,6 +373,14 @@ py::class_<VertexBasedCellPopulation2 , VertexBasedCellPopulation2_Overloads , b
             "SimulationSetupHook", 
             (void(VertexBasedCellPopulation2::*)(::AbstractCellBasedSimulation<2, 2> *)) &VertexBasedCellPopulation2::SimulationSetupHook, 
             " " , py::arg("pSimulation") )
+        .def(
+            "GetRestrictVertexMovementBoolean", 
+            (bool(VertexBasedCellPopulation2::*)()) &VertexBasedCellPopulation2::GetRestrictVertexMovementBoolean, 
+            " "  )
+        .def(
+            "SetRestrictVertexMovementBoolean", 
+            (void(VertexBasedCellPopulation2::*)(bool)) &VertexBasedCellPopulation2::SetRestrictVertexMovementBoolean, 
+            " " , py::arg("restrictVertexMovement") )
         .def("AddPopulationWriterVoronoiDataWriter", &VertexBasedCellPopulation2::AddPopulationWriter<VoronoiDataWriter>)
         .def("AddCellWriterCellLabelWriter", &VertexBasedCellPopulation2::AddCellWriter<CellLabelWriter>)
     ;

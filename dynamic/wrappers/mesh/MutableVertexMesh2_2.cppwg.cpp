@@ -58,6 +58,13 @@ point);
             ReMesh,
             rElementMap);
     }
+    bool CheckForSwapsFromShortEdges() override {
+        PYBIND11_OVERLOAD(
+            bool,
+            MutableVertexMesh2_2,
+            CheckForSwapsFromShortEdges,
+            );
+    }
     void IdentifySwapType(::Node<2> * pNodeA, ::Node<2> * pNodeB) override {
         PYBIND11_OVERLOAD(
             void,
@@ -135,6 +142,14 @@ py::class_<MutableVertexMesh2_2 , MutableVertexMesh2_2_Overloads , boost::shared
         .def(
             "GetRosetteResolutionProbabilityPerTimestep", 
             (double(MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetRosetteResolutionProbabilityPerTimestep, 
+            " "  )
+        .def(
+            "SetDistanceForT3SwapChecking", 
+            (void(MutableVertexMesh2_2::*)(double)) &MutableVertexMesh2_2::SetDistanceForT3SwapChecking, 
+            " " , py::arg("distanceForT3SwapChecking") )
+        .def(
+            "GetDistanceForT3SwapChecking", 
+            (double(MutableVertexMesh2_2::*)() const ) &MutableVertexMesh2_2::GetDistanceForT3SwapChecking, 
             " "  )
         .def(
             "GetNumNodes", 

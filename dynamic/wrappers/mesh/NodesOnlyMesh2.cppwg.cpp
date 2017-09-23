@@ -267,5 +267,9 @@ py::class_<NodesOnlyMesh2 , NodesOnlyMesh2_Overloads , boost::shared_ptr<NodesOn
             "ConstructFromMeshReader", 
             (void(NodesOnlyMesh2::*)(::AbstractMeshReader<2, 2> &)) &NodesOnlyMesh2::ConstructFromMeshReader, 
             " " , py::arg("rMeshReader") )
+        .def(
+            "GetAllNodeIndices", 
+            (::std::vector<unsigned int, std::allocator<unsigned int> >(NodesOnlyMesh2::*)() const ) &NodesOnlyMesh2::GetAllNodeIndices, 
+            " "  )
     ;
 }
