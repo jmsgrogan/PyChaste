@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [3.4.3] - PyBind11 Migration
 - Cell generators no longer take cell lists as input and now return cell lists as output
 - Moved from Boost Python to `PyBind11`, Boost Python is no longer a dependency
 - Moved wrapper generation code from `Py++` to `cppwg`

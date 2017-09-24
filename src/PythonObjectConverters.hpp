@@ -42,9 +42,6 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <pybind11/pybind11.h>
 #include "UblasIncludes.hpp"
 #include "UblasVectorInclude.hpp"
-//#include <vtkSmartPointer.h>
-//#include <vtkRenderer.h>
-//#include <vtkUnsignedCharArray.h>
 
 namespace py = pybind11;
 
@@ -177,101 +174,5 @@ const_cast< VTK_OBJ *>(src.GetPointer()));                              \
 }                                                                       \
 };                                                                      \
 }}
-
-
-// **
-// *  Convert VTK pointers to Python VTK objects, templated over vtk object type
-// *  Source: http://www.vtk.org/Wiki/Example_from_and_to_python_converters
-// */
-//template<class T>
-//struct VtkSmartPointerToPython
-//{
-//    /**
-//     *  Do the conversion
-//     *  @param rVtkSmartPointerToObject a vtk smart pointer
-//     *  @return A pointer to the Python object. Can be a None object if the smart pointer is empty.
-//     */
-//    static PyObject* convert(const vtkSmartPointer<T> &rVtkSmartPointer)
-//    {
-//        // Make sure something is being pointed to, otherwise return python None type
-//        if(rVtkSmartPointer.GetPointer() == NULL)
-//        {
-//            return incref(Py_None);
-//        }
-//
-//        // Get the address string of the vtk object
-//        std::ostringstream oss;
-//        oss << (void*) rVtkSmartPointer.GetPointer();
-//        std::string address_str = oss.str();
-//
-//        // Can get vtk object type from address string using vtk tricks
-//        boost::python::object obj = import("vtk").attr("vtkObjectBase")(address_str);
-//
-//        // Important to increment object reference
-//        return incref(obj.ptr());
-//    }
-//};
-//
-///**
-// *  Convert a Python VTK object to a pointer to the VTK object.
-// *  Care is needed in suitably casting the returned void pointer to the desired
-// *  vtk type. No checking is done here.
-// *  Source: http://www.vtk.org/Wiki/Example_from_and_to_python_converters
-// *  @param pPythonObject pointer to the python object
-// *  @return void pointer to the vtk object
-// */
-//void* ExtractVtkWrappedPointer(PyObject* pPythonObject)
-//{
-//    //Get the __this__ attribute from the Python Object
-//    char thisStr[] = "__this__";
-//
-//    // Several checks to make sure it is a valid vtk type, otherwise return a null pointer
-//    if (!PyObject_HasAttrString(pPythonObject, thisStr))
-//    {
-//        return NULL;
-//    }
-//
-//    PyObject* thisAttr = PyObject_GetAttrString(pPythonObject, thisStr);
-//    if (thisAttr == NULL)
-//    {
-//        return NULL;
-//    }
-//
-//    const char* str = PyString_AsString(thisAttr);
-//    if(str == 0 || strlen(str) < 1)
-//    {
-//        return NULL;
-//    }
-//
-//    char hex_address[32], *pEnd;
-//    const char *_p_ = strstr(str, "_p_vtk");
-//    if(_p_ == NULL)
-//    {
-//        return NULL;
-//    }
-//
-//    const char *class_name = strstr(_p_, "vtk");
-//    if(class_name == NULL)
-//    {
-//        return NULL;
-//
-//    }
-//
-//    // Create a generic vtk object pointer and assign the address of the python object to it
-//    strcpy(hex_address, str+1);
-//    hex_address[_p_-str-1] = '\0';
-//    long address = strtol(hex_address, &pEnd, 16);
-//
-//    vtkObjectBase* vtk_object = (vtkObjectBase*)((void*)address);
-//    if(vtk_object->IsA(class_name))
-//    {
-//        vtk_object->Register(NULL);
-//        return vtk_object;
-//    }
-//
-//    // Catch all in case something goes wrong
-//    return NULL;
-//};
-
 
 #endif /*PYTHONOBJECTCONVERTERS_HPP_*/
