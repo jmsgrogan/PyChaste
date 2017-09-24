@@ -43,7 +43,7 @@ before_script:
   - sudo cp petsc-petsc-a071802d3efe/include/petsc-private/matimpl.h $PETSC_DIR/$PETSC_ARCH/include/petsc/private/matimpl.h
   - sudo pip install numpy matplotlib 
   - wget https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.4.tar.gz && tar -zxf petsc4py-3.4.tar.gz
-  - cd petsc4py-3.4 && python setup.py build && python setup.py install && cd ..
+  - cd petsc4py-3.4 && python setup.py build && sudo python setup.py install && cd ..
   - "export DISPLAY=:99.0" # For GUI tests
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
