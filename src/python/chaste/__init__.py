@@ -2,7 +2,7 @@
 """PyChaste Module
 """
 
-__copyright__ = """Copyright (c) 2005-2017, University of Oxford.
+__copyright__ = """Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -36,7 +36,7 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import os, sys
 
-from _chaste_project_PyChaste_preload import *
+from chaste._chaste_project_PyChaste_preload import *
 import chaste.core
   
 def init(master_output_directory = os.getcwd(), comm=None):

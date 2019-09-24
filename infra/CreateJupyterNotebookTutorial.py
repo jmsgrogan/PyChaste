@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-"""Copyright (c) 2005-2017, University of Oxford.
+"""Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -291,7 +291,7 @@ if __name__ == '__main__':
         # Read from stdin (pipe mode)
         in_file = sys.stdin
     elif test_file[-3:] not in ['.py',] or os.path.basename(test_file)[:4] != 'Test':
-        print >>sys.stderr, "Syntax error:", test_file, "does not appear to be a Python test file"
+        print ("Syntax error:", test_file, "does not appear to be a Python test file")
         sys.exit(1)
     else:
         in_file = open(test_file)
@@ -306,7 +306,7 @@ if __name__ == '__main__':
     nb = ConvertTutorialToJupyterNotebook(real_file_path, in_file, [], options.revision)
     
     ## Some logging
-    print "Generating:" + out_file_name
+    print ("Generating:" + out_file_name)
     
     with open(out_file_name, 'w') as f:
         nbf.write(nb, f)

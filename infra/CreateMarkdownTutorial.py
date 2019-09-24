@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-"""Copyright (c) 2005-2017, University of Oxford.
+"""Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -268,7 +268,7 @@ if __name__ == '__main__':
         # Read from stdin (pipe mode)
         in_file = sys.stdin
     elif test_file[-3:] not in ['hpp', '.py'] or os.path.basename(test_file)[:4] != 'Test':
-        print >>sys.stderr, "Syntax error:", test_file, "does not appear to be a test file"
+        print ("Syntax error:", test_file, "does not appear to be a test file")
         sys.exit(1)
     else:
         in_file = open(test_file)
@@ -283,7 +283,7 @@ if __name__ == '__main__':
     out_file.write(ConvertTutorialToMarkdownText(real_file_path, in_file, [], options.revision))
     
     ## Some logging
-    print "Generating:" + out_file_name
+    print ("Generating:" + out_file_name)
     
     # Close files
     if in_file is not sys.stdin:

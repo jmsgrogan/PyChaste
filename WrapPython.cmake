@@ -1,4 +1,4 @@
-# Copyright (c) 2005-2017, University of Oxford.
+# Copyright (c) 2005-2019, University of Oxford.
 # All rights reserved.
 # 
 # University of Oxford means the Chancellor, Masters and Scholars of the
@@ -37,8 +37,8 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR} PARENT_SCOPE)
 
 # Python headers and shared library are also needed. The version needs to be the same
 # as that of the Python interpreter used to run package. e.g. Python 2.7.x.
-find_package(PythonLibs REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
+#find_package(PythonLibs REQUIRED)
+#(${PYTHON_INCLUDE_DIRS})
 
 # Used for binding generation
 set(CASTXML_EXE_LOC "/usr/bin/castxml" CACHE FILEPATH "Path to the castxml executable.")
@@ -61,15 +61,27 @@ include_directories(${PYCHASTE_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrappers)
 
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 14)
 if(CMAKE_COMPILER_IS_GNUCXX)
         # https://svn.boost.org/trac/boost/ticket/9240
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fext-numeric-literals")
 endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dynamic/pybind11/include)
 
-set(PYBIND11_PYTHON_VERSION 2.7)
-set(PYBIND11_CPP_STANDARD -std=c++11)
+# For now Chaste needs Python 2.7 for infra stuff, need to temporarily switch to
+# Python 3 for PyChaste building and switch back later.
+unset(PYTHONINTERP_FOUND CACHE)
+unset(PYTHON_EXECUTABLE CACHE)
+unset(PYTHON_VERSION_STRING CACHE)
+unset(PYTHON_VERSION_MAJOR CACHE)
+unset(PYTHON_VERSION_MINOR CACHE)
+unset(PYTHON_VERSION_PATCH CACHE)
+unset(PYTHON_LIBRARIES CACHE)
+unset(PYTHON_LIBRARY CACHE)
+find_package(PythonInterp 3.6)
+
+set(PYBIND11_PYTHON_VERSION 3.6)
+set(PYBIND11_CPP_STANDARD -std=c++14)
 add_subdirectory(dynamic/pybind11)
 include_directories(${PYTHON_INCLUDE_DIRS})
 
@@ -117,7 +129,7 @@ LIST(APPEND arguments ${CASTXML_EXE_LOC})
 LIST(APPEND arguments ${PYCHASTE_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_INCLUDE_DIRS})
 LIST(APPEND arguments ${Chaste_THIRD_PARTY_INCLUDE_DIRS})
-add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate.py ${arguments})
+add_custom_command(TARGET project_PyChaste_Python_Bindings COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/dynamic/wrapper_generators/generate.py ${arguments})
 
 # Loop through each module and create the shared library targets
 list(LENGTH PYCHASTE_PYTHON_MODULES len1)
@@ -145,3 +157,14 @@ foreach(val RANGE ${len2})
     list(GET PYCHASTE_PYTHON_MODULES ${val} python_module)
     add_dependencies(project_PyChaste_Python _chaste_project_PyChaste_${python_module})
 endforeach()
+
+# Switch back to Python 2 for the rest of Chaste
+unset(PYTHONINTERP_FOUND CACHE)
+unset(PYTHON_EXECUTABLE CACHE)
+unset(PYTHON_VERSION_STRING CACHE)
+unset(PYTHON_VERSION_MAJOR CACHE)
+unset(PYTHON_VERSION_MINOR CACHE)
+unset(PYTHON_VERSION_PATCH CACHE)
+unset(PYTHON_LIBRARIES CACHE)
+unset(PYTHON_LIBRARY CACHE)
+find_package(PythonInterp 2)

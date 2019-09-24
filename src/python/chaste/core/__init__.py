@@ -2,7 +2,7 @@
 """Core Module
 """
 
-__copyright__ = """Copyright (c) 2005-2017, University of Oxford.
+__copyright__ = """Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -40,4 +40,4 @@ import warnings
 # way to avoid duplicate registration during wrapper building is found.
 warnings.filterwarnings("ignore")
 
-from _chaste_project_PyChaste_core import *
+from chaste.core._chaste_project_PyChaste_core import *

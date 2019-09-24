@@ -2,7 +2,7 @@
 """Visualization Module
 """
 
-__copyright__ = """Copyright (c) 2005-2017, University of Oxford.
+__copyright__ = """Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -34,5 +34,5 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
 OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
-from _chaste_project_PyChaste_visualization import *
+from chaste.visualization._chaste_project_PyChaste_visualization import *
 from fortests import *

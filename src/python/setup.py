@@ -1,4 +1,4 @@
-__copyright__ = """Copyright (c) 2005-2015, University of Oxford.
+__copyright__ = """Copyright (c) 2005-2019, University of Oxford.
  All rights reserved.
 
  University of Oxford means the Chancellor, Masters and Scholars of the
@@ -41,7 +41,7 @@ class BinaryDistribution(Distribution):
 
 setup(
     name = "chaste",
-    version = "3.4.2",
+    version = "2019.1",
     packages = find_packages(),
     #install_requires = ['petsc4py==3.7', 'matplotlib', 'numpy'],
     package_data={
@@ -79,7 +79,7 @@ setup(
         'Topic :: Scientific/Engineering',
         'Operating System :: Unix',  
         'License :: OSI Approved :: BSD License',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
     ],
 
     distclass=BinaryDistribution
