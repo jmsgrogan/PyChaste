@@ -9,12 +9,9 @@
 #include "UblasIncludes.hpp"
 #include "AttractingPlaneBoundaryCondition.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AttractingPlaneBoundaryCondition2_2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AttractingPlaneBoundaryCondition<2,2 > AttractingPlaneBoundaryCondition2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

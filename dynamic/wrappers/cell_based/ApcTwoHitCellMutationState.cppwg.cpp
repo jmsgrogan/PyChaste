@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "ApcTwoHitCellMutationState.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "ApcTwoHitCellMutationState.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef ApcTwoHitCellMutationState ApcTwoHitCellMutationState;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

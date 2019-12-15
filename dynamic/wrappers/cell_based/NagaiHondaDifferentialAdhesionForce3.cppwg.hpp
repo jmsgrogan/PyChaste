@@ -1,0 +1,6 @@
+#ifndef NagaiHondaDifferentialAdhesionForce3_hpp__pyplusplus_wrapper
+#define NagaiHondaDifferentialAdhesionForce3_hpp__pyplusplus_wrapper
+
+namespace py = pybind11;
+void register_NagaiHondaDifferentialAdhesionForce3_class(py::module &m);
+#endif // NagaiHondaDifferentialAdhesionForce3_hpp__pyplusplus_wrapper

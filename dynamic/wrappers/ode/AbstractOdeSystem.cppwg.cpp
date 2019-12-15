@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractOdeSystem.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractOdeSystem.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractOdeSystem AbstractOdeSystem;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

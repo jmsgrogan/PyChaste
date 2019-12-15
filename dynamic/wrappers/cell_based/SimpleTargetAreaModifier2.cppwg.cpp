@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "SimpleTargetAreaModifier.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "SimpleTargetAreaModifier2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef SimpleTargetAreaModifier<2 > SimpleTargetAreaModifier2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

@@ -239,8 +239,22 @@ modules:
   - name: AbstractVertexBasedDivisionRule
   - name: AbstractForce 
   - name: AbstractTwoBodyInteractionForce
-  - name: GeneralisedLinearSpringForce 
+  - name: BuskeAdhesiveForce
+  - name: BuskeCompressionForce
+  - name: BuskeElasticForce
+  - name: ChemotacticForce
+  - name: GeneralisedLinearSpringForce
+  - name: DifferentialAdhesionGeneralisedLinearSpringForce 
   - name: NagaiHondaForce
+  - name: DiffusionForce
+  - name: RepulsionForce
+  - name: WelikyOsterForce
+  - name: FarhadifarForce
+    excluded_methods: 
+    - GetLineTensionParameter
+  - name: NagaiHondaDifferentialAdhesionForce
+    excluded_methods: 
+    - GetAdhesionParameter
   - name: AbstractCellKiller 
   - name: PlaneBasedCellKiller
   - name: ApoptoticCellKiller

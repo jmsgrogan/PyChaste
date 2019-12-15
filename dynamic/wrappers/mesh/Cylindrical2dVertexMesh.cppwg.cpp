@@ -8,15 +8,13 @@
 #include "UblasIncludes.hpp"
 #include "Cylindrical2dVertexMesh.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "Cylindrical2dVertexMesh.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef Cylindrical2dVertexMesh Cylindrical2dVertexMesh;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 2> _boost_numeric_ublas_c_vector_lt_double_2_gt_;
+typedef ::VertexMesh<2, 2> * _VertexMesh_lt_2_2_gt_Ptr;
 
 class Cylindrical2dVertexMesh_Overloads : public Cylindrical2dVertexMesh{
     public:
@@ -53,6 +51,13 @@ point);
 yScale, 
 zScale);
     }
+    ::VertexMesh<2, 2> * GetMeshForVtk() override {
+        PYBIND11_OVERLOAD(
+            _VertexMesh_lt_2_2_gt_Ptr,
+            Cylindrical2dVertexMesh,
+            GetMeshForVtk,
+            );
+    }
 
 };
 void register_Cylindrical2dVertexMesh_class(py::module &m){
@@ -81,7 +86,7 @@ py::class_<Cylindrical2dVertexMesh , Cylindrical2dVertexMesh_Overloads , boost::
             " " , py::arg("xScale") = 1., py::arg("yScale") = 1., py::arg("zScale") = 1. )
         .def(
             "GetMeshForVtk", 
-            (::MutableVertexMesh<2, 2> *(Cylindrical2dVertexMesh::*)()) &Cylindrical2dVertexMesh::GetMeshForVtk, 
+            (::VertexMesh<2, 2> *(Cylindrical2dVertexMesh::*)()) &Cylindrical2dVertexMesh::GetMeshForVtk, 
             " "  , py::return_value_policy::reference)
     ;
 }

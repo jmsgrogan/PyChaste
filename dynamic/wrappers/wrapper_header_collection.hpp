@@ -93,8 +93,18 @@
 #include "AbstractVertexBasedDivisionRule.hpp"
 #include "AbstractForce.hpp"
 #include "AbstractTwoBodyInteractionForce.hpp"
+#include "BuskeAdhesiveForce.hpp"
+#include "BuskeCompressionForce.hpp"
+#include "BuskeElasticForce.hpp"
+#include "ChemotacticForce.hpp"
 #include "GeneralisedLinearSpringForce.hpp"
+#include "DifferentialAdhesionGeneralisedLinearSpringForce.hpp"
 #include "NagaiHondaForce.hpp"
+#include "DiffusionForce.hpp"
+#include "RepulsionForce.hpp"
+#include "WelikyOsterForce.hpp"
+#include "FarhadifarForce.hpp"
+#include "NagaiHondaDifferentialAdhesionForce.hpp"
 #include "AbstractCellKiller.hpp"
 #include "PlaneBasedCellKiller.hpp"
 #include "ApoptoticCellKiller.hpp"
@@ -214,10 +224,30 @@ template class AbstractForce<2,2>;
 template class AbstractForce<3,3>;
 template class AbstractTwoBodyInteractionForce<2,2>;
 template class AbstractTwoBodyInteractionForce<3,3>;
+template class BuskeAdhesiveForce<2>;
+template class BuskeAdhesiveForce<3>;
+template class BuskeCompressionForce<2>;
+template class BuskeCompressionForce<3>;
+template class BuskeElasticForce<2>;
+template class BuskeElasticForce<3>;
+template class ChemotacticForce<2>;
+template class ChemotacticForce<3>;
 template class GeneralisedLinearSpringForce<2,2>;
 template class GeneralisedLinearSpringForce<3,3>;
+template class DifferentialAdhesionGeneralisedLinearSpringForce<2,2>;
+template class DifferentialAdhesionGeneralisedLinearSpringForce<3,3>;
 template class NagaiHondaForce<2>;
 template class NagaiHondaForce<3>;
+template class DiffusionForce<2>;
+template class DiffusionForce<3>;
+template class RepulsionForce<2>;
+template class RepulsionForce<3>;
+template class WelikyOsterForce<2>;
+template class WelikyOsterForce<3>;
+template class FarhadifarForce<2>;
+template class FarhadifarForce<3>;
+template class NagaiHondaDifferentialAdhesionForce<2>;
+template class NagaiHondaDifferentialAdhesionForce<3>;
 template class AbstractCellKiller<2>;
 template class AbstractCellKiller<3>;
 template class PlaneBasedCellKiller<2>;
@@ -363,10 +393,30 @@ typedef AbstractForce<2,2> AbstractForce2_2;
 typedef AbstractForce<3,3> AbstractForce3_3;
 typedef AbstractTwoBodyInteractionForce<2,2> AbstractTwoBodyInteractionForce2_2;
 typedef AbstractTwoBodyInteractionForce<3,3> AbstractTwoBodyInteractionForce3_3;
+typedef BuskeAdhesiveForce<2> BuskeAdhesiveForce2;
+typedef BuskeAdhesiveForce<3> BuskeAdhesiveForce3;
+typedef BuskeCompressionForce<2> BuskeCompressionForce2;
+typedef BuskeCompressionForce<3> BuskeCompressionForce3;
+typedef BuskeElasticForce<2> BuskeElasticForce2;
+typedef BuskeElasticForce<3> BuskeElasticForce3;
+typedef ChemotacticForce<2> ChemotacticForce2;
+typedef ChemotacticForce<3> ChemotacticForce3;
 typedef GeneralisedLinearSpringForce<2,2> GeneralisedLinearSpringForce2_2;
 typedef GeneralisedLinearSpringForce<3,3> GeneralisedLinearSpringForce3_3;
+typedef DifferentialAdhesionGeneralisedLinearSpringForce<2,2> DifferentialAdhesionGeneralisedLinearSpringForce2_2;
+typedef DifferentialAdhesionGeneralisedLinearSpringForce<3,3> DifferentialAdhesionGeneralisedLinearSpringForce3_3;
 typedef NagaiHondaForce<2> NagaiHondaForce2;
 typedef NagaiHondaForce<3> NagaiHondaForce3;
+typedef DiffusionForce<2> DiffusionForce2;
+typedef DiffusionForce<3> DiffusionForce3;
+typedef RepulsionForce<2> RepulsionForce2;
+typedef RepulsionForce<3> RepulsionForce3;
+typedef WelikyOsterForce<2> WelikyOsterForce2;
+typedef WelikyOsterForce<3> WelikyOsterForce3;
+typedef FarhadifarForce<2> FarhadifarForce2;
+typedef FarhadifarForce<3> FarhadifarForce3;
+typedef NagaiHondaDifferentialAdhesionForce<2> NagaiHondaDifferentialAdhesionForce2;
+typedef NagaiHondaDifferentialAdhesionForce<3> NagaiHondaDifferentialAdhesionForce3;
 typedef AbstractCellKiller<2> AbstractCellKiller2;
 typedef AbstractCellKiller<3> AbstractCellKiller3;
 typedef PlaneBasedCellKiller<2> PlaneBasedCellKiller2;

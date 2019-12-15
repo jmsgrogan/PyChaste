@@ -1,0 +1,6 @@
+#ifndef DifferentialAdhesionGeneralisedLinearSpringForce2_2_hpp__pyplusplus_wrapper
+#define DifferentialAdhesionGeneralisedLinearSpringForce2_2_hpp__pyplusplus_wrapper
+
+namespace py = pybind11;
+void register_DifferentialAdhesionGeneralisedLinearSpringForce2_2_class(py::module &m);
+#endif // DifferentialAdhesionGeneralisedLinearSpringForce2_2_hpp__pyplusplus_wrapper

@@ -38,4 +38,4 @@ import chaste
 import chaste.mesh
 import chaste.pde
 from chaste.cell_based._chaste_project_PyChaste_cell_based import *
-from fortests import *
+from chaste.cell_based.fortests import *

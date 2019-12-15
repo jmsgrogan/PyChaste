@@ -10,12 +10,9 @@
 #include "UblasIncludes.hpp"
 #include "PottsBasedCellPopulation.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "PottsBasedCellPopulation3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef PottsBasedCellPopulation<3 > PottsBasedCellPopulation3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh_lt_3_3_gt_Ptr;

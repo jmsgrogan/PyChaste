@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "NodeAttributes.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "NodeAttributes2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef NodeAttributes<2 > NodeAttributes2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
@@ -42,8 +39,8 @@ py::class_<NodeAttributes2  , boost::shared_ptr<NodeAttributes2 >   >(m, "NodeAt
             " "  , py::return_value_policy::reference_internal)
         .def(
             "AddAppliedForceContribution", 
-            (void(NodeAttributes2::*)(::boost::numeric::ublas::c_vector<double, 2> &)) &NodeAttributes2::AddAppliedForceContribution, 
-            " " , py::arg("appliedForceContribution") )
+            (void(NodeAttributes2::*)(::boost::numeric::ublas::c_vector<double, 2> const &)) &NodeAttributes2::AddAppliedForceContribution, 
+            " " , py::arg("rForceContribution") )
         .def(
             "ClearAppliedForce", 
             (void(NodeAttributes2::*)()) &NodeAttributes2::ClearAppliedForce, 

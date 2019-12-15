@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractSimpleCellCycleModel.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractSimpleCellCycleModel.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractSimpleCellCycleModel AbstractSimpleCellCycleModel;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

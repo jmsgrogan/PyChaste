@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractVertexBasedDivisionRule.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractVertexBasedDivisionRule3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractVertexBasedDivisionRule<3 > AbstractVertexBasedDivisionRule3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;

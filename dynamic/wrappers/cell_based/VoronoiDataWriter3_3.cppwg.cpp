@@ -13,12 +13,9 @@
 #include "UblasIncludes.hpp"
 #include "VoronoiDataWriter.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "VoronoiDataWriter3_3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef VoronoiDataWriter<3,3 > VoronoiDataWriter3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

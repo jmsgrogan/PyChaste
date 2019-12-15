@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "DiffusionCaUpdateRule.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "DiffusionCaUpdateRule2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef DiffusionCaUpdateRule<2 > DiffusionCaUpdateRule2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

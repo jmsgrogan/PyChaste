@@ -9,12 +9,9 @@
 #include "UblasIncludes.hpp"
 #include "SphereGeometryBoundaryCondition.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "SphereGeometryBoundaryCondition2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef SphereGeometryBoundaryCondition<2 > SphereGeometryBoundaryCondition2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "Node.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "Node3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef Node<3 > Node3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
@@ -142,8 +139,8 @@ py::class_<Node3  , boost::shared_ptr<Node3 >   >(m, "Node3")
             " "  )
         .def(
             "AddAppliedForceContribution", 
-            (void(Node3::*)(::boost::numeric::ublas::c_vector<double, 3> &)) &Node3::AddAppliedForceContribution, 
-            " " , py::arg("forceContribution") )
+            (void(Node3::*)(::boost::numeric::ublas::c_vector<double, 3> const &)) &Node3::AddAppliedForceContribution, 
+            " " , py::arg("rForceContribution") )
         .def(
             "IsParticle", 
             (bool(Node3::*)()) &Node3::IsParticle, 

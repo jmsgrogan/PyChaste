@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "VertexMesh.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "VertexMesh3_3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef VertexMesh<3,3 > VertexMesh3_3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;
@@ -22,6 +19,7 @@ typedef unsigned int unsignedint;
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
 typedef ::boost::numeric::ublas::c_vector<double, 3> _boost_numeric_ublas_c_vector_lt_double_3_gt_;
+typedef ::VertexMesh<3, 3> * _VertexMesh_lt_3_3_gt_Ptr;
 typedef unsigned int unsignedint;
 
 class VertexMesh3_3_Overloads : public VertexMesh3_3{
@@ -97,6 +95,13 @@ rLocationB);
             VertexMesh3_3,
             CalculateAreaOfFace,
             pFace);
+    }
+    ::VertexMesh<3, 3> * GetMeshForVtk() override {
+        PYBIND11_OVERLOAD(
+            _VertexMesh_lt_3_3_gt_Ptr,
+            VertexMesh3_3,
+            GetMeshForVtk,
+            );
     }
     unsigned int SolveNodeMapping(unsigned int index) const  override {
         PYBIND11_OVERLOAD(
@@ -228,5 +233,9 @@ py::class_<VertexMesh3_3 , VertexMesh3_3_Overloads , boost::shared_ptr<VertexMes
             "GetNeighbouringElementIndices", 
             (::std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> >(VertexMesh3_3::*)(unsigned int)) &VertexMesh3_3::GetNeighbouringElementIndices, 
             " " , py::arg("elementIndex") )
+        .def(
+            "GetMeshForVtk", 
+            (::VertexMesh<3, 3> *(VertexMesh3_3::*)()) &VertexMesh3_3::GetMeshForVtk, 
+            " "  , py::return_value_policy::reference)
     ;
 }

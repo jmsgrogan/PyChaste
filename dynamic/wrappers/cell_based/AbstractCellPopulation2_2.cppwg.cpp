@@ -9,12 +9,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractCellPopulation.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractCellPopulation2_2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractCellPopulation<2,2 > AbstractCellPopulation2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<2, 2> * _TetrahedralMesh_lt_2_2_gt_Ptr;

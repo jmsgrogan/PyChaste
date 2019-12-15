@@ -1,0 +1,53 @@
+<Chaste>
+
+	<OnLatticeSimulation-2>
+		<Dt>0.1</Dt>
+		<EndTime>20</EndTime>
+		<SamplingTimestepMultiple>10</SamplingTimestepMultiple>
+		<OutputDivisionLocations>0</OutputDivisionLocations>
+		<OutputCellVelocities>0</OutputCellVelocities>
+	</OnLatticeSimulation-2>
+
+	<PottsBasedCellPopulation-2>
+		<Temperature>0.1</Temperature>
+		<NumSweepsPerTimestep>1</NumSweepsPerTimestep>
+		<UpdateNodesInRandomOrder>1</UpdateNodesInRandomOrder>
+		<IterateRandomlyOverUpdateRuleCollection>0</IterateRandomlyOverUpdateRuleCollection>
+		<OutputResultsForChasteVisualizer>1</OutputResultsForChasteVisualizer>
+	</PottsBasedCellPopulation-2>
+
+	<CellCycleModels>
+		<UniformCellCycleModel>
+			<MinCellCycleDuration>12</MinCellCycleDuration>
+			<MaxCellCycleDuration>14</MaxCellCycleDuration>
+		</UniformCellCycleModel>
+	</CellCycleModels>
+
+	<SrnModels>
+		<NullSrnModel>
+		</NullSrnModel>
+	</SrnModels>
+
+	<CellKillers>
+	</CellKillers>
+
+	<SimulationModifiers>
+		<UnknownClass-ReflectionFailed>
+		</UnknownClass-ReflectionFailed>
+	</SimulationModifiers>
+
+	<UpdateRules>
+		<VolumeConstraintPottsUpdateRule-2>
+			<DeformationEnergyParameter>0.2</DeformationEnergyParameter>
+			<MatureCellTargetVolume>16</MatureCellTargetVolume>
+		</VolumeConstraintPottsUpdateRule-2>
+		<DifferentialAdhesionPottsUpdateRule-2>
+			<LabelledCellLabelledCellAdhesionEnergyParameter>0.16</LabelledCellLabelledCellAdhesionEnergyParameter>
+			<LabelledCellCellAdhesionEnergyParameter>0.11</LabelledCellCellAdhesionEnergyParameter>
+			<LabelledCellBoundaryAdhesionEnergyParameter>0.16</LabelledCellBoundaryAdhesionEnergyParameter>
+			<CellCellAdhesionEnergyParameter>0.02</CellCellAdhesionEnergyParameter>
+			<CellBoundaryAdhesionEnergyParameter>0.16</CellBoundaryAdhesionEnergyParameter>
+		</DifferentialAdhesionPottsUpdateRule-2>
+	</UpdateRules>
+
+</Chaste>

@@ -1,0 +1,21 @@
+Process 0 of 1.
+uname sysname  = Linux
+uname nodename = saturn
+uname release  = 4.15.0-72-generic
+uname version  = #81-Ubuntu SMP Tue Nov 26 12:20:02 UTC 2019
+uname machine  = x86_64
+
+Information on number and type of processors:
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+model name	: AMD A8-7410 APU with AMD Radeon R5 Graphics
+
+Information on processor caches, in the same order as above:
+cache size	: 2048 KB
+cache size	: 2048 KB
+cache size	: 2048 KB
+cache size	: 2048 KB
+
+Information on system memory:
+MemTotal:        7069988 kB

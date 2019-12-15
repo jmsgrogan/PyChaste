@@ -12,12 +12,9 @@
 #include "UblasIncludes.hpp"
 #include "VertexBasedCellPopulation.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "VertexBasedCellPopulation3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef VertexBasedCellPopulation<3 > VertexBasedCellPopulation3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef unsigned int unsignedint;

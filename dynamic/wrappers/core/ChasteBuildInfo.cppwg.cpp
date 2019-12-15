@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "Version.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "ChasteBuildInfo.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef ChasteBuildInfo ChasteBuildInfo;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
@@ -42,7 +39,7 @@ py::class_<ChasteBuildInfo  , boost::shared_ptr<ChasteBuildInfo >   >(m, "Chaste
             " "  )
         .def_static(
             "GetRevisionNumber", 
-            (unsigned int(*)()) &ChasteBuildInfo::GetRevisionNumber, 
+            (long long unsigned int(*)()) &ChasteBuildInfo::GetRevisionNumber, 
             " "  )
         .def_static(
             "IsWorkingCopyModified", 

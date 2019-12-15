@@ -1,5 +1,5 @@
 
-"""Copyright (c) 2005-2017, University of Oxford.
+"""Copyright (c) 2005-2019, University of Oxford.
 All rights reserved.
 
 University of Oxford means the Chancellor, Masters and Scholars of the
@@ -101,10 +101,10 @@ class TestScratchAssayTutorial(chaste.cell_based.AbstractCellBasedTestSuite):
         ## add four layers of cells to each side of the mesh.
         
         num_cell_layers = 4
-        bottom_location_indices = range(num_cell_layers*num_points_in_x)
+        bottom_location_indices = list(range(num_cell_layers*num_points_in_x))
         num_grid_points = num_points_in_x*num_points_in_y
-        top_location_indices = range(num_grid_points-1, num_grid_points - 
-                                     num_cell_layers*num_points_in_x-1, -1)
+        top_location_indices = list(range(num_grid_points-1, num_grid_points - 
+                                     num_cell_layers*num_points_in_x-1, -1))
         cells = cell_generator.GenerateGivenLocationIndices(
                                                     bottom_location_indices + top_location_indices, 
                                                     differentiated_type)            

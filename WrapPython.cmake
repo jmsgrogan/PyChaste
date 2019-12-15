@@ -146,7 +146,7 @@ foreach(val RANGE ${len2})
     set_target_properties(_chaste_project_PyChaste_${python_module} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${python_module_location} 
         PREFIX "${PYTHON_MODULE_PREFIX}" SUFFIX ".so")
     target_compile_features(_chaste_project_PyChaste_${python_module} PRIVATE cxx_range_for)
-    # order is important, boost python and python come first
+    # order is important, pybind and python come first
     target_link_libraries(_chaste_project_PyChaste_${python_module} pybind11::module ${PYTHON_LIBRARIES} ${Chaste_THIRD_PARTY_LIBRARIES} ${Chaste_LIBRARIES} ${PYCHASTE_SHARED_LIB})
     add_dependencies(_chaste_project_PyChaste_${python_module} chaste_project_PyChaste)
 endforeach()

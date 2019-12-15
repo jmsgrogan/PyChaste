@@ -78,10 +78,30 @@
 #include "AbstractForce3_3.cppwg.hpp"
 #include "AbstractTwoBodyInteractionForce2_2.cppwg.hpp"
 #include "AbstractTwoBodyInteractionForce3_3.cppwg.hpp"
+#include "BuskeAdhesiveForce2.cppwg.hpp"
+#include "BuskeAdhesiveForce3.cppwg.hpp"
+#include "BuskeCompressionForce2.cppwg.hpp"
+#include "BuskeCompressionForce3.cppwg.hpp"
+#include "BuskeElasticForce2.cppwg.hpp"
+#include "BuskeElasticForce3.cppwg.hpp"
+#include "ChemotacticForce2.cppwg.hpp"
+#include "ChemotacticForce3.cppwg.hpp"
 #include "GeneralisedLinearSpringForce2_2.cppwg.hpp"
 #include "GeneralisedLinearSpringForce3_3.cppwg.hpp"
+#include "DifferentialAdhesionGeneralisedLinearSpringForce2_2.cppwg.hpp"
+#include "DifferentialAdhesionGeneralisedLinearSpringForce3_3.cppwg.hpp"
 #include "NagaiHondaForce2.cppwg.hpp"
 #include "NagaiHondaForce3.cppwg.hpp"
+#include "DiffusionForce2.cppwg.hpp"
+#include "DiffusionForce3.cppwg.hpp"
+#include "RepulsionForce2.cppwg.hpp"
+#include "RepulsionForce3.cppwg.hpp"
+#include "WelikyOsterForce2.cppwg.hpp"
+#include "WelikyOsterForce3.cppwg.hpp"
+#include "FarhadifarForce2.cppwg.hpp"
+#include "FarhadifarForce3.cppwg.hpp"
+#include "NagaiHondaDifferentialAdhesionForce2.cppwg.hpp"
+#include "NagaiHondaDifferentialAdhesionForce3.cppwg.hpp"
 #include "AbstractCellKiller2.cppwg.hpp"
 #include "AbstractCellKiller3.cppwg.hpp"
 #include "PlaneBasedCellKiller2.cppwg.hpp"
@@ -215,10 +235,30 @@ PYBIND11_MODULE(_chaste_project_PyChaste_cell_based, m)
     register_AbstractForce3_3_class(m);
     register_AbstractTwoBodyInteractionForce2_2_class(m);
     register_AbstractTwoBodyInteractionForce3_3_class(m);
+    register_BuskeAdhesiveForce2_class(m);
+    register_BuskeAdhesiveForce3_class(m);
+    register_BuskeCompressionForce2_class(m);
+    register_BuskeCompressionForce3_class(m);
+    register_BuskeElasticForce2_class(m);
+    register_BuskeElasticForce3_class(m);
+    register_ChemotacticForce2_class(m);
+    register_ChemotacticForce3_class(m);
     register_GeneralisedLinearSpringForce2_2_class(m);
     register_GeneralisedLinearSpringForce3_3_class(m);
+    register_DifferentialAdhesionGeneralisedLinearSpringForce2_2_class(m);
+    register_DifferentialAdhesionGeneralisedLinearSpringForce3_3_class(m);
     register_NagaiHondaForce2_class(m);
     register_NagaiHondaForce3_class(m);
+    register_DiffusionForce2_class(m);
+    register_DiffusionForce3_class(m);
+    register_RepulsionForce2_class(m);
+    register_RepulsionForce3_class(m);
+    register_WelikyOsterForce2_class(m);
+    register_WelikyOsterForce3_class(m);
+    register_FarhadifarForce2_class(m);
+    register_FarhadifarForce3_class(m);
+    register_NagaiHondaDifferentialAdhesionForce2_class(m);
+    register_NagaiHondaDifferentialAdhesionForce3_class(m);
     register_AbstractCellKiller2_class(m);
     register_AbstractCellKiller3_class(m);
     register_PlaneBasedCellKiller2_class(m);

@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "ApoptoticCellKiller.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "ApoptoticCellKiller3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef ApoptoticCellKiller<3 > ApoptoticCellKiller3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

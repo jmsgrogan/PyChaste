@@ -10,12 +10,9 @@
 #include "UblasIncludes.hpp"
 #include "PetscTools.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "PetscTools.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef PetscTools PetscTools;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 PYBIND11_MAKE_OPAQUE(Vec);

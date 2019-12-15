@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "VtkSceneModifier.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "VtkSceneModifier3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef VtkSceneModifier<3 > VtkSceneModifier3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

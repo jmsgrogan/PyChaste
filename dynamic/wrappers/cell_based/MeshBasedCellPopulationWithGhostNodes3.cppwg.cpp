@@ -10,12 +10,9 @@
 #include "UblasIncludes.hpp"
 #include "MeshBasedCellPopulationWithGhostNodes.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "MeshBasedCellPopulationWithGhostNodes3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef MeshBasedCellPopulationWithGhostNodes<3 > MeshBasedCellPopulationWithGhostNodes3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::TetrahedralMesh<3, 3> * _TetrahedralMesh_lt_3_3_gt_Ptr;

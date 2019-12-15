@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractPottsUpdateRule.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractPottsUpdateRule3.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractPottsUpdateRule<3 > AbstractPottsUpdateRule3;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

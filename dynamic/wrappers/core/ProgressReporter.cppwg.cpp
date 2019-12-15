@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "ProgressReporter.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "ProgressReporter.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef ProgressReporter ProgressReporter;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "AbstractSrnModel.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "AbstractSrnModel.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef AbstractSrnModel AbstractSrnModel;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 typedef ::AbstractSrnModel * _AbstractSrnModelPtr;

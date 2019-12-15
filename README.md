@@ -41,14 +41,23 @@ cd $BUILD_DIR/projects/PyChaste/python
 python setup.py install
 ``` 
 
-To use MPI/PETSc functionality (as is required in much of Chaste) it is neccessary to install the `petsc4py` Python interface to PETSc. This can be done using pip:
+To use MPI/PETSc functionality (as is required in much of Chaste) it is neccessary to install the `petsc4py` Python interface to PETSc. 
+First, find your PETSc installation directory and architecture and set them as shell variables. 
+For example on Ubuntu 18.04 this will be something like:
+
+```
+export PETSC_DIR=/usr/lib/petscdir/3.7.7/x86_64-linux-gnu-real
+export PETSC_ARCH=x86_64-linux-gnu-real
+
+```
+
+Then install the version of `petsc4py` correspoinding to your specific PETSc version, e.g.:
 
 ```python
-pip install petsc4py
+pip install petsc4py==3.7
 ``` 
 
-taking care to ensure that the installed version of `petsc4py` matches your PETSc version and that the environment variable `$PETSC_DIR` points to the version of PETSc that you want to use. 
-
+There is a full list of releases [here](https://pypi.org/project/petsc4py/#history).
 
 ## Usage
 The package can be imported in Python as normal. For example, in a Python session do:

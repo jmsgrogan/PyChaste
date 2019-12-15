@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "OffLatticeSimulation.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "OffLatticeSimulation2_2.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef OffLatticeSimulation<2,2 > OffLatticeSimulation2_2;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 

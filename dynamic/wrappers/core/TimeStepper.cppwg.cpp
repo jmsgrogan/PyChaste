@@ -8,12 +8,9 @@
 #include "UblasIncludes.hpp"
 #include "TimeStepper.hpp"
 
-#include "PythonObjectConverters.hpp"
 #include "TimeStepper.cppwg.hpp"
 
 namespace py = pybind11;
-PYBIND11_CVECTOR_TYPECASTER2();
-PYBIND11_CVECTOR_TYPECASTER3();   
 typedef TimeStepper TimeStepper;
 PYBIND11_DECLARE_HOLDER_TYPE(T, boost::shared_ptr<T>);
 
